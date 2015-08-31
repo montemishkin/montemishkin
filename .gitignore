@@ -1,0 +1,20 @@
+# everything in the database directory
+db
+
+# frontend dependencies
+node_modules
+
+# everything in the frontend build directory
+monte_mishkin_com/assets/build
+
+# static files collected for deployment
+static
+
+# any compiled python directories
+__pycache__
+
+# thanks apple
+**/.DS_Store
+
+
+# end of file
