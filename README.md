@@ -1,6 +1,6 @@
 # monte_mishkin_com
 
-The code for monte.mishkin.com.
+The code for [monte.mishkin.com](http://monte.mishkin.com).
 
 
 # urls
@@ -16,12 +16,6 @@ The code for monte.mishkin.com.
     - link to github
     - link to soundcloud
     - link to contact me
-- `/blog`
-    - list of recent blog posts
-    - filter by date, tag, content, title, ... capabilities
-    - `/blog/<unique-dash-separated-title>`
-        - a blog post
-        - [discuss](https://disqus.com/websites/) commenting capabilities
 - `/projects`
     - list of recent projects
     - filter by date, tag, content, title, ... capabilities
@@ -29,3 +23,9 @@ The code for monte.mishkin.com.
         - brief description of project
         - link to source code on github
         - link to live demo. could be at a separate domain, or could be at `/projects/<github_repo_name>/demo`
+- `/blog`
+    - list of recent blog posts
+    - filter by date, tag, content, title, ... capabilities
+    - `/blog/<unique-dash-separated-title>`
+        - a blog post
+        - [discuss](https://disqus.com/websites/) commenting capabilities

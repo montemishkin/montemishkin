@@ -1,19 +1,25 @@
-/*
- * Root level React component.
- */
-
 /* common react imports */
 import React from 'react/addons'
 import {RouteHandler} from 'react-router'
+/* local imports */
+import styles from './styles'
+import Nav from '../Nav'
 
 
-// define component
+/**
+ * Root level component.
+ * @class
+ */
 class Root extends React.Component {
-    // render component
     render() {
-        return (<div>
-            <h1>Root Component!</h1>
-            <RouteHandler />
+        return (<div style={styles.container}>
+            <Nav />
+            <div style={styles.content}>
+                <RouteHandler />
+                <div style={styles.footer}>
+                    copyright 2015
+                </div>
+            </div>
         </div>)
     }
 }
