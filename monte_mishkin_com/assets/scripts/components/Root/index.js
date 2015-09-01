@@ -13,6 +13,9 @@ import Nav from '../Nav'
 class Root extends React.Component {
     render() {
         return (<div style={styles.container}>
+            <div style={styles.header}>
+                <h1>MM</h1>
+            </div>
             <Nav />
             <div style={styles.content}>
                 <RouteHandler />

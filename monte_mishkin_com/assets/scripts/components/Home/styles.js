@@ -2,11 +2,14 @@
  * Style sheet for Home component.
  */
 
+/* local imports */
+import colors from '../../../styles/colors'
+
 
 // define style sheet
 let styles = {
     container: {
-        backgroundColor: 'red',
+        backgroundColor: colors.tertiary.main,
     },
 }
 

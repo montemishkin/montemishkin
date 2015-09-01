@@ -4,6 +4,8 @@
 
 /* misc third party imports */
 import {assign} from 'lodash'
+/* local imports */
+import colors from '../../../styles/colors'
 
 
 // base styling for both active and inactive links
@@ -19,20 +21,20 @@ let styles = {
         display: 'flex',
         justifyContent: 'flex-end',
         flexWrap: 'wrap',
-        backgroundColor: '#232323',
+        backgroundColor: colors.primary.main,
     },
 
     link: assign({}, base_link, {
         padding: 10,
-        color: 'grey',
+        color: colors.secondary.main,
 
         ':hover': {
-            color: 'red',
+            color: colors.secondary.darker,
         },
     }),
 
     active_link: assign({}, base_link, {
-        color: 'green',
+        color: colors.secondary.lighter,
     }),
 }
 

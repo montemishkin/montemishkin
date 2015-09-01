@@ -2,6 +2,9 @@
  * Style sheet for Root component.
  */
 
+/* local imports */
+import colors from '../../../styles/colors'
+
 
 // define style sheet
 let styles = {
@@ -11,16 +14,22 @@ let styles = {
         flexDirection: 'column',
     },
 
+    header: {
+        color: colors.grey.main,
+        backgroundColor: colors.primary.main,
+    },
+
     content: {
         flexGrow: 1,
         display: 'flex',
         flexDirection: 'column',
         padding: 10,
-        backgroundColor: 'yellow',
+        backgroundColor: colors.primary.lightest,
     },
 
     footer: {
-        backgroundColor: 'grey',
+        color: colors.grey.main,
+        backgroundColor: colors.primary.lighter,
     },
 }
 
