@@ -19,7 +19,6 @@ const base_link = {
 let styles = {
     container: {
         display: 'flex',
-        justifyContent: 'flex-end',
         flexWrap: 'wrap',
         backgroundColor: colors.primary.main,
     },

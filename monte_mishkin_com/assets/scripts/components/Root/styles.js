@@ -8,28 +8,27 @@ import colors from '../../../styles/colors'
 
 // define style sheet
 let styles = {
-    container: {
+    outer_container: {
         minHeight: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        paddingBottom: 20,
+        backgroundColor: colors.primary.lightest,
+    },
+
+    inner_container: {
+        width: '90%',
         display: 'flex',
         flexDirection: 'column',
     },
 
-    header: {
-        color: colors.grey.main,
-        backgroundColor: colors.primary.main,
+    paper: {
+        backgroundColor: colors.grey.lighter,
     },
 
     content: {
         flexGrow: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        padding: 10,
-        backgroundColor: colors.primary.lightest,
-    },
-
-    footer: {
-        color: colors.grey.main,
-        backgroundColor: colors.primary.lighter,
+        padding: 15,
     },
 }
 
