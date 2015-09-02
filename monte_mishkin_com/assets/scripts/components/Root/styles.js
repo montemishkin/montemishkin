@@ -13,7 +13,7 @@ let styles = {
         display: 'flex',
         justifyContent: 'center',
         paddingBottom: 20,
-        backgroundColor: colors.primary.lightest,
+        backgroundColor: colors.primary.main,
     },
 
     inner_container: {

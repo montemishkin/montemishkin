@@ -13,7 +13,7 @@ let styles = {
     },
 
     link: {
-        color: colors.grey.main,
+        color: 'white',
         textDecoration: 'none',
     },
 }

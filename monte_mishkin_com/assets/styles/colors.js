@@ -6,27 +6,27 @@
 // define color scheme
 let colors = {
     primary: {
-        darkest: '#020D1B',
-        darker: '#021023',
-        main: '#06172E',
-        lighter: '#03214C',
-        lightest: '#07336F',
+        lightest: '#839CC3',
+        lighter: '#5473A1',
+        main: '#37598B',
+        darker: '#224477',
+        darkest: '#10305E',
     },
 
     secondary: {
-        lightest: '#FCFED6',
-        lighter: '#FBFDBC',
-        main: '#E2E691',
-        darker: '#C9CD67',
-        darkest: '#ACB13E',
+        lightest: '#91DD8D',
+        lighter: '#63C65D',
+        main: '#3FAB39',
+        darker: '#25921F',
+        darkest: '#0F740A',
     },
 
     tertiary: {
-        lightest: '#B3D4B9',
-        lighter: '#91C49A',
-        main: '#6FB17B',
-        darker: '#4F9E5D',
-        darkest: '#30883F',
+        lightest: '#FAFEA2',
+        lighter: '#EEF373',
+        main: '#CCD146',
+        darker: '#AEB326',
+        darkest: '#898E0C',
     },
 
     grey: {

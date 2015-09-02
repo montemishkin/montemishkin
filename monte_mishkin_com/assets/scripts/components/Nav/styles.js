@@ -20,20 +20,20 @@ let styles = {
     container: {
         display: 'flex',
         flexWrap: 'wrap',
-        backgroundColor: colors.primary.main,
+        backgroundColor: colors.secondary.darkest,
     },
 
     link: assign({}, base_link, {
         padding: 10,
-        color: colors.secondary.main,
+        color: colors.grey.lightest,
 
         ':hover': {
-            color: colors.secondary.darker,
+            color: colors.grey.main,
         },
     }),
 
     active_link: assign({}, base_link, {
-        color: colors.secondary.lighter,
+        color: colors.grey.darkest,
     }),
 }
 
