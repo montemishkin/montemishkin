@@ -9,7 +9,7 @@ import colors from '../../../styles/colors'
 // define style sheet
 let styles = {
     container: {
-        backgroundColor: colors.tertiary.main,
+        // backgroundColor: colors.tertiary.main,
     },
 }
 
