@@ -20,6 +20,12 @@ let styles = {
     container: {
         display: 'flex',
         flexWrap: 'wrap',
+        borderStyle: 'solid',
+        borderColor: 'black',
+        borderLeftWidth: 1,
+        borderRightWidth: 1,
+        borderTopWidth: 1,
+        borderBottomWidth: 1,
         backgroundColor: colors.secondary.darkest,
     },
 

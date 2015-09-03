@@ -3,6 +3,7 @@ import React from 'react/addons'
 import radium from 'radium'
 /* local imports */
 import styles from './styles'
+import Paper from '../Paper'
 import BusinessCard from '../BusinessCard'
 
 
@@ -13,10 +14,10 @@ import BusinessCard from '../BusinessCard'
 @radium
 class About extends React.Component {
     render() {
-        return (<div style={styles.container}>
+        return (<Paper title={'About'}>
             <BusinessCard />
             <p>info about me</p>
-        </div>)
+        </Paper>)
     }
 }
 

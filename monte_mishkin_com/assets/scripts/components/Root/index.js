@@ -17,11 +17,9 @@ class Root extends React.Component {
         return (<div style={styles.outer_container}>
             <div style={styles.inner_container}>
                 <Banner />
-                <div style={styles.paper}>
-                    <Nav />
-                    <div style={styles.content}>
-                        <RouteHandler />
-                    </div>
+                <Nav />
+                <div style={styles.content}>
+                    <RouteHandler />
                 </div>
                 <Footer />
             </div>

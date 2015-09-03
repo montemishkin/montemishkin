@@ -3,6 +3,7 @@ import React from 'react/addons'
 import radium from 'radium'
 /* local imports */
 import styles from './styles'
+import Paper from '../Paper'
 
 
 /**
@@ -12,12 +13,12 @@ import styles from './styles'
 @radium
 class Projects extends React.Component {
     render() {
-        return (<div style={styles.container}>
+        return (<Paper title={'Projects'}>
             <ul>
                 <li>list of recent projects</li>
                 <li>filter by date, tag, content, title, ... capabilities</li>
             </ul>
-        </div>)
+        </Paper>)
     }
 }
 

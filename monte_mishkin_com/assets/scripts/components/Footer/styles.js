@@ -19,7 +19,7 @@ let styles = {
 
     left: {
         display: 'flex',
-        flexBasis: '30%',
+        flexBasis: 250,
         justifyContent: 'space-between',
     },
 

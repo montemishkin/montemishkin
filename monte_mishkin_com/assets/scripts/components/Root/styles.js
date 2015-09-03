@@ -22,13 +22,16 @@ let styles = {
         flexDirection: 'column',
     },
 
-    paper: {
-        backgroundColor: colors.grey.lighter,
-    },
-
     content: {
-        flexGrow: 1,
-        padding: 15,
+        display: 'flex',
+        justifyContent: 'center',
+        borderStyle: 'solid',
+        borderColor: 'black',
+        borderLeftWidth: 1,
+        borderRightWidth: 1,
+        borderTopWidth: 0,
+        borderBottomWidth: 1,
+        backgroundColor: colors.grey.lighter,
     },
 }
 

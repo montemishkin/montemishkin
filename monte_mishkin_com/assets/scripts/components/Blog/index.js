@@ -3,6 +3,7 @@ import React from 'react/addons'
 import radium from 'radium'
 /* local imports */
 import styles from './styles'
+import Paper from '../Paper'
 
 
 /**
@@ -12,12 +13,72 @@ import styles from './styles'
 @radium
 class Blog extends React.Component {
     render() {
-        return (<div style={styles.container}>
+        return (<Paper title={'Blog'}>
             <ul>
                 <li>list of recent blog posts</li>
                 <li>filter by date, tag, content, title, ... capabilities</li>
             </ul>
-        </div>)
+            <p>
+                My name is Monte Mishkin and I am the guy with the website!
+                To find out more about me, click on this toaster.
+                To find out less about me, turn off your computer, walk away,
+                and forget this ever happened.
+                I also have some projects you can take a look at.
+                Oh, and a resume.
+                And what website would be complete without a blog?
+                Anyways, feel free to snoop around.
+            </p>
+            <p>
+                My name is Monte Mishkin and I am the guy with the website!
+                To find out more about me, click on this toaster.
+                To find out less about me, turn off your computer, walk away,
+                and forget this ever happened.
+                I also have some projects you can take a look at.
+                Oh, and a resume.
+                And what website would be complete without a blog?
+                Anyways, feel free to snoop around.
+            </p>
+            <p>
+                My name is Monte Mishkin and I am the guy with the website!
+                To find out more about me, click on this toaster.
+                To find out less about me, turn off your computer, walk away,
+                and forget this ever happened.
+                I also have some projects you can take a look at.
+                Oh, and a resume.
+                And what website would be complete without a blog?
+                Anyways, feel free to snoop around.
+            </p>
+            <p>
+                My name is Monte Mishkin and I am the guy with the website!
+                To find out more about me, click on this toaster.
+                To find out less about me, turn off your computer, walk away,
+                and forget this ever happened.
+                I also have some projects you can take a look at.
+                Oh, and a resume.
+                And what website would be complete without a blog?
+                Anyways, feel free to snoop around.
+            </p>
+            <p>
+                My name is Monte Mishkin and I am the guy with the website!
+                To find out more about me, click on this toaster.
+                To find out less about me, turn off your computer, walk away,
+                and forget this ever happened.
+                I also have some projects you can take a look at.
+                Oh, and a resume.
+                And what website would be complete without a blog?
+                Anyways, feel free to snoop around.
+            </p>
+            <p>
+                My name is Monte Mishkin and I am the guy with the website!
+                To find out more about me, click on this toaster.
+                To find out less about me, turn off your computer, walk away,
+                and forget this ever happened.
+                I also have some projects you can take a look at.
+                Oh, and a resume.
+                And what website would be complete without a blog?
+                Anyways, feel free to snoop around.
+            </p>
+        </Paper>)
     }
 }
 
