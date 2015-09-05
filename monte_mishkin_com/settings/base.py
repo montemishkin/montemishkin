@@ -42,6 +42,8 @@ third_party_apps = (
 )
 
 monte_mishkin_com_apps = (
+    'monte_mishkin_com.apps.blog',
+    'monte_mishkin_com.apps.api',
 )
 
 INSTALLED_APPS = monte_mishkin_com_apps + third_party_apps + django_apps
