@@ -12,18 +12,20 @@ import BusinessCard from '../BusinessCard'
  * @class
  */
 @radium
-class About extends React.Component {
+class AboutView extends React.Component {
     render() {
         return (<Paper title={'About'}>
             <BusinessCard />
-            <p>info about me</p>
+            <p style={styles.bio}>
+                info about me
+            </p>
         </Paper>)
     }
 }
 
 
 // export component
-export default About
+export default AboutView
 
 
 // end of file

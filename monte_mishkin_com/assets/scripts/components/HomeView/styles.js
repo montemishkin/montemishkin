@@ -1,13 +1,10 @@
 /**
- * Style sheet for BlogPost component.
+ * Style sheet for HomeView component.
  */
 
 
 // define style sheet
 let styles = {
-    container: {
-        backgroundColor: 'red',
-    },
 }
 
 

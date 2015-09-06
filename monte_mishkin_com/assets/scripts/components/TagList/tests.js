@@ -1,15 +1,15 @@
 /**
- * Unit tests for Projects component.
+ * Unit tests for TagList component.
  */
 
 /* common react imports */
 import React, {addons} from 'react/addons'
 const TestUtils = addons.TestUtils
 /* local imports */
-import Projects from './index'
+import TagList from './index'
 
 
-describe('Projects', function() {
+describe('TagList', function() {
     it('should be tested')
 })
 

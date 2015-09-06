@@ -39,10 +39,13 @@ django_apps = (
 )
 
 third_party_apps = (
+    'rest_framework',
+    'taggit',
 )
 
 monte_mishkin_com_apps = (
     'monte_mishkin_com.apps.blog',
+    'monte_mishkin_com.apps.projects',
     'monte_mishkin_com.apps.api',
 )
 
@@ -114,6 +117,17 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# djangorestframework settings
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    )
+}
+
+# taggit settings
+
+TAGGIT_CASE_INSENSITIVE = True
 
 
 # end of file

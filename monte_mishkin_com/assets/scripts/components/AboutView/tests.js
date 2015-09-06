@@ -1,15 +1,15 @@
 /**
- * Unit tests for Blog component.
+ * Unit tests for AboutView component.
  */
 
 /* common react imports */
 import React, {addons} from 'react/addons'
 const TestUtils = addons.TestUtils
 /* local imports */
-import Blog from './index'
+import AboutView from './index'
 
 
-describe('Blog', function() {
+describe('AboutView', function() {
     it('should be tested')
 })
 

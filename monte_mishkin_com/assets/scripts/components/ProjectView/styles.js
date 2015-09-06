@@ -1,13 +1,13 @@
 /**
- * Style sheet for Projects component.
+ * Style sheet for Project component.
  */
-
-/* local imports */
-import colors from '../../../styles/colors'
 
 
 // define style sheet
 let styles = {
+    container: {
+        backgroundColor: 'red',
+    },
 }
 
 

@@ -2,9 +2,6 @@
  * Style sheet for Banner component.
  */
 
-/* local imports */
-import colors from '../../../styles/colors'
-
 
 // define style sheet
 let styles = {

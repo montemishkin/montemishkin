@@ -1,13 +1,18 @@
 /**
- * Style sheet for Home component.
+ * Style sheet for Loader component.
  */
-
-/* local imports */
-import colors from '../../../styles/colors'
 
 
 // define style sheet
 let styles = {
+    image: {
+    },
+
+    error: {
+    },
+
+    container: {
+    },
 }
 
 

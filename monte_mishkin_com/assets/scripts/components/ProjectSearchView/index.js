@@ -11,10 +11,10 @@ import Paper from '../Paper'
  * @class
  */
 @radium
-class Projects extends React.Component {
+class ProjectSearchView extends React.Component {
     render() {
         return (<Paper title={'Projects'}>
-            <ul>
+            <ul style={styles.uhh}>
                 <li>list of recent projects</li>
                 <li>filter by date, tag, content, title, ... capabilities</li>
             </ul>
@@ -74,7 +74,7 @@ class Projects extends React.Component {
 
 
 // export component
-export default Projects
+export default ProjectSearchView
 
 
 // end of file

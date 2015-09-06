@@ -27,7 +27,7 @@ class Paper extends React.Component {
 
 
 // assert prop type checking
-Paper.PropTypes = {
+Paper.propTypes = {
     title: React.PropTypes.string,
 }
 

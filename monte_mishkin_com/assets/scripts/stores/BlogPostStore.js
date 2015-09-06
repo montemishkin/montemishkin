@@ -14,6 +14,8 @@ class BlogPostStore {
         this.state = {
             // list of posts
             posts: [],
+            // true if there has ever been a successful fetch
+            has_loaded: false,
             // true if mid fetch of data
             fetching: false,
             // error message (if any) from fetching data
@@ -54,6 +56,7 @@ class BlogPostStore {
     onSetBlogPosts(posts) {
         this.setState({
             posts: posts,
+            has_loaded: true,
             fetching: false,
             fetch_error: null,
         })

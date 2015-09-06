@@ -11,10 +11,10 @@ import Paper from '../Paper'
  * @class
  */
 @radium
-class Home extends React.Component {
+class HomeView extends React.Component {
     render() {
         return (<Paper title={'MM'}>
-            <h2>
+            <h2 style={styles.welcome}>
                 Welcome!
             </h2>
             <h2>
@@ -48,7 +48,7 @@ class Home extends React.Component {
 
 
 // export component
-export default Home
+export default HomeView
 
 
 // end of file

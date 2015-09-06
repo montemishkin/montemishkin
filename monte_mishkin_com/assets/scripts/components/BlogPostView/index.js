@@ -4,11 +4,12 @@ import radium from 'radium'
 /* common alt imports */
 import connectToStores from 'alt/utils/connectToStores'
 /* misc third party imports */
-import DisqusThread from 'react-disqus-thread'
+// import DisqusThread from 'react-disqus-thread'
 import {kebabCase} from 'lodash'
 /* local imports */
 import styles from './styles'
 import Paper from '../Paper'
+import Loader from '../Loader'
 import BlogPostStore from '../../stores/BlogPostStore'
 import BlogPostActions from '../../actions/BlogPostActions'
 
@@ -19,7 +20,7 @@ import BlogPostActions from '../../actions/BlogPostActions'
  */
 @connectToStores
 @radium
-class BlogPost extends React.Component {
+class BlogPostView extends React.Component {
     static getStores() {
         return [BlogPostStore]
     }
@@ -34,6 +35,7 @@ class BlogPost extends React.Component {
                     (post.creation_date === props.params.creation_date
                         && kebabCase(post.title) === props.params.slug)
             )[0],
+            has_loaded: store_state.has_loaded,
             fetching: store_state.fetching,
             fetch_error: store_state.fetch_error,
         }
@@ -46,32 +48,39 @@ class BlogPost extends React.Component {
 
 
     render() {
-        let title = 'no post yet'
-        let creation_date = 'no post yet'
-        let tags = 'no post yet'
-        let content = 'no post yet'
-        if (this.props.post) {
+        let title = 'Woops!'
+        let content = (<p style={styles.error}>
+            There is no blog post here!
+        </p>)
+
+        if (this.props.post || this.props.has_loaded) {
             title = this.props.post.title
-            creation_date = this.props.post.creation_date
-            tags = this.props.post.tags
-            content = this.props.post.content
+            content = (
+                <Loader
+                    loading={this.props.fetching}
+                    error={this.props.fetch_error
+                        && `My deepest apologies.
+                        There has been an error in loading this blog post.
+                        Please try refreshing the page.
+                        Or come back later.
+                        Or let me know something happened.`
+                    }
+                >
+                    <div style={styles.creation_date}>
+                        {this.props.post.creation_date}
+                    </div>
+                    <div style={styles.tags}>
+                        {this.props.post.tags}
+                    </div>
+                    <div style={styles.content}>
+                        {this.props.post.content}
+                    </div>
+                </Loader>
+            )
         }
+
         return (<Paper title={title}>
-            <p>
-                fetching: {this.props.fetching}
-            </p>
-            <p>
-                fetch_error: {this.props.fetch_error}
-            </p>
-            <div style={styles.creation_date}>
-                {creation_date}
-            </div>
-            <div style={styles.tags}>
-                {tags}
-            </div>
-            <div style={styles.content}>
-                {content}
-            </div>
+            {content}
         </Paper>)
     }
 }
@@ -87,7 +96,7 @@ class BlogPost extends React.Component {
 
 
 // export component
-export default BlogPost
+export default BlogPostView
 
 
 // end of file

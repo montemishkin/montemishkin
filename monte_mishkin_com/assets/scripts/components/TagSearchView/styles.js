@@ -1,13 +1,13 @@
 /**
- * Style sheet for About component.
+ * Style sheet for TagSearchView component.
  */
-
-/* local imports */
-import colors from '../../../styles/colors'
 
 
 // define style sheet
 let styles = {
+    container: {
+        backgroundColor: 'red',
+    },
 }
 
 

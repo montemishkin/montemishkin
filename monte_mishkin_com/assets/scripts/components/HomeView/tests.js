@@ -1,15 +1,15 @@
 /**
- * Unit tests for About component.
+ * Unit tests for HomeView component.
  */
 
 /* common react imports */
 import React, {addons} from 'react/addons'
 const TestUtils = addons.TestUtils
 /* local imports */
-import About from './index'
+import HomeView from './index'
 
 
-describe('About', function() {
+describe('HomeView', function() {
     it('should be tested')
 })
 

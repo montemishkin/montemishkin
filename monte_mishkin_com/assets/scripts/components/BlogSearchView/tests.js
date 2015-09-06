@@ -1,15 +1,15 @@
 /**
- * Unit tests for Home component.
+ * Unit tests for BlogSearchView component.
  */
 
 /* common react imports */
 import React, {addons} from 'react/addons'
 const TestUtils = addons.TestUtils
 /* local imports */
-import Home from './index'
+import BlogSearchView from './index'
 
 
-describe('Home', function() {
+describe('BlogSearchView', function() {
     it('should be tested')
 })
 

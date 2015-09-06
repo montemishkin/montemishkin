@@ -4,9 +4,9 @@ from django.db import models
 from taggit.managers import TaggableManager
 
 
-class BlogPost(models.Model):
+class Project(models.Model):
     '''
-    Single blog post.
+    Single project post.
     '''
     title = models.CharField(max_length=100, unique=True)
     tags = TaggableManager()

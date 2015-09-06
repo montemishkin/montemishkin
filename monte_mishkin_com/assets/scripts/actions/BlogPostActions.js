@@ -16,7 +16,7 @@ class BlogPostActions {
         ajax({
             url: '/api/blog-posts/',
             success: (posts) => this.actions.setBlogPosts(posts),
-            error: (...args) => this.actions.failFetchBlogPosts(args),
+            error: (...args) => this.actions.failFetchBlogPosts(...args),
         })
     }
 
