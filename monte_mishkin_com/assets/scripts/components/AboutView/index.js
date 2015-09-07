@@ -14,10 +14,12 @@ import BusinessCard from '../BusinessCard'
 @radium
 class AboutView extends React.Component {
     render() {
-        return (<Paper title={'About'}>
+        return (<Paper title='About'>
             <BusinessCard />
             <p style={styles.bio}>
-                info about me
+                Previously, Monte was born.  But recently, Monte made a website.
+                Actually, this is that website.  Monte enjoys making websites.
+                Monte also enjoys making music.  And trees and mountains.
             </p>
         </Paper>)
     }

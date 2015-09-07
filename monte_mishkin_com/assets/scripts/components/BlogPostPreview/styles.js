@@ -11,11 +11,15 @@ import colors from '../../../styles/colors'
 const span = {
     display: 'flex',
     alignItems: 'center',
+    paddingTop: 3,
+    paddingBottom: 3,
 }
 
 // define style sheet
 let styles = {
     container: {
+        display: 'flex',
+        flexDirection: 'column',
         borderStyle: 'solid',
         borderColor: 'black',
         borderLeftWidth: 1,
@@ -31,8 +35,20 @@ let styles = {
         color: 'black',
     },
 
+    title_and_date: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+
     title: assign({}, span, {
         fontSize: 30,
+
+        ':hover': {
+            // color: '#555555',
+            color: 'white',
+        },
     }),
 
     creation_date: assign({}, span, {
@@ -40,11 +56,12 @@ let styles = {
     }),
 
     tag_list: assign({}, span, {
-        // margin: 0,
+        marginTop: 3,
+        marginBottom: 5,
     }),
 
     content: assign({}, span, {
-        // margin: 0,
+        paddingLeft: '5%',
     }),
 }
 

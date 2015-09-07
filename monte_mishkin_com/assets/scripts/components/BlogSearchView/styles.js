@@ -9,10 +9,7 @@ const half_post_list_item_space = 7
 
 // define style sheet
 let styles = {
-    spinner: {
-    },
-
-    alert: {
+    message: {
     },
 
     post_list: {
@@ -28,23 +25,18 @@ let styles = {
         margin: half_post_list_item_space,
     },
 
-    post_link: {
-        // padding: 0,
-        // margin: 0,
-    },
-
-    filter_label: {
+    search_bar_label: {
         display: 'flex',
         flexWrap: 'wrap',
         width: '100%',
     },
 
-    filter_label_text: {
+    search_bar_label_text: {
         display: 'flex',
         alignItems: 'center',
     },
 
-    filter: {
+    search_bar: {
         flexGrow: 1,
         marginLeft: 3,
     },

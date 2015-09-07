@@ -56,9 +56,10 @@ class BlogSearchView extends React.Component {
         const filtered_posts = this.props.posts.filter((post) => {
             // things to search through
             const search_fields = [
-                // for now just do content and title
+                // for now just do content, title, and tags
                 post.content,
                 post.title,
+                ...post.tags.map(tag => tag.name),
             ]
 
             for (const field of search_fields) {
@@ -97,7 +98,7 @@ class BlogSearchView extends React.Component {
             </ul>)
         }
 
-        return (<Paper title={'Blog'}>
+        return (<Paper title='Blog'>
             <label style={styles.search_bar_label}>
                 <span style={styles.search_bar_label_text}>
                     Search:

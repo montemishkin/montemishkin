@@ -22,7 +22,7 @@ class TagList extends React.Component {
         return (<div style={styles.container}>
             <img
                 style={styles.image}
-                alt='Loading Indicator'
+                alt='Tag Icon'
                 src='static/images/Price-Tag-50.png'
             />
             <ul style={styles.names_list}>
@@ -32,9 +32,9 @@ class TagList extends React.Component {
                         key={tag.id}
                     >
                         <Link
-                            to='tag-search'
-                            params={{
-                                query: kebabCase(tag.name),
+                            to='tags'
+                            query={{
+                                filter: kebabCase(tag.name),
                             }}
                             style={styles.link}
                         >

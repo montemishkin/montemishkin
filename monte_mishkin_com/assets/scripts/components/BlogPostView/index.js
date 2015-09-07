@@ -10,6 +10,7 @@ import {kebabCase} from 'lodash'
 import styles from './styles'
 import Paper from '../Paper'
 import Loader from '../Loader'
+import TagList from '../TagList'
 import BlogPostStore from '../../stores/BlogPostStore'
 import BlogPostActions from '../../actions/BlogPostActions'
 
@@ -31,9 +32,7 @@ class BlogPostView extends React.Component {
 
         return {
             post: store_state.posts.filter(
-                (post) =>
-                    (post.creation_date === props.params.creation_date
-                        && kebabCase(post.title) === props.params.slug)
+                (post) => kebabCase(post.title) === props.params.slug
             )[0],
             has_loaded: store_state.has_loaded,
             fetching: store_state.fetching,
@@ -69,8 +68,8 @@ class BlogPostView extends React.Component {
                     <div style={styles.creation_date}>
                         {this.props.post.creation_date}
                     </div>
-                    <div style={styles.tags}>
-                        {this.props.post.tags}
+                    <div style={styles.tag_list}>
+                        <TagList tags={this.props.post.tags} />
                     </div>
                     <div style={styles.content}>
                         {this.props.post.content}

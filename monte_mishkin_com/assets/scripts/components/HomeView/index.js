@@ -13,7 +13,7 @@ import Paper from '../Paper'
 @radium
 class HomeView extends React.Component {
     render() {
-        return (<Paper title={'MM'}>
+        return (<Paper title='MM'>
             <h2 style={styles.welcome}>
                 Welcome!
             </h2>

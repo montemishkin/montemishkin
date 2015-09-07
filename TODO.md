@@ -10,6 +10,9 @@
     - figure out what to do about trailing forward slashes
     - handle not found routes more professionally
 
+- styling
+    - move all colors into styles/colors.js
+
 - general
     - link icons8
     - isomorphic

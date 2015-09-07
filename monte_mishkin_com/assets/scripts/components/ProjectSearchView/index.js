@@ -13,7 +13,7 @@ import Paper from '../Paper'
 @radium
 class ProjectSearchView extends React.Component {
     render() {
-        return (<Paper title={'Projects'}>
+        return (<Paper title='Projects'>
             <ul style={styles.uhh}>
                 <li>list of recent projects</li>
                 <li>filter by date, tag, content, title, ... capabilities</li>
