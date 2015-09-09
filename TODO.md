@@ -2,6 +2,8 @@
     - markdown support
         - http://stackoverflow.com/questions/11943089/github-flavored-markdown-in-python
     - syntax highlighting
+    - project model
+        - image field
 
 - rest api
     - set permissions to only allow fetch (unless admin)

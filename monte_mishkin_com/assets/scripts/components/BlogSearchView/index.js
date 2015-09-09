@@ -27,6 +27,7 @@ class BlogSearchView extends React.Component {
         }
     }
 
+
     static getStores() {
         return [BlogPostStore]
     }
@@ -40,6 +41,7 @@ class BlogSearchView extends React.Component {
     static componentDidConnect() {
         BlogPostActions.fetchBlogPosts()
     }
+
 
     componentWillReceiveProps(props) {
         this.setState({
@@ -115,13 +117,7 @@ class BlogSearchView extends React.Component {
             </label>
             <Loader
                 loading={this.props.fetching}
-                error={this.props.fetch_error
-                    && `My deepest apologies.
-                    There has been an error in loading the blog posts.
-                    Please try refreshing the page.
-                    Or come back later.
-                    Or let me know something happened.`
-                }
+                error={this.props.fetch_error && 'woops'}
             >
                 {post_list_or_message}
             </Loader>

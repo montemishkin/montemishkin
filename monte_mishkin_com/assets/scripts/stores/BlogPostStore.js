@@ -38,7 +38,7 @@ class BlogPostStore {
 
 
     /**
-     * Indicate failure to fetch documents from server.
+     * Indicate failure to fetch blog posts from server.
      * @param {string} err - Error message to display.
      */
     onFailFetchBlogPosts(err) {
