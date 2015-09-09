@@ -2,8 +2,24 @@
  * Style sheet for Root component.
  */
 
+/* misc third party imports */
+import {assign} from 'lodash'
 /* local imports */
 import colors from '../../../styles/colors'
+
+
+// common styling for all `inner_container` styles
+const inner_container_base = {
+    display: 'flex',
+    flexDirection: 'column',
+}
+
+// common styling for all `content` styles
+const content_base = {
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: colors.grey.lighter,
+}
 
 
 // define style sheet
@@ -12,27 +28,31 @@ let styles = {
         minHeight: '100%',
         display: 'flex',
         justifyContent: 'center',
-        paddingBottom: 20,
         backgroundColor: colors.primary.main,
     },
 
-    inner_container: {
-        width: '90%',
-        display: 'flex',
-        flexDirection: 'column',
-    },
+    inner_container_medium: assign({}, inner_container_base, {
+    }),
 
-    content: {
-        display: 'flex',
-        justifyContent: 'center',
+    inner_container_large: assign({}, inner_container_base, {
+        width: '96%',
+    }),
+
+    inner_container_infinity: assign({}, inner_container_base, {
+        width: '90%',
+    }),
+
+    content_medium: assign({}, content_base, {
+    }),
+
+    content_infinity: assign({}, content_base, {
         borderStyle: 'solid',
         borderColor: 'black',
         borderLeftWidth: 1,
         borderRightWidth: 1,
         borderTopWidth: 0,
         borderBottomWidth: 1,
-        backgroundColor: colors.grey.lighter,
-    },
+    }),
 }
 
 
