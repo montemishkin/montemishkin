@@ -6,7 +6,6 @@ import connectToStores from 'alt/utils/connectToStores'
 /* local imports */
 import styles from './styles'
 import Paper from '../Paper'
-import Loader from '../Loader'
 import BlogPostPreview from '../BlogPostPreview'
 import BlogPostStore from '../../stores/BlogPostStore'
 import BlogPostActions from '../../actions/BlogPostActions'
@@ -38,8 +37,13 @@ class BlogSearchView extends React.Component {
     }
 
 
-    static componentDidConnect() {
-        BlogPostActions.fetchBlogPosts()
+    // see https://github.com/goatslacker/alt/blob/master/src/utils/connectToStores.js#L74
+    static componentDidConnect(props) {
+        // if blog posts have not yet been loaded this session
+        if (!props.has_loaded) {
+            // fetch blog posts from server
+            BlogPostActions.fetchBlogPosts()
+        }
     }
 
 
@@ -50,13 +54,12 @@ class BlogSearchView extends React.Component {
     }
 
 
-    render() {
-        // things to search for
+    getFilteredPosts() {
+        // strings to search for
         const search_terms = this.state.search_text.trim().split(' ')
-
-        // posts to display
-        const filtered_posts = this.props.posts.filter((post) => {
-            // things to search through
+        // return filtered, sorted posts
+        return this.props.posts.filter((post) => {
+            // strings to search through
             const search_fields = [
                 // for now just do content, title, and tags
                 post.content,
@@ -73,31 +76,55 @@ class BlogSearchView extends React.Component {
             }
 
             return false
+        // sort by creation date, with more recent posts first
         }).sort((a, b) => a.creation_date < b.creation_date)
+    }
 
-        let post_list_or_message = (<p style={styles.message}>
-            Sorry!  No posts yet...
-        </p>)
 
-        if (this.props.posts.length !== 0) {
-            post_list_or_message = (<p style={styles.message}>
-                Sorry!  No search results.
-            </p>)
-        }
+    render() {
+        // default as if posts have not yet been loaded from server
+        let content = (<img
+            style={styles.image}
+            alt='Loading Indicator'
+            src='/static/images/spinner.gif'
+        />)
 
-        if (filtered_posts.length !== 0) {
-            post_list_or_message = (<ul style={styles.post_list}>
-                {filtered_posts.map((post) => {
-                    return (<li style={styles.post_list_item} key={post.id}>
-                        <BlogPostPreview
-                            title={post.title}
-                            creation_date={post.creation_date}
-                            tags={post.tags}
-                            content={post.content}
-                        />
-                    </li>)
-                })}
-            </ul>)
+        // if posts have been loaded from server
+        if (this.props.has_loaded) {
+            // default as if there are no posts
+            content = (<span style={styles.no_post_message}>
+                There are no blog posts!
+            </span>)
+
+            // if there are any posts
+            if (this.props.posts.length !== 0) {
+                // filter out which posts to display
+                let filtered_posts = this.getFilteredPosts()
+
+                // default as if no posts survived filter
+                content = (<span style={styles.no_search_result_message}>
+                    No search results!
+                </span>)
+
+                // if any posts survived filter
+                if (filtered_posts.length !== 0) {
+                    content = (<ul style={styles.post_list}>
+                        {filtered_posts.map((post) => (
+                            <li
+                                style={styles.post_list_item}
+                                key={post.id}
+                            >
+                                <BlogPostPreview
+                                    title={post.title}
+                                    creation_date={post.creation_date}
+                                    tags={post.tags}
+                                    content={post.content}
+                                />
+                            </li>
+                        ))}
+                    </ul>)
+                }
+            }
         }
 
         return (<Paper title='Blog'>
@@ -115,12 +142,9 @@ class BlogSearchView extends React.Component {
                     }
                 />
             </label>
-            <Loader
-                loading={this.props.fetching}
-                error={this.props.fetch_error && 'woops'}
-            >
-                {post_list_or_message}
-            </Loader>
+            <div style={styles.content}>
+                {content}
+            </div>
         </Paper>)
     }
 }

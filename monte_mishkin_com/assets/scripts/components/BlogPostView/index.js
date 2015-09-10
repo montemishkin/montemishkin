@@ -9,7 +9,6 @@ import {kebabCase} from 'lodash'
 /* local imports */
 import styles from './styles'
 import Paper from '../Paper'
-import Loader from '../Loader'
 import TagList from '../TagList'
 import BlogPostStore from '../../stores/BlogPostStore'
 import BlogPostActions from '../../actions/BlogPostActions'
@@ -31,6 +30,7 @@ class BlogPostView extends React.Component {
         const store_state = BlogPostStore.getState()
 
         return {
+            // only grab the post we are viewing
             post: store_state.posts.filter(
                 (post) => kebabCase(post.title) === props.params.slug
             )[0],
@@ -41,30 +41,31 @@ class BlogPostView extends React.Component {
     }
 
 
-    componentDidMount() {
-        BlogPostActions.fetchBlogPosts()
+    // see https://github.com/goatslacker/alt/blob/master/src/utils/connectToStores.js#L74
+    static componentDidConnect(props) {
+        // if blog posts have not yet been loaded this session
+        if (!props.has_loaded) {
+            // fetch blog posts from server
+            BlogPostActions.fetchBlogPosts()
+        }
     }
 
 
     render() {
-        let title = 'Woops!'
-        let content = (<p style={styles.error}>
-            There is no blog post here!
-        </p>)
+        // default as if posts have not yet been loaded from server
+        let title = 'Loading...'
+        let content = (<img
+            style={styles.image}
+            alt='Loading Indicator'
+            src='/static/images/spinner.gif'
+        />)
 
-        if (this.props.post || this.props.has_loaded) {
-            title = this.props.post.title
-            content = (
-                <Loader
-                    loading={this.props.fetching}
-                    error={this.props.fetch_error
-                        && `My deepest apologies.
-                        There has been an error in loading this blog post.
-                        Please try refreshing the page.
-                        Or come back later.
-                        Or let me know something happened.`
-                    }
-                >
+        // if posts have been loaded
+        if (this.props.has_loaded) {
+            // if we found the right post
+            if (typeof this.props.post !== 'undefined') {
+                title = this.props.post.title
+                content = (<div style={styles.container}>
                     <div style={styles.creation_date}>
                         {this.props.post.creation_date}
                     </div>
@@ -74,8 +75,14 @@ class BlogPostView extends React.Component {
                     <div style={styles.content}>
                         {this.props.post.content}
                     </div>
-                </Loader>
-            )
+                </div>)
+            // posts loaded but this post not found
+            } else {
+                title = 'Woops!'
+                content = (<p style={styles.error}>
+                    There is no blog post here!
+                </p>)
+            }
         }
 
         return (<Paper title={title}>

@@ -23,7 +23,7 @@ class TagList extends React.Component {
             <img
                 style={styles.image}
                 alt='Tag Icon'
-                src='static/images/Price-Tag-50.png'
+                src='/static/images/Price-Tag-50.png'
             />
             <ul style={styles.names_list}>
                 {this.props.tags.map((tag) => (

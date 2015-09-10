@@ -10,23 +10,23 @@ const data = [
     {
         caption: 'Email',
         href: 'mailto:montemishkin@gmail.com',
-        src: 'static/images/Message-50.png',
+        src: '/static/images/Message-50.png',
         alt: 'Email Symbol',
     }, {
         caption: 'Resume',
         href: 'static/resume.pdf',
-        src: 'static/images/Document-50.png',
+        src: '/static/images/Document-50.png',
         alt: 'Resume Symbol',
     }, {
         caption: 'GitHub',
         href: 'http://github.com/montemishkin',
-        src: 'static/images/GitHub-Mark-64px.png',
+        src: '/static/images/GitHub-Mark-64px.png',
         alt: 'GitHub Logo',
     }, {
-        caption: 'Soundcloud',
+        caption: 'SoundCloud',
         href: 'http://soundcloud.com/montemishkin',
-        src: 'static/images/sc_grey_96x48.png',
-        alt: 'Soundcloud Logo',
+        src: '/static/images/sc_grey_96x48.png',
+        alt: 'SoundCloud Logo',
     },
 ]
 
@@ -42,7 +42,7 @@ class BusinessCard extends React.Component {
             <img
                 style={styles.image}
                 alt='Monte Mishkin'
-                src='static/images/square_finch.jpg'
+                src='/static/images/square_finch.jpg'
             />
             <div style={styles.name_and_address}>
                 <p style={styles.name}>

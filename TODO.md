@@ -20,6 +20,7 @@
     - isomorphic
     - logo
     - favicon
+    - better "whoops" messages for ajax loading errors on front end
 
 - blog / project lists
     - step up my search filter game? https://github.com/olivernn/lunr.js
