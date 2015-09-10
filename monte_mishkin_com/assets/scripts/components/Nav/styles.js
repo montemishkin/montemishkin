@@ -2,10 +2,9 @@
  * Style sheet for Nav component.
  */
 
-/* misc third party imports */
-import {assign} from 'lodash'
 /* local imports */
 import colors from '../../../styles/colors'
+import numerics from '../../../styles/numerics'
 
 
 // base styling for both active and inactive links
@@ -18,36 +17,48 @@ const link_base = {
 const container_base = {
     display: 'flex',
     flexWrap: 'wrap',
-    backgroundColor: colors.secondary.darkest,
+    justifyContent: 'flex-end',
+    backgroundColor: colors.grey.darker_bg,
+}
+
+// styling for transition parameters
+const transition_parameters = {
+    transitionDuration: '0.2s',
+    transitionTimingFunction: 'ease-in-out',
+    transitionProperty: 'color, background-color',
 }
 
 
 // define style sheet
 let styles = {
-    container_medium: assign({}, container_base, {
-    }),
+    container_medium: {
+        ...container_base,
+        justifyContent: 'center',
+    },
 
-    container_infinity: assign({}, container_base, {
-        borderStyle: 'solid',
-        borderColor: 'black',
-        borderLeftWidth: 1,
-        borderRightWidth: 1,
-        borderTopWidth: 1,
-        borderBottomWidth: 1,
-    }),
+    container_infinity: {
+        ...container_base,
+        paddingRight: numerics.root_child_side_padding,
+    },
 
-    link: assign({}, link_base, {
+    link: {
+        ...link_base,
         padding: 10,
-        color: colors.grey.lightest,
+        color: colors.grey.fontish,
+        ...transition_parameters,
 
         ':hover': {
-            color: colors.grey.main,
+            color: colors.grey.lighter_font,
+            ...transition_parameters,
         },
-    }),
+    },
 
-    active_link: assign({}, link_base, {
-        color: colors.grey.darkest,
-    }),
+    link_active: {
+        ...link_base,
+        color: colors.grey.fontish,
+        backgroundColor: colors.grey.lighter,
+        ...transition_parameters,
+    },
 }
 
 

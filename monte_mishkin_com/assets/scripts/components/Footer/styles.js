@@ -2,72 +2,81 @@
  * Style sheet for Footer component.
  */
 
-/* misc third party imports */
-import {assign} from 'lodash'
 /* local imports */
 import colors from '../../../styles/colors'
+import numerics from '../../../styles/numerics'
 
 
-// styling common to all `inner_container` styles
-const inner_container_base = {
+// styling common to all `container` styles
+const container_base = {
     display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    fontSize: 12,
+    color: colors.grey.lighter_font,
 }
 
 // styling common to all `left` styles
 const left_base = {
-    flexBasis: 250,
     display: 'flex',
-    justifyContent: 'space-between',
-    paddingRight: 20,
+    flexWrap: 'wrap',
 }
 
 // styling common to all `right` styles
 const right_base = {
 }
 
+// styling common to all `link styles`
+const link_base = {
+    color: colors.grey.link,
+    textDecoration: 'none',
+}
+
 
 // define style sheet
 let styles = {
-    outer_container: {
-        fontSize: 12,
-        color: colors.grey.main,
-        display: 'flex',
-        justifyContent: 'center',
+    container_medium: {
+        ...container_base,
+        flexDirection: 'column',
+        alignItems: 'center',
     },
 
-    inner_container_medium: assign({}, inner_container_base, {
-        width: '96%',
-    }),
-
-    inner_container_infinity: assign({}, inner_container_base, {
-        width: '100%',
-    }),
-
-    left_medium: assign({}, left_base, {
-        paddingTop: 10,
-        paddingBottom: 10,
-    }),
-
-    left_infinity: assign({}, left_base, {
+    container_infinity: {
+        ...container_base,
+        justifyContent: 'space-between',
         paddingTop: 15,
         paddingBottom: 15,
-    }),
+    },
 
-    right_medium: assign({}, right_base, {
+    left_medium: {
+        ...left_base,
         paddingTop: 10,
         paddingBottom: 10,
-    }),
+    },
 
-    right_infinity: assign({}, right_base, {
-        paddingTop: 15,
-        paddingBottom: 15,
-    }),
+    left_infinity: {
+        ...left_base,
+        flexBasis: 250,
+        paddingLeft: numerics.root_child_side_padding,
+    },
 
-    link: {
-        color: colors.grey.lightest,
-        textDecoration: 'none',
+    right_medium: {
+        ...right_base,
+        paddingTop: 10,
+        paddingBottom: 10,
+    },
+
+    right_infinity: {
+        ...right_base,
+        paddingRight: numerics.root_child_side_padding,
+    },
+
+    nav_link: {
+        ...link_base,
+        paddingLeft: 10,
+        paddingRight: 10,
+    },
+
+    email_link: {
+        ...link_base,
     },
 }
 

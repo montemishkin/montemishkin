@@ -9,9 +9,11 @@ import Router from 'react-router'
 import routes from '../routes'
 
 
-// normalize css
 /* eslint-disable no-unused-vars */
+// normalize css
 import normalize from 'normalize.css'
+// apply global styling
+import style from '../../styles/main.css'
 /* eslint-enable */
 
 

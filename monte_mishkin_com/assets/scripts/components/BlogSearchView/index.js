@@ -5,7 +5,6 @@ import radium from 'radium'
 import connectToStores from 'alt/utils/connectToStores'
 /* local imports */
 import styles from './styles'
-import Paper from '../Paper'
 import BlogPostPreview from '../BlogPostPreview'
 import BlogPostStore from '../../stores/BlogPostStore'
 import BlogPostActions from '../../actions/BlogPostActions'
@@ -127,7 +126,7 @@ class BlogSearchView extends React.Component {
             }
         }
 
-        return (<Paper title='Blog'>
+        return (<div style={styles.container}>
             <label style={styles.search_bar_label}>
                 <span style={styles.search_bar_label_text}>
                     Search:
@@ -145,7 +144,7 @@ class BlogSearchView extends React.Component {
             <div style={styles.content}>
                 {content}
             </div>
-        </Paper>)
+        </div>)
     }
 }
 

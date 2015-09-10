@@ -25,9 +25,9 @@ module.exports = {
                 loaders: ['style', 'css'],
             // inline base64 DataURLs for <=8k images, direct URLs for the rest
             }, {
-                test: /\.(png|jpg)$/,
+                test: /\.(png|jpg|ttf)$/,
                 loader: 'url',
-                query: {limit: 8000},
+                query: {limit: 10000000},
             }, {
                 test: /\.js$/,
                 loader: 'babel',

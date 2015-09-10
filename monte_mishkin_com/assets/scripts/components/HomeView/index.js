@@ -3,7 +3,6 @@ import React from 'react/addons'
 import radium from 'radium'
 /* local imports */
 import styles from './styles'
-import Paper from '../Paper'
 
 
 /**
@@ -13,7 +12,7 @@ import Paper from '../Paper'
 @radium
 class HomeView extends React.Component {
     render() {
-        return (<Paper title='MM'>
+        return (<div style={styles.container}>
             <h2 style={styles.welcome}>
                 Welcome!
             </h2>
@@ -42,7 +41,7 @@ class HomeView extends React.Component {
                 And what website would be complete without a blog?
                 Anyways, feel free to snoop around.
             </p>
-        </Paper>)
+        </div>)
     }
 }
 

@@ -18,17 +18,15 @@ let styles = {
         borderStyle: 'solid',
         borderWidth: 1,
         borderColor: colors.grey.darkest,
-        borderRadius: 10,
         backgroundColor: colors.grey.main,
     },
 
     image: {
         width: 200,
         height: 200,
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: 'black',
-        borderRadius: 10,
+        // borderStyle: 'solid',
+        // borderWidth: 1,
+        // borderColor: 'black',
     },
 
     name_and_address: {

@@ -5,8 +5,22 @@
 
 // define style sheet
 let styles = {
-    container: {
-        backgroundColor: 'red',
+    image: {
+    },
+
+    post_container: {
+    },
+
+    creation_date: {
+    },
+
+    tag_list: {
+    },
+
+    post_content: {
+    },
+
+    error: {
     },
 }
 

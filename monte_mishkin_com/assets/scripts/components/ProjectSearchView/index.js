@@ -3,7 +3,6 @@ import React from 'react/addons'
 import radium from 'radium'
 /* local imports */
 import styles from './styles'
-import Paper from '../Paper'
 
 
 /**
@@ -13,7 +12,7 @@ import Paper from '../Paper'
 @radium
 class ProjectSearchView extends React.Component {
     render() {
-        return (<Paper title='Projects'>
+        return (<div style={styles.container}>
             <ul style={styles.uhh}>
                 <li>list of recent projects</li>
                 <li>filter by date, tag, content, title, ... capabilities</li>
@@ -68,7 +67,7 @@ class ProjectSearchView extends React.Component {
                 And what website would be complete without a blog?
                 Anyways, feel free to snoop around.
             </p>
-        </Paper>)
+        </div>)
     }
 }
 

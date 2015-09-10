@@ -2,6 +2,9 @@
  * Style sheet for BlogSearchView component.
  */
 
+/* local imports */
+import numerics from '../../../styles/numerics'
+
 
 // half of space between two post list items
 const half_post_list_item_space = 7
@@ -9,6 +12,11 @@ const half_post_list_item_space = 7
 
 // define style sheet
 let styles = {
+    container: {
+        width: (100 - (2 * numerics.root_child_side_padding.slice(0, -1))) + '%',
+        margin: 'auto',
+    },
+
     message: {
     },
 

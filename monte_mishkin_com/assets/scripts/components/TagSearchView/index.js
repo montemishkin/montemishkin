@@ -3,7 +3,6 @@ import React from 'react/addons'
 import radium from 'radium'
 /* local imports */
 import styles from './styles'
-import Paper from '../Paper'
 
 
 /**
@@ -13,9 +12,9 @@ import Paper from '../Paper'
 @radium
 class TagSearchView extends React.Component {
     render() {
-        return (<Paper title='Tags'>
+        return (<div style={styles.container}>
             tag search view {styles.foo}
-        </Paper>)
+        </div>)
     }
 }
 

@@ -38,28 +38,28 @@ class Nav extends React.Component {
         return (<div style={container_style}>
             <Link
                 style={styles.link}
-                activeStyle={styles.active_link}
+                activeStyle={styles.link_active}
                 to='home'
             >
                 home
             </Link>
             <Link
                 style={styles.link}
-                activeStyle={styles.active_link}
+                activeStyle={styles.link_active}
                 to='about'
             >
                 about
             </Link>
             <Link
                 style={styles.link}
-                activeStyle={styles.active_link}
+                activeStyle={styles.link_active}
                 to='projects'
             >
                 projects
             </Link>
             <Link
                 style={styles.link}
-                activeStyle={styles.active_link}
+                activeStyle={styles.link_active}
                 to='blog'
             >
                 blog

@@ -8,7 +8,6 @@ import connectToStores from 'alt/utils/connectToStores'
 import {kebabCase} from 'lodash'
 /* local imports */
 import styles from './styles'
-import Paper from '../Paper'
 import TagList from '../TagList'
 import BlogPostStore from '../../stores/BlogPostStore'
 import BlogPostActions from '../../actions/BlogPostActions'
@@ -53,7 +52,7 @@ class BlogPostView extends React.Component {
 
     render() {
         // default as if posts have not yet been loaded from server
-        let title = 'Loading...'
+        // let title = 'Loading...'
         let content = (<img
             style={styles.image}
             alt='Loading Indicator'
@@ -64,30 +63,30 @@ class BlogPostView extends React.Component {
         if (this.props.has_loaded) {
             // if we found the right post
             if (typeof this.props.post !== 'undefined') {
-                title = this.props.post.title
-                content = (<div style={styles.container}>
+                // title = this.props.post.title
+                content = (<div style={styles.post_container}>
                     <div style={styles.creation_date}>
                         {this.props.post.creation_date}
                     </div>
                     <div style={styles.tag_list}>
                         <TagList tags={this.props.post.tags} />
                     </div>
-                    <div style={styles.content}>
+                    <div style={styles.post_content}>
                         {this.props.post.content}
                     </div>
                 </div>)
             // posts loaded but this post not found
             } else {
-                title = 'Woops!'
+                // title = 'Woops!'
                 content = (<p style={styles.error}>
                     There is no blog post here!
                 </p>)
             }
         }
 
-        return (<Paper title={title}>
+        return (<div style={styles.container}>
             {content}
-        </Paper>)
+        </div>)
     }
 }
 

@@ -35,6 +35,15 @@ let colors = {
         main: '#CCCCCC',
         darker: '#BBBBBB',
         darkest: '#AAAAAA',
+
+        bg: '#F7F7F7',
+        fontish: '#454041',
+        lighter_font: '#6D6D6D',
+        darker_bg: '#E8EAEE',
+        link: '#343C3F',
+        header: '#515357',
+        subheader: '#808080',
+        white: '#FFFFFF',
     },
 }
 
