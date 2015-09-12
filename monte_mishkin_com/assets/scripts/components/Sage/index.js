@@ -18,16 +18,50 @@ const color_board = new ColorBoard(100, 100)
 @radium
 class Sage extends React.Component {
     constructor(...args) {
+        // instantiate `this`
         super(...args)
-
+        // set initial state
         this.state = {
             height: 200,
             width: 200,
         }
+        // bind instance method so it can be passed as callback
+        this.onResize = this.onResize.bind(this)
     }
 
 
     componentDidMount() {
+        // determine initial dimensions, then...
+        this.resetDimensions((canvas) => {
+            // trigger the color board to play its animation
+            color_board.play(canvas.getContext('2d'))
+        })
+
+        // add resize event handler
+        window.addEventListener('resize', this.onResize)
+    }
+
+
+    componentWillUnmount() {
+        // pause the color board's animation
+        color_board.pause()
+        // remove resize event handler
+        window.removeEventListener('resize', this.onResize)
+    }
+
+
+    onResize() {
+        this.resetDimensions()
+    }
+
+
+    /**
+     * Update the canvas dimensions to reflect its DOM node dimensions.
+     * Update internal state dimensions.
+     * @arg {function} cb - Callback to execute once state is updated.
+     * Will be passed the canvas DOM node.
+     */
+    resetDimensions(cb) {
         // the canvas DOM node
         const canvas = this.refs.canvas.getDOMNode()
         // the width of the canvas DOM node
@@ -40,20 +74,15 @@ class Sage extends React.Component {
         canvas.width = width
         canvas.height = height
 
-        //
+        // update state, passing callback for async
         this.setState({
             height: height,
             width: width,
         }, () => {
-            // trigger the color board to play its animation
-            color_board.play(canvas.getContext('2d'))
+            if (cb) {
+                cb(canvas)
+            }
         })
-    }
-
-
-    componentWillUnmount() {
-        // pause the color board's animation
-        color_board.pause()
     }
 
 
