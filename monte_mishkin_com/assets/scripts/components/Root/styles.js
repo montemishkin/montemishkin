@@ -18,6 +18,8 @@ let styles = {
     },
 
     content: {
+        paddingTop: 20,
+        paddingBottom: 20,
         backgroundColor: colors.grey.bg,
     },
 }

@@ -2,67 +2,68 @@
  * Style sheet for BlogPostPreview component.
  */
 
-/* misc third party imports */
-import {assign} from 'lodash'
 /* local imports */
 import colors from '../../../styles/colors'
 
 
-const span = {
-    display: 'flex',
-    alignItems: 'center',
-    paddingTop: 3,
-    paddingBottom: 3,
+// styling for transition parameters
+const transition_parameters = {
+    transitionDuration: '0.2s',
+    transitionTimingFunction: 'ease-in-out',
+    transitionProperty: 'color',
 }
+
+// base styling common to all links
+const link_base = {
+    textDecoration: 'none',
+    display: 'flex',
+    ...transition_parameters,
+
+    ':hover': {
+        color: colors.grey.link_hover,
+        ...transition_parameters,
+    },
+}
+
 
 // define style sheet
 let styles = {
     container: {
         display: 'flex',
         flexDirection: 'column',
-        borderStyle: 'solid',
-        borderColor: 'black',
-        borderLeftWidth: 1,
-        borderRightWidth: 1,
-        borderTopWidth: 1,
-        borderBottomWidth: 1,
-        padding: 10,
-        backgroundColor: colors.primary.lightest,
+        alignItems: 'flex-start',
     },
 
-    link: {
-        textDecoration: 'none',
-        color: 'black',
-    },
-
-    title_and_date: {
+    date_and_tag_list_wrapper: {
+        width: '100%',
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
-        alignItems: 'center',
+        paddingTop: 7,
+        paddingBottom: 7,
     },
 
-    title: assign({}, span, {
+    tag_list_wrapper: {
+        display: 'flex',
+    },
+
+    title: {
+        ...link_base,
         fontSize: 30,
+        color: colors.grey.header,
+    },
 
-        ':hover': {
-            // color: '#555555',
-            color: 'white',
-        },
-    }),
+    date: {
+        ...link_base,
+        color: colors.grey.subheader,
+    },
 
-    creation_date: assign({}, span, {
-        // margin: 0,
-    }),
-
-    tag_list: assign({}, span, {
-        marginTop: 3,
-        marginBottom: 5,
-    }),
-
-    content: assign({}, span, {
-        paddingLeft: '5%',
-    }),
+    content: {
+        ...link_base,
+        marginLeft: '5%',
+        maxWidth: '90%',
+        color: colors.grey.header,
+    },
 }
 
 

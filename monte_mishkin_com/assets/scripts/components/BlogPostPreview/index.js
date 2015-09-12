@@ -20,7 +20,7 @@ const content_preview_max_length = 200
  */
 @radium
 class BlogPostPreview extends React.Component {
-    static prettifyDateString(date_string) {
+    getPrettyCreationDateString() {
         const month_names = [
             'January', 'February', 'March',
             'April', 'May', 'June', 'July',
@@ -29,9 +29,9 @@ class BlogPostPreview extends React.Component {
         ].map(name => name.substr(0, 3))
 
         // e.g. ['2015', '8', '22']
-        const parts = date_string
+        const parts = this.props.creation_date
             // grab just the date part (not the time part)
-            .substr(0, date_string.indexOf('T'))
+            .substr(0, this.props.creation_date.indexOf('T'))
             // split into array of parts
             .split('-')
             // strip leading zeroes
@@ -42,16 +42,22 @@ class BlogPostPreview extends React.Component {
 
 
     render() {
+        // default to displaying full title
         let title_preview = this.props.title
+        // if title is too long
         if (this.props.title.length > title_preview_max_length) {
+            // display only first part of title
             title_preview = this.props.title
-                .substr(0, title_preview_max_length) + '...'
+                .substr(0, title_preview_max_length) + ' ...'
         }
 
+        // default to displaying full content
         let content_preview = this.props.content
+        // if content is too long
         if (this.props.content.length > content_preview_max_length) {
+            // display only first part of content
             content_preview = this.props.content
-                .substr(0, content_preview_max_length) + '...'
+                .substr(0, content_preview_max_length) + ' ...'
         }
 
         // props for links to the blog post
@@ -60,7 +66,6 @@ class BlogPostPreview extends React.Component {
             params: {
                 slug: kebabCase(this.props.title),
             },
-            style: styles.link,
         }
 
         // props for link to the date
@@ -70,31 +75,31 @@ class BlogPostPreview extends React.Component {
                 filter: this.props.creation_date
                     .substr(0, this.props.creation_date.indexOf('T')),
             },
-            style: styles.link,
         }
 
         return (<div style={styles.container}>
-            <div style={styles.title_and_date}>
-                <Link {...post_link_props}>
-                    <span style={styles.title}>
-                        {title_preview}
-                    </span>
+            <Link
+                {...post_link_props}
+                style={styles.title}
+            >
+                {title_preview}
+            </Link>
+            <div style={styles.date_and_tag_list_wrapper}>
+                <Link
+                    {...date_link_props}
+                    style={styles.date}
+                >
+                    {this.getPrettyCreationDateString()}
                 </Link>
-                <Link {...date_link_props}>
-                    <span style={styles.creation_date}>
-                        {BlogPostPreview.prettifyDateString(
-                            this.props.creation_date
-                        )}
-                    </span>
-                </Link>
+                <div style={styles.tag_list_wrapper}>
+                    <TagList tags={this.props.tags} />
+                </div>
             </div>
-            <span style={styles.tag_list}>
-                <TagList tags={this.props.tags} />
-            </span>
-            <Link {...post_link_props}>
-                <span style={styles.content}>
-                    {content_preview}
-                </span>
+            <Link
+                {...post_link_props}
+                style={styles.content}
+            >
+                {content_preview}
             </Link>
         </div>)
     }

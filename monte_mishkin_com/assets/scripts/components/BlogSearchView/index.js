@@ -108,42 +108,45 @@ class BlogSearchView extends React.Component {
                 // if any posts survived filter
                 if (filtered_posts.length !== 0) {
                     content = (<ul style={styles.post_list}>
-                        {filtered_posts.map((post) => (
-                            <li
-                                style={styles.post_list_item}
-                                key={post.id}
-                            >
-                                <BlogPostPreview
-                                    title={post.title}
-                                    creation_date={post.creation_date}
-                                    tags={post.tags}
-                                    content={post.content}
-                                />
-                            </li>
-                        ))}
+                        {filtered_posts.map((post, index, array) => {
+                            // default to regular `post_list_item` style
+                            let post_list_item_style = styles.post_list_item
+                            // if this is the last item
+                            if (index === array.length - 1) {
+                                // then use special `post_list_item_last` style
+                                post_list_item_style = styles.post_list_item_last
+                            }
+
+                            return (
+                                <li
+                                    style={post_list_item_style}
+                                    key={post.id}
+                                >
+                                    <BlogPostPreview
+                                        title={post.title}
+                                        creation_date={post.creation_date}
+                                        tags={post.tags}
+                                        content={post.content}
+                                    />
+                                </li>
+                            )
+                        })}
                     </ul>)
                 }
             }
         }
 
         return (<div style={styles.container}>
-            <label style={styles.search_bar_label}>
-                <span style={styles.search_bar_label_text}>
-                    Search:
-                </span>
-                <input
-                    type='text'
-                    placeholder='search by title???..?>?.??'
-                    style={styles.search_bar}
-                    value={this.state.search_text}
-                    onChange={(event) =>
-                        this.setState({search_text: event.target.value})
-                    }
-                />
-            </label>
-            <div style={styles.content}>
-                {content}
-            </div>
+            <input
+                type='text'
+                placeholder='search'
+                style={styles.search_bar}
+                value={this.state.search_text}
+                onChange={(event) =>
+                    this.setState({search_text: event.target.value})
+                }
+            />
+            {content}
         </div>)
     }
 }

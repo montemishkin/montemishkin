@@ -2,6 +2,17 @@
  * Style sheet for TagList component.
  */
 
+/* local imports */
+import colors from '../../../styles/colors'
+
+
+// styling for transition parameters
+const transition_parameters = {
+    transitionDuration: '0.2s',
+    transitionTimingFunction: 'ease-in-out',
+    transitionProperty: 'color',
+}
+
 
 // define style sheet
 let styles = {
@@ -31,22 +42,17 @@ let styles = {
         paddingBottom: 2,
         paddingLeft: 3,
         paddingRight: 3,
-        backgroundColor: '#DDE8F2',
-        transition: 'background-color 0.2s ease-in-out',
-
-        ':hover': {
-            backgroundColor: '#D1E0EB',
-            transition: 'background-color 0.2s ease-in-out',
-        },
     },
 
     link: {
         textDecoration: 'none',
-        color: 'black',
+        color: colors.grey.link,
+        ...transition_parameters,
 
-        // ':hover': {
-        //     textDecoration: 'underline',
-        // },
+        ':hover': {
+            color: colors.grey.link_hover,
+            ...transition_parameters,
+        },
     },
 }
 

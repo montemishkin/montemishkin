@@ -22,7 +22,10 @@
     - isomorphic
     - logo
     - favicon
+    - handle styling (stretch of tag image, etc) for TagList component
+    - handle responsive design of Footer component
     - better "whoops" messages for ajax loading errors on front end
+    - propTypes
     - figure out url/file loader problem with webpack config + hardcoded urls
 
 - blog / project lists

@@ -44,6 +44,10 @@ let colors = {
         header: '#515357',
         subheader: '#808080',
         white: '#FFFFFF',
+        link_hover: '#00A1DC',
+
+        stack_overflow_tag: '#DDE8F2',
+        stack_overflow_tag_2: '#D1E0EB',
     },
 }
 

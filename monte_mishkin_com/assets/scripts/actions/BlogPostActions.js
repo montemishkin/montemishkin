@@ -13,11 +13,13 @@ class BlogPostActions {
     fetchBlogPosts() {
         // dispatch before async to allow for loading state
         this.dispatch()
+        setTimeout(() =>
         ajax({
             url: '/api/blog-posts/',
             success: (posts) => this.actions.setBlogPosts(posts),
             error: (...args) => this.actions.failFetchBlogPosts(...args),
         })
+        , 500)
     }
 
     setBlogPosts(posts) {
