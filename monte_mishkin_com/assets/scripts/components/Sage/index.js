@@ -33,8 +33,10 @@ class Sage extends React.Component {
     componentDidMount() {
         // determine initial dimensions, then...
         this.resetDimensions((canvas) => {
+            // bind the color board to the rendering context
+            color_board.bindToContext(canvas.getContext('2d'))
             // trigger the color board to play its animation
-            color_board.play(canvas.getContext('2d'))
+            color_board.play()
         })
 
         // add resize event handler
@@ -87,25 +89,55 @@ class Sage extends React.Component {
 
 
     render() {
-        return (<div style={styles.container}>
-            <canvas
-                ref='canvas'
-                style={[
-                    styles.canvas,
-                    {height: this.state.height},
-                ]}
-                onClick={() => color_board.randomize()}
-                onMouseMove={(event) => {
-                    // mouse coordinates relative to canvas DOM node
-                    const x = event.pageX - event.target.offsetLeft
-                    const y = event.pageY - event.target.offsetTop
+        return (<div style={styles.outer_container}>
+            <div style={styles.inner_container}>
+                <canvas
+                    ref='canvas'
+                    style={[
+                        styles.canvas,
+                        {height: this.state.height},
+                    ]}
+                    onMouseMove={(event) => {
+                        // mouse coordinates relative to canvas DOM node
+                        const x = event.pageX - event.target.offsetLeft
+                        const y = event.pageY - event.target.offsetTop
 
-                    color_board.setCouplingParameters(
-                        map(x, 0, this.state.width, 0, 3.5),
-                        map(y, 0, this.state.height, 0, 2.5)
-                    )
-                }}
-            />
+                        color_board.setCouplingParameters(
+                            map(x, 0, this.state.width, 0, 3.5),
+                            map(y, 0, this.state.height, 0, 2.5)
+                        )
+                    }}
+                />
+                <div style={styles.controls}>
+                    <button
+                        type='button'
+                        ref='pause'
+                        style={styles.button}
+                        onClick={() => color_board.togglePausePlay()}
+                    >
+                        Pause/Play
+                    </button>
+                    <a
+                        type='button'
+                        ref='snapshot'
+                        style={styles.button}
+                        onClick={(event) => {
+                            event.target.href = color_board.toDataURL()
+                        }}
+                        download='color-board.png'
+                    >
+                        Snapshot
+                    </a>
+                    <button
+                        type='button'
+                        ref='reset'
+                        style={styles.button}
+                        onClick={() => color_board.randomize()}
+                    >
+                        Reset
+                    </button>
+                </div>
+            </div>
         </div>)
     }
 }

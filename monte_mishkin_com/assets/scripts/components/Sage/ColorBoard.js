@@ -32,6 +32,7 @@ class ColorBoard {
 
         /* Variables never changed */
 
+        // board dimensions (in units of cells, not pixels)
         this.rows = rows
         this.cols = cols
         // infinitesimal time step
@@ -41,17 +42,27 @@ class ColorBoard {
 
         /* Variables altered by user */
 
+        // true if the simulation is paused
+        this.paused = true
         // differential equation parameter determining color-color coupling
         this.k_color = 1
         // differential equation parameter determining color-space coupling
         this.k_space = 1
+        // can be set to hold a canvas context using `bindToContext`
+        this.context = null
 
         /* Variables altered by simulation */
 
-        // true if the simulation is paused
-        this.paused = true
         // populate `this.array` with random colors
         this.randomize()
+    }
+
+
+    /**
+     * Returns true if the simulation is paused.  False otherwise.
+     */
+    isPaused() {
+        return this.paused
     }
 
 
@@ -85,10 +96,53 @@ class ColorBoard {
 
 
     /**
-     * Plays the simulation on the given context.
-     * @arg {CanvasRenderingContext2D} context - Rendering context to draw to.
+     * Stores a reference to the rendering context on `this`.
+     * @arg {CanvasRenderingContext2D} context - Rendering context to bind to.
      */
-    play(context) {
+    bindToContext(context) {
+        this.context = context
+    }
+
+
+    /**
+     * Returns a data URL containing a snapshot of the canvas context.
+     */
+    toDataURL(ctx) {
+        // default to using argument as rendering context
+        let context = ctx
+        // if no context passed
+        if (typeof ctx === 'undefined') {
+            // then use the bound context
+            context = this.context
+            // if no bound context
+            if (this.context === null) {
+                // then complain
+                throw new Error('no rendering context provided')
+            }
+        }
+
+        return context.canvas.toDataURL()
+    }
+
+
+    /**
+     * Plays the simulation on the given context.
+     * @arg {CanvasRenderingContext2D} ctx - Rendering context to draw to.
+     */
+    play(ctx) {
+        // default to using argument as rendering context
+        let context = ctx
+        // if no context passed
+        if (typeof ctx === 'undefined') {
+            // then use the bound context
+            context = this.context
+            // if no bound context
+            if (this.context === null) {
+                // then complain
+                throw new Error('no rendering context provided')
+            }
+        }
+
         // reset `paused` flag
         this.paused = false
         // kick off animation loop
@@ -106,11 +160,59 @@ class ColorBoard {
 
 
     /**
+     * Toggles between pause and play.
+     * @arg {CanvasRenderingContext2D} ctx - Rendering context to draw to.
+     */
+    togglePausePlay(ctx) {
+        // default to using argument as rendering context
+        let context = ctx
+        // if no context passed
+        if (typeof ctx === 'undefined') {
+            // then use the bound context
+            context = this.context
+            // if no bound context
+            if (this.context === null) {
+                // then complain
+                throw new Error('no rendering context provided')
+            }
+        }
+
+        // if no context provided and no bound context
+        if (typeof context === 'undefined' && this.context === null) {
+            // then complain
+            throw new Error('must pass a context to `play`, or be bound to one')
+        }
+        // if paused
+        if (this.paused) {
+            // then play
+            this.play(context)
+        // otherwise you are playing
+        } else {
+            // so pause
+            this.pause()
+        }
+    }
+
+
+    /**
      * If not paused, then draw a single animation frame and request the next
      * animation frame.
-     * @arg {CanvasRenderingContext2D} context - Rendering context to draw to.
+     * @arg {CanvasRenderingContext2D} ctx - Rendering context to draw to.
      */
-    mainLoop(context) {
+    mainLoop(ctx) {
+        // default to using argument as rendering context
+        let context = ctx
+        // if no context passed
+        if (typeof ctx === 'undefined') {
+            // then use the bound context
+            context = this.context
+            // if no bound context
+            if (this.context === null) {
+                // then complain
+                throw new Error('no rendering context provided')
+            }
+        }
+
         // if not paused
         if (!this.paused) {
             // render current frame to context
@@ -125,9 +227,22 @@ class ColorBoard {
 
     /**
      * Renders the current scene to the context.
-     * @arg {CanvasRenderingContext2D} context - Rendering context to draw to.
+     * @arg {CanvasRenderingContext2D} ctx - Rendering context to draw to.
      */
-    render(context) {
+    render(ctx) {
+        // default to using argument as rendering context
+        let context = ctx
+        // if no context passed
+        if (typeof ctx === 'undefined') {
+            // then use the bound context
+            context = this.context
+            // if no bound context
+            if (this.context === null) {
+                // then complain
+                throw new Error('no rendering context provided')
+            }
+        }
+
         // dimensions of the entire canvas
         const width = context.canvas.width
         const height = context.canvas.height

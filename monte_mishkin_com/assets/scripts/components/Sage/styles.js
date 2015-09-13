@@ -2,17 +2,56 @@
  * Style sheet for Sage component.
  */
 
+/* local imports */
+import colors from '../../../styles/colors'
+
+
+// styling for transition parameters
+const transition_parameters = {
+    transitionDuration: '0.2s',
+    transitionTimingFunction: 'ease-in-out',
+    transitionProperty: 'background-color',
+}
+
 
 // define style sheet
 let styles = {
-    container: {
+    outer_container: {
         display: 'flex',
         justifyContent: 'center',
     },
 
-    canvas: {
+    inner_container: {
         width: '80%',
+    },
+
+    canvas: {
+        width: '100%',
         // height must be set dynamically based on width
+    },
+
+    controls: {
+        display: 'flex',
+        justifyContent: 'space-around',
+        flexWrap: 'wrap',
+        paddingTop: 5,
+    },
+
+    button: {
+        borderStyle: 'solid',
+        borderWidth: 0,
+        borderRadius: 3,
+        padding: 10,
+        color: 'white',
+        backgroundColor: colors.grey.link_hover,
+        cursor: 'pointer',
+        textDecoration: 'none',
+        ...transition_parameters,
+
+        ':hover': {
+            backgroundColor: colors.grey.link_hover_darker,
+            ...transition_parameters,
+        },
     },
 }
 
