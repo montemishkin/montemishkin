@@ -247,8 +247,12 @@ class ColorBoard {
         const width = context.canvas.width
         const height = context.canvas.height
         // dimensions of a single cell
-        const cell_width = width / this.cols
-        const cell_height = height / this.rows
+        const cell_width = Math.floor(width / this.cols)
+        const cell_height = Math.floor(height / this.rows)
+        // padding necessary to keep rendered cells centered on the canvas
+        // due to flooring of cell dimensions
+        const paddingX = Math.floor(mod(width, this.cols) / 2)
+        const paddingY = Math.floor(mod(height, this.rows) / 2)
 
         // clear the canvas
         context.clearRect(0, 0, width, height)
@@ -256,8 +260,8 @@ class ColorBoard {
         for (let i = 0; i < this.rows; i++) {
             for (let j = 0; j < this.cols; j++) {
                 // location of upper left corner of cell
-                const x = j * cell_width
-                const y = i * cell_height
+                const x = paddingX + (j * cell_width)
+                const y = paddingY + (i * cell_height)
 
                 // set fill style to cell's color
                 context.fillStyle = this.array[i][j].css()
