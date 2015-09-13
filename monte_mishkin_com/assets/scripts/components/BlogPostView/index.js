@@ -52,7 +52,7 @@ class BlogPostView extends React.Component {
 
     render() {
         // default as if posts have not yet been loaded from server
-        // let title = 'Loading...'
+        let title = 'Loading...'
         let content = (<img
             style={styles.image}
             alt='Loading Indicator'
@@ -63,7 +63,7 @@ class BlogPostView extends React.Component {
         if (this.props.has_loaded) {
             // if we found the right post
             if (typeof this.props.post !== 'undefined') {
-                // title = this.props.post.title
+                title = this.props.post.title
                 content = (<div style={styles.post_container}>
                     <div style={styles.creation_date}>
                         {this.props.post.creation_date}
@@ -77,7 +77,7 @@ class BlogPostView extends React.Component {
                 </div>)
             // posts loaded but this post not found
             } else {
-                // title = 'Woops!'
+                title = 'Woops!'
                 content = (<p style={styles.error}>
                     There is no blog post here!
                 </p>)
@@ -85,6 +85,9 @@ class BlogPostView extends React.Component {
         }
 
         return (<div style={styles.container}>
+            <div style={styles.title}>
+                {title}
+            </div>
             {content}
         </div>)
     }

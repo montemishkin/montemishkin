@@ -9,6 +9,9 @@ import numerics from '../../../styles/numerics'
 
 // styling common to all `container` styles
 const container_base = {
+    margin: '0 auto',
+    maxWidth: numerics.max_page_width,
+    width: '90%',
     display: 'flex',
     fontSize: 12,
     color: colors.grey.lighter_font,
@@ -42,37 +45,33 @@ let styles = {
     container_infinity: {
         ...container_base,
         justifyContent: 'space-between',
-        paddingTop: 15,
-        paddingBottom: 15,
     },
 
     left_medium: {
         ...left_base,
-        paddingTop: 10,
-        paddingBottom: 10,
     },
 
     left_infinity: {
         ...left_base,
         flexBasis: 250,
-        paddingLeft: numerics.root_child_side_padding,
+        marginLeft: -10,
     },
 
     right_medium: {
         ...right_base,
-        paddingTop: 10,
+        paddingTop: 0,
         paddingBottom: 10,
     },
 
     right_infinity: {
         ...right_base,
-        paddingRight: numerics.root_child_side_padding,
+        padding: 10,
+        marginRight: -10,
     },
 
     nav_link: {
         ...link_base,
-        paddingLeft: 10,
-        paddingRight: 10,
+        padding: 10,
     },
 
     email_link: {

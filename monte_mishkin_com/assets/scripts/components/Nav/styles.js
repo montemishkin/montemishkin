@@ -14,11 +14,12 @@ const link_base = {
 }
 
 // base styling for all `container` styles
-const container_base = {
+const inner_container_base = {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'flex-end',
-    backgroundColor: colors.grey.darker_bg,
+    width: '90%',
+    maxWidth: numerics.max_page_width,
+    margin: '0 auto',
 }
 
 // styling for transition parameters
@@ -31,14 +32,18 @@ const transition_parameters = {
 
 // define style sheet
 let styles = {
-    container_medium: {
-        ...container_base,
+    outer_container: {
+        backgroundColor: colors.grey.darker_bg,
+    },
+
+    inner_container_medium: {
+        ...inner_container_base,
         justifyContent: 'center',
     },
 
-    container_infinity: {
-        ...container_base,
-        paddingRight: numerics.root_child_side_padding,
+    inner_container_infinity: {
+        ...inner_container_base,
+        justifyContent: 'flex-end',
     },
 
     link: {

@@ -42,7 +42,7 @@ class Footer extends React.Component {
         }
 
         return (<div style={container_style}>
-            <span style={left_style}>
+            <div style={left_style}>
                 <Link
                     to='home'
                     style={styles.nav_link}
@@ -67,8 +67,8 @@ class Footer extends React.Component {
                 >
                     Blog
                 </Link>
-            </span>
-            <span style={right_style}>
+            </div>
+            <div style={right_style}>
                 &copy; {(new Date()).getFullYear() + ' '}
                 <a
                     href='mailto:montemishkin@gmail.com'
@@ -76,7 +76,7 @@ class Footer extends React.Component {
                 >
                     Monte Mishkin
                 </a>
-            </span>
+            </div>
         </div>)
     }
 }

@@ -34,8 +34,8 @@ const post_list_item_base = {
 // define style sheet
 let styles = {
     container: {
-        width: (100 - (2 * numerics.root_child_side_padding.slice(0, -1))) + '%',
-        margin: 'auto',
+        maxWidth: numerics.max_page_width,
+        margin: '0 auto',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

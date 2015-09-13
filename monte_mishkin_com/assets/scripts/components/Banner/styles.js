@@ -21,6 +21,9 @@ const subheader_base = {
 // define style sheet
 let styles = {
     container: {
+        maxWidth: numerics.max_page_width,
+        width: '90%',
+        margin: '0 auto',
     },
 
     header_medium: {
@@ -31,7 +34,6 @@ let styles = {
 
     header_infinity: {
         ...header_base,
-        paddingLeft: numerics.root_child_side_padding,
     },
 
     subheader_medium: {
@@ -42,7 +44,6 @@ let styles = {
 
     subheader_infinity: {
         ...subheader_base,
-        paddingLeft: numerics.root_child_side_padding,
     },
 
     link: {
