@@ -6,7 +6,7 @@
   "private": true,
   "dependencies": {
     "alt": "^0.17.1",
-    "alt-responsive": "^1.0.4",
+    "alt-responsive": "^1.0.6",
     "babel": "^5.6.14",
     "babel-core": "^5.6.15",
     "babel-eslint": "^3.1.23",

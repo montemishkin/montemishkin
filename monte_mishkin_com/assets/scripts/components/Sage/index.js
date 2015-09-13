@@ -1,6 +1,8 @@
 /* common react imports */
 import React from 'react/addons'
 import radium from 'radium'
+/* misc third party imports */
+import {throttle} from 'lodash'
 /* local imports */
 import styles from './styles'
 import ColorBoard from './ColorBoard'
@@ -26,7 +28,8 @@ class Sage extends React.Component {
             width: 200,
         }
         // bind instance method so it can be passed as callback
-        this.onResize = this.onResize.bind(this)
+        // also throttle it so that we dont spam resize event
+        this.onResize = throttle(this.onResize.bind(this), 100)
     }
 
 
