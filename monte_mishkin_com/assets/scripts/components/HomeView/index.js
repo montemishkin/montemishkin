@@ -3,6 +3,7 @@ import React from 'react/addons'
 import radium from 'radium'
 /* local imports */
 import styles from './styles'
+import Sage from '../Sage'
 
 
 /**
@@ -19,6 +20,7 @@ class HomeView extends React.Component {
             <h2>
                 To a place where
             </h2>
+            <Sage />
             <h2>
                 ANYTHING
             </h2>
