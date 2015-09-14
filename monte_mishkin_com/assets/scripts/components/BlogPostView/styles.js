@@ -23,12 +23,20 @@ let styles = {
     post_container: {
     },
 
-    creation_date: {
-        ...classes.link_hoverable,
-        ...classes.darker_font_color,
+    date_and_tag_list_wrapper: {
+        width: '100%',
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        paddingTop: 7,
+        paddingBottom: 7,
     },
 
-    tag_list: {
+    creation_date: {
+        ...classes.lighter_font_color,
+    },
+
+    tag_list_wrapper: {
     },
 
     post_content: {

@@ -2,11 +2,12 @@
 import React from 'react/addons'
 import radium from 'radium'
 /* misc third party imports */
-import {kebabCase, trimLeft} from 'lodash'
+import {kebabCase} from 'lodash'
 /* local imports */
 import styles from './styles'
 import Link from '../Link'
 import TagList from '../TagList'
+import Date from '../Date'
 
 
 // maximum length for title and content previews
@@ -20,27 +21,6 @@ const content_preview_max_length = 200
  */
 @radium
 class BlogPostPreview extends React.Component {
-    getPrettyCreationDateString() {
-        const month_names = [
-            'January', 'February', 'March',
-            'April', 'May', 'June', 'July',
-            'August', 'September', 'October',
-            'November', 'December',
-        ].map(name => name.substr(0, 3))
-
-        // e.g. ['2015', '8', '22']
-        const parts = this.props.creation_date
-            // grab just the date part (not the time part)
-            .substr(0, this.props.creation_date.indexOf('T'))
-            // split into array of parts
-            .split('-')
-            // strip leading zeroes
-            .map(number_string => trimLeft(number_string, '0'))
-
-        return `${month_names[parts[1] - 1]} ${parts[2]}, ${parts[0]}`
-    }
-
-
     render() {
         // default to displaying full title
         let title_preview = this.props.title
@@ -61,42 +41,30 @@ class BlogPostPreview extends React.Component {
         }
 
         // props for links to the blog post
-        const post_link_props = {
+        const link_props = {
             to: 'blog-post',
             params: {
                 slug: kebabCase(this.props.title),
             },
         }
 
-        // props for link to the date
-        const date_link_props = {
-            to: 'blog',
-            query: {
-                filter: this.props.creation_date
-                    .substr(0, this.props.creation_date.indexOf('T')),
-            },
-        }
-
         return (<div style={styles.container}>
             <Link
-                {...post_link_props}
+                {...link_props}
                 style={styles.title}
             >
                 {title_preview}
             </Link>
             <div style={styles.date_and_tag_list_wrapper}>
-                <Link
-                    {...date_link_props}
-                    style={styles.date}
-                >
-                    {this.getPrettyCreationDateString()}
-                </Link>
+                <div style={styles.creation_date}>
+                    <Date date={this.props.creation_date} />
+                </div>
                 <div style={styles.tag_list_wrapper}>
                     <TagList tags={this.props.tags} />
                 </div>
             </div>
             <Link
-                {...post_link_props}
+                {...link_props}
                 style={styles.content}
             >
                 {content_preview}

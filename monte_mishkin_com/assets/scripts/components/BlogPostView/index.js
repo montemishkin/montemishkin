@@ -5,11 +5,11 @@ import radium from 'radium'
 import connectToStores from 'alt/utils/connectToStores'
 /* misc third party imports */
 // import DisqusThread from 'react-disqus-thread'
-import {kebabCase, trimLeft} from 'lodash'
+import {kebabCase} from 'lodash'
 /* local imports */
 import styles from './styles'
-import Link from '../Link'
 import TagList from '../TagList'
+import Date from '../Date'
 import BlogPostStore from '../../stores/BlogPostStore'
 import BlogPostActions from '../../actions/BlogPostActions'
 
@@ -51,27 +51,6 @@ class BlogPostView extends React.Component {
     }
 
 
-    getPrettyCreationDateString() {
-        const month_names = [
-            'January', 'February', 'March',
-            'April', 'May', 'June', 'July',
-            'August', 'September', 'October',
-            'November', 'December',
-        ].map(name => name.substr(0, 3))
-
-        // e.g. ['2015', '8', '22']
-        const parts = this.props.post.creation_date
-            // grab just the date part (not the time part)
-            .substr(0, this.props.post.creation_date.indexOf('T'))
-            // split into array of parts
-            .split('-')
-            // strip leading zeroes
-            .map(number_string => trimLeft(number_string, '0'))
-
-        return `${month_names[parts[1] - 1]} ${parts[2]}, ${parts[0]}`
-    }
-
-
     render() {
         // default as if posts have not yet been loaded from server
         let title = 'Loading...'
@@ -88,21 +67,14 @@ class BlogPostView extends React.Component {
                 title = this.props.post.title
                 content = (<div style={styles.post_container}>
                     <div style={styles.date_and_tag_list_wrapper}>
-                        <Link
-                            to='blog'
-                            query={{filter: this.props.post.creation_date
-                                .substr(0,
-                                    this.props.post.creation_date.indexOf('T')),
-                            }}
-                            style={styles.date}
-                        >
-                            {this.getPrettyCreationDateString()}
-                        </Link>
+                        <div style={styles.creation_date}>
+                            <Date date={this.props.post.creation_date} />
+                        </div>
                         <div style={styles.tag_list_wrapper}>
                             <TagList tags={this.props.post.tags} />
                         </div>
                     </div>
-                    <div style={styles.content}>
+                    <div style={styles.post_content}>
                         {this.props.post.content}
                     </div>
                 </div>)

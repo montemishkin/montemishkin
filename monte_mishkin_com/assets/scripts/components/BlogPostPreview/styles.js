@@ -24,18 +24,16 @@ let styles = {
     },
 
     tag_list_wrapper: {
-        display: 'flex',
+    },
+
+    creation_date: {
+        ...classes.lighter_font_color,
     },
 
     title: {
         ...classes.link_hoverable,
         ...classes.larger_font_size,
         ...classes.main_font_color,
-    },
-
-    date: {
-        ...classes.link_hoverable,
-        ...classes.lighter_font_color,
     },
 
     content: {
