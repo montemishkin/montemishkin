@@ -73,9 +73,12 @@ class BlogPostView extends React.Component {
                             <TagList tags={this.props.post.tags} />
                         </div>
                     </div>
-                    <div style={styles.post_content}>
-                        {this.props.post.content}
-                    </div>
+                    <div
+                        style={styles.post_content}
+                        dangerouslySetInnerHTML={{
+                            __html: this.props.post.content,
+                        }}
+                    />
                 </div>)
             // posts loaded but this post not found
             } else {

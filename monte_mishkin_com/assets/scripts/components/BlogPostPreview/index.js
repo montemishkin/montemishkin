@@ -19,6 +19,21 @@ const content_preview_max_length = 200
  */
 @radium
 class BlogPostPreview extends React.Component {
+    /**
+     * Returns the post's content, stripped of its HTML.
+     */
+    getStrippedContent() {
+        // create a temporary div DOM node
+        const div_node = document.createElement('div')
+        // populate it with the content we want to strip
+        // so that the browser will strip for us
+        div_node.innerHTML = this.props.content
+
+        // return stripped content (with some fallbacks)
+        return div_node.textContent || div_node.innerText || ''
+    }
+
+
     render() {
         // default to displaying full title
         let title_preview = this.props.title
@@ -30,11 +45,11 @@ class BlogPostPreview extends React.Component {
         }
 
         // default to displaying full content
-        let content_preview = this.props.content
+        let content_preview = this.getStrippedContent()
         // if content is too long
-        if (this.props.content.length > content_preview_max_length) {
+        if (content_preview.length > content_preview_max_length) {
             // display only first part of content
-            content_preview = this.props.content
+            content_preview = content_preview
                 .substr(0, content_preview_max_length) + ' ...'
         }
 

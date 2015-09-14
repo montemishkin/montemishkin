@@ -1,6 +1,5 @@
 - blog post and project models
-    - markdown support
-        - http://stackoverflow.com/questions/11943089/github-flavored-markdown-in-python
+    - right now, tags are required.  is this ok with you?
     - syntax highlighting
     - project model
         - image field
