@@ -12,6 +12,8 @@ const container_base = {
     ...classes.light_font_color,
     ...classes.small_font_size,
     display: 'flex',
+    paddingTop: 10,
+    paddingBottom: 10,
 }
 
 // styling common to all `left` styles

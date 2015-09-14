@@ -11,6 +11,7 @@
     - handle not found routes more professionally
 
 - styling
+    - style rendered markdown
     - choose syntax highlighting styling
     - overall DRY design of styling
     - move all colors into styles/colors.js
