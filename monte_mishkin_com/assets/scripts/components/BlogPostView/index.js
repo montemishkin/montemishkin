@@ -5,7 +5,6 @@ import radium from 'radium'
 import connectToStores from 'alt/utils/connectToStores'
 /* misc third party imports */
 // import DisqusThread from 'react-disqus-thread'
-import {kebabCase} from 'lodash'
 /* local imports */
 import styles from './styles'
 import TagList from '../TagList'
@@ -32,7 +31,7 @@ class BlogPostView extends React.Component {
         return {
             // only grab the post we are viewing
             post: store_state.posts.filter(
-                (post) => kebabCase(post.title) === props.params.slug
+                (post) => post.slug === props.params.slug
             )[0],
             has_loaded: store_state.has_loaded,
             fetching: store_state.fetching,

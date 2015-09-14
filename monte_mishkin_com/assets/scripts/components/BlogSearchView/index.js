@@ -123,6 +123,7 @@ class BlogSearchView extends React.Component {
                                     key={post.id}
                                 >
                                     <BlogPostPreview
+                                        slug={post.slug}
                                         title={post.title}
                                         creation_date={post.creation_date}
                                         tags={post.tags}

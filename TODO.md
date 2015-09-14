@@ -4,7 +4,6 @@
     - syntax highlighting
     - project model
         - image field
-    - require `slug` (not `title`) to be unique.  This is necessary since slugification is not injective (e.g. "don't" and "don.t" both get mapped to "don-t")
 
 - rest api
     - set permissions to only allow fetch (unless admin)

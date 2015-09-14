@@ -8,7 +8,8 @@ class BlogPost(models.Model):
     '''
     Single blog post.
     '''
-    title = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=50, unique=True)
+    title = models.CharField(max_length=100)
     tags = TaggableManager()
     creation_date = models.DateTimeField(auto_now_add=True)
     modification_date = models.DateTimeField(auto_now=True)

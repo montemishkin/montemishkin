@@ -1,8 +1,6 @@
 /* common react imports */
 import React from 'react/addons'
 import radium from 'radium'
-/* misc third party imports */
-import {kebabCase} from 'lodash'
 /* local imports */
 import styles from './styles'
 import Link from '../Link'
@@ -43,9 +41,7 @@ class BlogPostPreview extends React.Component {
         // props for links to the blog post
         const link_props = {
             to: 'blog-post',
-            params: {
-                slug: kebabCase(this.props.title),
-            },
+            params: {slug: this.props.slug},
         }
 
         return (<div style={styles.container}>
@@ -76,6 +72,7 @@ class BlogPostPreview extends React.Component {
 
 // allow for type checking on props
 BlogPostPreview.propTypes = {
+    slug: React.PropTypes.string,
     title: React.PropTypes.string,
     creation_date: React.PropTypes.string,
     tags: React.PropTypes.arrayOf(React.PropTypes.shape({
