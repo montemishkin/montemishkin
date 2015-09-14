@@ -101,8 +101,8 @@ class BlogPostView extends React.Component {
 
 // <DisqusThread
 //     shortname='montemishkin'
-//     identifier={`${this.props.date}/${kebabCase(this.props.title)}`}
-//     title={this.props.title}
+//     identifier={this.props.post.slug}
+//     title={this.props.post.title}
 //     url='http://www.example.com/example-thread'
 //     categoryId='123456'
 // />

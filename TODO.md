@@ -1,6 +1,5 @@
 - blog post and project models
     - right now, tags are required.  is this ok with you?
-    - syntax highlighting
     - project model
         - image field
 
@@ -12,6 +11,7 @@
     - handle not found routes more professionally
 
 - styling
+    - choose syntax highlighting styling
     - overall DRY design of styling
     - move all colors into styles/colors.js
     - move all magic numbers (e.g. the padding of all children of root for infinity viewports) into styles/numerics.js

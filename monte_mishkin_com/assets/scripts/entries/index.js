@@ -14,6 +14,8 @@ import routes from '../routes'
 import normalize from 'normalize.css'
 // apply global styling
 import style from '../../styles/main.css'
+// allow for code highlighting
+import highlight from '../../styles/highlight.css'
 /* eslint-enable */
 
 

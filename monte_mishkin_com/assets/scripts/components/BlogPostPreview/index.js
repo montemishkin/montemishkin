@@ -44,7 +44,7 @@ class BlogPostPreview extends React.Component {
                 .substr(0, title_preview_max_length) + ' ...'
         }
 
-        // default to displaying full content
+        // default to displaying full content (stripped of HTML)
         let content_preview = this.getStrippedContent()
         // if content is too long
         if (content_preview.length > content_preview_max_length) {
