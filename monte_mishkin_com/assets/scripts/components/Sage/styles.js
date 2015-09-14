@@ -4,12 +4,12 @@
 
 /* local imports */
 import colors from '../../../styles/colors'
+import classes from '../../../styles/classes'
 
 
 // styling for transition parameters
-const transition_parameters = {
-    transitionDuration: '0.2s',
-    transitionTimingFunction: 'ease-in-out',
+const transition = {
+    ...classes.transition_parameters,
     transitionProperty: 'background-color',
 }
 
@@ -22,7 +22,7 @@ let styles = {
     },
 
     inner_container: {
-        width: '80%',
+        width: '100%',
     },
 
     canvas: {
@@ -38,19 +38,19 @@ let styles = {
     },
 
     button: {
+        ...transition,
         borderStyle: 'solid',
         borderWidth: 0,
         borderRadius: 3,
         padding: 10,
-        color: 'white',
+        color: colors.grey.white,
         backgroundColor: colors.grey.link_hover,
         cursor: 'pointer',
         textDecoration: 'none',
-        ...transition_parameters,
 
         ':hover': {
+            ...transition,
             backgroundColor: colors.grey.link_hover_darker,
-            ...transition_parameters,
         },
     },
 }

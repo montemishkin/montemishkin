@@ -14,16 +14,18 @@
     - handle not found routes more professionally
 
 - styling
+    - overall DRY design of styling
     - move all colors into styles/colors.js
     - move all magic numbers (e.g. the padding of all children of root for infinity viewports) into styles/numerics.js
+    - radium wrapping of react-router's `Link` does not work on `activeStyle` prop.  Thus, nav links don't transition *in* to the new background color even though they do transition *out* of it.
 
 - general
+    - remove `setTimeout` from ajax in `BlogPostActions`
     - link icons8
-    - isomorphic
+    - universal (isomorphic)
     - logo
     - favicon
     - handle styling (stretch of tag image, etc) for TagList component
-    - handle responsive design of Footer component
     - better "whoops" messages for ajax loading errors on front end
     - propTypes
     - figure out url/file loader problem with webpack config + hardcoded urls

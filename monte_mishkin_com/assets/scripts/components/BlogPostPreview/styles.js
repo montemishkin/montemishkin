@@ -3,27 +3,7 @@
  */
 
 /* local imports */
-import colors from '../../../styles/colors'
-
-
-// styling for transition parameters
-const transition_parameters = {
-    transitionDuration: '0.2s',
-    transitionTimingFunction: 'ease-in-out',
-    transitionProperty: 'color',
-}
-
-// base styling common to all links
-const link_base = {
-    textDecoration: 'none',
-    display: 'flex',
-    ...transition_parameters,
-
-    ':hover': {
-        color: colors.grey.link_hover,
-        ...transition_parameters,
-    },
-}
+import classes from '../../../styles/classes'
 
 
 // define style sheet
@@ -48,21 +28,21 @@ let styles = {
     },
 
     title: {
-        ...link_base,
-        fontSize: 30,
-        color: colors.grey.header,
+        ...classes.link_hoverable,
+        ...classes.larger_font_size,
+        ...classes.main_font_color,
     },
 
     date: {
-        ...link_base,
-        color: colors.grey.subheader,
+        ...classes.link_hoverable,
+        ...classes.lighter_font_color,
     },
 
     content: {
-        ...link_base,
+        ...classes.link_hoverable,
+        ...classes.main_font_color,
         marginLeft: '5%',
         maxWidth: '90%',
-        color: colors.grey.header,
     },
 }
 

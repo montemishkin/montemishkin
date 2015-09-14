@@ -4,16 +4,15 @@
 
 /* local imports */
 import colors from '../../../styles/colors'
-import numerics from '../../../styles/numerics'
+import classes from '../../../styles/classes'
 
 
 // half of space between two post list items
 const half_post_list_item_space = 7
 
-// styling for transition parameters
-const transition_parameters = {
-    transitionDuration: '0.2s',
-    transitionTimingFunction: 'ease-in-out',
+// styling for outline transition
+const transition = {
+    ...classes.transition_parameters,
     transitionProperty: 'outline',
 }
 
@@ -34,8 +33,7 @@ const post_list_item_base = {
 // define style sheet
 let styles = {
     container: {
-        maxWidth: numerics.max_page_width,
-        margin: '0 auto',
+        ...classes.page_content_container,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -54,7 +52,6 @@ let styles = {
         listStyleType: 'none',
         margin: 0,
         padding: 0,
-        // padding: half_post_list_item_space,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -71,6 +68,7 @@ let styles = {
     },
 
     search_bar: {
+        ...transition,
         width: '100%',
         marginBottom: 10,
         textAlign: 'center',
@@ -78,11 +76,10 @@ let styles = {
         outlineOffset: -1,
         outlineStyle: 'solid',
         outlineColor: 'transparent',
-        ...transition_parameters,
 
         ':focus': {
             outlineColor: colors.primary.lightest,
-            ...transition_parameters,
+            ...transition,
         },
     },
 }

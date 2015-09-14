@@ -3,14 +3,13 @@
  */
 
 /* local imports */
-import numerics from '../../../styles/numerics'
+import {page_content_container} from '../../../styles/classes'
 
 
 // define style sheet
 let styles = {
     container: {
-        maxWidth: numerics.max_page_width,
-        margin: '0 auto',
+        ...page_content_container,
     },
 }
 

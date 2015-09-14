@@ -3,15 +3,7 @@
  */
 
 /* local imports */
-import colors from '../../../styles/colors'
-
-
-// styling for transition parameters
-const transition_parameters = {
-    transitionDuration: '0.2s',
-    transitionTimingFunction: 'ease-in-out',
-    transitionProperty: 'color',
-}
+import classes from '../../../styles/classes'
 
 
 // define style sheet
@@ -19,7 +11,7 @@ let styles = {
     container: {
         display: 'flex',
         alignItems: 'center',
-        fontSize: 13,
+        ...classes.small_font_size,
     },
 
     image: {
@@ -45,14 +37,8 @@ let styles = {
     },
 
     link: {
-        textDecoration: 'none',
-        color: colors.grey.link,
-        ...transition_parameters,
-
-        ':hover': {
-            color: colors.grey.link_hover,
-            ...transition_parameters,
-        },
+        ...classes.link_hoverable,
+        ...classes.darker_font_color,
     },
 }
 

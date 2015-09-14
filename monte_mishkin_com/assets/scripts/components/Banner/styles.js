@@ -3,8 +3,7 @@
  */
 
 /* local imports */
-import colors from '../../../styles/colors'
-import numerics from '../../../styles/numerics'
+import classes from '../../../styles/classes'
 
 
 // base styling common to all `header` styles
@@ -12,18 +11,15 @@ const header_base = {
 }
 // base styling common to all `subheader` styles
 const subheader_base = {
-    fontSize: 14,
-    fontWeight: 700,
-    color: colors.grey.subheader,
+    ...classes.large_font_size,
+    ...classes.lighter_font_color,
 }
 
 
 // define style sheet
 let styles = {
     container: {
-        maxWidth: numerics.max_page_width,
-        width: '90%',
-        margin: '0 auto',
+        ...classes.root_child_container,
     },
 
     header_medium: {
@@ -47,10 +43,9 @@ let styles = {
     },
 
     link: {
-        fontSize: 36,
-        fontWeight: 400,
-        color: colors.grey.header,
-        textDecoration: 'none',
+        ...classes.largest_font_size,
+        ...classes.main_font_color,
+        ...classes.link_base,
     },
 }
 

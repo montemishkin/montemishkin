@@ -4,17 +4,18 @@
 
 /* local imports */
 import colors from '../../../styles/colors'
+import classes from '../../../styles/classes'
 
 
 // define style sheet
 let styles = {
     container: {
+        ...classes.dark_font_color,
         minHeight: '100%',
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: 'white',
+        backgroundColor: colors.grey.white,
         fontFamily: 'Lato',
-        color: colors.grey.fontish,
     },
 
     content: {

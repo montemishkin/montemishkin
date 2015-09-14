@@ -3,18 +3,15 @@
  */
 
 /* local imports */
-import colors from '../../../styles/colors'
-import numerics from '../../../styles/numerics'
+import classes from '../../../styles/classes'
 
 
 // styling common to all `container` styles
 const container_base = {
-    margin: '0 auto',
-    maxWidth: numerics.max_page_width,
-    width: '90%',
+    ...classes.root_child_container,
+    ...classes.light_font_color,
+    ...classes.small_font_size,
     display: 'flex',
-    fontSize: 12,
-    color: colors.grey.lighter_font,
 }
 
 // styling common to all `left` styles
@@ -27,10 +24,10 @@ const left_base = {
 const right_base = {
 }
 
-// styling common to all `link styles`
+// styling common to all `link` styles
 const link_base = {
-    color: colors.grey.link,
-    textDecoration: 'none',
+    ...classes.link_hoverable,
+    ...classes.darker_font_color,
 }
 
 

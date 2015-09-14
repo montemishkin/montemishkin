@@ -4,28 +4,26 @@
 
 /* local imports */
 import colors from '../../../styles/colors'
-import numerics from '../../../styles/numerics'
+import classes from '../../../styles/classes'
 
 
 // base styling for both active and inactive links
 const link_base = {
+    ...classes.link_hoverable,
+    ...classes.dark_font_color,
     padding: 10,
-    textDecoration: 'none',
 }
 
 // base styling for all `container` styles
 const inner_container_base = {
+    ...classes.root_child_container,
     display: 'flex',
     flexWrap: 'wrap',
-    width: '90%',
-    maxWidth: numerics.max_page_width,
-    margin: '0 auto',
 }
 
-// styling for transition parameters
-const transition_parameters = {
-    transitionDuration: '0.2s',
-    transitionTimingFunction: 'ease-in-out',
+// styling for color and background-color transition
+const transition = {
+    ...classes.transition_parameters,
     transitionProperty: 'color, background-color',
 }
 
@@ -48,21 +46,13 @@ let styles = {
 
     link: {
         ...link_base,
-        padding: 10,
-        color: colors.grey.fontish,
-        ...transition_parameters,
-
-        ':hover': {
-            color: colors.grey.lighter_font,
-            ...transition_parameters,
-        },
+        ...transition,
     },
 
     link_active: {
         ...link_base,
-        color: colors.grey.fontish,
+        ...transition,
         backgroundColor: colors.grey.lighter,
-        ...transition_parameters,
     },
 }
 
