@@ -7,6 +7,7 @@ from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 # local imports
 from .models import BlogPost
+from ..api.serializers import TagSerializer
 
 
 class HighlightRenderer(mistune.Renderer):
@@ -26,11 +27,8 @@ markdown = mistune.Markdown(renderer=HighlightRenderer())
 
 
 class BlogPostSerializer(serializers.ModelSerializer):
-    tags = serializers.SerializerMethodField()
+    tags = TagSerializer(many=True, read_only=True)
     content = serializers.SerializerMethodField()
-
-    def get_tags(self, obj):
-        return [{'id': tag.id, 'name': tag.name} for tag in obj.tags.all()]
 
     def get_content(self, obj):
         return markdown(obj.content)

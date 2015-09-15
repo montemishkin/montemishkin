@@ -5,7 +5,7 @@ import radium from 'radium'
 import connectToStores from 'alt/utils/connectToStores'
 /* local imports */
 import styles from './styles'
-import BlogPostPreview from '../BlogPostPreview'
+import BlogPostList from '../BlogPostList'
 import BlogPostStore from '../../stores/BlogPostStore'
 import BlogPostActions from '../../actions/BlogPostActions'
 
@@ -107,32 +107,7 @@ class BlogSearchView extends React.Component {
 
                 // if any posts survived filter
                 if (filtered_posts.length !== 0) {
-                    content = (<ul style={styles.post_list}>
-                        {filtered_posts.map((post, index, array) => {
-                            // default to regular `post_list_item` style
-                            let post_list_item_style = styles.post_list_item
-                            // if this is the last item
-                            if (index === array.length - 1) {
-                                // then use special `post_list_item_last` style
-                                post_list_item_style = styles.post_list_item_last
-                            }
-
-                            return (
-                                <li
-                                    style={post_list_item_style}
-                                    key={post.id}
-                                >
-                                    <BlogPostPreview
-                                        slug={post.slug}
-                                        title={post.title}
-                                        creation_date={post.creation_date}
-                                        tags={post.tags}
-                                        content={post.content}
-                                    />
-                                </li>
-                            )
-                        })}
-                    </ul>)
+                    content = (<BlogPostList posts={filtered_posts} />)
                 }
             }
         }
