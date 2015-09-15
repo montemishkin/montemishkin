@@ -11,6 +11,7 @@ import classes from '../../../styles/classes'
 let styles = {
     container: {
         ...classes.dark_font_color,
+        ...classes.main_font_size,
         minHeight: '100%',
         display: 'flex',
         flexDirection: 'column',

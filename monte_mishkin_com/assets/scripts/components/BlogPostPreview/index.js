@@ -4,7 +4,7 @@ import radium from 'radium'
 /* local imports */
 import styles from './styles'
 import Link from '../Link'
-import TagList from '../TagList'
+import TagListInline from '../TagListInline'
 import Date from '../Date'
 
 
@@ -71,7 +71,7 @@ class BlogPostPreview extends React.Component {
                     <Date date={this.props.creation_date} />
                 </div>
                 <div style={styles.tag_list_wrapper}>
-                    <TagList tags={this.props.tags} />
+                    <TagListInline tags={this.props.tags} />
                 </div>
             </div>
             <Link

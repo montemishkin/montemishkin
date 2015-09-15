@@ -1,52 +1,44 @@
 /* common react imports */
 import React from 'react/addons'
 import radium from 'radium'
-/* misc third party imports */
-import {kebabCase} from 'lodash'
 /* local imports */
 import styles from './styles'
 import Link from '../Link'
 
 
 /**
- * List of linked tags, accompanied by tag icon.
+ * List of linked tags.
  * @class
  */
 @radium
 class TagList extends React.Component {
     render() {
-        if (this.props.tags.length === 0) {
-            return (<div />)
-        }
-
-        return (<div style={styles.container}>
-            <img
-                style={styles.image}
-                alt='Tag Icon'
-                src='/static/images/Price-Tag-50.png'
-            />
-            <ul style={styles.names_list}>
-                {this.props.tags.map((tag) => (
-                    <li
-                        style={styles.names_list_item}
-                        key={tag.id}
+        return (<ul style={styles.list}>
+            {this.props.tags.map((tag) => (
+                <li
+                    key={tag.id}
+                    style={styles.list_item}
+                >
+                    <img
+                        style={styles.image}
+                        alt='Tag Icon'
+                        src='/static/images/Price-Tag-50.png'
+                    />
+                    <Link
+                        to='tag'
+                        params={{slug: tag.slug}}
+                        style={styles.link}
                     >
-                        <Link
-                            to='tag'
-                            params={{slug: tag.slug}}
-                            style={styles.link}
-                        >
-                            {tag.name}
-                        </Link>
-                    </li>
-                ))}
-            </ul>
-        </div>)
+                        {tag.name}
+                    </Link>
+                </li>
+            ))}
+        </ul>)
     }
 }
 
 
-// allow for type checking on props
+// allow for type checking of props
 TagList.propTypes = {
     tags: React.PropTypes.arrayOf(React.PropTypes.shape({
         id: React.PropTypes.number,

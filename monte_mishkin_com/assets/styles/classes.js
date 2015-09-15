@@ -24,7 +24,7 @@ export const large_font_size = {
 }
 
 export const main_font_size = {
-    // ?
+    fontSize: 16,
 }
 
 export const small_font_size = {

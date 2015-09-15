@@ -8,32 +8,37 @@ import classes from '../../../styles/classes'
 
 // define style sheet
 let styles = {
-    list: {
-        listStyleType: 'none',
-        padding: 0,
-        margin: 0,
-        display: 'flex',
-        flexWrap: 'wrap',
-        // justifyContent: 'space-around',
-    },
-
-    list_item: {
-        padding: 10,
+    container: {
         display: 'flex',
         alignItems: 'center',
+        ...classes.small_font_size,
     },
 
     image: {
         height: 15,
-        marginRight: 4,
+    },
+
+    names_list: {
+        listStyleType: 'none',
+        margin: 0,
+        paddingLeft: 3,
+        paddingRight: 3,
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+
+    names_list_item: {
+        marginLeft: 3,
+        marginRight: 3,
+        paddingTop: 2,
+        paddingBottom: 2,
+        paddingLeft: 3,
+        paddingRight: 3,
     },
 
     link: {
         ...classes.link_hoverable,
         ...classes.darker_font_color,
-        display: 'flex',
-        alignItems: 'center',
-        paddingBottom: 3,
     },
 }
 

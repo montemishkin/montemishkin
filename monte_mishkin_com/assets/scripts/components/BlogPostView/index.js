@@ -7,7 +7,7 @@ import connectToStores from 'alt/utils/connectToStores'
 // import DisqusThread from 'react-disqus-thread'
 /* local imports */
 import styles from './styles'
-import TagList from '../TagList'
+import TagListInline from '../TagListInline'
 import Date from '../Date'
 import BlogPostStore from '../../stores/BlogPostStore'
 import BlogPostActions from '../../actions/BlogPostActions'
@@ -70,7 +70,7 @@ class BlogPostView extends React.Component {
                             <Date date={this.props.post.creation_date} />
                         </div>
                         <div style={styles.tag_list_wrapper}>
-                            <TagList tags={this.props.post.tags} />
+                            <TagListInline tags={this.props.post.tags} />
                         </div>
                     </div>
                     <div

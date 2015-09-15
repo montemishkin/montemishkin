@@ -3,6 +3,7 @@ import React from 'react/addons'
 import radium from 'radium'
 /* local imports */
 import styles from './styles'
+import Link from '../Link'
 
 
 /**
@@ -13,6 +14,9 @@ import styles from './styles'
 class TagView extends React.Component {
     render() {
         return (<div style={styles.container}>
+            <Link to='tags'>
+                View all tags
+            </Link>
             {this.props.params.slug}
         </div>)
     }
