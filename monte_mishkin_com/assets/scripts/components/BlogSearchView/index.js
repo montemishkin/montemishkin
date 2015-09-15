@@ -21,7 +21,7 @@ class BlogSearchView extends React.Component {
         super(...args)
 
         this.state = {
-            search_text: this.props.query.filter || '',
+            search_text: this.props.query.search || '',
         }
     }
 
@@ -48,7 +48,7 @@ class BlogSearchView extends React.Component {
 
     componentWillReceiveProps(props) {
         this.setState({
-            search_text: props.query.filter || '',
+            search_text: props.query.search || '',
         })
     }
 

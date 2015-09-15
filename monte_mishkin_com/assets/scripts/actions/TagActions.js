@@ -5,37 +5,37 @@ import {ajax} from 'jquery'
 
 
 /**
- * Actions for blog posts.
+ * Actions for tags.
  * @class
  */
 @alt.createActions
-class BlogPostActions {
-    fetchBlogPosts() {
+class TagActions {
+    fetchTags() {
         // dispatch before async to allow for loading state
         this.dispatch()
         setTimeout(() =>
         ajax({
-            url: '/api/blog-posts/',
-            success: (posts) => this.actions.setBlogPosts(posts),
-            error: (...args) => this.actions.failFetchBlogPosts(...args),
+            url: '/api/tags/',
+            success: (tags) => this.actions.setTags(tags),
+            error: (...args) => this.actions.failFetchTags(...args),
         })
         , 500)
     }
 
 
-    setBlogPosts(posts) {
-        this.dispatch(posts)
+    setTags(tags) {
+        this.dispatch(tags)
     }
 
 
-    failFetchBlogPosts(...args) {
+    failFetchTags(...args) {
         this.dispatch(args)
     }
 }
 
 
 // export actions
-export default BlogPostActions
+export default TagActions
 
 
 // end of file

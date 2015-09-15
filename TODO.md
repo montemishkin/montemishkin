@@ -19,7 +19,7 @@
     - radium wrapping of react-router's `Link` does not work on `activeStyle` prop.  Thus, nav links don't transition *in* to the new background color even though they do transition *out* of it.
 
 - general
-    - remove `setTimeout` from ajax in `BlogPostActions`
+    - remove `setTimeout` from ajax in all fetch actions
     - link icons8
     - universal (isomorphic)
     - logo
@@ -27,6 +27,7 @@
     - handle styling (stretch of tag image, etc) for TagList component
     - better "whoops" messages for ajax loading errors on front end
     - propTypes
+    - enable disqus
     - figure out url/file loader problem with webpack config + hardcoded urls
 
 - blog / project lists
