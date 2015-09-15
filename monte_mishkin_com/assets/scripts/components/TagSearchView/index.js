@@ -5,6 +5,7 @@ import radium from 'radium'
 import connectToStores from 'alt/utils/connectToStores'
 /* local imports */
 import styles from './styles'
+import TagList from '../TagList'
 import TagStore from '../../stores/TagStore'
 import TagActions from '../../actions/TagActions'
 
@@ -52,13 +53,65 @@ class TagSearchView extends React.Component {
     }
 
 
+    getFilteredTags() {
+        // strings to search for
+        const search_terms = this.state.search_text.trim().split(' ')
+        // return filtered tags
+        return this.props.tags.filter((tag) => {
+            for (const term of search_terms) {
+                if (tag.name.search(term) !== -1) {
+                    return true
+                }
+            }
+
+            return false
+        })
+    }
+
+
     render() {
+        // default as if tags have not yet been loaded from server
+        let content = (<img
+            style={styles.image}
+            alt='Loading Indicator'
+            src='/static/images/spinner.gif'
+        />)
+
+        // if tags have been loaded from server
+        if (this.props.has_loaded) {
+            // default as if there are no tags
+            content = (<span style={styles.no_tag_message}>
+                There are no tags!
+            </span>)
+
+            // if there are any tags
+            if (this.props.tags.length !== 0) {
+                // filter out which tags to display
+                let filtered_tags = this.getFilteredTags()
+
+                // default as if no tags survived filter
+                content = (<span style={styles.no_search_result_message}>
+                    No search results!
+                </span>)
+
+                // if any ags survived filter
+                if (filtered_tags.length !== 0) {
+                    content = (<TagList tags={filtered_tags} />)
+                }
+            }
+        }
+
         return (<div style={styles.container}>
-            <ul>
-                {this.props.tags.map((tag) => (<li key={tag.id}>
-                    {tag.name}
-                </li>))}
-            </ul>
+            <input
+                type='text'
+                placeholder='search'
+                style={styles.search_bar}
+                value={this.state.search_text}
+                onChange={(event) =>
+                    this.setState({search_text: event.target.value})
+                }
+            />
+            {content}
         </div>)
     }
 }

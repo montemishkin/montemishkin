@@ -32,10 +32,8 @@ class TagList extends React.Component {
                         key={tag.id}
                     >
                         <Link
-                            to='tags'
-                            query={{
-                                filter: kebabCase(tag.name),
-                            }}
+                            to='tag'
+                            params={{slug: tag.slug}}
                             style={styles.link}
                         >
                             {tag.name}
@@ -53,6 +51,7 @@ TagList.propTypes = {
     tags: React.PropTypes.arrayOf(React.PropTypes.shape({
         id: React.PropTypes.number,
         name: React.PropTypes.string,
+        slug: React.PropTypes.string,
     })),
 }
 

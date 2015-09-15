@@ -11,6 +11,7 @@
     - handle not found routes more professionally
 
 - styling
+    - (stretch of tag image, etc) for TagList component
     - style rendered markdown
     - choose syntax highlighting styling
     - overall DRY design of styling
@@ -24,7 +25,6 @@
     - universal (isomorphic)
     - logo
     - favicon
-    - handle styling (stretch of tag image, etc) for TagList component
     - better "whoops" messages for ajax loading errors on front end
     - propTypes
     - enable disqus

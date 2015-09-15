@@ -14,6 +14,7 @@ import ProjectView from './components/ProjectView'
 import BlogSearchView from './components/BlogSearchView'
 import BlogPostView from './components/BlogPostView'
 import TagSearchView from './components/TagSearchView'
+import TagView from './components/TagView'
 
 
 // define routes
@@ -25,6 +26,7 @@ let routes = (<Route handler={Root}>
     <Route name='blog' path='blog' handler={BlogSearchView} />
     <Route name='blog-post' path='blog/:slug' handler={BlogPostView} />
     <Route name='tags' path='tags' handler={TagSearchView} />
+    <Route name='tag' path='tags/:slug' handler={TagView} />
 </Route>)
 
 
