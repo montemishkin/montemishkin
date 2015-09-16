@@ -95,7 +95,7 @@ TEMPLATES = [
 STATIC_URL = '/static/'
 STATIC_ROOT = STATIC_DIR
 MEDIA_ROOT = UPLOADS_DIR
-MEDIA_URL = '/raw/'
+MEDIA_URL = '/static/uploads/'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',

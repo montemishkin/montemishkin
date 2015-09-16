@@ -40,7 +40,7 @@ class TagSearchView extends React.Component {
     static componentDidConnect(props) {
         // if tags have not yet been loaded this session
         if (!props.has_loaded) {
-            // fetch blog posts from server
+            // fetch tags from server
             TagActions.fetchTags()
         }
     }

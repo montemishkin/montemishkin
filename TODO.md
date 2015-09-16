@@ -23,12 +23,14 @@
     - remove `setTimeout` from ajax in all fetch actions
     - link icons8
     - universal (isomorphic)
+    - eliminate large amount of duplicate code between projects and blog posts (and tags, but less so)
     - logo
     - favicon
     - better "whoops" messages for ajax loading errors on front end
     - propTypes
     - enable disqus
     - figure out url/file loader problem with webpack config + hardcoded urls
+        - also, `MEDIA_ROOT` and `MEDIA_URL` in django settings
 
 - blog / project lists
     - step up my search filter game? https://github.com/olivernn/lunr.js

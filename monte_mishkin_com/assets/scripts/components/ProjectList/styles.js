@@ -1,5 +1,5 @@
 /**
- * Style sheet for BlogPostList component.
+ * Style sheet for ProjectList component.
  */
 
 /* local imports */
