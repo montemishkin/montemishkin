@@ -15,12 +15,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Project',
             fields=[
-                ('id', models.AutoField(serialize=False, primary_key=True, verbose_name='ID', auto_created=True)),
-                ('title', models.CharField(unique=True, max_length=100)),
+                ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
+                ('slug', models.SlugField(unique=True)),
+                ('title', models.CharField(max_length=100)),
                 ('creation_date', models.DateTimeField(auto_now_add=True)),
                 ('modification_date', models.DateTimeField(auto_now=True)),
                 ('content', models.TextField()),
-                ('tags', taggit.managers.TaggableManager(help_text='A comma-separated list of tags.', to='taggit.Tag', verbose_name='Tags', through='taggit.TaggedItem')),
+                ('image', models.ImageField(upload_to='')),
+                ('tags', taggit.managers.TaggableManager(to='taggit.Tag', help_text='A comma-separated list of tags.', verbose_name='Tags', through='taggit.TaggedItem')),
             ],
         ),
     ]

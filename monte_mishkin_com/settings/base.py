@@ -47,6 +47,7 @@ monte_mishkin_com_apps = (
     'monte_mishkin_com.apps.blog',
     'monte_mishkin_com.apps.projects',
     'monte_mishkin_com.apps.api',
+    'monte_mishkin_com.apps.core',
 )
 
 INSTALLED_APPS = monte_mishkin_com_apps + third_party_apps + django_apps
@@ -94,6 +95,7 @@ TEMPLATES = [
 STATIC_URL = '/static/'
 STATIC_ROOT = STATIC_DIR
 MEDIA_ROOT = UPLOADS_DIR
+MEDIA_URL = '/raw/'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',

@@ -6,7 +6,7 @@ from .models import Project
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    pass
+    prepopulated_fields = {'slug': ('title',)}
 
 
 # end of file
