@@ -55,11 +55,14 @@ class TagSearchView extends React.Component {
 
     getFilteredTags() {
         // strings to search for
-        const search_terms = this.state.search_text.trim().split(' ')
+        const search_terms = this.state.search_text
+            .toLowerCase()
+            .trim()
+            .split(' ')
         // return filtered tags
         return this.props.tags.filter((tag) => {
             for (const term of search_terms) {
-                if (tag.name.search(term) !== -1) {
+                if (tag.name.toLowerCase().search(term) !== -1) {
                     return true
                 }
             }

@@ -55,7 +55,10 @@ class BlogSearchView extends React.Component {
 
     getFilteredPosts() {
         // strings to search for
-        const search_terms = this.state.search_text.trim().split(' ')
+        const search_terms = this.state.search_text
+            .toLowerCase()
+            .trim()
+            .split(' ')
         // return filtered, sorted posts
         return this.props.posts.filter((post) => {
             // strings to search through
@@ -68,7 +71,7 @@ class BlogSearchView extends React.Component {
 
             for (const field of search_fields) {
                 for (const term of search_terms) {
-                    if (field.search(term) !== -1) {
+                    if (field.toLowerCase().search(term) !== -1) {
                         return true
                     }
                 }
