@@ -3,7 +3,15 @@
  */
 
 /* local imports */
+import colors from '../../../styles/colors'
 import classes from '../../../styles/classes'
+
+
+// transition styling
+const transition = {
+    ...classes.transition_parameters,
+    transitionProperty: 'borderColor',
+}
 
 
 // define style sheet
@@ -14,12 +22,18 @@ let styles = {
     },
 
     image: {
+        ...transition,
         marginRight: 10,
         borderStyle: 'solid',
         borderColor: 'black',
         borderWidth: 1,
         height: 140,
         width: 140,
+
+        ':hover': {
+            ...transition,
+            borderColor: colors.grey.link_hover,
+        },
     },
 
     not_image: {

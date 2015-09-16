@@ -60,11 +60,16 @@ class ProjectPreview extends React.Component {
         }
 
         return (<div style={styles.container}>
-            <img
-                style={styles.image}
-                alt={`"${this.props.title}" Project Thumbnail`}
-                src={this.props.image}
-            />
+            <Link
+                {...link_props}
+                style={styles.image_link}
+            >
+                <img
+                    style={styles.image}
+                    alt={`"${this.props.title}" Project Thumbnail`}
+                    src={this.props.image}
+                />
+            </Link>
             <div style={styles.not_image}>
                 <Link
                     {...link_props}
@@ -102,7 +107,7 @@ ProjectPreview.propTypes = {
         name: React.PropTypes.string,
     })),
     content: React.PropTypes.string,
-    // image:
+    image: React.PropTypes.string,
 }
 
 
