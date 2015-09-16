@@ -8,7 +8,7 @@ import connectToStores from 'alt/utils/connectToStores'
 /* local imports */
 import styles from './styles'
 import TagListInline from '../TagListInline'
-import Date from '../Date'
+import FormattedDate from '../FormattedDate'
 import ProjectStore from '../../stores/ProjectStore'
 import ProjectActions from '../../actions/ProjectActions'
 
@@ -67,7 +67,7 @@ class ProjectView extends React.Component {
                 content = (<div style={styles.project_container}>
                     <div style={styles.date_and_tag_list_wrapper}>
                         <div style={styles.creation_date}>
-                            <Date date={this.props.project.creation_date} />
+                            <FormattedDate date={this.props.project.creation_date} />
                         </div>
                         <div style={styles.tag_list_wrapper}>
                             <TagListInline tags={this.props.project.tags} />

@@ -5,7 +5,7 @@ import radium from 'radium'
 import styles from './styles'
 import Link from '../Link'
 import TagListInline from '../TagListInline'
-import Date from '../Date'
+import FormattedDate from '../FormattedDate'
 
 
 // maximum length for title and content previews
@@ -74,7 +74,7 @@ class ProjectPreview extends React.Component {
                 </Link>
                 <div style={styles.date_and_tag_list_wrapper}>
                     <div style={styles.creation_date}>
-                        <Date date={this.props.creation_date} />
+                        <FormattedDate date={this.props.creation_date} />
                     </div>
                     <div style={styles.tag_list_wrapper}>
                         <TagListInline tags={this.props.tags} />

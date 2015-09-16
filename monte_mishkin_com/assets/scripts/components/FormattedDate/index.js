@@ -31,7 +31,7 @@ const short_month_names = month_names.map(name => name.substr(0, 3))
  * @class
  */
 @radium
-class Date extends React.Component {
+class FormattedDate extends React.Component {
     /**
      * Returns a date string like "Aug 3, 2015" based on `this.props.date`.
      * Expects `this.props.date` to be like "2015-09-07T00:00:36.049780Z".
@@ -59,13 +59,13 @@ class Date extends React.Component {
 
 
 // allow for type checking of props
-Date.propTypes = {
+FormattedDate.propTypes = {
     date: React.PropTypes.string,
 }
 
 
 // export component
-export default Date
+export default FormattedDate
 
 
 // end of file

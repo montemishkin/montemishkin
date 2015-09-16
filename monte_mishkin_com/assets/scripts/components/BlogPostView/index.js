@@ -8,7 +8,7 @@ import connectToStores from 'alt/utils/connectToStores'
 /* local imports */
 import styles from './styles'
 import TagListInline from '../TagListInline'
-import Date from '../Date'
+import FormattedDate from '../FormattedDate'
 import BlogPostStore from '../../stores/BlogPostStore'
 import BlogPostActions from '../../actions/BlogPostActions'
 
@@ -67,7 +67,7 @@ class BlogPostView extends React.Component {
                 content = (<div style={styles.post_container}>
                     <div style={styles.date_and_tag_list_wrapper}>
                         <div style={styles.creation_date}>
-                            <Date date={this.props.post.creation_date} />
+                            <FormattedDate date={this.props.post.creation_date} />
                         </div>
                         <div style={styles.tag_list_wrapper}>
                             <TagListInline tags={this.props.post.tags} />

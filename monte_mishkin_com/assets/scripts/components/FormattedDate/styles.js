@@ -1,5 +1,5 @@
 /**
- * Style sheet for Date component.
+ * Style sheet for FormattedDate component.
  */
 
 
