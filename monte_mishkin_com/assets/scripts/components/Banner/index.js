@@ -1,31 +1,19 @@
 /* common react imports */
 import React from 'react/addons'
 import radium from 'radium'
-/* common alt imports */
-import connectToStores from 'alt/utils/connectToStores'
 /* local imports */
 import styles from './styles'
 import Link from '../Link'
-import ResponsiveStore from '../../stores/ResponsiveStore'
+import {responsive} from '../../util'
 
 
 /**
  * Branding banner.
  * @class
  */
-@connectToStores
+@responsive
 @radium
 class Banner extends React.Component {
-    static getStores() {
-        return [ResponsiveStore]
-    }
-
-
-    static getPropsFromStores() {
-        return ResponsiveStore.getState()
-    }
-
-
     render() {
         // default to infinity styling
         let header_style = styles.header_infinity

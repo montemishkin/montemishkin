@@ -1,31 +1,19 @@
 /* common react imports */
 import React from 'react/addons'
 import radium from 'radium'
-/* common alt imports */
-import connectToStores from 'alt/utils/connectToStores'
 /* local imports */
 import styles from './styles'
 import Link from '../Link'
-import ResponsiveStore from '../../stores/ResponsiveStore'
+import {responsive} from '../../util'
 
 
 /**
  * Sitewide footer.
  * @class
  */
-@connectToStores
+@responsive
 @radium
 class Footer extends React.Component {
-    static getStores() {
-        return [ResponsiveStore]
-    }
-
-
-    static getPropsFromStores() {
-        return ResponsiveStore.getState()
-    }
-
-
     render() {
         // default to infinity styling for `container`
         let container_style = styles.container_infinity

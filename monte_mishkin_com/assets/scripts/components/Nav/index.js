@@ -1,31 +1,19 @@
 /* common react imports */
 import React from 'react/addons'
 import radium from 'radium'
-/* common alt imports */
-import connectToStores from 'alt/utils/connectToStores'
 /* local imports */
 import styles from './styles'
 import Link from '../Link'
-import ResponsiveStore from '../../stores/ResponsiveStore'
+import {responsive} from '../../util'
 
 
 /**
  * Navigation bar.
  * @class
  */
-@connectToStores
+@responsive
 @radium
 class Nav extends React.Component {
-    static getStores() {
-        return [ResponsiveStore]
-    }
-
-
-    static getPropsFromStores() {
-        return ResponsiveStore.getState()
-    }
-
-
     render() {
         // default to infinity styling for inner container
         let inner_container_style = styles.inner_container_infinity
