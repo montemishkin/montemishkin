@@ -42,9 +42,9 @@ class BusinessCard extends React.Component {
             <img
                 style={styles.image}
                 alt='Monte Mishkin'
-                src='/static/images/square_finch.jpg'
+                src='/static/images/finchz_medium.jpg'
             />
-            <div style={styles.name_and_address}>
+            <div style={styles.not_image}>
                 <p style={styles.name}>
                     Monte Mishkin
                 </p>
@@ -56,8 +56,9 @@ class BusinessCard extends React.Component {
                                 style={styles.address_list_item}
                             >
                                 <a
+                                    key={index}
                                     href={href}
-                                    style={styles.address_list_item_link}
+                                    style={styles.link}
                                 >
                                     <figure style={styles.figure}>
                                         <img
@@ -65,7 +66,7 @@ class BusinessCard extends React.Component {
                                             src={src}
                                             alt={alt}
                                         />
-                                        <figcaption>
+                                        <figcaption style={styles.caption}>
                                             {caption}
                                         </figcaption>
                                     </figure>

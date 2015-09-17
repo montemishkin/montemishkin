@@ -3,6 +3,7 @@
  */
 
 /* local imports */
+import classes from '../../../styles/classes'
 import colors from '../../../styles/colors'
 
 
@@ -11,34 +12,37 @@ let styles = {
     container: {
         display: 'flex',
         justifyContent: 'center',
-        alignContent: 'center',
-        alignItems: 'center',
+        alignItems: 'stretch',
         flexWrap: 'wrap',
-        padding: 10,
         borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: colors.grey.darkest,
-        backgroundColor: colors.grey.main,
+        borderTopWidth: 0,
+        borderLeftWidth: 0,
+        borderRightWidth: 0,
+        borderBottomWidth: 1,
+        borderColor: colors.grey.darker_bg,
+        paddingBottom: 20,
     },
 
     image: {
+        borderStyle: 'solid',
+        borderColor: 'black',
+        borderWidth: 1,
         width: 200,
         height: 200,
-        // borderStyle: 'solid',
-        // borderWidth: 1,
-        // borderColor: 'black',
     },
 
-    name_and_address: {
+    not_image: {
         display: 'flex',
         flexDirection: 'column',
+        justifyContent: 'space-around',
         flexGrow: 1,
     },
 
     name: {
-        display: 'flex',
-        justifyContent: 'center',
-        fontSize: 30,
+        ...classes.larger_font_size,
+        textAlign: 'center',
+        marginTop: 20,
+        marginBottom: 10,
     },
 
     address: {
@@ -51,12 +55,19 @@ let styles = {
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         listStyleType: 'none',
-        margin: 0,
+        marginTop: 0,
+        marginBottom: 0,
+        marginLeft: 10,
+        marginRight: 10,
     },
 
-    address_list_item_link: {
-        color: 'black',
-        textDecoration: 'none',
+    address_list_item: {
+        padding: 10,
+    },
+
+    link: {
+        ...classes.link_hoverable,
+        ...classes.dark_font_color,
     },
 
     figure: {
@@ -68,6 +79,10 @@ let styles = {
 
     icon: {
         height: 32,
+    },
+
+    caption: {
+        fontStyle: 'normal',
     },
 }
 
