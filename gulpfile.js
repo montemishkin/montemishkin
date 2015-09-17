@@ -11,7 +11,6 @@ var gulp = require('gulp')
 var del = require('del')
 var webpack = require('webpack-stream')
 var named = require('vinyl-named')
-// var gulp_ssh = require('gulp-ssh')
 var install = require('gulp-install')
 var shell = require('gulp-shell')
 var karma = require('karma').server
@@ -19,14 +18,6 @@ var karma = require('karma').server
 var assign = require('lodash/object/assign')
 /* local imports */
 var project_paths = require('./config/project_paths')
-
-
-// /* remote host configuration */
-//
-// var ssh_host = gulp_ssh({
-//     host: '',
-//     username: ''
-// })
 
 
 /* tasks */
@@ -105,93 +96,6 @@ gulp.task('tdd-frontend', function(cb) {
         configFile: project_paths.karma_config
     }, cb)
 })
-
-
-/**
- * Activate the project's python virtual environment.
- */
-gulp.task('workon', shell.task([
-    // 'workon monte_mishkin_com'
-    // // ^ doesnt work because workon is an alias...
-    // 'source $HOME/.virtualenvs/monte_mishkin_com/bin/activate'
-    // // ^ wont work because dependent shell tasks start a new shell instance
-    'python -c "import django"'
-    // ^ best hack i could think of for now, to ensure you are
-    //   in your virtualenv before running python commands
-]))
-
-
-/**
- * Migrate the database.
- */
-gulp.task('migrate', ['workon'], shell.task([
-    './manage.py makemigrations',
-    './manage.py migrate'
-]))
-
-
-/**
- * Run the development server.
- */
-gulp.task('serve', ['workon'], shell.task([
-    './manage.py runserver'
-]))
-
-
-/**
- * Install/update local (python and node) dependencies.
- */
-gulp.task('update_dependencies', ['workon'], function() {
-    return gulp.src('./package.json')
-               .pipe(install())
-               .pipe(shell(['pip install -r requirements.pip']))
-})
-
-
-
-// // create the local database
-// gulp.task('create_db', shell.task('./manage.py syncdb'))
-//
-//
-// // deploy the codebase to live server (make sure to push first)
-// gulp.task('deploy', ['push'], function() {
-//     // execute the following commands on remote server
-//     return ssh_host.shell([
-//         // navigate into directory with repository
-//         'cd repository',
-//         // pull latest version of codebase
-//         'gulp pull',
-//         // update "local" project
-//         'gulp update_project',
-//         // restart application server
-//         'sudo service gunicorn restart',
-//     ])
-// })
-//
-//
-// // initialize the project locally
-// gulp.task('init', ['create_db', 'update_project'])
-//
-//
-// // pull repository from remote server
-// gulp.task('pull', shell.task('git pull'))
-//
-//
-// // push repository to remote server (pull first)
-// gulp.task('push', ['pull'], shell.task('git push'))
-//
-//
-// // pull repository from remote server
-// gulp.task('server', shell.task('./manage.py runserver_plus'))
-//
-//
-// // execute necessary commands to initialize  project locally
-// gulp.task('update_project', ['update_dependencies'], shell.task([
-//     // update database
-//     './manage.py migrate',
-//     // collect static files
-//     './manage.py collectstatic',
-// ]))
 
 
 // end of file
