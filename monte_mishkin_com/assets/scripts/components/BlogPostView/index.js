@@ -50,51 +50,104 @@ class BlogPostView extends React.Component {
     }
 
 
+    /**
+     * Returns what `render` should return if we are still mid ajax load.
+     */
+    getLoadingContent() {
+        return (<div style={styles.container}>
+            <div style={styles.loading_image_wrapper}>
+                <img
+                    style={styles.loading_image}
+                    alt='Loading Indicator'
+                    src='/static/images/spinner.gif'
+                />
+            </div>
+        </div>)
+    }
+
+
+    /**
+     * Returns what `render` should return if there was a failure in ajax fetch.
+     */
+    getFailureContent() {
+        return (<div style={styles.container}>
+            <h3 style={styles.title}>
+                Woops!
+            </h3>
+            <p style={styles.error_message}>
+                We had trouble reaching the server.
+                Feel free to refresh the page, or wait for me to retry.
+            </p>
+        </div>)
+    }
+
+
+    /**
+     * Returns what `render` should return if we have loaded and the desired
+     * post was found.
+     */
+    getPostFoundContent() {
+        return (<div style={styles.container}>
+            <h3 style={styles.title}>
+                {this.props.post.title}
+            </h3>
+            <div style={styles.post_container}>
+                <div style={styles.date_and_tag_list_wrapper}>
+                    <div style={styles.creation_date}>
+                        <FormattedDate date={this.props.post.creation_date} />
+                    </div>
+                    <div style={styles.tag_list_wrapper}>
+                        <TagListInline tags={this.props.post.tags} />
+                    </div>
+                </div>
+                <div
+                    style={styles.post_content}
+                    dangerouslySetInnerHTML={{
+                        __html: this.props.post.content,
+                    }}
+                />
+            </div>
+        </div>)
+    }
+
+
+    /**
+     * Returns what `render` should return if we have loaded and the desired
+     * post was NOT found.
+     */
+    getPostNotFoundContent() {
+        return (<div style={styles.container}>
+            <h3 style={styles.title}>
+                Hmm...
+            </h3>
+            <p style={styles.error_message}>
+                There is no blog post here!
+            </p>
+        </div>)
+    }
+
+
     render() {
         // default as if posts have not yet been loaded from server
-        let title = 'Loading...'
-        let content = (<img
-            style={styles.image}
-            alt='Loading Indicator'
-            src='/static/images/spinner.gif'
-        />)
+        let content = this.getLoadingContent()
 
-        // if posts have been loaded
-        if (this.props.has_loaded) {
+        // if there has been an error in fetching from server
+        if (this.props.fetch_error !== null) {
+            content = this.getFailureContent()
+            // try to fetch again (after waiting a few seconds)
+            setTimeout(() => BlogPostActions.fetchBlogPosts(), 3000)
+        // no error in fetching from server, posts have been loaded
+        } else if (this.props.has_loaded) {
             // if we found the right post
             if (typeof this.props.post !== 'undefined') {
-                title = this.props.post.title
-                content = (<div style={styles.post_container}>
-                    <div style={styles.date_and_tag_list_wrapper}>
-                        <div style={styles.creation_date}>
-                            <FormattedDate date={this.props.post.creation_date} />
-                        </div>
-                        <div style={styles.tag_list_wrapper}>
-                            <TagListInline tags={this.props.post.tags} />
-                        </div>
-                    </div>
-                    <div
-                        style={styles.post_content}
-                        dangerouslySetInnerHTML={{
-                            __html: this.props.post.content,
-                        }}
-                    />
-                </div>)
+                content = this.getPostFoundContent()
             // posts loaded but this post not found
             } else {
-                title = 'Woops!'
-                content = (<p style={styles.error}>
-                    There is no blog post here!
-                </p>)
+                content = this.getPostNotFoundContent()
             }
         }
 
-        return (<div style={styles.container}>
-            <div style={styles.title}>
-                {title}
-            </div>
-            {content}
-        </div>)
+        return content
     }
 }
 
