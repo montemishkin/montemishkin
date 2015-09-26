@@ -13,7 +13,7 @@ if __name__ == '__main__':
     from django.core.management import execute_from_command_line
 
     # load dev django settings
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'monte_mishkin_com.settings.dev')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'montemishkin.settings.dev')
 
     # perform default action
     execute_from_command_line(sys.argv)

@@ -11,12 +11,12 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # python imports
 import os
 # local imports
-import monte_mishkin_com
+import montemishkin
 
 
 # folder definitions
-BASE_DIR = os.path.abspath(os.path.join(monte_mishkin_com.root_dir, os.pardir))
-APP_DIR = os.path.join(BASE_DIR, 'monte_mishkin_com')
+BASE_DIR = os.path.abspath(os.path.join(montemishkin.root_dir, os.pardir))
+APP_DIR = os.path.join(BASE_DIR, 'montemishkin')
 TEMPLATES_DIR = os.path.join(APP_DIR, 'templates')
 RESOURCES_DIR = os.path.join(APP_DIR, 'assets')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
@@ -43,14 +43,14 @@ third_party_apps = (
     'taggit',
 )
 
-monte_mishkin_com_apps = (
-    'monte_mishkin_com.apps.blog',
-    'monte_mishkin_com.apps.projects',
-    'monte_mishkin_com.apps.api',
-    'monte_mishkin_com.apps.core',
+montemishkin_apps = (
+    'montemishkin.apps.blog',
+    'montemishkin.apps.projects',
+    'montemishkin.apps.api',
+    'montemishkin.apps.core',
 )
 
-INSTALLED_APPS = monte_mishkin_com_apps + third_party_apps + django_apps
+INSTALLED_APPS = montemishkin_apps + third_party_apps + django_apps
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -62,7 +62,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'monte_mishkin_com.urls'
+ROOT_URLCONF = 'montemishkin.urls'
 
 APPEND_SLASH = True
 

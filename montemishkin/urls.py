@@ -18,7 +18,7 @@ urlpatterns = [
         'rest_framework.urls',
         namespace='rest_framework'
     )),
-    url(r'^api/', include('monte_mishkin_com.apps.api.urls')),
+    url(r'^api/', include('montemishkin.apps.api.urls')),
     url(r'.*', Home.as_view()),
 ]
 

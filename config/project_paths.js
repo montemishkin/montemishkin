@@ -12,7 +12,7 @@ var rute = path.join(__dirname, '..')
 // configuration directory
 var config_dir = path.join(rute, 'config')
 // assets directory
-var assets_dir = path.join(rute, 'monte_mishkin_com', 'assets')
+var assets_dir = path.join(rute, 'montemishkin', 'assets')
 // scripts directory
 var scripts_dir = path.join(assets_dir, 'scripts')
 

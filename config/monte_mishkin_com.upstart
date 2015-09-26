@@ -1,8 +1,8 @@
 # #
-# Upstart script for the monte_mishkin_com gunicorn application server.
+# Upstart script for the montemishkin gunicorn application server.
 # #
 
-description "Gunicorn application server for monte_mishkin_com django project"
+description "Gunicorn application server for montemishkin django project"
 
 start on [2345]
 stop on runlevel [!12345]
@@ -11,18 +11,18 @@ stop on runlevel [!12345]
 respawn
 
 # set user of process to desired user for this particular project
-setuid monte_mishkin_com
+setuid montemishkin
 # set group of process to same as nginx process
 setgid www-data
 
 # navigate to project directory
-chdir /home/monte_mishkin_com/projects/monte_mishkin_com
+chdir /home/montemishkin/projects/montemishkin
 
 # start server
-exec /home/monte_mishkin_com/.virtualenvs/monte_mishkin_com/bin/gunicorn \
-    --name monte_mishkin_com \
+exec /home/montemishkin/.virtualenvs/montemishkin/bin/gunicorn \
+    --name montemishkin \
     --workers 3 \
-    --bind unix:/home/monte_mishkin_com/projects/monte_mishkin_com/monte_mishkin_com.sock \
+    --bind unix:/home/montemishkin/projects/montemishkin/montemishkin.sock \
     config.wsgi:application
 
 

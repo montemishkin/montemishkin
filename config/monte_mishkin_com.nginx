@@ -1,5 +1,5 @@
 # #
-# NGINX server configuration for monte_mishkin_com.
+# NGINX server configuration for montemishkin.
 # #
 
 server {
@@ -14,13 +14,13 @@ server {
     # requests for static files
     location /static/ {
         # route to django project's collected static files
-        root /home/monte_mishkin_com/projects/monte_mishkin_com;
+        root /home/montemishkin/projects/montemishkin;
     }
 
     # proxy all other location requests to gunicorn process via unix socket
     location / {
         include proxy_params;
-        proxy_pass http://unix:/home/monte_mishkin_com/projects/monte_mishkin_com/monte_mishkin_com.sock;
+        proxy_pass http://unix:/home/montemishkin/projects/montemishkin/montemishkin.sock;
     }
 }
 

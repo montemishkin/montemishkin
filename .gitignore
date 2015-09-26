@@ -5,7 +5,7 @@ db
 node_modules
 
 # everything in the frontend build directory
-monte_mishkin_com/assets/build
+montemishkin/assets/build
 
 # static files collected for deployment
 static

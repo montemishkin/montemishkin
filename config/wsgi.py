@@ -14,7 +14,7 @@ from django.core.wsgi import get_wsgi_application
 
 
 # use live settings module
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'monte_mishkin_com.settings.live')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'montemishkin.settings.live')
 
 # expose `application` hook to application server
 application = get_wsgi_application()
