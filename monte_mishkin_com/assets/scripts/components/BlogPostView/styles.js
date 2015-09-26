@@ -40,8 +40,6 @@ let styles = {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
-        // flexDirection: 'column-reverse',
-        // alignItems: 'center',
         borderStyle: 'solid',
         borderTopWidth: 0,
         borderLeftWidth: 0,

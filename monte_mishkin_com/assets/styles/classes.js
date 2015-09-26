@@ -19,8 +19,9 @@ export const larger_font_size = {
 }
 
 export const large_font_size = {
-    fontSize: 14,
-    fontWeight: 700,
+    // fontSize: 14,
+    // fontWeight: 700,
+    fontSize: 24,
 }
 
 export const main_font_size = {

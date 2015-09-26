@@ -14,6 +14,7 @@ let styles = {
         justifyContent: 'center',
         alignItems: 'stretch',
         flexWrap: 'wrap',
+        marginBottom: 20,
         borderStyle: 'solid',
         borderTopWidth: 0,
         borderLeftWidth: 0,

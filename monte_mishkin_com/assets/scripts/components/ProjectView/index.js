@@ -88,32 +88,32 @@ class ProjectView extends React.Component {
      */
     getProjectFoundContent() {
         return (<div style={styles.container}>
-            <h3 style={styles.title}>
-                {this.props.project.title}
-            </h3>
-            <div style={styles.project_container}>
-                <div style={styles.date_and_tag_list_wrapper}>
-                    <div style={styles.creation_date}>
-                        <FormattedDate date={this.props.project.creation_date} />
-                    </div>
-                    <div style={styles.tag_list_wrapper}>
-                        <TagListInline tags={this.props.project.tags} />
-                    </div>
-                </div>
-                <div style={styles.project_image_wrapper}>
-                    <img
-                        style={styles.project_image}
-                        alt={`"${this.props.project.title}" Project Thumbnail`}
-                        src={this.props.project.image}
-                    />
-                </div>
-                <div
-                    style={styles.project_content}
-                    dangerouslySetInnerHTML={{
-                        __html: this.props.project.content,
-                    }}
+            <div style={styles.project_heading_wrapper}>
+                <img
+                    style={styles.project_image}
+                    alt={`"${this.props.project.title}" Project Thumbnail`}
+                    src={this.props.project.image}
                 />
+                <div style={styles.project_heading_right}>
+                    <h3 style={styles.title}>
+                        {this.props.project.title}
+                    </h3>
+                    <div style={styles.date_and_tag_list_wrapper}>
+                        <div style={styles.creation_date}>
+                            <FormattedDate date={this.props.project.creation_date} />
+                        </div>
+                        <div style={styles.tag_list_wrapper}>
+                            <TagListInline tags={this.props.project.tags} />
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div
+                style={styles.project_content}
+                dangerouslySetInnerHTML={{
+                    __html: this.props.project.content,
+                }}
+            />
         </div>)
     }
 
