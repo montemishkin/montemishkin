@@ -1,7 +1,5 @@
 - blog post and project models
     - right now, tags are required.  is this ok with you?
-    - project model
-        - image field
 
 - rest api
     - set permissions to only allow fetch (unless admin)
