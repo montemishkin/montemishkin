@@ -37,6 +37,10 @@ module.exports = {
         ],
     },
     resolve: {
+        root: [
+            project_paths.assets_dir,
+            project_paths.scripts_dir,
+        ],
         extensions: ['', '.js', '.css'],
     },
     eslint: {

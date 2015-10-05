@@ -21,6 +21,7 @@ var scripts_dir = path.join(assets_dir, 'scripts')
 module.exports = {
     root_dir: rute,
     assets_dir: assets_dir,
+    scripts_dir: scripts_dir,
     build_dir: path.join(assets_dir, 'build'),
     entries_glob: path.join(scripts_dir, 'entries', '*.js'),
     unit_tests_glob: path.join(scripts_dir, 'components', '*', 'tests.js'),
