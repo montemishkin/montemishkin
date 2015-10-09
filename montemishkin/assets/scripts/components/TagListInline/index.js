@@ -1,5 +1,5 @@
 /* common react imports */
-import React from 'react/addons'
+import React from 'react'
 import radium from 'radium'
 /* local imports */
 import styles from './styles'
@@ -30,8 +30,7 @@ class TagList extends React.Component {
                         key={tag.id}
                     >
                         <Link
-                            to='tag'
-                            params={{slug: tag.slug}}
+                            to={`/tags/${tag.slug}`}
                             style={styles.link}
                         >
                             {tag.name}

@@ -1,5 +1,5 @@
 /* common react imports */
-import React from 'react/addons'
+import React from 'react'
 import radium from 'radium'
 /* local imports */
 import styles from './styles'
@@ -14,7 +14,7 @@ import Link from 'components/Link'
 class Tag extends React.Component {
     render() {
         return (<div style={styles.container}>
-            <Link to='tags'>
+            <Link to='/tags'>
                 View all tags
             </Link>
             {this.props.params.slug}

@@ -1,5 +1,5 @@
 /* common react imports */
-import React from 'react/addons'
+import React from 'react'
 import radium from 'radium'
 /* common alt imports */
 import connectToStores from 'alt/utils/connectToStores'
@@ -21,7 +21,7 @@ class TagSearch extends React.Component {
         super(...args)
 
         this.state = {
-            search_text: this.props.query.search || '',
+            search_text: this.props.location.search || '',
         }
     }
 
@@ -48,7 +48,7 @@ class TagSearch extends React.Component {
 
     componentWillReceiveProps(props) {
         this.setState({
-            search_text: props.query.search || '',
+            search_text: props.location.search || '',
         })
     }
 

@@ -1,5 +1,5 @@
 /* common react imports */
-import React from 'react/addons'
+import React from 'react'
 import radium from 'radium'
 /* local imports */
 import styles from './styles'
@@ -55,8 +55,7 @@ class BlogPostPreview extends React.Component {
 
         // props for links to the blog post
         const link_props = {
-            to: 'blog-post',
-            params: {slug: this.props.slug},
+            to: `/blog/${this.props.slug}`,
         }
 
         return (<div style={styles.container}>

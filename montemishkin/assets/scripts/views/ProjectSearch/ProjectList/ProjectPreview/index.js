@@ -1,5 +1,5 @@
 /* common react imports */
-import React from 'react/addons'
+import React from 'react'
 import radium from 'radium'
 /* local imports */
 import styles from './styles'
@@ -55,8 +55,7 @@ class ProjectPreview extends React.Component {
 
         // props for links to the project
         const link_props = {
-            to: 'project',
-            params: {slug: this.props.slug},
+            to: `/projects/${this.props.slug}`,
         }
 
         return (<div style={styles.container}>

@@ -1,9 +1,10 @@
 /* common react imports */
-import React from 'react/addons'
+import React from 'react'
 import radium from 'radium'
 /* local imports */
 import styles from './styles'
 import Link from 'components/Link'
+import IndexLink from 'components/IndexLink'
 import {responsive} from 'util'
 
 
@@ -25,31 +26,31 @@ class Nav extends React.Component {
 
         return (<div style={styles.outer_container}>
             <div style={inner_container_style}>
-                <Link
+                <IndexLink
+                    to='/'
                     style={styles.link}
                     activeStyle={styles.link_active}
-                    to='home'
                 >
                     home
-                </Link>
+                </IndexLink>
                 <Link
                     style={styles.link}
                     activeStyle={styles.link_active}
-                    to='about'
+                    to='/about'
                 >
                     about
                 </Link>
                 <Link
                     style={styles.link}
                     activeStyle={styles.link_active}
-                    to='projects'
+                    to='/projects'
                 >
                     projects
                 </Link>
                 <Link
                     style={styles.link}
                     activeStyle={styles.link_active}
-                    to='blog'
+                    to='/blog'
                 >
                     blog
                 </Link>

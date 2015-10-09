@@ -1,5 +1,5 @@
 /* common react imports */
-import React from 'react/addons'
+import React from 'react'
 import radium from 'radium'
 /* misc third party imports */
 import {throttle} from 'lodash'
@@ -68,7 +68,7 @@ class Sage extends React.Component {
      */
     resetDimensions(cb) {
         // the canvas DOM node
-        const canvas = this.refs.canvas.getDOMNode()
+        const canvas = this.refs.canvas
         // the width of the canvas DOM node
         const width = canvas.clientWidth
         // the desired height of the canvas DOM node

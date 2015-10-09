@@ -4,7 +4,7 @@
 
 /* common react imports */
 import React from 'react'
-import {Route} from 'react-router'
+import {Route, IndexRoute} from 'react-router'
 /* local imports */
 import Root from './views/Root'
 import Home from './views/Home'
@@ -18,15 +18,15 @@ import Tag from './views/Tag'
 
 
 // define routes
-let routes = (<Route handler={Root}>
-    <Route name='home' path='/' handler={Home} />
-    <Route name='about' path='about' handler={About} />
-    <Route name='projects' path='projects' handler={ProjectSearch} />
-    <Route name='project' path='projects/:slug' handler={Project}/>
-    <Route name='blog' path='blog' handler={BlogSearch} />
-    <Route name='blog-post' path='blog/:slug' handler={BlogPost} />
-    <Route name='tags' path='tags' handler={TagSearch} />
-    <Route name='tag' path='tags/:slug' handler={Tag} />
+let routes = (<Route path='/' component={Root}>
+    <IndexRoute component={Home} />
+    <Route path='about' component={About} />
+    <Route path='projects' component={ProjectSearch} />
+    <Route path='projects/:slug' component={Project}/>
+    <Route path='blog' component={BlogSearch} />
+    <Route path='blog/:slug' component={BlogPost} />
+    <Route path='tags' component={TagSearch} />
+    <Route path='tags/:slug' component={Tag} />
 </Route>)
 
 

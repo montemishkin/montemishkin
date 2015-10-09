@@ -1,9 +1,10 @@
 /* common react imports */
-import React from 'react/addons'
+import React from 'react'
 import radium from 'radium'
 /* local imports */
 import styles from './styles'
 import Link from 'components/Link'
+import IndexLink from 'components/IndexLink'
 import {responsive} from 'util'
 
 
@@ -31,26 +32,26 @@ class Footer extends React.Component {
 
         return (<div style={container_style}>
             <div style={left_style}>
-                <Link
-                    to='home'
+                <IndexLink
+                    to='/'
                     style={styles.nav_link}
                 >
                     Home
-                </Link>
+                </IndexLink>
                 <Link
-                    to='about'
+                    to='/about'
                     style={styles.nav_link}
                 >
                     About
                 </Link>
                 <Link
-                    to='projects'
+                    to='/projects'
                     style={styles.nav_link}
                 >
                     Projects
                 </Link>
                 <Link
-                    to='blog'
+                    to='/blog'
                     style={styles.nav_link}
                 >
                     Blog

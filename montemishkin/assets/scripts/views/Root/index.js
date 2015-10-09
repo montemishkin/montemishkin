@@ -1,8 +1,7 @@
-/* common react imports */
-import React from 'react/addons'
-import {RouteHandler} from 'react-router'
+// third party imports
+import React from 'react'
 import radium from 'radium'
-/* local imports */
+// local imports
 import styles from './styles'
 import Banner from './Banner'
 import Nav from './Nav'
@@ -11,25 +10,23 @@ import Footer from './Footer'
 
 /**
  * Root level component.
- * @class
  */
 @radium
-class Root extends React.Component {
+export default class Root extends React.Component {
     render() {
+        // grab the used props
+        const {children} = this.props
+
         return (<div style={styles.container}>
             <Banner />
             <Nav />
             <div style={styles.content}>
-                <RouteHandler />
+                {children}
             </div>
             <Footer />
         </div>)
     }
 }
-
-
-// export component
-export default Root
 
 
 // end of file

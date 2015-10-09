@@ -1,11 +1,9 @@
-/*
- * Main entry point.
- */
-
-/* common react imports */
-import React from 'react/addons'
-import Router from 'react-router'
-/* local imports */
+// common react imports
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {Router} from 'react-router'
+import createBrowserHistory from 'history/lib/createBrowserHistory'
+// local imports
 import routes from '../routes'
 
 
@@ -19,11 +17,10 @@ import highlight from '../../styles/highlight.css'
 /* eslint-enable */
 
 
-// run the router
-Router.run(
-    routes,
-    Router.HistoryLocation,
-    (Handler) => React.render(<Handler />, document.body)
+// render the router directly to body
+ReactDOM.render(
+    <Router routes={routes} history={createBrowserHistory()} />,
+    document.getElementById('app')
 )
 
 

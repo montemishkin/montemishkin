@@ -1,9 +1,9 @@
 /* common react imports */
-import React from 'react/addons'
+import React from 'react'
 import radium from 'radium'
 /* local imports */
 import styles from './styles'
-import Link from 'components/Link'
+import IndexLink from 'components/IndexLink'
 import {responsive} from 'util'
 
 
@@ -27,12 +27,12 @@ class Banner extends React.Component {
 
         return (<div style={styles.container}>
             <h1 style={header_style}>
-                <Link
-                    to='home'
+                <IndexLink
+                    to='/'
                     style={styles.link}
                 >
                     MM
-                </Link>
+                </IndexLink>
             </h1>
             <h2 style={subheader_style}>
                 Your friend on the web
