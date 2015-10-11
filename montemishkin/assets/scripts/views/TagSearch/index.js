@@ -90,7 +90,7 @@ class TagSearch extends React.Component {
             // if there are any tags
             if (this.props.tags.length !== 0) {
                 // filter out which tags to display
-                let filtered_tags = this.getFilteredTags()
+                const filtered_tags = this.getFilteredTags()
 
                 // default as if no tags survived filter
                 content = (<span style={styles.no_search_result_message}>

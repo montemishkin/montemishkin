@@ -1,8 +1,4 @@
-/**
- * Style sheet for About component.
- */
-
-/* local imports */
+// local imports
 import classes from 'styles/classes'
 
 
@@ -16,8 +12,7 @@ const blockquote_base = {
 }
 
 
-// define style sheet
-let styles = {
+export default {
     container: {
         ...classes.page_content_container,
     },
@@ -36,10 +31,6 @@ let styles = {
         textAlign: 'right',
     },
 }
-
-
-// export style sheet
-export default styles
 
 
 // end of file

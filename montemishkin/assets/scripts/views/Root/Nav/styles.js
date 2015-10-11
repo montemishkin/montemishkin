@@ -1,8 +1,4 @@
-/*
- * Style sheet for Nav component.
- */
-
-/* local imports */
+// local imports
 import colors from 'styles/colors'
 import classes from 'styles/classes'
 
@@ -28,8 +24,7 @@ const transition = {
 }
 
 
-// define style sheet
-let styles = {
+export default {
     outer_container: {
         backgroundColor: colors.grey.darker_bg,
     },
@@ -55,10 +50,6 @@ let styles = {
         backgroundColor: colors.grey.lighter,
     },
 }
-
-
-// export style sheet
-export default styles
 
 
 // end of file

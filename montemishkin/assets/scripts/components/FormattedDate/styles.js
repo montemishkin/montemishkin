@@ -1,17 +1,7 @@
-/**
- * Style sheet for FormattedDate component.
- */
-
-
-// define style sheet
-let styles = {
+export default {
     container: {
     },
 }
-
-
-// export style sheet
-export default styles
 
 
 // end of file

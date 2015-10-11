@@ -101,7 +101,7 @@ class ProjectSearch extends React.Component {
             // if there are any projects
             if (this.props.projects.length !== 0) {
                 // filter out which projects to display
-                let filtered_projects = this.getFilteredProjects()
+                const filtered_projects = this.getFilteredProjects()
 
                 // default as if no projects survived filter
                 content = (<span style={styles.no_search_result_message}>

@@ -1,8 +1,4 @@
-/**
- * Style sheet for ProjectPreview component.
- */
-
-/* local imports */
+// local imports
 import colors from 'styles/colors'
 import classes from 'styles/classes'
 
@@ -14,8 +10,7 @@ const transition = {
 }
 
 
-// define style sheet
-let styles = {
+export default {
     container: {
         display: 'flex',
         alignItems: 'stretch',
@@ -71,10 +66,6 @@ let styles = {
         maxWidth: '90%',
     },
 }
-
-
-// export style sheet
-export default styles
 
 
 // end of file

@@ -1,14 +1,9 @@
-/**
- * Style sheet for Project component.
- */
-
-/* local imports */
+// local imports
 import colors from 'styles/colors'
 import classes from 'styles/classes'
 
 
-// define style sheet
-let styles = {
+export default {
     container: {
         ...classes.page_content_container,
     },
@@ -82,10 +77,6 @@ let styles = {
     project_content: {
     },
 }
-
-
-// export style sheet
-export default styles
 
 
 // end of file

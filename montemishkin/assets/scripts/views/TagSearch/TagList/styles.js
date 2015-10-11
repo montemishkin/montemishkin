@@ -1,13 +1,8 @@
-/**
- * Style sheet for TagList component.
- */
-
-/* local imports */
+// local imports
 import classes from 'styles/classes'
 
 
-// define style sheet
-let styles = {
+export default {
     list: {
         listStyleType: 'none',
         padding: 0,
@@ -36,10 +31,6 @@ let styles = {
         paddingBottom: 3,
     },
 }
-
-
-// export style sheet
-export default styles
 
 
 // end of file

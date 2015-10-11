@@ -1,21 +1,12 @@
-/**
- * Style sheet for Home component.
- */
-
-/* local imports */
+// local imports
 import classes from 'styles/classes'
 
 
-// define style sheet
-let styles = {
+export default {
     container: {
         ...classes.page_content_container,
     },
 }
-
-
-// export style sheet
-export default styles
 
 
 // end of file

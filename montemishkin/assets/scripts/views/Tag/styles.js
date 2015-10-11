@@ -1,18 +1,8 @@
-/**
- * Style sheet for Tag component.
- */
-
-
-// define style sheet
-let styles = {
+export default {
     container: {
         backgroundColor: 'red',
     },
 }
-
-
-// export style sheet
-export default styles
 
 
 // end of file

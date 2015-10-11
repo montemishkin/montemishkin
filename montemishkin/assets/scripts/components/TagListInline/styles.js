@@ -1,13 +1,8 @@
-/**
- * Style sheet for TagList component.
- */
-
-/* local imports */
+// local imports
 import classes from '../../../styles/classes'
 
 
-// define style sheet
-let styles = {
+export default {
     container: {
         display: 'flex',
         alignItems: 'center',
@@ -41,10 +36,6 @@ let styles = {
         ...classes.darker_font_color,
     },
 }
-
-
-// export style sheet
-export default styles
 
 
 // end of file

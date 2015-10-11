@@ -1,8 +1,4 @@
-/**
- * Style sheet for TagSearch component.
- */
-
-/* local imports */
+// local imports
 import colors from 'styles/colors'
 import classes from 'styles/classes'
 
@@ -14,8 +10,7 @@ const transition = {
 }
 
 
-// define style sheet
-let styles = {
+export default {
     container: {
         ...classes.page_content_container,
         display: 'flex',
@@ -48,10 +43,6 @@ let styles = {
         },
     },
 }
-
-
-// export style sheet
-export default styles
 
 
 // end of file

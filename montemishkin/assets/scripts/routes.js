@@ -1,11 +1,7 @@
-/*
- * Frontend URL routes.
- */
-
-/* common react imports */
+// third party imports
 import React from 'react'
 import {Route, IndexRoute} from 'react-router'
-/* local imports */
+// local imports
 import Root from './views/Root'
 import Home from './views/Home'
 import About from './views/About'
@@ -17,8 +13,10 @@ import TagSearch from './views/TagSearch'
 import Tag from './views/Tag'
 
 
-// define routes
-let routes = (<Route path='/' component={Root}>
+/**
+ * Frontend router.
+ */
+export default (<Route path='/' component={Root}>
     <IndexRoute component={Home} />
     <Route path='about' component={About} />
     <Route path='projects' component={ProjectSearch} />
@@ -28,10 +26,6 @@ let routes = (<Route path='/' component={Root}>
     <Route path='tags' component={TagSearch} />
     <Route path='tags/:slug' component={Tag} />
 </Route>)
-
-
-// export routes
-export default routes
 
 
 // end of file

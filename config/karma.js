@@ -1,19 +1,20 @@
-/*
+/**
  * Karma configuration.
  *   references:
  *     http://karma-runner.github.io/0.13/config/configuration-file.html
  */
 
-/* local imports */
+// local imports
 var project_paths = require('./project_paths')
-var webpack_dev_config = require(project_paths.webpack_dev_config)
+var webpack_config = require(project_paths.webpack_config)
 
 
-module.exports = function(config) {
-    // annoying hack to be able to dynamically set keys on object
-    var preprocessors = {}
-    preprocessors[project_paths.unit_tests_glob] = ['webpack']
+// annoying hack to be able to dynamically set keys on object
+var preprocessors = {}
+preprocessors[project_paths.tests_glob] = ['webpack', 'sourcemap']
 
+
+module.exports = function (config) {
     config.set({
         // base path that will be used to resolve all patterns (eg. files, exclude)
         basePath: project_paths.root_dir,
@@ -22,12 +23,12 @@ module.exports = function(config) {
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
         frameworks: [
             'mocha',
-            'chai',
+            'sinon-chai',
         ],
 
         // list of files / patterns to load in the browser
         files: [
-            project_paths.unit_tests_glob,
+            project_paths.tests_glob,
         ],
 
         // // list of files to exclude
@@ -41,9 +42,14 @@ module.exports = function(config) {
         // configure webpack using settings from development webpack config
         webpack: {
             module: {
-                loaders: webpack_dev_config.module.loaders
+                loaders: webpack_config.module.loaders
             },
-            resolve: webpack_dev_config.resolve
+            resolve: webpack_config.resolve,
+            devtool: 'inline-source-map',
+        },
+
+        webpackMiddleware: {
+            noInfo: true,
         },
 
         // test results reporter to use
@@ -54,37 +60,16 @@ module.exports = function(config) {
         // web server port
         port: 9876,
 
-        // enable / disable colors in the output (reporters and logs)
-        colors: true,
-
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_DISABLE,
-
-        // enable / disable watching file and executing tests whenever any file changes
-        autoWatch: true,
+        // logLevel: config.LOG_DISABLE,
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         browsers: [
-            'Chrome',
+            // 'Chrome',
             'Firefox',
-            'Safari',
-        ],
-
-        // // Continuous Integration mode
-        // // if true, Karma captures browsers, runs the tests and exits
-        // singleRun: false,
-
-        // activate necessary plugins
-        plugins: [
-            'karma-webpack',
-            'karma-mocha',
-            'karma-mocha-reporter',
-            'karma-chai',
-            'karma-chrome-launcher',
-            'karma-firefox-launcher',
-            'karma-safari-launcher',
+            // 'Safari',
         ],
     })
 }

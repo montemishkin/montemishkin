@@ -101,7 +101,7 @@ class BlogSearch extends React.Component {
             // if there are any posts
             if (this.props.posts.length !== 0) {
                 // filter out which posts to display
-                let filtered_posts = this.getFilteredPosts()
+                const filtered_posts = this.getFilteredPosts()
 
                 // default as if no posts survived filter
                 content = (<span style={styles.no_search_result_message}>

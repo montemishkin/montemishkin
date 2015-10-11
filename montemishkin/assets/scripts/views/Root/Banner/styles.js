@@ -1,8 +1,4 @@
-/**
- * Style sheet for Banner component.
- */
-
-/* local imports */
+// local imports
 import classes from 'styles/classes'
 
 
@@ -16,8 +12,7 @@ const subheader_base = {
 }
 
 
-// define style sheet
-let styles = {
+export default {
     container: {
         ...classes.root_child_container,
     },
@@ -48,10 +43,6 @@ let styles = {
         ...classes.link_base,
     },
 }
-
-
-// export style sheet
-export default styles
 
 
 // end of file

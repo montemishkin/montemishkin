@@ -3,8 +3,7 @@
  */
 
 
-// define color scheme
-let colors = {
+export default {
     primary: {
         lightest: '#839CC3',
         lighter: '#5473A1',
@@ -51,10 +50,6 @@ let colors = {
         stack_overflow_tag_2: '#D1E0EB',
     },
 }
-
-
-// export color scheme
-export default colors
 
 
 // end of file

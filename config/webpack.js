@@ -1,15 +1,29 @@
-/*
- * Base frontend build configuration common to both live and development builds.
- *   references:
- *     * http://webpack.github.io/docs/
- *     * https://github.com/petehunt/webpack-howto
+/**
+ * Webpack configuration for source builds.
  */
 
-/* local imports */
+// webpack imports
+var webpack = require('webpack')
+// local imports
 var project_paths = require('./project_paths')
 
 
-// export the configuration
+// default to using development configuration
+var devtool = 'source-map'
+var plugins = []
+// if we are in a production environment
+if (process.env.NODE_ENV === 'production') {
+    // use production configuration instead
+    devtool = ''
+    plugins.push(
+        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.DedupePlugin()
+    )
+}
+
+
+// export webpack configuration object
 module.exports = {
     module: {
         preLoaders: [
@@ -31,22 +45,27 @@ module.exports = {
             }, {
                 test: /\.js$/,
                 loader: 'babel',
-                query: require(project_paths.babel_config),
-                include: project_paths.assets_dir,
+                include: [
+                    project_paths.assets_dir,
+                    project_paths.scripts_dir,
+                ],
+                query: {stage: 0},
             },
         ],
     },
     resolve: {
+        extensions: ['', '.js', '.css'],
         root: [
             project_paths.assets_dir,
             project_paths.scripts_dir,
         ],
-        extensions: ['', '.js', '.css'],
     },
     eslint: {
         configFile: project_paths.eslint_config,
         failOnError: true,
     },
+    plugins: plugins,
+    devtool: devtool,
 }
 
 

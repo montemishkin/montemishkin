@@ -1,13 +1,8 @@
-/**
- * Style sheet for BlogPostPreview component.
- */
-
-/* local imports */
+// local imports
 import classes from 'styles/classes'
 
 
-// define style sheet
-let styles = {
+export default {
     container: {
         display: 'flex',
         flexDirection: 'column',
@@ -43,10 +38,6 @@ let styles = {
         maxWidth: '90%',
     },
 }
-
-
-// export style sheet
-export default styles
 
 
 // end of file

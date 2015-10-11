@@ -1,14 +1,9 @@
-/**
- * Style sheet for BusinessCard component.
- */
-
-/* local imports */
+// local imports
 import classes from 'styles/classes'
 import colors from 'styles/colors'
 
 
-// define style sheet
-let styles = {
+export default {
     container: {
         display: 'flex',
         justifyContent: 'center',
@@ -86,10 +81,6 @@ let styles = {
         fontStyle: 'normal',
     },
 }
-
-
-// export style sheet
-export default styles
 
 
 // end of file

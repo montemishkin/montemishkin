@@ -276,7 +276,7 @@ class ColorBoard {
      * Iterates the simulation forward one step in time.
      */
     iterate() {
-        let next_array = []
+        const next_array = []
 
         for (let i = 0; i < this.rows; i++) {
             next_array[i] = []

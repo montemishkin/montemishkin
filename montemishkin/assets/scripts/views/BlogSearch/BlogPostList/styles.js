@@ -1,8 +1,4 @@
-/**
- * Style sheet for BlogPostList component.
- */
-
-/* local imports */
+// local imports
 import colors from 'styles/colors'
 
 
@@ -24,7 +20,7 @@ const list_item_base = {
 
 
 // define style sheet
-let styles = {
+export default {
     list: {
         listStyleType: 'none',
         margin: 0,
@@ -44,10 +40,6 @@ let styles = {
         borderBottomWidth: 1,
     },
 }
-
-
-// export style sheet
-export default styles
 
 
 // end of file

@@ -1,8 +1,4 @@
-/**
- * Style sheet for Footer component.
- */
-
-/* local imports */
+// local imports
 import classes from 'styles/classes'
 
 
@@ -33,8 +29,7 @@ const link_base = {
 }
 
 
-// define style sheet
-let styles = {
+export default {
     container_medium: {
         ...container_base,
         flexDirection: 'column',
@@ -77,10 +72,6 @@ let styles = {
         ...link_base,
     },
 }
-
-
-// export style sheet
-export default styles
 
 
 // end of file

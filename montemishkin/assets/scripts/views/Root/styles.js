@@ -1,14 +1,9 @@
-/**
- * Style sheet for Root component.
- */
-
-/* local imports */
+// local imports
 import colors from 'styles/colors'
 import classes from 'styles/classes'
 
 
-// define style sheet
-let styles = {
+export default {
     container: {
         ...classes.dark_font_color,
         ...classes.main_font_size,
@@ -27,10 +22,6 @@ let styles = {
         backgroundColor: colors.grey.bg,
     },
 }
-
-
-// export style sheet
-export default styles
 
 
 // end of file
