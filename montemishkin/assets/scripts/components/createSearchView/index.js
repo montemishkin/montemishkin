@@ -1,0 +1,169 @@
+// third party imports
+import React, {Component, PropTypes} from 'react'
+import radium from 'radium'
+import connectToStores from 'alt/utils/connectToStores'
+// local imports
+import styles from './styles'
+import List from './List'
+import SearchBar from 'components/SearchBar'
+
+
+/**
+ * Factory for searchable list of item previews.
+ * @arg {string} name - The display name for the returned react component.
+ * @arg {string} items_key - The name of the key to look for the items from the store on.
+ * @arg store - The store to connect the view to.
+ * @arg {function} fetch - Function to call when we want to fetch from server.
+ */
+export default ({name, store, fetch, items_key, getSearchFields, PreviewComponent}) => {
+    @connectToStores
+    @radium
+    class SearchView extends Component {
+        static displayName = name
+
+
+        static propTypes = {
+            has_loaded: PropTypes.bool,
+            location: PropTypes.shape({
+                search: PropTypes.string.isRequired,
+            }).isRequired,
+            [items_key]: PropTypes.arrayOf(PropTypes.shape({
+                content: PropTypes.string,
+                title: PropTypes.string,
+                tags: PropTypes.arrayOf(PropTypes.shape({
+                    name: PropTypes.string,
+                })),
+            })).isRequired,
+        }
+
+
+        static getStores() {
+            return [store]
+        }
+
+
+        static getPropsFromStores() {
+            // grab entire state from store
+            return store.getState()
+        }
+
+
+        // see https://github.com/goatslacker/alt/blob/master/src/utils/connectToStores.js#L74
+        static componentDidConnect({has_loaded}) {
+            // if not yet loaded this session
+            if (!has_loaded) {
+                // fetch from server
+                fetch()
+            }
+        }
+
+
+        constructor(...args) {
+            // instantiate `this`
+            super(...args)
+            // set initial state
+            this.state = {
+                search_text: this.props.location.search || '',
+            }
+        }
+
+
+        componentWillReceiveProps({location}) {
+            this.setState({
+                search_text: location.search || '',
+            })
+        }
+
+
+        getFilteredItems() {
+            // strings to search for
+            const search_terms = this.state.search_text
+                .toLowerCase()
+                .trim()
+                .split(' ')
+            // return filtered, sorted items
+            return this.props[items_key].filter((item) => {
+                // strings to search through
+                const search_fields = getSearchFields(item)
+                // [
+                //     // for now just do content, title, and tags
+                //     item.content,
+                //     item.title,
+                //     ...item.tags.map(tag => tag.name),
+                // ]
+
+                for (const field of search_fields) {
+                    for (const term of search_terms) {
+                        if (field.toLowerCase().search(term) !== -1) {
+                            return true
+                        }
+                    }
+                }
+
+                return false
+            // sort by creation date, with more recent items first
+            }).sort((a, b) => a.creation_date < b.creation_date)
+        }
+
+
+        render() {
+            // pull out the used props
+            const {
+                has_loaded,
+            } = this.props
+            const items = this.props[items_key]
+
+            // default as if items have not yet been loaded from server
+            let content = (<img
+                style={styles.image}
+                alt='Loading Indicator'
+                src='/static/images/spinner.gif'
+            />)
+
+            // if items have been loaded from server
+            if (has_loaded) {
+                // default as if there are no items
+                content = (<span style={styles.no_item_message}>
+                    There are no items!
+                </span>)
+
+                // if there are any items
+                if (items.length) {
+                    // filter out which items to display
+                    const filtered_items = this.getFilteredItems()
+
+                    // default as if no items survived filter
+                    content = (<span style={styles.no_search_result_message}>
+                        No search results!
+                    </span>)
+
+                    // if any items survived filter
+                    if (filtered_items.length) {
+                        content = (
+                            <List>
+                                {filtered_items.map((item, key) => (
+                                    <PreviewComponent key={key} item={item} />
+                                ))}
+                            </List>
+                        )
+                    }
+                }
+            }
+
+            return (<div style={styles.container}>
+                <SearchBar
+                    value={this.state.search_text}
+                    onChange={
+                        ({target}) => this.setState({search_text: target.value})
+                    }
+                />
+                {content}
+            </div>)
+        }
+    }
+
+    return SearchView
+}
+
+
+// end of file

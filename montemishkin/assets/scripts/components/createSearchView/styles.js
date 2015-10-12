@@ -21,7 +21,7 @@ export default {
     image: {
     },
 
-    no_post_message: {
+    no_item_message: {
     },
 
     no_search_result_message: {

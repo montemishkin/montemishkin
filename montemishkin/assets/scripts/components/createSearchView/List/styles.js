@@ -19,7 +19,6 @@ const list_item_base = {
 }
 
 
-// define style sheet
 export default {
     list: {
         listStyleType: 'none',
@@ -27,7 +26,6 @@ export default {
         padding: 0,
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-between',
     },
 
     list_item: {

@@ -14,20 +14,22 @@ const content_preview_max_length = 200
 
 
 /**
- * Shortened preview of a single project.
+ * Shortened preview of a single blog post.
  * @class
  */
 @radium
-class ProjectPreview extends React.Component {
+class BlogPostPreview extends React.Component {
     /**
-     * Returns the project's content, stripped of its HTML.
+     * Returns the post's content, stripped of its HTML.
      */
     getStrippedContent() {
+        const {content} = this.props.item
+
         // create a temporary div DOM node
         const div_node = document.createElement('div')
         // populate it with the content we want to strip
         // so that the browser will strip for us
-        div_node.innerHTML = this.props.content
+        div_node.innerHTML = content
 
         // return stripped content (with some fallbacks)
         return div_node.textContent || div_node.innerText || ''
@@ -35,12 +37,19 @@ class ProjectPreview extends React.Component {
 
 
     render() {
+        const {
+            title,
+            creation_date,
+            tags,
+            slug,
+        } = this.props.item
+
         // default to displaying full title
-        let title_preview = this.props.title
+        let title_preview = title
         // if title is too long
-        if (this.props.title.length > title_preview_max_length) {
+        if (title.length > title_preview_max_length) {
             // display only first part of title
-            title_preview = this.props.title
+            title_preview = title
                 .substr(0, title_preview_max_length) + ' ...'
         }
 
@@ -53,51 +62,39 @@ class ProjectPreview extends React.Component {
                 .substr(0, content_preview_max_length) + ' ...'
         }
 
-        // props for links to the project
+        // props for links to the blog post
         const link_props = {
-            to: `/projects/${this.props.slug}`,
+            to: `/blog/${slug}`,
         }
 
         return (<div style={styles.container}>
             <Link
                 {...link_props}
-                style={styles.image_link}
+                style={styles.title}
             >
-                <img
-                    style={styles.image}
-                    alt={`"${this.props.title}" Project Thumbnail`}
-                    src={this.props.image}
-                />
+                {title_preview}
             </Link>
-            <div style={styles.not_image}>
-                <Link
-                    {...link_props}
-                    style={styles.title}
-                >
-                    {title_preview}
-                </Link>
-                <div style={styles.date_and_tag_list_wrapper}>
-                    <div style={styles.creation_date}>
-                        <FormattedDate date={this.props.creation_date} />
-                    </div>
-                    <div style={styles.tag_list_wrapper}>
-                        <TagListInline tags={this.props.tags} />
-                    </div>
+            <div style={styles.date_and_tag_list_wrapper}>
+                <div style={styles.creation_date}>
+                    <FormattedDate date={creation_date} />
                 </div>
-                <Link
-                    {...link_props}
-                    style={styles.content}
-                >
-                    {content_preview}
-                </Link>
+                <div style={styles.tag_list_wrapper}>
+                    <TagListInline tags={tags} />
+                </div>
             </div>
+            <Link
+                {...link_props}
+                style={styles.content}
+            >
+                {content_preview}
+            </Link>
         </div>)
     }
 }
 
 
 // allow for type checking on props
-ProjectPreview.propTypes = {
+BlogPostPreview.propTypes = {
     slug: React.PropTypes.string,
     title: React.PropTypes.string,
     creation_date: React.PropTypes.string,
@@ -106,12 +103,11 @@ ProjectPreview.propTypes = {
         name: React.PropTypes.string,
     })),
     content: React.PropTypes.string,
-    image: React.PropTypes.string,
 }
 
 
 // export component
-export default ProjectPreview
+export default BlogPostPreview
 
 
 // end of file
