@@ -1,7 +1,7 @@
 // local imports
 import ProjectStore from 'stores/ProjectStore'
 import ProjectActions from 'actions/ProjectActions'
-import createSearchView from 'components/createSearchView'
+import createSearchView from 'views/createSearchView'
 import ProjectPreview from './ProjectPreview'
 
 

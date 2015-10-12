@@ -1,7 +1,7 @@
 // local imports
 import BlogPostStore from 'stores/BlogPostStore'
 import BlogPostActions from 'actions/BlogPostActions'
-import createSearchView from 'components/createSearchView'
+import createSearchView from 'views/createSearchView'
 import BlogPostPreview from './BlogPostPreview'
 
 

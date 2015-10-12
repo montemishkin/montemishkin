@@ -1,7 +1,7 @@
 // local imports
 import TagStore from 'stores/TagStore'
 import TagActions from 'actions/TagActions'
-import createSearchView from 'components/createSearchView'
+import createSearchView from 'views/createSearchView'
 import Tag from './Tag'
 
 
