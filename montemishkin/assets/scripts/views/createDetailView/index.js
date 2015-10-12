@@ -9,7 +9,17 @@ import Loader from 'components/Loader'
 
 
 /**
- * Single blog post view.
+ * Factory for searchable item detail view.
+ * @arg {object} options - Allows for named arguments.
+ * @arg {string} options.name - The display name for the returned react
+ * component.
+ * @arg {string} options.items_key - The name of the key to look for the items
+ * from the store on.
+ * @arg options.store - The store to connect the view to.
+ * @arg {function} options.fetch - Function to call when we want to fetch from
+ * server.
+ * @arg {function} options.getItemContent - Given an item, return the rendered
+ * content to display.
  */
 export default ({name, store, fetch, items_key, getItemContent}) => {
     @connectToStores
@@ -106,7 +116,9 @@ export default ({name, store, fetch, items_key, getItemContent}) => {
         render() {
             const {fetching, has_loaded, fetch_error, item} = this.props
 
+            // content to display on successful load
             let success_content
+            // if we have loaded and found the desired item
             if (has_loaded && item) {
                 success_content = getItemContent(item)
             } else {

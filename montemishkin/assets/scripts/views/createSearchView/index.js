@@ -11,10 +11,18 @@ import SearchBar from 'components/SearchBar'
 
 /**
  * Factory for searchable list of item previews.
- * @arg {string} name - The display name for the returned react component.
- * @arg {string} items_key - The name of the key to look for the items from the store on.
- * @arg store - The store to connect the view to.
- * @arg {function} fetch - Function to call when we want to fetch from server.
+ * @arg {object} options - Allows for named arguments.
+ * @arg {string} options.name - The display name for the returned react
+ * component.
+ * @arg {string} options.items_key - The name of the key to look for the items
+ * from the store on.
+ * @arg options.store - The store to connect the view to.
+ * @arg {function} options.fetch - Function to call when we want to fetch from
+ * server.
+ * @arg {function} options.getSearchFields - Given an item, return a list of
+ * strings that should be searched when searching.
+ * @arg {ReactComponent} options.PreviewComponent - React component to use to
+ * preview the items in the list.  Will be passed a the single prop `item`.
  */
 export default ({name, store, fetch, items_key, getSearchFields, PreviewComponent}) => {
     @connectToStores
@@ -104,13 +112,63 @@ export default ({name, store, fetch, items_key, getSearchFields, PreviewComponen
         }
 
 
+        get fetching_content() {
+            return (
+                <img
+                    style={styles.image}
+                    alt='Loading Indicator'
+                    src='/static/images/spinner.gif'
+                />
+            )
+        }
+
+
+        get success_content() {
+            const items = this.props[items_key]
+            // if there are any items
+            if (items.length) {
+                // filter out which items to display
+                const filtered_items = this.getFilteredItems()
+
+                // if any items survived filter
+                if (filtered_items.length) {
+                    return (
+                        <List
+                            style={styles.list}
+                            list_item_style={styles.list_item}
+                        >
+                            {filtered_items.map((item, key) => (
+                                <PreviewComponent
+                                    key={key}
+                                    item={item}
+                                />
+                            ))}
+                        </List>
+                    )
+                }
+
+                // no items survived the filter
+                return (
+                    <span style={styles.no_search_result_message}>
+                        No search results!
+                    </span>
+                )
+            }
+
+            return (
+                <span style={styles.no_item_message}>
+                    There are no items!
+                </span>
+            )
+        }
+
+
         render() {
             const {
                 fetch_error,
                 fetching,
                 has_loaded,
             } = this.props
-            const items = this.props[items_key]
 
             return (
                 <div style={styles.container}>
@@ -126,49 +184,8 @@ export default ({name, store, fetch, items_key, getSearchFields, PreviewComponen
                         error={fetch_error}
                         reattempt_timeout={3000}
                         fetch={fetch}
-                        fetching_content={(
-                            <img
-                                style={styles.image}
-                                alt='Loading Indicator'
-                                src='/static/images/spinner.gif'
-                            />
-                        )}
-                        success_content={() => {
-                            // if there are any items
-                            if (items.length) {
-                                // filter out which items to display
-                                const filtered_items = this.getFilteredItems()
-
-                                // if any items survived filter
-                                if (filtered_items.length) {
-                                    return (
-                                        <List
-                                            style={styles.list}
-                                            list_item_style={styles.list_item}
-                                        >
-                                            {filtered_items.map((item, key) => (
-                                                <PreviewComponent
-                                                    key={key}
-                                                    item={item}
-                                                />
-                                            ))}
-                                        </List>
-                                    )
-                                }
-
-                                return (
-                                    <span style={styles.no_search_result_message}>
-                                        No search results!
-                                    </span>
-                                )
-                            }
-
-                            return (
-                                <span style={styles.no_item_message}>
-                                    There are no items!
-                                </span>
-                            )
-                        }}
+                        fetching_content={this.fetching_content}
+                        success_content={this.success_content}
                     />
                 </div>
             )
