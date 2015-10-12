@@ -5,11 +5,7 @@ import connectToStores from 'alt/utils/connectToStores'
 // import DisqusThread from 'react-disqus-thread'
 // local imports
 import styles from './styles'
-import TagListInline from 'components/TagListInline'
-import FormattedDate from 'components/FormattedDate'
 import Loader from 'components/Loader'
-import BlogPostStore from 'stores/BlogPostStore'
-import BlogPostActions from 'actions/BlogPostActions'
 
 
 /**
@@ -18,7 +14,7 @@ import BlogPostActions from 'actions/BlogPostActions'
 export default ({name, store, fetch, items_key, getItemContent}) => {
     @connectToStores
     @radium
-    class DetailView extends React.Component {
+    class DetailView extends Component {
         static displayName = name
 
 
@@ -123,7 +119,7 @@ export default ({name, store, fetch, items_key, getItemContent}) => {
                     has_fetched={has_loaded}
                     error={fetch_error}
                     reattempt_timeout={3000}
-                    fetch={BlogPostActions.fetchBlogPosts}
+                    fetch={fetch}
                     error_content={this.failure_content}
                     fetching_content={this.loading_content}
                     success_content={success_content}

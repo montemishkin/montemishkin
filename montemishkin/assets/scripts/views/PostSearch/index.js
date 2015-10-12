@@ -2,7 +2,7 @@
 import BlogPostStore from 'stores/BlogPostStore'
 import BlogPostActions from 'actions/BlogPostActions'
 import createSearchView from 'views/createSearchView'
-import BlogPostPreview from './BlogPostPreview'
+import PostPreview from './PostPreview'
 
 
 export default createSearchView({
@@ -18,7 +18,7 @@ export default createSearchView({
             ...post.tags.map(tag => tag.name),
         ]
     },
-    PreviewComponent: BlogPostPreview,
+    PreviewComponent: PostPreview,
 })
 
 
