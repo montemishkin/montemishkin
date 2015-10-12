@@ -5,6 +5,7 @@ import connectToStores from 'alt/utils/connectToStores'
 // local imports
 import styles from './styles'
 import List from 'components/List'
+import Loader from 'components/Loader'
 import SearchBar from 'components/SearchBar'
 
 
@@ -23,6 +24,9 @@ export default ({name, store, fetch, items_key, getSearchFields, PreviewComponen
 
 
         static propTypes = {
+            // error object
+            fetch_error: PropTypes.any,
+            fetching: PropTypes.bool,
             has_loaded: PropTypes.bool,
             location: PropTypes.shape({
                 search: PropTypes.string.isRequired,
@@ -85,12 +89,6 @@ export default ({name, store, fetch, items_key, getSearchFields, PreviewComponen
             return this.props[items_key].filter((item) => {
                 // strings to search through
                 const search_fields = getSearchFields(item)
-                // [
-                //     // for now just do content, title, and tags
-                //     item.content,
-                //     item.title,
-                //     ...item.tags.map(tag => tag.name),
-                // ]
 
                 for (const field of search_fields) {
                     for (const term of search_terms) {
@@ -107,58 +105,73 @@ export default ({name, store, fetch, items_key, getSearchFields, PreviewComponen
 
 
         render() {
-            // pull out the used props
             const {
+                fetch_error,
+                fetching,
                 has_loaded,
             } = this.props
             const items = this.props[items_key]
 
-            // default as if items have not yet been loaded from server
-            let content = (<img
-                style={styles.image}
-                alt='Loading Indicator'
-                src='/static/images/spinner.gif'
-            />)
+            return (
+                <div style={styles.container}>
+                    <SearchBar
+                        value={this.state.search_text}
+                        onChange={({target}) =>
+                            this.setState({search_text: target.value})
+                        }
+                    />
+                    <Loader
+                        is_fetching={fetching}
+                        has_fetched={has_loaded}
+                        error={fetch_error}
+                        reattempt_timeout={3000}
+                        fetch={fetch}
+                        fetching_content={(
+                            <img
+                                style={styles.image}
+                                alt='Loading Indicator'
+                                src='/static/images/spinner.gif'
+                            />
+                        )}
+                        success_content={() => {
+                            // if there are any items
+                            if (items.length) {
+                                // filter out which items to display
+                                const filtered_items = this.getFilteredItems()
 
-            // if items have been loaded from server
-            if (has_loaded) {
-                // default as if there are no items
-                content = (<span style={styles.no_item_message}>
-                    There are no items!
-                </span>)
+                                // if any items survived filter
+                                if (filtered_items.length) {
+                                    return (
+                                        <List
+                                            style={styles.list}
+                                            list_item_style={styles.list_item}
+                                        >
+                                            {filtered_items.map((item, key) => (
+                                                <PreviewComponent
+                                                    key={key}
+                                                    item={item}
+                                                />
+                                            ))}
+                                        </List>
+                                    )
+                                }
 
-                // if there are any items
-                if (items.length) {
-                    // filter out which items to display
-                    const filtered_items = this.getFilteredItems()
+                                return (
+                                    <span style={styles.no_search_result_message}>
+                                        No search results!
+                                    </span>
+                                )
+                            }
 
-                    // default as if no items survived filter
-                    content = (<span style={styles.no_search_result_message}>
-                        No search results!
-                    </span>)
-
-                    // if any items survived filter
-                    if (filtered_items.length) {
-                        content = (
-                            <List style={styles.list} list_item_style={styles.list_item}>
-                                {filtered_items.map((item, key) => (
-                                    <PreviewComponent key={key} item={item} />
-                                ))}
-                            </List>
-                        )
-                    }
-                }
-            }
-
-            return (<div style={styles.container}>
-                <SearchBar
-                    value={this.state.search_text}
-                    onChange={
-                        ({target}) => this.setState({search_text: target.value})
-                    }
-                />
-                {content}
-            </div>)
+                            return (
+                                <span style={styles.no_item_message}>
+                                    There are no items!
+                                </span>
+                            )
+                        }}
+                    />
+                </div>
+            )
         }
     }
 
