@@ -4,7 +4,7 @@ import radium from 'radium'
 import connectToStores from 'alt/utils/connectToStores'
 // local imports
 import styles from './styles'
-import List from './List'
+import List from 'components/List'
 import SearchBar from 'components/SearchBar'
 
 
@@ -140,7 +140,7 @@ export default ({name, store, fetch, items_key, getSearchFields, PreviewComponen
                     // if any items survived filter
                     if (filtered_items.length) {
                         content = (
-                            <List>
+                            <List style={styles.list} list_item_style={styles.list_item}>
                                 {filtered_items.map((item, key) => (
                                     <PreviewComponent key={key} item={item} />
                                 ))}

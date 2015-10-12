@@ -5,6 +5,7 @@ import radium from 'radium'
 import styles from './styles'
 import Link from 'components/Link'
 import IndexLink from 'components/IndexLink'
+import List from 'components/List'
 import {responsive} from 'util'
 
 
@@ -25,7 +26,7 @@ class Nav extends React.Component {
         }
 
         return (<div style={styles.outer_container}>
-            <div style={inner_container_style}>
+            <List style={inner_container_style}>
                 <IndexLink
                     to='/'
                     style={styles.link}
@@ -54,7 +55,7 @@ class Nav extends React.Component {
                 >
                     blog
                 </Link>
-            </div>
+            </List>
         </div>)
     }
 }

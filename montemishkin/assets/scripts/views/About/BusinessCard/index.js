@@ -3,6 +3,7 @@ import React from 'react'
 import radium from 'radium'
 /* local imports */
 import styles from './styles'
+import List from 'components/List'
 
 
 // monte's contact data for the business card
@@ -49,31 +50,26 @@ class BusinessCard extends React.Component {
                     Monte Mishkin
                 </p>
                 <address style={styles.address}>
-                    <ul style={styles.address_list}>
+                    <List style={styles.address_list} list_item_style={styles.address_list_item}>
                         {data.map(({caption, href, src, alt}, index) => (
-                            <li
+                            <a
                                 key={index}
-                                style={styles.address_list_item}
+                                href={href}
+                                style={styles.link}
                             >
-                                <a
-                                    key={index}
-                                    href={href}
-                                    style={styles.link}
-                                >
-                                    <figure style={styles.figure}>
-                                        <img
-                                            style={styles.icon}
-                                            src={src}
-                                            alt={alt}
-                                        />
-                                        <figcaption style={styles.caption}>
-                                            {caption}
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </li>
+                                <figure style={styles.figure}>
+                                    <img
+                                        style={styles.icon}
+                                        src={src}
+                                        alt={alt}
+                                    />
+                                    <figcaption style={styles.caption}>
+                                        {caption}
+                                    </figcaption>
+                                </figure>
+                            </a>
                         ))}
-                    </ul>
+                    </List>
                 </address>
             </div>
         </div>)

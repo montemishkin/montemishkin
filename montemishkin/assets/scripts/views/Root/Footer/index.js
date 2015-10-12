@@ -5,6 +5,7 @@ import radium from 'radium'
 import styles from './styles'
 import Link from 'components/Link'
 import IndexLink from 'components/IndexLink'
+import List from 'components/List'
 import {responsive} from 'util'
 
 
@@ -31,7 +32,7 @@ class Footer extends React.Component {
         }
 
         return (<div style={container_style}>
-            <div style={left_style}>
+            <List style={left_style}>
                 <IndexLink
                     to='/'
                     style={styles.nav_link}
@@ -56,7 +57,7 @@ class Footer extends React.Component {
                 >
                     Blog
                 </Link>
-            </div>
+            </List>
             <div style={right_style}>
                 &copy; {(new Date()).getFullYear() + ' '}
                 <a

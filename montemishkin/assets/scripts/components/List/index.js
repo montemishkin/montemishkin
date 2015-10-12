@@ -1,9 +1,6 @@
 // third party imports
 import React, {Component, PropTypes} from 'react'
 import radium from 'radium'
-// local imports
-import styles from './styles'
-// import ListItemPreview from './ListItemPreview'
 
 
 /**
@@ -12,7 +9,8 @@ import styles from './styles'
 @radium
 export default class List extends Component {
     static propTypes = {
-        style: PropTypes.string,
+        style: PropTypes.object,
+        list_item_style: PropTypes.object,
     }
 
 
@@ -21,10 +19,10 @@ export default class List extends Component {
         const {style, list_item_style, children} = this.props
 
         return (
-            <ul style={[styles.list, style]}>
+            <ul style={style}>
                 {React.Children.map(children, (child, key) => (
                     <li
-                        style={[styles.item, list_item_style]}
+                        style={list_item_style}
                         key={key}
                     >
                         {child}
