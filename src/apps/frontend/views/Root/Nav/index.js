@@ -17,39 +17,39 @@ import List from 'components/List'
 export default class Nav extends React.Component {
     render() {
         // default to infinity styling for inner container
-        let inner_container_style = styles.inner_container_infinity
+        let innerContainerStyle = styles.innerContainerInfinity
         // if viewport is less than medium
         if (this.props.browser.lessThan.medium) {
             // then use medium styling
-            inner_container_style = styles.inner_container_medium
+            innerContainerStyle = styles.innerContainerMedium
         }
 
-        return (<div style={styles.outer_container}>
-            <List style={inner_container_style}>
+        return (<div style={styles.outerContainer}>
+            <List style={innerContainerStyle}>
                 <IndexLink
                     to='/'
                     style={styles.link}
-                    activeStyle={styles.link_active}
+                    activeStyle={styles.linkActive}
                 >
                     home
                 </IndexLink>
                 <Link
                     style={styles.link}
-                    activeStyle={styles.link_active}
+                    activeStyle={styles.linkActive}
                     to='/about'
                 >
                     about
                 </Link>
                 <Link
                     style={styles.link}
-                    activeStyle={styles.link_active}
+                    activeStyle={styles.linkActive}
                     to='/projects'
                 >
                     projects
                 </Link>
                 <Link
                     style={styles.link}
-                    activeStyle={styles.link_active}
+                    activeStyle={styles.linkActive}
                     to='/blog'
                 >
                     blog

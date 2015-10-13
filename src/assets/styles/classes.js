@@ -9,49 +9,49 @@ import numerics from './numerics'
 
 /* Font Size Classes */
 
-export const largest_font_size = {
+export const largestFontSize = {
     fontSize: 36,
     fontWeight: 400,
 }
 
-export const larger_font_size = {
+export const largerFontSize = {
     fontSize: 30,
 }
 
-export const large_font_size = {
+export const largeFontSize = {
     // fontSize: 14,
     // fontWeight: 700,
     fontSize: 24,
 }
 
-export const main_font_size = {
+export const mainFontSize = {
     fontSize: 16,
 }
 
-export const small_font_size = {
+export const smallFontSize = {
     fontSize: 13,
 }
 
 
 /* Font Color Classes */
 
-export const darker_font_color = {
+export const darkerFontColor = {
     color: colors.grey.link,
 }
 
-export const dark_font_color = {
+export const darkFontColor = {
     color: colors.grey.fontish,
 }
 
-export const main_font_color = {
+export const mainFontColor = {
     color: colors.grey.header,
 }
 
-export const light_font_color = {
-    color: colors.grey.lighter_font,
+export const lightFontColor = {
+    color: colors.grey.lighterFont,
 }
 
-export const lighter_font_color = {
+export const lighterFontColor = {
     color: colors.grey.subheader,
 }
 
@@ -59,39 +59,39 @@ export const lighter_font_color = {
 /* Misc Classes */
 
 // styling for containers of views that act as the `RouteHandler` in `Root`
-export const page_content_container = {
-    maxWidth: numerics.max_page_width,
+export const pageContentContainer = {
+    maxWidth: numerics.maxPageWidth,
     margin: '0 auto',
 }
 
 // styling for containers of components that are direct children to `Root`
-export const root_child_container = {
-    ...page_content_container,
+export const rootChildContainer = {
+    ...pageContentContainer,
     width: '90%',
 }
 
 // parameters (everything except transitionProperty) for css transitions
-export const transition_parameters = {
+export const transitionParameters = {
     transitionDuration: '0.2s',
     transitionTimingFunction: 'ease-in-out',
 }
 
 // base styling common to all link styles
-export const link_base = {
+export const linkBase = {
     textDecoration: 'none',
 }
 
 // styling for links that change color on hover
-export const link_hoverable = {
-    ...link_base,
-    ...transition_parameters,
+export const linkHoverable = {
+    ...linkBase,
+    ...transitionParameters,
     // display: 'flex',
     transitionProperty: 'color',
 
     ':hover': {
-        ...transition_parameters,
+        ...transitionParameters,
         transitionProperty: 'color',
-        color: colors.grey.link_hover,
+        color: colors.grey.linkHover,
     },
 }
 
@@ -101,23 +101,23 @@ export const link_hoverable = {
 /* export object with all classes as default */
 
 export default {
-    largest_font_size,
-    larger_font_size,
-    large_font_size,
-    main_font_size,
-    small_font_size,
+    largestFontSize,
+    largerFontSize,
+    largeFontSize,
+    mainFontSize,
+    smallFontSize,
 
-    darker_font_color,
-    dark_font_color,
-    main_font_color,
-    light_font_color,
-    lighter_font_color,
+    darkerFontColor,
+    darkFontColor,
+    mainFontColor,
+    lightFontColor,
+    lighterFontColor,
 
-    page_content_container,
-    root_child_container,
-    transition_parameters,
-    link_base,
-    link_hoverable,
+    pageContentContainer,
+    rootChildContainer,
+    transitionParameters,
+    linkBase,
+    linkHoverable,
 }
 
 

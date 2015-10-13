@@ -4,18 +4,18 @@ import classes from 'styles/classes'
 
 
 // half of space between two list items
-const half_list_item_space = 7
+const halfListItemSpace = 7
 
 // styling for outline transition
 const transition = {
-    ...classes.transition_parameters,
+    ...classes.transitionParameters,
     transitionProperty: 'outline',
 }
 
 
 export default {
     container: {
-        ...classes.page_content_container,
+        ...classes.pageContentContainer,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -24,13 +24,13 @@ export default {
     image: {
     },
 
-    no_item_message: {
+    noItemMessage: {
     },
 
-    no_search_result_message: {
+    noSearchResultMessage: {
     },
 
-    search_bar: {
+    searchBar: {
         ...transition,
         width: '100%',
         marginBottom: 10,
@@ -55,11 +55,11 @@ export default {
         justifyContent: 'space-between',
     },
 
-    list_item: {
-        margin: half_list_item_space,
+    listItem: {
+        margin: halfListItemSpace,
 
         borderStyle: 'solid',
-        borderColor: colors.grey.darker_bg,
+        borderColor: colors.grey.darkerBg,
         borderTopWidth: 1,
         borderRightWidth: 0,
         borderLeftWidth: 0,

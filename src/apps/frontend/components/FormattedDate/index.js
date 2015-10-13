@@ -1,14 +1,11 @@
 // third party imports
 import React from 'react'
 import radium from 'radium'
-/* misc third party imports */
 import {trimLeft} from 'lodash'
-// local imports
-import styles from './styles'
 
 
 // full names of calendar months
-const month_names = [
+const monthNames = [
     'January',
     'February',
     'March',
@@ -23,15 +20,19 @@ const month_names = [
     'December',
 ]
 // shortened names of calendar months
-const short_month_names = month_names.map(name => name.substr(0, 3))
+const shortMonthNames = monthNames.map(name => name.substr(0, 3))
 
 
 /**
  * Responsible for proper formatting of dates.
- * @class
  */
 @radium
-class FormattedDate extends React.Component {
+export default class FormattedDate extends React.Component {
+    static propTypes = {
+        date: React.PropTypes.string,
+    }
+
+
     /**
      * Returns a date string like "Aug 3, 2015" based on `this.props.date`.
      * Expects `this.props.date` to be like "2015-09-07T00:00:36.049780Z".
@@ -44,28 +45,18 @@ class FormattedDate extends React.Component {
             // split into array of parts
             .split('-')
             // strip leading zeroes
-            .map(number_string => trimLeft(number_string, '0'))
+            .map(numberString => trimLeft(numberString, '0'))
 
-        return `${short_month_names[parts[1] - 1]} ${parts[2]}, ${parts[0]}`
+        return `${shortMonthNames[parts[1] - 1]} ${parts[2]}, ${parts[0]}`
     }
 
 
     render() {
-        return (<div style={styles.container}>
+        return (<span>
             {this.getPrettyDateString()}
-        </div>)
+        </span>)
     }
 }
-
-
-// allow for type checking of props
-FormattedDate.propTypes = {
-    date: React.PropTypes.string,
-}
-
-
-// export component
-export default FormattedDate
 
 
 // end of file

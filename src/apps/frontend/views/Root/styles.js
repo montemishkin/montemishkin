@@ -5,8 +5,8 @@ import classes from 'styles/classes'
 
 export default {
     container: {
-        ...classes.dark_font_color,
-        ...classes.main_font_size,
+        ...classes.darkFontColor,
+        ...classes.mainFontSize,
         minHeight: '100%',
         display: 'flex',
         flexDirection: 'column',

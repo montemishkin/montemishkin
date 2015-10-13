@@ -5,7 +5,7 @@ import PostPreview from './PostPreview'
 
 export default createSearchView({
     name: 'PostSearch',
-    items_key: 'posts',
+    itemsKey: 'posts',
     store: 'blog',
     fetch: () => console.log('fetch posts from PostSearch'),
     getSearchFields(post) {

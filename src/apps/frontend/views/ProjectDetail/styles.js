@@ -5,35 +5,35 @@ import classes from 'styles/classes'
 
 export default {
     container: {
-        ...classes.page_content_container,
+        ...classes.pageContentContainer,
     },
 
-    loading_image_wrapper: {
+    loadingImageWrapper: {
         display: 'flex',
         justifyContent: 'center',
     },
 
-    loading_image: {
+    loadingImage: {
         height: 50,
     },
 
-    error_message: {
+    errorMessage: {
         textAlign: 'center',
     },
 
-    project_heading_wrapper: {
+    projectHeadingWrapper: {
         display: 'flex',
         borderStyle: 'solid',
         borderTopWidth: 0,
         borderLeftWidth: 0,
         borderRightWidth: 0,
         borderBottomWidth: 1,
-        borderColor: colors.grey.darker_bg,
+        borderColor: colors.grey.darkerBg,
         // paddingTop: 7,
         paddingBottom: 10,
     },
 
-    project_heading_right: {
+    projectHeadingRight: {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -42,31 +42,31 @@ export default {
     },
 
     title: {
-        ...classes.larger_font_size,
-        ...classes.main_font_color,
+        ...classes.largerFontSize,
+        ...classes.mainFontColor,
         textAlign: 'center',
     },
 
-    date_and_tag_list_wrapper: {
+    dateAndTagListWrapper: {
         width: '100%',
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
     },
 
-    creation_date: {
-        ...classes.lighter_font_color,
+    creationDate: {
+        ...classes.lighterFontColor,
     },
 
-    tag_list_wrapper: {
+    tagListWrapper: {
     },
 
-    project_image_wrapper: {
+    projectImageWrapper: {
         display: 'flex',
         justifyContent: 'center',
     },
 
-    project_image: {
+    projectImage: {
         borderStyle: 'solid',
         borderWidth: 1,
         borderColor: 'black',
@@ -74,7 +74,7 @@ export default {
         width: 200,
     },
 
-    project_content: {
+    projectContent: {
     },
 }
 

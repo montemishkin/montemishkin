@@ -15,17 +15,17 @@ import IndexLink from 'components/IndexLink'
 export default class Banner extends React.Component {
     render() {
         // default to infinity styling
-        let header_style = styles.header_infinity
-        let subheader_style = styles.subheader_infinity
+        let headerStyle = styles.headerInfinity
+        let subheaderStyle = styles.subheaderInfinity
         // if viewport is less than medium size
         if (this.props.browser.lessThan.medium) {
             // then use medium styling
-            header_style = styles.header_medium
-            subheader_style = styles.subheader_medium
+            headerStyle = styles.headerMedium
+            subheaderStyle = styles.subheaderMedium
         }
 
         return (<div style={styles.container}>
-            <h1 style={header_style}>
+            <h1 style={headerStyle}>
                 <IndexLink
                     to='/'
                     style={styles.link}
@@ -33,7 +33,7 @@ export default class Banner extends React.Component {
                     MM
                 </IndexLink>
             </h1>
-            <h2 style={subheader_style}>
+            <h2 style={subheaderStyle}>
                 Your friend on the web
             </h2>
         </div>)

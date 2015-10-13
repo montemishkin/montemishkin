@@ -9,7 +9,7 @@ export default {
         alignItems: 'flex-start',
     },
 
-    date_and_tag_list_wrapper: {
+    dateAndTagListWrapper: {
         width: '100%',
         display: 'flex',
         flexWrap: 'wrap',
@@ -18,22 +18,22 @@ export default {
         paddingBottom: 7,
     },
 
-    tag_list_wrapper: {
+    tagListWrapper: {
     },
 
-    creation_date: {
-        ...classes.lighter_font_color,
+    creationDate: {
+        ...classes.lighterFontColor,
     },
 
     title: {
-        ...classes.link_hoverable,
-        ...classes.larger_font_size,
-        ...classes.main_font_color,
+        ...classes.linkHoverable,
+        ...classes.largerFontSize,
+        ...classes.mainFontColor,
     },
 
     content: {
-        ...classes.link_hoverable,
-        ...classes.main_font_color,
+        ...classes.linkHoverable,
+        ...classes.mainFontColor,
         marginLeft: '5%',
         maxWidth: '90%',
     },

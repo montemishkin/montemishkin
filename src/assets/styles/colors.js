@@ -37,17 +37,17 @@ export default {
 
         bg: '#F7F7F7',
         fontish: '#454041',
-        lighter_font: '#6D6D6D',
-        darker_bg: '#E8EAEE',
+        lighterFont: '#6D6D6D',
+        darkerBg: '#E8EAEE',
         link: '#343C3F',
         header: '#515357',
         subheader: '#808080',
         white: '#FFFFFF',
-        link_hover: '#00A1DC',
-        link_hover_darker: '#0098D1',
+        linkHover: '#00A1DC',
+        linkHoverDarker: '#0098D1',
 
-        stack_overflow_tag: '#DDE8F2',
-        stack_overflow_tag_2: '#D1E0EB',
+        stackOverflowTag: '#DDE8F2',
+        stackOverflowTag_2: '#D1E0EB',
     },
 }
 

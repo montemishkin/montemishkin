@@ -6,30 +6,30 @@ export default (showcase, {type, payload, error} = {}) => {
     if (type === FETCH_PROJECTS) {
         return {
             ...showcase,
-            is_fetching: true,
+            isFetching: true,
             error: null,
         }
     }
     if (type === FAIL_FETCH_PROJECTS) {
         return {
             ...showcase,
-            is_fetching: false,
+            isFetching: false,
             error: payload,
         }
     }
     if (type === SET_PROJECTS) {
         return {
             ...showcase,
-            is_fetching: false,
-            has_fetched: true,
+            isFetching: false,
+            hasFetched: true,
             error: null,
             projects: payload,
         }
     }
     return typeof showcase !== 'undefined' ? showcase : {
         error: null,
-        is_fetching: false,
-        has_fetched: false,
+        isFetching: false,
+        hasFetched: false,
         projects: [],
     }
 }

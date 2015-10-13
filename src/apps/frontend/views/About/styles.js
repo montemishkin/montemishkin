@@ -3,8 +3,8 @@ import classes from 'styles/classes'
 
 
 // base styling common to all blockquote styles
-const blockquote_base = {
-    ...classes.large_font_size,
+const blockquoteBase = {
+    ...classes.largeFontSize,
     width: '50%',
     fontStyle: 'italic',
     fontFamily: 'serif',
@@ -14,17 +14,17 @@ const blockquote_base = {
 
 export default {
     container: {
-        ...classes.page_content_container,
+        ...classes.pageContentContainer,
     },
 
-    blockquote_medium: {
-        ...blockquote_base,
+    blockquoteMedium: {
+        ...blockquoteBase,
         margin: '0 auto',
         textAlign: 'center',
     },
 
-    blockquote_infinity: {
-        ...blockquote_base,
+    blockquoteInfinity: {
+        ...blockquoteBase,
         marginTop: 0,
         marginBottom: 0,
         marginLeft: '40%',

@@ -10,7 +10,7 @@ import {map} from './util'
 
 
 // single `ColorBoard` instance used between all `Sage` components
-const color_board = new ColorBoard(100, 100)
+const colorBoard = new ColorBoard(100, 100)
 
 
 /**
@@ -37,9 +37,9 @@ class Sage extends React.Component {
         // determine initial dimensions, then...
         this.resetDimensions((canvas) => {
             // bind the color board to the rendering context
-            color_board.bindToContext(canvas.getContext('2d'))
+            colorBoard.bindToContext(canvas.getContext('2d'))
             // trigger the color board to play its animation
-            color_board.play()
+            colorBoard.play()
         })
 
         // add resize event handler
@@ -49,7 +49,7 @@ class Sage extends React.Component {
 
     componentWillUnmount() {
         // pause the color board's animation
-        color_board.pause()
+        colorBoard.pause()
         // remove resize event handler
         window.removeEventListener('resize', this.onResize)
     }
@@ -92,8 +92,8 @@ class Sage extends React.Component {
 
 
     render() {
-        return (<div style={styles.outer_container}>
-            <div style={styles.inner_container}>
+        return (<div style={styles.outerContainer}>
+            <div style={styles.innerContainer}>
                 <canvas
                     ref='canvas'
                     style={[
@@ -105,7 +105,7 @@ class Sage extends React.Component {
                         const x = event.pageX - event.target.offsetLeft
                         const y = event.pageY - event.target.offsetTop
 
-                        color_board.setCouplingParameters(
+                        colorBoard.setCouplingParameters(
                             map(x, 0, this.state.width, 0, 3.5),
                             map(y, 0, this.state.height, 0, 2.5)
                         )
@@ -116,7 +116,7 @@ class Sage extends React.Component {
                         type='button'
                         ref='pause'
                         style={styles.button}
-                        onClick={() => color_board.togglePausePlay()}
+                        onClick={() => colorBoard.togglePausePlay()}
                     >
                         Pause/Play
                     </button>
@@ -125,7 +125,7 @@ class Sage extends React.Component {
                         ref='snapshot'
                         style={styles.button}
                         onClick={(event) => {
-                            event.target.href = color_board.toDataURL()
+                            event.target.href = colorBoard.toDataURL()
                         }}
                         download='color-board.png'
                     >
@@ -135,7 +135,7 @@ class Sage extends React.Component {
                         type='button'
                         ref='reset'
                         style={styles.button}
-                        onClick={() => color_board.randomize()}
+                        onClick={() => colorBoard.randomize()}
                     >
                         Reset
                     </button>

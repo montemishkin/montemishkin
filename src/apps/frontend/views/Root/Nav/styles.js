@@ -4,48 +4,48 @@ import classes from 'styles/classes'
 
 
 // base styling for both active and inactive links
-const link_base = {
-    ...classes.link_hoverable,
-    ...classes.dark_font_color,
+const linkBase = {
+    ...classes.linkHoverable,
+    ...classes.darkFontColor,
     padding: 10,
 }
 
 // base styling for all `container` styles
-const inner_container_base = {
-    ...classes.root_child_container,
+const innerContainerBase = {
+    ...classes.rootChildContainer,
     display: 'flex',
     flexWrap: 'wrap',
 }
 
 // styling for color and background-color transition
 const transition = {
-    ...classes.transition_parameters,
+    ...classes.transitionParameters,
     transitionProperty: 'color, background-color',
 }
 
 
 export default {
-    outer_container: {
-        backgroundColor: colors.grey.darker_bg,
+    outerContainer: {
+        backgroundColor: colors.grey.darkerBg,
     },
 
-    inner_container_medium: {
-        ...inner_container_base,
+    innerContainerMedium: {
+        ...innerContainerBase,
         justifyContent: 'center',
     },
 
-    inner_container_infinity: {
-        ...inner_container_base,
+    innerContainerInfinity: {
+        ...innerContainerBase,
         justifyContent: 'flex-end',
     },
 
     link: {
-        ...link_base,
+        ...linkBase,
         ...transition,
     },
 
-    link_active: {
-        ...link_base,
+    linkActive: {
+        ...linkBase,
         ...transition,
         backgroundColor: colors.grey.lighter,
     },

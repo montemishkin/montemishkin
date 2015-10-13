@@ -10,19 +10,19 @@ import radium from 'radium'
 export default class List extends Component {
     static propTypes = {
         style: PropTypes.object,
-        list_item_style: PropTypes.object,
+        listItemStyle: PropTypes.object,
     }
 
 
     render() {
         // pull out the used props
-        const {style, list_item_style, children} = this.props
+        const {style, listItemStyle, children} = this.props
 
         return (
             <ul style={style}>
                 {React.Children.map(children, (child, key) => (
                     <li
-                        style={list_item_style}
+                        style={listItemStyle}
                         key={key}
                     >
                         {child}

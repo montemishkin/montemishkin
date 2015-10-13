@@ -6,30 +6,30 @@ export default (blog, {type, payload, error} = {}) => {
     if (type === FETCH_POSTS) {
         return {
             ...blog,
-            is_fetching: true,
+            isFetching: true,
             error: null,
         }
     }
     if (type === FAIL_FETCH_POSTS) {
         return {
             ...blog,
-            is_fetching: false,
+            isFetching: false,
             error: payload,
         }
     }
     if (type === SET_POSTS) {
         return {
             ...blog,
-            is_fetching: false,
-            has_fetched: true,
+            isFetching: false,
+            hasFetched: true,
             error: null,
             posts: payload,
         }
     }
     return typeof blog !== 'undefined' ? blog : {
         error: null,
-        is_fetching: false,
-        has_fetched: false,
+        isFetching: false,
+        hasFetched: false,
         posts: [],
     }
 }

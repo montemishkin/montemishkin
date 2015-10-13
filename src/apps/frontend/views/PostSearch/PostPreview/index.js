@@ -9,16 +9,27 @@ import FormattedDate from 'components/FormattedDate'
 
 
 // maximum length for title and content previews
-const title_preview_max_length = 50
-const content_preview_max_length = 200
+const titlePreviewMaxLength = 50
+const contentPreviewMaxLength = 200
 
 
 /**
  * Shortened preview of a single blog post.
- * @class
  */
 @radium
-class BlogPostPreview extends React.Component {
+export default class BlogPostPreview extends React.Component {
+    static propTypes = {
+        slug: React.PropTypes.string,
+        title: React.PropTypes.string,
+        creationDate: React.PropTypes.string,
+        tags: React.PropTypes.arrayOf(React.PropTypes.shape({
+            id: React.PropTypes.number,
+            name: React.PropTypes.string,
+        })),
+        content: React.PropTypes.string,
+    }
+
+
     /**
      * Returns the post's content, stripped of its HTML.
      */
@@ -26,88 +37,71 @@ class BlogPostPreview extends React.Component {
         const {content} = this.props.item
 
         // create a temporary div DOM node
-        const div_node = document.createElement('div')
+        const divNode = document.createElement('div')
         // populate it with the content we want to strip
         // so that the browser will strip for us
-        div_node.innerHTML = content
+        divNode.innerHTML = content
 
         // return stripped content (with some fallbacks)
-        return div_node.textContent || div_node.innerText || ''
+        return divNode.textContent || divNode.innerText || ''
     }
 
 
     render() {
         const {
             title,
-            creation_date,
+            creationDate,
             tags,
             slug,
         } = this.props.item
 
         // default to displaying full title
-        let title_preview = title
+        let titlePreview = title
         // if title is too long
-        if (title.length > title_preview_max_length) {
+        if (title.length > titlePreviewMaxLength) {
             // display only first part of title
-            title_preview = title
-                .substr(0, title_preview_max_length) + ' ...'
+            titlePreview = title
+                .substr(0, titlePreviewMaxLength) + ' ...'
         }
 
         // default to displaying full content (stripped of HTML)
-        let content_preview = this.getStrippedContent()
+        let contentPreview = this.getStrippedContent()
         // if content is too long
-        if (content_preview.length > content_preview_max_length) {
+        if (contentPreview.length > contentPreviewMaxLength) {
             // display only first part of content
-            content_preview = content_preview
-                .substr(0, content_preview_max_length) + ' ...'
+            contentPreview = contentPreview
+                .substr(0, contentPreviewMaxLength) + ' ...'
         }
 
         // props for links to the blog post
-        const link_props = {
+        const linkProps = {
             to: `/blog/${slug}`,
         }
 
         return (<div style={styles.container}>
             <Link
-                {...link_props}
+                {...linkProps}
                 style={styles.title}
             >
-                {title_preview}
+                {titlePreview}
             </Link>
-            <div style={styles.date_and_tag_list_wrapper}>
-                <div style={styles.creation_date}>
-                    <FormattedDate date={creation_date} />
+            <div style={styles.dateAndTagListWrapper}>
+                <div style={styles.creationDate}>
+                    <FormattedDate date={creationDate} />
                 </div>
-                <div style={styles.tag_list_wrapper}>
+                <div style={styles.tagListWrapper}>
                     <TagListInline tags={tags} />
                 </div>
             </div>
             <Link
-                {...link_props}
+                {...linkProps}
                 style={styles.content}
             >
-                {content_preview}
+                {contentPreview}
             </Link>
         </div>)
     }
 }
-
-
-// allow for type checking on props
-BlogPostPreview.propTypes = {
-    slug: React.PropTypes.string,
-    title: React.PropTypes.string,
-    creation_date: React.PropTypes.string,
-    tags: React.PropTypes.arrayOf(React.PropTypes.shape({
-        id: React.PropTypes.number,
-        name: React.PropTypes.string,
-    })),
-    content: React.PropTypes.string,
-}
-
-
-// export component
-export default BlogPostPreview
 
 
 // end of file

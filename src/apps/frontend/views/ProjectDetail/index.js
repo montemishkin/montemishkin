@@ -11,33 +11,33 @@ import createDetailView from 'views/createDetailView'
 
 export default createDetailView({
     name: 'ProjectDetail',
-    store_key: 'showcase',
+    storeKey: 'showcase',
     fetch: () => console.log('fetch projects from ProjectDetail'),
-    items_key: 'projects',
-    getItemContent: ({title, image, creation_date, tags, content}) => (
+    itemsKey: 'projects',
+    getItemContent: ({title, image, creationDate, tags, content}) => (
         <div style={styles.container}>
-            <div style={styles.project_heading_wrapper}>
+            <div style={styles.projectHeadingWrapper}>
                 <img
-                    style={styles.project_image}
+                    style={styles.projectImage}
                     alt={`"${title}" Project Thumbnail`}
                     src={image}
                 />
-                <div style={styles.project_heading_right}>
+                <div style={styles.projectHeadingRight}>
                     <h3 style={styles.title}>
                         {title}
                     </h3>
-                    <div style={styles.date_and_tag_list_wrapper}>
-                        <div style={styles.creation_date}>
-                            <FormattedDate date={creation_date} />
+                    <div style={styles.dateAndTagListWrapper}>
+                        <div style={styles.creationDate}>
+                            <FormattedDate date={creationDate} />
                         </div>
-                        <div style={styles.tag_list_wrapper}>
+                        <div style={styles.tagListWrapper}>
                             <TagListInline tags={tags} />
                         </div>
                     </div>
                 </div>
             </div>
             <div
-                style={styles.project_content}
+                style={styles.projectContent}
                 dangerouslySetInnerHTML={{
                     __html: content,
                 }}

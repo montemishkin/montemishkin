@@ -5,7 +5,7 @@ import classes from 'styles/classes'
 
 // styling for outline transition
 const transition = {
-    ...classes.transition_parameters,
+    ...classes.transitionParameters,
     transitionProperty: 'outline',
 }
 

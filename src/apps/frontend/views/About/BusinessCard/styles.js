@@ -15,7 +15,7 @@ export default {
         borderLeftWidth: 0,
         borderRightWidth: 0,
         borderBottomWidth: 1,
-        borderColor: colors.grey.darker_bg,
+        borderColor: colors.grey.darkerBg,
         paddingBottom: 20,
     },
 
@@ -27,7 +27,7 @@ export default {
         height: 200,
     },
 
-    not_image: {
+    notImage: {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-around',
@@ -35,7 +35,7 @@ export default {
     },
 
     name: {
-        ...classes.larger_font_size,
+        ...classes.largerFontSize,
         textAlign: 'center',
         marginTop: 20,
         marginBottom: 10,
@@ -44,7 +44,7 @@ export default {
     address: {
     },
 
-    address_list: {
+    addressList: {
         flexGrow: 1,
         padding: 0,
         display: 'flex',
@@ -57,13 +57,13 @@ export default {
         marginRight: 10,
     },
 
-    address_list_item: {
+    addressListItem: {
         padding: 10,
     },
 
     link: {
-        ...classes.link_hoverable,
-        ...classes.dark_font_color,
+        ...classes.linkHoverable,
+        ...classes.darkFontColor,
     },
 
     figure: {

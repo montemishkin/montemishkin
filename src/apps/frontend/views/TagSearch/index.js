@@ -5,8 +5,8 @@ import Tag from './Tag'
 
 export default createSearchView({
     name: 'TagSearch',
-    items_key: 'tags',
-    store: 'tag_store',
+    itemsKey: 'tags',
+    store: 'tagStore',
     fetch: () => console.log('fetch tags from TagSearch'),
     getSearchFields(tag) {
         return [tag.name]

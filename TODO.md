@@ -1,3 +1,6 @@
+- move TagListInline to use List
+- task factories in gulpfile
+
 - blog post and project models
     - right now, tags are required.  is this ok with you?
 

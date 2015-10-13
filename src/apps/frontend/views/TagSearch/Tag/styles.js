@@ -12,7 +12,7 @@ export default {
         // justifyContent: 'space-around',
     },
 
-    list_item: {
+    listItem: {
         padding: 10,
         display: 'flex',
         alignItems: 'center',
@@ -24,8 +24,8 @@ export default {
     },
 
     link: {
-        ...classes.link_hoverable,
-        ...classes.darker_font_color,
+        ...classes.linkHoverable,
+        ...classes.darkerFontColor,
         display: 'flex',
         alignItems: 'center',
         paddingBottom: 3,

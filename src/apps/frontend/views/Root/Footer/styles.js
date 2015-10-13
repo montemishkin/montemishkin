@@ -3,73 +3,73 @@ import classes from 'styles/classes'
 
 
 // styling common to all `container` styles
-const container_base = {
-    ...classes.root_child_container,
-    ...classes.light_font_color,
-    ...classes.small_font_size,
+const containerBase = {
+    ...classes.rootChildContainer,
+    ...classes.lightFontColor,
+    ...classes.smallFontSize,
     display: 'flex',
     paddingTop: 10,
     paddingBottom: 10,
 }
 
 // styling common to all `left` styles
-const left_base = {
+const leftBase = {
     display: 'flex',
     flexWrap: 'wrap',
 }
 
 // styling common to all `right` styles
-const right_base = {
+const rightBase = {
 }
 
 // styling common to all `link` styles
-const link_base = {
-    ...classes.link_hoverable,
-    ...classes.darker_font_color,
+const linkBase = {
+    ...classes.linkHoverable,
+    ...classes.darkerFontColor,
 }
 
 
 export default {
-    container_medium: {
-        ...container_base,
+    containerMedium: {
+        ...containerBase,
         flexDirection: 'column',
         alignItems: 'center',
     },
 
-    container_infinity: {
-        ...container_base,
+    containerInfinity: {
+        ...containerBase,
         justifyContent: 'space-between',
     },
 
-    left_medium: {
-        ...left_base,
+    leftMedium: {
+        ...leftBase,
     },
 
-    left_infinity: {
-        ...left_base,
+    leftInfinity: {
+        ...leftBase,
         flexBasis: 250,
         marginLeft: -10,
     },
 
-    right_medium: {
-        ...right_base,
+    rightMedium: {
+        ...rightBase,
         paddingTop: 0,
         paddingBottom: 10,
     },
 
-    right_infinity: {
-        ...right_base,
+    rightInfinity: {
+        ...rightBase,
         padding: 10,
         marginRight: -10,
     },
 
-    nav_link: {
-        ...link_base,
+    navLink: {
+        ...linkBase,
         padding: 10,
     },
 
-    email_link: {
-        ...link_base,
+    emailLink: {
+        ...linkBase,
     },
 }
 

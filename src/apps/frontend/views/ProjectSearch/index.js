@@ -6,7 +6,7 @@ import ProjectPreview from './ProjectPreview'
 
 export default createSearchView({
     name: 'ProjectSearch',
-    items_key: 'projects',
+    itemsKey: 'projects',
     store: 'showcase',
     fetch: () => console.log('fetch projects from ProjectSearch'),
     getSearchFields(project) {

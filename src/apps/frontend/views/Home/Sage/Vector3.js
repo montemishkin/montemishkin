@@ -2,7 +2,7 @@
  * Three dimensional vector with some color related methods.
  * @class
  */
-class Vector3 {
+export default class Vector3 {
     /**
      * Return a new `Vector3` with the given components.
      * @arg {number} x - The x component.
@@ -92,13 +92,13 @@ class Vector3 {
      * @returns this
      */
     cross(other) {
-        const next_x = (this.y * other.z) - (this.z * other.y)
-        const next_y = (this.z * other.x) - (this.x * other.z)
-        const next_z = (this.x * other.y) - (this.y * other.x)
+        const nextX = (this.y * other.z) - (this.z * other.y)
+        const nextY = (this.z * other.x) - (this.x * other.z)
+        const nextZ = (this.x * other.y) - (this.y * other.x)
 
-        this.x = next_x
-        this.y = next_y
-        this.z = next_z
+        this.x = nextX
+        this.y = nextY
+        this.z = nextZ
 
         return this
     }

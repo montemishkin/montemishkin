@@ -15,16 +15,16 @@ import BusinessCard from './BusinessCard'
 export default class About extends React.Component {
     render() {
         // default to infinity styling
-        let blockquote_style = styles.blockquote_infinity
+        let blockquoteStyle = styles.blockquoteInfinity
         // if viewport is less than medium
         if (this.props.browser.lessThan.medium) {
             // then use medium styling
-            blockquote_style = styles.blockquote_medium
+            blockquoteStyle = styles.blockquoteMedium
         }
 
         return (<div style={styles.container}>
             <BusinessCard />
-            <blockquote style={blockquote_style}>
+            <blockquote style={blockquoteStyle}>
                 "Previously, Monte was born.
                 But recently, Monte made a website.
                 Actually, this is that website.

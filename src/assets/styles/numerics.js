@@ -5,7 +5,7 @@
 
 export default {
     // maximum width of page
-    max_page_width: 760,
+    maxPageWidth: 760,
 }
 
 

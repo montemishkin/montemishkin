@@ -5,32 +5,32 @@ import classes from 'styles/classes'
 
 export default {
     container: {
-        ...classes.page_content_container,
+        ...classes.pageContentContainer,
     },
 
-    loading_image_wrapper: {
+    loadingImageWrapper: {
         display: 'flex',
         justifyContent: 'center',
     },
 
-    loading_image: {
+    loadingImage: {
         height: 50,
     },
 
-    error_message: {
+    errorMessage: {
         textAlign: 'center',
     },
 
     title: {
-        ...classes.larger_font_size,
-        ...classes.main_font_color,
+        ...classes.largerFontSize,
+        ...classes.mainFontColor,
         textAlign: 'center',
     },
 
-    post_container: {
+    postContainer: {
     },
 
-    date_and_tag_list_wrapper: {
+    dateAndTagListWrapper: {
         width: '100%',
         display: 'flex',
         flexWrap: 'wrap',
@@ -40,19 +40,19 @@ export default {
         borderLeftWidth: 0,
         borderRightWidth: 0,
         borderBottomWidth: 1,
-        borderColor: colors.grey.darker_bg,
+        borderColor: colors.grey.darkerBg,
         paddingTop: 7,
         paddingBottom: 7,
     },
 
-    creation_date: {
-        ...classes.lighter_font_color,
+    creationDate: {
+        ...classes.lighterFontColor,
     },
 
-    tag_list_wrapper: {
+    tagListWrapper: {
     },
 
-    post_content: {
+    postContent: {
     },
 }
 

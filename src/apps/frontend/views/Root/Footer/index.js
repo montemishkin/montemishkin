@@ -17,51 +17,51 @@ import List from 'components/List'
 export default class Footer extends React.Component {
     render() {
         // default to infinity styling for `container`
-        let container_style = styles.container_infinity
+        let containerStyle = styles.containerInfinity
         // default to infinity styling for `left`
-        let left_style = styles.left_infinity
+        let leftStyle = styles.leftInfinity
         // default to infinity styling for `right`
-        let right_style = styles.right_infinity
+        let rightStyle = styles.rightInfinity
         // if viewport is less than medium
         if (this.props.browser.lessThan.medium) {
             // then use medium styling
-            container_style = styles.container_medium
-            left_style = styles.left_medium
-            right_style = styles.right_medium
+            containerStyle = styles.containerMedium
+            leftStyle = styles.leftMedium
+            rightStyle = styles.rightMedium
         }
 
-        return (<div style={container_style}>
-            <List style={left_style}>
+        return (<div style={containerStyle}>
+            <List style={leftStyle}>
                 <IndexLink
                     to='/'
-                    style={styles.nav_link}
+                    style={styles.navLink}
                 >
                     Home
                 </IndexLink>
                 <Link
                     to='/about'
-                    style={styles.nav_link}
+                    style={styles.navLink}
                 >
                     About
                 </Link>
                 <Link
                     to='/projects'
-                    style={styles.nav_link}
+                    style={styles.navLink}
                 >
                     Projects
                 </Link>
                 <Link
                     to='/blog'
-                    style={styles.nav_link}
+                    style={styles.navLink}
                 >
                     Blog
                 </Link>
             </List>
-            <div style={right_style}>
+            <div style={rightStyle}>
                 &copy; {(new Date()).getFullYear() + ' '}
                 <a
                     href='mailto:montemishkin@gmail.com'
-                    style={styles.email_link}
+                    style={styles.emailLink}
                 >
                     Monte Mishkin
                 </a>

@@ -13,25 +13,25 @@ import createDetailView from 'views/createDetailView'
  */
 export default createDetailView({
     name: 'PostDetail',
-    store_key: 'blog',
+    storeKey: 'blog',
     fetch: () => console.log('fetch posts from PostDetail'),
-    items_key: 'posts',
-    getItemContent: ({title, creation_date, tags, content}) => (
+    itemsKey: 'posts',
+    getItemContent: ({title, creationDate, tags, content}) => (
         <div style={styles.container}>
             <h3 style={styles.title}>
                 {title}
             </h3>
-            <div style={styles.post_container}>
-                <div style={styles.date_and_tag_list_wrapper}>
-                    <div style={styles.creation_date}>
-                        <FormattedDate date={creation_date} />
+            <div style={styles.postContainer}>
+                <div style={styles.dateAndTagListWrapper}>
+                    <div style={styles.creationDate}>
+                        <FormattedDate date={creationDate} />
                     </div>
-                    <div style={styles.tag_list_wrapper}>
+                    <div style={styles.tagListWrapper}>
                         <TagListInline tags={tags} />
                     </div>
                 </div>
                 <div
-                    style={styles.post_content}
+                    style={styles.postContent}
                     dangerouslySetInnerHTML={{
                         __html: content,
                     }}

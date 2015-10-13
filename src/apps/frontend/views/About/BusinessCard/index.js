@@ -44,12 +44,12 @@ export default class BusinessCard extends Component {
                 alt='Monte Mishkin'
                 src='/static/images/finchz_medium.jpg'
             />
-            <div style={styles.not_image}>
+            <div style={styles.notImage}>
                 <p style={styles.name}>
                     Monte Mishkin
                 </p>
                 <address style={styles.address}>
-                    <List style={styles.address_list} list_item_style={styles.address_list_item}>
+                    <List style={styles.addressList} listItemStyle={styles.addressListItem}>
                         {data.map(({caption, href, src, alt}, index) => (
                             <a
                                 key={index}

@@ -5,18 +5,18 @@ import classes from 'styles/classes'
 
 // styling for transition parameters
 const transition = {
-    ...classes.transition_parameters,
+    ...classes.transitionParameters,
     transitionProperty: 'background-color',
 }
 
 
 export default {
-    outer_container: {
+    outerContainer: {
         display: 'flex',
         justifyContent: 'center',
     },
 
-    inner_container: {
+    innerContainer: {
         width: '100%',
     },
 
@@ -39,13 +39,13 @@ export default {
         borderRadius: 3,
         padding: 10,
         color: colors.grey.white,
-        backgroundColor: colors.grey.link_hover,
+        backgroundColor: colors.grey.linkHover,
         cursor: 'pointer',
         textDecoration: 'none',
 
         ':hover': {
             ...transition,
-            backgroundColor: colors.grey.link_hover_darker,
+            backgroundColor: colors.grey.linkHoverDarker,
         },
     },
 }

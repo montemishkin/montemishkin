@@ -3,44 +3,44 @@ import classes from 'styles/classes'
 
 
 // base styling common to all `header` styles
-const header_base = {
+const headerBase = {
 }
 // base styling common to all `subheader` styles
-const subheader_base = {
-    ...classes.large_font_size,
-    ...classes.lighter_font_color,
+const subheaderBase = {
+    ...classes.largeFontSize,
+    ...classes.lighterFontColor,
 }
 
 
 export default {
     container: {
-        ...classes.root_child_container,
+        ...classes.rootChildContainer,
     },
 
-    header_medium: {
-        ...header_base,
+    headerMedium: {
+        ...headerBase,
         display: 'flex',
         justifyContent: 'center',
     },
 
-    header_infinity: {
-        ...header_base,
+    headerInfinity: {
+        ...headerBase,
     },
 
-    subheader_medium: {
-        ...subheader_base,
+    subheaderMedium: {
+        ...subheaderBase,
         display: 'flex',
         justifyContent: 'center',
     },
 
-    subheader_infinity: {
-        ...subheader_base,
+    subheaderInfinity: {
+        ...subheaderBase,
     },
 
     link: {
-        ...classes.largest_font_size,
-        ...classes.main_font_color,
-        ...classes.link_base,
+        ...classes.largestFontSize,
+        ...classes.mainFontColor,
+        ...classes.linkBase,
     },
 }
 

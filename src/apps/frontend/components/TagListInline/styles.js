@@ -6,14 +6,14 @@ export default {
     container: {
         display: 'flex',
         alignItems: 'center',
-        ...classes.small_font_size,
+        ...classes.smallFontSize,
     },
 
     image: {
         height: 15,
     },
 
-    names_list: {
+    namesList: {
         listStyleType: 'none',
         margin: 0,
         paddingLeft: 3,
@@ -22,7 +22,7 @@ export default {
         flexWrap: 'wrap',
     },
 
-    names_list_item: {
+    namesListItem: {
         marginLeft: 3,
         marginRight: 3,
         paddingTop: 2,
@@ -32,8 +32,8 @@ export default {
     },
 
     link: {
-        ...classes.link_hoverable,
-        ...classes.darker_font_color,
+        ...classes.linkHoverable,
+        ...classes.darkerFontColor,
     },
 }
 

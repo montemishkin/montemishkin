@@ -8,25 +8,25 @@ import isFunction from 'lodash/lang/isFunction'
  */
 export default class Loader extends Component {
     static propTypes = {
-        is_fetching: PropTypes.bool,
-        has_fetched: PropTypes.bool,
+        isFetching: PropTypes.bool,
+        hasFetched: PropTypes.bool,
         // error object
         error: PropTypes.any,
-        reattempt_timeout: PropTypes.number,
+        reattemptTimeout: PropTypes.number,
         fetch: PropTypes.func,
-        error_content: PropTypes.oneOfType([
+        errorContent: PropTypes.oneOfType([
             // react component (not react element)
             PropTypes.func,
             // react element (not react component)
             PropTypes.node,
         ]),
-        fetching_content: PropTypes.oneOfType([
+        fetchingContent: PropTypes.oneOfType([
             // react component (not react element)
             PropTypes.func,
             // react element (not react component)
             PropTypes.node,
         ]),
-        success_content: PropTypes.oneOfType([
+        successContent: PropTypes.oneOfType([
             // react component (not react element)
             PropTypes.func,
             // react element (not react component)
@@ -36,10 +36,10 @@ export default class Loader extends Component {
 
 
     static defaultProps = {
-        reattempt_timeout: -1,
-        error_content: (<span>error :(</span>),
-        fetching_content: (<span>fetching...</span>),
-        success_content: (<span>success!</span>),
+        reattemptTimeout: -1,
+        errorContent: (<span>error :(</span>),
+        fetchingContent: (<span>fetching...</span>),
+        successContent: (<span>success!</span>),
     }
 
 
@@ -47,55 +47,55 @@ export default class Loader extends Component {
         const {error} = this.props
 
         if (typeof error !== 'undefined' && error !== null) {
-            const {fetch, reattempt_timeout, error_content} = this.props
+            const {fetch, reattemptTimeout, errorContent} = this.props
 
-            // if the reattempt_timeout is set, and a fetch routine was provided
-            if (reattempt_timeout >= 0 && fetch) {
+            // if the reattemptTimeout is set, and a fetch routine was provided
+            if (reattemptTimeout >= 0 && fetch) {
                 // set a timer to fetch in a little bit
-                setTimeout(fetch, reattempt_timeout)
+                setTimeout(fetch, reattemptTimeout)
             }
 
             // if a react component was provided
-            if (isFunction(error_content)) {
+            if (isFunction(errorContent)) {
                 // must be capital to enter React.createElement properly
-                const ErrorComponent = error_content
+                const ErrorComponent = errorContent
                 // render it passing along our props
                 return (<ErrorComponent {...this.props} />)
             }
 
             // a react element was provided so just return that
-            return error_content
+            return errorContent
         }
 
-        const {is_fetching} = this.props
+        const {isFetching} = this.props
 
-        if (is_fetching) {
-            const {fetching_content} = this.props
+        if (isFetching) {
+            const {fetchingContent} = this.props
 
             // if a react component was provided
-            if (isFunction(fetching_content)) {
+            if (isFunction(fetchingContent)) {
                 // must be capital to enter React.createElement properly
-                const FetchingComponent = fetching_content
+                const FetchingComponent = fetchingContent
                 // render it passing along our props
                 return (<FetchingComponent {...this.props} />)
             }
 
             // a react element was provided so just return that
-            return fetching_content
+            return fetchingContent
         }
 
-        const {success_content} = this.props
+        const {successContent} = this.props
 
         // if a react component was provided
-        if (isFunction(success_content)) {
+        if (isFunction(successContent)) {
             // must be capital to enter React.createElement properly
-            const SuccessComponent = success_content
+            const SuccessComponent = successContent
             // render it passing along our props
             return <SuccessComponent {...this.props} />
         }
 
         // a react element was provided so just return that
-        return success_content
+        return successContent
     }
 }
 

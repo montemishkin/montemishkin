@@ -8,10 +8,9 @@ import Sage from './Sage'
 
 /**
  * Home page view.
- * @class
  */
 @radium
-class Home extends React.Component {
+export default class Home extends React.Component {
     render() {
         return (<div style={styles.container}>
             <h2 style={styles.welcome}>
@@ -46,10 +45,6 @@ class Home extends React.Component {
         </div>)
     }
 }
-
-
-// export component
-export default Home
 
 
 // end of file

@@ -7,7 +7,7 @@ import Vector3 from './Vector3'
  * Two dimensional array of colors capable of being animated.
  * @class
  */
-class ColorBoard {
+export default class ColorBoard {
     /**
      * Create a new `ColorBoard` instance.
      * @arg {number} rows - How many rows the board should have.
@@ -38,16 +38,16 @@ class ColorBoard {
         // infinitesimal time step
         this.dt = 0.1
         // differential equation parameter determining color decay
-        this.k_decay = 0.02
+        this.kDecay = 0.02
 
         /* Variables altered by user */
 
         // true if the simulation is paused
         this.paused = true
         // differential equation parameter determining color-color coupling
-        this.k_color = 1
+        this.kColor = 1
         // differential equation parameter determining color-space coupling
-        this.k_space = 1
+        this.kSpace = 1
         // can be set to hold a canvas context using `bindToContext`
         this.context = null
 
@@ -86,12 +86,12 @@ class ColorBoard {
     /**
      * Sets the coupling parameters of the differential equation governing the
      * board simulation.
-     * @arg {number} k_color - The color-color coupling parameter.
-     * @arg {number} k_space - The color-space coupling parameter.
+     * @arg {number} kColor - The color-color coupling parameter.
+     * @arg {number} kSpace - The color-space coupling parameter.
      */
-    setCouplingParameters(k_color, k_space) {
-        this.k_color = k_color
-        this.k_space = k_space
+    setCouplingParameters(kColor, kSpace) {
+        this.kColor = kColor
+        this.kSpace = kSpace
     }
 
 
@@ -247,8 +247,8 @@ class ColorBoard {
         const width = context.canvas.width
         const height = context.canvas.height
         // dimensions of a single cell
-        const cell_width = Math.floor(width / this.cols)
-        const cell_height = Math.floor(height / this.rows)
+        const cellWidth = Math.floor(width / this.cols)
+        const cellHeight = Math.floor(height / this.rows)
         // padding necessary to keep rendered cells centered on the canvas
         // due to flooring of cell dimensions
         const paddingX = Math.floor(mod(width, this.cols) / 2)
@@ -260,13 +260,13 @@ class ColorBoard {
         for (let i = 0; i < this.rows; i++) {
             for (let j = 0; j < this.cols; j++) {
                 // location of upper left corner of cell
-                const x = paddingX + (j * cell_width)
-                const y = paddingY + (i * cell_height)
+                const x = paddingX + (j * cellWidth)
+                const y = paddingY + (i * cellHeight)
 
                 // set fill style to cell's color
                 context.fillStyle = this.array[i][j].css()
                 // fill the cell
-                context.fillRect(x, y, cell_width, cell_height)
+                context.fillRect(x, y, cellWidth, cellHeight)
             }
         }
     }
@@ -276,17 +276,17 @@ class ColorBoard {
      * Iterates the simulation forward one step in time.
      */
     iterate() {
-        const next_array = []
+        const nextArray = []
 
         for (let i = 0; i < this.rows; i++) {
-            next_array[i] = []
+            nextArray[i] = []
 
             for (let j = 0; j < this.cols; j++) {
-                next_array[i][j] = this.next_at(i, j)
+                nextArray[i][j] = this.nextAt(i, j)
             }
         }
 
-        this.array = next_array
+        this.array = nextArray
     }
 
 
@@ -314,7 +314,7 @@ class ColorBoard {
      * @arg {number} i - The "y" index. Must be an integer.
      * @arg {number} j - The "x" index. Must be an integer.
      */
-    next_at(i, j) {
+    nextAt(i, j) {
         // ensure that `i` and `j` are integers
         if (Math.floor(i) !== i) {
             throw new TypeError('`i` must be an integer')
@@ -326,34 +326,31 @@ class ColorBoard {
         // current color at given coordinates
         const c = this.at(i, j)
         // infinitesimal change in color caused by color
-        const dc_color = c.copy()
+        const dcColor = c.copy()
             // cross with small vector in first octant
             .cross(Vector3.randomComponentsBetween(0, 2))
             // subtract small decay contribution
-            .minus(c.copy().scale(this.k_decay))
+            .minus(c.copy().scale(this.kDecay))
             // scale by color-color coupling constant
-            .scale(this.k_color)
+            .scale(this.kColor)
         // infinitesimal change in color caused by space
-        const dc_space = Vector3.sum(
+        const dcSpace = Vector3.sum(
             this.at(i + 1, j),
             this.at(i - 1, j),
             this.at(i, j + 1),
             this.at(i, j - 1),
             c.copy().scale(-4)
         // scale by color-space coupling constant
-        ).scale(this.k_space)
+        ).scale(this.kSpace)
 
         // return the original value...
         return c.copy()
             // shifted by total color change over infinitesimal time step
-            .plus(Vector3.sum(dc_color, dc_space).scale(this.dt))
+            .plus(Vector3.sum(dcColor, dcSpace).scale(this.dt))
             // trimmed down to be an actual RGB color
             .trim(0, 255)
     }
 }
-
-
-export default ColorBoard
 
 
 // end of file

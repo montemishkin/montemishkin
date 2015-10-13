@@ -5,13 +5,8 @@ import {Link} from 'react-router'
 
 /**
  * Radium wrapper over react-router Link.
- * @class
  */
-const RadiumLink = radium(Link)
-
-
-// export component
-export default RadiumLink
+export default radium(Link)
 
 
 // end of file

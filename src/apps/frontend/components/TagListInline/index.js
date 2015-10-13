@@ -23,10 +23,10 @@ class TagList extends React.Component {
                 alt='Tag Icon'
                 src='/static/images/Price-Tag-50.png'
             />
-            <ul style={styles.names_list}>
+            <ul style={styles.namesList}>
                 {this.props.tags.map((tag) => (
                     <li
-                        style={styles.names_list_item}
+                        style={styles.namesListItem}
                         key={tag.id}
                     >
                         <Link

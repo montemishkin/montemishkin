@@ -14,7 +14,7 @@ import SearchBar from 'components/SearchBar'
  * @arg {object} options - Allows for named arguments.
  * @arg {string} options.name - The display name for the returned react
  * component.
- * @arg {string} options.items_key - The name of the key to look for the items
+ * @arg {string} options.itemsKey - The name of the key to look for the items
  * from the store on.
  * @arg options.store - The store to connect the view to.
  * @arg {function} options.fetch - Function to call when we want to fetch from
@@ -24,7 +24,7 @@ import SearchBar from 'components/SearchBar'
  * @arg {ReactComponent} options.PreviewComponent - React component to use to
  * preview the items in the list.  Will be passed a the single prop `item`.
  */
-export default ({name, store, fetch, items_key, getSearchFields, PreviewComponent}) => {
+export default ({name, store, fetch, itemsKey, getSearchFields, PreviewComponent}) => {
     @connect(state => state[store])
     @radium
     class SearchView extends Component {
@@ -33,13 +33,13 @@ export default ({name, store, fetch, items_key, getSearchFields, PreviewComponen
 
         static propTypes = {
             // error object
-            fetch_error: PropTypes.any,
+            fetchError: PropTypes.any,
             fetching: PropTypes.bool,
-            has_loaded: PropTypes.bool,
+            hasLoaded: PropTypes.bool,
             location: PropTypes.shape({
                 search: PropTypes.string.isRequired,
             }).isRequired,
-            [items_key]: PropTypes.arrayOf(PropTypes.shape({
+            [itemsKey]: PropTypes.arrayOf(PropTypes.shape({
                 content: PropTypes.string,
                 title: PropTypes.string,
                 tags: PropTypes.arrayOf(PropTypes.shape({
@@ -50,9 +50,9 @@ export default ({name, store, fetch, items_key, getSearchFields, PreviewComponen
 
 
         // see https://github.com/goatslacker/alt/blob/master/src/utils/connectToStores.js#L74
-        static componentDidConnect({has_fetched}) {
+        static componentDidConnect({hasFetched}) {
             // if not yet loaded this session
-            if (!has_fetched) {
+            if (!hasFetched) {
                 // fetch from server
                 fetch()
             }
@@ -64,31 +64,31 @@ export default ({name, store, fetch, items_key, getSearchFields, PreviewComponen
             super(...args)
             // set initial state
             this.state = {
-                search_text: this.props.location.search || '',
+                searchText: this.props.location.search || '',
             }
         }
 
 
         componentWillReceiveProps({location}) {
             this.setState({
-                search_text: location.search || '',
+                searchText: location.search || '',
             })
         }
 
 
         getFilteredItems() {
             // strings to search for
-            const search_terms = this.state.search_text
+            const searchTerms = this.state.searchText
                 .toLowerCase()
                 .trim()
                 .split(' ')
             // return filtered, sorted items
-            return this.props[items_key].filter((item) => {
+            return this.props[itemsKey].filter((item) => {
                 // strings to search through
-                const search_fields = getSearchFields(item)
+                const searchFields = getSearchFields(item)
 
-                for (const field of search_fields) {
-                    for (const term of search_terms) {
+                for (const field of searchFields) {
+                    for (const term of searchTerms) {
                         if (field.toLowerCase().search(term) !== -1) {
                             return true
                         }
@@ -97,11 +97,11 @@ export default ({name, store, fetch, items_key, getSearchFields, PreviewComponen
 
                 return false
             // sort by creation date, with more recent items first
-            }).sort((a, b) => a.creation_date < b.creation_date)
+            }).sort((a, b) => a.creationDate < b.creationDate)
         }
 
 
-        get fetching_content() {
+        get fetchingContent() {
             return (
                 <img
                     style={styles.image}
@@ -112,21 +112,21 @@ export default ({name, store, fetch, items_key, getSearchFields, PreviewComponen
         }
 
 
-        get success_content() {
-            const items = this.props[items_key]
+        get successContent() {
+            const items = this.props[itemsKey]
             // if there are any items
             if (items.length) {
                 // filter out which items to display
-                const filtered_items = this.getFilteredItems()
+                const filteredItems = this.getFilteredItems()
 
                 // if any items survived filter
-                if (filtered_items.length) {
+                if (filteredItems.length) {
                     return (
                         <List
                             style={styles.list}
-                            list_item_style={styles.list_item}
+                            listItemStyle={styles.listItem}
                         >
-                            {filtered_items.map((item, key) => (
+                            {filteredItems.map((item, key) => (
                                 <PreviewComponent
                                     key={key}
                                     item={item}
@@ -138,14 +138,14 @@ export default ({name, store, fetch, items_key, getSearchFields, PreviewComponen
 
                 // no items survived the filter
                 return (
-                    <span style={styles.no_search_result_message}>
+                    <span style={styles.noSearchResultMessage}>
                         No search results!
                     </span>
                 )
             }
 
             return (
-                <span style={styles.no_item_message}>
+                <span style={styles.noItemMessage}>
                     There are no items!
                 </span>
             )
@@ -155,26 +155,26 @@ export default ({name, store, fetch, items_key, getSearchFields, PreviewComponen
         render() {
             const {
                 error,
-                is_fetching,
-                has_fetched,
+                isFetching,
+                hasFetched,
             } = this.props
 
             return (
                 <div style={styles.container}>
                     <SearchBar
-                        value={this.state.search_text}
+                        value={this.state.searchText}
                         onChange={({target}) =>
-                            this.setState({search_text: target.value})
+                            this.setState({searchText: target.value})
                         }
                     />
                     <Loader
-                        is_fetching={is_fetching}
-                        has_fetched={has_fetched}
+                        isFetching={isFetching}
+                        hasFetched={hasFetched}
                         error={error}
-                        reattempt_timeout={3000}
+                        reattemptTimeout={3000}
                         fetch={fetch}
-                        fetching_content={this.fetching_content}
-                        success_content={this.success_content}
+                        fetchingContent={this.fetchingContent}
+                        successContent={this.successContent}
                     />
                 </div>
             )
