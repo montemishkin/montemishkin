@@ -1,64 +1,136 @@
-// gulp imports
+// third party imports
 import gulp from 'gulp'
 import del from 'del'
 import webpack from 'webpack-stream'
 import named from 'vinyl-named'
 import env from 'gulp-env'
+import shell from 'gulp-shell'
 import karma from 'karma'
 // local imports
-import project_paths from './config/project_paths'
+import {
+    buildDir,
+    serverBuild,
+    clientBuildGlob,
+    serverBuildGlob,
+    clientEntry,
+    serverEntry,
+    webpackClientConfig as webpackClientConfigPath,
+    webpackServerConfig as webpackServerConfigPath,
+    karmaConfig as karmaConfigPath,
+} from './config/projectPaths'
+const webpackClientConfig = require(webpackClientConfigPath)
+const webpackServerConfig = require(webpackServerConfigPath)
 
 
 /**
- * Build entry point.
+ * Run the development server.
  */
-gulp.task('build', ['clean'], () => {
-    return gulp.src(project_paths.entry)
+gulp.task('runserver', shell.task('nodemon ' + serverBuild))
+
+
+/**
+ * Build client entry point.
+ */
+gulp.task('build-client', ['clean-client'], () => {
+    return gulp.src(clientEntry)
                .pipe(named())
-               .pipe(webpack(require(project_paths.webpack_config)))
-               .pipe(gulp.dest(project_paths.build_dir))
+               .pipe(webpack(webpackClientConfig))
+               .pipe(gulp.dest(buildDir))
 })
 
 
 /**
- * Watch entry point.
+ * Build server entry point.
  */
-gulp.task('watch', ['clean'], () => {
+gulp.task('build-server', ['clean-server'], () => {
+    return gulp.src(serverEntry)
+               .pipe(named())
+               .pipe(webpack(webpackServerConfig))
+               .pipe(gulp.dest(buildDir))
+})
+
+
+/**
+ * Watch client entry point.
+ */
+gulp.task('watch-client', ['clean-client'], () => {
     const config = {
-        ...require(project_paths.webpack_config),
+        ...webpackClientConfig,
         watch: true,
     }
 
-    return gulp.src(project_paths.entry)
+    return gulp.src(clientEntry)
                .pipe(named())
                .pipe(webpack(config))
-               .pipe(gulp.dest(project_paths.build_dir))
+               .pipe(gulp.dest(buildDir))
 })
 
 
 /**
- * Build entry point for production.
+ * Watch server entry point.
  */
-gulp.task('build-production', ['clean'], () => {
-    // set the environment variable
+gulp.task('watch-server', ['clean-server'], () => {
+    const config = {
+        ...webpackServerConfig,
+        watch: true,
+    }
+
+    return gulp.src(serverEntry)
+               .pipe(named())
+               .pipe(webpack(config))
+               .pipe(gulp.dest(buildDir))
+})
+
+
+/**
+ * Build client entry point for production.
+ */
+gulp.task('build-client-production', ['clean-client'], () => {
+    // set environment variable
     env({
         vars: {
             NODE_ENV: 'production',
         },
     })
-    // build the client
-    return gulp.src(project_paths.entry)
+    // build client
+    return gulp.src(clientEntry)
                .pipe(named())
-               .pipe(webpack(require(project_paths.webpack_config)))
-               .pipe(gulp.dest(project_paths.build_dir))
+               .pipe(webpack(webpackClientConfig))
+               .pipe(gulp.dest(buildDir))
 })
 
 
 /**
- * Remove all ouptut files from previous builds.
+ * Build server entry point for production.
  */
-gulp.task('clean', () => {
-    del.sync(project_paths.build_dir)
+gulp.task('build-server-production', ['clean-server'], () => {
+    // set environment variable
+    env({
+        vars: {
+            NODE_ENV: 'production',
+        },
+    })
+    // build server
+    return gulp.src(serverEntry)
+               .pipe(named())
+               .pipe(webpack(webpackServerConfig))
+               .pipe(gulp.dest(buildDir))
+})
+
+
+/**
+ * Remove all ouptut files from previous client builds.
+ */
+gulp.task('clean-client', () => {
+    del.sync(clientBuildGlob)
+})
+
+
+/**
+ * Remove all ouptut files from previous server builds.
+ */
+gulp.task('clean-server', () => {
+    del.sync(serverBuildGlob)
 })
 
 
@@ -67,7 +139,7 @@ gulp.task('clean', () => {
  */
 gulp.task('test', (cb) => {
     const server = new karma.Server({
-        configFile: project_paths.karma_config,
+        configFile: karmaConfigPath,
         singleRun: true
     }, () => cb())
 
@@ -80,7 +152,7 @@ gulp.task('test', (cb) => {
  */
 gulp.task('tdd', () => {
     const server = new karma.Server({
-        configFile: project_paths.karma_config,
+        configFile: karmaConfigPath,
     })
 
     server.start()
