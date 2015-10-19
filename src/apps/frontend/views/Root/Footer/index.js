@@ -51,7 +51,7 @@ export default class Footer extends React.Component {
                     Projects
                 </Link>
                 <Link
-                    to='/blog'
+                    to='/posts'
                     style={styles.navLink}
                 >
                     Blog
@@ -60,7 +60,7 @@ export default class Footer extends React.Component {
             <div style={rightStyle}>
                 &copy; {(new Date()).getFullYear() + ' '}
                 <a
-                    href='mailto:montemishkin@gmail.com'
+                    href='mailto:monte@mishkin.com'
                     style={styles.emailLink}
                 >
                     Monte Mishkin

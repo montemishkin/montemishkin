@@ -1,36 +1,36 @@
 // local imports
-import {FETCH_POSTS, FAIL_FETCH_POSTS, SET_POSTS} from 'actions/types'
+import {FETCH_TAGS, FAIL_FETCH_TAGS, SET_TAGS} from 'actions/types'
 
 
-export default (blog, {type, payload, error} = {}) => {
-    if (type === FETCH_POSTS) {
+export default (state, {type, payload, error} = {}) => {
+    if (type === FETCH_TAGS) {
         return {
-            ...blog,
+            ...state,
             isFetching: true,
             error: null,
         }
     }
-    if (type === FAIL_FETCH_POSTS) {
+    if (type === FAIL_FETCH_TAGS) {
         return {
-            ...blog,
+            ...state,
             isFetching: false,
             error: payload,
         }
     }
-    if (type === SET_POSTS) {
+    if (type === SET_TAGS) {
         return {
-            ...blog,
+            ...state,
             isFetching: false,
             hasFetched: true,
             error: null,
-            posts: payload,
+            items: payload,
         }
     }
-    return typeof blog !== 'undefined' ? blog : {
+    return typeof state !== 'undefined' ? state : {
         error: null,
         isFetching: false,
         hasFetched: false,
-        posts: [],
+        items: [],
     }
 }
 

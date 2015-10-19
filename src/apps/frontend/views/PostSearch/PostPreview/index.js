@@ -75,7 +75,7 @@ export default class BlogPostPreview extends React.Component {
 
         // props for links to the blog post
         const linkProps = {
-            to: `/blog/${slug}`,
+            to: `/posts/${slug}`,
         }
 
         return (<div style={styles.container}>

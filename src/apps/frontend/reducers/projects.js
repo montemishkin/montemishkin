@@ -1,36 +1,36 @@
 // local imports
-import {FETCH_TAGS, FAIL_FETCH_TAGS, SET_TAGS} from 'actions/types'
+import {FETCH_PROJECTS, FAIL_FETCH_PROJECTS, SET_PROJECTS} from 'actions/types'
 
 
-export default (tagStore, {type, payload, error} = {}) => {
-    if (type === FETCH_TAGS) {
+export default (state, {type, payload, error} = {}) => {
+    if (type === FETCH_PROJECTS) {
         return {
-            ...tagStore,
+            ...state,
             isFetching: true,
             error: null,
         }
     }
-    if (type === FAIL_FETCH_TAGS) {
+    if (type === FAIL_FETCH_PROJECTS) {
         return {
-            ...tagStore,
+            ...state,
             isFetching: false,
             error: payload,
         }
     }
-    if (type === SET_TAGS) {
+    if (type === SET_PROJECTS) {
         return {
-            ...tagStore,
+            ...state,
             isFetching: false,
             hasFetched: true,
             error: null,
-            tags: payload,
+            items: payload,
         }
     }
-    return typeof tagStore !== 'undefined' ? tagStore : {
+    return typeof state !== 'undefined' ? state : {
         error: null,
         isFetching: false,
         hasFetched: false,
-        tags: [],
+        items: [],
     }
 }
 

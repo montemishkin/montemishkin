@@ -7,6 +7,7 @@ import {createSelector} from 'reselect'
 // local imports
 import styles from './styles'
 import Loader from 'components/Loader'
+import Link from 'components/Link'
 
 
 /**
@@ -14,15 +15,12 @@ import Loader from 'components/Loader'
  * @arg {object} options - Allows for named arguments.
  * @arg {string} options.name - The display name for the returned react
  * component.
- * @arg {string} options.itemsKey - The name of the key to look for the items
- * from the store on.
- * @arg options.store - The store to connect the view to.
- * @arg {function} options.fetch - Function to call when we want to fetch from
- * server.
+ * @arg {function} options.fetch - Given the dispatch method, do yo fetch thang.
+ * @arg {string} options.storeKey - The key to grab off the store state.
  * @arg {function} options.getItemContent - Given an item, return the rendered
  * content to display.
  */
-export default ({name, storeKey, fetch, itemsKey, getItemContent}) => {
+export default ({name, storeKey, fetch, getItemContent}) => {
     const selector = createSelector(
         // grab desired store off the state tree
         state => state[storeKey],
@@ -30,7 +28,7 @@ export default ({name, storeKey, fetch, itemsKey, getItemContent}) => {
         (state, props) => props.params.slug,
         createSelector(
             // grab the items list off the store
-            store => store[itemsKey],
+            store => store.items,
             // grab the other bits of the store
             store => store.isFetching,
             store => store.hasFetched,
@@ -52,12 +50,14 @@ export default ({name, storeKey, fetch, itemsKey, getItemContent}) => {
         static displayName = name
 
 
-        // see https://github.com/goatslacker/alt/blob/master/src/utils/connectToStores.js#L74
-        static componentDidConnect({hasFetched}) {
-            // if items have not yet been loaded this session
+        componentDidMount() {
+            const {hasFetched} = this.props
+
+            // if not yet loaded this session
             if (!hasFetched) {
+                const {dispatch} = this.props
                 // fetch items from server
-                fetch()
+                fetch(dispatch)
             }
         }
 
@@ -118,7 +118,7 @@ export default ({name, storeKey, fetch, itemsKey, getItemContent}) => {
 
 
         render() {
-            const {isFetching, hasFetched, error, item} = this.props
+            const {isFetching, hasFetched, error, item, dispatch} = this.props
 
             // content to display on successful load
             let successContent
@@ -130,16 +130,21 @@ export default ({name, storeKey, fetch, itemsKey, getItemContent}) => {
             }
 
             return (
-                <Loader
-                    isFetching={isFetching}
-                    hasFetched={hasFetched}
-                    error={error}
-                    reattemptTimeout={3000}
-                    fetch={fetch}
-                    errorContent={this.failureContent}
-                    fetchingContent={this.loadingContent}
-                    successContent={successContent}
-                />
+                <div>
+                    <Link to={`/${storeKey}`}>
+                        view all {storeKey}
+                    </Link>
+                    <Loader
+                        isFetching={isFetching}
+                        hasFetched={hasFetched}
+                        error={error}
+                        reattemptTimeout={3000}
+                        fetch={() => fetch(dispatch)}
+                        errorContent={this.failureContent}
+                        fetchingContent={this.loadingContent}
+                        successContent={successContent}
+                    />
+                </div>
             )
         }
     }

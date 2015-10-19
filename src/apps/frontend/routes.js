@@ -19,8 +19,8 @@ export default (
         <Route path='about' component={About} />
         <Route path='projects' component={ProjectSearch} />
         <Route path='projects/:slug' component={ProjectDetail}/>
-        <Route path='blog' component={PostSearch} />
-        <Route path='blog/:slug' component={PostDetail} />
+        <Route path='posts' component={PostSearch} />
+        <Route path='posts/:slug' component={PostDetail} />
         <Route path='tags' component={TagSearch} />
         <Route path='tags/:slug' component={TagDetail} />
     </Route>

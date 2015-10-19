@@ -1,6 +1,16 @@
+// local imports
+import classes from 'styles/classes'
+
+
 export default {
     container: {
-        backgroundColor: 'red',
+        ...classes.pageContentContainer,
+    },
+
+    title: {
+        ...classes.largerFontSize,
+        ...classes.mainFontColor,
+        textAlign: 'center',
     },
 }
 

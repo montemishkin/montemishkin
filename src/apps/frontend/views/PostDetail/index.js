@@ -1,11 +1,15 @@
 // third party imports
 import React from 'react'
+import fetch from 'isomorphic-fetch'
 // import DisqusThread from 'react-disqus-thread'
 // local imports
 import styles from './styles'
 import TagListInline from 'components/TagListInline'
 import FormattedDate from 'components/FormattedDate'
 import createDetailView from 'views/createDetailView'
+import fetchPosts from 'actions/fetchPosts'
+import failFetchPosts from 'actions/failFetchPosts'
+import setPosts from 'actions/setPosts'
 
 
 /**
@@ -13,9 +17,15 @@ import createDetailView from 'views/createDetailView'
  */
 export default createDetailView({
     name: 'PostDetail',
-    storeKey: 'blog',
-    fetch: () => console.log('fetch posts from PostDetail'),
-    itemsKey: 'posts',
+    storeKey: 'posts',
+    fetch(dispatch) {
+        dispatch(fetchPosts())
+
+        fetch('/api/posts')
+            .then(response => response.json())
+            .then(posts => dispatch(setPosts(posts)))
+            .catch(error => dispatch(failFetchPosts(error)))
+    },
     getItemContent: ({title, creationDate, tags, content}) => (
         <div style={styles.container}>
             <h3 style={styles.title}>

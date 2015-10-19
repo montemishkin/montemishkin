@@ -14,18 +14,15 @@ import SearchBar from 'components/SearchBar'
  * @arg {object} options - Allows for named arguments.
  * @arg {string} options.name - The display name for the returned react
  * component.
- * @arg {string} options.itemsKey - The name of the key to look for the items
- * from the store on.
- * @arg options.store - The store to connect the view to.
- * @arg {function} options.fetch - Function to call when we want to fetch from
- * server.
+ * @arg {function} options.fetch - Given the dispatch method, do yo fetch thang.
+ * @arg {string} options.storeKey - The key to grab off the store state.
  * @arg {function} options.getSearchFields - Given an item, return a list of
  * strings that should be searched when searching.
  * @arg {ReactComponent} options.PreviewComponent - React component to use to
  * preview the items in the list.  Will be passed a the single prop `item`.
  */
-export default ({name, store, fetch, itemsKey, getSearchFields, PreviewComponent}) => {
-    @connect(state => state[store])
+export default ({name, fetch, storeKey, getSearchFields, PreviewComponent}) => {
+    @connect(state => state[storeKey])
     @radium
     class SearchView extends Component {
         static displayName = name
@@ -34,12 +31,12 @@ export default ({name, store, fetch, itemsKey, getSearchFields, PreviewComponent
         static propTypes = {
             // error object
             fetchError: PropTypes.any,
-            fetching: PropTypes.bool,
-            hasLoaded: PropTypes.bool,
+            isFetching: PropTypes.bool,
+            hasFetched: PropTypes.bool,
             location: PropTypes.shape({
                 search: PropTypes.string.isRequired,
             }).isRequired,
-            [itemsKey]: PropTypes.arrayOf(PropTypes.shape({
+            items: PropTypes.arrayOf(PropTypes.shape({
                 content: PropTypes.string,
                 title: PropTypes.string,
                 tags: PropTypes.arrayOf(PropTypes.shape({
@@ -49,12 +46,14 @@ export default ({name, store, fetch, itemsKey, getSearchFields, PreviewComponent
         }
 
 
-        // see https://github.com/goatslacker/alt/blob/master/src/utils/connectToStores.js#L74
-        static componentDidConnect({hasFetched}) {
+        componentDidMount() {
+            const {hasFetched} = this.props
+
             // if not yet loaded this session
             if (!hasFetched) {
-                // fetch from server
-                fetch()
+                const {dispatch} = this.props
+                // fetch items from server
+                fetch(dispatch)
             }
         }
 
@@ -83,7 +82,7 @@ export default ({name, store, fetch, itemsKey, getSearchFields, PreviewComponent
                 .trim()
                 .split(' ')
             // return filtered, sorted items
-            return this.props[itemsKey].filter((item) => {
+            return this.props.items.filter((item) => {
                 // strings to search through
                 const searchFields = getSearchFields(item)
 
@@ -113,7 +112,7 @@ export default ({name, store, fetch, itemsKey, getSearchFields, PreviewComponent
 
 
         get successContent() {
-            const items = this.props[itemsKey]
+            const items = this.props.items
             // if there are any items
             if (items.length) {
                 // filter out which items to display
@@ -157,6 +156,7 @@ export default ({name, store, fetch, itemsKey, getSearchFields, PreviewComponent
                 error,
                 isFetching,
                 hasFetched,
+                dispatch,
             } = this.props
 
             return (
@@ -172,7 +172,7 @@ export default ({name, store, fetch, itemsKey, getSearchFields, PreviewComponent
                         hasFetched={hasFetched}
                         error={error}
                         reattemptTimeout={3000}
-                        fetch={fetch}
+                        fetch={() => fetch(dispatch)}
                         fetchingContent={this.fetchingContent}
                         successContent={this.successContent}
                     />

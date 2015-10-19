@@ -17,8 +17,9 @@ import logger from 'morgan'
 // import csrf from 'csurf'
 import serveStatic from 'serve-static'
 // local imports
-import frontend from 'apps/frontend'
 import {buildDir, assetsDir} from 'config/projectPaths'
+import frontend from 'apps/frontend'
+import api from 'apps/api'
 
 
 // top level express application instance
@@ -39,6 +40,8 @@ app.use(logger(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'))
 
 // route static files to build and assets dirs
 app.use('/static', serveStatic(buildDir), serveStatic(assetsDir))
+// route api to api app
+app.use('/api', api)
 // route root to frontend app
 app.use('/', frontend)
 

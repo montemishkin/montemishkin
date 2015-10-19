@@ -50,7 +50,7 @@ export default class Nav extends React.Component {
                 <Link
                     style={styles.link}
                     activeStyle={styles.linkActive}
-                    to='/blog'
+                    to='/posts'
                 >
                     blog
                 </Link>
