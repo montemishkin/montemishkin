@@ -1,17 +1,26 @@
 // third party imports
-import React from 'react'
+import React, {Component, PropTypes} from 'react'
 import radium from 'radium'
 // local imports
 import styles from './styles'
 import Link from 'components/Link'
+import List from 'components/List'
 
 
 /**
  * Inline list of linked tags, accompanied by tag icon.
- * @class
  */
 @radium
-class TagList extends React.Component {
+export default class TagList extends Component {
+    static propTypes = {
+        tags: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.number,
+            name: PropTypes.string,
+            slug: PropTypes.string,
+        })),
+    }
+
+
     render() {
         if (this.props.tags.length === 0) {
             return (<div />)
@@ -23,38 +32,20 @@ class TagList extends React.Component {
                 alt='Tag Icon'
                 src='/static/images/Price-Tag-50.png'
             />
-            <ul style={styles.namesList}>
+            <List style={styles.list} listItemStyle={styles.listItem}>
                 {this.props.tags.map((tag) => (
-                    <li
-                        style={styles.namesListItem}
+                    <Link
+                        to={`/tags/${tag.slug}`}
+                        style={styles.link}
                         key={tag.id}
                     >
-                        <Link
-                            to={`/tags/${tag.slug}`}
-                            style={styles.link}
-                        >
-                            {tag.name}
-                        </Link>
-                    </li>
+                        {tag.name}
+                    </Link>
                 ))}
-            </ul>
+            </List>
         </div>)
     }
 }
-
-
-// allow for type checking on props
-TagList.propTypes = {
-    tags: React.PropTypes.arrayOf(React.PropTypes.shape({
-        id: React.PropTypes.number,
-        name: React.PropTypes.string,
-        slug: React.PropTypes.string,
-    })),
-}
-
-
-// export component
-export default TagList
 
 
 // end of file

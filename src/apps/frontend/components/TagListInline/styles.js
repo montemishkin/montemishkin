@@ -13,7 +13,7 @@ export default {
         height: 15,
     },
 
-    namesList: {
+    list: {
         listStyleType: 'none',
         margin: 0,
         paddingLeft: 3,
@@ -22,7 +22,7 @@ export default {
         flexWrap: 'wrap',
     },
 
-    namesListItem: {
+    listItem: {
         marginLeft: 3,
         marginRight: 3,
         paddingTop: 2,
