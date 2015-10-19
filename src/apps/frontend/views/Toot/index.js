@@ -3,7 +3,7 @@ import React from 'react'
 import radium from 'radium'
 // local imports
 import styles from './styles'
-import Footer from 'components/Footer'
+import Nav from 'components/Nav'
 
 
 /**
@@ -16,10 +16,10 @@ export default class Root extends React.Component {
         const {children} = this.props
 
         return (<div style={styles.container}>
+            <Nav />
             <div style={styles.content}>
                 {children}
             </div>
-            <Footer />
         </div>)
     }
 }

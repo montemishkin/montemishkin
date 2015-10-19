@@ -3,10 +3,18 @@ import colors from 'styles/colors'
 import classes from 'styles/classes'
 
 
+// styling for color and background-color transition
+const transition = {
+    ...classes.transitionParameters,
+    transitionProperty: 'color, background-color',
+}
+
+
 // base styling for both active and inactive links
 const linkBase = {
     ...classes.linkHoverable,
     ...classes.darkFontColor,
+    ...transition,
     padding: 10,
 }
 
@@ -15,17 +23,16 @@ const innerContainerBase = {
     ...classes.rootChildContainer,
     display: 'flex',
     flexWrap: 'wrap',
-}
-
-// styling for color and background-color transition
-const transition = {
-    ...classes.transitionParameters,
-    transitionProperty: 'color, background-color',
+    listStyleType: 'none',
 }
 
 
 export default {
     outerContainer: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        paddingTop: 10,
+        paddingBottom: 10,
         backgroundColor: colors.grey.darkerBg,
     },
 
@@ -39,15 +46,16 @@ export default {
         justifyContent: 'flex-end',
     },
 
+    listItem: {
+    },
+
     link: {
         ...linkBase,
-        ...transition,
     },
 
     linkActive: {
         ...linkBase,
-        ...transition,
-        backgroundColor: colors.grey.lighter,
+        // backgroundColor: colors.grey.lighter,
     },
 }
 

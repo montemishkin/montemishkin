@@ -22,6 +22,7 @@ export default {
 
     canvas: {
         width: '100%',
+        height: '100%',
         // height must be set dynamically based on width
     },
 

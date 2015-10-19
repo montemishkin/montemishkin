@@ -4,7 +4,7 @@ import classes from 'styles/classes'
 
 // styling common to all `container` styles
 const containerBase = {
-    ...classes.rootChildContainer,
+    // ...classes.rootChildContainer,
     ...classes.lightFontColor,
     ...classes.smallFontSize,
     display: 'flex',
@@ -16,6 +16,7 @@ const containerBase = {
 const leftBase = {
     display: 'flex',
     flexWrap: 'wrap',
+    listStyleType: 'none',
 }
 
 // styling common to all `right` styles
@@ -48,7 +49,7 @@ export default {
     leftInfinity: {
         ...leftBase,
         flexBasis: 250,
-        marginLeft: -10,
+        marginLeft: 10,
     },
 
     rightMedium: {
@@ -60,7 +61,7 @@ export default {
     rightInfinity: {
         ...rightBase,
         padding: 10,
-        marginRight: -10,
+        marginRight: 10,
     },
 
     navLink: {

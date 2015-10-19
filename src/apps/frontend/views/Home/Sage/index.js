@@ -37,7 +37,7 @@ export default class Sage extends Component {
             // bind the color board to the rendering context
             colorBoard.bindToContext(canvas.getContext('2d'))
             // trigger the color board to play its animation
-            colorBoard.play()
+            // colorBoard.play()
         })
 
         // add resize event handler

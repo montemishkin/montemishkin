@@ -1,5 +1,5 @@
 // third party imports
-import React from 'react'
+import React, {Component} from 'react'
 import radium from 'radium'
 import {connect} from 'react-redux'
 // local imports
@@ -14,7 +14,7 @@ import List from 'components/List'
  */
 @connect(({browser}) => ({browser}))
 @radium
-export default class Nav extends React.Component {
+export default class Nav extends Component {
     render() {
         // default to infinity styling for inner container
         let innerContainerStyle = styles.innerContainerInfinity
@@ -24,8 +24,8 @@ export default class Nav extends React.Component {
             innerContainerStyle = styles.innerContainerMedium
         }
 
-        return (<div style={styles.outerContainer}>
-            <List style={innerContainerStyle}>
+        return (<nav style={styles.outerContainer}>
+            <List style={innerContainerStyle} listItemStyle={styles.listItem}>
                 <IndexLink
                     to='/'
                     style={styles.link}
@@ -55,7 +55,7 @@ export default class Nav extends React.Component {
                     blog
                 </Link>
             </List>
-        </div>)
+        </nav>)
     }
 }
 
