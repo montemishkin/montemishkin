@@ -11,13 +11,6 @@ import routes from 'apps/frontend/routes'
 import {createStore} from 'apps/frontend/store'
 
 
-// styling imports
-// normalize css
-import 'normalize.css'
-// allow for code highlighting
-import 'assets/styles/highlight.css'
-
-
 // use the browser's native history
 const history = createBrowserHistory()
 
