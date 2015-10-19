@@ -1,11 +1,10 @@
 // third party imports
 import React, {Component} from 'react'
 import radium from 'radium'
+import throttle from 'lodash/function/throttle'
 // local imports
 import styles from './styles'
 import ColorMatrix from './ColorMatrix'
-import SVG from './SVG'
-import ColorMatrixComponent from './ColorMatrixComponent'
 import map from './map'
 
 
@@ -35,29 +34,64 @@ export default class Sage extends Component {
         this.state = {
             isPaused: true,
         }
+        // bind instance method so it can be passed as callback
+        // also throttle it so that we dont spam resize event
+        this.onResize = throttle(this.onResize.bind(this), 100)
+    }
+
+
+    componentDidMount() {
+        // determine initial dimensions
+        this.onResize()
+        // render initial state to the canvas
+        colorMatrix.renderTo(this.refs.canvas.getContext('2d'))
+        // add resize event handler
+        window.addEventListener('resize', this.onResize)
     }
 
 
     componentWillUnmount() {
         // cut animation loop
         this.setState({isPaused: true})
+        // remove resize event handler
+        window.removeEventListener('resize', this.onResize)
+    }
+
+
+    onResize() {
+        // the canvas DOM node
+        const canvas = this.refs.canvas
+        // the width of the canvas DOM node
+        const width = canvas.clientWidth
+        // the desired height of the canvas DOM node
+        const height = width * 9 / 16
+
+        // set canvas dimensions to its DOM node dimensions so that
+        // no stretching occurs
+        canvas.width = width
+        canvas.height = height
+
+        // update state, passing callback for async
+        this.setState({
+            height: height,
+            width: width,
+        })
     }
 
 
     animate() {
-        const wasPaused = this.state.isPaused
+        const {isPaused} = this.state
 
         // iterate to next state of color matrix
         colorMatrix.next()
+            // and then render to the canvas
+            .renderTo(this.refs.canvas.getContext('2d'))
 
-        // force rerender
-        this.forceUpdate(() => {
-            // if animation was not paused
-            if (!wasPaused) {
-                // then keep it going
-                requestAnimationFrame(() => this.animate())
-            }
-        })
+        // if animation is not paused
+        if (!isPaused) {
+            // then keep it going
+            requestAnimationFrame(() => this.animate())
+        }
     }
 
 
@@ -113,27 +147,26 @@ export default class Sage extends Component {
 
         return (<div style={styles.outerContainer}>
             <div style={styles.innerContainer}>
-                <SVG
-                    style={styles.svg}
-                    viewBox={`0 0 ${gameWidth} ${gameHeight}`}
+                <canvas
+                    ref='canvas'
+                    style={[
+                        styles.canvas,
+                        {height: this.state.height},
+                    ]}
                     onClick={(event) => this.handleClick(event)}
                     onMouseMove={(event) => this.handleMouseMove(event)}
-                >
-                    <ColorMatrixComponent
-                        width={gameWidth}
-                        height={gameHeight}
-                        colorMatrix={colorMatrix}
-                    />
-                </SVG>
+                />
                 <div style={styles.controls}>
                     <button
-                        style={styles.controlButton}
+                        ref='toggle'
+                        style={styles.button}
                         onClick={() => this.togglePause()}
                     >
                         {isPaused ? 'Play' : 'Pause'}
                     </button>
                     <button
-                        style={styles.controlButton}
+                        ref='reset'
+                        style={styles.button}
                         onClick={() => this.reset()}
                     >
                         Reset

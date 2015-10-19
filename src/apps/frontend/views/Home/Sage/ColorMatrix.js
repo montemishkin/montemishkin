@@ -166,6 +166,36 @@ export default class ColorBoard {
             // trimmed down to be an actual RGB color
             .trim(0, 255)
     }
+
+
+    renderTo(context) {
+        // dimensions of the entire canvas
+        const width = context.canvas.width
+        const height = context.canvas.height
+        // dimensions of a single cell
+        const cellWidth = Math.floor(width / this.cols)
+        const cellHeight = Math.floor(height / this.rows)
+        // padding necessary to keep rendered cells centered on the canvas
+        // due to flooring of cell dimensions
+        const paddingX = Math.floor(mod(width, this.cols) / 2)
+        const paddingY = Math.floor(mod(height, this.rows) / 2)
+
+        // clear the canvas
+        context.clearRect(0, 0, width, height)
+
+        this._matrix.forEach((row, i) => {
+            row.forEach((color, j) => {
+                // location of upper left corner of cell
+                const x = paddingX + (j * cellWidth)
+                const y = paddingY + (i * cellHeight)
+
+                // set fill style to cell's color
+                context.fillStyle = color.toString()
+                // fill the cell
+                context.fillRect(x, y, cellWidth, cellHeight)
+            })
+        })
+    }
 }
 
 
