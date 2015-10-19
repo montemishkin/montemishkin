@@ -20,10 +20,30 @@ export default {
         width: '100%',
     },
 
+    canvasOverlay: {
+        color: 'white',
+        fontSize: 120,
+        position: 'absolute',
+        width: '100%',
+        // height must be set dynamically based on width
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+    },
+
+    fadeOut: {
+        transitionDuration: '1.2s',
+        transitionProperty: 'opacity',
+        transitionTimingFunction: 'ease-in-out',
+        opacity: 0,
+    },
+
     canvas: {
         width: '100%',
-        height: '100%',
         // height must be set dynamically based on width
+        height: '100%',
     },
 
     controls: {

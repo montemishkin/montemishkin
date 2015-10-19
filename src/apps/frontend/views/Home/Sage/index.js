@@ -19,7 +19,7 @@ const gameWidth = 1600
 const gameHeight = 900
 const aspectRatio = gameWidth / gameHeight
 // single `ColorMatrix` instance used between all `Sage` components
-const colorMatrix = new ColorMatrix(gameHeight / 20, gameWidth / 20)
+const colorMatrix = new ColorMatrix(gameHeight / 10, gameWidth / 10)
 
 
 /**
@@ -32,7 +32,15 @@ export default class Sage extends Component {
         super(...args)
         // set initial state
         this.state = {
+            // message to overlay above canvas
+            message: 'Touch me?',
+            // whether or not the simulation is paused
             isPaused: true,
+            // whether or not the simulation has been clicked yet
+            wasClicked: false,
+            // these will be updated on componentDidMount
+            width: 100,
+            height: 100,
         }
         // bind instance method so it can be passed as callback
         // also throttle it so that we dont spam resize event
@@ -41,12 +49,16 @@ export default class Sage extends Component {
 
 
     componentDidMount() {
-        // determine initial dimensions
-        this.onResize()
-        // render initial state to the canvas
-        colorMatrix.renderTo(this.refs.canvas.getContext('2d'))
         // add resize event handler
         window.addEventListener('resize', this.onResize)
+
+        // determine initial dimensions, then...
+        this.onResize(() => {
+            const context = this.refs.canvas.getContext('2d')
+
+            // render initial state to canvas
+            colorMatrix.renderTo(context)
+        })
     }
 
 
@@ -58,23 +70,25 @@ export default class Sage extends Component {
     }
 
 
-    onResize() {
+    onResize(cb) {
         // the canvas DOM node
         const canvas = this.refs.canvas
         // the width of the canvas DOM node
         const width = canvas.clientWidth
         // the desired height of the canvas DOM node
-        const height = width * 9 / 16
+        const height = width / aspectRatio
 
-        // set canvas dimensions to its DOM node dimensions so that
-        // no stretching occurs
+        // set canvas dimensions desired dimensions to avoid stretching
         canvas.width = width
         canvas.height = height
 
-        // update state, passing callback for async
-        this.setState({
-            height: height,
-            width: width,
+        // rerender to the canvas
+        colorMatrix.renderTo(canvas.getContext('2d'))
+
+        this.setState({width, height}, () => {
+            if (cb) {
+                cb()
+            }
         })
     }
 
@@ -100,14 +114,19 @@ export default class Sage extends Component {
         const wasPaused = this.state.isPaused
 
         // ensure paused flag is unset, then...
-        this.setState({isPaused: false}, () => {
-            // if animation was paused at the time of the click event
-            // (it wont be anymore when this is callback is executed)
-            if (wasPaused) {
-                // kick off animation loop
-                this.animate()
+        this.setState(
+            {
+                isPaused: false,
+                wasClicked: true,
+            }, () => {
+                // if animation was paused at the time of the click event
+                // (it wont be anymore when this is callback is executed)
+                if (wasPaused) {
+                    // kick off animation loop
+                    this.animate()
+                }
             }
-        })
+        )
     }
 
 
@@ -143,18 +162,27 @@ export default class Sage extends Component {
 
 
     render() {
-        const {isPaused} = this.state
+        const {message, wasClicked, height, isPaused} = this.state
 
         return (<div style={styles.outerContainer}>
             <div style={styles.innerContainer}>
+                <div
+                    style={[
+                        styles.canvasOverlay,
+                        wasClicked && styles.fadeOut,
+                        {height: height},
+                    ]}
+                    onClick={(event) => this.handleClick(event)}
+                    onMouseMove={(event) => this.handleMouseMove(event)}
+                >
+                    {message}
+                </div>
                 <canvas
                     ref='canvas'
                     style={[
                         styles.canvas,
-                        {height: this.state.height},
+                        {height: height},
                     ]}
-                    onClick={(event) => this.handleClick(event)}
-                    onMouseMove={(event) => this.handleMouseMove(event)}
                 />
                 <div style={styles.controls}>
                     <button
