@@ -21,7 +21,7 @@ export default {
     },
 
     canvasOverlay: {
-        color: 'white',
+        color: 'black',
         fontSize: 120,
         position: 'absolute',
         width: '100%',

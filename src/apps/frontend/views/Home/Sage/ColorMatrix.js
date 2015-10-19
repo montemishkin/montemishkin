@@ -27,9 +27,9 @@ export default class ColorBoard {
         // differential equation parameter determining color decay
         this.kDecay = 0.02
         // differential equation parameter determining color-color coupling
-        this.kColor = 1
+        this.kColor = 0.34
         // differential equation parameter determining color-space coupling
-        this.kSpace = 1
+        this.kSpace = 1.1
     }
 
 
@@ -60,30 +60,6 @@ export default class ColorBoard {
 
 
     /**
-     * Maps over the flattened matrix using the given callback to determine
-     * the mapping.  The mapping will be passed `{color, i, j}, index` at each
-     * cell.
-     */
-    map(fn) {
-        // reduce over the rows in the matrix
-        return this._matrix.reduce(
-            // return the result of reducing over the colors in each row
-            ({result, index}, row, i) => row.reduce(
-                // return the accumulator with the mapped color and the next key
-                ({result: _result, index: _index}, color, j) => ({
-                    result: _result.concat(fn({color, i, j}, _index)),
-                    index: _index + 1,
-                }),
-                // take the outer accumulator as the initial value
-                {result, index}
-            ),
-            // start with an empty array and zero based index
-            {result: [], index: 0}
-        ).result
-    }
-
-
-    /**
      * Iterates the simulation forward one step in time.
      */
     next() {
@@ -94,19 +70,6 @@ export default class ColorBoard {
         )
 
         return this
-
-
-        // const nextMatrix = []
-        //
-        // for (var i = 0; i < this.rows; i++) {
-        //     nextMatrix[i] = []
-        //
-        //     for (var j = 0; j < this.cols; j++) {
-        //         nextMatrix[i][j] = this.nextAt(i, j)
-        //     }
-        // }
-        //
-        // this._matrix = nextMatrix
     }
 
 
@@ -197,6 +160,3 @@ export default class ColorBoard {
         })
     }
 }
-
-
-// end of file

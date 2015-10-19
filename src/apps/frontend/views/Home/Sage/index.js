@@ -2,6 +2,7 @@
 import React, {Component} from 'react'
 import radium from 'radium'
 import throttle from 'lodash/function/throttle'
+import isFunction from 'lodash/lang/isFunction'
 // local imports
 import styles from './styles'
 import ColorMatrix from './ColorMatrix'
@@ -56,7 +57,12 @@ export default class Sage extends Component {
         this.onResize(() => {
             const context = this.refs.canvas.getContext('2d')
 
-            // render initial state to canvas
+            // // iterate through a few states to get smooth look
+            // for (var k = 0; k < 200; k++) {
+            //     colorMatrix.next()
+            // }
+
+            // render state to canvas
             colorMatrix.renderTo(context)
         })
     }
@@ -85,11 +91,7 @@ export default class Sage extends Component {
         // rerender to the canvas
         colorMatrix.renderTo(canvas.getContext('2d'))
 
-        this.setState({width, height}, () => {
-            if (cb) {
-                cb()
-            }
-        })
+        this.setState({width, height}, () => isFunction(cb) ? cb() : null)
     }
 
 
