@@ -22,14 +22,14 @@ app.set('views', templatesDir)
 app.all('*', (req, res) => {
     // figure out the appropriate route
     match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
-        if (redirectLocation) {
-            res.redirect(301, redirectLocation.pathname + redirectLocation.search)
-        } else if (error) {
+        // if there was an error
+        if (error) {
             res.status(500).send(error.message)
-        } else if (renderProps === null) {
-            res.status(404).send('Not found')
-        // otherwise the component was found
-        } else {
+        // if route was found but is redirect
+        } else if (redirectLocation) {
+            res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+        // if route was found and is not a redirect
+        } else if (renderProps) {
             // initial application state
             const initialState = JSON.stringify(store.getState())
             // initial component to render
@@ -44,6 +44,9 @@ app.all('*', (req, res) => {
                 initialState,
                 renderedComponent: renderToString(initialComponent),
             })
+        // otherwise route was not found
+        } else {
+            res.status(404).send('Not found')
         }
     })
 })
