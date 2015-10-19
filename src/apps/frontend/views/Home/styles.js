@@ -5,6 +5,10 @@ import colors from 'styles/colors'
 
 // base styling for all page sections EXCEPT the banner
 const sectionBase = {
+}
+// base styling for all page sections EXCEPT the banner AND sage
+const textSectionBase = {
+    ...sectionBase,
     padding: 100,
 }
 
@@ -80,22 +84,22 @@ export default {
 
 
     about: {
-        ...sectionBase,
+        ...textSectionBase,
     },
 
 
     projects: {
-        ...sectionBase,
+        ...textSectionBase,
     },
 
 
     blog: {
-        ...sectionBase,
+        ...textSectionBase,
     },
 
 
     conclusion: {
-        ...sectionBase,
+        ...textSectionBase,
     },
 }
 

@@ -1,19 +1,30 @@
 // third party imports
 import React, {Component} from 'react'
 import radium from 'radium'
-import throttle from 'lodash/function/throttle'
 // local imports
 import styles from './styles'
-import ColorBoard from './ColorBoard'
-import {map} from './util'
+import ColorMatrix from './ColorMatrix'
+import SVG from './SVG'
+import ColorMatrixComponent from './ColorMatrixComponent'
+import map from './map'
 
 
-// single `ColorBoard` instance used between all `Sage` components
-const colorBoard = new ColorBoard(100, 100)
+function getRelativeCoordinates({pageX, pageY, currentTarget}) {
+    return {
+        x: pageX - currentTarget.offsetLeft,
+        y: pageY - currentTarget.offsetTop,
+    }
+}
+
+const gameWidth = 1600
+const gameHeight = 900
+const aspectRatio = gameWidth / gameHeight
+// single `ColorMatrix` instance used between all `Sage` components
+const colorMatrix = new ColorMatrix(gameHeight / 20, gameWidth / 20)
 
 
 /**
- * Trippy canvas simulation.
+ * Trippy svg simulation.
  */
 @radium
 export default class Sage extends Component {
@@ -22,118 +33,108 @@ export default class Sage extends Component {
         super(...args)
         // set initial state
         this.state = {
-            height: 200,
-            width: 200,
+            isPaused: true,
         }
-        // bind instance method so it can be passed as callback
-        // also throttle it so that we dont spam resize event
-        this.onResize = throttle(this.onResize.bind(this), 100)
-    }
-
-
-    componentDidMount() {
-        // determine initial dimensions, then...
-        this.resetDimensions((canvas) => {
-            // bind the color board to the rendering context
-            colorBoard.bindToContext(canvas.getContext('2d'))
-            // trigger the color board to play its animation
-            // colorBoard.play()
-        })
-
-        // add resize event handler
-        window.addEventListener('resize', this.onResize)
     }
 
 
     componentWillUnmount() {
-        // pause the color board's animation
-        colorBoard.pause()
-        // remove resize event handler
-        window.removeEventListener('resize', this.onResize)
+        // cut animation loop
+        this.setState({isPaused: true})
     }
 
 
-    onResize() {
-        this.resetDimensions()
-    }
+    animate() {
+        const wasPaused = this.state.isPaused
 
+        // iterate to next state of color matrix
+        colorMatrix.next()
 
-    /**
-     * Update the canvas dimensions to reflect its DOM node dimensions.
-     * Update internal state dimensions.
-     * @arg {function} cb - Callback to execute once state is updated.
-     * Will be passed the canvas DOM node.
-     */
-    resetDimensions(cb) {
-        // the canvas DOM node
-        const canvas = this.refs.canvas
-        // the width of the canvas DOM node
-        const width = canvas.clientWidth
-        // the desired height of the canvas DOM node
-        const height = width * 9 / 16
-
-        // set canvas dimensions to its DOM node dimensions so that
-        // no stretching occurs
-        canvas.width = width
-        canvas.height = height
-
-        // update state, passing callback for async
-        this.setState({
-            height: height,
-            width: width,
-        }, () => {
-            if (cb) {
-                cb(canvas)
+        // force rerender
+        this.forceUpdate(() => {
+            // if animation was not paused
+            if (!wasPaused) {
+                // then keep it going
+                requestAnimationFrame(() => this.animate())
             }
         })
     }
 
 
+    handleClick() {
+        // to reference later in callback
+        const wasPaused = this.state.isPaused
+
+        // ensure paused flag is unset, then...
+        this.setState({isPaused: false}, () => {
+            // if animation was paused at the time of the click event
+            // (it wont be anymore when this is callback is executed)
+            if (wasPaused) {
+                // kick off animation loop
+                this.animate()
+            }
+        })
+    }
+
+
+    handleMouseMove(event) {
+        const {x, y} = getRelativeCoordinates(event)
+        const width = window.innerWidth
+        const height = window.innerWidth / aspectRatio
+
+        colorMatrix.kColor = map(x, 0, width, 0, 3.5)
+        colorMatrix.kSpace = map(y, 0, height, 0, 2.5)
+    }
+
+
+    togglePause() {
+        // to reference later in callback
+        const wasPaused = this.state.isPaused
+
+        // flip paused state, then...
+        this.setState({isPaused: !wasPaused}, () => {
+            // if animation was paused at the time of the click event
+            // (it wont be anymore when this is callback is executed)
+            if (wasPaused) {
+                // kick off animation loop
+                this.animate()
+            }
+        })
+    }
+
+
+    reset() {
+        colorMatrix.randomize()
+    }
+
+
     render() {
+        const {isPaused} = this.state
+
         return (<div style={styles.outerContainer}>
             <div style={styles.innerContainer}>
-                <canvas
-                    ref='canvas'
-                    style={[
-                        styles.canvas,
-                        {height: this.state.height},
-                    ]}
-                    onMouseMove={(event) => {
-                        // mouse coordinates relative to canvas DOM node
-                        const x = event.pageX - event.target.offsetLeft
-                        const y = event.pageY - event.target.offsetTop
-
-                        colorBoard.setCouplingParameters(
-                            map(x, 0, this.state.width, 0, 3.5),
-                            map(y, 0, this.state.height, 0, 2.5)
-                        )
-                    }}
-                />
+                <SVG
+                    style={styles.svg}
+                    viewBox={`0 0 ${gameWidth} ${gameHeight}`}
+                    onClick={(event) => this.handleClick(event)}
+                    onMouseMove={(event) => this.handleMouseMove(event)}
+                >
+                    <ColorMatrixComponent
+                        width={gameWidth}
+                        height={gameHeight}
+                        colorMatrix={colorMatrix}
+                    />
+                </SVG>
                 <div style={styles.controls}>
                     <button
-                        type='button'
-                        ref='pause'
-                        style={styles.button}
-                        onClick={() => colorBoard.togglePausePlay()}
+                        style={styles.controlButton}
+                        onClick={() => this.togglePause()}
                     >
-                        Pause/Play
+                        {isPaused ? 'Play' : 'Pause'}
                     </button>
-                    <a
-                        type='button'
-                        ref='snapshot'
-                        style={styles.button}
-                        onClick={(event) => {
-                            event.target.href = colorBoard.toDataURL()
-                        }}
-                        download='color-board.png'
-                    >
-                        Snapshot
-                    </a>
                     <button
-                        type='button'
-                        ref='reset'
-                        style={styles.button}
-                        onClick={() => colorBoard.randomize()}
+                        style={styles.controlButton}
+                        onClick={() => this.reset()}
                     >
                         Reset
                     </button>
