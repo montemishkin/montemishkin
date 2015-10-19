@@ -1,3 +1,5 @@
+- is build-production actually building production?
+
 - move TagListInline to use List
 - task factories in gulpfile
 

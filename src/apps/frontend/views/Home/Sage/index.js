@@ -1,8 +1,7 @@
 // third party imports
-import React from 'react'
+import React, {Component} from 'react'
 import radium from 'radium'
-/* misc third party imports */
-import {throttle} from 'lodash'
+import throttle from 'lodash/function/throttle'
 // local imports
 import styles from './styles'
 import ColorBoard from './ColorBoard'
@@ -15,10 +14,9 @@ const colorBoard = new ColorBoard(100, 100)
 
 /**
  * Trippy canvas simulation.
- * @class
  */
 @radium
-class Sage extends React.Component {
+export default class Sage extends Component {
     constructor(...args) {
         // instantiate `this`
         super(...args)
@@ -144,10 +142,6 @@ class Sage extends React.Component {
         </div>)
     }
 }
-
-
-// export component
-export default Sage
 
 
 // end of file
