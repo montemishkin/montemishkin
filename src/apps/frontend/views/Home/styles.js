@@ -3,10 +3,16 @@ import classes from 'styles/classes'
 import colors from 'styles/colors'
 
 
-// base styling for all page sections EXCEPT the banner
+// base styling for all page sections
 const sectionBase = {
+    borderTopWidth: 0,
+    borderRightWidth: 0,
+    borderLeftWidth: 0,
+    borderBottomWidth: 1,
+    borderColor: 'black',
+    borderStyle: 'solid',
 }
-// base styling for all page sections EXCEPT the banner AND sage
+// base styling for all page sections EXCEPT banner AND sage
 const textSectionBase = {
     ...sectionBase,
     padding: 100,
@@ -19,6 +25,7 @@ export default {
 
 
     banner: {
+        ...sectionBase,
         height: '100%',
         display: 'flex',
         flexDirection: 'column',

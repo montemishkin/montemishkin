@@ -20,13 +20,26 @@ export default {
         width: '100%',
     },
 
-    canvasOverlay: {
-        color: 'black',
-        fontSize: 120,
+    canvasOverlayContainer: {
         position: 'absolute',
         width: '100%',
         // height must be set dynamically based on width
         height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        cursor: 'pointer',
+    },
+
+    canvasOverlay: {
+        color: 'black',
+        backgroundColor: 'rgba(200, 200, 240, 0.2)',
+        borderStyle: 'solid',
+        borderRadius: 10,
+        borderWidth: 0,
+        padding: 30,
+        fontSize: 120,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',

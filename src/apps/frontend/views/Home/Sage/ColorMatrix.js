@@ -9,11 +9,11 @@ import mod from './mod'
  */
 export default class ColorBoard {
     constructor(rows, cols) {
-        // ensure that `rows` and `cols` are positive integers
-        if (rows <= 0 || !Number.isFinite(rows) || cols <= 0 || !Number.isFinite(cols)) {
-            throw new Error(
-                `expected positive, finite integers, got: ${rows}, ${cols}`
-            )
+        if (rows <= 0 || Math.floor(rows) !== rows) {
+            throw new Error(`expected positive integer, got: ${rows}`)
+        }
+        if (cols <= 0 || Math.floor(cols) !== cols) {
+            throw new Error(`expected positive integer, got: ${cols}`)
         }
 
         this._rows = rows
@@ -38,8 +38,76 @@ export default class ColorBoard {
     }
 
 
+    set rows(rows) {
+        if (rows <= 0 || Math.floor(rows) !== rows) {
+            throw new Error(`expected positive integer, got: ${rows}`)
+        }
+
+        // if desired number of rows is less than current number of rows
+        if (rows < this._rows) {
+            // just slice off the extra rows
+            this._matrix = this._matrix.slice(0, rows)
+        // otherwise desired number of rows is greater than current number of rows
+        } else {
+            // so just recycle the already existing rows
+
+            // number of times already existing rows fit into desired rows
+            const m = Math.floor(rows / this._rows)
+            // extra left over after fitting m described above
+            const n = rows - (m * this._rows)
+
+            // recycle the entire original matrix m - 1 times
+            for (var k = 0; k < m - 1; k++) {
+                this._matrix = this._matrix.concat(this._matrix.slice(0, this._rows))
+            }
+            // add on the last n remaining rows
+            this._matrix = this._matrix.concat(this._matrix.slice(0, n))
+        }
+
+        this._rows = rows
+    }
+
+
     get cols() {
         return this._cols
+    }
+
+
+    set cols(cols) {
+        if (cols <= 0 || Math.floor(cols) !== cols) {
+            throw new Error(`expected positive integer, got: ${cols}`)
+        }
+
+        // if desired number of cols is less than current number of cols
+        if (cols < this._cols) {
+            // just slice off the extra cols
+            this._matrix = this._matrix.map(
+                row => row.slice(0, cols)
+            )
+        // otherwise desired number of cols is greater than current number of cols
+        } else {
+            // so just recycle the already existing cols
+
+            // number of times already existing cols fit into desired cols
+            const m = Math.floor(cols / this._cols)
+            // extra left over after fitting m described above
+            const n = cols - (m * this._cols)
+
+            // map each row to the new cycled row
+            this._matrix = this._matrix.map(row => {
+                let newRow = row
+                // recycle the entire original row m - 1 times
+                for (var k = 0; k < m - 1; k++) {
+                    newRow = newRow.concat(newRow.slice(0, this._cols))
+                }
+                // add on the last n remaining cols
+                newRow = newRow.concat(newRow.slice(0, n))
+
+                return newRow
+            })
+        }
+
+        this._cols = cols
     }
 
 
@@ -136,26 +204,24 @@ export default class ColorBoard {
         const width = context.canvas.width
         const height = context.canvas.height
         // dimensions of a single cell
-        const cellWidth = Math.floor(width / this.cols)
-        const cellHeight = Math.floor(height / this.rows)
-        // padding necessary to keep rendered cells centered on the canvas
-        // due to flooring of cell dimensions
-        const paddingX = Math.floor(mod(width, this.cols) / 2)
-        const paddingY = Math.floor(mod(height, this.rows) / 2)
+        // (overestimate with ceil so that there arent empty edges of canvas)
+        const cellWidth = Math.ceil(width / this._cols)
+        const cellHeight = Math.ceil(height / this._rows)
 
         // clear the canvas
         context.clearRect(0, 0, width, height)
 
         this._matrix.forEach((row, i) => {
             row.forEach((color, j) => {
-                // location of upper left corner of cell
-                const x = paddingX + (j * cellWidth)
-                const y = paddingY + (i * cellHeight)
-
                 // set fill style to cell's color
                 context.fillStyle = color.toString()
                 // fill the cell
-                context.fillRect(x, y, cellWidth, cellHeight)
+                context.fillRect(
+                    j * cellWidth,
+                    i * cellHeight,
+                    cellWidth,
+                    cellHeight
+                )
             })
         })
     }

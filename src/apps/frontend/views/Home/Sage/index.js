@@ -16,11 +16,13 @@ function getRelativeCoordinates({pageX, pageY, currentTarget}) {
     }
 }
 
-const gameWidth = 1600
-const gameHeight = 900
-const aspectRatio = gameWidth / gameHeight
+
+// desired dimensions of a single color matrix cell
+const targetCellWidth = 10
+const targetCellHeight = 10
 // single `ColorMatrix` instance used between all `Sage` components
-const colorMatrix = new ColorMatrix(gameHeight / 10, gameWidth / 10)
+// (dimensions will be rewritten on load, but need to start somewhere)
+const colorMatrix = new ColorMatrix(90, 160)
 
 
 /**
@@ -57,11 +59,6 @@ export default class Sage extends Component {
         this.onResize(() => {
             const context = this.refs.canvas.getContext('2d')
 
-            // // iterate through a few states to get smooth look
-            // for (var k = 0; k < 200; k++) {
-            //     colorMatrix.next()
-            // }
-
             // render state to canvas
             colorMatrix.renderTo(context)
         })
@@ -77,21 +74,28 @@ export default class Sage extends Component {
 
 
     onResize(cb) {
-        // the canvas DOM node
+        // canvas DOM node
         const canvas = this.refs.canvas
-        // the width of the canvas DOM node
-        const width = canvas.clientWidth
-        // the desired height of the canvas DOM node
-        const height = width / aspectRatio
+        // window dimensions
+        const {innerWidth, innerHeight} = window
 
-        // set canvas dimensions desired dimensions to avoid stretching
-        canvas.width = width
-        canvas.height = height
+        // set canvas dimensions to window dimensions
+        canvas.width = innerWidth
+        canvas.height = innerHeight
+        // set matrix dimensions based on window dimensions and
+        // desired cell dimensions (overestimate with ceil to avoid
+        // empty edges of canvas)
+        colorMatrix.rows = Math.ceil(innerHeight / targetCellHeight)
+        colorMatrix.cols = Math.ceil(innerWidth / targetCellWidth)
 
-        // rerender to the canvas
+        // rerender to canvas
         colorMatrix.renderTo(canvas.getContext('2d'))
 
-        this.setState({width, height}, () => isFunction(cb) ? cb() : null)
+        // update internal state for rerender, then run callback
+        this.setState({
+            width: innerWidth,
+            height: innerHeight,
+        }, () => isFunction(cb) ? cb() : null)
     }
 
 
@@ -134,11 +138,10 @@ export default class Sage extends Component {
 
     handleMouseMove(event) {
         const {x, y} = getRelativeCoordinates(event)
-        const width = window.innerWidth
-        const height = window.innerWidth / aspectRatio
+        const {innerWidth, innerHeight} = window
 
-        colorMatrix.kColor = map(x, 0, width, 0, 3.5)
-        colorMatrix.kSpace = map(y, 0, height, 0, 2.5)
+        colorMatrix.kColor = map(x, 0, innerWidth, 0, 3.5)
+        colorMatrix.kSpace = map(y, 0, innerHeight, 0, 2.5)
     }
 
 
@@ -170,14 +173,20 @@ export default class Sage extends Component {
             <div style={styles.innerContainer}>
                 <div
                     style={[
-                        styles.canvasOverlay,
-                        wasClicked && styles.fadeOut,
+                        styles.canvasOverlayContainer,
                         {height: height},
                     ]}
                     onClick={(event) => this.handleClick(event)}
                     onMouseMove={(event) => this.handleMouseMove(event)}
                 >
-                    {message}
+                    <div
+                        style={[
+                            styles.canvasOverlay,
+                            wasClicked && styles.fadeOut,
+                        ]}
+                    >
+                        {message}
+                    </div>
                 </div>
                 <canvas
                     ref='canvas'
