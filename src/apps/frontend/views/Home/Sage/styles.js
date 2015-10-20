@@ -6,23 +6,18 @@ import classes from 'styles/classes'
 // styling for transition parameters
 const transition = {
     ...classes.transitionParameters,
-    transitionProperty: 'background-color',
+    transitionProperty: 'opacity',
 }
 
 
 export default {
-    outerContainer: {
-        display: 'flex',
-        justifyContent: 'center',
+    container: {
     },
 
 
-    innerContainer: {
-        width: '100%',
-    },
-
-
-    canvasOverlay: {
+    overlay: {
+        ...transition,
+        ...classes.largestFontSize,
         position: 'absolute',
         width: '100%',
         height: '100%',
@@ -32,20 +27,12 @@ export default {
         alignItems: 'center',
         textAlign: 'center',
         color: 'black',
-        backgroundColor: 'rgb(175, 218, 255)',
-        ...classes.largestFontSize,
-
-        transitionDuration: '1.2s',
-        transitionProperty: 'opacity',
-        transitionTimingFunction: 'ease-in-out',
+        backgroundColor: colors.canvasBackground,
         opacity: 1,
     },
 
 
     fadeOut: {
-        transitionDuration: '1.2s',
-        transitionProperty: 'opacity',
-        transitionTimingFunction: 'ease-in-out',
         opacity: 0,
     },
 
@@ -53,32 +40,6 @@ export default {
     canvas: {
         width: '100%',
         height: '100%',
-    },
-
-
-    controls: {
-        display: 'flex',
-        justifyContent: 'space-around',
-        flexWrap: 'wrap',
-        paddingTop: 5,
-    },
-
-
-    button: {
-        ...transition,
-        borderStyle: 'solid',
-        borderWidth: 0,
-        borderRadius: 3,
-        padding: 10,
-        color: colors.grey.white,
-        backgroundColor: colors.grey.linkHover,
-        cursor: 'pointer',
-        textDecoration: 'none',
-
-        ':hover': {
-            ...transition,
-            backgroundColor: colors.grey.linkHoverDarker,
-        },
     },
 }
 

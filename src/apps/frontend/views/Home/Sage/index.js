@@ -89,14 +89,14 @@ export default class Sage extends Component {
     animate() {
         const {isPaused} = this.state
 
-        // iterate to next state of color matrix
-        colorMatrix.next()
-            // and then render to the canvas
-            .renderTo(this.refs.canvas.getContext('2d'))
-
         // if animation is not paused
         if (!isPaused) {
-            // then keep it going
+            // iterate to next state of color matrix
+            colorMatrix.next()
+                // and then render to the canvas
+                .renderTo(this.refs.canvas.getContext('2d'))
+
+            // keep it going
             requestAnimationFrame(() => this.animate())
         }
     }
@@ -156,38 +156,20 @@ export default class Sage extends Component {
     render() {
         const {wasClicked, isPaused} = this.state
 
-        return (<div style={styles.outerContainer}>
-            <div style={styles.innerContainer}>
-                <div
-                    style={[
-                        styles.canvasOverlay,
-                        isPaused && {cursor: 'pointer'},
-                        wasClicked && styles.fadeOut,
-                    ]}
-                    onClick={(event) => this.handleClick(event)}
-                    onMouseMove={(event) => this.handleMouseMove(event)}
-                >
-                    <h3>Click me in different places!</h3>
-                    <span>(or just keep scrolling)</span>
-                </div>
-                <canvas ref='canvas' style={styles.canvas} />
-                <div style={styles.controls}>
-                    <button
-                        ref='toggle'
-                        style={styles.button}
-                        onClick={() => this.togglePause()}
-                    >
-                        {isPaused ? 'Play' : 'Pause'}
-                    </button>
-                    <button
-                        ref='reset'
-                        style={styles.button}
-                        onClick={() => this.reset()}
-                    >
-                        Reset
-                    </button>
-                </div>
+        return (<div style={styles.container}>
+            <div
+                style={[
+                    styles.overlay,
+                    isPaused && {cursor: 'pointer'},
+                    wasClicked && styles.fadeOut,
+                ]}
+                onClick={(event) => this.handleClick(event)}
+                onMouseMove={(event) => this.handleMouseMove(event)}
+            >
+                <h3>Click me in different places!</h3>
+                <span>(or just keep scrolling)</span>
             </div>
+            <canvas ref='canvas' style={styles.canvas} />
         </div>)
     }
 }

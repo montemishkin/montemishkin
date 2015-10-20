@@ -1,6 +1,8 @@
 - eliminate duplicate code between projects and blog posts (and tags, but less so)
 - update propTypes
-- load initial state into sage so that it starts off looking smooth and cool
+
+- sage currently throws error if you navigate away from home route
+    - animate is getting called with `isPaused === false` one last time even after component has been unmounted
 
 - use these things:
     - [search indexing](https://github.com/olivernn/lunr.js)

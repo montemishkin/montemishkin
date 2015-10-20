@@ -49,6 +49,8 @@ export default {
         stackOverflowTag: '#DDE8F2',
         stackOverflowTag_2: '#D1E0EB',
     },
+
+    canvasBackground: 'rgb(175, 218, 255)',
 }
 
 
