@@ -89,8 +89,6 @@ export const linkHoverable = {
     transitionProperty: 'color',
 
     ':hover': {
-        ...transitionParameters,
-        transitionProperty: 'color',
         color: colors.grey.linkHover,
     },
 }

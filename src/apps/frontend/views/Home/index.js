@@ -87,7 +87,8 @@ export default class Home extends Component {
                 <Sage />
             </section>
             <section style={styles.about}>
-                about me a little bit
+                <h3>Skills</h3>
+                <p>about me a little bit</p>
             </section>
             <section style={styles.projects}>
                 about my projects a little bit

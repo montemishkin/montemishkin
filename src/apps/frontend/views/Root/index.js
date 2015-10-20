@@ -1,28 +1,22 @@
 // third party imports
-import React from 'react'
+import React, {Component} from 'react'
 import radium from 'radium'
 // local imports
 import styles from './styles'
-import Footer from 'components/Footer'
+import Footer from './Footer'
 
 
 /**
  * Root level component.
  */
 @radium
-export default class Root extends React.Component {
+export default class Root extends Component {
     render() {
-        // grab the used props
-        const {children} = this.props
-
-        return (<div style={styles.container}>
-            <div style={styles.content}>
-                {children}
+        return (
+            <div style={styles.container}>
+                {this.props.children}
+                <Footer />
             </div>
-            <Footer />
-        </div>)
+        )
     }
 }
-
-
-// end of file

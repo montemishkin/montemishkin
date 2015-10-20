@@ -22,6 +22,7 @@
     - handle not found routes more professionally
 
 - styling
+    - are nav and footer too fat? is 20px padding too much on them?
     - (stretch of tag image, etc) for TagList component
     - rendered markdown styling
     - syntax highlight styling
@@ -32,6 +33,7 @@
     - react-router `Link` and `IndexLink` do not play well with radium
         - radium wrapping of `Link` does not work on `activeStyle` prop.  Thus, nav links don't transition *in* to the new background color even though they do transition *out* of it.
         - idk why, but `IndexLink` doesn't get the hover styling...
+        - anyways, it would really be nice to be able to use `activeStyle`, especially on the nav bar.
 
 - prepublish
     - is build-production actually building in production environment?

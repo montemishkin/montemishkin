@@ -15,16 +15,13 @@ export default class List extends Component {
 
 
     render() {
-        // pull out the used props
-        const {style, listItemStyle, children} = this.props
+        const {listItemStyle, children, ...unusedProps} = this.props
+
 
         return (
-            <ul style={style}>
+            <ul {...unusedProps}>
                 {React.Children.map(children, (child, key) => (
-                    <li
-                        style={listItemStyle}
-                        key={key}
-                    >
+                    <li style={listItemStyle} key={key}>
                         {child}
                     </li>
                 ))}
