@@ -16,35 +16,31 @@ export default {
         justifyContent: 'center',
     },
 
+
     innerContainer: {
         width: '100%',
     },
 
-    canvasOverlayContainer: {
-        position: 'absolute',
-        width: '100%',
-        // height must be set dynamically based on width
-        height: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
-        cursor: 'pointer',
-    },
 
     canvasOverlay: {
-        color: 'black',
-        backgroundColor: 'rgba(200, 200, 240, 0.2)',
-        borderStyle: 'solid',
-        borderRadius: 10,
-        borderWidth: 0,
-        padding: 30,
-        fontSize: 120,
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
+        color: 'black',
+        backgroundColor: 'rgb(175, 218, 255)',
+        ...classes.largestFontSize,
+
+        transitionDuration: '1.2s',
+        transitionProperty: 'opacity',
+        transitionTimingFunction: 'ease-in-out',
+        opacity: 1,
     },
+
 
     fadeOut: {
         transitionDuration: '1.2s',
@@ -53,11 +49,12 @@ export default {
         opacity: 0,
     },
 
+
     canvas: {
         width: '100%',
-        // height must be set dynamically based on width
         height: '100%',
     },
+
 
     controls: {
         display: 'flex',
@@ -65,6 +62,7 @@ export default {
         flexWrap: 'wrap',
         paddingTop: 5,
     },
+
 
     button: {
         ...transition,

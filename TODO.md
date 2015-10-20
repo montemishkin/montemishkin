@@ -25,6 +25,7 @@
     - syntax highlight styling
     - overall DRY design of styling
         - colors
+            - use [chromajs](https://github.com/gka/chroma.js) colors
         - magic numbers
     - react-router `Link` and `IndexLink` do not play well with radium
         - radium wrapping of `Link` does not work on `activeStyle` prop.  Thus, nav links don't transition *in* to the new background color even though they do transition *out* of it.

@@ -2,7 +2,6 @@
 import React, {Component} from 'react'
 import radium from 'radium'
 import throttle from 'lodash/function/throttle'
-import isFunction from 'lodash/lang/isFunction'
 // local imports
 import styles from './styles'
 import ColorMatrix from './ColorMatrix'
@@ -35,15 +34,10 @@ export default class Sage extends Component {
         super(...args)
         // set initial state
         this.state = {
-            // message to overlay above canvas
-            message: 'Touch me?',
             // whether or not the simulation is paused
             isPaused: true,
             // whether or not the simulation has been clicked yet
             wasClicked: false,
-            // these will be updated on componentDidMount
-            width: 100,
-            height: 100,
         }
         // bind instance method so it can be passed as callback
         // also throttle it so that we dont spam resize event
@@ -54,14 +48,13 @@ export default class Sage extends Component {
     componentDidMount() {
         // add resize event handler
         window.addEventListener('resize', this.onResize)
+        // determine initial dimensions
+        this.onResize()
 
-        // determine initial dimensions, then...
-        this.onResize(() => {
-            const context = this.refs.canvas.getContext('2d')
+        const context = this.refs.canvas.getContext('2d')
 
-            // render state to canvas
-            colorMatrix.renderTo(context)
-        })
+        // render state to canvas
+        colorMatrix.renderTo(context)
     }
 
 
@@ -73,7 +66,7 @@ export default class Sage extends Component {
     }
 
 
-    onResize(cb) {
+    onResize() {
         // canvas DOM node
         const canvas = this.refs.canvas
         // window dimensions
@@ -90,12 +83,6 @@ export default class Sage extends Component {
 
         // rerender to canvas
         colorMatrix.renderTo(canvas.getContext('2d'))
-
-        // update internal state for rerender, then run callback
-        this.setState({
-            width: innerWidth,
-            height: innerHeight,
-        }, () => isFunction(cb) ? cb() : null)
     }
 
 
@@ -140,8 +127,8 @@ export default class Sage extends Component {
         const {x, y} = getRelativeCoordinates(event)
         const {innerWidth, innerHeight} = window
 
-        colorMatrix.kColor = map(x, 0, innerWidth, 0, 3.5)
-        colorMatrix.kSpace = map(y, 0, innerHeight, 0, 2.5)
+        colorMatrix.kColor = map(x, 0, innerWidth, 0, 1)
+        colorMatrix.kSpace = map(y, 0, innerHeight, 0, 1)
     }
 
 
@@ -167,34 +154,23 @@ export default class Sage extends Component {
 
 
     render() {
-        const {message, wasClicked, height, isPaused} = this.state
+        const {wasClicked, isPaused} = this.state
 
         return (<div style={styles.outerContainer}>
             <div style={styles.innerContainer}>
                 <div
                     style={[
-                        styles.canvasOverlayContainer,
-                        {height: height},
+                        styles.canvasOverlay,
+                        isPaused && {cursor: 'pointer'},
+                        wasClicked && styles.fadeOut,
                     ]}
                     onClick={(event) => this.handleClick(event)}
                     onMouseMove={(event) => this.handleMouseMove(event)}
                 >
-                    <div
-                        style={[
-                            styles.canvasOverlay,
-                            wasClicked && styles.fadeOut,
-                        ]}
-                    >
-                        {message}
-                    </div>
+                    <h3>Click me in different places!</h3>
+                    <span>(or just keep scrolling)</span>
                 </div>
-                <canvas
-                    ref='canvas'
-                    style={[
-                        styles.canvas,
-                        {height: height},
-                    ]}
-                />
+                <canvas ref='canvas' style={styles.canvas} />
                 <div style={styles.controls}>
                     <button
                         ref='toggle'
