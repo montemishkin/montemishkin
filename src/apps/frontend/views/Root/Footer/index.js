@@ -43,7 +43,8 @@ export default class Footer extends React.Component {
                     </Link>
                 </List>
                 <div style={copyrightStyle}>
-                    &copy; {(new Date()).getFullYear() + ' '}
+                    <i className='fa fa-copyright' />
+                    {' ' + (new Date()).getFullYear() + ' '}
                     <a
                         href='mailto:monte@mishkin.com'
                         style={styles.emailLink}

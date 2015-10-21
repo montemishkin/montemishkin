@@ -7,27 +7,23 @@ import List from 'components/List'
 
 
 // monte's contact data for the business card
-const data = [
+const contactData = [
     {
         caption: 'Email',
         href: 'mailto:monte@mishkin.com',
-        src: '/static/images/Message-50.png',
-        alt: 'Email Symbol',
+        icon: 'envelope-o',
     }, {
         caption: 'Resume',
         href: '/static/resume.pdf',
-        src: '/static/images/Document-50.png',
-        alt: 'Resume Symbol',
+        icon: 'file-text-o',
     }, {
         caption: 'GitHub',
         href: 'http://github.com/montemishkin',
-        src: '/static/images/GitHub-Mark-64px.png',
-        alt: 'GitHub Logo',
+        icon: 'github',
     }, {
         caption: 'SoundCloud',
         href: 'http://soundcloud.com/montemishkin',
-        src: '/static/images/sc_grey_96x48.png',
-        alt: 'SoundCloud Logo',
+        icon: 'soundcloud',
     },
 ]
 
@@ -50,17 +46,16 @@ export default class BusinessCard extends Component {
                 </p>
                 <address style={styles.address}>
                     <List style={styles.addressList} listItemStyle={styles.addressListItem}>
-                        {data.map(({caption, href, src, alt}, index) => (
+                        {contactData.map(({caption, href, icon}, index) => (
                             <a
                                 key={index}
                                 href={href}
                                 style={styles.link}
                             >
                                 <figure style={styles.figure}>
-                                    <img
+                                    <i
                                         style={styles.icon}
-                                        src={src}
-                                        alt={alt}
+                                        className={`fa fa-${icon}`}
                                     />
                                     <figcaption style={styles.caption}>
                                         {caption}
@@ -74,6 +69,3 @@ export default class BusinessCard extends Component {
         </div>)
     }
 }
-
-
-// end of file

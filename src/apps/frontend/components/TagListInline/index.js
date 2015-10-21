@@ -27,10 +27,9 @@ export default class TagList extends Component {
         }
 
         return (<div style={styles.container}>
-            <img
+            <i
                 style={styles.image}
-                alt='Tag Icon'
-                src='/static/images/Price-Tag-50.png'
+                className='fa fa-tag'
             />
             <List style={styles.list} listItemStyle={styles.listItem}>
                 {this.props.tags.map((tag) => (

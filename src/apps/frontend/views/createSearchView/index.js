@@ -102,10 +102,9 @@ export default ({name, fetch, storeKey, getSearchFields, PreviewComponent}) => {
 
         get fetchingContent() {
             return (
-                <img
+                <i
                     style={styles.image}
-                    alt='Loading Indicator'
-                    src='/static/images/spinner.gif'
+                    className='fa fa-refresh fa-spin'
                 />
             )
         }

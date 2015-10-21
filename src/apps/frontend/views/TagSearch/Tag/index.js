@@ -23,10 +23,9 @@ export default class Tag extends React.Component {
 
         return (
             <span>
-                <img
+                <i
                     style={styles.image}
-                    alt='Tag Icon'
-                    src='/static/images/Price-Tag-50.png'
+                    className='fa fa-tag'
                 />
                 <Link
                     to={`/tags/${slug}`}

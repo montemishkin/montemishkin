@@ -69,10 +69,9 @@ export default ({name, storeKey, fetch, getItemContent}) => {
             return (
                 <div>
                     <div style={styles.loadingImageWrapper}>
-                        <img
+                        <i
                             style={styles.loadingImage}
-                            alt='Loading Indicator'
-                            src='/static/images/spinner.gif'
+                            className='fa fa-refresh fa-spin'
                         />
                     </div>
                 </div>
