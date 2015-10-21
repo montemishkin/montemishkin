@@ -75,12 +75,12 @@ export default class Home extends Component {
                     </nav>
                 </div>
                 <div style={styles.downArrowContainer}>
-                    <img
-                        alt='down arrow'
-                        src='/static/images/down-arrow-50.png'
-                        style={styles.downArrow}
-                        onClick={() => this.scrollDown()}
-                    />
+                    <button style={styles.downArrowButton}>
+                        <i
+                            className='fa fa-chevron-down'
+                            onClick={() => this.scrollDown()}
+                        />
+                    </button>
                 </div>
             </section>
             <section style={styles.sage}>

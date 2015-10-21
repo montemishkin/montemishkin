@@ -5,7 +5,7 @@ import classes from 'styles/classes'
 
 export default {
     container: {
-        ...classes.pageContentContainer,
+        padding: 100,
     },
 
     loadingImageWrapper: {

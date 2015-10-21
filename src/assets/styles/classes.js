@@ -4,7 +4,6 @@
 
 // local imports
 import colors from './colors'
-import numerics from './numerics'
 
 
 /* Font Size Classes */
@@ -58,18 +57,6 @@ export const lighterFontColor = {
 
 /* Misc Classes */
 
-// styling for containers of views that act as the `RouteHandler` in `Root`
-export const pageContentContainer = {
-    maxWidth: numerics.maxPageWidth,
-    margin: '0 auto',
-}
-
-// styling for containers of components that are direct children to `Root`
-export const rootChildContainer = {
-    ...pageContentContainer,
-    width: '90%',
-}
-
 // parameters (everything except transitionProperty) for css transitions
 export const transitionParameters = {
     transitionDuration: '0.2s',
@@ -111,8 +98,6 @@ export default {
     lightFontColor,
     lighterFontColor,
 
-    pageContentContainer,
-    rootChildContainer,
     transitionParameters,
     linkBase,
     linkHoverable,

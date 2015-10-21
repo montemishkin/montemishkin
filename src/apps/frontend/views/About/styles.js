@@ -14,7 +14,7 @@ const blockquoteBase = {
 
 export default {
     container: {
-        ...classes.pageContentContainer,
+        padding: 100,
     },
 
     blockquoteMedium: {

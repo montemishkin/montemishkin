@@ -67,7 +67,7 @@ export default ({name, storeKey, fetch, getItemContent}) => {
          */
         get loadingContent() {
             return (
-                <div style={styles.container}>
+                <div>
                     <div style={styles.loadingImageWrapper}>
                         <img
                             style={styles.loadingImage}
@@ -85,7 +85,7 @@ export default ({name, storeKey, fetch, getItemContent}) => {
          */
         get failureContent() {
             return ({error}) => (
-                <div style={styles.container}>
+                <div>
                     <h3 style={styles.title}>
                         Woops!
                     </h3>
@@ -105,7 +105,7 @@ export default ({name, storeKey, fetch, getItemContent}) => {
          */
         get postNotFoundContent() {
             return (
-                <div style={styles.container}>
+                <div>
                     <h3 style={styles.title}>
                         Hmm...
                     </h3>
@@ -130,7 +130,7 @@ export default ({name, storeKey, fetch, getItemContent}) => {
             }
 
             return (
-                <div>
+                <div style={styles.container}>
                     <Link to={`/${storeKey}`}>
                         view all {storeKey}
                     </Link>

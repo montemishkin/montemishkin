@@ -39,6 +39,7 @@ export default {
     downArrowContainer: {
         display: 'flex',
         justifyContent: 'center',
+        paddingBottom: 15,
     },
 
 
@@ -58,8 +59,8 @@ export default {
 
 
     logo: {
-        height: '50%',
-        width: 'auto',
+        width: '50%',
+        maxWidth: 350,
     },
 
 
@@ -80,9 +81,12 @@ export default {
     },
 
 
-    downArrow: {
-        height: '6vh',
-        cursor: 'pointer',
+    downArrowButton: {
+        ...classes.linkHoverable,
+        ...classes.largestFontSize,
+        backgroundColor: 'transparent',
+        border: 0,
+        outline: 0,
     },
 
 
