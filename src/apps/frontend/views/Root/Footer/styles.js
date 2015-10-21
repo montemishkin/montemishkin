@@ -1,25 +1,26 @@
 // local imports
 import classes from 'styles/classes'
+import colors from 'styles/colors'
 
 
-// styling common to all `container` styles
+const padding = 20
 const containerBase = {
     ...classes.lightFontColor,
     ...classes.smallFontSize,
     display: 'flex',
     alignItems: 'center',
-    paddingTop: 20,
-    paddingBottom: 20,
+    backgroundColor: colors.grey.darkerBg,
 }
-// styling common to all `copyright` styles
+const listBase = {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    listStyleType: 'none',
+    margin: 0,
+    padding: 0,
+}
 const copyrightBase = {
-    paddingLeft: 20,
-    paddingRight: 20,
-}
-// styling common to all `link` styles
-const linkBase = {
-    ...classes.linkHoverable,
-    ...classes.darkerFontColor,
+    padding: 20,
 }
 
 
@@ -31,37 +32,51 @@ export default {
 
     containerInfinity: {
         ...containerBase,
-        justifyContent: 'space-between',
-    },
-
-    list: {
-        display: 'flex',
         justifyContent: 'center',
-        flexWrap: 'wrap',
-        listStyleType: 'none',
-        margin: 0,
-        paddingTop: 0,
-        paddingBottom: 0,
-        paddingLeft: 20,
-        paddingRight: 20,
     },
 
-    copyrightMedium: {
-        ...copyrightBase,
-        paddingTop: 20,
+    listInfinity: {
+        ...listBase,
+        position: 'absolute',
+        left: padding,
+    },
+
+    listMedium: {
+        ...listBase,
+    },
+
+    navLink: {
+        ...classes.linkHoverable,
+        ...classes.darkFontColor,
+        display: 'inline-block',
+        padding: padding,
+    },
+
+    logoLink: {
+        display: 'inline-block',
+        paddingTop: padding / 2,
+        paddingBottom: padding / 2,
+        paddingLeft: padding,
+        paddingRight: padding,
+    },
+
+    logo: {
+        height: 2 * padding,
     },
 
     copyrightInfinity: {
         ...copyrightBase,
+        position: 'absolute',
+        right: padding,
     },
 
-    navLink: {
-        ...linkBase,
-        padding: 20,
+    copyrightMedium: {
+        ...copyrightBase,
     },
 
     emailLink: {
-        ...linkBase,
-        paddingRight: 20,
+        ...classes.linkHoverable,
+        ...classes.darkFontColor,
+        display: 'inline-block',
     },
 }

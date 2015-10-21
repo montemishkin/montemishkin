@@ -5,6 +5,7 @@ import radium from 'radium'
 import styles from './styles'
 import Sage from './Sage'
 import Link from 'components/Link'
+import Logo from 'components/Logo'
 
 
 function easeInOut(x) {
@@ -55,22 +56,18 @@ export default class Home extends Component {
             <section style={styles.banner}>
                 <div style={styles.bannerContent}>
                     <h1 style={styles.header}>
-                        Monte Mishkin
+                        monte mishkin
                     </h1>
-                    <img
-                        alt='logo'
-                        src='/static/images/bird-logo.png'
-                        style={styles.logo}
-                    />
+                    <Logo style={styles.logo} />
                     <nav style={styles.nav}>
                         <Link style={styles.navLink} to='/about'>
-                            About
+                            about
                         </Link>
                         <Link style={styles.navLink} to='/projects'>
-                            Projects
+                            projects
                         </Link>
                         <Link style={styles.navLink} to='/posts'>
-                            Blog
+                            blog
                         </Link>
                     </nav>
                 </div>

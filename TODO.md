@@ -1,6 +1,10 @@
 - eliminate duplicate code between projects and blog posts (and tags, but less so)
 - update propTypes
 
+- CSS animations on logo
+    - on home view, if logo clicked, bird dances a little bit
+    - in nav and footer, if hovered, bird does some kind of bounce in animation and also gets hoverable blue color
+
 - sage currently throws error if you navigate away from home route
     - animate is getting called with `isPaused === false` one last time even after component has been unmounted
 
