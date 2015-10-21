@@ -3,37 +3,44 @@ import colors from 'styles/colors'
 import classes from 'styles/classes'
 
 
-// base styling for all `container` styles
-const containerBase = {
-    display: 'flex',
-    flexWrap: 'wrap',
-    listStyleType: 'none',
-    margin: 0,
-    paddingLeft: 0,
-    paddingRight: 0,
-    paddingTop: 20,
-    paddingBottom: 20,
-    backgroundColor: colors.grey.darkerBg,
-}
+const padding = 20
 
 
 export default {
-    containerMedium: {
-        ...containerBase,
+    container: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingLeft: padding,
+        paddingRight: padding,
+        backgroundColor: colors.grey.darkerBg,
+    },
+
+    logoLink: {
+        display: 'inline-block',
+        paddingTop: padding / 2,
+        paddingBottom: padding / 2,
+        paddingLeft: padding,
+        paddingRight: padding,
+    },
+
+    logo: {
+        height: 2 * padding,
+    },
+
+    list: {
+        display: 'flex',
         justifyContent: 'center',
+        flexWrap: 'wrap',
+        listStyleType: 'none',
+        margin: 0,
+        padding: 0,
     },
-
-
-    containerInfinity: {
-        ...containerBase,
-        justifyContent: 'flex-end',
-        paddingRight: 20,
-    },
-
 
     link: {
         ...classes.linkHoverable,
         ...classes.darkFontColor,
-        padding: 20,
+        display: 'inline-block',
+        padding: padding,
     },
 }
