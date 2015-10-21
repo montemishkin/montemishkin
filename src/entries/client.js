@@ -22,7 +22,12 @@ const store = createStore(initialState)
 // render the routed application
 ReactDOM.render(
     <Provider store={store}>
-        <Router routes={routes} history={history} />
+        <Router
+            routes={routes}
+            history={history}
+            // see https://github.com/rackt/react-router/issues/2144#issuecomment-144462974
+            onUpdate={() => window.scrollTo(0, 0)}
+        />
     </Provider>,
     document.getElementById('app')
 )
