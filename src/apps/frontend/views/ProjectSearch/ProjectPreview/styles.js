@@ -35,6 +35,7 @@ export default {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start',
+        flexGrow: 1,
     },
 
     dateAndTagListWrapper: {

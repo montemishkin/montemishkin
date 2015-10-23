@@ -15,10 +15,9 @@ const transition = {
 
 export default {
     container: {
-        padding: 100,
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
+        alignItems: 'stretch',
     },
 
     image: {
@@ -32,7 +31,6 @@ export default {
 
     searchBar: {
         ...transition,
-        width: '100%',
         marginBottom: 10,
         textAlign: 'center',
         outlineWidth: 1,
