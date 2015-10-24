@@ -1,154 +1,144 @@
 /*
 
-Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
+Google Code style (c) Aahan Krish <geekpanth3r@gmail.com>
 
 */
 
-.hljs {
+pre {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: #23241f;
+  background: white;
+  color: black;
   -webkit-text-size-adjust: none;
 }
 
-.hljs,
-.hljs-tag,
-.css .hljs-rule,
-.css .hljs-value,
-.aspectj .hljs-function,
-.css .hljs-function
-.hljs-preprocessor,
-.hljs-pragma {
-  color: #f8f8f2;
-}
-
-.hljs-strongemphasis,
-.hljs-strong,
-.hljs-emphasis {
-  color: #a8a8a2;
-}
-
-.hljs-bullet,
-.hljs-blockquote,
-.hljs-horizontal_rule,
-.hljs-number,
-.hljs-regexp,
-.alias .hljs-keyword,
-.hljs-literal,
-.hljs-hexcolor {
-  color: #ae81ff;
-}
-
-.hljs-tag .hljs-value,
-.hljs-code,
-.hljs-title,
-.css .hljs-class,
-.hljs-class .hljs-title:last-child {
-  color: #a6e22e;
-}
-
-.hljs-link_url {
-  font-size: 80%;
-}
-
-.hljs-strong,
-.hljs-strongemphasis {
-  font-weight: bold;
-}
-
-.hljs-emphasis,
-.hljs-strongemphasis,
-.hljs-class .hljs-title:last-child,
-.hljs-typename {
-  font-style: italic;
+.hljs-comment {
+  color: #800;
 }
 
 .hljs-keyword,
-.ruby .hljs-class .hljs-keyword:first-child,
-.ruby .hljs-function .hljs-keyword,
-.hljs-function,
-.hljs-change,
-.hljs-winutils,
-.hljs-flow,
+.method,
+.hljs-list .hljs-keyword,
 .nginx .hljs-title,
-.tex .hljs-special,
-.hljs-header,
-.hljs-attribute,
-.hljs-symbol,
-.hljs-symbol .hljs-string,
 .hljs-tag .hljs-title,
-.hljs-value,
-.alias .hljs-keyword:first-child,
-.css .hljs-tag,
-.css .unit,
-.css .hljs-important {
-  color: #f92672;
+.setting .hljs-value,
+.hljs-winutils,
+.tex .hljs-command,
+.http .hljs-title,
+.hljs-request,
+.hljs-status {
+  color: #008;
 }
 
-.hljs-function .hljs-keyword,
-.hljs-class .hljs-keyword:first-child,
-.hljs-aspect .hljs-keyword:first-child,
-.hljs-constant,
-.hljs-typename,
-.hljs-name,
-.css .hljs-attribute {
-  color: #66d9ef;
-}
-
-.hljs-variable,
-.hljs-params,
-.hljs-class .hljs-title,
-.hljs-aspect .hljs-title {
-  color: #f8f8f2;
+.hljs-envvar,
+.tex .hljs-special {
+  color: #660;
 }
 
 .hljs-string,
-.css .hljs-id,
-.hljs-subst,
-.hljs-type,
-.ruby .hljs-class .hljs-parent,
-.hljs-built_in,
-.django .hljs-template_tag,
-.django .hljs-variable,
-.smalltalk .hljs-class,
-.django .hljs-filter .hljs-argument,
-.smalltalk .hljs-localvars,
-.smalltalk .hljs-array,
+.hljs-tag .hljs-value,
+.hljs-cdata,
+.hljs-filter .hljs-argument,
 .hljs-attr_selector,
-.hljs-pseudo,
-.hljs-addition,
-.hljs-stream,
-.hljs-envvar,
-.apache .hljs-tag,
 .apache .hljs-cbracket,
-.tex .hljs-command,
-.hljs-prompt,
-.hljs-link_label,
-.hljs-link_url {
-  color: #e6db74;
+.hljs-date,
+.hljs-regexp,
+.coffeescript .hljs-attribute {
+  color: #080;
 }
 
-.hljs-comment,
-.hljs-annotation,
-.hljs-decorator,
+.hljs-sub .hljs-identifier,
 .hljs-pi,
-.hljs-doctype,
-.hljs-deletion,
+.hljs-tag,
+.hljs-tag .hljs-keyword,
+.hljs-decorator,
+.ini .hljs-title,
 .hljs-shebang,
-.apache .hljs-sqbracket,
-.tex .hljs-formula {
-  color: #75715e;
+.hljs-prompt,
+.hljs-hexcolor,
+.hljs-rule .hljs-value,
+.hljs-literal,
+.hljs-symbol,
+.ruby .hljs-symbol .hljs-string,
+.hljs-number,
+.css .hljs-function,
+.clojure .hljs-attribute {
+  color: #066;
 }
 
-.coffeescript .javascript,
-.javascript .xml,
-.tex .hljs-formula,
-.xml .javascript,
-.xml .vbscript,
-.xml .css,
-.xml .hljs-cdata,
-.xml .php,
-.php .xml {
-  opacity: 0.5;
+.hljs-class .hljs-title,
+.smalltalk .hljs-class,
+.hljs-doctag,
+.hljs-type,
+.hljs-typename,
+.hljs-tag .hljs-attribute,
+.hljs-doctype,
+.hljs-class .hljs-id,
+.hljs-built_in,
+.setting,
+.hljs-params,
+.hljs-variable,
+.hljs-name {
+  color: #606;
+}
+
+.css .hljs-tag,
+.hljs-rule .hljs-property,
+.hljs-pseudo,
+.hljs-subst {
+  color: #000;
+}
+
+.css .hljs-class,
+.css .hljs-id {
+  color: #9b703f;
+}
+
+.hljs-value .hljs-important {
+  color: #ff7700;
+  font-weight: bold;
+}
+
+.hljs-rule .hljs-keyword {
+  color: #c5af75;
+}
+
+.hljs-annotation,
+.apache .hljs-sqbracket,
+.nginx .hljs-built_in {
+  color: #9b859d;
+}
+
+.hljs-preprocessor,
+.hljs-preprocessor *,
+.hljs-pragma {
+  color: #444;
+}
+
+.tex .hljs-formula {
+  background-color: #eee;
+  font-style: italic;
+}
+
+.diff .hljs-header,
+.hljs-chunk {
+  color: #808080;
+  font-weight: bold;
+}
+
+.diff .hljs-change {
+  background-color: #bccff9;
+}
+
+.hljs-addition {
+  background-color: #baeeba;
+}
+
+.hljs-deletion {
+  background-color: #ffc8bd;
+}
+
+.hljs-comment .hljs-doctag {
+  font-weight: bold;
 }

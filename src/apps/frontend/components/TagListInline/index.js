@@ -11,7 +11,7 @@ import List from 'components/List'
  * Inline list of linked tags, accompanied by tag icon.
  */
 @radium
-export default class TagList extends Component {
+export default class TagListInline extends Component {
     static propTypes = {
         tags: PropTypes.arrayOf(PropTypes.shape({
             id: PropTypes.number,
@@ -36,7 +36,7 @@ export default class TagList extends Component {
                     <Link
                         to={`/tags/${tag.slug}`}
                         style={styles.link}
-                        key={tag.id}
+                        key={tag.slug}
                     >
                         {tag.name}
                     </Link>

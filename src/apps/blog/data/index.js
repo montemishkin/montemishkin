@@ -2,10 +2,11 @@
 import {readFileSync} from 'fs'
 import {join as joinPaths} from 'path'
 // local imports
-import marked from 'lib/util/marked'
+import markdown from 'util/markdown'
 
 
 // TODO: put data in actual database...
+// TODO: allow for subtitles
 
 
 const posts = [
@@ -44,7 +45,7 @@ const posts = [
 export default posts.map(post => ({
     ...post,
     // render content from markdown to hmtl
-    content: marked(
+    content: markdown(
         // grab markdown content from filesystem
         readFileSync(joinPaths(__dirname, `${post.slug}.md`)).toString()
     ),

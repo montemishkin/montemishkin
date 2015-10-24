@@ -2,10 +2,11 @@
 import {readFileSync} from 'fs'
 import {join as joinPaths} from 'path'
 // local imports
-import marked from 'lib/util/marked'
+import markdown from 'util/markdown'
 
 
 // TODO: put data in actual database...
+// TODO: allow for subtitles
 
 
 const projects = [
@@ -36,7 +37,7 @@ const projects = [
 export default projects.map(project => ({
     ...project,
     // render content from markdown to hmtl
-    content: marked(
+    content: markdown(
         // grab markdown content from filesystem
         readFileSync(joinPaths(__dirname, `${project.slug}.md`)).toString()
     ),

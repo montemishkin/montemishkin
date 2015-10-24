@@ -1,8 +1,5 @@
 - eliminate duplicate code between projects and blog posts (and tags, but less so)
-- update propTypes
-- markdown preview component
-- minimize css
-- hashlinks in rendered markdown
+    - post and project backend models can be the same (both should be able to have pictures, titles, subtitles, etc)
 
 - CSS animations on logo
     - on home view, if logo clicked, bird dances a little bit
@@ -13,8 +10,7 @@
 
 - use these things:
     - [search indexing](https://github.com/olivernn/lunr.js)
-    - [markdown rendering](https://github.com/chjj/marked)
-    - [syntax highlighting](https://github.com/isagalaev/highlight.js)
+    - propTypes
 
 - workflow
     - task factories in gulpfile?
@@ -26,14 +22,13 @@
 
 - UI / UX
     - hash links on posts and projects
-    - handle not found routes more professionally
 
 - styling
     - max width on nav and footer content?
     - are nav and footer too fat? is 20px padding too much on them?
     - (stretch of tag image, etc) for TagList component
     - rendered markdown styling
-    - syntax highlight styling
+        - syntax highlight styling
     - overall DRY design of styling
         - colors
             - use [chromajs](https://github.com/gka/chroma.js) colors
@@ -46,6 +41,7 @@
 - prepublish
     - is build-production actually building in production environment?
     - better "whoops" messages for ajax loading errors on front end
+    - handle not found routes more professionally
     - enable disqus
     - logo + favicon
-    - link icons8
+    - minimize css

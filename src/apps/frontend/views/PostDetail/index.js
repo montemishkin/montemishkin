@@ -41,6 +41,7 @@ export default createDetailView({
                     </div>
                 </div>
                 <div
+                    className='markdown'
                     style={styles.postContent}
                     dangerouslySetInnerHTML={{
                         __html: content,
