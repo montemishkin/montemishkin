@@ -7,6 +7,8 @@ export default {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start',
+        width: '70%',
+        maxWidth: 740,
     },
 
     dateAndTagListWrapper: {

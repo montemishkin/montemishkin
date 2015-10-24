@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 import styles from './styles'
 import List from 'components/List'
 import Loader from 'components/Loader'
+import Banner from 'components/Banner'
 import SearchBar from 'components/SearchBar'
 
 
@@ -46,6 +47,16 @@ export default ({name, fetch, storeKey, getSearchFields, PreviewComponent}) => {
         }
 
 
+        constructor(props, ...args) {
+            // instantiate `this`
+            super(props, ...args)
+            // set initial state
+            this.state = {
+                searchText: props.location.search || '',
+            }
+        }
+
+
         componentDidMount() {
             const {hasFetched} = this.props
 
@@ -54,16 +65,6 @@ export default ({name, fetch, storeKey, getSearchFields, PreviewComponent}) => {
                 const {dispatch} = this.props
                 // fetch items from server
                 fetch(dispatch)
-            }
-        }
-
-
-        constructor(...args) {
-            // instantiate `this`
-            super(...args)
-            // set initial state
-            this.state = {
-                searchText: this.props.location.search || '',
             }
         }
 
@@ -105,10 +106,7 @@ export default ({name, fetch, storeKey, getSearchFields, PreviewComponent}) => {
             // of display flex container
             return (
                 <div>
-                    <i
-                        style={styles.image}
-                        className='fa fa-refresh fa-spin'
-                    />
+                    <i className='fa fa-refresh fa-spin' />
                 </div>
             )
         }
@@ -164,12 +162,20 @@ export default ({name, fetch, storeKey, getSearchFields, PreviewComponent}) => {
 
             return (
                 <div style={styles.container}>
-                    <SearchBar
-                        value={this.state.searchText}
-                        onChange={({target}) =>
-                            this.setState({searchText: target.value})
-                        }
-                    />
+                    <Banner
+                        style={styles.banner}
+                        title='Blog'
+                        subtitle='oh yeah.'
+                        imageSrc='/static/images/bird-logo.png'
+                    >
+                        <SearchBar
+                            style={styles.searchBar}
+                            value={this.state.searchText}
+                            onChange={({target}) =>
+                                this.setState({searchText: target.value})
+                            }
+                        />
+                    </Banner>
                     <Loader
                         isFetching={isFetching}
                         hasFetched={hasFetched}

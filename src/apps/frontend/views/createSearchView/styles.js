@@ -1,16 +1,6 @@
 // local imports
 import colors from 'styles/colors'
-import classes from 'styles/classes'
-
-
-// half of space between two list items
-const halfListItemSpace = 7
-
-// styling for outline transition
-const transition = {
-    ...classes.transitionParameters,
-    transitionProperty: 'outline',
-}
+// import classes from 'styles/classes'
 
 
 export default {
@@ -20,28 +10,12 @@ export default {
         alignItems: 'stretch',
     },
 
-    image: {
-    },
-
-    noItemMessage: {
-    },
-
-    noSearchResultMessage: {
+    banner: {
+        backgroundColor: '#8CB2FF',
     },
 
     searchBar: {
-        ...transition,
-        marginBottom: 10,
-        textAlign: 'center',
-        outlineWidth: 1,
-        outlineOffset: -1,
-        outlineStyle: 'solid',
-        outlineColor: 'transparent',
-
-        ':focus': {
-            outlineColor: colors.primary.lightest,
-            ...transition,
-        },
+        backgroundColor: 'rgba(255, 255, 255, 0.3)',
     },
 
     list: {
@@ -50,20 +24,26 @@ export default {
         padding: 0,
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-between',
+        alignItems: 'stretch',
     },
 
     listItem: {
-        margin: halfListItemSpace,
-
+        display: 'flex',
+        justifyContent: 'center',
         borderStyle: 'solid',
         borderColor: colors.grey.darkerBg,
         borderTopWidth: 1,
+        borderBottomWidth: 0,
         borderRightWidth: 0,
         borderLeftWidth: 0,
-        paddingBottom: 15,
-        paddingTop: 15,
-        borderBottomWidth: 0,
+        paddingBottom: 80,
+        paddingTop: 80,
+    },
+
+    noItemMessage: {
+    },
+
+    noSearchResultMessage: {
     },
 }
 

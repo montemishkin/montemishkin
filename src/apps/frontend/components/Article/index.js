@@ -4,6 +4,7 @@ import radium from 'radium'
 // import DisqusThread from 'react-disqus-thread'
 // local imports
 import styles from './styles'
+import Banner from 'components/Banner'
 import FormattedDate from 'components/FormattedDate'
 import TagListInline from 'components/TagListInline'
 
@@ -38,14 +39,16 @@ export default class Article extends Component {
             slug: PropTypes.string.isRequired,
         })),
         content: PropTypes.string,
+        image: PropTypes.string,
     }
 
 
     render() {
         const {
+            bannerColor,
+            image,
             title,
             subtitle,
-            bannerColor,
             creationDate,
             tags,
             content,
@@ -54,32 +57,20 @@ export default class Article extends Component {
 
         return (
             <div {...unusedProps}>
-                <div
-                    style={[
-                        styles.bannerContainer,
-                        {backgroundColor: bannerColor},
-                    ]}
+                <Banner
+                    style={{backgroundColor: bannerColor}}
+                    imageSrc={image}
+                    title={title}
+                    subtitle={subtitle}
                 >
-                    <div style={styles.banner}>
-                        <img
-                            src='/static/images/bird-logo.png'
-                            style={styles.image}
+                    <div style={styles.infoContainer}>
+                        <FormattedDate
+                            style={styles.creationDate}
+                            date={creationDate}
                         />
-                        <h1 style={styles.title}>
-                            {title}
-                        </h1>
-                        <h2 style={styles.subtitle}>
-                            {subtitle}
-                        </h2>
-                        <div style={styles.infoContainer}>
-                            <FormattedDate
-                                style={styles.creationDate}
-                                date={creationDate}
-                            />
-                            <TagListInline tags={tags} />
-                        </div>
+                        <TagListInline tags={tags} />
                     </div>
-                </div>
+                </Banner>
                 <div style={styles.contentContainer}>
                     <div
                         className='markdown'

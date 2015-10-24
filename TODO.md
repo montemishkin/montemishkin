@@ -1,4 +1,5 @@
 - eliminate duplicate code between projects and blog posts (and tags, but less so)
+    - both the view factories are dirty and their logic is outdated
     - post and project backend models can be the same (both should be able to have pictures, titles, subtitles, etc)
 
 - CSS animations on logo

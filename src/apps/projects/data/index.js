@@ -13,6 +13,7 @@ const projects = [
     {
         slug: 'react-hello-world',
         title: 'Introduction to React',
+        image: '/static/images/bird-logo.png',
         bannerColor: '#CACACA',
         creationDate: '2015-09-07T00:00:36.049780Z',
         modificationDate: '2015-09-07T00:00:36.049780Z',
@@ -28,6 +29,7 @@ const projects = [
     }, {
         slug: 'redux-responsive',
         title: 'Managing Responsive State in React',
+        image: '/static/images/finchz_medium.jpg',
         bannerColor: '#F5FFC1',
         creationDate: '2015-09-07T00:00:36.049780Z',
         modificationDate: '2015-09-07T00:00:36.049780Z',
