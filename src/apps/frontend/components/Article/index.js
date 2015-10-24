@@ -26,18 +26,18 @@ import ArticleInfoBar from 'components/ArticleInfoBar'
 @radium
 export default class Article extends Component {
     static propTypes = {
+        // valid css color
+        bannerColor: PropTypes.string.isRequired,
         imageSrc: PropTypes.string,
         title: PropTypes.string.isRequired,
         subtitle: PropTypes.string,
-        // valid css color
-        bannerColor: PropTypes.string.isRequired,
         // TODO: this should be a date?
         creationDate: PropTypes.string.isRequired,
         // should I specify shape here even though it is just passed to TagListInline?
         tags: PropTypes.arrayOf(PropTypes.shape({
             title: PropTypes.string.isRequired,
-            slug: PropTypes.string.isRequired,
-        })),
+            link: PropTypes.string.isRequired,
+        })).isRequired,
         content: PropTypes.string,
     }
 
@@ -55,7 +55,7 @@ export default class Article extends Component {
         } = this.props
 
         return (
-            <div {...unusedProps}>
+            <article {...unusedProps}>
                 <Banner
                     style={{backgroundColor: bannerColor}}
                     imageSrc={imageSrc}
@@ -67,16 +67,14 @@ export default class Article extends Component {
                         tags={tags}
                     />
                 </Banner>
-                <div style={styles.contentContainer}>
+                <section style={styles.contentContainer}>
                     <div
                         className='markdown'
                         style={styles.content}
-                        dangerouslySetInnerHTML={{
-                            __html: content,
-                        }}
+                        dangerouslySetInnerHTML={{__html: content}}
                     />
-                </div>
-            </div>
+                </section>
+            </article>
         )
     }
 }

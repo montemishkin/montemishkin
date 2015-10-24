@@ -46,7 +46,7 @@ export default class Banner extends Component {
         }
 
         return (
-            <div
+            <header
                 style={{
                     ...styles.outerContainer,
                     ...style,
@@ -61,7 +61,7 @@ export default class Banner extends Component {
                     {renderedSubtitle}
                     {renderedChildrenContainer}
                 </div>
-            </div>
+            </header>
         )
     }
 }

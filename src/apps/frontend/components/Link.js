@@ -7,6 +7,3 @@ import {Link} from 'react-router'
  * Radium wrapper over react-router Link.
  */
 export default radium(Link)
-
-
-// end of file

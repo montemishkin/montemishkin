@@ -24,9 +24,9 @@ export default class ArticlePreview extends Component {
         creationDate: PropTypes.string,
         // do I detail this out here even though it is just passed on?
         tags: PropTypes.arrayOf(PropTypes.shape({
-            slug: PropTypes.string.isRequired,
+            link: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
-        })),
+        })).isRequired,
         content: PropTypes.string.isRequired,
     }
 

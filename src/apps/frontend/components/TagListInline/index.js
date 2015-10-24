@@ -14,28 +14,30 @@ import List from 'components/List'
 export default class TagListInline extends Component {
     static propTypes = {
         tags: PropTypes.arrayOf(PropTypes.shape({
-            title: PropTypes.string,
-            slug: PropTypes.string,
-        })),
+            title: PropTypes.string.isRequired,
+            link: PropTypes.string.isRequired,
+        })).isRequired,
     }
 
 
     render() {
-        if (this.props.tags.length === 0) {
+        const {tags} = this.props
+
+        if (tags.length === 0) {
             return (<div />)
         }
 
         return (<div style={styles.container}>
             <i
-                style={styles.image}
+                style={styles.icon}
                 className='fa fa-tag'
             />
             <List style={styles.list} listItemStyle={styles.listItem}>
-                {this.props.tags.map((tag) => (
+                {tags.map((tag, key) => (
                     <Link
-                        to={`/tags/${tag.slug}`}
+                        to={tag.link}
                         style={styles.link}
-                        key={tag.slug}
+                        key={key}
                     >
                         {tag.title}
                     </Link>
@@ -44,6 +46,3 @@ export default class TagListInline extends Component {
         </div>)
     }
 }
-
-
-// end of file

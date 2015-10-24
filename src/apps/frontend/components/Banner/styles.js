@@ -48,6 +48,9 @@ export default {
     },
 
     childrenContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
         width: '100%',
         paddingTop: 30,
     },

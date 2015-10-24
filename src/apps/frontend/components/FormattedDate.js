@@ -52,6 +52,9 @@ export default class FormattedDate extends React.Component {
 
 
     render() {
+        // TODO: use a <time> tag here
+        // see: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
+
         return (<span>
             {this.getPrettyDateString()}
         </span>)

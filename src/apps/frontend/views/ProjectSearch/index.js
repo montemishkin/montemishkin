@@ -15,4 +15,8 @@ export default createSearchView({
         ]
     },
     PreviewComponent: ArticlePreview,
+    bannerTitle: 'Projects',
+    bannerSubtitle: 'check em out.',
+    bannerColor: '#F5FFC1',
+    bannerImageSrc: '/static/images/bird-logo.png',
 })

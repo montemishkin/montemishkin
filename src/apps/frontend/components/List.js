@@ -17,7 +17,6 @@ export default class List extends Component {
     render() {
         const {listItemStyle, children, ...unusedProps} = this.props
 
-
         return (
             <ul {...unusedProps}>
                 {React.Children.map(children, (child, key) => (
@@ -29,6 +28,3 @@ export default class List extends Component {
         )
     }
 }
-
-
-// end of file

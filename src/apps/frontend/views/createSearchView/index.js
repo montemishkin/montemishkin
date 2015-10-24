@@ -20,7 +20,7 @@ import SearchBar from 'components/SearchBar'
  * @arg {ReactComponent} options.PreviewComponent - React component to use to
  * preview the items in the list.
  */
-export default ({displayName, storeKey, getSearchFields, PreviewComponent}) => {
+export default ({displayName, storeKey, getSearchFields, PreviewComponent, bannerTitle, bannerSubtitle, bannerColor, bannerImageSrc}) => {
     // TODO: this should be a reselect selector
     function mapStateToProps(state) {
         return {
@@ -28,7 +28,11 @@ export default ({displayName, storeKey, getSearchFields, PreviewComponent}) => {
                 ...item,
                 tags: item.tags.map(
                     id => state.tags.filter(tag => tag.id === id)[0]
-                ),
+                ).map(tag => ({
+                    link: `/tags/${tag.slug}`,
+                    title: tag.title,
+                })),
+                link: `/${storeKey}/${item.slug}`,
             })),
         }
     }
@@ -48,8 +52,7 @@ export default ({displayName, storeKey, getSearchFields, PreviewComponent}) => {
                 title: PropTypes.string.isRequired,
                 tags: PropTypes.arrayOf(PropTypes.shape({
                     title: PropTypes.string.isRequired,
-                    slug: PropTypes.string.isRequired,
-                    id: PropTypes.number.isRequired,
+                    link: PropTypes.string.isRequired,
                 })).isRequired,
             })).isRequired,
         }
@@ -111,11 +114,7 @@ export default ({displayName, storeKey, getSearchFields, PreviewComponent}) => {
                             listItemStyle={styles.listItem}
                         >
                             {filteredItems.map((item, key) => (
-                                <PreviewComponent
-                                    key={key}
-                                    {...item}
-                                    link={`/${storeKey}/${item.slug}`}
-                                />
+                                <PreviewComponent key={key} {...item} />
                             ))}
                         </List>
                     )
@@ -138,21 +137,6 @@ export default ({displayName, storeKey, getSearchFields, PreviewComponent}) => {
 
 
         render() {
-            // TODO: this is a silly solution. if anything these should be
-            // passed to factory as arguments. but even that is a silly solution
-            let bannerTitle = 'Uhhhh'
-            let bannerSubtitle = 'ohh.'
-            let bannerColor = '#EEBBAF'
-            if (storeKey === 'posts') {
-                bannerTitle = 'Blog'
-                bannerSubtitle = 'oh yeah.'
-                bannerColor = '#8CB2FF'
-            } else if (storeKey === 'projects') {
-                bannerTitle = 'Projects'
-                bannerSubtitle = 'check em out.'
-                bannerColor = '#F5FFC1'
-            }
-
             return (
                 <div style={styles.container}>
                     <Banner
@@ -162,10 +146,9 @@ export default ({displayName, storeKey, getSearchFields, PreviewComponent}) => {
                         }}
                         title={bannerTitle}
                         subtitle={bannerSubtitle}
-                        imageSrc='/static/images/bird-logo.png'
+                        imageSrc={bannerImageSrc}
                     >
                         <SearchBar
-                            style={styles.searchBar}
                             value={this.state.searchText}
                             onChange={({target}) =>
                                 this.setState({searchText: target.value})

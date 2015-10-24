@@ -13,10 +13,6 @@ export default {
     banner: {
     },
 
-    searchBar: {
-        backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    },
-
     list: {
         listStyleType: 'none',
         margin: 0,

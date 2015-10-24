@@ -27,7 +27,10 @@ export default ({displayName, storeKey, ItemComponent}) => {
                 ...desiredItem,
                 tags: desiredItem.tags.map(
                     id => state.tags.filter(tag => tag.id === id)[0]
-                ),
+                ).map(tag => ({
+                    link: `/tags/${tag.slug}`,
+                    title: tag.title,
+                })),
             },
         }
     }

@@ -10,4 +10,8 @@ export default createSearchView({
         return [tag.title]
     },
     PreviewComponent: Tag,
+    bannerTitle: 'Tags',
+    bannerSubtitle: 'snoop around.',
+    bannerColor: '#FEDCBA',
+    bannerImageSrc: '/static/images/bird-logo.png',
 })
