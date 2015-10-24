@@ -7,7 +7,6 @@ import {createSelector} from 'reselect'
 // local imports
 import styles from './styles'
 import Loader from 'components/Loader'
-import Link from 'components/Link'
 
 
 /**
@@ -130,9 +129,6 @@ export default ({name, storeKey, fetch, getItemContent}) => {
 
             return (
                 <div style={styles.container}>
-                    <Link to={`/${storeKey}`}>
-                        view all {storeKey}
-                    </Link>
                     <Loader
                         isFetching={isFetching}
                         hasFetched={hasFetched}

@@ -13,6 +13,8 @@ const posts = [
     {
         slug: 'redux-responsive',
         title: 'Managing Responsive State in React',
+        subtitle: 'Isn\'t this fun?',
+        bannerColor: '#8CB2FF',
         creationDate: '2015-09-07T00:00:36.049780Z',
         modificationDate: '2015-09-07T00:00:36.049780Z',
         tags: [
@@ -27,6 +29,8 @@ const posts = [
     }, {
         slug: 'react-hello-world',
         title: 'Introduction to React',
+        subtitle: 'I swear, it\'s easy.',
+        bannerColor: '#CDB3FF',
         creationDate: '2015-09-07T00:00:36.049780Z',
         modificationDate: '2015-09-07T00:00:36.049780Z',
         tags: [

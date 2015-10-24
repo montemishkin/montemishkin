@@ -111,7 +111,8 @@ export default class Sage extends Component {
             {
                 isPaused: false,
                 wasClicked: true,
-            }, () => {
+            },
+            () => {
                 // if animation was paused at the time of the click event
                 // (it wont be anymore when this is callback is executed)
                 if (wasPaused) {

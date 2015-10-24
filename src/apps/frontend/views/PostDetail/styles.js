@@ -1,46 +1,61 @@
 // local imports
-import colors from 'styles/colors'
+// import colors from 'styles/colors'
 import classes from 'styles/classes'
 
 
 export default {
     container: {
-        ...classes.pageContentContainer,
     },
 
-    loadingImageWrapper: {
+    bannerContainer: {
+        borderTopWidth: 1,
+        borderBottomWidth: 0,
+        borderLeftWidth: 0,
+        borderRightWidth: 0,
+        borderStyle: 'solid',
+        borderColor: 'white',
         display: 'flex',
         justifyContent: 'center',
+        paddingTop: 40,
+        paddingBottom: 40,
     },
 
-    loadingImage: {
-        height: 50,
+    banner: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '90%',
+        maxWidth: 760,
     },
 
-    errorMessage: {
-        textAlign: 'center',
+    image: {
+        padding: '30px 0',
+        maxHeight: 150,
     },
 
     title: {
         ...classes.largerFontSize,
-        ...classes.mainFontColor,
+        ...classes.darkerFontColor,
         textAlign: 'center',
+        margin: 0,
+        paddingTop: 20,
     },
 
-    postContainer: {
+    subtitle: {
+        ...classes.mainFontSize,
+        ...classes.mainFontColor,
+        fontWeight: 'normal',
+        textAlign: 'center',
+        margin: 0,
+        paddingTop: 20,
+        paddingBottom: 30,
     },
 
-    dateAndTagListWrapper: {
+    infoContainer: {
         width: '100%',
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
-        borderStyle: 'solid',
-        borderTopWidth: 0,
-        borderLeftWidth: 0,
-        borderRightWidth: 0,
-        borderBottomWidth: 1,
-        borderColor: colors.grey.darkerBg,
         paddingTop: 7,
         paddingBottom: 7,
     },
@@ -49,12 +64,15 @@ export default {
         ...classes.lighterFontColor,
     },
 
-    tagListWrapper: {
+    contentContainer: {
+        display: 'flex',
+        justifyContent: 'center',
     },
 
-    postContent: {
+    content: {
+        paddingTop: 100,
+        paddingBottom: 100,
+        width: '70%',
+        maxWidth: 740,
     },
 }
-
-
-// end of file

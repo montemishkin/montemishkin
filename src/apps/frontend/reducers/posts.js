@@ -14,7 +14,7 @@ export default (state, {type, payload, error} = {}) => {
         return {
             ...state,
             isFetching: false,
-            error: payload,
+            error,
         }
     }
     if (type === SET_POSTS) {

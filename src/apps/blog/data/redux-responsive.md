@@ -1,10 +1,3 @@
-# redux-responsive
-
-A redux reducer for managing the responsive state of your application
-
-
-# Why Use Redux for Responsive Behavior?
-
 redux-responsive **does not require that you use React as your view library**.  However, since that is what we use, the explanation of our motivation mentions React.
 
 There are many solutions for cleanly handling responsive designs in React applications. One common approach is to wrap a component in another component which is responsible for handling the behavior and passing the information down as a prop. While this at first seems good and the "react way", as the behavior gets more complicated, this quickly leads to a lot of boilerplate code in a single component. Also, depending on the implementation, it is possible that many copies of the responsive wrapper would create many different resize handlers.

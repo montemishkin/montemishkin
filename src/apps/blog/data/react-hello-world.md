@@ -1,7 +1,3 @@
-# react-hello-world
-
-Simple starter kit for a frontend-only react app.
-
 This is a minimal, but fully functional and easily extendable example react project.  You can use it to play around with and learn the basics of react.  Of course, you might want to consult [facebook's tutorial](https://facebook.github.io/react/docs/tutorial.html#your-first-component) while doing so, but keep in mind that **this project's organization does not exactly follow the tutorial**.  If you're looking for the code that *does* follow the tutorial, facebook has it for you [here](https://github.com/reactjs/react-tutorial).
 
 ### Installation

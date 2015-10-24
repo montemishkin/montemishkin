@@ -26,23 +26,38 @@ export default createDetailView({
             .then(posts => dispatch(setPosts(posts)))
             .catch(error => dispatch(failFetchPosts(error)))
     },
-    getItemContent: ({title, creationDate, tags, content}) => (
+    getItemContent: ({title, subtitle, bannerColor, creationDate, tags, content}) => (
         <div style={styles.container}>
-            <h3 style={styles.title}>
-                {title}
-            </h3>
-            <div style={styles.postContainer}>
-                <div style={styles.dateAndTagListWrapper}>
-                    <div style={styles.creationDate}>
-                        <FormattedDate date={creationDate} />
-                    </div>
-                    <div style={styles.tagListWrapper}>
+            <div
+                style={[
+                    styles.bannerContainer,
+                    {backgroundColor: bannerColor},
+                ]}
+            >
+                <div style={styles.banner}>
+                    <img
+                        src='/static/images/bird-logo.png'
+                        style={styles.image}
+                    />
+                    <h1 style={styles.title}>
+                        {title}
+                    </h1>
+                    <h2 style={styles.subtitle}>
+                        {subtitle}
+                    </h2>
+                    <div style={styles.infoContainer}>
+                        <FormattedDate
+                            style={styles.creationDate}
+                            date={creationDate}
+                        />
                         <TagListInline tags={tags} />
                     </div>
                 </div>
+            </div>
+            <div style={styles.contentContainer}>
                 <div
                     className='markdown'
-                    style={styles.postContent}
+                    style={styles.content}
                     dangerouslySetInnerHTML={{
                         __html: content,
                     }}

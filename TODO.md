@@ -21,6 +21,7 @@
         - sessions, cookies, jwts, etc...
 
 - UI / UX
+    - populate store with initial state from server
     - hash links on posts and projects
 
 - styling
