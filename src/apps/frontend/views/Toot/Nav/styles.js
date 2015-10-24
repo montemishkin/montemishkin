@@ -1,5 +1,5 @@
 // local imports
-import colors from 'styles/colors'
+// import colors from 'styles/colors'
 import classes from 'styles/classes'
 
 
@@ -13,7 +13,7 @@ export default {
         alignItems: 'center',
         paddingLeft: padding,
         paddingRight: padding,
-        backgroundColor: colors.grey.darkerBg,
+        backgroundColor: '#333435',
     },
 
     logoLink: {
@@ -39,7 +39,7 @@ export default {
 
     link: {
         ...classes.linkHoverable,
-        ...classes.darkFontColor,
+        ...classes.lighterFontColor,
         display: 'inline-block',
         padding: padding,
     },

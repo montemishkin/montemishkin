@@ -129,7 +129,8 @@ export default ({name, fetch, storeKey, getSearchFields, PreviewComponent}) => {
                             {filteredItems.map((item, key) => (
                                 <PreviewComponent
                                     key={key}
-                                    item={item}
+                                    {...item}
+                                    link={`/posts/${item.slug}`}
                                 />
                             ))}
                         </List>
@@ -192,6 +193,3 @@ export default ({name, fetch, storeKey, getSearchFields, PreviewComponent}) => {
 
     return SearchView
 }
-
-
-// end of file

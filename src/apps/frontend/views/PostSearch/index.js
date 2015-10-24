@@ -1,11 +1,11 @@
 // third party imports
 import fetch from 'isomorphic-fetch'
 // local imports
+import ArticlePreview from 'components/ArticlePreview'
 import createSearchView from 'views/createSearchView'
 import fetchPosts from 'actions/fetchPosts'
 import failFetchPosts from 'actions/failFetchPosts'
 import setPosts from 'actions/setPosts'
-import PostPreview from './PostPreview'
 
 
 export default createSearchView({
@@ -24,11 +24,8 @@ export default createSearchView({
             // for now just do content, title, and tags
             post.content,
             post.title,
-            ...post.tags.map(tag => tag.name),
+            ...post.tags.map(tag => tag.title),
         ]
     },
-    PreviewComponent: PostPreview,
+    PreviewComponent: ArticlePreview,
 })
-
-
-// end of file

@@ -74,6 +74,7 @@ export const linkHoverable = {
     ...transitionParameters,
     // display: 'flex',
     transitionProperty: 'color',
+    cursor: 'pointer',
 
     ':hover': {
         color: colors.grey.linkHover,

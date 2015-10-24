@@ -1,6 +1,6 @@
 // local imports
 import classes from 'styles/classes'
-import colors from 'styles/colors'
+// import colors from 'styles/colors'
 
 
 const padding = 20
@@ -9,7 +9,7 @@ const containerBase = {
     ...classes.smallFontSize,
     display: 'flex',
     alignItems: 'center',
-    backgroundColor: colors.grey.darkerBg,
+    backgroundColor: '#333435',
 }
 const listBase = {
     display: 'flex',
@@ -47,7 +47,7 @@ export default {
 
     navLink: {
         ...classes.linkHoverable,
-        ...classes.darkFontColor,
+        ...classes.lighterFontColor,
         display: 'inline-block',
         padding: padding,
     },
@@ -76,7 +76,7 @@ export default {
 
     emailLink: {
         ...classes.linkHoverable,
-        ...classes.darkFontColor,
+        ...classes.lighterFontColor,
         display: 'inline-block',
     },
 }

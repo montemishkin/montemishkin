@@ -5,8 +5,7 @@ import radium from 'radium'
 // local imports
 import styles from './styles'
 import Banner from 'components/Banner'
-import FormattedDate from 'components/FormattedDate'
-import TagListInline from 'components/TagListInline'
+import ArticleInfoBar from 'components/ArticleInfoBar'
 
 
 
@@ -27,6 +26,7 @@ import TagListInline from 'components/TagListInline'
 @radium
 export default class Article extends Component {
     static propTypes = {
+        image: PropTypes.string,
         title: PropTypes.string.isRequired,
         subtitle: PropTypes.string,
         // valid css color
@@ -39,7 +39,6 @@ export default class Article extends Component {
             slug: PropTypes.string.isRequired,
         })),
         content: PropTypes.string,
-        image: PropTypes.string,
     }
 
 
@@ -63,13 +62,10 @@ export default class Article extends Component {
                     title={title}
                     subtitle={subtitle}
                 >
-                    <div style={styles.infoContainer}>
-                        <FormattedDate
-                            style={styles.creationDate}
-                            date={creationDate}
-                        />
-                        <TagListInline tags={tags} />
-                    </div>
+                    <ArticleInfoBar
+                        creationDate={creationDate}
+                        tags={tags}
+                    />
                 </Banner>
                 <div style={styles.contentContainer}>
                     <div

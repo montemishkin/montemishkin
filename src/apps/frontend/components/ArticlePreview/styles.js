@@ -6,40 +6,41 @@ export default {
     container: {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         width: '70%',
         maxWidth: 740,
     },
 
-    dateAndTagListWrapper: {
-        width: '100%',
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
+    infoBar: {
         paddingTop: 7,
         paddingBottom: 7,
-    },
-
-    tagListWrapper: {
     },
 
     creationDate: {
         ...classes.lighterFontColor,
     },
 
-    title: {
+    titleLink: {
         ...classes.linkHoverable,
+        ...classes.darkerFontColor,
+    },
+
+    title: {
         ...classes.largerFontSize,
-        ...classes.mainFontColor,
+        textAlign: 'center',
+        paddingBottom: 10,
+        margin: 0,
+    },
+
+    subtitle: {
+        ...classes.mainFontSize,
+        margin: 0,
     },
 
     content: {
         ...classes.linkHoverable,
         ...classes.mainFontColor,
-        marginLeft: '5%',
+        textAlign: 'center',
         maxWidth: '90%',
     },
 }
-
-
-// end of file

@@ -7,13 +7,6 @@ export default {
     container: {
     },
 
-    infoContainer: {
-        width: '100%',
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-    },
-
     creationDate: {
         ...classes.lighterFontColor,
     },
