@@ -1,18 +1,18 @@
 // third party imports
 import express from 'express'
 // local imports
-import tags from './fakeData/tags'
+import projects from './data'
 
 const app = express()
 
 
 app.get('/', (req, res) => {
-    res.send(tags)
+    res.send(projects)
 })
 
 
 app.get('/:slug', (req, res) => {
-    res.send(tags.filter(tag => tag.slug === req.params.slug)[0])
+    res.send(projects.filter(project => project.slug === req.params.slug)[0])
 })
 
 

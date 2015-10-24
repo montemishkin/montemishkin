@@ -1,5 +1,8 @@
 - eliminate duplicate code between projects and blog posts (and tags, but less so)
 - update propTypes
+- markdown preview component
+- minimize css
+- hashlinks in rendered markdown
 
 - CSS animations on logo
     - on home view, if logo clicked, bird dances a little bit
@@ -26,6 +29,7 @@
     - handle not found routes more professionally
 
 - styling
+    - max width on nav and footer content?
     - are nav and footer too fat? is 20px padding too much on them?
     - (stretch of tag image, etc) for TagList component
     - rendered markdown styling

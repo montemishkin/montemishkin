@@ -101,11 +101,15 @@ export default ({name, fetch, storeKey, getSearchFields, PreviewComponent}) => {
 
 
         get fetchingContent() {
+            // extra wrapping div is so that <i> is not immediate child
+            // of display flex container
             return (
-                <i
-                    style={styles.image}
-                    className='fa fa-refresh fa-spin'
-                />
+                <div>
+                    <i
+                        style={styles.image}
+                        className='fa fa-refresh fa-spin'
+                    />
+                </div>
             )
         }
 

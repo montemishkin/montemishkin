@@ -1,18 +1,18 @@
 // third party imports
 import express from 'express'
 // local imports
-import projects from './fakeData/projects'
+import posts from './data'
 
 const app = express()
 
 
 app.get('/', (req, res) => {
-    res.send(projects)
+    res.send(posts)
 })
 
 
 app.get('/:slug', (req, res) => {
-    res.send(projects.filter(project => project.slug === req.params.slug)[0])
+    res.send(posts.filter(post => post.slug === req.params.slug)[0])
 })
 
 
