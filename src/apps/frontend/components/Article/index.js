@@ -26,7 +26,7 @@ import ArticleInfoBar from 'components/ArticleInfoBar'
 @radium
 export default class Article extends Component {
     static propTypes = {
-        image: PropTypes.string,
+        imageSrc: PropTypes.string,
         title: PropTypes.string.isRequired,
         subtitle: PropTypes.string,
         // valid css color
@@ -45,7 +45,7 @@ export default class Article extends Component {
     render() {
         const {
             bannerColor,
-            image,
+            imageSrc,
             title,
             subtitle,
             creationDate,
@@ -58,7 +58,7 @@ export default class Article extends Component {
             <div {...unusedProps}>
                 <Banner
                     style={{backgroundColor: bannerColor}}
-                    imageSrc={image}
+                    imageSrc={imageSrc}
                     title={title}
                     subtitle={subtitle}
                 >

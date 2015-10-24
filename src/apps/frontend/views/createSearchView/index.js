@@ -5,7 +5,6 @@ import {connect} from 'react-redux'
 // local imports
 import styles from './styles'
 import List from 'components/List'
-import Loader from 'components/Loader'
 import Banner from 'components/Banner'
 import SearchBar from 'components/SearchBar'
 
@@ -15,34 +14,43 @@ import SearchBar from 'components/SearchBar'
  * @arg {object} options - Allows for named arguments.
  * @arg {string} options.name - The display name for the returned react
  * component.
- * @arg {function} options.fetch - Given the dispatch method, do yo fetch thang.
  * @arg {string} options.storeKey - The key to grab off the store state.
  * @arg {function} options.getSearchFields - Given an item, return a list of
  * strings that should be searched when searching.
  * @arg {ReactComponent} options.PreviewComponent - React component to use to
  * preview the items in the list.  Will be passed a the single prop `item`.
  */
-export default ({name, fetch, storeKey, getSearchFields, PreviewComponent}) => {
-    @connect(state => state[storeKey])
+export default ({name, storeKey, getSearchFields, PreviewComponent}) => {
+    // TODO: this should be a reselect selector
+    function mapStateToProps(state) {
+        return {
+            items: state[storeKey].map(item => ({
+                ...item,
+                tags: item.tags.map(
+                    id => state.tags.filter(tag => tag.id === id)[0]
+                ),
+            })),
+        }
+    }
+
+    @connect(mapStateToProps)
     @radium
     class SearchView extends Component {
         static displayName = name
 
 
         static propTypes = {
-            // error object
-            fetchError: PropTypes.any,
-            isFetching: PropTypes.bool,
-            hasFetched: PropTypes.bool,
             location: PropTypes.shape({
                 search: PropTypes.string.isRequired,
             }).isRequired,
             items: PropTypes.arrayOf(PropTypes.shape({
-                content: PropTypes.string,
-                title: PropTypes.string,
+                content: PropTypes.string.isRequired,
+                title: PropTypes.string.isRequired,
                 tags: PropTypes.arrayOf(PropTypes.shape({
-                    name: PropTypes.string,
-                })),
+                    title: PropTypes.string.isRequired,
+                    slug: PropTypes.string.isRequired,
+                    id: PropTypes.number.isRequired,
+                })).isRequired,
             })).isRequired,
         }
 
@@ -53,18 +61,6 @@ export default ({name, fetch, storeKey, getSearchFields, PreviewComponent}) => {
             // set initial state
             this.state = {
                 searchText: props.location.search || '',
-            }
-        }
-
-
-        componentDidMount() {
-            const {hasFetched} = this.props
-
-            // if not yet loaded this session
-            if (!hasFetched) {
-                const {dispatch} = this.props
-                // fetch items from server
-                fetch(dispatch)
             }
         }
 
@@ -101,19 +97,8 @@ export default ({name, fetch, storeKey, getSearchFields, PreviewComponent}) => {
         }
 
 
-        get fetchingContent() {
-            // extra wrapping div is so that <i> is not immediate child
-            // of display flex container
-            return (
-                <div>
-                    <i className='fa fa-refresh fa-spin' />
-                </div>
-            )
-        }
-
-
         get successContent() {
-            const items = this.props.items
+            const {items} = this.props
             // if there are any items
             if (items.length) {
                 // filter out which items to display
@@ -154,13 +139,6 @@ export default ({name, fetch, storeKey, getSearchFields, PreviewComponent}) => {
 
 
         render() {
-            const {
-                error,
-                isFetching,
-                hasFetched,
-                dispatch,
-            } = this.props
-
             return (
                 <div style={styles.container}>
                     <Banner
@@ -177,15 +155,7 @@ export default ({name, fetch, storeKey, getSearchFields, PreviewComponent}) => {
                             }
                         />
                     </Banner>
-                    <Loader
-                        isFetching={isFetching}
-                        hasFetched={hasFetched}
-                        error={error}
-                        reattemptTimeout={3000}
-                        fetch={() => fetch(dispatch)}
-                        fetchingContent={this.fetchingContent}
-                        successContent={this.successContent}
-                    />
+                    {this.successContent}
                 </div>
             )
         }

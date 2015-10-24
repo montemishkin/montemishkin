@@ -11,29 +11,23 @@ import markdown from 'util/markdown'
 
 const projects = [
     {
+        id: 0,
         slug: 'react-hello-world',
         title: 'Introduction to React',
-        image: '/static/images/bird-logo.png',
+        imageSrc: '/static/images/bird-logo.png',
         bannerColor: '#CACACA',
         creationDate: '2015-09-07T00:00:36.049780Z',
         modificationDate: '2015-09-07T00:00:36.049780Z',
-        tags: [
-            {
-                slug: 'inter',
-                title: 'Internet',
-            }, {
-                slug: 'as',
-                title: 'time glup',
-            },
-        ],
+        tags: [0, 3],
     }, {
+        id: 1,
         slug: 'redux-responsive',
         title: 'Managing Responsive State in React',
-        image: '/static/images/finchz_medium.jpg',
+        imageSrc: '/static/images/finchz_medium.jpg',
         bannerColor: '#F5FFC1',
         creationDate: '2015-09-07T00:00:36.049780Z',
         modificationDate: '2015-09-07T00:00:36.049780Z',
-        tags: [],
+        tags: [1, 2, 4],
     },
 ]
 

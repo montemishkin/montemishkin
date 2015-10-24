@@ -2,19 +2,24 @@
 
 export default [
     {
+        id: 0,
         slug: 'adg',
-        name: 'adg',
+        title: 'adg',
     }, {
+        id: 1,
         slug: 'golo-ba',
-        name: 'Golo Ba',
+        title: 'Golo Ba',
     }, {
+        id: 2,
         slug: 'kid-is-good',
-        name: 'God',
+        title: 'God',
     }, {
+        id: 3,
         slug: 'as',
-        name: 'time glup',
+        title: 'time glup',
     }, {
+        id: 4,
         slug: 'inter',
-        name: 'Internet',
+        title: 'Internet',
     },
 ]

@@ -37,8 +37,14 @@ export default class ArticlePreview extends Component {
     get strippedContent() {
         const {content} = this.props
 
+        // TODO: figure out a way to do this that doesn't rely on `document`
+        // (so it can work on the server too)
+
         // create a temporary div DOM node
-        const divNode = document.createElement('div')
+        let divNode = {}
+        if (typeof document !== 'undefined') {
+            divNode = document.createElement('div')
+        }
         // populate it with the content we want to strip
         // so that the browser will strip for us
         divNode.innerHTML = content

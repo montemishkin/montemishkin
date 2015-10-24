@@ -7,7 +7,10 @@ import {Provider} from 'react-redux'
 // local imports
 import {templatesDir} from 'config/projectPaths'
 import routes from './routes'
-import store from './store'
+import {createStore} from './store'
+import posts from 'apps/blog/data'
+import projects from 'apps/projects/data'
+import tags from 'apps/core/tags/data'
 
 
 // create the express app
@@ -30,6 +33,12 @@ app.all('*', (req, res) => {
             res.redirect(302, redirectLocation.pathname + redirectLocation.search)
         // if route was found and is not a redirect
         } else if (renderProps) {
+            const store = createStore({
+                posts,
+                projects,
+                tags,
+            })
+            // console.log('state', store.getState())
             // initial application state
             const initialState = JSON.stringify(store.getState())
             // initial component to render
@@ -52,8 +61,4 @@ app.all('*', (req, res) => {
 })
 
 
-// export the application
 export default app
-
-
-// end of file
