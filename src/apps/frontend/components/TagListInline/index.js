@@ -14,8 +14,7 @@ import List from 'components/List'
 export default class TagListInline extends Component {
     static propTypes = {
         tags: PropTypes.arrayOf(PropTypes.shape({
-            id: PropTypes.number,
-            name: PropTypes.string,
+            title: PropTypes.string,
             slug: PropTypes.string,
         })),
     }
@@ -38,7 +37,7 @@ export default class TagListInline extends Component {
                         style={styles.link}
                         key={tag.slug}
                     >
-                        {tag.name}
+                        {tag.title}
                     </Link>
                 ))}
             </List>

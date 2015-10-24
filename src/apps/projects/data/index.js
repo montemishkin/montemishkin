@@ -13,20 +13,22 @@ const projects = [
     {
         slug: 'react-hello-world',
         title: 'Introduction to React',
+        bannerColor: '#CACACA',
         creationDate: '2015-09-07T00:00:36.049780Z',
         modificationDate: '2015-09-07T00:00:36.049780Z',
         tags: [
             {
                 slug: 'inter',
-                name: 'Internet',
+                title: 'Internet',
             }, {
                 slug: 'as',
-                name: 'time glup',
+                title: 'time glup',
             },
         ],
     }, {
         slug: 'redux-responsive',
         title: 'Managing Responsive State in React',
+        bannerColor: '#F5FFC1',
         creationDate: '2015-09-07T00:00:36.049780Z',
         modificationDate: '2015-09-07T00:00:36.049780Z',
         tags: [],

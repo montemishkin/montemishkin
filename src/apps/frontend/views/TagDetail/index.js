@@ -24,7 +24,7 @@ export default createDetailView({
             .then(tags => dispatch(setTags(tags)))
             .catch(error => dispatch(failFetchTags(error)))
     },
-    getItemContent: ({name}) => (
+    ItemContent: ({name}) => (
         <div style={styles.container}>
             <h3 style={styles.title}>
                 {name}

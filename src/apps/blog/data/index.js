@@ -20,10 +20,10 @@ const posts = [
         tags: [
             {
                 slug: 'golo-ba',
-                name: 'Golo Ba',
+                title: 'Golo Ba',
             }, {
                 slug: 'kid-is-good',
-                name: 'God',
+                title: 'God',
             },
         ],
     }, {
@@ -36,10 +36,10 @@ const posts = [
         tags: [
             {
                 slug: 'adg',
-                name: 'adg',
+                title: 'adg',
             }, {
                 slug: 'golo-ba',
-                name: 'Golo Ba',
+                title: 'Golo Ba',
             },
         ],
     },

@@ -21,6 +21,7 @@
         - sessions, cookies, jwts, etc...
 
 - UI / UX
+    - what if bannerColor makes it hard to see link hover color in Article
     - populate store with initial state from server
     - hash links on posts and projects
 

@@ -3,7 +3,6 @@ import React, {Component} from 'react'
 import radium from 'radium'
 import {connect} from 'react-redux'
 import {createSelector} from 'reselect'
-// import DisqusThread from 'react-disqus-thread'
 // local imports
 import styles from './styles'
 import Loader from 'components/Loader'
@@ -16,10 +15,9 @@ import Loader from 'components/Loader'
  * component.
  * @arg {function} options.fetch - Given the dispatch method, do yo fetch thang.
  * @arg {string} options.storeKey - The key to grab off the store state.
- * @arg {function} options.getItemContent - Given an item, return the rendered
- * content to display.
+ * @arg {function} options.ItemContent - Component to render the item with.
  */
-export default ({name, storeKey, fetch, getItemContent}) => {
+export default ({name, storeKey, fetch, ItemContent}) => {
     const selector = createSelector(
         // grab desired store off the state tree
         state => state[storeKey],
@@ -101,7 +99,7 @@ export default ({name, storeKey, fetch, getItemContent}) => {
          * Returns what `render` should return if we have loaded and the desired
          * post was NOT found.
          */
-        get postNotFoundContent() {
+        get itemNotFoundContent() {
             return (
                 <div>
                     <h3 style={styles.title}>
@@ -122,7 +120,7 @@ export default ({name, storeKey, fetch, getItemContent}) => {
             let successContent
             // if we have loaded and found the desired item
             if (hasFetched && item) {
-                successContent = getItemContent(item)
+                successContent = () => <ItemContent {...item} />
             } else {
                 successContent = this.itemNotFoundContent
             }
@@ -146,15 +144,3 @@ export default ({name, storeKey, fetch, getItemContent}) => {
 
     return DetailView
 }
-
-
-// <DisqusThread
-//     shortname='montemishkin'
-//     identifier={this.props.post.slug}
-//     title={this.props.post.title}
-//     url='http://www.example.com/example-thread'
-//     categoryId='123456'
-// />
-
-
-// end of file
