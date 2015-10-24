@@ -10,12 +10,12 @@ import styles from './styles'
 /**
  * Factory for searchable item detail view.
  * @arg {object} options - Allows for named arguments.
- * @arg {string} options.name - The display name for the returned react
+ * @arg {string} options.displayName - The display name for the returned react
  * component.
  * @arg {string} options.storeKey - The key to grab off the store state.
- * @arg {function} options.ItemContent - Component to render the item with.
+ * @arg {function} options.ItemComponent - Component to render the item with.
  */
-export default ({name, storeKey, ItemContent}) => {
+export default ({displayName, storeKey, ItemComponent}) => {
     // TODO: this should be a reselect selector
     function mapStateToProps(state, props) {
         const desiredItem = state[storeKey].filter(
@@ -36,7 +36,7 @@ export default ({name, storeKey, ItemContent}) => {
     @connect(mapStateToProps)
     @radium
     class DetailView extends Component {
-        static displayName = name
+        static displayName = displayName
 
 
         /**
@@ -61,17 +61,17 @@ export default ({name, storeKey, ItemContent}) => {
             const {item} = this.props
 
             // content to display on successful load
-            let successContent
+            let content
             // if we have found the desired item
             if (item) {
-                successContent = <ItemContent {...item} />
+                content = <ItemComponent {...item} />
             } else {
-                successContent = this.itemNotFoundContent
+                content = this.itemNotFoundContent
             }
 
             return (
                 <div style={styles.container}>
-                    {successContent}
+                    {content}
                 </div>
             )
         }

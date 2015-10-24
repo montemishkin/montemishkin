@@ -10,9 +10,9 @@ import createDetailView from 'views/createDetailView'
  * Single blog tag view.
  */
 export default createDetailView({
-    name: 'TagDetail',
+    displayName: 'TagDetail',
     storeKey: 'tags',
-    ItemContent: ({name}) => (
+    ItemComponent: ({name}) => (
         <div style={styles.container}>
             <h3 style={styles.title}>
                 {name}

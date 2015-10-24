@@ -11,7 +11,6 @@ export default {
     },
 
     banner: {
-        backgroundColor: '#8CB2FF',
     },
 
     searchBar: {
@@ -46,6 +45,3 @@ export default {
     noSearchResultMessage: {
     },
 }
-
-
-// end of file

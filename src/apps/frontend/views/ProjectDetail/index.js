@@ -5,7 +5,7 @@ import Article from 'components/Article'
 
 
 export default createDetailView({
-    name: 'ProjectDetail',
+    displayName: 'ProjectDetail',
     storeKey: 'projects',
-    ItemContent: Article,
+    ItemComponent: Article,
 })

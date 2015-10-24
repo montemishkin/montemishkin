@@ -12,15 +12,15 @@ import SearchBar from 'components/SearchBar'
 /**
  * Factory for searchable list of item previews.
  * @arg {object} options - Allows for named arguments.
- * @arg {string} options.name - The display name for the returned react
+ * @arg {string} options.displayName - The display name for the returned react
  * component.
  * @arg {string} options.storeKey - The key to grab off the store state.
  * @arg {function} options.getSearchFields - Given an item, return a list of
  * strings that should be searched when searching.
  * @arg {ReactComponent} options.PreviewComponent - React component to use to
- * preview the items in the list.  Will be passed a the single prop `item`.
+ * preview the items in the list.
  */
-export default ({name, storeKey, getSearchFields, PreviewComponent}) => {
+export default ({displayName, storeKey, getSearchFields, PreviewComponent}) => {
     // TODO: this should be a reselect selector
     function mapStateToProps(state) {
         return {
@@ -36,7 +36,7 @@ export default ({name, storeKey, getSearchFields, PreviewComponent}) => {
     @connect(mapStateToProps)
     @radium
     class SearchView extends Component {
-        static displayName = name
+        static displayName = displayName
 
 
         static propTypes = {
@@ -72,7 +72,7 @@ export default ({name, storeKey, getSearchFields, PreviewComponent}) => {
         }
 
 
-        getFilteredItems() {
+        get filteredItems() {
             // strings to search for
             const searchTerms = this.state.searchText
                 .toLowerCase()
@@ -97,12 +97,11 @@ export default ({name, storeKey, getSearchFields, PreviewComponent}) => {
         }
 
 
-        get successContent() {
-            const {items} = this.props
+        get content() {
             // if there are any items
-            if (items.length) {
+            if (this.props.items.length) {
                 // filter out which items to display
-                const filteredItems = this.getFilteredItems()
+                const filteredItems = this.filteredItems
 
                 // if any items survived filter
                 if (filteredItems.length) {
@@ -115,7 +114,7 @@ export default ({name, storeKey, getSearchFields, PreviewComponent}) => {
                                 <PreviewComponent
                                     key={key}
                                     {...item}
-                                    link={`/posts/${item.slug}`}
+                                    link={`/${storeKey}/${item.slug}`}
                                 />
                             ))}
                         </List>
@@ -139,12 +138,30 @@ export default ({name, storeKey, getSearchFields, PreviewComponent}) => {
 
 
         render() {
+            // TODO: this is a silly solution. if anything these should be
+            // passed to factory as arguments. but even that is a silly solution
+            let bannerTitle = 'Uhhhh'
+            let bannerSubtitle = 'ohh.'
+            let bannerColor = '#EEBBAF'
+            if (storeKey === 'posts') {
+                bannerTitle = 'Blog'
+                bannerSubtitle = 'oh yeah.'
+                bannerColor = '#8CB2FF'
+            } else if (storeKey === 'projects') {
+                bannerTitle = 'Projects'
+                bannerSubtitle = 'check em out.'
+                bannerColor = '#F5FFC1'
+            }
+
             return (
                 <div style={styles.container}>
                     <Banner
-                        style={styles.banner}
-                        title='Blog'
-                        subtitle='oh yeah.'
+                        style={{
+                            ...styles.banner,
+                            backgroundColor: bannerColor,
+                        }}
+                        title={bannerTitle}
+                        subtitle={bannerSubtitle}
                         imageSrc='/static/images/bird-logo.png'
                     >
                         <SearchBar
@@ -155,7 +172,7 @@ export default ({name, storeKey, getSearchFields, PreviewComponent}) => {
                             }
                         />
                     </Banner>
-                    {this.successContent}
+                    {this.content}
                 </div>
             )
         }

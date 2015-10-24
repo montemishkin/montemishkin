@@ -4,7 +4,7 @@ import Tag from './Tag'
 
 
 export default createSearchView({
-    name: 'TagSearch',
+    displayName: 'TagSearch',
     storeKey: 'tags',
     getSearchFields(tag) {
         return [tag.title]

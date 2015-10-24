@@ -7,7 +7,7 @@ import Article from 'components/Article'
  * Single blog post view.
  */
 export default createDetailView({
-    name: 'PostDetail',
+    displayName: 'PostDetail',
     storeKey: 'posts',
-    ItemContent: Article,
+    ItemComponent: Article,
 })

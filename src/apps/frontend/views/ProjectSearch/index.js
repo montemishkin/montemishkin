@@ -4,7 +4,7 @@ import ArticlePreview from 'components/ArticlePreview'
 
 
 export default createSearchView({
-    name: 'ProjectSearch',
+    displayName: 'ProjectSearch',
     storeKey: 'projects',
     getSearchFields(project) {
         return [
