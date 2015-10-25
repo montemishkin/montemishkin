@@ -24,27 +24,6 @@ export default class Banner extends Component {
             ...unusedProps,
         } = this.props
 
-        let renderedImage
-        if (imageSrc) {
-            renderedImage = <img src={imageSrc} style={styles.image} />
-        }
-        let renderedSubtitle
-        if (subtitle) {
-            renderedSubtitle = (
-                <h2 style={styles.subtitle}>
-                    {subtitle}
-                </h2>
-            )
-        }
-        let renderedChildrenContainer
-        if (children) {
-            renderedChildrenContainer = (
-                <div style={styles.childrenContainer}>
-                    {children}
-                </div>
-            )
-        }
-
         return (
             <header
                 style={{
@@ -54,12 +33,22 @@ export default class Banner extends Component {
                 {...unusedProps}
             >
                 <div style={styles.innerContainer}>
-                    {renderedImage}
+                    {imageSrc ? (
+                        <img src={imageSrc} style={styles.image} />
+                    ) : null}
                     <h1 style={styles.title}>
                         {title}
                     </h1>
-                    {renderedSubtitle}
-                    {renderedChildrenContainer}
+                    {subtitle ? (
+                        <h2 style={styles.subtitle}>
+                            {subtitle}
+                        </h2>
+                    ) : null}
+                    {children ? (
+                        <div style={styles.childrenContainer}>
+                            {children}
+                        </div>
+                    ) : null}
                 </div>
             </header>
         )

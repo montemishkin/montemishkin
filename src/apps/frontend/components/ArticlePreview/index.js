@@ -21,13 +21,14 @@ export default class ArticlePreview extends Component {
         link: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         subtitle: PropTypes.string,
+        content: PropTypes.string.isRequired,
+        // do I detail this out here even though it is just passed on?
         creationDate: PropTypes.string,
         // do I detail this out here even though it is just passed on?
         tags: PropTypes.arrayOf(PropTypes.shape({
             link: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
         })).isRequired,
-        content: PropTypes.string.isRequired,
     }
 
 
@@ -89,9 +90,11 @@ export default class ArticlePreview extends Component {
                         {title}
                     </h2>
                 </Link>
-                <h3 style={styles.subtitle}>
-                    {subtitle}
-                </h3>
+                {subtitle ? (
+                    <h3 style={styles.subtitle}>
+                        {subtitle}
+                    </h3>
+                ) : null}
                 <ArticleInfoBar
                     style={styles.infoBar}
                     creationDate={creationDate}

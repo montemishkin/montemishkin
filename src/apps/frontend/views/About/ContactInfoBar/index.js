@@ -37,21 +37,19 @@ export default class ContactInfoBar extends Component {
         return (
             <address style={styles.container}>
                 <List style={styles.list} listItemStyle={styles.listItem}>
-                    {contactData.map(({caption, href, icon}, index) => (
+                    {contactData.map(({caption, href, icon}, key) => (
                         <a
-                            key={index}
+                            key={key}
                             href={href}
                             style={styles.link}
                         >
-                            <figure style={styles.figure}>
-                                <i
-                                    style={styles.icon}
-                                    className={`fa fa-${icon}`}
-                                />
-                                <figcaption style={styles.caption}>
-                                    {caption}
-                                </figcaption>
-                            </figure>
+                            <i
+                                style={styles.icon}
+                                className={`fa fa-${icon}`}
+                            />
+                            <span style={styles.caption}>
+                                {caption}
+                            </span>
                         </a>
                     ))}
                 </List>

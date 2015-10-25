@@ -31,9 +31,6 @@ export default {
     link: {
         ...classes.linkHoverable,
         ...classes.darkFontColor,
-    },
-
-    figure: {
         margin: 0,
         display: 'flex',
         flexDirection: 'column',
@@ -41,7 +38,8 @@ export default {
     },
 
     icon: {
-        height: 32,
+        ...classes.largerFontSize,
+        paddingBottom: 3,
     },
 
     caption: {

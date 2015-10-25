@@ -35,6 +35,7 @@ export default {
     subtitle: {
         ...classes.mainFontSize,
         margin: 0,
+        textAlign: 'center',
     },
 
     content: {

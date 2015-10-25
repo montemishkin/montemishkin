@@ -25,6 +25,7 @@
     - what if bannerColor makes it hard to see link hover color in Article
     - populate store with initial state from server
     - hash links on posts and projects
+    - improve use of symantic content
 
 - styling
     - max width on nav and footer content?
@@ -48,3 +49,4 @@
     - enable disqus
     - logo + favicon
     - minimize css
+    - put your resume up
