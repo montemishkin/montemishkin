@@ -90,11 +90,11 @@ export default class ArticlePreview extends Component {
                         {title}
                     </h2>
                 </Link>
-                {subtitle ? (
+                {subtitle && (
                     <h3 style={styles.subtitle}>
                         {subtitle}
                     </h3>
-                ) : null}
+                )}
                 <ArticleInfoBar
                     style={styles.infoBar}
                     creationDate={creationDate}

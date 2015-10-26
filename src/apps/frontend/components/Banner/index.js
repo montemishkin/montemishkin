@@ -33,22 +33,22 @@ export default class Banner extends Component {
                 {...unusedProps}
             >
                 <div style={styles.innerContainer}>
-                    {imageSrc ? (
+                    {imageSrc && (
                         <img src={imageSrc} style={styles.image} />
-                    ) : null}
+                    )}
                     <h1 style={styles.title}>
                         {title}
                     </h1>
-                    {subtitle ? (
+                    {subtitle && (
                         <h2 style={styles.subtitle}>
                             {subtitle}
                         </h2>
-                    ) : null}
-                    {children ? (
+                    )}
+                    {children && (
                         <div style={styles.childrenContainer}>
                             {children}
                         </div>
-                    ) : null}
+                    )}
                 </div>
             </header>
         )

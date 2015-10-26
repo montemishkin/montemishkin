@@ -28,6 +28,3 @@ export default (
         </Route>
     </Route>
 )
-
-
-// end of file

@@ -1,5 +1,5 @@
 // third party imports
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import radium from 'radium'
 import {connect} from 'react-redux'
 // import DisqusThread from 'react-disqus-thread'
@@ -21,12 +21,12 @@ function mapStateToProps({tags, projects, posts}, {params: {slug}}) {
 
     return {
         tag: desiredTag,
-        projects: projects
+        projects: desiredTag && projects
             // grab only the projects with the desired tag
             .filter(project => project.tags.filter(tagFilter).length > 0)
             // nest the projects
             .map(project => nestProject(project, tags)),
-        posts: posts
+        posts: desiredTag && posts
             // grab only the posts with the desired tag
             .filter(post => post.tags.filter(tagFilter).length > 0)
             // nest the posts
@@ -39,11 +39,33 @@ function mapStateToProps({tags, projects, posts}, {params: {slug}}) {
 @radium
 export default class TagDetail extends Component {
     static propTypes = {
-        // TODO
+        // didnt use `isRequired` since we use undefined to indicate not found
+        tag: PropTypes.shape({
+            title: PropTypes.string.isRequired,
+        }),
+        projects: PropTypes.oneOf([false, PropTypes.array]).isRequired,
+        posts: PropTypes.oneOf([false, PropTypes.array]).isRequired,
     }
 
 
-    render() {
+    get notFoundContent() {
+        return (
+            <section>
+                <Banner
+                    style={styles.banner}
+                    imageSrc='/static/images/bird-logo.png'
+                    title='Not Found'
+                    subtitle='Whoops!'
+                />
+                <p>
+                    uhhh
+                </p>
+            </section>
+        )
+    }
+
+
+    get foundContent() {
         const {
             tag: {title},
             projects,
@@ -76,5 +98,13 @@ export default class TagDetail extends Component {
                 </section>
             </section>
         )
+    }
+
+
+    render() {
+        if (this.props.tag) {
+            return this.foundContent
+        }
+        return this.notFoundContent
     }
 }
