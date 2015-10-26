@@ -26,6 +26,9 @@
     - populate store with initial state from server
     - hash links on posts and projects
     - improve use of symantic content
+    - make the tag detail view show two tabs (one for posts and one for projects) instead of posts list after project list
+    - different variations of same bird logo for tag, post, project search views
+        - if no image provided for the detail view then default to corresponding fa icon
 
 - styling
     - max width on nav and footer content?

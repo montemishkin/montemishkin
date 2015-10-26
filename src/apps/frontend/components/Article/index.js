@@ -6,6 +6,7 @@ import radium from 'radium'
 import styles from './styles'
 import Banner from 'components/Banner'
 import ArticleInfoBar from 'components/ArticleInfoBar'
+import MarkdownContainer from 'components/MarkdownContainer'
 
 
 
@@ -68,11 +69,9 @@ export default class Article extends Component {
                     />
                 </Banner>
                 <section style={styles.contentContainer}>
-                    <div
-                        className='markdown'
-                        style={styles.content}
-                        dangerouslySetInnerHTML={{__html: content}}
-                    />
+                    <MarkdownContainer style={styles.content}>
+                        {content}
+                    </MarkdownContainer>
                 </section>
             </article>
         )
