@@ -12,6 +12,7 @@
 - use these things:
     - [search indexing](https://github.com/olivernn/lunr.js)
     - propTypes
+        - should you specify prop types even when you are just passing those props along to other components which already specify prop types?
 
 - workflow
     - task factories in gulpfile?

@@ -2,27 +2,22 @@
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 // local imports
-import TagPreview from './TagPreview'
 import SearchView from 'components/SearchView'
+import ArticlePreview from 'components/ArticlePreview'
+import {nestPost} from 'util/nest'
 
 
-function mapStateToProps({tags}) {
+function mapStateToProps({posts, tags}) {
     return {
-        tags: tags.map(tag => ({
-            ...tag,
-            link: `/tags/${tag.slug}`,
-        })),
+        posts: posts.map(post => nestPost(post, tags)),
     }
 }
 
 
 @connect(mapStateToProps)
-export default class TagSearch extends Component {
+export default class PostSearch extends Component {
     static propTypes = {
-        tags: PropTypes.arrayOf(PropTypes.shape({
-            title: PropTypes.string.isRequired,
-            link: PropTypes.string.isRequired,
-        })).isRequired,
+        posts: PropTypes.arrayOf(PropTypes.object).isRequired,
         location: PropTypes.shape({
             query: PropTypes.shape({
                 search: PropTypes.string,
@@ -34,19 +29,23 @@ export default class TagSearch extends Component {
     render() {
         const {
             location: {query: {search: initialSearchText}},
-            tags,
+            posts,
         } = this.props
 
         return (
             <SearchView
                 bannerImageSrc='/static/images/bird-logo.png'
-                bannerColor='red'
-                title='Tags'
-                subtitle='gotta love em.'
-                items={tags}
-                mapItemToSearchFields={tag => [tag.title]}
-                PreviewComponent={TagPreview}
+                bannerColor='#8CB2FF'
+                title='Blog'
+                subtitle='oh yeah.'
+                items={posts}
+                PreviewComponent={ArticlePreview}
                 initialSearchText={initialSearchText}
+                mapItemToSearchFields={({content, title, tags}) => [
+                    content,
+                    title,
+                    ...tags.map(tag => tag.title),
+                ]}
             />
         )
     }

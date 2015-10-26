@@ -23,7 +23,7 @@ function mapStateToProps({posts, tags}, {params: {slug}}) {
 @radium
 export default class PostDetail extends Component {
     static propTypes = {
-        post: PropTypes.oneOf([false, PropTypes.object]),
+        post: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
     }
 
 

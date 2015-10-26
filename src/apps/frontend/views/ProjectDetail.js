@@ -23,7 +23,7 @@ function mapStateToProps({projects, tags}, {params: {slug}}) {
 @radium
 export default class ProjectDetail extends Component {
     static propTypes = {
-        project: PropTypes.oneOf([false, PropTypes.object]),
+        project: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
     }
 
 

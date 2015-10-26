@@ -44,8 +44,14 @@ export default class TagDetail extends Component {
         tag: PropTypes.shape({
             title: PropTypes.string.isRequired,
         }),
-        projects: PropTypes.oneOf([false, PropTypes.array]).isRequired,
-        posts: PropTypes.oneOf([false, PropTypes.array]).isRequired,
+        projects: PropTypes.oneOfType([
+            PropTypes.bool,
+            PropTypes.array,
+        ]).isRequired,
+        posts: PropTypes.oneOfType([
+            PropTypes.bool,
+            PropTypes.array,
+        ]).isRequired,
     }
 
 
@@ -74,7 +80,9 @@ export default class TagDetail extends Component {
                         Projects ({projects.length})
                     </h3>
                     <List>
-                        {projects.map(project => <ArticlePreview {...project} />)}
+                        {projects.map((project, key) => (
+                            <ArticlePreview {...project} key={key} />
+                        ))}
                     </List>
                 </section>
                 <section>
