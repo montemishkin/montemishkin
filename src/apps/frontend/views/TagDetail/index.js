@@ -43,6 +43,7 @@ export default class TagDetail extends Component {
         // didnt use `isRequired` since we use undefined to indicate not found
         tag: PropTypes.shape({
             title: PropTypes.string.isRequired,
+            description: PropTypes.string,
         }),
         projects: PropTypes.oneOfType([
             PropTypes.bool,
@@ -62,7 +63,7 @@ export default class TagDetail extends Component {
 
     get foundContent() {
         const {
-            tag: {title},
+            tag: {title, description},
             projects,
             posts,
         } = this.props
@@ -73,7 +74,7 @@ export default class TagDetail extends Component {
                     style={styles.banner}
                     imageSrc='/static/images/bird-logo.png'
                     title={title}
-                    subtitle='longer description of the tag'
+                    subtitle={description}
                 />
                 <section>
                     <h3>
@@ -90,7 +91,9 @@ export default class TagDetail extends Component {
                         Blog Posts ({posts.length})
                     </h3>
                     <List>
-                        {posts.map(post => <ArticlePreview {...post} />)}
+                        {posts.map((post, key) => (
+                            <ArticlePreview {...post} key={key}/>
+                        ))}
                     </List>
                 </section>
             </section>

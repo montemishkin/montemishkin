@@ -14,25 +14,31 @@ export default class Tag extends Component {
     static propTypes = {
         title: PropTypes.string.isRequired,
         link: PropTypes.string.isRequired,
+        description: PropTypes.string,
     }
 
 
     render() {
-        const {link, title} = this.props
+        const {link, title, description} = this.props
 
         return (
-            <span style={styles.container}>
-                <i
-                    style={styles.icon}
-                    className='fa fa-tag'
-                />
+            <div style={styles.container}>
                 <Link
                     to={link}
                     style={styles.link}
                 >
-                    {title}
+                    <i
+                        style={styles.icon}
+                        className='fa fa-tag'
+                    />
+                    <h3 style={styles.title}>
+                        {title}
+                    </h3>
                 </Link>
-            </span>
+                <span style={styles.description}>
+                    {description}
+                </span>
+            </div>
         )
     }
 }

@@ -3,11 +3,17 @@ import classes from 'styles/classes'
 
 
 export default {
-    container: {},
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '70%',
+        maxWidth: 740,
+    },
 
     icon: {
-        height: 15,
-        marginRight: 4,
+        ...classes.largeFontSize,
+        paddingRight: 10,
     },
 
     link: {
@@ -15,6 +21,13 @@ export default {
         ...classes.darkerFontColor,
         display: 'flex',
         alignItems: 'center',
-        paddingBottom: 3,
+    },
+
+    title: {
+        textAlign: 'center',
+    },
+
+    description: {
+        textAlign: 'center',
     },
 }
