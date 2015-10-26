@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 // local imports
 import styles from './styles'
 import List from 'components/List'
+import NotFound from 'components/NotFound'
 import ArticlePreview from 'components/ArticlePreview'
 import Banner from 'components/Banner'
 import {nestProject, nestPost} from 'util/nest'
@@ -49,19 +50,7 @@ export default class TagDetail extends Component {
 
 
     get notFoundContent() {
-        return (
-            <section>
-                <Banner
-                    style={styles.banner}
-                    imageSrc='/static/images/bird-logo.png'
-                    title='Not Found'
-                    subtitle='Whoops!'
-                />
-                <p>
-                    uhhh
-                </p>
-            </section>
-        )
+        return <NotFound />
     }
 
 

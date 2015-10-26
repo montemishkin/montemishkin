@@ -49,6 +49,7 @@
     - is build-production actually building in production environment?
     - better "whoops" messages for ajax loading errors on front end
     - handle not found routes more professionally
+        - if frontend app index doesnt find route, return NotFound
     - enable disqus
     - logo + favicon
     - minimize css
