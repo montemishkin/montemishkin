@@ -6,47 +6,40 @@ import classes from 'styles/classes'
 // styling for transition parameters
 const transition = {
     ...classes.transitionParameters,
-    transitionProperty: 'background-color',
+    transitionProperty: 'opacity',
 }
 
 
 export default {
-    outerContainer: {
-        display: 'flex',
-        justifyContent: 'center',
+    container: {
     },
 
-    innerContainer: {
+
+    overlay: {
+        ...transition,
+        ...classes.largestFontSize,
+        position: 'absolute',
         width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        color: 'black',
+        backgroundColor: colors.canvasBackground,
+        opacity: 1,
     },
+
+
+    fadeOut: {
+        opacity: 0,
+    },
+
 
     canvas: {
         width: '100%',
-        // height must be set dynamically based on width
-    },
-
-    controls: {
-        display: 'flex',
-        justifyContent: 'space-around',
-        flexWrap: 'wrap',
-        paddingTop: 5,
-    },
-
-    button: {
-        ...transition,
-        borderStyle: 'solid',
-        borderWidth: 0,
-        borderRadius: 3,
-        padding: 10,
-        color: colors.grey.white,
-        backgroundColor: colors.grey.linkHover,
-        cursor: 'pointer',
-        textDecoration: 'none',
-
-        ':hover': {
-            ...transition,
-            backgroundColor: colors.grey.linkHoverDarker,
-        },
+        height: '100%',
     },
 }
 

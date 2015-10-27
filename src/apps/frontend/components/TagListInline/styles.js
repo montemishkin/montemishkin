@@ -9,7 +9,7 @@ export default {
         ...classes.smallFontSize,
     },
 
-    image: {
+    icon: {
         height: 15,
     },
 
@@ -36,6 +36,3 @@ export default {
         ...classes.darkerFontColor,
     },
 }
-
-
-// end of file

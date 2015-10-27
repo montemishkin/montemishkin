@@ -11,41 +11,38 @@ import List from 'components/List'
  * Inline list of linked tags, accompanied by tag icon.
  */
 @radium
-export default class TagList extends Component {
+export default class TagListInline extends Component {
     static propTypes = {
         tags: PropTypes.arrayOf(PropTypes.shape({
-            id: PropTypes.number,
-            name: PropTypes.string,
-            slug: PropTypes.string,
-        })),
+            title: PropTypes.string.isRequired,
+            link: PropTypes.string.isRequired,
+        })).isRequired,
     }
 
 
     render() {
-        if (this.props.tags.length === 0) {
+        const {tags} = this.props
+
+        if (tags.length === 0) {
             return (<div />)
         }
 
         return (<div style={styles.container}>
-            <img
-                style={styles.image}
-                alt='Tag Icon'
-                src='/static/images/Price-Tag-50.png'
+            <i
+                style={styles.icon}
+                className='fa fa-tag'
             />
             <List style={styles.list} listItemStyle={styles.listItem}>
-                {this.props.tags.map((tag) => (
+                {tags.map((tag, key) => (
                     <Link
-                        to={`/tags/${tag.slug}`}
+                        to={tag.link}
                         style={styles.link}
-                        key={tag.id}
+                        key={key}
                     >
-                        {tag.name}
+                        {tag.title}
                     </Link>
                 ))}
             </List>
         </div>)
     }
 }
-
-
-// end of file

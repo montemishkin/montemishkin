@@ -9,6 +9,8 @@ var path = require('path')
 
 // project root directory
 var rootDir = path.join(__dirname, '..')
+// assets directory
+var assetsDir = path.join(rootDir, 'assets')
 // configuration directory
 var configDir = path.join(rootDir, 'config')
 // source directory
@@ -19,12 +21,12 @@ var buildDir = path.join(rootDir, 'build')
 var appsDir = path.join(sourceDir, 'apps')
 // entry points directory
 var entriesDir = path.join(sourceDir, 'entries')
-// assets directory
-var assetsDir = path.join(sourceDir, 'assets')
 // frontend directory
 var frontendDir = path.join(appsDir, 'frontend')
 // templates directory
 var templatesDir = path.join(frontendDir, 'templates')
+// styles directory
+var stylesDir = path.join(frontendDir, 'styles')
 // webpack configuration directory
 var webpackDir = path.join(configDir, 'webpack')
 
@@ -37,6 +39,7 @@ module.exports = {
     appsDir: appsDir,
     buildDir: buildDir,
     assetsDir: assetsDir,
+    stylesDir: stylesDir,
     frontendDir: frontendDir,
     templatesDir: templatesDir,
     // entry points
@@ -54,6 +57,8 @@ module.exports = {
     webpackBaseConfig: path.join(webpackDir, 'base.js'),
     webpackClientConfig: path.join(webpackDir, 'client.js'),
     webpackServerConfig: path.join(webpackDir, 'server.js'),
+    // favicon
+    favicon: path.join(assetsDir, 'images', 'favicon.ico')
 }
 
 

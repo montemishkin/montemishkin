@@ -1,29 +1,53 @@
 // third party imports
-import fetch from 'isomorphic-fetch'
+import React, {Component, PropTypes} from 'react'
+import {connect} from 'react-redux'
 // local imports
-import createSearchView from 'views/createSearchView'
-import fetchTags from 'actions/fetchTags'
-import failFetchTags from 'actions/failFetchTags'
-import setTags from 'actions/setTags'
-import Tag from './Tag'
+import TagPreview from './TagPreview'
+import SearchView from 'components/SearchView'
 
 
-export default createSearchView({
-    name: 'TagSearch',
-    storeKey: 'tags',
-    fetch(dispatch) {
-        dispatch(fetchTags())
-
-        fetch('/api/tags')
-            .then(response => response.json())
-            .then(tags => dispatch(setTags(tags)))
-            .catch(error => dispatch(failFetchTags(error)))
-    },
-    getSearchFields(tag) {
-        return [tag.name]
-    },
-    PreviewComponent: Tag,
-})
+function mapStateToProps({tags}) {
+    return {
+        tags: tags.map(tag => ({
+            ...tag,
+            link: `/tags/${tag.slug}`,
+        })),
+    }
+}
 
 
-// end of file
+@connect(mapStateToProps)
+export default class TagSearch extends Component {
+    static propTypes = {
+        tags: PropTypes.arrayOf(PropTypes.shape({
+            title: PropTypes.string.isRequired,
+            link: PropTypes.string.isRequired,
+        })).isRequired,
+        location: PropTypes.shape({
+            query: PropTypes.shape({
+                search: PropTypes.string,
+            }).isRequired,
+        }).isRequired,
+    }
+
+
+    render() {
+        const {
+            location: {query: {search: initialSearchText}},
+            tags,
+        } = this.props
+
+        return (
+            <SearchView
+                bannerImageSrc='/static/images/bird-logo.png'
+                bannerColor='red'
+                title='Tags'
+                subtitle='gotta love em.'
+                items={tags}
+                mapItemToSearchFields={tag => [tag.title]}
+                PreviewComponent={TagPreview}
+                initialSearchText={initialSearchText}
+            />
+        )
+    }
+}

@@ -11,13 +11,13 @@ import compression from 'compression'
 // import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 // import session from 'express-session'
-// import favicon from 'serve-favicon'
+import favicon from 'serve-favicon'
 // import responseTime from 'response-time'
 // import errorHandler from 'errorhandler'
 // import csrf from 'csurf'
 import serveStatic from 'serve-static'
 // local imports
-import {buildDir, assetsDir} from 'config/projectPaths'
+import {buildDir, assetsDir, favicon as faviconPath} from 'config/projectPaths'
 import frontend from 'apps/frontend'
 import api from 'apps/api'
 
@@ -30,6 +30,8 @@ const port = 8000
 
 /* Configure Middleware */
 
+// serve favicon
+app.use(favicon(faviconPath))
 // compress responses
 app.use(compression())
 // log requests

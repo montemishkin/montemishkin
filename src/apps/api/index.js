@@ -1,17 +1,17 @@
 // third party imports
 import express from 'express'
 // local imports
-import PostViewSet from './PostViewSet'
-import ProjectViewSet from './ProjectViewSet'
-import TagViewSet from './TagViewSet'
+import blog from 'apps/blog'
+import projects from 'apps/projects'
+import core from 'apps/core'
 
 
 const app = express()
 
 
-app.use('/posts', PostViewSet)
-app.use('/projects', ProjectViewSet)
-app.use('/tags', TagViewSet)
+app.use('/posts', blog)
+app.use('/projects', projects)
+app.use(core)
 
 
 export default app

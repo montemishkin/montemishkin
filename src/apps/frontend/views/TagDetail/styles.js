@@ -13,6 +13,3 @@ export default {
         textAlign: 'center',
     },
 }
-
-
-// end of file

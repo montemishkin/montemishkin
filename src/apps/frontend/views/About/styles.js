@@ -14,7 +14,22 @@ const blockquoteBase = {
 
 export default {
     container: {
-        ...classes.pageContentContainer,
+    },
+
+    banner: {
+        backgroundColor: '#EFBAC0',
+    },
+
+    contentContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+    },
+
+    content: {
+        paddingTop: 100,
+        paddingBottom: 100,
+        width: '70%',
+        maxWidth: 740,
     },
 
     blockquoteMedium: {
@@ -31,6 +46,3 @@ export default {
         textAlign: 'right',
     },
 }
-
-
-// end of file

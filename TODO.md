@@ -1,10 +1,18 @@
 - eliminate duplicate code between projects and blog posts (and tags, but less so)
-- update propTypes
+    - both the view factories are dirty and their logic is outdated
+    - post and project backend models can be the same (both should be able to have pictures, titles, subtitles, etc)
+
+- CSS animations on logo
+    - on home view, if logo clicked, bird dances a little bit
+    - in nav and footer, if hovered, bird does some kind of bounce in animation and also gets hoverable blue color
+
+- sage currently throws error if you navigate away from home route
+    - animate is getting called with `isPaused === false` one last time even after component has been unmounted
 
 - use these things:
     - [search indexing](https://github.com/olivernn/lunr.js)
-    - [markdown rendering](https://github.com/chjj/marked)
-    - [syntax highlighting](https://github.com/isagalaev/highlight.js)
+    - propTypes
+        - should you specify prop types even when you are just passing those props along to other components which already specify prop types?
 
 - workflow
     - task factories in gulpfile?
@@ -15,23 +23,35 @@
         - sessions, cookies, jwts, etc...
 
 - UI / UX
+    - what if bannerColor makes it hard to see link hover color in Article
+    - populate store with initial state from server
     - hash links on posts and projects
-    - handle not found routes more professionally
+    - improve use of symantic content
+    - make the tag detail view show two tabs (one for posts and one for projects) instead of posts list after project list
+    - different variations of same bird logo for tag, post, project search views
+        - if no image provided for the detail view then default to corresponding fa icon
 
 - styling
+    - max width on nav and footer content?
+    - are nav and footer too fat? is 20px padding too much on them?
     - (stretch of tag image, etc) for TagList component
     - rendered markdown styling
-    - syntax highlight styling
+        - syntax highlight styling
     - overall DRY design of styling
         - colors
+            - use [chromajs](https://github.com/gka/chroma.js) colors
         - magic numbers
     - react-router `Link` and `IndexLink` do not play well with radium
         - radium wrapping of `Link` does not work on `activeStyle` prop.  Thus, nav links don't transition *in* to the new background color even though they do transition *out* of it.
         - idk why, but `IndexLink` doesn't get the hover styling...
+        - anyways, it would really be nice to be able to use `activeStyle`, especially on the nav bar.
 
 - prepublish
     - is build-production actually building in production environment?
     - better "whoops" messages for ajax loading errors on front end
+    - handle not found routes more professionally
+        - if frontend app index doesnt find route, return NotFound
     - enable disqus
     - logo + favicon
-    - link icons8
+    - minimize css
+    - put your resume up

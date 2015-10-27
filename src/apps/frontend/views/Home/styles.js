@@ -1,10 +1,117 @@
 // local imports
 import classes from 'styles/classes'
+import colors from 'styles/colors'
+
+
+// base styling for all page sections
+const sectionBase = {
+    borderTopWidth: 0,
+    borderRightWidth: 0,
+    borderLeftWidth: 0,
+    borderBottomWidth: 1,
+    borderColor: 'black',
+    borderStyle: 'solid',
+}
+// base styling for all page sections EXCEPT banner AND sage
+const textSectionBase = {
+    ...sectionBase,
+    padding: 100,
+}
 
 
 export default {
     container: {
-        ...classes.pageContentContainer,
+        flexGrow: 1,
+    },
+
+
+    banner: {
+        ...sectionBase,
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'stretch',
+        alignItems: 'stretch',
+        backgroundColor: colors.grey.darkerBg,
+    },
+
+
+    downArrowContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        paddingBottom: 15,
+    },
+
+
+    bannerContent: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexGrow: 1,
+    },
+
+
+    header: {
+        ...classes.largestFontSize,
+        textAlign: 'center',
+    },
+
+
+    logo: {
+        width: '50%',
+        maxWidth: 350,
+    },
+
+
+    nav: {
+        width: '80%',
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+    },
+
+
+    navLink: {
+        ...classes.linkHoverable,
+        ...classes.largerFontSize,
+        ...classes.mainFontColor,
+        margin: 30,
+        textDecoration: 'none',
+    },
+
+
+    downArrowButton: {
+        ...classes.linkHoverable,
+        ...classes.largestFontSize,
+        backgroundColor: 'transparent',
+        border: 0,
+        outline: 0,
+    },
+
+
+    sage: {
+        ...sectionBase,
+    },
+
+
+    about: {
+        ...textSectionBase,
+    },
+
+
+    projects: {
+        ...textSectionBase,
+    },
+
+
+    blog: {
+        ...textSectionBase,
+    },
+
+
+    conclusion: {
+        ...textSectionBase,
     },
 }
 
