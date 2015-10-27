@@ -52,7 +52,7 @@ module.exports = {
         extensions: ['', '.js'],
         root: [
             projectPaths.frontendDir,
-            projectPaths.assetsDir,
+            projectPaths.stylesDir,
             projectPaths.sourceDir,
             projectPaths.rootDir,
         ],
