@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 // local imports
 import TagPreview from './TagPreview'
 import SearchView from 'components/SearchView'
+import colors from 'styles/colors'
 
 
 function mapStateToProps({tags}) {
@@ -40,7 +41,7 @@ export default class TagSearch extends Component {
         return (
             <SearchView
                 bannerImageSrc='/static/images/bird-logo.png'
-                bannerColor='red'
+                bannerColor={colors.palette.sand.css()}
                 title='Tags'
                 subtitle='gotta love em.'
                 items={tags}

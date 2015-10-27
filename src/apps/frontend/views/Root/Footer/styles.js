@@ -1,15 +1,15 @@
 // local imports
 import classes from 'styles/classes'
-// import colors from 'styles/colors'
+import colors from 'styles/colors'
 
 
 const padding = 20
 const containerBase = {
-    ...classes.lightFontColor,
+    color: colors.text.brighten(2).css(),
     ...classes.smallFontSize,
     display: 'flex',
     alignItems: 'center',
-    backgroundColor: '#333435',
+    backgroundColor: colors.ui.css(),
 }
 const listBase = {
     display: 'flex',
@@ -47,7 +47,7 @@ export default {
 
     navLink: {
         ...classes.linkHoverable,
-        ...classes.lighterFontColor,
+        color: colors.text.brighten(3).css(),
         display: 'inline-block',
         padding: padding,
     },
@@ -76,7 +76,7 @@ export default {
 
     emailLink: {
         ...classes.linkHoverable,
-        ...classes.lighterFontColor,
+        color: colors.text.brighten(3).css(),
         display: 'inline-block',
     },
 }

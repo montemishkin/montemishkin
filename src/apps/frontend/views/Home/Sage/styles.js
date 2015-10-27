@@ -27,7 +27,7 @@ export default {
         alignItems: 'center',
         textAlign: 'center',
         color: 'black',
-        backgroundColor: colors.canvasBackground,
+        backgroundColor: colors.palette.skyBlue.css(),
         opacity: 1,
     },
 
@@ -42,6 +42,3 @@ export default {
         height: '100%',
     },
 }
-
-
-// end of file

@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import SearchView from 'components/SearchView'
 import ArticlePreview from 'components/ArticlePreview'
 import {nestProject} from 'util/nest'
+import colors from 'styles/colors'
 
 
 function mapStateToProps({projects, tags}) {
@@ -35,7 +36,7 @@ export default class ProjectSearch extends Component {
         return (
             <SearchView
                 bannerImageSrc='/static/images/bird-logo.png'
-                bannerColor='#F5FFC1'
+                bannerColor={colors.palette.sunburn.css()}
                 title='Projects'
                 subtitle='check em out.'
                 items={projects}

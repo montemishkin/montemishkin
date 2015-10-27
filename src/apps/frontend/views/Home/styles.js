@@ -32,7 +32,7 @@ export default {
         flexDirection: 'column',
         justifyContent: 'stretch',
         alignItems: 'stretch',
-        backgroundColor: colors.grey.darkerBg,
+        backgroundColor: colors.background.css(),
     },
 
 
@@ -75,7 +75,7 @@ export default {
     navLink: {
         ...classes.linkHoverable,
         ...classes.largerFontSize,
-        ...classes.mainFontColor,
+        color: colors.text.brighten().css(),
         margin: 30,
         textDecoration: 'none',
     },

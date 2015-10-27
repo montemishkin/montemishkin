@@ -1,6 +1,5 @@
 // local imports
-// import colors from 'styles/colors'
-import classes from 'styles/classes'
+import colors from 'styles/colors'
 
 
 export default {
@@ -8,7 +7,7 @@ export default {
     },
 
     creationDate: {
-        ...classes.lighterFontColor,
+        color: colors.text.brighten(3).css(),
     },
 
     contentContainer: {

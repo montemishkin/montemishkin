@@ -1,5 +1,6 @@
 // local imports
 import classes from 'styles/classes'
+import colors from 'styles/colors'
 
 
 export default {
@@ -17,12 +18,12 @@ export default {
     },
 
     creationDate: {
-        ...classes.lighterFontColor,
+        color: colors.text.brighten(3).css(),
     },
 
     titleLink: {
         ...classes.linkHoverable,
-        ...classes.darkerFontColor,
+        color: colors.text.css(),
     },
 
     title: {
@@ -40,7 +41,7 @@ export default {
 
     content: {
         ...classes.linkHoverable,
-        ...classes.mainFontColor,
+        color: colors.text.brighten().css(),
         textAlign: 'center',
         maxWidth: '90%',
     },

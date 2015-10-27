@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import SearchView from 'components/SearchView'
 import ArticlePreview from 'components/ArticlePreview'
 import {nestPost} from 'util/nest'
+import colors from 'styles/colors'
 
 
 function mapStateToProps({posts, tags}) {
@@ -35,7 +36,7 @@ export default class PostSearch extends Component {
         return (
             <SearchView
                 bannerImageSrc='/static/images/bird-logo.png'
-                bannerColor='#8CB2FF'
+                bannerColor={colors.palette.skyBlue.css()}
                 title='Blog'
                 subtitle='oh yeah.'
                 items={posts}

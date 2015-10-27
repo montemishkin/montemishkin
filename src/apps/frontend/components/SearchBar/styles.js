@@ -1,5 +1,5 @@
 // local imports
-// import colors from 'styles/colors'
+import colors from 'styles/colors'
 import classes from 'styles/classes'
 
 
@@ -13,14 +13,14 @@ export default {
         outlineOffset: -1,
         outlineStyle: 'solid',
         outlineColor: 'black',
-        backgroundColor: '#333435',
-        color: '#eee',
+        backgroundColor: colors.ui.css(),
+        color: colors.uiText.css(),
         border: 0,
         paddingTop: 5,
         paddingBottom: 5,
 
         ':focus': {
-            outlineColor: 'white',
+            outlineColor: colors.uiText.css(),
         },
     },
 }

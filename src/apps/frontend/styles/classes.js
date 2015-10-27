@@ -32,29 +32,6 @@ export const smallFontSize = {
 }
 
 
-/* Font Color Classes */
-
-export const darkerFontColor = {
-    color: colors.grey.link,
-}
-
-export const darkFontColor = {
-    color: colors.grey.fontish,
-}
-
-export const mainFontColor = {
-    color: colors.grey.header,
-}
-
-export const lightFontColor = {
-    color: colors.grey.lighterFont,
-}
-
-export const lighterFontColor = {
-    color: colors.grey.subheader,
-}
-
-
 /* Misc Classes */
 
 // parameters (everything except transitionProperty) for css transitions
@@ -77,14 +54,11 @@ export const linkHoverable = {
     cursor: 'pointer',
 
     ':hover': {
-        color: colors.grey.linkHover,
+        color: colors.interactive.css(),
     },
 }
 
-// export const header
 
-
-/* export object with all classes as default */
 
 export default {
     largestFontSize,
@@ -93,16 +67,6 @@ export default {
     mainFontSize,
     smallFontSize,
 
-    darkerFontColor,
-    darkFontColor,
-    mainFontColor,
-    lightFontColor,
-    lighterFontColor,
-
     transitionParameters,
-    linkBase,
     linkHoverable,
 }
-
-
-// end of file

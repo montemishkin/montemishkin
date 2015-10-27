@@ -1,5 +1,5 @@
 // local imports
-// import colors from 'styles/colors'
+import colors from 'styles/colors'
 import classes from 'styles/classes'
 
 
@@ -10,7 +10,7 @@ export default {
         borderLeftWidth: 0,
         borderRightWidth: 0,
         borderStyle: 'solid',
-        borderColor: 'white',
+        borderColor: colors.uiText.css(),
         display: 'flex',
         justifyContent: 'center',
         paddingTop: 40,
@@ -32,7 +32,7 @@ export default {
 
     title: {
         ...classes.largerFontSize,
-        ...classes.darkerFontColor,
+        color: colors.text.css(),
         textAlign: 'center',
         margin: 0,
         paddingTop: 20,
@@ -40,7 +40,7 @@ export default {
 
     subtitle: {
         ...classes.mainFontSize,
-        ...classes.mainFontColor,
+        color: colors.text.brighten().css(),
         fontWeight: 'normal',
         textAlign: 'center',
         margin: 0,

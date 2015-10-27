@@ -1,6 +1,6 @@
 // local imports
 import classes from 'styles/classes'
-// import colors from 'styles/colors'
+import colors from 'styles/colors'
 
 
 export default {
@@ -30,7 +30,7 @@ export default {
 
     link: {
         ...classes.linkHoverable,
-        ...classes.darkFontColor,
+        color: colors.text.css(),
         margin: 0,
         display: 'flex',
         flexDirection: 'column',

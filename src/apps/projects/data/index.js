@@ -3,6 +3,7 @@ import {readFileSync} from 'fs'
 import {join as joinPaths} from 'path'
 // local imports
 import markdown from 'util/markdown'
+import colors from 'styles/colors'
 
 
 // TODO: put data in actual database...
@@ -15,7 +16,7 @@ const projects = [
         slug: 'react-hello-world',
         title: 'Introduction to React',
         imageSrc: '/static/images/bird-logo.png',
-        bannerColor: '#CACACA',
+        bannerColor: colors.palette.random().css(),
         creationDate: '2015-09-07T00:00:36.049780Z',
         modificationDate: '2015-09-07T00:00:36.049780Z',
         tags: [0, 3],
@@ -24,7 +25,7 @@ const projects = [
         slug: 'redux-responsive',
         title: 'Managing Responsive State in React',
         imageSrc: '/static/images/finchz_medium.jpg',
-        bannerColor: '#F5FFC1',
+        bannerColor: colors.palette.random().css(),
         creationDate: '2015-09-07T00:00:36.049780Z',
         modificationDate: '2015-09-07T00:00:36.049780Z',
         tags: [1, 2, 4],

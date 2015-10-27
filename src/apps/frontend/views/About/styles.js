@@ -1,5 +1,6 @@
 // local imports
 import classes from 'styles/classes'
+import colors from 'styles/colors'
 
 
 // base styling common to all blockquote styles
@@ -17,7 +18,7 @@ export default {
     },
 
     banner: {
-        backgroundColor: '#EFBAC0',
+        backgroundColor: colors.palette.paleGreen.css(),
     },
 
     contentContainer: {

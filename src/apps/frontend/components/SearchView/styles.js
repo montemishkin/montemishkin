@@ -13,14 +13,14 @@ export default {
         outlineOffset: -1,
         outlineStyle: 'solid',
         outlineColor: 'black',
-        backgroundColor: '#333435',
-        color: '#eee',
+        backgroundColor: colors.ui.css(),
+        color: colors.uiText.css(),
         border: 0,
         paddingTop: 5,
         paddingBottom: 5,
 
         ':focus': {
-            outlineColor: 'white',
+            outlineColor: colors.uiText.css(),
         },
     },
 
@@ -39,7 +39,7 @@ export default {
         display: 'flex',
         justifyContent: 'center',
         borderStyle: 'solid',
-        borderColor: colors.grey.darkerBg,
+        borderColor: colors.background.css(),
         borderTopWidth: 1,
         borderBottomWidth: 0,
         borderRightWidth: 0,

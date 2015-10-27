@@ -1,5 +1,6 @@
 // local imports
 import classes from 'styles/classes'
+import colors from 'styles/colors'
 
 
 export default {
@@ -18,7 +19,7 @@ export default {
 
     link: {
         ...classes.linkHoverable,
-        ...classes.darkerFontColor,
+        color: colors.text.css(),
         display: 'flex',
         alignItems: 'center',
     },

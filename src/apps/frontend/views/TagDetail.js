@@ -4,12 +4,12 @@ import radium from 'radium'
 import {connect} from 'react-redux'
 // import DisqusThread from 'react-disqus-thread'
 // local imports
-import styles from './styles'
 import List from 'components/List'
 import NotFound from 'components/NotFound'
 import ArticlePreview from 'components/ArticlePreview'
 import Banner from 'components/Banner'
 import {nestProject, nestPost} from 'util/nest'
+import colors from 'styles/colors'
 
 
 // TODO: this should be a reselect selector
@@ -71,7 +71,7 @@ export default class TagDetail extends Component {
         return (
             <section>
                 <Banner
-                    style={styles.banner}
+                    style={{backgroundColor: colors.palette.random().css()}}
                     imageSrc='/static/images/bird-logo.png'
                     title={title}
                     subtitle={description}
