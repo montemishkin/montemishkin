@@ -27,7 +27,7 @@ export default {
         alignItems: 'center',
         textAlign: 'center',
         color: 'black',
-        backgroundColor: colors.palette.skyBlue.css(),
+        backgroundColor: colors.palette.sand.css(),
         opacity: 1,
     },
 

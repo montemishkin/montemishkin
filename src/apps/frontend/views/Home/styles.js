@@ -32,7 +32,7 @@ export default {
         flexDirection: 'column',
         justifyContent: 'stretch',
         alignItems: 'stretch',
-        backgroundColor: colors.background.css(),
+        backgroundColor: colors.palette.skyBlue.css(),
     },
 
 

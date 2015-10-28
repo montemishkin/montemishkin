@@ -16,7 +16,7 @@ const colors = {
     background: chroma('#E8EAEE'),
     // imperative
     palette: {
-        paleGreen: chroma('#9cff8c'),
+        paleGreen: chroma('#59B342'),
         skyBlue: chroma('#8CB2FF'),
         sunburn: chroma('#f1793f'),
         sand: chroma('#f0e38f'),

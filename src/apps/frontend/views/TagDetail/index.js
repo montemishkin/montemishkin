@@ -2,14 +2,14 @@
 import React, {Component, PropTypes} from 'react'
 import radium from 'radium'
 import {connect} from 'react-redux'
-// import DisqusThread from 'react-disqus-thread'
 // local imports
+import styles from './styles'
+import TabContainer from './TabContainer'
 import List from 'components/List'
 import NotFound from 'components/NotFound'
 import ArticlePreview from 'components/ArticlePreview'
 import Banner from 'components/Banner'
 import {nestProject, nestPost} from 'util/nest'
-import colors from 'styles/colors'
 
 
 // TODO: this should be a reselect selector
@@ -68,34 +68,52 @@ export default class TagDetail extends Component {
             posts,
         } = this.props
 
+        // default to having projects tab start as active
+        let initialActiveIndex = 0
+        // if there are no related projects
+        if (projects.length === 0) {
+            // then have posts tab start as active instead
+            initialActiveIndex = 1
+        }
+
         return (
             <section>
                 <Banner
-                    style={{backgroundColor: colors.palette.random().css()}}
+                    style={styles.banner}
                     imageSrc='/static/images/bird-logo.png'
                     title={title}
                     subtitle={description}
                 />
-                <section>
-                    <h3>
-                        Projects ({projects.length})
-                    </h3>
-                    <List>
-                        {projects.map((project, key) => (
-                            <ArticlePreview {...project} key={key} />
-                        ))}
-                    </List>
-                </section>
-                <section>
-                    <h3>
-                        Blog Posts ({posts.length})
-                    </h3>
-                    <List>
-                        {posts.map((post, key) => (
-                            <ArticlePreview {...post} key={key}/>
-                        ))}
-                    </List>
-                </section>
+                <TabContainer
+                    initialActiveIndex={initialActiveIndex}
+                    tabs={[
+                        {
+                            title: `Projects (${projects.length})`,
+                            content: (
+                                <List
+                                    style={styles.list}
+                                    listItemStyle={styles.listItem}
+                                >
+                                    {projects.map((project, key) => (
+                                        <ArticlePreview {...project} key={key} />
+                                    ))}
+                                </List>
+                            ),
+                        }, {
+                            title: `Blog Posts (${posts.length})`,
+                            content: (
+                                <List
+                                    style={styles.list}
+                                    listItemStyle={styles.listItem}
+                                >
+                                    {posts.map((post, key) => (
+                                        <ArticlePreview {...post} key={key} />
+                                    ))}
+                                </List>
+                            ),
+                        },
+                    ]}
+                />
             </section>
         )
     }
