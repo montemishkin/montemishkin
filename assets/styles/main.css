@@ -1,0 +1,11 @@
+@font-face {
+    font-family: "Lato";
+    src: url("/static/fonts/Lato/Lato-Regular.ttf");
+}
+
+
+html, body, #app {
+    min-height: 100%;
+    font-family: 'Lato', sans-serif;
+    background-color: white;
+}

@@ -1,3 +1,3 @@
-# monte_mishkin_com
+# montemishkin
 
-The code for monte.mishkin.com.
+(Not yet) Live at [monte.mishkin.com](http://monte.mishkin.com).

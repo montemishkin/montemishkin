@@ -1,0 +1,12 @@
+html
+    head
+        link(rel="stylesheet", href="/static/styles/normalize.css")
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css")
+        link(rel="stylesheet", href="/static/styles/highlight.css")
+        link(rel="stylesheet", href="/static/styles/markdown.css")
+        link(rel="stylesheet", href="/static/styles/main.css")
+        script(type="application/javascript").
+            window.__INITIAL_STATE__ = !{initialState};
+    body
+        #app !{renderedComponent}
+        script(src="/static/client.js", type="text/javascript")

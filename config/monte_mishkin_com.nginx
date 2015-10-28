@@ -1,0 +1,28 @@
+# #
+# NGINX server configuration for montemishkin.
+# #
+
+server {
+    # listen to port 80 for IPv4 addresses
+    listen 80;
+    # listen to port 80 for IPv6 addresses
+    listen [::]:80;
+
+    # handle requests to localhost              ! for debug only !
+    server_name localhost;
+
+    # requests for static files
+    location /static/ {
+        # route to django project's collected static files
+        root /home/montemishkin/projects/montemishkin;
+    }
+
+    # proxy all other location requests to gunicorn process via unix socket
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/montemishkin/projects/montemishkin/montemishkin.sock;
+    }
+}
+
+
+# end of file
