@@ -38,7 +38,6 @@ app.all('*', (req, res) => {
                 projects,
                 tags,
             })
-            // console.log('state', store.getState())
             // initial application state
             const initialState = JSON.stringify(store.getState())
             // initial component to render

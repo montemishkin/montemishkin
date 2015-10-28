@@ -38,6 +38,8 @@ export default class Sage extends Component {
             isPaused: true,
             // whether or not the simulation has been clicked yet
             wasClicked: false,
+            // id returned from most recent `requestAnimationFrame` call
+            animationFrameID: null,
         }
         // bind instance method so it can be passed as callback
         // also throttle it so that we dont spam resize event
@@ -61,6 +63,8 @@ export default class Sage extends Component {
     componentWillUnmount() {
         // cut animation loop
         this.setState({isPaused: true})
+        // cancel pending animation
+        window.cancelAnimationFrame(this.state.animationFrameID)
         // remove resize event handler
         window.removeEventListener('resize', this.onResize)
     }
@@ -97,7 +101,11 @@ export default class Sage extends Component {
                 .renderTo(this.refs.canvas.getContext('2d'))
 
             // keep it going
-            requestAnimationFrame(() => this.animate())
+            this.setState({
+                animationFrameID: window.requestAnimationFrame(
+                    () => this.animate()
+                ),
+            })
         }
     }
 
@@ -164,8 +172,8 @@ export default class Sage extends Component {
                     isPaused && {cursor: 'pointer'},
                     wasClicked && styles.fadeOut,
                 ]}
-                onClick={(event) => this.handleClick(event)}
-                onMouseMove={(event) => this.handleMouseMove(event)}
+                onClick={this.handleClick.bind(this)}
+                onMouseMove={this.handleMouseMove.bind(this)}
             >
                 <h3>Click me in different places!</h3>
                 <span>(or just keep scrolling)</span>
