@@ -4,7 +4,7 @@ import radium from 'radium'
 // local imports
 import styles from './styles'
 import Banner from 'components/Banner'
-import List from 'components/List'
+import WideList from 'components/WideList'
 import search from 'util/search'
 
 
@@ -46,43 +46,44 @@ export default class SearchView extends Component {
     }
 
 
+    get content() {
+        const {filteredItems, props: {PreviewComponent}} = this
+
+        // if any items survived the filter
+        if (filteredItems.length > 0) {
+            // render a list of them as content
+            return (
+                <WideList>
+                    {filteredItems.map((item, key) => (
+                        <PreviewComponent {...item} key={key} />
+                    ))}
+                </WideList>
+            )
+        }
+        // otherwise no items survived the filter
+        // so render a message indicating no search results
+        return (
+            <section style={styles.messageContainer}>
+                <div style={styles.message}>
+                    ayyyyy.... nothin here alright??
+                </div>
+            </section>
+        )
+    }
+
+
     render() {
         const {
-            filteredItems,
+            content,
             props: {
                 bannerImageSrc,
                 bannerColor,
                 title,
                 subtitle,
-                PreviewComponent,
                 ...unusedProps,
             },
             state: {searchText},
         } = this
-
-        // the page content (after the banner)
-        let content
-        // if any items survived the filter
-        if (filteredItems.length > 0) {
-            // render a list of them as content
-            content = (
-                <List style={styles.list} listItemStyle={styles.listItem}>
-                    {filteredItems.map((item, key) => (
-                        <PreviewComponent {...item} key={key} />
-                    ))}
-                </List>
-            )
-        // otherwise no items survived the filter
-        } else {
-            // so render a message indicating no search results
-            content = (
-                <section style={styles.messageContainer}>
-                    <div style={styles.message}>
-                        ayyyyy.... nothin here alright??
-                    </div>
-                </section>
-            )
-        }
 
         return (
             <article {...unusedProps}>

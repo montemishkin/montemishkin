@@ -3,11 +3,6 @@ import colors from 'styles/colors'
 
 
 export default {
-    banner: {
-        backgroundColor: colors.palette.random().css(),
-    },
-
-
     list: {
         listStyleType: 'none',
         margin: 0,

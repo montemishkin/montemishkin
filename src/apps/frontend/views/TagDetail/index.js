@@ -3,13 +3,13 @@ import React, {Component, PropTypes} from 'react'
 import radium from 'radium'
 import {connect} from 'react-redux'
 // local imports
-import styles from './styles'
 import TabContainer from './TabContainer'
-import List from 'components/List'
+import WideList from 'components/WideList'
 import NotFound from 'components/NotFound'
 import ArticlePreview from 'components/ArticlePreview'
 import Banner from 'components/Banner'
 import {nestProject, nestPost} from 'util/nest'
+import colors from 'styles/colors'
 
 
 // TODO: this should be a reselect selector
@@ -79,7 +79,7 @@ export default class TagDetail extends Component {
         return (
             <section>
                 <Banner
-                    style={styles.banner}
+                    style={{backgroundColor: colors.palette.random().css()}}
                     imageSrc='/static/images/bird-logo.png'
                     title={title}
                     subtitle={description}
@@ -90,26 +90,20 @@ export default class TagDetail extends Component {
                         {
                             title: `Projects (${projects.length})`,
                             content: (
-                                <List
-                                    style={styles.list}
-                                    listItemStyle={styles.listItem}
-                                >
+                                <WideList>
                                     {projects.map((project, key) => (
                                         <ArticlePreview {...project} key={key} />
                                     ))}
-                                </List>
+                                </WideList>
                             ),
                         }, {
                             title: `Blog Posts (${posts.length})`,
                             content: (
-                                <List
-                                    style={styles.list}
-                                    listItemStyle={styles.listItem}
-                                >
+                                <WideList>
                                     {posts.map((post, key) => (
                                         <ArticlePreview {...post} key={key} />
                                     ))}
-                                </List>
+                                </WideList>
                             ),
                         },
                     ]}
