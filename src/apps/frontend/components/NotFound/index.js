@@ -18,13 +18,9 @@ export default class NotFound extends Component {
                     style={styles.banner}
                     imageSrc='/static/images/bird-logo.png'
                     title='Not Found'
-                    subtitle='whoops!'
+                    subtitle="hmm... there's nothing here!"
                 />
-                <section style={styles.contentContainer}>
-                    <div style={styles.content}>
-                        blah
-                    </div>
-                </section>
+                <div style={styles.content} />
             </article>
         )
     }
