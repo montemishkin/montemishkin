@@ -41,6 +41,7 @@ export default class ContactInfoBar extends Component {
                         <a
                             key={key}
                             href={href}
+                            target='_blank'
                             style={styles.link}
                         >
                             <i
