@@ -14,6 +14,9 @@ export default {
         paddingLeft: padding,
         paddingRight: padding,
         backgroundColor: colors.ui.css(),
+        borderWidth: '0 0 1px 0',
+        borderStyle: 'solid',
+        borderColor: colors.uiText.css(),
     },
 
     logoLink: {

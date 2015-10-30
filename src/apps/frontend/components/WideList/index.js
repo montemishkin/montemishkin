@@ -6,6 +6,9 @@ import styles from './styles'
 import List from 'components/List'
 
 
+/**
+ * Just an unordered list along with some styling.
+ */
 @radium
 export default class WideList extends Component {
     static propTypes = {

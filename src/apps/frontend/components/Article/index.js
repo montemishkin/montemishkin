@@ -34,7 +34,7 @@ export default class Article extends Component {
         subtitle: PropTypes.string,
         // TODO: this should be a date?
         creationDate: PropTypes.string.isRequired,
-        // should I specify shape here even though it is just passed to TagListInline?
+        // should I specify shape here even though it is just passed to TagList?
         tags: PropTypes.arrayOf(PropTypes.shape({
             title: PropTypes.string.isRequired,
             link: PropTypes.string.isRequired,

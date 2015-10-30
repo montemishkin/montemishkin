@@ -18,11 +18,7 @@ export default {
         justifyContent: 'center',
         borderStyle: 'solid',
         borderColor: colors.background.css(),
-        borderTopWidth: 1,
-        borderBottomWidth: 0,
-        borderRightWidth: 0,
-        borderLeftWidth: 0,
-        paddingBottom: 80,
-        paddingTop: 80,
+        borderWidth: '1px 0',
+        padding: '80px 0',
     },
 }

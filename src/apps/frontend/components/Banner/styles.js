@@ -5,16 +5,9 @@ import classes from 'styles/classes'
 
 export default {
     outerContainer: {
-        borderTopWidth: 1,
-        borderBottomWidth: 0,
-        borderLeftWidth: 0,
-        borderRightWidth: 0,
-        borderStyle: 'solid',
-        borderColor: colors.uiText.css(),
         display: 'flex',
         justifyContent: 'center',
-        paddingTop: 40,
-        paddingBottom: 40,
+        padding: '40px 0',
     },
 
     innerContainer: {

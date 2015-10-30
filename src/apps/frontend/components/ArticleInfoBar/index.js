@@ -3,7 +3,7 @@ import React, {Component, PropTypes} from 'react'
 import radium from 'radium'
 // local imports
 import styles from './styles'
-import TagListInline from 'components/TagListInline'
+import TagList from 'components/TagList'
 import FormattedDate from 'components/FormattedDate'
 
 
@@ -42,7 +42,7 @@ export default class ArticleInfoBar extends Component {
                     style={styles.creationDate}
                     date={creationDate}
                 />
-                <TagListInline tags={tags} />
+                <TagList tags={tags} />
             </div>
         )
     }
