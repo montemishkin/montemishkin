@@ -13,9 +13,9 @@
 
 - UI / UX
     - :hover effects should probably also be set on :focus
-    - what if bannerColor makes it hard to see link hover color in Article
+    - what if bannerColor makes it hard to see link hover color in Article?
     - hash links on posts and projects
-    - improve use of symantic content
+    - improve use of semantic content
     - different variations of same bird logo for tag, post, project search views
         - if no image provided for the detail view then default to corresponding fa icon
 
@@ -32,10 +32,9 @@
         - anyways, it would really be nice to be able to use `activeStyle`, especially on the nav bar.
 
 - prepublish
-    - is build-production actually building in production environment? No. gulp-env is working, but not cascading down into webpack-stream.
-    - handle not found routes more professionally
-        - style up NotFound component
-        - if frontend app index doesnt find route, return NotFound
+    - is build-production actually building in production environment?
+        - No. gulp-env is working, but not cascading down into webpack-stream.
+    - style up NotFound component
     - enable disqus
     - logo + favicon
     - minimize css
