@@ -12,6 +12,7 @@
         - sessions, cookies, jwts, etc...
 
 - UI / UX
+    - :hover effects should probably also be set on :focus
     - what if bannerColor makes it hard to see link hover color in Article
     - hash links on posts and projects
     - improve use of symantic content

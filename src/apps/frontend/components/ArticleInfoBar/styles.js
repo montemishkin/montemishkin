@@ -11,6 +11,6 @@ export default {
     },
 
     creationDate: {
-        color: colors.text.brighten(3).css(),
+        color: colors.text.css(),
     },
 }

@@ -4,7 +4,7 @@ import radium from 'radium'
 import {connect} from 'react-redux'
 // import {createSelector} from 'reselect'
 // local imports
-import NotFound from 'components/NotFound'
+import NotFound from 'views/NotFound'
 import Article from 'components/Article'
 import {nestPost} from 'util/nest'
 

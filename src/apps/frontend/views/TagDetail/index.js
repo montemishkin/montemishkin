@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 // local imports
 import TabContainer from './TabContainer'
 import WideList from 'components/WideList'
-import NotFound from 'components/NotFound'
+import NotFound from 'views/NotFound'
 import ArticlePreview from 'components/ArticlePreview'
 import Banner from 'components/Banner'
 import {nestProject, nestPost} from 'util/nest'

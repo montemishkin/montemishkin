@@ -4,6 +4,7 @@ import {Route, IndexRoute} from 'react-router'
 // local imports
 import IncludeFooter from './views/IncludeFooter'
 import IncludeNav from './views/IncludeNav'
+import NotFound from './views/NotFound'
 import Home from './views/Home'
 import About from './views/About'
 import ProjectSearch from './views/ProjectSearch'
@@ -25,6 +26,7 @@ export default (
             <Route path='posts/:slug' component={PostDetail} />
             <Route path='tags' component={TagSearch} />
             <Route path='tags/:slug' component={TagDetail} />
+            <Route path='*' component={NotFound} />
         </Route>
     </Route>
 )

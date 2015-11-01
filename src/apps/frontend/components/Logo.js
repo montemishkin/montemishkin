@@ -11,7 +11,7 @@ export default class Logo extends Component {
         const {...unusedProps} = this.props
 
         return (
-            <svg viewBox={`0 0 ${side} ${side}`} {...unusedProps}>
+            <svg {...unusedProps} viewBox={`0 0 ${side} ${side}`}>
                 <image
                     xlinkHref='/static/images/bird-logo.png'
                     x='0'

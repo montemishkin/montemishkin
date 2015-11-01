@@ -11,6 +11,9 @@ import {createStore} from './store'
 import posts from 'apps/blog/data'
 import projects from 'apps/projects/data'
 import tags from 'apps/core/tags/data'
+import IncludeNav from 'views/IncludeNav'
+import IncludeFooter from 'views/IncludeFooter'
+import NotFound from 'views/NotFound'
 
 
 // create the express app
@@ -20,6 +23,7 @@ const app = express()
 // use jade as the templating engine
 app.set('view engine', 'jade')
 app.set('views', templatesDir)
+
 
 // any url that hits this app
 app.all('*', (req, res) => {
@@ -32,7 +36,8 @@ app.all('*', (req, res) => {
         } else if (redirectLocation) {
             res.redirect(302, redirectLocation.pathname + redirectLocation.search)
         // if route was found and is not a redirect
-        } else if (renderProps) {
+        } else {
+            // create redux store with initial data
             const store = createStore({
                 posts,
                 projects,
@@ -40,21 +45,38 @@ app.all('*', (req, res) => {
             })
             // initial application state
             const initialState = JSON.stringify(store.getState())
-            // initial component to render
-            const initialComponent = (
-                <Provider store={store}>
-                    <RoutingContext {...renderProps} />
-                </Provider>
-            )
+            // rendered app
+            let renderedComponent
 
-            // render the jade template with the component mounted
+            // if route was found
+            if (renderProps) {
+                // render routed application
+                renderedComponent = renderToString(
+                    <Provider store={store}>
+                        <RoutingContext {...renderProps} />
+                    </Provider>
+                )
+            // otherwise route was not found
+            } else {
+                // set response status to 404
+                res.status(404)
+                // render 404 page
+                renderedComponent = renderToString(
+                    <Provider store={store}>
+                        <IncludeFooter>
+                            <IncludeNav>
+                                <NotFound />
+                            </IncludeNav>
+                        </IncludeFooter>
+                    </Provider>
+                )
+            }
+
+            // render jade template with component mounted
             res.render('index.jade', {
                 initialState,
-                renderedComponent: renderToString(initialComponent),
+                renderedComponent,
             })
-        // otherwise route was not found
-        } else {
-            res.status(404).send('Not found')
         }
     })
 })
