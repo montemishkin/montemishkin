@@ -5,6 +5,8 @@ import webpack from 'webpack-stream'
 import named from 'vinyl-named'
 import env from 'gulp-env'
 import shell from 'gulp-shell'
+import minifyCSS from 'gulp-minify-css'
+import concat from 'gulp-concat'
 import karma from 'karma'
 // local imports
 import {
@@ -14,6 +16,7 @@ import {
     serverBuildGlob,
     clientEntry,
     serverEntry,
+    cssGlob,
     webpackClientConfig as webpackClientConfigPath,
     webpackServerConfig as webpackServerConfigPath,
     karmaConfig as karmaConfigPath,
@@ -31,11 +34,11 @@ gulp.task('runserver', shell.task('nodemon ' + serverBuild))
 /**
  * Build client entry point.
  */
-gulp.task('build-client', ['clean-client'], () => {
+gulp.task('build-client', ['clean-client', 'build-css'], () => {
     return gulp.src(clientEntry)
-               .pipe(named())
-               .pipe(webpack(webpackClientConfig))
-               .pipe(gulp.dest(buildDir))
+        .pipe(named())
+        .pipe(webpack(webpackClientConfig))
+        .pipe(gulp.dest(buildDir))
 })
 
 
@@ -44,25 +47,25 @@ gulp.task('build-client', ['clean-client'], () => {
  */
 gulp.task('build-server', ['clean-server'], () => {
     return gulp.src(serverEntry)
-               .pipe(named())
-               .pipe(webpack(webpackServerConfig))
-               .pipe(gulp.dest(buildDir))
+        .pipe(named())
+        .pipe(webpack(webpackServerConfig))
+        .pipe(gulp.dest(buildDir))
 })
 
 
 /**
  * Watch client entry point.
  */
-gulp.task('watch-client', ['clean-client'], () => {
+gulp.task('watch-client', ['clean-client', 'build-css'], () => {
     const config = {
         ...webpackClientConfig,
         watch: true,
     }
 
     return gulp.src(clientEntry)
-               .pipe(named())
-               .pipe(webpack(config))
-               .pipe(gulp.dest(buildDir))
+        .pipe(named())
+        .pipe(webpack(config))
+        .pipe(gulp.dest(buildDir))
 })
 
 
@@ -76,9 +79,9 @@ gulp.task('watch-server', ['clean-server'], () => {
     }
 
     return gulp.src(serverEntry)
-               .pipe(named())
-               .pipe(webpack(config))
-               .pipe(gulp.dest(buildDir))
+        .pipe(named())
+        .pipe(webpack(config))
+        .pipe(gulp.dest(buildDir))
 })
 
 
@@ -94,9 +97,9 @@ gulp.task('build-client-production', ['clean-client'], () => {
     })
     // build client
     return gulp.src(clientEntry)
-               .pipe(named())
-               .pipe(webpack(webpackClientConfig))
-               .pipe(gulp.dest(buildDir))
+        .pipe(named())
+        .pipe(webpack(webpackClientConfig))
+        .pipe(gulp.dest(buildDir))
 })
 
 
@@ -112,9 +115,20 @@ gulp.task('build-server-production', ['clean-server'], () => {
     })
     // build server
     return gulp.src(serverEntry)
-               .pipe(named())
-               .pipe(webpack(webpackServerConfig))
-               .pipe(gulp.dest(buildDir))
+        .pipe(named())
+        .pipe(webpack(webpackServerConfig))
+        .pipe(gulp.dest(buildDir))
+})
+
+
+/**
+ * Build CSS assets.
+ */
+gulp.task('build-css', () => {
+    return gulp.src(cssGlob)
+        .pipe(concat('styles.css'))
+        .pipe(minifyCSS())
+        .pipe(gulp.dest(buildDir))
 })
 
 

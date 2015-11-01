@@ -37,5 +37,4 @@
     - style up NotFound component
     - enable disqus
     - logo + favicon
-    - minimize css
     - put your resume up
