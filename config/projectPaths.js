@@ -21,12 +21,12 @@ var buildDir = path.join(rootDir, 'build')
 var appsDir = path.join(sourceDir, 'apps')
 // entry points directory
 var entriesDir = path.join(sourceDir, 'entries')
-// frontend directory
-var frontendDir = path.join(appsDir, 'frontend')
+// client directory
+var clientDir = path.join(appsDir, 'client')
 // templates directory
-var templatesDir = path.join(frontendDir, 'templates')
+var templatesDir = path.join(clientDir, 'templates')
 // styles directory
-var stylesDir = path.join(frontendDir, 'styles')
+var stylesDir = path.join(clientDir, 'styles')
 // webpack configuration directory
 var webpackDir = path.join(configDir, 'webpack')
 
@@ -40,7 +40,7 @@ module.exports = {
     buildDir: buildDir,
     assetsDir: assetsDir,
     stylesDir: stylesDir,
-    frontendDir: frontendDir,
+    clientDir: clientDir,
     templatesDir: templatesDir,
     // entry points
     clientEntry: path.join(entriesDir, 'client.js'),

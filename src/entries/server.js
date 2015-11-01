@@ -18,7 +18,7 @@ import favicon from 'serve-favicon'
 import serveStatic from 'serve-static'
 // local imports
 import {buildDir, assetsDir, favicon as faviconPath} from 'config/projectPaths'
-import frontend from 'apps/frontend'
+import client from 'apps/client'
 import api from 'apps/api'
 
 
@@ -44,8 +44,8 @@ app.use(logger(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'))
 app.use('/static', serveStatic(buildDir), serveStatic(assetsDir))
 // route api to api app
 app.use('/api', api)
-// route root to frontend app
-app.use('/', frontend)
+// route root to client app
+app.use('/', client)
 
 
 /* eslint-disable no-console */

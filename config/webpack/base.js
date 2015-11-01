@@ -51,7 +51,7 @@ module.exports = {
     resolve: {
         extensions: ['', '.js'],
         root: [
-            projectPaths.frontendDir,
+            projectPaths.clientDir,
             projectPaths.stylesDir,
             projectPaths.sourceDir,
             projectPaths.rootDir,

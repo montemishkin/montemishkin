@@ -7,8 +7,8 @@ import {Router} from 'react-router'
 import {Provider} from 'react-redux'
 import createBrowserHistory from 'history/lib/createBrowserHistory'
 // local imports
-import routes from 'apps/frontend/routes'
-import {createStore} from 'apps/frontend/store'
+import routes from 'apps/client/routes'
+import {createStore} from 'apps/client/store'
 
 
 // use the browser's native history
@@ -16,7 +16,7 @@ const history = createBrowserHistory()
 
 // grab the initial application state passed from the server
 const initialState = window.__INITIAL_STATE__
-// instantiate frontend store with initial application state
+// instantiate client store with initial application state
 const store = createStore(initialState)
 
 // render the routed application
