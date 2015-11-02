@@ -13,15 +13,11 @@ export default {
 
     list: {
         flexGrow: 1,
-        padding: 0,
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         listStyleType: 'none',
-        marginTop: 0,
-        marginBottom: 0,
-        marginLeft: 10,
-        marginRight: 10,
+        margin: '0 10px',
     },
 
     listItem: {
@@ -31,7 +27,6 @@ export default {
     link: {
         ...classes.linkHoverable,
         color: colors.text.css(),
-        margin: 0,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

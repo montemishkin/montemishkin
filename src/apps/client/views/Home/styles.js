@@ -20,11 +20,6 @@ const textSectionBase = {
 
 
 export default {
-    container: {
-        flexGrow: 1,
-    },
-
-
     banner: {
         ...sectionBase,
         height: '100%',
@@ -33,13 +28,6 @@ export default {
         justifyContent: 'stretch',
         alignItems: 'stretch',
         backgroundColor: colors.palette.skyBlue.css(),
-    },
-
-
-    downArrowContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-        paddingBottom: 15,
     },
 
 
@@ -81,6 +69,13 @@ export default {
     },
 
 
+    downArrowContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        paddingBottom: 15,
+    },
+
+
     downArrowButton: {
         ...classes.linkHoverable,
         ...classes.largestFontSize,
@@ -114,6 +109,3 @@ export default {
         ...textSectionBase,
     },
 }
-
-
-// end of file

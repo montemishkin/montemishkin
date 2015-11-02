@@ -1,6 +1,11 @@
 // local imports
 import classes from 'styles/classes'
 import colors from 'styles/colors'
+import {
+    contentWidth,
+    contentMaxWidth,
+    contentVerticalPadding,
+} from 'styles/numerics'
 
 
 // base styling common to all blockquote styles
@@ -14,9 +19,6 @@ const blockquoteBase = {
 
 
 export default {
-    container: {
-    },
-
     banner: {
         backgroundColor: colors.palette.paleGreen.css(),
     },
@@ -27,10 +29,9 @@ export default {
     },
 
     content: {
-        paddingTop: 100,
-        paddingBottom: 100,
-        width: '70%',
-        maxWidth: 740,
+        padding: `${contentVerticalPadding}px 0`,
+        width: contentWidth,
+        maxWidth: contentMaxWidth,
     },
 
     blockquoteMedium: {
@@ -41,8 +42,6 @@ export default {
 
     blockquoteInfinity: {
         ...blockquoteBase,
-        marginTop: 0,
-        marginBottom: 0,
         marginLeft: '40%',
         textAlign: 'right',
     },

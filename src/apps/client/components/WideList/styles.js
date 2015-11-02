@@ -4,9 +4,6 @@ import colors from 'styles/colors'
 
 export default {
     list: {
-        listStyleType: 'none',
-        margin: 0,
-        padding: 0,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'stretch',

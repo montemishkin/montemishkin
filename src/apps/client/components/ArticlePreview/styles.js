@@ -1,6 +1,7 @@
 // local imports
 import classes from 'styles/classes'
 import colors from 'styles/colors'
+import {contentWidth, contentMaxWidth} from 'styles/numerics'
 
 
 export default {
@@ -8,17 +9,12 @@ export default {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        width: '70%',
-        maxWidth: 740,
+        width: contentWidth,
+        maxWidth: contentMaxWidth,
     },
 
     infoBar: {
-        paddingTop: 7,
-        paddingBottom: 7,
-    },
-
-    creationDate: {
-        color: colors.text.brighten(3).css(),
+        padding: '7px 0',
     },
 
     titleLink: {
@@ -30,12 +26,10 @@ export default {
         ...classes.largerFontSize,
         textAlign: 'center',
         paddingBottom: 10,
-        margin: 0,
     },
 
     subtitle: {
         ...classes.mainFontSize,
-        margin: 0,
         textAlign: 'center',
     },
 

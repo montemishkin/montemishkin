@@ -14,6 +14,7 @@ export default class TabsContainer extends Component {
             content: PropTypes.node,
         })).isRequired,
         initialActiveIndex: PropTypes.number,
+        style: PropTypes.object,
     }
 
 
@@ -36,11 +37,11 @@ export default class TabsContainer extends Component {
     render() {
         const {
             state: {activeIndex},
-            props: {tabs, style, ...unusedProps},
+            props: {tabs, ...unusedProps},
         } = this
 
         return (
-            <div {...unusedProps} style={{...styles.container, ...style}}>
+            <div {...unusedProps}>
                 <List style={styles.tabList} listItemStyle={styles.tabListItem}>
                     {tabs.map(({title}, index) => {
                         // default to regular styling
@@ -62,7 +63,7 @@ export default class TabsContainer extends Component {
                         )
                     })}
                 </List>
-                <div style={styles.content}>
+                <div>
                     {tabs[activeIndex].content}
                 </div>
             </div>

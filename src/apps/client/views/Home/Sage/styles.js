@@ -11,10 +11,6 @@ const transition = {
 
 
 export default {
-    container: {
-    },
-
-
     overlay: {
         ...transition,
         ...classes.largestFontSize,

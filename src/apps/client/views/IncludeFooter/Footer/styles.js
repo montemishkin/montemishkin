@@ -15,9 +15,6 @@ const listBase = {
     display: 'flex',
     justifyContent: 'center',
     flexWrap: 'wrap',
-    listStyleType: 'none',
-    margin: 0,
-    padding: 0,
 }
 const copyrightBase = {
     padding: 20,
@@ -54,10 +51,7 @@ export default {
 
     logoLink: {
         display: 'inline-block',
-        paddingTop: padding / 2,
-        paddingBottom: padding / 2,
-        paddingLeft: padding,
-        paddingRight: padding,
+        padding: `${padding / 2}px ${padding}px`,
     },
 
     logo: {

@@ -4,9 +4,7 @@
 
 
 export default {
-    // maximum width of page
-    maxPageWidth: 760,
+    contentMaxWidth: 740,
+    contentWidth: '70%',
+    contentVerticalPadding: 100,
 }
-
-
-// end of file

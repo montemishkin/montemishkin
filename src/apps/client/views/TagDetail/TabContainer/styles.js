@@ -14,13 +14,8 @@ const tabTitleBase = {
 
 
 export default {
-    container: {},
-
-
     tabList: {
         listStyleType: 'none',
-        margin: 0,
-        padding: 0,
         display: 'flex',
     },
 
@@ -38,9 +33,7 @@ export default {
 
     tabTitleActive: {
         ...tabTitleBase,
+        // TODO: move to styles/colors.js
         backgroundColor: '#999',
     },
-
-
-    content: {},
 }

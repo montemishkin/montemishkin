@@ -1,6 +1,7 @@
 // local imports
 import colors from 'styles/colors'
 import classes from 'styles/classes'
+import {contentMaxWidth} from 'styles/numerics'
 
 
 export default {
@@ -15,7 +16,7 @@ export default {
         flexDirection: 'column',
         alignItems: 'center',
         width: '90%',
-        maxWidth: 760,
+        maxWidth: contentMaxWidth + 20,
     },
 
     image: {
@@ -27,7 +28,6 @@ export default {
         ...classes.largerFontSize,
         color: colors.text.css(),
         textAlign: 'center',
-        margin: 0,
         paddingTop: 20,
     },
 
@@ -36,7 +36,6 @@ export default {
         color: colors.text.brighten().css(),
         fontWeight: 'normal',
         textAlign: 'center',
-        margin: 0,
         paddingTop: 20,
     },
 

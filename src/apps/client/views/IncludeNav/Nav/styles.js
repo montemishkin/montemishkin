@@ -11,8 +11,7 @@ export default {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingLeft: padding,
-        paddingRight: padding,
+        padding: `0 ${padding}px`,
         backgroundColor: colors.ui.css(),
         borderWidth: '0 0 1px 0',
         borderStyle: 'solid',
@@ -21,10 +20,7 @@ export default {
 
     logoLink: {
         display: 'inline-block',
-        paddingTop: padding / 2,
-        paddingBottom: padding / 2,
-        paddingLeft: padding,
-        paddingRight: padding,
+        padding: `${padding / 2}px ${padding}px`,
     },
 
     logo: {
@@ -35,9 +31,6 @@ export default {
         display: 'flex',
         justifyContent: 'center',
         flexWrap: 'wrap',
-        listStyleType: 'none',
-        margin: 0,
-        padding: 0,
     },
 
     link: {

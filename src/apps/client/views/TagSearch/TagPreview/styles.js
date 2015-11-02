@@ -1,6 +1,7 @@
 // local imports
 import classes from 'styles/classes'
 import colors from 'styles/colors'
+import {contentWidth, contentMaxWidth} from 'styles/numerics'
 
 
 export default {
@@ -8,8 +9,8 @@ export default {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        width: '70%',
-        maxWidth: 740,
+        width: contentWidth,
+        maxWidth: contentMaxWidth,
     },
 
     icon: {
@@ -29,6 +30,7 @@ export default {
     },
 
     description: {
+        paddingTop: 10,
         textAlign: 'center',
     },
 }

@@ -16,20 +16,14 @@ export default {
 
     list: {
         listStyleType: 'none',
-        margin: 0,
-        paddingLeft: 3,
-        paddingRight: 3,
+        padding: '0 3px',
         display: 'flex',
         flexWrap: 'wrap',
     },
 
     listItem: {
-        marginLeft: 3,
-        marginRight: 3,
-        paddingTop: 2,
-        paddingBottom: 2,
-        paddingLeft: 3,
-        paddingRight: 3,
+        margin: '0 3px',
+        padding: '2px 3px',
     },
 
     link: {

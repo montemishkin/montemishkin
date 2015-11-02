@@ -1,6 +1,11 @@
 // local imports
 import classes from 'styles/classes'
 import colors from 'styles/colors'
+import {
+    contentWidth,
+    contentMaxWidth,
+    contentVerticalPadding,
+} from 'styles/numerics'
 
 
 export default {
@@ -16,8 +21,7 @@ export default {
         backgroundColor: colors.ui.css(),
         color: colors.uiText.css(),
         border: 0,
-        paddingTop: 5,
-        paddingBottom: 5,
+        padding: '5px 0',
 
         ':focus': {
             outlineColor: colors.uiText.css(),
@@ -32,9 +36,8 @@ export default {
 
 
     message: {
-        paddingTop: 100,
-        paddingBottom: 100,
-        width: '70%',
-        maxWidth: 740,
+        padding: `${contentVerticalPadding}px 0`,
+        width: contentWidth,
+        maxWidth: contentMaxWidth,
     },
 }

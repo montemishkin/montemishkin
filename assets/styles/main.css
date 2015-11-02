@@ -4,6 +4,16 @@
 }
 
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ol, ul {
+    list-style-type: none;
+}
+
+
 html, body, #app {
     min-height: 100%;
     font-family: 'Lato', sans-serif;

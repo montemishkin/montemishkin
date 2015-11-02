@@ -32,37 +32,39 @@ export default class About extends Component {
             blockquoteStyle = styles.blockquoteMedium
         }
 
-        return (<div style={styles.container}>
-            <Banner
-                style={styles.banner}
-                title='Monte Mishkin'
-                subtitle='A friendly person.'
-                imageSrc='/static/images/bird-logo.png'
-            >
-                <ContactInfoBar />
-            </Banner>
-            <article style={styles.contentContainer}>
-                <div style={styles.content}>
-                    <blockquote style={blockquoteStyle}>
-                        "Previously, Monte was born.
-                        But recently, Monte made a website.
-                        Actually, this is that website.
-                        Monte enjoys making websites.
-                        Monte also enjoys making music.
-                        And trees and mountains."
-                    </blockquote>
-                    <p>
-                    My name is Monte Mishkin and I am the guy with the website!
-                    To find out more about me, click on this toaster.
-                    To find out less about me, turn off your device, walk away,
-                    and forget this ever happened.
-                    I also have some projects you can take a look at.
-                    Oh, and a resume.
-                    And what website would be complete without a blog?
-                    Anyways, feel free to snoop around.
-                    </p>
-                </div>
-            </article>
-        </div>)
+        return (
+            <div>
+                <Banner
+                    style={styles.banner}
+                    title='Monte Mishkin'
+                    subtitle='A friendly person.'
+                    imageSrc='/static/images/bird-logo.png'
+                >
+                    <ContactInfoBar />
+                </Banner>
+                <article style={styles.contentContainer}>
+                    <div style={styles.content}>
+                        <blockquote style={blockquoteStyle}>
+                            "Previously, Monte was born.
+                            But recently, Monte made a website.
+                            Actually, this is that website.
+                            Monte enjoys making websites.
+                            Monte also enjoys making music.
+                            And trees and mountains."
+                        </blockquote>
+                        <p>
+                        My name is Monte Mishkin and I am the guy with the website!
+                        To find out more about me, click on this toaster.
+                        To find out less about me, turn off your device, walk away,
+                        and forget this ever happened.
+                        I also have some projects you can take a look at.
+                        Oh, and a resume.
+                        And what website would be complete without a blog?
+                        Anyways, feel free to snoop around.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        )
     }
 }

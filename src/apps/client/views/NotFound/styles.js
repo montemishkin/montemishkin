@@ -4,7 +4,6 @@ import colors from 'styles/colors'
 
 export default {
     container: {
-
         display: 'flex',
         flexDirection: 'column',
     },
@@ -22,16 +21,4 @@ export default {
             + 'linear-gradient(to bottom, #6A6AE4, #DCACAC)',
         height: 400,
     },
-
-    // contentContainer: {
-    //     display: 'flex',
-    //     justifyContent: 'center',
-    // },
-    //
-    // content: {
-    //     paddingTop: 100,
-    //     paddingBottom: 100,
-    //     width: '70%',
-    //     maxWidth: 740,
-    // },
 }

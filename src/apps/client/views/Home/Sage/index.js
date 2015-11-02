@@ -165,21 +165,23 @@ export default class Sage extends Component {
     render() {
         const {wasClicked, isPaused} = this.state
 
-        return (<div style={styles.container}>
-            <div
-                style={[
-                    styles.overlay,
-                    isPaused && {cursor: 'pointer'},
-                    wasClicked && styles.fadeOut,
-                ]}
-                onClick={this.handleClick.bind(this)}
-                onMouseMove={this.handleMouseMove.bind(this)}
-            >
-                <h3>Click me in different places!</h3>
-                <span>(or just keep scrolling)</span>
+        return (
+            <div {...this.props}>
+                <div
+                    style={[
+                        styles.overlay,
+                        isPaused && {cursor: 'pointer'},
+                        wasClicked && styles.fadeOut,
+                    ]}
+                    onClick={this.handleClick.bind(this)}
+                    onMouseMove={this.handleMouseMove.bind(this)}
+                >
+                    <h3>Click me in different places!</h3>
+                    <span>(or just keep scrolling)</span>
+                </div>
+                <canvas ref='canvas' style={styles.canvas} />
             </div>
-            <canvas ref='canvas' style={styles.canvas} />
-        </div>)
+        )
     }
 }
 
