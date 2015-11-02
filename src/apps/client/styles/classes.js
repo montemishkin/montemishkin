@@ -56,6 +56,10 @@ export const linkHoverable = {
     ':hover': {
         color: colors.interactive.css(),
     },
+
+    ':focus': {
+        color: colors.interactive.css(),
+    },
 }
 
 
