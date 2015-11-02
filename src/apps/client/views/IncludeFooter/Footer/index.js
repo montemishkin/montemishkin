@@ -1,5 +1,5 @@
 // third party imports
-import React from 'react'
+import React, {Component, PropTypes} from 'react'
 import radium from 'radium'
 import {connect} from 'react-redux'
 // local imports
@@ -15,7 +15,16 @@ import Logo from 'components/Logo'
  */
 @connect(({browser}) => ({browser}))
 @radium
-export default class Footer extends React.Component {
+export default class Footer extends Component {
+    static propTypes = {
+        browser: PropTypes.shape({
+            lessThan: PropTypes.shape({
+                medium: PropTypes.bool.isRequired,
+            }).isRequired,
+        }).isRequired,
+    }
+
+
     render() {
         const isLessThanMedium = this.props.browser.lessThan.medium
 

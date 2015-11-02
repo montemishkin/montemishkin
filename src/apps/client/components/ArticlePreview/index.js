@@ -17,13 +17,14 @@ const contentPreviewMaxLength = 180
 @radium
 export default class ArticlePreview extends Component {
     static propTypes = {
+        style: PropTypes.object,
         // link to full article
         link: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         subtitle: PropTypes.string,
         content: PropTypes.string.isRequired,
         // do I detail this out here even though it is just passed on?
-        creationDate: PropTypes.string,
+        creationDate: PropTypes.string.isRequired,
         // do I detail this out here even though it is just passed on?
         tags: PropTypes.arrayOf(PropTypes.shape({
             link: PropTypes.string.isRequired,

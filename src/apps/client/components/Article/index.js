@@ -27,19 +27,26 @@ import MarkdownContainer from 'components/MarkdownContainer'
 @radium
 export default class Article extends Component {
     static propTypes = {
+        style: PropTypes.object,
         // valid css color
-        bannerColor: PropTypes.string.isRequired,
+        bannerColor: PropTypes.string,
         imageSrc: PropTypes.string,
         title: PropTypes.string.isRequired,
         subtitle: PropTypes.string,
         // TODO: this should be a date?
         creationDate: PropTypes.string.isRequired,
-        // should I specify shape here even though it is just passed to TagList?
         tags: PropTypes.arrayOf(PropTypes.shape({
             title: PropTypes.string.isRequired,
             link: PropTypes.string.isRequired,
         })).isRequired,
-        content: PropTypes.string,
+        content: PropTypes.string.isRequired,
+    }
+
+
+    static defaultProps = {
+        bannerColor: 'transparent',
+        // TODO: get a default image
+        imageSrc: '',
     }
 
 

@@ -23,13 +23,35 @@ function mapStateToProps({posts, tags}, {params: {slug}}) {
 @radium
 export default class PostDetail extends Component {
     static propTypes = {
-        post: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+        post: PropTypes.oneOfType([PropTypes.bool, PropTypes.shape({
+            bannerColor: PropTypes.string,
+            imageSrc: PropTypes.string,
+            title: PropTypes.string.isRequired,
+            subtitle: PropTypes.string,
+            content: PropTypes.string.isRequired,
+            creationDate: PropTypes.string.isRequired,
+            tags: PropTypes.arrayOf(PropTypes.shape({
+                link: PropTypes.string.isRequired,
+                title: PropTypes.string.isRequired,
+            })).isRequired,
+        })]),
+    }
+
+
+    static defaultProps = {
+        // TODO: pick a default post color
+        // (maybe just brighten whatever is used for the PostSearch banner)
+        bannerColor: 'transparent',
+        // TODO: pick a default post image
+        imageSrc: '',
     }
 
 
     render() {
-        if (this.props.post) {
-            return <Article {...this.props.post} />
+        const {post} = this.props
+
+        if (post) {
+            return <Article {...post} />
         }
         return <NotFound />
     }

@@ -18,12 +18,22 @@ function mapStateToProps({projects, tags}) {
 @connect(mapStateToProps)
 export default class ProjectSearch extends Component {
     static propTypes = {
-        projects: PropTypes.arrayOf(PropTypes.object).isRequired,
         location: PropTypes.shape({
             query: PropTypes.shape({
                 search: PropTypes.string,
             }).isRequired,
         }).isRequired,
+        projects: PropTypes.arrayOf(PropTypes.shape({
+            link: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired,
+            subtitle: PropTypes.string,
+            content: PropTypes.string.isRequired,
+            creationDate: PropTypes.string.isRequired,
+            tags: PropTypes.arrayOf(PropTypes.shape({
+                link: PropTypes.string.isRequired,
+                title: PropTypes.string.isRequired,
+            })).isRequired,
+        })).isRequired,
     }
 
 

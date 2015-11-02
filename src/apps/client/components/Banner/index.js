@@ -8,6 +8,7 @@ import styles from './styles'
 @radium
 export default class Banner extends Component {
     static propTypes = {
+        style: PropTypes.object,
         imageSrc: PropTypes.string,
         title: PropTypes.string.isRequired,
         subtitle: PropTypes.string,
@@ -26,11 +27,11 @@ export default class Banner extends Component {
 
         return (
             <header
+                {...unusedProps}
                 style={{
                     ...styles.outerContainer,
                     ...style,
                 }}
-                {...unusedProps}
             >
                 <div style={styles.innerContainer}>
                     {imageSrc && (

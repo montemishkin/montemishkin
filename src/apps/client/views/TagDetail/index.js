@@ -21,7 +21,7 @@ function mapStateToProps({tags, projects, posts}, {params: {slug}}) {
     }
 
     return {
-        tag: desiredTag,
+        tag: desiredTag && desiredTag,
         projects: desiredTag && projects
             // grab only the projects with the desired tag
             .filter(project => project.tags.filter(tagFilter).length > 0)
@@ -40,19 +40,36 @@ function mapStateToProps({tags, projects, posts}, {params: {slug}}) {
 @radium
 export default class TagDetail extends Component {
     static propTypes = {
-        // didnt use `isRequired` since we use undefined to indicate not found
-        tag: PropTypes.shape({
+        tag: PropTypes.oneOfType([PropTypes.bool, PropTypes.shape({
             title: PropTypes.string.isRequired,
             description: PropTypes.string,
-        }),
-        projects: PropTypes.oneOfType([
-            PropTypes.bool,
-            PropTypes.array,
-        ]).isRequired,
-        posts: PropTypes.oneOfType([
-            PropTypes.bool,
-            PropTypes.array,
-        ]).isRequired,
+        })]).isRequired,
+        projects: PropTypes.oneOfType([PropTypes.bool, PropTypes.arrayOf(
+            PropTypes.shape({
+                link: PropTypes.string.isRequired,
+                title: PropTypes.string.isRequired,
+                subtitle: PropTypes.string,
+                content: PropTypes.string.isRequired,
+                creationDate: PropTypes.string.isRequired,
+                tags: PropTypes.arrayOf(PropTypes.shape({
+                    link: PropTypes.string.isRequired,
+                    title: PropTypes.string.isRequired,
+                })).isRequired,
+            })
+        )]).isRequired,
+        posts: PropTypes.oneOfType([PropTypes.bool, PropTypes.arrayOf(
+            PropTypes.shape({
+                link: PropTypes.string.isRequired,
+                title: PropTypes.string.isRequired,
+                subtitle: PropTypes.string,
+                content: PropTypes.string.isRequired,
+                creationDate: PropTypes.string.isRequired,
+                tags: PropTypes.arrayOf(PropTypes.shape({
+                    link: PropTypes.string.isRequired,
+                    title: PropTypes.string.isRequired,
+                })).isRequired,
+            })
+        )]).isRequired,
     }
 
 

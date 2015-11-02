@@ -7,10 +7,10 @@ import Footer from './Footer'
 
 
 /**
- * Root level component.
+ * Just adds the Footer to the UI.
  */
 @radium
-export default class Root extends Component {
+export default class IncludeFooter extends Component {
     render() {
         return (
             <div style={styles.container}>

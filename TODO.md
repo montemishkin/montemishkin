@@ -2,10 +2,6 @@
     - on home view, if logo clicked, bird dances a little bit
     - in nav and footer, if hovered, bird does some kind of bounce in animation and also gets hoverable blue color
 
-- use these things:
-    - propTypes
-        - should you specify prop types even when you are just passing those props along to other components which already specify prop types?
-
 - security / administration
     - set api permissions to only allow fetch (unless admin)
     - make admin panel

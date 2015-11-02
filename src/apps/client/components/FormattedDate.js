@@ -29,7 +29,7 @@ const shortMonthNames = monthNames.map(name => name.substr(0, 3))
 @radium
 export default class FormattedDate extends Component {
     static propTypes = {
-        date: PropTypes.string,
+        date: PropTypes.string.isRequired,
     }
 
 

@@ -107,6 +107,3 @@ export default class Home extends Component {
         </div>)
     }
 }
-
-
-// end of file

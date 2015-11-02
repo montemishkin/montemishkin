@@ -7,10 +7,10 @@ import Nav from './Nav'
 
 
 /**
- * Root level component.
+ * Just adds the Nav bar to the UI.
  */
 @radium
-export default class Toot extends Component {
+export default class IncludeNav extends Component {
     render() {
         return (
             <div style={styles.container}>

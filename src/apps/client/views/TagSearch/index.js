@@ -20,15 +20,16 @@ function mapStateToProps({tags}) {
 @connect(mapStateToProps)
 export default class TagSearch extends Component {
     static propTypes = {
-        tags: PropTypes.arrayOf(PropTypes.shape({
-            title: PropTypes.string.isRequired,
-            link: PropTypes.string.isRequired,
-        })).isRequired,
         location: PropTypes.shape({
             query: PropTypes.shape({
                 search: PropTypes.string,
             }).isRequired,
         }).isRequired,
+        tags: PropTypes.arrayOf(PropTypes.shape({
+            title: PropTypes.string.isRequired,
+            link: PropTypes.string.isRequired,
+            description: PropTypes.string,
+        })).isRequired,
     }
 
 

@@ -13,7 +13,7 @@ import FormattedDate from 'components/FormattedDate'
 @radium
 export default class ArticleInfoBar extends Component {
     static propTypes = {
-        creationDate: PropTypes.string,
+        creationDate: PropTypes.string.isRequired,
         // do I detail this out here even though it is just passed on?
         tags: PropTypes.arrayOf(PropTypes.shape({
             link: PropTypes.string.isRequired,

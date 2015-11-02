@@ -23,13 +23,35 @@ function mapStateToProps({projects, tags}, {params: {slug}}) {
 @radium
 export default class ProjectDetail extends Component {
     static propTypes = {
-        project: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+        project: PropTypes.oneOfType([PropTypes.bool, PropTypes.shape({
+            bannerColor: PropTypes.string,
+            imageSrc: PropTypes.string,
+            title: PropTypes.string.isRequired,
+            subtitle: PropTypes.string,
+            content: PropTypes.string.isRequired,
+            creationDate: PropTypes.string.isRequired,
+            tags: PropTypes.arrayOf(PropTypes.shape({
+                link: PropTypes.string.isRequired,
+                title: PropTypes.string.isRequired,
+            })).isRequired,
+        })]),
+    }
+
+
+    static defaultProps = {
+        // TODO: pick a default project color
+        // (maybe just brighten whatever is used for the ProjectSearch banner)
+        bannerColor: 'transparent',
+        // TODO: pick a default project image
+        imageSrc: '',
     }
 
 
     render() {
-        if (this.props.project) {
-            return <Article {...this.props.project} />
+        const {project} = this.props
+
+        if (project) {
+            return <Article {...project} />
         }
         return <NotFound />
     }
