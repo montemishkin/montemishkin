@@ -51,7 +51,24 @@
              style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:round" />
     </g>
     <g
-         id="layer4" />
+         id="layer4">
+        <path
+             id="path4388"
+             d="M 353.84615,198.07692 C 389.69346,143.58974 314.96521,96.459018 450,55.769231 585.03479,15.079444 627.25192,120.02557 627.25192,120.02557"
+             style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:round" />
+        <path
+             id="path4390"
+             d="m 519.21332,165.64434 c -98.4718,38.85203 -175.40284,26.11459 -176.55954,45.21519 -1.15671,19.1006 -2.78706,22.53566 4.73056,27.74855 0,0 85.60219,-17.09038 143.13612,-34.1116 57.53393,-17.02123 127.97566,-40.59489 148.72462,-49.9757 20.74897,-9.38081 128.1818,-48.10069 84.29196,-53.79438 -43.88984,-5.693699 -105.85192,26.06591 -204.32372,64.91794 z"
+             style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:round" />
+        <path
+             id="path13212"
+             d="m 604.32963,79.80193 c 41.79604,-13.703619 28.09242,-40.425678 41.79604,-11.648076 13.70362,28.777601 48.64785,19.870248 12.33326,28.777601 -36.31459,8.907355 -35.62941,10.962895 -35.62941,10.962895 z"
+             style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linejoin:round;stroke-linecap:round" />
+        <path
+             id="path13216"
+             d="m 384.0131,192.54565 c 55.75298,-37.21673 9.30986,-80.73971 94.66907,-103.398363 85.35921,-22.658651 110.50522,17.027533 124.03101,40.697673"
+             style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linejoin:round;stroke-linecap:round" />
+    </g>
     <g
          id="g3344"
          transform="translate(0,-52.362271)">
