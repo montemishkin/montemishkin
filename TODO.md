@@ -1,7 +1,7 @@
-- write content
-- use db
+1. write content
+1. design various logo variations
+1. use db
     - create admin access points
-- design various logo variations
 
 
 - CSS animations on logo
