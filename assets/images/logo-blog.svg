@@ -15,7 +15,7 @@
      id="svg2"
      version="1.1"
      inkscape:version="0.91 r13725"
-     sodipodi:docname="logo2-15_10_29.svg">
+     sodipodi:docname="logo2blog-15_10_29.svg">
     <defs
          id="defs4">
         <inkscape:path-effect
@@ -146,9 +146,9 @@
          inkscape:pageshadow="2"
          inkscape:zoom="0.52"
          inkscape:cx="500"
-         inkscape:cy="490.45666"
+         inkscape:cy="500"
          inkscape:document-units="px"
-         inkscape:current-layer="layer4"
+         inkscape:current-layer="layer6"
          showgrid="false"
          units="px" />
     <metadata
@@ -168,7 +168,8 @@
          inkscape:groupmode="layer"
          id="layer1"
          transform="translate(0,-52.362271)"
-         style="display:inline;opacity:1">
+         style="display:inline;opacity:1"
+         sodipodi:insensitive="true">
         <path
              style="display:inline;opacity:1;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
              d="M 586.32424,190.64949 C 242.23423,191.47285 240.75972,735.7823 37.437021,766.90327 342.51295,986.68804 668.02167,945.78414 761.68946,740.55783 855.35724,535.33151 930.41426,189.82612 586.32424,190.64949 Z"
@@ -179,7 +180,8 @@
          inkscape:groupmode="layer"
          id="layer2"
          inkscape:label="Eye"
-         style="display:inline">
+         style="display:inline"
+         sodipodi:insensitive="true">
         <ellipse
              style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
              id="path3349"
@@ -193,7 +195,8 @@
          inkscape:groupmode="layer"
          id="layer3"
          inkscape:label="Nose"
-         style="display:inline;opacity:1">
+         style="display:inline;opacity:1"
+         sodipodi:insensitive="true">
         <path
              style="display:inline;opacity:1;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
              d="m 839.17625,351.97381 c 49.60765,22.83524 98.23119,23.71818 147.83884,34.74209 -47.24538,14.17359 -79.26043,9.90474 -150.12849,45.33872"
@@ -204,19 +207,50 @@
          inkscape:groupmode="layer"
          id="layer4"
          inkscape:label="Hat"
-         style="display:inline">
+         style="display:inline"
+         sodipodi:insensitive="true">
         <path
-             id="rect4360"
-             style="fill:none;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
-             d="m 379.53915,106.14226 157.52571,-61.84418 24.59712,62.65229 -157.52571,61.84418 z m -14.08153,79.9034 236.28856,-92.766269 11.2444,28.641039 -236.28857,92.76626 z"
+             style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             d="M 353.84615,198.07692 C 389.69346,143.58974 401.98321,74.533225 450,55.769231 498.0168,37.005236 592.30769,107.69231 592.30769,107.69231"
+             id="path4388"
+             inkscape:connector-curvature="0"
+             sodipodi:nodetypes="czc" />
+        <path
+             style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             d="m 492.49126,149.2 c -98.4718,38.85203 -148.68078,42.55893 -149.83748,61.65953 -1.15671,19.1006 4.06475,43.77627 11.58237,48.98916 0,0 40.38023,-39.01617 137.65467,-81.38909 97.27443,-42.37292 151.51039,-7.29648 153.75947,-25.58464 2.24908,-18.28815 -5.02223,-21.43568 -13.96784,-45.62926 -8.94561,-24.193581 -40.71939,3.10227 -139.19119,41.9543 z"
+             id="path4390"
+             inkscape:connector-curvature="0"
+             sodipodi:nodetypes="zzszzzz" />
+    </g>
+    <g
+         inkscape:groupmode="layer"
+         id="layer6"
+         inkscape:label="Glasses">
+        <path
+             style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             d="m 676.92308,298.07692 136.53846,-3.84615 -28.84616,109.61538 -88.46153,-1.92307 z"
+             id="path4393"
              inkscape:connector-curvature="0" />
+        <path
+             style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             d="m 800,353.84615 65.38462,-17.30769"
+             id="path4395"
+             inkscape:connector-curvature="0"
+             sodipodi:nodetypes="cc" />
+        <path
+             style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             d="m 680.76923,334.61538 -140.38461,-5.76923 -23.07693,40.38462 30.76923,9.61538"
+             id="path4397"
+             inkscape:connector-curvature="0"
+             sodipodi:nodetypes="cccc" />
     </g>
     <g
          style="display:inline;opacity:1"
          transform="translate(0,-52.362271)"
          id="g3344"
          inkscape:groupmode="layer"
-         inkscape:label="Wing">
+         inkscape:label="Wing"
+         sodipodi:insensitive="true">
         <path
              sodipodi:nodetypes="zczz"
              inkscape:connector-curvature="0"
@@ -228,7 +262,8 @@
          inkscape:groupmode="layer"
          id="layer5"
          inkscape:label="Legs"
-         style="display:inline">
+         style="display:inline"
+         sodipodi:insensitive="true">
         <path
              id="path3449"
              style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
