@@ -38,7 +38,7 @@ export default class About extends Component {
                     style={styles.banner}
                     title='Monte Mishkin'
                     subtitle='A friendly person.'
-                    imageSrc='/static/images/bird-logo.png'
+                    imageSrc='/static/images/logo-base.svg'
                 >
                     <ContactInfoBar />
                 </Banner>

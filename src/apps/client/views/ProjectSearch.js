@@ -45,7 +45,7 @@ export default class ProjectSearch extends Component {
 
         return (
             <SearchView
-                bannerImageSrc='/static/images/bird-logo.png'
+                bannerImageSrc='/static/images/logo-projects.svg'
                 bannerColor={colors.palette.sunburn.css()}
                 title='Projects'
                 subtitle='check em out.'

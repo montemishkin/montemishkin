@@ -45,7 +45,7 @@ export default class PostSearch extends Component {
 
         return (
             <SearchView
-                bannerImageSrc='/static/images/bird-logo.png'
+                bannerImageSrc='/static/images/logo-blog.svg'
                 bannerColor={colors.palette.skyBlue.css()}
                 title='Blog'
                 subtitle='oh yeah.'
