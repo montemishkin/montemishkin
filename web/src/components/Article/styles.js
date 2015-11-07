@@ -3,7 +3,7 @@ import {
     contentWidth,
     contentMaxWidth,
     contentVerticalPadding,
-} from 'styles/numerics'
+} from 'assets/styles/js/numerics'
 
 
 export default {

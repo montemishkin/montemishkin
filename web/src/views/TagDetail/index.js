@@ -9,7 +9,7 @@ import NotFound from 'views/NotFound'
 import ArticlePreview from 'components/ArticlePreview'
 import Banner from 'components/Banner'
 import {nestProject, nestPost} from 'util/nest'
-import colors from 'styles/colors'
+import colors from 'assets/styles/js/colors'
 
 
 // TODO: this should be a reselect selector

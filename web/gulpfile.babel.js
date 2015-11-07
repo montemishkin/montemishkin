@@ -26,9 +26,15 @@ const webpackServerConfig = require(webpackServerConfigPath)
 
 
 /**
+ * Default to watching client and server, and runing server.
+ */
+gulp.task('default', ['build-client', 'build-server', 'runserver'])
+
+
+/**
  * Run the development server.
  */
-gulp.task('runserver', shell.task('nodemon ' + serverBuild))
+gulp.task('runserver', shell.task(`nodemon ${serverBuild} 8002`))
 
 
 /**

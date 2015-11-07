@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 // local imports
 import TagPreview from './TagPreview'
 import SearchView from 'components/SearchView'
-import colors from 'styles/colors'
+import colors from 'assets/styles/js/colors'
 
 
 function mapStateToProps({tags}) {

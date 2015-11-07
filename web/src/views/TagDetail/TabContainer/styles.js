@@ -1,5 +1,5 @@
 // local imports
-import classes from 'styles/classes'
+import classes from 'assets/styles/js/classes'
 
 
 // base styling for tab titles
@@ -33,7 +33,7 @@ export default {
 
     tabTitleActive: {
         ...tabTitleBase,
-        // TODO: move to styles/colors.js
+        // TODO: move to styles/js/colors.js
         backgroundColor: '#999',
     },
 }

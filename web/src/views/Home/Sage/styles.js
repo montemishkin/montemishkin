@@ -1,6 +1,6 @@
 // local imports
-import colors from 'styles/colors'
-import classes from 'styles/classes'
+import colors from 'assets/styles/js/colors'
+import classes from 'assets/styles/js/classes'
 
 
 // styling for transition parameters

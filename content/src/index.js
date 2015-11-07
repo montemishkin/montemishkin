@@ -5,6 +5,7 @@ import process from 'process'
 // local imports
 import app from './app'
 
+
 // interpret first arg from command line as port number
 const portArg = parseInt(process.argv[2], 10)
 // port to listen on

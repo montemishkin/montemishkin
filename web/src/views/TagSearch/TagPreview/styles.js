@@ -1,7 +1,7 @@
 // local imports
-import classes from 'styles/classes'
-import colors from 'styles/colors'
-import {contentWidth, contentMaxWidth} from 'styles/numerics'
+import classes from 'assets/styles/js/classes'
+import colors from 'assets/styles/js/colors'
+import {contentWidth, contentMaxWidth} from 'assets/styles/js/numerics'
 
 
 export default {

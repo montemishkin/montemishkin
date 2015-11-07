@@ -1,11 +1,11 @@
 // local imports
-import classes from 'styles/classes'
-import colors from 'styles/colors'
+import classes from 'assets/styles/js/classes'
+import colors from 'assets/styles/js/colors'
 import {
     contentWidth,
     contentMaxWidth,
     contentVerticalPadding,
-} from 'styles/numerics'
+} from 'assets/styles/js/numerics'
 
 
 // base styling common to all blockquote styles

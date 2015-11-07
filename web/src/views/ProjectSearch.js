@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import SearchView from 'components/SearchView'
 import ArticlePreview from 'components/ArticlePreview'
 import {nestProject} from 'util/nest'
-import colors from 'styles/colors'
+import colors from 'assets/styles/js/colors'
 
 
 function mapStateToProps({projects, tags}) {
