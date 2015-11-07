@@ -25,7 +25,7 @@ import api from 'apps/api'
 // top level express application instance
 const app = express()
 // server port to listen on
-const port = 8000
+const port = 8002
 
 
 /* Configure Middleware */

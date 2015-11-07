@@ -3,11 +3,9 @@ import {readFileSync} from 'fs'
 import {join as joinPaths} from 'path'
 // local imports
 import markdown from 'util/markdown'
-import colors from 'styles/colors'
 
 
 // TODO: put data in actual database...
-// TODO: allow for subtitles
 
 
 const projects = [
@@ -16,7 +14,7 @@ const projects = [
         slug: 'react-hello-world',
         title: 'Introduction to React',
         imageSrc: '/static/images/bird-logo.png',
-        bannerColor: colors.palette.random().css(),
+        bannerColor: '#d7d7d7',
         creationDate: '2015-09-07T00:00:36.049780Z',
         modificationDate: '2015-09-07T00:00:36.049780Z',
         tags: [0, 3],
@@ -25,7 +23,7 @@ const projects = [
         slug: 'redux-responsive',
         title: 'Managing Responsive State in React',
         imageSrc: '/static/images/finchz_medium.jpg',
-        bannerColor: colors.palette.random().css(),
+        bannerColor: '#59B342',
         creationDate: '2015-09-07T00:00:36.049780Z',
         modificationDate: '2015-09-07T00:00:36.049780Z',
         tags: [1, 2, 4],

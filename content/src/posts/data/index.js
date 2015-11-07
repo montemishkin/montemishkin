@@ -3,11 +3,9 @@ import {readFileSync} from 'fs'
 import {join as joinPaths} from 'path'
 // local imports
 import markdown from 'util/markdown'
-import colors from 'styles/colors'
 
 
 // TODO: put data in actual database...
-// TODO: allow for subtitles
 
 
 const posts = [
@@ -17,7 +15,7 @@ const posts = [
         title: 'Managing Responsive State in React',
         subtitle: 'Isn\'t this fun?',
         imageSrc: '/static/images/finchz_medium.jpg',
-        bannerColor: colors.palette.random().css(),
+        bannerColor: '#8CB2FF',
         creationDate: '2015-09-07T00:00:36.049780Z',
         modificationDate: '2015-09-07T00:00:36.049780Z',
         tags: [1, 4],
@@ -27,7 +25,7 @@ const posts = [
         title: 'Introduction to React',
         subtitle: 'I swear, it\'s easy.',
         imageSrc: '/static/images/bird-logo.png',
-        bannerColor: colors.palette.random().css(),
+        bannerColor: '#59B342',
         creationDate: '2015-09-07T00:00:36.049780Z',
         modificationDate: '2015-09-07T00:00:36.049780Z',
         tags: [0, 2],
@@ -37,7 +35,7 @@ const posts = [
         title: 'Managing Responsive State in React',
         subtitle: 'Isn\'t this fun?',
         imageSrc: '/static/images/finchz_medium.jpg',
-        bannerColor: colors.palette.random().css(),
+        bannerColor: '#f1793f',
         creationDate: '2015-09-07T00:00:36.049780Z',
         modificationDate: '2015-09-07T00:00:36.049780Z',
         tags: [2, 3],
@@ -47,7 +45,7 @@ const posts = [
         title: 'Introduction to React',
         subtitle: 'I swear, it\'s easy.',
         imageSrc: '/static/images/bird-logo.png',
-        bannerColor: colors.palette.random().css(),
+        bannerColor: '#d7d7d7',
         creationDate: '2015-09-07T00:00:36.049780Z',
         modificationDate: '2015-09-07T00:00:36.049780Z',
         tags: [0, 1, 4],
