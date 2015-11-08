@@ -16,7 +16,7 @@ import os
 BASE_DIR = os.path.abspath(os.path.join(__file__, os.pardir, os.pardir, os.pardir))
 APP_DIR = os.path.join(BASE_DIR, 'src')
 TEMPLATES_DIR = os.path.join(APP_DIR, 'templates')
-RESOURCES_DIR = os.path.join(APP_DIR, 'assets')
+# RESOURCES_DIR = os.path.join(APP_DIR, 'assets')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 UPLOADS_DIR = os.path.join(STATIC_DIR, 'uploads')
 
@@ -37,15 +37,11 @@ django_apps = (
 )
 
 third_party_apps = (
-    # 'rest_framework',
-    # 'taggit',
+    'taggit',
 )
 
 src_apps = (
-    # 'src.apps.blog',
-    # 'src.apps.projects',
-    # 'src.apps.api',
-    # 'src.apps.core',
+    'src.apps.core',
 )
 
 INSTALLED_APPS = src_apps + third_party_apps + django_apps
@@ -99,10 +95,10 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
-
-STATICFILES_DIRS = (
-    RESOURCES_DIR,
-)
+#
+# STATICFILES_DIRS = (
+#     RESOURCES_DIR,
+# )
 
 
 # Internationalization
@@ -117,13 +113,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-# djangorestframework settings
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    )
-}
 
 # taggit settings
 

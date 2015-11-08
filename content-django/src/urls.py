@@ -14,12 +14,7 @@ from .views import Home
 # define the primary url patterns
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    # url(r'^api-auth/', include(
-    #     'rest_framework.urls',
-    #     namespace='rest_framework'
-    # )),
-    # url(r'^api/', include('montemishkin.apps.api.urls')),
-    url(r'.*', Home.as_view()),
+    # url(r'.*', Home.as_view()),
 ]
 
 # # if the debug flag is on

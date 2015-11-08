@@ -9,10 +9,10 @@ from .base import *
 DEBUG = True
 
 # change the location we upload to in local dev
-MEDIA_ROOT = os.path.join(RESOURCES_DIR, 'uploads')
+# MEDIA_ROOT = os.path.join(RESOURCES_DIR, 'uploads')
 
 # add django_toolbar to the installed apps
-# INSTALLED_APPS += ('debug_toolbar', )
+INSTALLED_APPS += ('debug_toolbar', )
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
