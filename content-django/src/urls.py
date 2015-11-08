@@ -1,8 +1,4 @@
-'''
-Root url router for project.
-'''
-
-# django imports
+# third party imports
 from django.conf.urls import include, url
 from django.contrib import admin
 # from django.conf.urls.static import static
@@ -14,7 +10,8 @@ from .views import Home
 # define the primary url patterns
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    # url(r'.*', Home.as_view()),
+    url(r'^query/', include('src.apps.core.urls')),
+    url(r'.*', Home.as_view()),
 ]
 
 # # if the debug flag is on

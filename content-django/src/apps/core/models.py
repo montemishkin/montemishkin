@@ -12,7 +12,7 @@ class Article(models.Model):
     slug = models.SlugField(max_length=50, unique=True)
     title = models.CharField(max_length=100)
     subtitle = models.CharField(max_length=100)
-    tags = TaggableManager()
+    # tags = TaggableManager()
     content = models.TextField()
     # imageSrc: '/static/images/finchz_medium.jpg',
     # bannerColor: '#8CB2FF',
