@@ -3,15 +3,12 @@ from django.conf.urls import include, url
 from django.contrib import admin
 # from django.conf.urls.static import static
 # from django.conf import settings
-# local imports
-from .views import Home
 
 
 # define the primary url patterns
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^query/', include('src.apps.core.urls')),
-    url(r'.*', Home.as_view()),
 ]
 
 # # if the debug flag is on
