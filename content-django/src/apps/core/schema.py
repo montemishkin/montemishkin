@@ -32,12 +32,22 @@ class Query(graphene.ObjectType):
     Root level query.
     '''
 
+    posts = graphene.ListField(Post)
+    projects = graphene.ListField(Project)
     post = graphene.Field(Post,
         slug=graphene.Argument(graphene.String)
     )
     project = graphene.Field(Project,
         slug=graphene.Argument(graphene.String)
     )
+
+    @graphene.resolve_only_args
+    def resolve_posts(self, **kwargs):
+        return PostModel.objects.all()
+
+    @graphene.resolve_only_args
+    def resolve_projects(self, **kwargs):
+        return ProjectModel.objects.all()
 
     @graphene.resolve_only_args
     def resolve_post(self, **kwargs):
