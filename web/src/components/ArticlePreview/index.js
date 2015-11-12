@@ -29,6 +29,7 @@ export default class ArticlePreview extends Component {
         tags: PropTypes.arrayOf(PropTypes.shape({
             link: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
+            description: PropTypes.string,
         })).isRequired,
     }
 

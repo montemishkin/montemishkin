@@ -13,6 +13,7 @@ export function nestProject(project, tags) {
             .map(tag => ({
                 link: `/tags/${tag.slug}`,
                 title: tag.title,
+                description: tag.description,
             })),
     }
 }
@@ -29,6 +30,7 @@ export function nestPost(post, tags) {
             .map(tag => ({
                 link: `/tags/${tag.slug}`,
                 title: tag.title,
+                description: tag.description,
             })),
     }
 }

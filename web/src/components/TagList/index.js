@@ -16,6 +16,7 @@ export default class TagList extends Component {
         tags: PropTypes.arrayOf(PropTypes.shape({
             title: PropTypes.string.isRequired,
             link: PropTypes.string.isRequired,
+            description: PropTypes.string,
         })).isRequired,
     }
 
@@ -38,6 +39,7 @@ export default class TagList extends Component {
                         to={tag.link}
                         style={styles.link}
                         key={key}
+                        title={tag.description}
                     >
                         {tag.title}
                     </Link>

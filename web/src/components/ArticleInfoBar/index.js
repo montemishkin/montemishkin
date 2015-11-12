@@ -18,6 +18,7 @@ export default class ArticleInfoBar extends Component {
         tags: PropTypes.arrayOf(PropTypes.shape({
             link: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
+            description: PropTypes.string,
         })).isRequired,
     }
 
