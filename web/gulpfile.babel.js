@@ -28,7 +28,7 @@ const webpackServerConfig = require(webpackServerConfigPath)
 /**
  * Default to watching client and server, and runing server.
  */
-gulp.task('default', ['build-client', 'build-server', 'runserver'])
+gulp.task('default', ['watch-client', 'watch-server', 'runserver'])
 
 
 /**
