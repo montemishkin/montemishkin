@@ -29,4 +29,4 @@ DATABASES = {
 
 # graphiql settings
 
-GRAPHIQL_GRAPHQL_URL = '/query'
+GRAPHIQL_GRAPHQL_URL = '/query/'

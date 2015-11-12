@@ -6,7 +6,7 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^query', include('src.apps.core.urls')),
+    url(r'^query/', include('src.apps.core.urls')),
 ]
 
 

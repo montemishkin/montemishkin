@@ -1,0 +1,1 @@
+- add description field to tag model.  See [here](https://django-taggit.readthedocs.org/en/latest/custom_tagging.html).
