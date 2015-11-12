@@ -1,17 +1,10 @@
 1. write content
 1. design various logo variations
-1. use db
-    - create admin access points
 
 
 - CSS animations on logo
     - on home view, if logo clicked, bird dances a little bit
     - in nav and footer, if hovered, bird does some kind of bounce in animation and also gets hoverable blue color
-
-- security / administration
-    - set api permissions to only allow fetch (unless admin)
-    - make admin panel
-        - sessions, cookies, jwts, etc...
 
 - UI / UX
     - what if bannerColor makes it hard to see link hover color in Article?
@@ -37,5 +30,6 @@
         - No. gulp-env is working, but not cascading down into webpack-stream.
     - style up NotFound component
     - enable disqus
+    - google analytics
     - logo + favicon
     - put your resume up

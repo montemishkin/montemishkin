@@ -8,10 +8,7 @@ from .base import *
 # enable debugging support
 DEBUG = True
 
-# change the location we upload to in local dev
-# MEDIA_ROOT = os.path.join(RESOURCES_DIR, 'uploads')
-
-# add django_toolbar to the installed apps
+# add dev tools
 INSTALLED_APPS += (
     'debug_toolbar',
     'django_graphiql',
