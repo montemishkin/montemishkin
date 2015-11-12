@@ -12,7 +12,10 @@ DEBUG = True
 # MEDIA_ROOT = os.path.join(RESOURCES_DIR, 'uploads')
 
 # add django_toolbar to the installed apps
-INSTALLED_APPS += ('debug_toolbar', )
+INSTALLED_APPS += (
+    'debug_toolbar',
+    'django_graphiql',
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -22,3 +25,8 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db', 'db.sqlite3'),
     }
 }
+
+
+# graphiql settings
+
+GRAPHIQL_GRAPHQL_URL = '/query'

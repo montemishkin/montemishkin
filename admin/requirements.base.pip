@@ -1,3 +1,7 @@
 Django==1.8.6
+django-colorful==1.1.0
 django-taggit==0.17.3
 graphene==0.3.0
+mistune==0.7.1
+Pillow==3.0.0
+Pygments==2.0.2
