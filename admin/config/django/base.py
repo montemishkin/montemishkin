@@ -18,7 +18,6 @@ APP_DIR = os.path.join(BASE_DIR, 'src')
 TEMPLATES_DIR = os.path.join(APP_DIR, 'templates')
 # RESOURCES_DIR = os.path.join(APP_DIR, 'assets')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
-UPLOADS_DIR = os.path.join(STATIC_DIR, 'uploads')
 
 
 # TODO: keep the secret key used in production secret!
@@ -89,17 +88,13 @@ TEMPLATES = [
 
 STATIC_URL = '/static/'
 STATIC_ROOT = STATIC_DIR
-MEDIA_ROOT = UPLOADS_DIR
-MEDIA_URL = '/static/uploads/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
-#
-# STATICFILES_DIRS = (
-#     RESOURCES_DIR,
-# )
 
 
 # Internationalization
