@@ -46,7 +46,7 @@ export default class TagSearch extends Component {
                 title='Tags'
                 subtitle='gotta love em.'
                 items={tags}
-                mapItemToSearchFields={tag => [tag.title]}
+                mapItemToSearchFields={tag => [tag.title, tag.description]}
                 PreviewComponent={TagPreview}
                 initialSearchText={initialSearchText}
             />
