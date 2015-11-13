@@ -9,6 +9,9 @@ import {renderToString} from 'react-dom/server'
 import {RoutingContext, match} from 'react-router'
 import {Provider} from 'react-redux'
 import fetch from 'isomorphic-fetch'
+import flatten from 'lodash/array/flatten'
+import uniq from 'lodash/array/uniq'
+import padLeft from 'lodash/string/padLeft'
 // local imports
 import {
     buildDir,
@@ -60,12 +63,86 @@ app.all('*', async function (req, res) {
             res.redirect(302, redirectLocation.pathname + redirectLocation.search)
         // if route was found and is not a redirect
         } else {
-            const posts = await fetch('http://localhost:8001/posts')
-                .then(body => body.json())
-            const projects = await fetch('http://localhost:8001/projects')
-                .then(body => body.json())
-            const tags = await fetch('http://localhost:8001/tags')
-                .then(body => body.json())
+            // graphql query to retrieve initial store state
+            const query = `
+                query {
+                    posts {
+                      ...articleFragment
+                    }
+                    projects {
+                      ...articleFragment
+                    }
+                }
+
+                fragment articleFragment on Article {
+                    id
+                    created {
+                        year
+                        month
+                        day
+                    }
+                    slug
+                    title
+                    subtitle
+                    tags {
+                        id
+                        slug
+                        name
+                        description
+                    }
+                    content
+                    bannerImage {
+                        url
+                        width
+                        height
+                    }
+                    bannerColor
+                }
+            `
+            // grab initial data for store from admin service
+            let {posts, projects} = await fetch(
+                `http://localhost:8001/query/?query=${query}`,
+                {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                    },
+                }
+            // parse response into json
+            ).then(body => body.json())
+            // check for graphql errors and then grab the response data
+            .then(({data, graphqlError}) => {
+                if (graphqlError) {
+                    // TODO: figure out what to actually do with this error
+                    console.log('error fetching initial data: ', graphqlError)
+                }
+                return data
+            })
+            // convert initial data into form expected by frontend
+            // TODO: obviously this is not the right way to do this
+            // (just a temporary fix to get moved over to using graphql api)
+            const tags = uniq(flatten([
+                ...projects.map(project => project.tags),
+                ...posts.map(post => post.tags),
+            ], true), 'id').map(tag => ({...tag, title: tag.name}))
+            const articleConverter = article => ({
+                slug: article.slug,
+                bannerColor: article.bannerColor,
+                imageSrc: 'http://localhost:8001' + article.bannerImage.url,
+                title: article.title,
+                subtitle: article.subtitle,
+                content: article.content,
+                creationDate: article.created.year + '-'
+                    + padLeft(article.created.month, 2, '0') + '-'
+                    + padLeft(article.created.day, 2, '0') + 'T'
+                    + padLeft(article.created.hour, 2, '0') + ':'
+                    + padLeft(article.created.minute, 2, '0') + ':'
+                    + padLeft(article.created.second, 2, '0') + '.'
+                    + padLeft(article.created.microsecond, 6, '0') + 'Z',
+                tags: article.tags.map(tag => tag.id),
+            })
+            posts = posts.map(articleConverter)
+            projects = projects.map(articleConverter)
 
             // create redux store with initial data
             const store = createStore({
