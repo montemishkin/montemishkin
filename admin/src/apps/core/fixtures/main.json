@@ -1,277 +1,261 @@
 [
 {
-  "model": "core.project",
+  "model": "core.tag",
+  "pk": 1,
   "fields": {
-    "subtitle": "Simplicity.",
-    "bannerImage": "./finchz_small.jpg",
-    "title": "The Most Simple of all Things",
-    "content": "redux-responsive **does not require that you use React as your view library**.  However, since that is what we use, the explanation of our motivation mentions React.\r\n\r\nThere are many solutions for cleanly handling responsive designs in React applications. One common approach is to wrap a component in another component which is responsible for handling the behavior and passing the information down as a prop. While this at first seems good and the \"react way\", as the behavior gets more complicated, this quickly leads to a lot of boilerplate code in a single component. Also, depending on the implementation, it is possible that many copies of the responsive wrapper would create many different resize handlers.\r\n\r\nUsing redux not only reduces the overall noise in a component, but also guarantees that only a single event listener is waiting for resize.\r\n\r\n\r\n# Setup\r\n\r\nFirst, add the reducer somewhere in your reducer tree.  It's just a reducer so you can put it wherever you want!  For example, you could put it in your top level call to `combineReducers`.\r\n\r\n```js\r\n// reducer.js\r\n\r\nimport {combineReducers} from 'redux'\r\nimport {responsiveStateReducer} from 'redux-responsive'\r\n\r\nexport default combineReducers({\r\n    browser: responsiveStateReducer,\r\n})\r\n```\r\n\r\nSecond, you must add the resize handlers to the window.  To do this, simply pass your store to `addResponsiveHandlers`.\r\n\r\n```js\r\n// store.js\r\n\r\nimport {createStore} from 'redux'\r\nimport {addResponsiveHandlers} from 'redux-responsive'\r\nimport reducer from './reducer'\r\n\r\nconst store = createStore(reducers)\r\n\r\n// adds window resize event handler\r\naddResponsiveHandlers(store)\r\n\r\nexport default store\r\n```\r\n\r\nNow your store is ready to use. The store's default breakpoints match common device sizes and are accessible by the following names which are used to identify them in your view:\r\n\r\n```js\r\nconst defaultBreakpoints = {\r\n    extraSmall: 480,\r\n    small: 768,\r\n    medium: 992,\r\n    large: 1200,\r\n}\r\n```\r\n\r\n\r\n## Using Custom Breakpoints\r\n\r\nYou can also create your own reducer based on custom breakpoints:\r\n\r\n```js\r\n// reducer.js\r\n\r\nimport {combineReducers} from 'redux'\r\nimport {createResponsiveStateReducer} from 'redux-responsive'\r\n\r\nexport default combineReducers({\r\n    browser: createResponsiveStateReducer({\r\n        extraSmall: 500,\r\n        small: 700,\r\n        medium: 1000,\r\n        large: 1280,\r\n        extraLarge: 1400,\r\n    }),\r\n})\r\n```\r\n\r\n\r\n# The Responsive State\r\n\r\nThe `responsiveStateReducer` (and the reducer returned by `createResponsiveStateReducer`) adds an object with the following keys to the store:\r\n\r\n- `width`: (*number*) The browser width.\r\n- `mediaType`: (*string*) The largest breakpoint category that the browser satisfies.\r\n- `lessThan`: (*object*) An object of booleans that indicate whether the browser is currently less than a particular breakpoint.\r\n- `greaterThan`: (*object*) An object of booleans that indicate whether the browser is currently greater than a particular breakpoint.\r\n\r\nFor example, if you put the responsive state under the key `browser` (as is done in the examples above) then you can access the browser's width and current media type, and determine if the browser is wider than the medium breakpoint like so\r\n\r\n```js\r\n// get the current state from the store\r\nconst state = store.getState()\r\n\r\n// browser width (e.g. 1400)\r\nstate.browser.width\r\n// browser media type (e.g. \"large\")\r\nstate.browser.mediaType\r\n// true if browser width is greater than the \"medium\" breakpoint\r\nstate.browser.greaterThan.medium\r\n```\r\n\r\n\r\n# Example Usage with React (and react-redux)\r\n\r\n```js\r\n// MyComponent.js\r\n\r\nimport React from 'react'\r\nimport {connect} from 'react-redux'\r\n\r\n// grab only the responsive state from the store\r\n// (assuming you have put the `responsiveStateReducer` under\r\n//  the key `browser` in your state tree)\r\nfunction browserSelector({browser}) {\r\n    return {browser}\r\n}\r\n\r\n@connect(browserSelector)\r\nclass MyComponent extends React.Component {\r\n    render() {\r\n        // grab the responsive state off of props\r\n        const {browser} = this.props\r\n\r\n        let message = `The viewport's current media type is: ${browser.mediaType}.`\r\n\r\n        if (browser.lessThan.small) {\r\n            message += 'Secret message for viewports smaller than than the \"small\" breakpoint!'\r\n        } else if (browser.lessThan.medium) {\r\n            message += 'Secret message for viewports between the \"small\" and \"medium\" breakpoints!'\r\n        } else {\r\n            message += 'Message for viewports greater than the \"medium\" breakpoint.'\r\n        }\r\n\r\n        return (\r\n            <p>\r\n                {message}\r\n            </p>\r\n        )\r\n    }\r\n}\r\n```\r\n",
-    "created": "2015-11-10T05:15:43.962Z",
-    "bannerColor": "#5883ee",
-    "slug": "most-simple-all-things",
-    "modified": "2015-11-12T09:03:33.223Z"
-  },
-  "pk": 1
+    "slug": "pig",
+    "name": "pig",
+    "description": "Often pink. Always smushy."
+  }
 },
 {
-  "model": "core.project",
+  "model": "core.tag",
+  "pk": 2,
   "fields": {
-    "subtitle": "hmm",
-    "bannerImage": "./Monte.jpg",
-    "title": "Getting down to it",
-    "content": "# Nautilus\r\n\r\nNautilus is a contract amongst services in a cloud which allows for rapid deployment in a multi-lingual environment. It promotes respectful services that closely follow the unix philosophy of \"Do one thing and do it well.\"\r\n\r\n\r\n## The Contract\r\n\r\nA service IS:\r\n* a process that listens at a particular location (port + ip).\r\n* version frozen\r\n    * bring up a new service at a different location\r\n\r\nA service MUST:\r\n* respond with a `200` to `GET`s at `/heartbeat`.  This is so that other services can check to see that this service is still alive.\r\n* expose the following API at `/dispatch`:\r\n\t* The body of a `POST` must be interpreted as a [Flux Standard Action](https://github.com/acdlite/flux-standard-action).\r\n\t* return a custom `NOT IMPLEMENTED` error code to optimize future requests??  Or should the service dispatch a 'NOT_IMPLEMENTED' action??\r\n* expose the following queries via a GraphQL API at `/query`:\r\n\t* `status`, which responds with the service's status.\r\n\t* `actions`, which responds with metadata about the actions handled by the service.\r\n* register its location with the `registry` service.  This is so that it can be found by other services.\r\n\r\nA service MAY:\r\n* expose further data via queries in the GraphQL API at `/query`.\r\n* fire actions by `POST`ing the action to the `/dispatch` API at every service in the registry.\r\n\r\nA service MAY NOT:\r\n* fire actions to only a specific set of services.\r\n   ",
-    "created": "2015-11-10T05:16:23.381Z",
-    "bannerColor": "#31d882",
-    "slug": "getting-down-it",
-    "modified": "2015-11-12T09:03:26.947Z"
-  },
-  "pk": 2
+    "slug": "retina",
+    "name": "retina",
+    "description": "The thing in your eye that gets the stuff and puts it over there."
+  }
 },
 {
-  "model": "core.project",
+  "model": "core.tag",
+  "pk": 3,
   "fields": {
-    "subtitle": "Or did they?",
-    "bannerImage": "./PICT0000.jpg",
-    "title": "Nobody said so",
-    "content": "- put server through webpack\r\n    - for requiring images (and more)\r\n- gzip static assets\r\n- styling\r\n    - flexbox polyfill\r\n    - dryness\r\n    - responsive design tools\r\n    - url/file-loader\r\n    - universal radium causes differences in server and client rendered styles (due to vendor prefixing)\r\n\r\n- determine generated project's node dependencies\r\n\r\n- improve these files for generated project:\r\n    - gulpfile.js\r\n        - task for generating jsdocs\r\n    - README.md\r\n        - include documentation of:\r\n            - how to set up for development\r\n            - gulp tasks\r\n            - basics of project layout\r\n            - how to deploy\r\n\r\n- do overall reassessment of these generated files:\r\n    - config/NAME.upstart\r\n\r\n- hot module reload and redux devtools for time travel",
-    "created": "2015-11-10T05:17:11.005Z",
-    "bannerColor": "#dd5874",
-    "slug": "nobody-said-so",
-    "modified": "2015-11-12T09:03:13.476Z"
-  },
-  "pk": 3
+    "slug": "gold",
+    "name": "gold",
+    "description": "The shiny thing."
+  }
 },
 {
-  "model": "core.post",
+  "model": "core.tag",
+  "pk": 4,
   "fields": {
-    "subtitle": "Is it actually FRP?",
-    "bannerImage": "./PICT0000_IzjyHQO.jpg",
-    "title": "Functional Reactive Programming with Rx",
-    "content": "redux-responsive **does not require that you use React as your view library**.  However, since that is what we use, the explanation of our motivation mentions React.\r\n\r\nThere are many solutions for cleanly handling responsive designs in React applications. One common approach is to wrap a component in another component which is responsible for handling the behavior and passing the information down as a prop. While this at first seems good and the \"react way\", as the behavior gets more complicated, this quickly leads to a lot of boilerplate code in a single component. Also, depending on the implementation, it is possible that many copies of the responsive wrapper would create many different resize handlers.\r\n\r\nUsing redux not only reduces the overall noise in a component, but also guarantees that only a single event listener is waiting for resize.\r\n\r\n\r\n# Setup\r\n\r\nFirst, add the reducer somewhere in your reducer tree.  It's just a reducer so you can put it wherever you want!  For example, you could put it in your top level call to `combineReducers`.\r\n\r\n```js\r\n// reducer.js\r\n\r\nimport {combineReducers} from 'redux'\r\nimport {responsiveStateReducer} from 'redux-responsive'\r\n\r\nexport default combineReducers({\r\n    browser: responsiveStateReducer,\r\n})\r\n```\r\n\r\nSecond, you must add the resize handlers to the window.  To do this, simply pass your store to `addResponsiveHandlers`.\r\n\r\n```js\r\n// store.js\r\n\r\nimport {createStore} from 'redux'\r\nimport {addResponsiveHandlers} from 'redux-responsive'\r\nimport reducer from './reducer'\r\n\r\nconst store = createStore(reducers)\r\n\r\n// adds window resize event handler\r\naddResponsiveHandlers(store)\r\n\r\nexport default store\r\n```\r\n\r\nNow your store is ready to use. The store's default breakpoints match common device sizes and are accessible by the following names which are used to identify them in your view:\r\n\r\n```js\r\nconst defaultBreakpoints = {\r\n    extraSmall: 480,\r\n    small: 768,\r\n    medium: 992,\r\n    large: 1200,\r\n}\r\n```\r\n\r\n\r\n## Using Custom Breakpoints\r\n\r\nYou can also create your own reducer based on custom breakpoints:\r\n\r\n```js\r\n// reducer.js\r\n\r\nimport {combineReducers} from 'redux'\r\nimport {createResponsiveStateReducer} from 'redux-responsive'\r\n\r\nexport default combineReducers({\r\n    browser: createResponsiveStateReducer({\r\n        extraSmall: 500,\r\n        small: 700,\r\n        medium: 1000,\r\n        large: 1280,\r\n        extraLarge: 1400,\r\n    }),\r\n})\r\n```\r\n\r\n\r\n# The Responsive State\r\n\r\nThe `responsiveStateReducer` (and the reducer returned by `createResponsiveStateReducer`) adds an object with the following keys to the store:\r\n\r\n- `width`: (*number*) The browser width.\r\n- `mediaType`: (*string*) The largest breakpoint category that the browser satisfies.\r\n- `lessThan`: (*object*) An object of booleans that indicate whether the browser is currently less than a particular breakpoint.\r\n- `greaterThan`: (*object*) An object of booleans that indicate whether the browser is currently greater than a particular breakpoint.\r\n\r\nFor example, if you put the responsive state under the key `browser` (as is done in the examples above) then you can access the browser's width and current media type, and determine if the browser is wider than the medium breakpoint like so\r\n\r\n```js\r\n// get the current state from the store\r\nconst state = store.getState()\r\n\r\n// browser width (e.g. 1400)\r\nstate.browser.width\r\n// browser media type (e.g. \"large\")\r\nstate.browser.mediaType\r\n// true if browser width is greater than the \"medium\" breakpoint\r\nstate.browser.greaterThan.medium\r\n```\r\n\r\n\r\n# Example Usage with React (and react-redux)\r\n\r\n```js\r\n// MyComponent.js\r\n\r\nimport React from 'react'\r\nimport {connect} from 'react-redux'\r\n\r\n// grab only the responsive state from the store\r\n// (assuming you have put the `responsiveStateReducer` under\r\n//  the key `browser` in your state tree)\r\nfunction browserSelector({browser}) {\r\n    return {browser}\r\n}\r\n\r\n@connect(browserSelector)\r\nclass MyComponent extends React.Component {\r\n    render() {\r\n        // grab the responsive state off of props\r\n        const {browser} = this.props\r\n\r\n        let message = `The viewport's current media type is: ${browser.mediaType}.`\r\n\r\n        if (browser.lessThan.small) {\r\n            message += 'Secret message for viewports smaller than than the \"small\" breakpoint!'\r\n        } else if (browser.lessThan.medium) {\r\n            message += 'Secret message for viewports between the \"small\" and \"medium\" breakpoints!'\r\n        } else {\r\n            message += 'Message for viewports greater than the \"medium\" breakpoint.'\r\n        }\r\n\r\n        return (\r\n            <p>\r\n                {message}\r\n            </p>\r\n        )\r\n    }\r\n}\r\n```\r\n",
-    "created": "2015-11-10T05:14:31.587Z",
-    "bannerColor": "#a7e727",
-    "slug": "functional-reactive-programming-rx",
-    "modified": "2015-11-12T09:02:35.753Z"
-  },
-  "pk": 2
+    "slug": "rx",
+    "name": "rx",
+    "description": "Reactive Extensions"
+  }
 },
 {
-  "model": "core.post",
+  "model": "core.tag",
+  "pk": 5,
   "fields": {
-    "subtitle": "Not really.",
-    "bannerImage": "./PICT0003.jpg",
-    "title": "Making Paper: How To and More!",
-    "content": "redux-responsive **does not require that you use React as your view library**.  However, since that is what we use, the explanation of our motivation mentions React.\r\n\r\nThere are many solutions for cleanly handling responsive designs in React applications. One common approach is to wrap a component in another component which is responsible for handling the behavior and passing the information down as a prop. While this at first seems good and the \"react way\", as the behavior gets more complicated, this quickly leads to a lot of boilerplate code in a single component. Also, depending on the implementation, it is possible that many copies of the responsive wrapper would create many different resize handlers.\r\n\r\nUsing redux not only reduces the overall noise in a component, but also guarantees that only a single event listener is waiting for resize.\r\n\r\n\r\n# Setup\r\n\r\nFirst, add the reducer somewhere in your reducer tree.  It's just a reducer so you can put it wherever you want!  For example, you could put it in your top level call to `combineReducers`.\r\n\r\n```js\r\n// reducer.js\r\n\r\nimport {combineReducers} from 'redux'\r\nimport {responsiveStateReducer} from 'redux-responsive'\r\n\r\nexport default combineReducers({\r\n    browser: responsiveStateReducer,\r\n})\r\n```\r\n\r\nSecond, you must add the resize handlers to the window.  To do this, simply pass your store to `addResponsiveHandlers`.\r\n\r\n```js\r\n// store.js\r\n\r\nimport {createStore} from 'redux'\r\nimport {addResponsiveHandlers} from 'redux-responsive'\r\nimport reducer from './reducer'\r\n\r\nconst store = createStore(reducers)\r\n\r\n// adds window resize event handler\r\naddResponsiveHandlers(store)\r\n\r\nexport default store\r\n```\r\n\r\nNow your store is ready to use. The store's default breakpoints match common device sizes and are accessible by the following names which are used to identify them in your view:\r\n\r\n```js\r\nconst defaultBreakpoints = {\r\n    extraSmall: 480,\r\n    small: 768,\r\n    medium: 992,\r\n    large: 1200,\r\n}\r\n```\r\n\r\n\r\n## Using Custom Breakpoints\r\n\r\nYou can also create your own reducer based on custom breakpoints:\r\n\r\n```js\r\n// reducer.js\r\n\r\nimport {combineReducers} from 'redux'\r\nimport {createResponsiveStateReducer} from 'redux-responsive'\r\n\r\nexport default combineReducers({\r\n    browser: createResponsiveStateReducer({\r\n        extraSmall: 500,\r\n        small: 700,\r\n        medium: 1000,\r\n        large: 1280,\r\n        extraLarge: 1400,\r\n    }),\r\n})\r\n```\r\n\r\n\r\n# The Responsive State\r\n\r\nThe `responsiveStateReducer` (and the reducer returned by `createResponsiveStateReducer`) adds an object with the following keys to the store:\r\n\r\n- `width`: (*number*) The browser width.\r\n- `mediaType`: (*string*) The largest breakpoint category that the browser satisfies.\r\n- `lessThan`: (*object*) An object of booleans that indicate whether the browser is currently less than a particular breakpoint.\r\n- `greaterThan`: (*object*) An object of booleans that indicate whether the browser is currently greater than a particular breakpoint.\r\n\r\nFor example, if you put the responsive state under the key `browser` (as is done in the examples above) then you can access the browser's width and current media type, and determine if the browser is wider than the medium breakpoint like so\r\n\r\n```js\r\n// get the current state from the store\r\nconst state = store.getState()\r\n\r\n// browser width (e.g. 1400)\r\nstate.browser.width\r\n// browser media type (e.g. \"large\")\r\nstate.browser.mediaType\r\n// true if browser width is greater than the \"medium\" breakpoint\r\nstate.browser.greaterThan.medium\r\n```\r\n\r\n\r\n# Example Usage with React (and react-redux)\r\n\r\n```js\r\n// MyComponent.js\r\n\r\nimport React from 'react'\r\nimport {connect} from 'react-redux'\r\n\r\n// grab only the responsive state from the store\r\n// (assuming you have put the `responsiveStateReducer` under\r\n//  the key `browser` in your state tree)\r\nfunction browserSelector({browser}) {\r\n    return {browser}\r\n}\r\n\r\n@connect(browserSelector)\r\nclass MyComponent extends React.Component {\r\n    render() {\r\n        // grab the responsive state off of props\r\n        const {browser} = this.props\r\n\r\n        let message = `The viewport's current media type is: ${browser.mediaType}.`\r\n\r\n        if (browser.lessThan.small) {\r\n            message += 'Secret message for viewports smaller than than the \"small\" breakpoint!'\r\n        } else if (browser.lessThan.medium) {\r\n            message += 'Secret message for viewports between the \"small\" and \"medium\" breakpoints!'\r\n        } else {\r\n            message += 'Message for viewports greater than the \"medium\" breakpoint.'\r\n        }\r\n\r\n        return (\r\n            <p>\r\n                {message}\r\n            </p>\r\n        )\r\n    }\r\n}\r\n```\r\n",
-    "created": "2015-11-10T05:15:18.845Z",
-    "bannerColor": "#6c88d5",
-    "slug": "making-paper-how-and-more",
-    "modified": "2015-11-12T09:02:53.512Z"
-  },
-  "pk": 3
+    "slug": "functional-programming",
+    "name": "functional programming",
+    "description": "You know, with \"map\" and \"reduce\" and stuff."
+  }
 },
 {
-  "model": "taggit.tag",
-  "fields": {
-    "slug": "boyz",
-    "name": "boyz"
-  },
-  "pk": 1
-},
-{
-  "model": "taggit.tag",
+  "model": "core.tag",
+  "pk": 6,
   "fields": {
     "slug": "javascript",
-    "name": "javascript"
-  },
-  "pk": 2
+    "name": "javascript",
+    "description": "Scripting language built for websites."
+  }
 },
 {
-  "model": "taggit.tag",
+  "model": "core.tag",
+  "pk": 7,
   "fields": {
-    "slug": "clock",
-    "name": "clock"
-  },
-  "pk": 3
+    "slug": "nobody",
+    "name": "nobody",
+    "description": "Neither you nor me."
+  }
 },
 {
-  "model": "taggit.tag",
+  "model": "core.tag",
+  "pk": 8,
   "fields": {
-    "slug": "child",
-    "name": "child"
-  },
-  "pk": 4
+    "slug": "life",
+    "name": "life",
+    "description": "Errythan"
+  }
 },
 {
-  "model": "taggit.tag",
+  "model": "core.tag",
+  "pk": 9,
   "fields": {
-    "slug": "fleese",
-    "name": "fleese"
-  },
-  "pk": 5
+    "slug": "fun",
+    "name": "fun",
+    "description": "It's what you want!"
+  }
 },
 {
-  "model": "taggit.tag",
+  "model": "core.taggeditem",
+  "pk": 1,
   "fields": {
-    "slug": "youth",
-    "name": "youth"
-  },
-  "pk": 6
+    "content_type": 4,
+    "tag": 1,
+    "object_id": 3
+  }
 },
 {
-  "model": "taggit.tag",
+  "model": "core.taggeditem",
+  "pk": 2,
   "fields": {
-    "slug": "control",
-    "name": "control"
-  },
-  "pk": 7
+    "content_type": 4,
+    "tag": 2,
+    "object_id": 3
+  }
 },
 {
-  "model": "taggit.tag",
+  "model": "core.taggeditem",
+  "pk": 3,
   "fields": {
-    "slug": "mayhem",
-    "name": "mayhem"
-  },
-  "pk": 8
+    "content_type": 4,
+    "tag": 3,
+    "object_id": 3
+  }
 },
 {
-  "model": "taggit.tag",
+  "model": "core.taggeditem",
+  "pk": 4,
   "fields": {
-    "slug": "markdown",
-    "name": "markdown"
-  },
-  "pk": 9
+    "content_type": 4,
+    "tag": 4,
+    "object_id": 2
+  }
 },
 {
-  "model": "taggit.tag",
+  "model": "core.taggeditem",
+  "pk": 5,
   "fields": {
-    "slug": "list",
-    "name": "list"
-  },
-  "pk": 10
+    "content_type": 4,
+    "tag": 5,
+    "object_id": 2
+  }
 },
 {
-  "model": "taggit.tag",
+  "model": "core.taggeditem",
+  "pk": 6,
   "fields": {
-    "slug": "sleigth",
-    "name": "sleigth"
-  },
-  "pk": 11
+    "content_type": 4,
+    "tag": 6,
+    "object_id": 2
+  }
 },
 {
-  "model": "taggit.taggeditem",
+  "model": "core.taggeditem",
+  "pk": 7,
   "fields": {
-    "content_type": 2,
-    "object_id": 2,
-    "tag": 1
-  },
-  "pk": 1
+    "content_type": 3,
+    "tag": 6,
+    "object_id": 3
+  }
 },
 {
-  "model": "taggit.taggeditem",
+  "model": "core.taggeditem",
+  "pk": 8,
   "fields": {
-    "content_type": 2,
-    "object_id": 2,
-    "tag": 2
-  },
-  "pk": 2
+    "content_type": 3,
+    "tag": 7,
+    "object_id": 3
+  }
 },
 {
-  "model": "taggit.taggeditem",
+  "model": "core.taggeditem",
+  "pk": 9,
   "fields": {
-    "content_type": 2,
-    "object_id": 3,
-    "tag": 2
-  },
-  "pk": 3
+    "content_type": 3,
+    "tag": 8,
+    "object_id": 2
+  }
 },
 {
-  "model": "taggit.taggeditem",
+  "model": "core.taggeditem",
+  "pk": 10,
   "fields": {
-    "content_type": 2,
-    "object_id": 3,
-    "tag": 3
-  },
-  "pk": 4
+    "content_type": 3,
+    "tag": 8,
+    "object_id": 1
+  }
 },
 {
-  "model": "taggit.taggeditem",
+  "model": "core.taggeditem",
+  "pk": 11,
   "fields": {
-    "content_type": 2,
-    "object_id": 3,
-    "tag": 4
-  },
-  "pk": 5
+    "content_type": 3,
+    "tag": 9,
+    "object_id": 1
+  }
 },
 {
-  "model": "taggit.taggeditem",
+  "model": "core.taggeditem",
+  "pk": 12,
   "fields": {
-    "content_type": 1,
-    "object_id": 3,
-    "tag": 2
-  },
-  "pk": 6
+    "content_type": 3,
+    "tag": 6,
+    "object_id": 1
+  }
 },
 {
-  "model": "taggit.taggeditem",
+  "model": "core.project",
+  "pk": 1,
   "fields": {
-    "content_type": 1,
-    "object_id": 3,
-    "tag": 5
-  },
-  "pk": 7
+    "title": "The Most Simple of all Things",
+    "slug": "most-simple-all-things",
+    "subtitle": "Simplicity.",
+    "bannerColor": "#5883ee",
+    "created": "2015-11-10T05:15:43.962Z",
+    "content": "redux-responsive **does not require that you use React as your view library**.  However, since that is what we use, the explanation of our motivation mentions React.\r\n\r\nThere are many solutions for cleanly handling responsive designs in React applications. One common approach is to wrap a component in another component which is responsible for handling the behavior and passing the information down as a prop. While this at first seems good and the \"react way\", as the behavior gets more complicated, this quickly leads to a lot of boilerplate code in a single component. Also, depending on the implementation, it is possible that many copies of the responsive wrapper would create many different resize handlers.\r\n\r\nUsing redux not only reduces the overall noise in a component, but also guarantees that only a single event listener is waiting for resize.\r\n\r\n\r\n# Setup\r\n\r\nFirst, add the reducer somewhere in your reducer tree.  It's just a reducer so you can put it wherever you want!  For example, you could put it in your top level call to `combineReducers`.\r\n\r\n```js\r\n// reducer.js\r\n\r\nimport {combineReducers} from 'redux'\r\nimport {responsiveStateReducer} from 'redux-responsive'\r\n\r\nexport default combineReducers({\r\n    browser: responsiveStateReducer,\r\n})\r\n```\r\n\r\nSecond, you must add the resize handlers to the window.  To do this, simply pass your store to `addResponsiveHandlers`.\r\n\r\n```js\r\n// store.js\r\n\r\nimport {createStore} from 'redux'\r\nimport {addResponsiveHandlers} from 'redux-responsive'\r\nimport reducer from './reducer'\r\n\r\nconst store = createStore(reducers)\r\n\r\n// adds window resize event handler\r\naddResponsiveHandlers(store)\r\n\r\nexport default store\r\n```\r\n\r\nNow your store is ready to use. The store's default breakpoints match common device sizes and are accessible by the following names which are used to identify them in your view:\r\n\r\n```js\r\nconst defaultBreakpoints = {\r\n    extraSmall: 480,\r\n    small: 768,\r\n    medium: 992,\r\n    large: 1200,\r\n}\r\n```\r\n\r\n\r\n## Using Custom Breakpoints\r\n\r\nYou can also create your own reducer based on custom breakpoints:\r\n\r\n```js\r\n// reducer.js\r\n\r\nimport {combineReducers} from 'redux'\r\nimport {createResponsiveStateReducer} from 'redux-responsive'\r\n\r\nexport default combineReducers({\r\n    browser: createResponsiveStateReducer({\r\n        extraSmall: 500,\r\n        small: 700,\r\n        medium: 1000,\r\n        large: 1280,\r\n        extraLarge: 1400,\r\n    }),\r\n})\r\n```\r\n\r\n\r\n# The Responsive State\r\n\r\nThe `responsiveStateReducer` (and the reducer returned by `createResponsiveStateReducer`) adds an object with the following keys to the store:\r\n\r\n- `width`: (*number*) The browser width.\r\n- `mediaType`: (*string*) The largest breakpoint category that the browser satisfies.\r\n- `lessThan`: (*object*) An object of booleans that indicate whether the browser is currently less than a particular breakpoint.\r\n- `greaterThan`: (*object*) An object of booleans that indicate whether the browser is currently greater than a particular breakpoint.\r\n\r\nFor example, if you put the responsive state under the key `browser` (as is done in the examples above) then you can access the browser's width and current media type, and determine if the browser is wider than the medium breakpoint like so\r\n\r\n```js\r\n// get the current state from the store\r\nconst state = store.getState()\r\n\r\n// browser width (e.g. 1400)\r\nstate.browser.width\r\n// browser media type (e.g. \"large\")\r\nstate.browser.mediaType\r\n// true if browser width is greater than the \"medium\" breakpoint\r\nstate.browser.greaterThan.medium\r\n```\r\n\r\n\r\n# Example Usage with React (and react-redux)\r\n\r\n```js\r\n// MyComponent.js\r\n\r\nimport React from 'react'\r\nimport {connect} from 'react-redux'\r\n\r\n// grab only the responsive state from the store\r\n// (assuming you have put the `responsiveStateReducer` under\r\n//  the key `browser` in your state tree)\r\nfunction browserSelector({browser}) {\r\n    return {browser}\r\n}\r\n\r\n@connect(browserSelector)\r\nclass MyComponent extends React.Component {\r\n    render() {\r\n        // grab the responsive state off of props\r\n        const {browser} = this.props\r\n\r\n        let message = `The viewport's current media type is: ${browser.mediaType}.`\r\n\r\n        if (browser.lessThan.small) {\r\n            message += 'Secret message for viewports smaller than than the \"small\" breakpoint!'\r\n        } else if (browser.lessThan.medium) {\r\n            message += 'Secret message for viewports between the \"small\" and \"medium\" breakpoints!'\r\n        } else {\r\n            message += 'Message for viewports greater than the \"medium\" breakpoint.'\r\n        }\r\n\r\n        return (\r\n            <p>\r\n                {message}\r\n            </p>\r\n        )\r\n    }\r\n}\r\n```\r\n",
+    "modified": "2015-11-13T07:05:35.333Z",
+    "bannerImage": "./finchz_small.jpg"
+  }
 },
 {
-  "model": "taggit.taggeditem",
+  "model": "core.project",
+  "pk": 2,
   "fields": {
-    "content_type": 1,
-    "object_id": 3,
-    "tag": 6
-  },
-  "pk": 8
+    "title": "Getting down to it",
+    "slug": "getting-down-it",
+    "subtitle": "hmm",
+    "bannerColor": "#31d882",
+    "created": "2015-11-10T05:16:23.381Z",
+    "content": "# Nautilus\r\n\r\nNautilus is a contract amongst services in a cloud which allows for rapid deployment in a multi-lingual environment. It promotes respectful services that closely follow the unix philosophy of \"Do one thing and do it well.\"\r\n\r\n\r\n## The Contract\r\n\r\nA service IS:\r\n* a process that listens at a particular location (port + ip).\r\n* version frozen\r\n    * bring up a new service at a different location\r\n\r\nA service MUST:\r\n* respond with a `200` to `GET`s at `/heartbeat`.  This is so that other services can check to see that this service is still alive.\r\n* expose the following API at `/dispatch`:\r\n\t* The body of a `POST` must be interpreted as a [Flux Standard Action](https://github.com/acdlite/flux-standard-action).\r\n\t* return a custom `NOT IMPLEMENTED` error code to optimize future requests??  Or should the service dispatch a 'NOT_IMPLEMENTED' action??\r\n* expose the following queries via a GraphQL API at `/query`:\r\n\t* `status`, which responds with the service's status.\r\n\t* `actions`, which responds with metadata about the actions handled by the service.\r\n* register its location with the `registry` service.  This is so that it can be found by other services.\r\n\r\nA service MAY:\r\n* expose further data via queries in the GraphQL API at `/query`.\r\n* fire actions by `POST`ing the action to the `/dispatch` API at every service in the registry.\r\n\r\nA service MAY NOT:\r\n* fire actions to only a specific set of services.\r\n   ",
+    "modified": "2015-11-13T07:05:24.721Z",
+    "bannerImage": "./Monte.jpg"
+  }
 },
 {
-  "model": "taggit.taggeditem",
+  "model": "core.project",
+  "pk": 3,
   "fields": {
-    "content_type": 1,
-    "object_id": 2,
-    "tag": 8
-  },
-  "pk": 9
+    "title": "Nobody said so",
+    "slug": "nobody-said-so",
+    "subtitle": "Or did they?",
+    "bannerColor": "#dd5874",
+    "created": "2015-11-10T05:17:11.005Z",
+    "content": "- put server through webpack\r\n    - for requiring images (and more)\r\n- gzip static assets\r\n- styling\r\n    - flexbox polyfill\r\n    - dryness\r\n    - responsive design tools\r\n    - url/file-loader\r\n    - universal radium causes differences in server and client rendered styles (due to vendor prefixing)\r\n\r\n- determine generated project's node dependencies\r\n\r\n- improve these files for generated project:\r\n    - gulpfile.js\r\n        - task for generating jsdocs\r\n    - README.md\r\n        - include documentation of:\r\n            - how to set up for development\r\n            - gulp tasks\r\n            - basics of project layout\r\n            - how to deploy\r\n\r\n- do overall reassessment of these generated files:\r\n    - config/NAME.upstart\r\n\r\n- hot module reload and redux devtools for time travel",
+    "modified": "2015-11-13T07:05:18.629Z",
+    "bannerImage": "./PICT0000.jpg"
+  }
 },
 {
-  "model": "taggit.taggeditem",
+  "model": "core.post",
+  "pk": 2,
   "fields": {
-    "content_type": 1,
-    "object_id": 2,
-    "tag": 9
-  },
-  "pk": 10
+    "title": "Functional Reactive Programming with Rx",
+    "slug": "functional-reactive-programming-rx",
+    "subtitle": "Is it actually FRP?",
+    "bannerColor": "#a7e727",
+    "created": "2015-11-10T05:14:31.587Z",
+    "content": "redux-responsive **does not require that you use React as your view library**.  However, since that is what we use, the explanation of our motivation mentions React.\r\n\r\nThere are many solutions for cleanly handling responsive designs in React applications. One common approach is to wrap a component in another component which is responsible for handling the behavior and passing the information down as a prop. While this at first seems good and the \"react way\", as the behavior gets more complicated, this quickly leads to a lot of boilerplate code in a single component. Also, depending on the implementation, it is possible that many copies of the responsive wrapper would create many different resize handlers.\r\n\r\nUsing redux not only reduces the overall noise in a component, but also guarantees that only a single event listener is waiting for resize.\r\n\r\n\r\n# Setup\r\n\r\nFirst, add the reducer somewhere in your reducer tree.  It's just a reducer so you can put it wherever you want!  For example, you could put it in your top level call to `combineReducers`.\r\n\r\n```js\r\n// reducer.js\r\n\r\nimport {combineReducers} from 'redux'\r\nimport {responsiveStateReducer} from 'redux-responsive'\r\n\r\nexport default combineReducers({\r\n    browser: responsiveStateReducer,\r\n})\r\n```\r\n\r\nSecond, you must add the resize handlers to the window.  To do this, simply pass your store to `addResponsiveHandlers`.\r\n\r\n```js\r\n// store.js\r\n\r\nimport {createStore} from 'redux'\r\nimport {addResponsiveHandlers} from 'redux-responsive'\r\nimport reducer from './reducer'\r\n\r\nconst store = createStore(reducers)\r\n\r\n// adds window resize event handler\r\naddResponsiveHandlers(store)\r\n\r\nexport default store\r\n```\r\n\r\nNow your store is ready to use. The store's default breakpoints match common device sizes and are accessible by the following names which are used to identify them in your view:\r\n\r\n```js\r\nconst defaultBreakpoints = {\r\n    extraSmall: 480,\r\n    small: 768,\r\n    medium: 992,\r\n    large: 1200,\r\n}\r\n```\r\n\r\n\r\n## Using Custom Breakpoints\r\n\r\nYou can also create your own reducer based on custom breakpoints:\r\n\r\n```js\r\n// reducer.js\r\n\r\nimport {combineReducers} from 'redux'\r\nimport {createResponsiveStateReducer} from 'redux-responsive'\r\n\r\nexport default combineReducers({\r\n    browser: createResponsiveStateReducer({\r\n        extraSmall: 500,\r\n        small: 700,\r\n        medium: 1000,\r\n        large: 1280,\r\n        extraLarge: 1400,\r\n    }),\r\n})\r\n```\r\n\r\n\r\n# The Responsive State\r\n\r\nThe `responsiveStateReducer` (and the reducer returned by `createResponsiveStateReducer`) adds an object with the following keys to the store:\r\n\r\n- `width`: (*number*) The browser width.\r\n- `mediaType`: (*string*) The largest breakpoint category that the browser satisfies.\r\n- `lessThan`: (*object*) An object of booleans that indicate whether the browser is currently less than a particular breakpoint.\r\n- `greaterThan`: (*object*) An object of booleans that indicate whether the browser is currently greater than a particular breakpoint.\r\n\r\nFor example, if you put the responsive state under the key `browser` (as is done in the examples above) then you can access the browser's width and current media type, and determine if the browser is wider than the medium breakpoint like so\r\n\r\n```js\r\n// get the current state from the store\r\nconst state = store.getState()\r\n\r\n// browser width (e.g. 1400)\r\nstate.browser.width\r\n// browser media type (e.g. \"large\")\r\nstate.browser.mediaType\r\n// true if browser width is greater than the \"medium\" breakpoint\r\nstate.browser.greaterThan.medium\r\n```\r\n\r\n\r\n# Example Usage with React (and react-redux)\r\n\r\n```js\r\n// MyComponent.js\r\n\r\nimport React from 'react'\r\nimport {connect} from 'react-redux'\r\n\r\n// grab only the responsive state from the store\r\n// (assuming you have put the `responsiveStateReducer` under\r\n//  the key `browser` in your state tree)\r\nfunction browserSelector({browser}) {\r\n    return {browser}\r\n}\r\n\r\n@connect(browserSelector)\r\nclass MyComponent extends React.Component {\r\n    render() {\r\n        // grab the responsive state off of props\r\n        const {browser} = this.props\r\n\r\n        let message = `The viewport's current media type is: ${browser.mediaType}.`\r\n\r\n        if (browser.lessThan.small) {\r\n            message += 'Secret message for viewports smaller than than the \"small\" breakpoint!'\r\n        } else if (browser.lessThan.medium) {\r\n            message += 'Secret message for viewports between the \"small\" and \"medium\" breakpoints!'\r\n        } else {\r\n            message += 'Message for viewports greater than the \"medium\" breakpoint.'\r\n        }\r\n\r\n        return (\r\n            <p>\r\n                {message}\r\n            </p>\r\n        )\r\n    }\r\n}\r\n```\r\n",
+    "modified": "2015-11-13T07:05:00.892Z",
+    "bannerImage": "./PICT0000_IzjyHQO.jpg"
+  }
 },
 {
-  "model": "taggit.taggeditem",
+  "model": "core.post",
+  "pk": 3,
   "fields": {
-    "content_type": 1,
-    "object_id": 2,
-    "tag": 10
-  },
-  "pk": 11
-},
-{
-  "model": "taggit.taggeditem",
-  "fields": {
-    "content_type": 1,
-    "object_id": 2,
-    "tag": 7
-  },
-  "pk": 12
-},
-{
-  "model": "taggit.taggeditem",
-  "fields": {
-    "content_type": 1,
-    "object_id": 1,
-    "tag": 11
-  },
-  "pk": 13
+    "title": "Making Paper: How To and More!",
+    "slug": "making-paper-how-and-more",
+    "subtitle": "Not really.",
+    "bannerColor": "#6c88d5",
+    "created": "2015-11-10T05:15:18.845Z",
+    "content": "redux-responsive **does not require that you use React as your view library**.  However, since that is what we use, the explanation of our motivation mentions React.\r\n\r\nThere are many solutions for cleanly handling responsive designs in React applications. One common approach is to wrap a component in another component which is responsible for handling the behavior and passing the information down as a prop. While this at first seems good and the \"react way\", as the behavior gets more complicated, this quickly leads to a lot of boilerplate code in a single component. Also, depending on the implementation, it is possible that many copies of the responsive wrapper would create many different resize handlers.\r\n\r\nUsing redux not only reduces the overall noise in a component, but also guarantees that only a single event listener is waiting for resize.\r\n\r\n\r\n# Setup\r\n\r\nFirst, add the reducer somewhere in your reducer tree.  It's just a reducer so you can put it wherever you want!  For example, you could put it in your top level call to `combineReducers`.\r\n\r\n```js\r\n// reducer.js\r\n\r\nimport {combineReducers} from 'redux'\r\nimport {responsiveStateReducer} from 'redux-responsive'\r\n\r\nexport default combineReducers({\r\n    browser: responsiveStateReducer,\r\n})\r\n```\r\n\r\nSecond, you must add the resize handlers to the window.  To do this, simply pass your store to `addResponsiveHandlers`.\r\n\r\n```js\r\n// store.js\r\n\r\nimport {createStore} from 'redux'\r\nimport {addResponsiveHandlers} from 'redux-responsive'\r\nimport reducer from './reducer'\r\n\r\nconst store = createStore(reducers)\r\n\r\n// adds window resize event handler\r\naddResponsiveHandlers(store)\r\n\r\nexport default store\r\n```\r\n\r\nNow your store is ready to use. The store's default breakpoints match common device sizes and are accessible by the following names which are used to identify them in your view:\r\n\r\n```js\r\nconst defaultBreakpoints = {\r\n    extraSmall: 480,\r\n    small: 768,\r\n    medium: 992,\r\n    large: 1200,\r\n}\r\n```\r\n\r\n\r\n## Using Custom Breakpoints\r\n\r\nYou can also create your own reducer based on custom breakpoints:\r\n\r\n```js\r\n// reducer.js\r\n\r\nimport {combineReducers} from 'redux'\r\nimport {createResponsiveStateReducer} from 'redux-responsive'\r\n\r\nexport default combineReducers({\r\n    browser: createResponsiveStateReducer({\r\n        extraSmall: 500,\r\n        small: 700,\r\n        medium: 1000,\r\n        large: 1280,\r\n        extraLarge: 1400,\r\n    }),\r\n})\r\n```\r\n\r\n\r\n# The Responsive State\r\n\r\nThe `responsiveStateReducer` (and the reducer returned by `createResponsiveStateReducer`) adds an object with the following keys to the store:\r\n\r\n- `width`: (*number*) The browser width.\r\n- `mediaType`: (*string*) The largest breakpoint category that the browser satisfies.\r\n- `lessThan`: (*object*) An object of booleans that indicate whether the browser is currently less than a particular breakpoint.\r\n- `greaterThan`: (*object*) An object of booleans that indicate whether the browser is currently greater than a particular breakpoint.\r\n\r\nFor example, if you put the responsive state under the key `browser` (as is done in the examples above) then you can access the browser's width and current media type, and determine if the browser is wider than the medium breakpoint like so\r\n\r\n```js\r\n// get the current state from the store\r\nconst state = store.getState()\r\n\r\n// browser width (e.g. 1400)\r\nstate.browser.width\r\n// browser media type (e.g. \"large\")\r\nstate.browser.mediaType\r\n// true if browser width is greater than the \"medium\" breakpoint\r\nstate.browser.greaterThan.medium\r\n```\r\n\r\n\r\n# Example Usage with React (and react-redux)\r\n\r\n```js\r\n// MyComponent.js\r\n\r\nimport React from 'react'\r\nimport {connect} from 'react-redux'\r\n\r\n// grab only the responsive state from the store\r\n// (assuming you have put the `responsiveStateReducer` under\r\n//  the key `browser` in your state tree)\r\nfunction browserSelector({browser}) {\r\n    return {browser}\r\n}\r\n\r\n@connect(browserSelector)\r\nclass MyComponent extends React.Component {\r\n    render() {\r\n        // grab the responsive state off of props\r\n        const {browser} = this.props\r\n\r\n        let message = `The viewport's current media type is: ${browser.mediaType}.`\r\n\r\n        if (browser.lessThan.small) {\r\n            message += 'Secret message for viewports smaller than than the \"small\" breakpoint!'\r\n        } else if (browser.lessThan.medium) {\r\n            message += 'Secret message for viewports between the \"small\" and \"medium\" breakpoints!'\r\n        } else {\r\n            message += 'Message for viewports greater than the \"medium\" breakpoint.'\r\n        }\r\n\r\n        return (\r\n            <p>\r\n                {message}\r\n            </p>\r\n        )\r\n    }\r\n}\r\n```\r\n",
+    "modified": "2015-11-13T07:04:44.562Z",
+    "bannerImage": "./PICT0003.jpg"
+  }
 }
 ]

@@ -1,7 +1,20 @@
 # third party imports
 from django.db import models
 from taggit.managers import TaggableManager
+from taggit.models import TagBase, GenericTaggedItemBase
 from colorful.fields import RGBColorField
+
+
+# see: https://django-taggit.readthedocs.org/en/latest/custom_tagging.html
+class Tag(TagBase):
+    description = models.CharField(max_length=100, default='')
+
+
+# see: https://django-taggit.readthedocs.org/en/latest/custom_tagging.html
+class TaggedItem(GenericTaggedItemBase):
+    tag = models.ForeignKey(Tag,
+        related_name='%(app_label)s_%(class)s_items'
+    )
 
 
 class Article(models.Model):
@@ -13,7 +26,7 @@ class Article(models.Model):
     slug = models.SlugField(max_length=100, unique=True)
     title = models.CharField(max_length=100)
     subtitle = models.CharField(max_length=100)
-    tags = TaggableManager()
+    tags = TaggableManager(through=TaggedItem)
     content = models.TextField()
     bannerImage = models.ImageField()
     bannerColor = RGBColorField()

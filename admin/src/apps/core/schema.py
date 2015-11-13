@@ -31,6 +31,7 @@ class Tag(graphene.ObjectType):
     id = graphene.IDField()
     slug = graphene.StringField()
     name = graphene.StringField()
+    description = graphene.StringField()
 
 
 class Image(graphene.ObjectType):

@@ -1,1 +1,4 @@
-- add description field to tag model.  See [here](https://django-taggit.readthedocs.org/en/latest/custom_tagging.html).
+- django admin site
+    - disable taggit app (since I have my own custom models and admin components)
+    - project and post views
+        - make it so tags selection only allows already created tags
