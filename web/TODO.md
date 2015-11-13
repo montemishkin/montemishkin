@@ -7,6 +7,8 @@
     - in nav and footer, if hovered, bird does some kind of bounce in animation and also gets hoverable blue color
 
 - UI / UX
+    - tag search should also search through tag descriptions.
+    - tag detail view should say something in the projects, posts tabs if there are no results
     - what if bannerColor makes it hard to see link hover color in Article?
     - hash links on posts and projects
     - improve use of semantic content
