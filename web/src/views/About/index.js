@@ -26,8 +26,8 @@ export default class About extends Component {
     render() {
         // default to infinity styling
         let blockquoteStyle = styles.blockquoteInfinity
-        // if viewport is less than medium
-        if (this.props.browser.lessThan.medium) {
+        // if viewport is less than infinity
+        if (this.props.browser.lessThan.infinity) {
             // then use medium styling
             blockquoteStyle = styles.blockquoteMedium
         }

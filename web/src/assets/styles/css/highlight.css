@@ -1,8 +1,12 @@
-/*
+/**
+ * Acquired by running:
+ * ```python
+ * from pygments.formatters import HtmlFormatter
+ * print(HtmlFormatter().get_style_defs('.highlight'))
+ * ```
+ * in python shell.
+ */
 
-Google Code style (c) Aahan Krish <geekpanth3r@gmail.com>
-
-*/
 
 pre {
   display: block;
@@ -13,132 +17,67 @@ pre {
   -webkit-text-size-adjust: none;
 }
 
-.hljs-comment {
-  color: #800;
-}
 
-.hljs-keyword,
-.method,
-.hljs-list .hljs-keyword,
-.nginx .hljs-title,
-.hljs-tag .hljs-title,
-.setting .hljs-value,
-.hljs-winutils,
-.tex .hljs-command,
-.http .hljs-title,
-.hljs-request,
-.hljs-status {
-  color: #008;
-}
-
-.hljs-envvar,
-.tex .hljs-special {
-  color: #660;
-}
-
-.hljs-string,
-.hljs-tag .hljs-value,
-.hljs-cdata,
-.hljs-filter .hljs-argument,
-.hljs-attr_selector,
-.apache .hljs-cbracket,
-.hljs-date,
-.hljs-regexp,
-.coffeescript .hljs-attribute {
-  color: #080;
-}
-
-.hljs-sub .hljs-identifier,
-.hljs-pi,
-.hljs-tag,
-.hljs-tag .hljs-keyword,
-.hljs-decorator,
-.ini .hljs-title,
-.hljs-shebang,
-.hljs-prompt,
-.hljs-hexcolor,
-.hljs-rule .hljs-value,
-.hljs-literal,
-.hljs-symbol,
-.ruby .hljs-symbol .hljs-string,
-.hljs-number,
-.css .hljs-function,
-.clojure .hljs-attribute {
-  color: #066;
-}
-
-.hljs-class .hljs-title,
-.smalltalk .hljs-class,
-.hljs-doctag,
-.hljs-type,
-.hljs-typename,
-.hljs-tag .hljs-attribute,
-.hljs-doctype,
-.hljs-class .hljs-id,
-.hljs-built_in,
-.setting,
-.hljs-params,
-.hljs-variable,
-.hljs-name {
-  color: #606;
-}
-
-.css .hljs-tag,
-.hljs-rule .hljs-property,
-.hljs-pseudo,
-.hljs-subst {
-  color: #000;
-}
-
-.css .hljs-class,
-.css .hljs-id {
-  color: #9b703f;
-}
-
-.hljs-value .hljs-important {
-  color: #ff7700;
-  font-weight: bold;
-}
-
-.hljs-rule .hljs-keyword {
-  color: #c5af75;
-}
-
-.hljs-annotation,
-.apache .hljs-sqbracket,
-.nginx .hljs-built_in {
-  color: #9b859d;
-}
-
-.hljs-preprocessor,
-.hljs-preprocessor *,
-.hljs-pragma {
-  color: #444;
-}
-
-.tex .hljs-formula {
-  background-color: #eee;
-  font-style: italic;
-}
-
-.diff .hljs-header,
-.hljs-chunk {
-  color: #808080;
-  font-weight: bold;
-}
-
-.diff .hljs-change {
-  background-color: #bccff9;
-}
-
-.hljs-addition {
-  background-color: #baeeba;
-}
-
-.hljs-deletion {
-  background-color: #ffc8bd;
-}
-
-.hljs-comment .hljs-doctag {
-  font-weight: bold;
-}
+.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */

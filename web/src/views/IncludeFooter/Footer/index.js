@@ -26,13 +26,13 @@ export default class Footer extends Component {
 
 
     render() {
-        const isLessThanMedium = this.props.browser.lessThan.medium
+        const isLessThanInfinity = this.props.browser.lessThan.infinity
 
         // default to styling for large viewports
         let listStyle = styles.listInfinity
         let copyrightStyle = styles.copyrightInfinity
-        // if viewport is smaller than medium size
-        if (isLessThanMedium) {
+        // if viewport is smaller than infinity size
+        if (isLessThanInfinity) {
             // use styling for medium and smaller viewports
             listStyle = styles.listMedium
             copyrightStyle = styles.copyrightMedium
@@ -73,8 +73,8 @@ export default class Footer extends Component {
             </div>
         )
 
-        // if viewport is less than medium width
-        if (isLessThanMedium) {
+        // if viewport is less than infinity width
+        if (isLessThanInfinity) {
             // stack the content with the logo on top
             return (
                 <footer style={styles.containerMedium}>

@@ -5,6 +5,6 @@
 
 export default {
     contentMaxWidth: 740,
-    contentWidth: '70%',
+    contentWidth: '80%',
     contentVerticalPadding: 100,
 }
