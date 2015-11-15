@@ -15,6 +15,21 @@
         - if no image provided for the detail view then default to corresponding fa icon
 
 - styling
+    - bump radium version to use user agent styling on server
+        - use radium media queries?
+            ```js
+            import {mediaQueries} from 'styles/js/mediaQueries'
+
+            export default {
+                content: {
+                    color: 'red',
+
+                    [mediaQueries.medium]: {
+                        color: 'blue',
+                    },
+                },
+            }
+            ```
     - rendered markdown styling
         - syntax highlight styling
     - overall DRY design of styling
