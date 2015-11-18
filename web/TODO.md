@@ -7,12 +7,13 @@
     - in nav and footer, if hovered, bird does some kind of bounce in animation and also gets hoverable blue color
 
 - UI / UX
-    - tag detail view should say something in the projects, posts tabs if there are no results
     - what if bannerColor makes it hard to see link hover color in Article?
     - hash links on posts and projects
     - improve use of semantic content
     - different variations of same bird logo for tag, post, project search views
         - if no image provided for the detail view then default to corresponding fa icon
+    - overall accessibility
+    - use number wells to give number of posts / projects tagged by a particular tag in tag detail view.
 
 - styling
     - bump radium version to use user agent styling on server
@@ -47,5 +48,5 @@
     - style up NotFound component
     - enable disqus
     - google analytics
-    - logo + favicon
+    - favicon
     - put your resume up

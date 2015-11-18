@@ -93,6 +93,27 @@ export default class TagDetail extends Component {
             initialActiveIndex = 1
         }
 
+        const projectsContent = (
+            <WideList>
+                {projects.length === 0
+                    ? 'There are no projects with this tag.'
+                    : projects.map((project, key) => (
+                        <ArticlePreview {...project} key={key} />
+                    ))
+                }
+            </WideList>
+        )
+        const postsContent = (
+            <WideList>
+                {posts.length === 0
+                    ? 'There are no posts with this tag.'
+                    : posts.map((post, key) => (
+                        <ArticlePreview {...post} key={key} />
+                    ))
+                }
+            </WideList>
+        )
+
         return (
             <section>
                 <Banner
@@ -106,22 +127,10 @@ export default class TagDetail extends Component {
                     tabs={[
                         {
                             title: `Projects (${projects.length})`,
-                            content: (
-                                <WideList>
-                                    {projects.map((project, key) => (
-                                        <ArticlePreview {...project} key={key} />
-                                    ))}
-                                </WideList>
-                            ),
+                            content: projectsContent,
                         }, {
                             title: `Blog Posts (${posts.length})`,
-                            content: (
-                                <WideList>
-                                    {posts.map((post, key) => (
-                                        <ArticlePreview {...post} key={key} />
-                                    ))}
-                                </WideList>
-                            ),
+                            content: postsContent,
                         },
                     ]}
                 />
