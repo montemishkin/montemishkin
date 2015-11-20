@@ -10,9 +10,6 @@ import List from 'components/List'
 import Logo from 'components/Logo'
 
 
-/**
- * Sitewide footer.
- */
 @connect(({browser}) => ({browser}))
 @radium
 export default class Footer extends Component {

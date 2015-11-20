@@ -7,6 +7,7 @@
     - in nav and footer, if hovered, bird does some kind of bounce in animation and also gets hoverable blue color
 
 - UI / UX
+    - overall larger fonts
     - what if bannerColor makes it hard to see link hover color in Article?
     - hash links on posts and projects
     - improve use of semantic content

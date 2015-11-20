@@ -2,8 +2,7 @@
 import React from 'react'
 import {Route, IndexRoute} from 'react-router'
 // local imports
-import IncludeFooter from './views/IncludeFooter'
-import IncludeNav from './views/IncludeNav'
+import Navigation from './views/Navigation'
 import NotFound from './views/NotFound'
 import Home from './views/Home'
 import About from './views/About'
@@ -16,9 +15,9 @@ import TagDetail from './views/TagDetail'
 
 
 export default (
-    <Route path='/' component={IncludeFooter}>
+    <Route path='/'>
         <IndexRoute component={Home} />
-        <Route component={IncludeNav}>
+        <Route component={Navigation}>
             <Route path='about' component={About} />
             <Route path='projects' component={ProjectSearch} />
             <Route path='projects/:slug' component={ProjectDetail}/>

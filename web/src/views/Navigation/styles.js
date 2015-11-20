@@ -10,5 +10,6 @@ export default {
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100%',
+        flexGrow: 1,
     },
 }

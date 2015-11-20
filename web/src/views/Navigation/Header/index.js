@@ -9,11 +9,8 @@ import List from 'components/List'
 import Logo from 'components/Logo'
 
 
-/**
- * Navigation bar.
- */
 @radium
-export default class Nav extends Component {
+export default class Header extends Component {
     render() {
         return (
             <nav style={styles.container}>

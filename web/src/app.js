@@ -21,8 +21,7 @@ import {
 } from 'config/projectPaths'
 import routes from 'routes'
 import {createStore} from 'store'
-import IncludeNav from 'views/IncludeNav'
-import IncludeFooter from 'views/IncludeFooter'
+import Navigation from 'views/Navigation'
 import NotFound from 'views/NotFound'
 
 
@@ -170,11 +169,9 @@ app.all('*', async function (req, res) {
                 // render 404 page
                 renderedComponent = renderToString(
                     <Provider store={store}>
-                        <IncludeFooter>
-                            <IncludeNav>
-                                <NotFound />
-                            </IncludeNav>
-                        </IncludeFooter>
+                        <Navigation>
+                            <NotFound />
+                        </Navigation>
                     </Provider>
                 )
             }

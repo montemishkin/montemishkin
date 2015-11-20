@@ -12,11 +12,6 @@ const sectionBase = {
     borderColor: 'black',
     borderStyle: 'solid',
 }
-// base styling for all page sections EXCEPT banner AND sage
-const textSectionBase = {
-    ...sectionBase,
-    padding: 100,
-}
 
 
 export default {
@@ -87,25 +82,5 @@ export default {
 
     sage: {
         ...sectionBase,
-    },
-
-
-    about: {
-        ...textSectionBase,
-    },
-
-
-    projects: {
-        ...textSectionBase,
-    },
-
-
-    blog: {
-        ...textSectionBase,
-    },
-
-
-    conclusion: {
-        ...textSectionBase,
     },
 }

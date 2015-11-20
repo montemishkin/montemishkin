@@ -2,3 +2,5 @@
     - disable taggit app (since I have my own custom models and admin components)
     - project and post views
         - make it so tags selection only allows already created tags
+
+- figure out deployment (wsgi, etc...)
