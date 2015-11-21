@@ -1,5 +1,4 @@
 // local imports
-import colors from 'assets/styles/js/colors'
 import classes from 'assets/styles/js/classes'
 
 
@@ -23,7 +22,7 @@ export default {
         alignItems: 'center',
         textAlign: 'center',
         color: 'black',
-        backgroundColor: colors.palette.sand.css(),
+        backgroundColor: 'white',
         opacity: 1,
     },
 

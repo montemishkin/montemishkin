@@ -24,9 +24,6 @@ const targetCellHeight = 10
 const colorMatrix = new ColorMatrix(90, 160)
 
 
-/**
- * Trippy svg simulation.
- */
 @radium
 export default class Sage extends Component {
     constructor(...args) {
@@ -166,7 +163,7 @@ export default class Sage extends Component {
         const {wasClicked, isPaused} = this.state
 
         return (
-            <div {...this.props}>
+            <section {...this.props}>
                 <div
                     style={[
                         styles.overlay,
@@ -176,14 +173,10 @@ export default class Sage extends Component {
                     onClick={this.handleClick.bind(this)}
                     onMouseMove={this.handleMouseMove.bind(this)}
                 >
-                    <h3>Click me in different places!</h3>
-                    <span>(or just keep scrolling)</span>
+                    <h1>Click me?</h1>
                 </div>
                 <canvas ref='canvas' style={styles.canvas} />
-            </div>
+            </section>
         )
     }
 }
-
-
-// end of file
