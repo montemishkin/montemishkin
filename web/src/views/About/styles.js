@@ -31,7 +31,7 @@ const sectionBase = {
 
 export default {
     banner: {
-        backgroundColor: colors.palette.paleGreen.css(),
+        backgroundColor: colors.palette.skyBlue.css(),
     },
 
     contentContainer: {

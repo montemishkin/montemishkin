@@ -43,7 +43,7 @@
         - idk why, but `IndexLink` doesn't get the hover styling...
         - anyways, it would really be nice to be able to use `activeStyle`, especially on the nav bar.
 
-- prepublish
+- pre-publish
     - is build-production actually building in production environment?
         - No. gulp-env is working, but not cascading down into webpack-stream.
     - style up NotFound component
@@ -56,3 +56,11 @@
             ```
     - favicon
     - put your resume up
+
+- post-publish
+    - have github.io redirect to this
+    - add projects
+        - this website
+        - agitar
+    - add posts
+        - physics
