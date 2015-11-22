@@ -17,6 +17,8 @@
     - use number wells to give number of posts / projects tagged by a particular tag in tag detail view.
 
 - styling
+    - sections in Bio and items in WideList should get width and maxWidth styles to match content of detail views
+    - list of technologies in About view should be icon + subtitle list
     - bump radium version to use user agent styling on server
         - use radium media queries?
             ```js
