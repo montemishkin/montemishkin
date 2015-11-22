@@ -15,7 +15,8 @@ export default class SearchView extends Component {
         mapItemToSearchFields: PropTypes.func,
         // react component
         PreviewComponent: PropTypes.func.isRequired,
-        bannerImageSrc: PropTypes.string,
+        // react component
+        bannerIcon: PropTypes.func,
         bannerColor: PropTypes.string,
         title: PropTypes.string.isRequired,
         subtitle: PropTypes.string,
@@ -26,7 +27,7 @@ export default class SearchView extends Component {
     static defaultProps = {
         initialSearchText: '',
         // TODO: get a default image for search views
-        bannerImageSrc: '',
+        bannerIcon: props => <img {...props} src='' />,
         // TODO: get a default color for search views
         bannerColor: '',
     }
@@ -85,7 +86,7 @@ export default class SearchView extends Component {
         const {
             content,
             props: {
-                bannerImageSrc,
+                bannerIcon,
                 bannerColor,
                 title,
                 subtitle,
@@ -98,7 +99,7 @@ export default class SearchView extends Component {
             <article {...unusedProps}>
                 <Banner
                     style={{backgroundColor: bannerColor}}
-                    imageSrc={bannerImageSrc}
+                    Icon={bannerIcon}
                     title={title}
                     subtitle={subtitle}
                 >

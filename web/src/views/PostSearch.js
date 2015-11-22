@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 // local imports
 import SearchView from 'components/SearchView'
 import ArticlePreview from 'components/ArticlePreview'
+import BlogLogo from 'components/Logos/Blog'
 import {nestPost} from 'util/nest'
 import colors from 'assets/styles/js/colors'
 
@@ -45,7 +46,7 @@ export default class PostSearch extends Component {
 
         return (
             <SearchView
-                bannerImageSrc='/static/images/logo-blog.svg'
+                bannerIcon={props => <BlogLogo {...props} />}
                 bannerColor={colors.palette.skyBlue.css()}
                 title='Blog'
                 subtitle='oh yeah.'

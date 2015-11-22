@@ -49,5 +49,10 @@
     - style up NotFound component
     - enable disqus
     - google analytics
+    - google page speed insights
+        - Configure viewport (this will require you to reconsider responsive styling)
+            ```jade
+            meta(name="viewport", content="width=device-width, initial-scale=1")
+            ```
     - favicon
     - put your resume up

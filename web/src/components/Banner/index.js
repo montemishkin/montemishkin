@@ -9,7 +9,8 @@ import styles from './styles'
 export default class Banner extends Component {
     static propTypes = {
         style: PropTypes.object,
-        imageSrc: PropTypes.string,
+        // react component
+        Icon: PropTypes.func,
         title: PropTypes.string.isRequired,
         subtitle: PropTypes.string,
     }
@@ -17,7 +18,7 @@ export default class Banner extends Component {
 
     render() {
         const {
-            imageSrc,
+            Icon,
             title,
             subtitle,
             children,
@@ -34,8 +35,8 @@ export default class Banner extends Component {
                 }}
             >
                 <div style={styles.innerContainer}>
-                    {imageSrc && (
-                        <img src={imageSrc} style={styles.image} />
+                    {Icon && (
+                        <Icon style={styles.icon} />
                     )}
                     <h1 style={styles.title}>
                         {title}

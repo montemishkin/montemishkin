@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 // local imports
 import styles from './styles'
 import Banner from 'components/Banner'
+import BaseLogo from 'components/Logos/Base'
 import ContactInfoBar from './ContactInfoBar'
 
 
@@ -38,7 +39,7 @@ export default class About extends Component {
                     style={styles.banner}
                     title='Monte Mishkin'
                     subtitle='A friendly person.'
-                    imageSrc='/static/images/logo-base.svg'
+                    Icon={props => <BaseLogo {...props} />}
                 >
                     <ContactInfoBar />
                 </Banner>

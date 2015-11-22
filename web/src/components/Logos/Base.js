@@ -1,7 +1,5 @@
 // third party imports
 import React, {Component, PropTypes} from 'react'
-// local imports
-import Base from './Base'
 
 
 const all = {

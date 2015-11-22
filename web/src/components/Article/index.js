@@ -66,7 +66,7 @@ export default class Article extends Component {
             <article {...unusedProps}>
                 <Banner
                     style={{backgroundColor: bannerColor}}
-                    imageSrc={imageSrc}
+                    Icon={props => <img {...props} src={imageSrc} />}
                     title={title}
                     subtitle={subtitle}
                 >

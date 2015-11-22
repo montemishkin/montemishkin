@@ -4,6 +4,7 @@ import radium from 'radium'
 // local imports
 import styles from './styles'
 import Banner from 'components/Banner'
+import MainLogo from 'components/Logos/Main'
 
 
 /**
@@ -16,7 +17,7 @@ export default class NotFound extends Component {
             <article style={styles.container}>
                 <Banner
                     style={styles.banner}
-                    imageSrc='/static/images/logo-main.svg'
+                    Icon={props => <MainLogo {...props} />}
                     title='Not Found'
                     subtitle="hmm... there's nothing here!"
                 />

@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 // local imports
 import TagPreview from './TagPreview'
 import SearchView from 'components/SearchView'
+import MainLogo from 'components/Logos/Main'
 import colors from 'assets/styles/js/colors'
 
 
@@ -41,7 +42,7 @@ export default class TagSearch extends Component {
 
         return (
             <SearchView
-                bannerImageSrc='/static/images/logo-main.svg'
+                bannerIcon={props => <MainLogo {...props} />}
                 bannerColor={colors.palette.sand.css()}
                 title='Tags'
                 subtitle='gotta love em.'

@@ -19,7 +19,7 @@ export default {
         maxWidth: contentMaxWidth + 20,
     },
 
-    image: {
+    icon: {
         padding: '30px 0',
         maxHeight: 150,
     },

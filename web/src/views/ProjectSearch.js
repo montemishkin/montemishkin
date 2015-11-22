@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 // local imports
 import SearchView from 'components/SearchView'
 import ArticlePreview from 'components/ArticlePreview'
+import ProjectsLogo from 'components/Logos/Projects'
 import {nestProject} from 'util/nest'
 import colors from 'assets/styles/js/colors'
 
@@ -45,7 +46,7 @@ export default class ProjectSearch extends Component {
 
         return (
             <SearchView
-                bannerImageSrc='/static/images/logo-projects.svg'
+                bannerIcon={props => <ProjectsLogo {...props} />}
                 bannerColor={colors.palette.sunburn.css()}
                 title='Projects'
                 subtitle='check em out.'
