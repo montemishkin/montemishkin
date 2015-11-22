@@ -8,7 +8,7 @@ export default {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
         // TODO: make it cycle between the colors in colors.palette
         backgroundColor: colors.palette.paleGreen.css(),
