@@ -4,7 +4,7 @@ import radium from 'radium'
 // local imports
 import styles from './styles'
 import Link from 'components/Link'
-import Logo from 'components/Logo'
+import Logo from 'components/Logos/Main'
 
 
 @radium

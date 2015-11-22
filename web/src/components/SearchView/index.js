@@ -73,9 +73,9 @@ export default class SearchView extends Component {
         // so render a message indicating no search results
         return (
             <section style={styles.messageContainer}>
-                <div style={styles.message}>
-                    ayyyyy.... nothin here alright??
-                </div>
+                <span style={styles.message}>
+                    No search results.
+                </span>
             </section>
         )
     }

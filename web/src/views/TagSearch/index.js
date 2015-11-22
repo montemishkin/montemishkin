@@ -41,7 +41,7 @@ export default class TagSearch extends Component {
 
         return (
             <SearchView
-                bannerImageSrc='/static/images/bird-logo.png'
+                bannerImageSrc='/static/images/logo-main.svg'
                 bannerColor={colors.palette.sand.css()}
                 title='Tags'
                 subtitle='gotta love em.'

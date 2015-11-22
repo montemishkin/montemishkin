@@ -118,7 +118,7 @@ export default class TagDetail extends Component {
             <section>
                 <Banner
                     style={{backgroundColor: colors.palette.random().css()}}
-                    imageSrc='/static/images/bird-logo.png'
+                    imageSrc='/static/images/logo-main.svg'
                     title={title}
                     subtitle={description}
                 />

@@ -39,5 +39,6 @@ export default {
         padding: `${contentVerticalPadding}px 0`,
         width: contentWidth,
         maxWidth: contentMaxWidth,
+        textAlign: 'center',
     },
 }

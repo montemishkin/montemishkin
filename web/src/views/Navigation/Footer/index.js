@@ -7,7 +7,7 @@ import styles from './styles'
 import Link from 'components/Link'
 import IndexLink from 'components/IndexLink'
 import List from 'components/List'
-import Logo from 'components/Logo'
+import Logo from 'components/Logos/Main'
 
 
 @connect(({browser}) => ({browser}))
