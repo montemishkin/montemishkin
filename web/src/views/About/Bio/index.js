@@ -6,6 +6,11 @@ import styles from './styles'
 import List from 'components/List'
 import Link from 'components/Link'
 import ReactLogo from 'components/Logos/React'
+import NodeLogo from 'components/Logos/Node'
+import DjangoLogo from 'components/Logos/Django'
+import AbletonLogo from 'components/Logos/Ableton'
+import BlenderLogo from 'components/Logos/Blender'
+import UnityLogo from 'components/Logos/Unity'
 
 
 @radium
@@ -108,10 +113,10 @@ const mainTechnologies = [
         component: ReactLogo,
     }, {
         url: 'https://nodejs.org/',
-        component: () => <img style={{width: 200}} src='/static/images/nodejs-logo.svg' />,
+        component: NodeLogo,
     }, {
         url: 'https://www.djangoproject.com/',
-        component: () => <img style={{width: 200}} src='/static/images/django-logo.svg' />,
+        component: DjangoLogo,
     },
 ]
 
@@ -119,12 +124,12 @@ const mainTechnologies = [
 const otherTechnologies = [
     {
         url: 'https://www.ableton.com/live/',
-        component: () => <img style={{width: 200}} src='/static/images/ableton-logo.png' />,
+        component: AbletonLogo,
     }, {
         url: 'http://www.blender.org/',
-        component: () => <img style={{width: 200}} src='/static/images/blender-logo2.svg' />,
+        component: BlenderLogo,
     }, {
         url: 'http://unity3d.com/',
-        component: () => <img style={{width: 200}} src='/static/images/unity-logo.svg' />,
+        component: UnityLogo,
     },
 ]

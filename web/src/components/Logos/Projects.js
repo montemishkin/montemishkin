@@ -11,7 +11,7 @@ const all = {
 }
 
 
-export default class MainLogo extends Component {
+export default class ProjectsLogo extends Component {
     static propTypes = {
         bodyFill: PropTypes.string,
         eyeFill: PropTypes.string,
