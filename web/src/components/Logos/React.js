@@ -20,7 +20,7 @@ export default class ReactLogo extends Component {
         } = this.props
 
         return (
-            <svg {...unusedProps} viewBox='0 0 600 600'>
+            <svg {...unusedProps} viewBox='0 0 2000 600'>
                 <circle
                     fill={color}
                     stroke='none'
@@ -46,6 +46,17 @@ export default class ReactLogo extends Component {
                     strokeWidth='24'
                     d='M210.821,351.482 c-33.746-58.292-56.731-117.287-66.312-166.255c-11.544-58.999-3.382-104.109,19.864-117.566 c24.224-14.024,70.055,2.244,118.14,44.94c36.356,32.28,73.688,80.837,105.723,136.173c32.844,56.733,57.461,114.209,67.036,162.582 c12.117,61.213,2.309,107.984-21.453,121.74c-23.057,13.348-65.249-0.784-110.239-39.499 C285.567,460.886,244.898,410.344,210.821,351.482z'
                 />
+                <text
+                    fill={color}
+                    x='600'
+                    y='500'
+                    style={{
+                        fontFamily: 'Helvetica',
+                        fontSize: '500px',
+                    }}
+                >
+                    React
+                </text>
             </svg>
         )
     }
