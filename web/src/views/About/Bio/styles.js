@@ -59,12 +59,31 @@ export default {
 
 
     logoListItem: {
-        width: '20%',
+        flexGrow: 1,
         minWidth: 100,
+        maxWidth: '20%',
+        display: 'flex',
+        justifyContent: 'center',
+        padding: 20,
+
+        ...classes.transitionParameters,
+        transitionProperty: 'border-color',
+        borderColor: colors.interactive.alpha(0).css(),
+        borderWidth: 1,
+        borderStyle: 'solid',
 
         ':hover': {
-            backgroundColor: 'grey',
+            borderColor: colors.interactive.alpha(1).css(),
         },
+    },
+
+
+    logoLink: {
+    },
+
+
+    logo: {
+        width: '100%',
     },
 
 

@@ -11,14 +11,13 @@
     - what if bannerColor makes it hard to see link hover color in Article?
     - hash links on posts and projects
     - improve use of semantic content
-    - different variations of same bird logo for tag, post, project search views
+    - different variations of same bird logo for **tag**, post, project search views
         - if no image provided for the detail view then default to corresponding fa icon
     - overall accessibility
     - use number wells to give number of posts / projects tagged by a particular tag in tag detail view.
 
 - styling
     - sections in Bio and items in WideList should get width and maxWidth styles to match content of detail views
-    - find a better ableton logo
     - bump radium version to use user agent styling on server
         - use radium media queries?
             ```js
