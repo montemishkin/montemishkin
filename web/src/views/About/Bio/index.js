@@ -5,6 +5,7 @@ import radium from 'radium'
 import styles from './styles'
 import List from 'components/List'
 import Link from 'components/Link'
+import ReactLogo from 'components/Logos/React'
 
 
 @radium
@@ -17,8 +18,8 @@ export default class Bio extends Component {
                         Hello
                     </h3>
                     <p style={styles.p}>
-                        I{"'"}m a full stack web developer with a passion for
-                        designing great experiences from the bottom up.
+                        I{"'"}m a web developer with a passion for designing
+                        great experiences at every level of the technology stack.
                     </p>
                 </section>
                 <section style={styles.section}>
@@ -26,24 +27,37 @@ export default class Bio extends Component {
                         Technical Skills
                     </h3>
                     <p style={styles.p}>
-                        For the most part, my projects involve some combination of these awesome technologies:
+                        Check out my
+                        {' '}<a
+                            style={styles.link}
+                            target='_blank'
+                            href='/static/resume.pdf'
+                        >
+                            resume
+                        </a>{' '}
+                        for the full details, but for the most part, my
+                        projects involve some combination of these awesome
+                        technologies:
                     </p>
-                    <List style={styles.list} listItemStyle={styles.listItem}>{[
-                        'React',
-                        'Redux (Flux)',
-                        'GraphQL',
-                        'Node',
-                        'Django',
-                    ]}</List>
+                    <List style={styles.logoList} listItemStyle={styles.logoListItem}>
+                        {mainTechnologies.map(({url, component: Comp}, key) => (
+                            <a href={url} style={styles.logoLink} key={key}>
+                                <Comp style={styles.logo} />
+                            </a>
+                        ))}
+                    </List>
                     <p style={styles.p}>
-                        However, on occasion, you might see me put out an album, or maybe a video game.
-                        To that end, here are some other great programs I have experience with:
+                        However, on occasion, you might see me put out an
+                        album, or maybe a video game. To that end, here are
+                        some other great programs I have experience with:
                     </p>
-                    <List style={styles.list} listItemStyle={styles.listItem}>{[
-                        'Ableton Live',
-                        'Blender',
-                        'Unity',
-                    ]}</List>
+                    <List style={styles.logoList} listItemStyle={styles.logoListItem}>
+                        {otherTechnologies.map(({url, component: Comp}, key) => (
+                            <a href={url} style={styles.logoLink} key={key}>
+                                <Comp style={styles.logo} />
+                            </a>
+                        ))}
+                    </List>
                     <p style={styles.p}>
                         You can keep up with my latest works over
                         {' '}<Link style={styles.link} to='/projects'>
@@ -57,11 +71,11 @@ export default class Bio extends Component {
                         Other Hats I Wear
                     </h3>
                     <List style={styles.list} listItemStyle={styles.listItem}>{[
-                        'Aspiring video game architect.',
-                        'Musician.',
-                        'Educator.',
-                        'Avocational mathematician and physicist.',
-                        'Analytical thinker with excellent problem solving skills.',
+                        'Aspiring video game developer',
+                        'Musician',
+                        'Educator',
+                        'Avocational mathematician and physicist',
+                        'Analytical thinker with excellent problem solving skills',
                     ]}</List>
                 </section>
                 <section style={styles.section}>
@@ -70,19 +84,47 @@ export default class Bio extends Component {
                     </h3>
                     <p style={styles.p}>
                         I have yet to get in the habit of writing blog posts consistently,
-                        but over at
+                        but over at my
                         {' '}<Link style={styles.link} to='/posts'>
-                            my blog
+                            blog
                         </Link>{' '}
                         you can expect to find articles relating to:
                     </p>
                     <List style={styles.list} listItemStyle={styles.listItem}>{[
                         'my experiences with various technologies.',
-                        'miscellaneous meanderings about math and/or physics.',
-                        'other experiences and exciting things I want the world to know about!',
+                        'meanderings about math and/or physics.',
+                        'other assorted musings.',
                     ]}</List>
                 </section>
             </article>
         )
     }
 }
+
+
+const mainTechnologies = [
+    {
+        url: 'https://facebook.github.io/react/',
+        component: ReactLogo,
+    }, {
+        url: 'https://nodejs.org/',
+        component: () => <img style={{width: 200}} src='/static/images/nodejs-logo.svg' />,
+    }, {
+        url: 'https://www.djangoproject.com/',
+        component: () => <img style={{width: 200}} src='/static/images/django-logo.svg' />,
+    },
+]
+
+
+const otherTechnologies = [
+    {
+        url: 'https://www.ableton.com/live/',
+        component: () => <img style={{width: 200}} src='/static/images/ableton-logo.png' />,
+    }, {
+        url: 'http://www.blender.org/',
+        component: () => <img style={{width: 200}} src='/static/images/blender-logo2.svg' />,
+    }, {
+        url: 'http://unity3d.com/',
+        component: () => <img style={{width: 200}} src='/static/images/unity-logo.svg' />,
+    },
+]

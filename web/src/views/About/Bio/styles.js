@@ -50,6 +50,24 @@ export default {
     listItem: {},
 
 
+    logoList: {
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+    },
+
+
+    logoListItem: {
+        width: '20%',
+        minWidth: 100,
+
+        ':hover': {
+            backgroundColor: 'grey',
+        },
+    },
+
+
     link: {
         ...classes.linkHoverable,
         color: colors.text.brighten(2).css(),

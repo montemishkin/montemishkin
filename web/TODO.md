@@ -18,7 +18,7 @@
 
 - styling
     - sections in Bio and items in WideList should get width and maxWidth styles to match content of detail views
-    - list of technologies in About view should be icon + subtitle list
+    - find a better ableton logo
     - bump radium version to use user agent styling on server
         - use radium media queries?
             ```js
@@ -57,6 +57,7 @@
         - accessible
     - favicon
     - put your resume up
+        - check both of the 2 links in the about view
 
 - post-publish
     - have github.io redirect to this

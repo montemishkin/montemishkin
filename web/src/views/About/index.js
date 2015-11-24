@@ -20,7 +20,7 @@ export default class About extends Component {
                 <Banner
                     style={styles.banner}
                     title='Monte Mishkin'
-                    subtitle='A friendly person.'
+                    subtitle='Web Developer / Friendly Person'
                     Icon={props => <BaseLogo {...props} />}
                 >
                     <ContactInfoBar />
