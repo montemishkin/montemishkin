@@ -53,7 +53,25 @@ export default class Footer extends Component {
         // link to home page, contains logo
         const logoLink = (
             <IndexLink to='/' style={styles.logoLink}>
-                <Logo style={styles.logo} />
+                <Logo
+                    style={styles.logo}
+                    hatTopFill='grey'
+                    hatRimFill='grey'
+                    bodyFill='white'
+                    wingFill='white'
+                    noseFill='white'
+                    eyeFill='grey'
+                    bodyStroke='grey'
+                    eyeStroke='grey'
+                    noseStroke='grey'
+                    wingStroke='grey'
+                    leftLegStroke='grey'
+                    leftFootStroke='grey'
+                    rightLegStroke='grey'
+                    rightFootStroke='grey'
+                    hatRimStroke='grey'
+                    hatTopStroke='grey'
+                />
             </IndexLink>
         )
         // copyright info
@@ -65,7 +83,7 @@ export default class Footer extends Component {
                     href='mailto:monte@mishkin.com'
                     style={styles.emailLink}
                 >
-                    monte mishkin
+                    Monte Mishkin
                 </a>
             </div>
         )

@@ -22,6 +22,7 @@ export default {
     icon: {
         padding: '30px 0',
         maxHeight: 150,
+        fontSize: '150px',
     },
 
     title: {

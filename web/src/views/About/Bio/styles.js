@@ -64,7 +64,6 @@ export default {
         maxWidth: '20%',
         display: 'flex',
         justifyContent: 'center',
-        padding: 20,
 
         ...classes.transitionParameters,
         transitionProperty: 'border-color',
@@ -75,10 +74,15 @@ export default {
         ':hover': {
             borderColor: colors.interactive.alpha(1).css(),
         },
+
+        ':focus': {
+            borderColor: colors.interactive.alpha(1).css(),
+        },
     },
 
 
     logoLink: {
+        padding: 20,
     },
 
 

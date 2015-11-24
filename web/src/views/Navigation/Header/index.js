@@ -15,7 +15,25 @@ export default class Header extends Component {
         return (
             <nav style={styles.container}>
                 <IndexLink to='/' style={styles.logoLink}>
-                    <Logo style={styles.logo} />
+                    <Logo
+                        style={styles.logo}
+                        hatTopFill='grey'
+                        hatRimFill='grey'
+                        bodyFill='white'
+                        wingFill='white'
+                        noseFill='white'
+                        eyeFill='grey'
+                        bodyStroke='grey'
+                        eyeStroke='grey'
+                        noseStroke='grey'
+                        wingStroke='grey'
+                        leftLegStroke='grey'
+                        leftFootStroke='grey'
+                        rightLegStroke='grey'
+                        rightFootStroke='grey'
+                        hatRimStroke='grey'
+                        hatTopStroke='grey'
+                    />
                 </IndexLink>
                 <List style={styles.list}>
                     <Link to='/' style={styles.link}>

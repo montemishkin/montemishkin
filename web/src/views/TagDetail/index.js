@@ -8,7 +8,6 @@ import WideList from 'components/WideList'
 import NotFound from 'views/NotFound'
 import ArticlePreview from 'components/ArticlePreview'
 import Banner from 'components/Banner'
-import MainLogo from 'components/Logos/Main'
 import {nestProject, nestPost} from 'util/nest'
 import colors from 'assets/styles/js/colors'
 
@@ -119,7 +118,7 @@ export default class TagDetail extends Component {
             <section>
                 <Banner
                     style={{backgroundColor: colors.palette.random().css()}}
-                    Icon={props => <MainLogo {...props} />}
+                    Icon={props => <i {...props} className='fa fa-tag' />}
                     title={title}
                     subtitle={description}
                 />
