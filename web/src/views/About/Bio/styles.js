@@ -14,25 +14,30 @@ export default {
 
         // TODO: put these stylings on the sections' inner content
         //       you should probably also do this for items in WideList
-        // width: contentWidth,
-        // maxWidth: contentMaxWidth,
+
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '40px 0',
     },
 
 
     section: {
-        borderTopWidth: 1,
-        borderRightWidth: 0,
-        borderLeftWidth: 0,
-        borderBottomWidth: 0,
-        borderColor: 'black',
-        borderStyle: 'solid',
-        padding: 100,
+        padding: '40px 0',
+        width: contentWidth,
+        maxWidth: contentMaxWidth,
     },
 
 
     sectionTitle: {
         ...classes.largeFontSize,
         padding: '15px 0',
+        borderTopWidth: 0,
+        borderRightWidth: 0,
+        borderLeftWidth: 0,
+        borderBottomWidth: 1,
+        borderColor: 'black',
+        borderStyle: 'solid',
     },
 
 

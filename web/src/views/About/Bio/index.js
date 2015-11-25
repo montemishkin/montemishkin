@@ -8,9 +8,6 @@ import Link from 'components/Link'
 import ReactLogo from 'components/Logos/React'
 import NodeLogo from 'components/Logos/Node'
 import DjangoLogo from 'components/Logos/Django'
-import AbletonLogo from 'components/Logos/Ableton'
-import BlenderLogo from 'components/Logos/Blender'
-import UnityLogo from 'components/Logos/Unity'
 
 
 @radium
@@ -52,36 +49,12 @@ export default class Bio extends Component {
                         ))}
                     </List>
                     <p style={styles.p}>
-                        However, on occasion, you might see me put out an
-                        album, or maybe a video game. To that end, here are
-                        some other great programs I have experience with:
-                    </p>
-                    <List style={styles.logoList} listItemStyle={styles.logoListItem}>
-                        {otherTechnologies.map(({url, component: Comp}, key) => (
-                            <a href={url} style={styles.logoLink} key={key}>
-                                <Comp style={styles.logo} />
-                            </a>
-                        ))}
-                    </List>
-                    <p style={styles.p}>
                         You can keep up with my latest works over
                         {' '}<Link style={styles.link} to='/projects'>
                             here
                         </Link>
                         !
                     </p>
-                </section>
-                <section style={styles.section}>
-                    <h3 style={styles.sectionTitle}>
-                        Other Hats I Wear
-                    </h3>
-                    <List style={styles.list} listItemStyle={styles.listItem}>{[
-                        'Aspiring video game developer',
-                        'Musician',
-                        'Educator',
-                        'Avocational mathematician and physicist',
-                        'Analytical thinker with excellent problem solving skills',
-                    ]}</List>
                 </section>
                 <section style={styles.section}>
                     <h3 style={styles.sectionTitle}>
@@ -117,19 +90,5 @@ const mainTechnologies = [
     }, {
         url: 'https://www.djangoproject.com/',
         component: DjangoLogo,
-    },
-]
-
-
-const otherTechnologies = [
-    {
-        url: 'https://www.ableton.com/live/',
-        component: AbletonLogo,
-    }, {
-        url: 'http://www.blender.org/',
-        component: BlenderLogo,
-    }, {
-        url: 'http://unity3d.com/',
-        component: UnityLogo,
     },
 ]
