@@ -8,6 +8,3 @@ var baseConfig = require(projectPaths.webpackBaseConfig)
 module.exports = assign({}, baseConfig, {
     // additional client configuration goes here
 })
-
-
-// end of file
