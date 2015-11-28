@@ -7,11 +7,13 @@ import List from 'components/List'
 
 
 @radium
-export default class TabsContainer extends Component {
+export default class TabContainer extends Component {
     static propTypes = {
         tabs: PropTypes.arrayOf(PropTypes.shape({
-            title: PropTypes.string,
-            content: PropTypes.node,
+            // react component
+            Title: PropTypes.func,
+            // react component
+            Content: PropTypes.func,
         })).isRequired,
         initialActiveIndex: PropTypes.number,
         style: PropTypes.object,
@@ -40,10 +42,12 @@ export default class TabsContainer extends Component {
             props: {tabs, ...unusedProps},
         } = this
 
+        const Content = tabs[activeIndex].Content
+
         return (
             <div {...unusedProps}>
                 <List style={styles.tabList} listItemStyle={styles.tabListItem}>
-                    {tabs.map(({title}, index) => {
+                    {tabs.map(({Title}, index) => {
                         // default to regular styling
                         let tabTitleStyle = styles.tabTitle
                         // if this is the active tab
@@ -53,19 +57,15 @@ export default class TabsContainer extends Component {
                         }
 
                         return (
-                            <div
+                            <Title
                                 style={tabTitleStyle}
                                 key={index}
                                 onClick={() => this.setState({activeIndex: index})}
-                            >
-                                {title}
-                            </div>
+                            />
                         )
                     })}
                 </List>
-                <div>
-                    {tabs[activeIndex].content}
-                </div>
+                <Content />
             </div>
         )
     }

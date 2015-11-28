@@ -3,6 +3,7 @@ import React, {Component, PropTypes} from 'react'
 import radium from 'radium'
 import {connect} from 'react-redux'
 // local imports
+import styles from './styles'
 import TabContainer from './TabContainer'
 import WideList from 'components/WideList'
 import NotFound from 'views/NotFound'
@@ -93,31 +94,10 @@ export default class TagDetail extends Component {
             initialActiveIndex = 1
         }
 
-        const projectsContent = (
-            <WideList>
-                {projects.length === 0
-                    ? 'There are no projects with this tag.'
-                    : projects.map((project, key) => (
-                        <ArticlePreview {...project} key={key} />
-                    ))
-                }
-            </WideList>
-        )
-        const postsContent = (
-            <WideList>
-                {posts.length === 0
-                    ? 'There are no posts with this tag.'
-                    : posts.map((post, key) => (
-                        <ArticlePreview {...post} key={key} />
-                    ))
-                }
-            </WideList>
-        )
-
         return (
             <section>
                 <Banner
-                    style={{backgroundColor: colors.palette.random().css()}}
+                    style={{backgroundColor: colors.palette.sand.css()}}
                     Icon={props => <i {...props} className='fa fa-tag' />}
                     title={title}
                     subtitle={description}
@@ -126,11 +106,41 @@ export default class TagDetail extends Component {
                     initialActiveIndex={initialActiveIndex}
                     tabs={[
                         {
-                            title: `Projects (${projects.length})`,
-                            content: projectsContent,
+                            Title: (props) => (
+                                <Title
+                                    {...props}
+                                    title='Projects'
+                                    count={projects.length}
+                                />
+                            ),
+                            Content: (props) => (
+                                <WideList {...props}>
+                                    {projects.length === 0
+                                        ? 'There are no projects with this tag.'
+                                        : projects.map((project, key) => (
+                                            <ArticlePreview {...project} key={key} />
+                                        ))
+                                    }
+                                </WideList>
+                            ),
                         }, {
-                            title: `Blog Posts (${posts.length})`,
-                            content: postsContent,
+                            Title: (props) => (
+                                <Title
+                                    {...props}
+                                    title='Blog Posts'
+                                    count={posts.length}
+                                />
+                            ),
+                            Content: (props) => (
+                                <WideList {...props}>
+                                    {posts.length === 0
+                                        ? 'There are no posts with this tag.'
+                                        : posts.map((post, key) => (
+                                            <ArticlePreview {...post} key={key} />
+                                        ))
+                                    }
+                                </WideList>
+                            ),
                         },
                     ]}
                 />
@@ -146,3 +156,24 @@ export default class TagDetail extends Component {
         return this.notFoundContent
     }
 }
+
+
+
+const Title = radium(function Title({title, count, style, ...unusedProps}) {
+    return (
+        <div
+            {...unusedProps}
+            style={[
+                style,
+                styles.tabTitleContainer,
+            ]}
+        >
+            <span style={styles.tabTitleContent}>
+                {title}
+            </span>
+            <span style={styles.tabTitleCount}>
+                {count}
+            </span>
+        </div>
+    )
+})
