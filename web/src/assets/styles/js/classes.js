@@ -6,34 +6,6 @@
 import colors from './colors'
 
 
-/* Font Size Classes */
-
-export const largestFontSize = {
-    fontSize: 36,
-    fontWeight: 400,
-}
-
-export const largerFontSize = {
-    fontSize: 30,
-}
-
-export const largeFontSize = {
-    // fontSize: 14,
-    // fontWeight: 700,
-    fontSize: 24,
-}
-
-export const mainFontSize = {
-    fontSize: 16,
-}
-
-export const smallFontSize = {
-    fontSize: 13,
-}
-
-
-/* Misc Classes */
-
 // parameters (everything except transitionProperty) for css transitions
 export const transitionParameters = {
     transitionDuration: '0.2s',
@@ -65,12 +37,6 @@ export const linkHoverable = {
 
 
 export default {
-    largestFontSize,
-    largerFontSize,
-    largeFontSize,
-    mainFontSize,
-    smallFontSize,
-
     transitionParameters,
     linkHoverable,
 }

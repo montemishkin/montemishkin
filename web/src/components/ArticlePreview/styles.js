@@ -1,7 +1,12 @@
 // local imports
 import classes from 'assets/styles/js/classes'
 import colors from 'assets/styles/js/colors'
-import {contentWidth, contentMaxWidth} from 'assets/styles/js/numerics'
+import {
+    contentWidth,
+    contentMaxWidth,
+    largerFontSize,
+    largeFontSize,
+} from 'assets/styles/js/numerics'
 
 
 const transition = {
@@ -9,13 +14,13 @@ const transition = {
     transitionProperty: 'color',
 }
 const titleBase = {
-    ...classes.largerFontSize,
     ...transition,
+    fontSize: largerFontSize,
     paddingBottom: 10,
 }
 const subtitleBase = {
-    ...classes.mainFontSize,
     ...transition,
+    fontSize: largeFontSize,
 }
 
 

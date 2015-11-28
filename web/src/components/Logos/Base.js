@@ -5,7 +5,7 @@ import React, {Component, PropTypes} from 'react'
 const all = {
     fill: 'none',
     stroke: 'black',
-    strokeWidth: 7,
+    strokeWidth: 10,
     strokeLinecap: 'round',
     strokeLinejoin: 'round',
 }

@@ -5,6 +5,7 @@ import {
     contentWidth,
     contentMaxWidth,
     contentVerticalPadding,
+    largerFontSize,
 } from 'assets/styles/js/numerics'
 
 
@@ -30,7 +31,7 @@ export default {
 
 
     sectionTitle: {
-        ...classes.largeFontSize,
+        fontSize: largerFontSize,
         padding: '15px 0',
         borderTopWidth: 0,
         borderRightWidth: 0,

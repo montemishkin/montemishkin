@@ -42,9 +42,9 @@ export default class Banner extends Component {
                         {title}
                     </h1>
                     {subtitle && (
-                        <h2 style={styles.subtitle}>
+                        <span style={styles.subtitle}>
                             {subtitle}
-                        </h2>
+                        </span>
                     )}
                     {children && (
                         <div style={styles.childrenContainer}>

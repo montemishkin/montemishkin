@@ -3,10 +3,9 @@ import classes from 'assets/styles/js/classes'
 import colors from 'assets/styles/js/colors'
 
 
-const padding = 20
+const spacing = 25
 const containerBase = {
     color: colors.text.brighten(2).css(),
-    ...classes.smallFontSize,
     display: 'flex',
     alignItems: 'center',
     backgroundColor: colors.ui.css(),
@@ -17,7 +16,7 @@ const listBase = {
     flexWrap: 'wrap',
 }
 const copyrightBase = {
-    padding: 20,
+    padding: spacing,
 }
 
 
@@ -35,7 +34,7 @@ export default {
     listInfinity: {
         ...listBase,
         position: 'absolute',
-        left: padding,
+        left: spacing,
     },
 
     listMedium: {
@@ -46,22 +45,22 @@ export default {
         ...classes.linkHoverable,
         color: colors.text.brighten(3).css(),
         display: 'inline-block',
-        padding: padding,
+        padding: spacing,
     },
 
     logoLink: {
         display: 'inline-block',
-        padding: `${padding / 2}px ${padding}px`,
+        padding: `${spacing / 2}px ${spacing}px`,
     },
 
     logo: {
-        height: 2 * padding,
+        height: 2 * spacing,
     },
 
     copyrightInfinity: {
         ...copyrightBase,
         position: 'absolute',
-        right: padding,
+        right: spacing,
     },
 
     copyrightMedium: {

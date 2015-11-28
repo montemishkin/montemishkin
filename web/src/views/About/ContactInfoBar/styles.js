@@ -1,6 +1,7 @@
 // local imports
 import classes from 'assets/styles/js/classes'
 import colors from 'assets/styles/js/colors'
+import {largerFontSize} from 'assets/styles/js/numerics'
 
 
 export default {
@@ -33,7 +34,7 @@ export default {
     },
 
     icon: {
-        ...classes.largerFontSize,
+        fontSize: largerFontSize,
         paddingBottom: 3,
     },
 

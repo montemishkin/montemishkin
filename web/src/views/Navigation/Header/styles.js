@@ -1,9 +1,10 @@
 // local imports
 import colors from 'assets/styles/js/colors'
 import classes from 'assets/styles/js/classes'
+import {largeFontSize} from 'assets/styles/js/numerics'
 
 
-const padding = 20
+const spacing = 25
 
 
 export default {
@@ -11,7 +12,7 @@ export default {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: `0 ${padding}px`,
+        padding: `0 ${spacing}px`,
         backgroundColor: colors.ui.css(),
         borderWidth: '0 0 1px 0',
         borderStyle: 'solid',
@@ -20,11 +21,11 @@ export default {
 
     logoLink: {
         display: 'inline-block',
-        padding: `${padding / 2}px ${padding}px`,
+        padding: `${spacing / 2}px ${spacing}px`,
     },
 
     logo: {
-        height: 2 * padding,
+        height: 2 * spacing,
     },
 
     list: {
@@ -35,8 +36,9 @@ export default {
 
     link: {
         ...classes.linkHoverable,
+        fontSize: largeFontSize,
         color: colors.text.brighten(3).css(),
         display: 'inline-block',
-        padding: padding,
+        padding: spacing,
     },
 }

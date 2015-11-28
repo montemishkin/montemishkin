@@ -1,14 +1,20 @@
 // local imports
 import colors from 'assets/styles/js/colors'
-import classes from 'assets/styles/js/classes'
-import {contentMaxWidth} from 'assets/styles/js/numerics'
+import {
+    contentMaxWidth,
+    largestFontSize,
+    largeFontSize,
+} from 'assets/styles/js/numerics'
+
+
+const spacing = 40
 
 
 export default {
     outerContainer: {
         display: 'flex',
         justifyContent: 'center',
-        padding: '40px 0',
+        padding: `${spacing}px 0`,
     },
 
     innerContainer: {
@@ -20,24 +26,23 @@ export default {
     },
 
     icon: {
-        padding: '30px 0',
         maxHeight: 150,
         fontSize: '150px',
     },
 
     title: {
-        ...classes.largerFontSize,
+        fontSize: largestFontSize,
         color: colors.text.css(),
         textAlign: 'center',
-        paddingTop: 20,
+        margin: `${spacing}px 0 0 0`,
     },
 
     subtitle: {
-        ...classes.mainFontSize,
+        fontSize: largeFontSize,
         color: colors.text.brighten().css(),
         fontWeight: 'normal',
         textAlign: 'center',
-        paddingTop: 20,
+        margin: `${spacing / 2}px 0 ${spacing}px 0`,
     },
 
     childrenContainer: {
@@ -45,6 +50,5 @@ export default {
         flexDirection: 'column',
         alignItems: 'center',
         width: '100%',
-        paddingTop: 30,
     },
 }

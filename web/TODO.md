@@ -1,7 +1,8 @@
+- increase line width for bird logos
+
 - UI / UX
     - hoverable color on header bird logo
     - CSS animations on birds?
-    - overall larger fonts
     - what if bannerColor makes it hard to see link hover color in Article?
     - hash links on posts and projects
     - improve use of semantic content
@@ -31,6 +32,7 @@
         - syntax highlight styling
     - overall DRY design of styling
         - colors
+            - rather than having colors.js export chroma instances, just export the string literals and let other modules utilize chroma to manipulate if they wish
         - font sizes
         - magic numbers
     - react-router `Link` and `IndexLink` do not play well with radium

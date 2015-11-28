@@ -22,29 +22,36 @@ export default class TagList extends Component {
 
 
     render() {
-        const {tags} = this.props
+        const {tags, style, ...unusedProps} = this.props
 
         if (tags.length === 0) {
             return (<div />)
         }
 
-        return (<div style={styles.container}>
-            <i
-                style={styles.icon}
-                className='fa fa-tag'
-            />
-            <List style={styles.list} listItemStyle={styles.listItem}>
-                {tags.map((tag, key) => (
-                    <Link
-                        to={tag.link}
-                        style={styles.link}
-                        key={key}
-                        title={tag.description}
-                    >
-                        {tag.title}
-                    </Link>
-                ))}
-            </List>
-        </div>)
+        return (
+            <div
+                style={[
+                    styles.container,
+                    style,
+                ]}
+            >
+                <i
+                    style={styles.icon}
+                    className='fa fa-tag'
+                />
+                <List style={styles.list} listItemStyle={styles.listItem}>
+                    {tags.map((tag, key) => (
+                        <Link
+                            to={tag.link}
+                            style={styles.link}
+                            key={key}
+                            title={tag.description}
+                        >
+                            {tag.title}
+                        </Link>
+                    ))}
+                </List>
+            </div>
+        )
     }
 }
