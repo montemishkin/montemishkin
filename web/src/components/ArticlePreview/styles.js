@@ -4,11 +4,25 @@ import colors from 'assets/styles/js/colors'
 import {contentWidth, contentMaxWidth} from 'assets/styles/js/numerics'
 
 
+const transition = {
+    ...classes.transitionParameters,
+    transitionProperty: 'color',
+}
+const titleBase = {
+    ...classes.largerFontSize,
+    ...transition,
+    paddingBottom: 10,
+}
+const subtitleBase = {
+    ...classes.mainFontSize,
+    ...transition,
+}
+
+
 export default {
     container: {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
         width: contentWidth,
         maxWidth: contentMaxWidth,
     },
@@ -17,26 +31,27 @@ export default {
         padding: '7px 0',
     },
 
-    titleLink: {
-        ...classes.linkHoverable,
-        color: colors.text.css(),
+    link: {
+        textDecoration: 'none',
     },
 
     title: {
-        ...classes.largerFontSize,
-        textAlign: 'center',
-        paddingBottom: 10,
+        ...titleBase,
+        color: colors.text.css(),
+    },
+
+    titleHovered: {
+        ...titleBase,
+        color: colors.interactive.css(),
     },
 
     subtitle: {
-        ...classes.mainFontSize,
-        textAlign: 'center',
+        ...subtitleBase,
+        color: colors.text.brighten(2).css(),
     },
 
-    content: {
-        ...classes.linkHoverable,
-        color: colors.text.brighten().css(),
-        textAlign: 'center',
-        maxWidth: '90%',
+    subtitleHovered: {
+        ...subtitleBase,
+        color: colors.interactive.css(),
     },
 }

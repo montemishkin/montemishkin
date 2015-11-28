@@ -1,14 +1,12 @@
-- CSS animations on logo
-    - on home view, if logo clicked, bird dances a little bit
-    - in nav and footer, if hovered, bird does some kind of bounce in animation and also gets hoverable blue color
-
 - UI / UX
+    - hoverable color on header bird logo
+    - CSS animations on birds?
     - overall larger fonts
     - what if bannerColor makes it hard to see link hover color in Article?
     - hash links on posts and projects
     - improve use of semantic content
-    - different variations of same bird logo for **tag**, post, project search views
-        - if no image provided for the detail view then default to corresponding fa icon
+    - another variation of bird logo for tag search view
+    - if no image provided for a detail view then default to corresponding fa icon
     - overall accessibility
 
 - styling
@@ -28,6 +26,7 @@
             },
         }
         ```
+        - doesn't solve problem of responsively reordering elements in Footer
     - rendered markdown styling
         - syntax highlight styling
     - overall DRY design of styling
@@ -48,7 +47,9 @@
     - google page speed insights
     - ensure that every single view is:
         - responsive
+            - must be tested with phone emulation to account for viewport config
         - accessible
+            - try navigating all pages with tab key
     - favicon
     - put your resume up
         - check both of the 2 links in the about view
@@ -57,6 +58,8 @@
     - have github.io redirect to this
     - add projects
         - this website
-        - agitar
+        - redux responsive?
+        - agitar?
     - add posts
+        - hello
         - physics

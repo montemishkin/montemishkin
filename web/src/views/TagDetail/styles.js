@@ -3,15 +3,6 @@ import classes from 'assets/styles/js/classes'
 import colors from 'assets/styles/js/colors'
 
 
-// base styling for tab titles
-const tabTitleBase = {
-    display: 'inline-block',
-    textAlign: 'center',
-    width: '100%',
-    padding: 20,
-}
-
-
 export default {
     tabTitleContainer: {
         display: 'flex',

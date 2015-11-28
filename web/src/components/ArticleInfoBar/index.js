@@ -39,11 +39,11 @@ export default class ArticleInfoBar extends Component {
                 }}
                 {...unusedProps}
             >
+                <TagList tags={tags} />
                 <FormattedDate
                     style={styles.creationDate}
                     date={creationDate}
                 />
-                <TagList tags={tags} />
             </div>
         )
     }
