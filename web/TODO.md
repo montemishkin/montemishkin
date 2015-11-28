@@ -1,7 +1,3 @@
-1. write content
-1. design various logo variations
-
-
 - CSS animations on logo
     - on home view, if logo clicked, bird dances a little bit
     - in nav and footer, if hovered, bird does some kind of bounce in animation and also gets hoverable blue color
@@ -18,21 +14,21 @@
 
 - styling
     - sections in Bio and items in WideList should get width and maxWidth styles to match content of detail views
-    - bump radium version to use user agent styling on server
-        - use radium media queries?
-            ```js
-            import {mediaQueries} from 'styles/js/mediaQueries'
+    - pass window width from request to redux store initial state so that react doesn't complain that components connected to store.browser rendered differently on server vs client
+    - use radium media queries?
+        ```js
+        import {mediaQueries} from 'styles/js/mediaQueries'
 
-            export default {
-                content: {
-                    color: 'red',
+        export default {
+            content: {
+                color: 'red',
 
-                    [mediaQueries.medium]: {
-                        color: 'blue',
-                    },
+                [mediaQueries.medium]: {
+                    color: 'blue',
                 },
-            }
-            ```
+            },
+        }
+        ```
     - rendered markdown styling
         - syntax highlight styling
     - overall DRY design of styling

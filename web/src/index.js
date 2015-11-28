@@ -3,7 +3,7 @@ import 'babel-core/polyfill'
 // node imports
 import process from 'process'
 // local imports
-import app from './app'
+import server from './server'
 
 
 // interpret first arg from command line as port number
@@ -14,7 +14,7 @@ const port = isValidPort(portArg) ? portArg : 8000
 
 /* eslint-disable no-console */
 // listen on given port
-app.listen(port, () => console.log(`[${new Date()}] Now listening on port: ${port}`))
+server.listen(port, () => console.log(`[${new Date()}] Now listening on port: ${port}`))
 /* eslint-enable no-console */
 
 
