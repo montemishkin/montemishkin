@@ -1,4 +1,5 @@
 - UI / UX
+    - style tabs in tag detail view more like tabs on github profile view
     - hoverable color on header bird logo
     - CSS animations on birds?
     - what if bannerColor makes it hard to see link hover color in Article?

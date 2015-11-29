@@ -7,18 +7,18 @@ import colors from './colors'
 
 
 // parameters (everything except transitionProperty) for css transitions
-export const transitionParameters = {
+const transitionParameters = {
     transitionDuration: '0.2s',
     transitionTimingFunction: 'ease-in-out',
 }
 
 // base styling common to all link styles
-export const linkBase = {
+const linkBase = {
     textDecoration: 'none',
 }
 
 // styling for links that change color on hover
-export const linkHoverable = {
+const linkHoverable = {
     ...linkBase,
     ...transitionParameters,
     // display: 'flex',
@@ -26,11 +26,28 @@ export const linkHoverable = {
     cursor: 'pointer',
 
     ':hover': {
-        color: colors.interactive,
+        color: colors.textInteractive,
     },
 
     ':focus': {
-        color: colors.interactive,
+        color: colors.textInteractive,
+    },
+}
+
+// styling for ui links that change color on hover
+const uiLinkHoverable = {
+    ...linkBase,
+    ...transitionParameters,
+    // display: 'flex',
+    transitionProperty: 'color',
+    cursor: 'pointer',
+
+    ':hover': {
+        color: colors.uiInteractive,
+    },
+
+    ':focus': {
+        color: colors.uiInteractive,
     },
 }
 
@@ -39,4 +56,5 @@ export const linkHoverable = {
 export default {
     transitionParameters,
     linkHoverable,
+    uiLinkHoverable,
 }

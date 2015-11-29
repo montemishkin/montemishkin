@@ -17,7 +17,6 @@ export default class SearchView extends Component {
         PreviewComponent: PropTypes.func.isRequired,
         // react component
         bannerIcon: PropTypes.func,
-        bannerColor: PropTypes.string,
         title: PropTypes.string.isRequired,
         subtitle: PropTypes.string,
         items: PropTypes.array.isRequired,
@@ -28,8 +27,6 @@ export default class SearchView extends Component {
         initialSearchText: '',
         // TODO: get a default image for search views
         bannerIcon: props => <img {...props} src='' />,
-        // TODO: get a default color for search views
-        bannerColor: '',
     }
 
 
@@ -87,7 +84,6 @@ export default class SearchView extends Component {
             content,
             props: {
                 bannerIcon,
-                bannerColor,
                 title,
                 subtitle,
                 ...unusedProps,
@@ -98,7 +94,6 @@ export default class SearchView extends Component {
         return (
             <article {...unusedProps}>
                 <Banner
-                    style={{backgroundColor: bannerColor}}
                     Icon={bannerIcon}
                     title={title}
                     subtitle={subtitle}

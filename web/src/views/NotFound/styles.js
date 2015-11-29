@@ -1,15 +1,7 @@
-// local imports
-import colors from 'assets/styles/js/colors'
-
-
 export default {
     container: {
         display: 'flex',
         flexDirection: 'column',
-    },
-
-    banner: {
-        backgroundColor: colors.palette.sunburn,
     },
 
     content: {

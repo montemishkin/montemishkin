@@ -24,7 +24,6 @@ export default class NotFound extends Component {
                 ]}
             >
                 <Banner
-                    style={styles.banner}
                     Icon={props => <MainLogo {...props} />}
                     title='Not Found'
                     subtitle="hmm... there's nothing here!"

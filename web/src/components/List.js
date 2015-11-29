@@ -9,8 +9,13 @@ import radium from 'radium'
 @radium
 export default class List extends Component {
     static propTypes = {
-        style: PropTypes.object,
-        listItemStyle: PropTypes.object,
+        listItemStyle: PropTypes.oneOfType([
+            PropTypes.object,
+            PropTypes.arrayOf(PropTypes.oneOfType([
+                PropTypes.bool,
+                PropTypes.object,
+            ])),
+        ]),
     }
 
 

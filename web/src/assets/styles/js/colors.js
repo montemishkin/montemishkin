@@ -7,19 +7,42 @@ import random from 'lodash/number/random'
 
 
 const colors = {
+    primary: {
+        main: '#37598b',
+        inverse: '#eceff1',
+        interactive: '#000000',
+    },
+
+    secondary: {
+        main: '#44B78B',
+        inverse: '#343c3f',
+        interactive: '#9837b5',
+    },
+
+    background: {
+        main: '#e8eaee',
+        inverse: '#343c3f',
+        interactive: '#9837b5',
+    },
+
+
+
+
+
     // declarative
-    interactive: '#00A1DC',
+    interactive: '#00A1DC', // '#9837B5',
+    interactiveInverse: '#515357',
     text: '#343C3F',
     textInverse: '#E8EAEE',
-    ui: '#333435',
+    textInteractive: 'white',
+    ui: '#37598B',
     uiInverse: '#eceff1',
+    uiInteractive: 'black',
     // imperative
     palette: {
-        paleGreen: '#59B342',
-        skyBlue: '#8CB2FF',
-        sunburn: '#f1793f',
-        sand: '#f0e38f',
-        marble: '#d7d7d7',
+        green: '#44B78B',
+        // purple: '#8C64A5',
+        // blue: '#6588CE',
     },
 }
 

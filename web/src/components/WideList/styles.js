@@ -14,7 +14,7 @@ export default {
         display: 'flex',
         justifyContent: 'center',
         borderStyle: 'solid',
-        borderColor: colors.textInverse,
+        borderColor: colors.background.main,
         borderWidth: '1px 0',
         padding: '80px 0',
     },

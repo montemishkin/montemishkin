@@ -1,5 +1,7 @@
 // third party imports
 import React, {Component, PropTypes} from 'react'
+// local imports
+import colors from 'assets/styles/js/colors'
 
 
 const all = {
@@ -29,18 +31,18 @@ export default class BaseLogo extends Component {
 
 
     static defaultProps = {
-        bodyFill: 'transparent',
-        eyeFill: 'black',
-        noseFill: 'transparent',
-        wingFill: 'transparent',
-        bodyStroke: 'black',
-        eyeStroke: 'black',
-        noseStroke: 'black',
-        wingStroke: 'black',
-        leftLegStroke: 'black',
-        leftFootStroke: 'black',
-        rightLegStroke: 'black',
-        rightFootStroke: 'black',
+        bodyFill: colors.primary.inverse,
+        eyeFill: colors.background.inverse,
+        noseFill: colors.primary.inverse,
+        wingFill: colors.primary.inverse,
+        bodyStroke: colors.background.inverse,
+        eyeStroke: colors.background.inverse,
+        noseStroke: colors.background.inverse,
+        wingStroke: colors.background.inverse,
+        leftLegStroke: colors.background.inverse,
+        leftFootStroke: colors.background.inverse,
+        rightLegStroke: colors.background.inverse,
+        rightFootStroke: colors.background.inverse,
     }
 
 

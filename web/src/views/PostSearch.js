@@ -6,7 +6,6 @@ import SearchView from 'components/SearchView'
 import ArticlePreview from 'components/ArticlePreview'
 import BlogLogo from 'components/Logos/Blog'
 import {nestPost} from 'util/nest'
-import colors from 'assets/styles/js/colors'
 
 
 function mapStateToProps({posts, tags}) {
@@ -49,7 +48,6 @@ export default class PostSearch extends Component {
             <SearchView
                 {...unusedProps}
                 bannerIcon={props => <BlogLogo {...props} />}
-                bannerColor={colors.palette.skyBlue}
                 title='Blog'
                 subtitle='oh yeah.'
                 items={posts}

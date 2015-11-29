@@ -24,7 +24,6 @@ function mapStateToProps({projects, tags}, {params: {slug}}) {
 export default class ProjectDetail extends Component {
     static propTypes = {
         project: PropTypes.oneOfType([PropTypes.bool, PropTypes.shape({
-            bannerColor: PropTypes.string,
             imageSrc: PropTypes.string,
             title: PropTypes.string.isRequired,
             subtitle: PropTypes.string,
@@ -38,20 +37,18 @@ export default class ProjectDetail extends Component {
     }
 
 
-    static defaultProps = {
-        // TODO: pick a default project color
-        // (maybe just brighten whatever is used for the ProjectSearch banner)
-        bannerColor: 'transparent',
-        // TODO: pick a default project image
-        imageSrc: '',
-    }
-
-
     render() {
         const {project, ...unusedProps} = this.props
 
         if (project) {
-            return <Article {...unusedProps} {...project} />
+            return (
+                <Article
+                    {...unusedProps}
+                    {...project}
+                    // TODO: pick a default project image
+                    imageSrc={project.imageSrc || ''}
+                />
+            )
         }
         return <NotFound {...unusedProps} />
     }

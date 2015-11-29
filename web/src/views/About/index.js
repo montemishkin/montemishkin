@@ -2,7 +2,6 @@
 import React, {Component} from 'react'
 import radium from 'radium'
 // local imports
-import styles from './styles'
 import Banner from 'components/Banner'
 import BaseLogo from 'components/Logos/Base'
 import ContactInfoBar from './ContactInfoBar'
@@ -19,7 +18,6 @@ export default class About extends Component {
         return (
             <div {...this.props}>
                 <Banner
-                    style={styles.banner}
                     title='Monte Mishkin'
                     subtitle='Web Developer / Friendly Person'
                     Icon={props => <BaseLogo {...props} />}

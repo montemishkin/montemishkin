@@ -1,5 +1,3 @@
-// third party imports
-import chroma from 'chroma-js'
 // local imports
 import colors from 'assets/styles/js/colors'
 import {
@@ -17,6 +15,7 @@ export default {
         display: 'flex',
         justifyContent: 'center',
         padding: `${spacing}px 0`,
+        backgroundColor: colors.secondary.main,
     },
 
     innerContainer: {
@@ -34,14 +33,14 @@ export default {
 
     title: {
         fontSize: largestFontSize,
-        color: colors.text,
+        color: colors.background.inverse,
         textAlign: 'center',
         margin: `${spacing}px 0 0 0`,
     },
 
     subtitle: {
         fontSize: largeFontSize,
-        color: chroma(colors.text).brighten().css(),
+        color: colors.background.inverse,
         fontWeight: 'normal',
         textAlign: 'center',
         margin: `${spacing / 2}px 0 ${spacing}px 0`,

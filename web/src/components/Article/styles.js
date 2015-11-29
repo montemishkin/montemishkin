@@ -7,6 +7,13 @@ import {
 
 
 export default {
+    infoBar: {
+        width: '100%',
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+    },
+
     contentContainer: {
         display: 'flex',
         justifyContent: 'center',
