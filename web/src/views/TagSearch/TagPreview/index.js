@@ -28,29 +28,27 @@ export default class Tag extends Component {
         } = this.props
 
         return (
-            <div
+            <Link
                 {...unusedProps}
                 style={[
                     styles.container,
                     style,
                 ]}
+                to={link}
             >
-                <Link
-                    to={link}
-                    style={styles.link}
-                >
+                <div style={styles.titleBar}>
                     <i
                         style={styles.icon}
                         className='fa fa-tag'
                     />
-                    <h3 style={styles.title}>
+                    <span style={styles.title}>
                         {title}
-                    </h3>
-                </Link>
+                    </span>
+                </div>
                 <span style={styles.description}>
                     {description}
                 </span>
-            </div>
+            </Link>
         )
     }
 }

@@ -44,7 +44,7 @@ export default {
     },
 
     navLink: {
-        ...classes.uiLinkHoverable,
+        ...classes.interactive.primary,
         color: colors.primary.inverse,
         display: 'inline-block',
         padding: spacing,
@@ -89,7 +89,8 @@ export default {
     },
 
     emailLink: {
-        ...classes.uiLinkHoverable,
+        ...classes.interactive.primary,
+        textDecoration: 'none',
         color: colors.primary.inverse,
         display: 'inline-block',
     },

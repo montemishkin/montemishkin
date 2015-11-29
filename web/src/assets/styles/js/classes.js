@@ -12,49 +12,26 @@ const transitionParameters = {
     transitionTimingFunction: 'ease-in-out',
 }
 
-// base styling common to all link styles
-const linkBase = {
-    textDecoration: 'none',
+
+function createInteractiveClass({interactive}) {
+    return {
+        ...transitionParameters,
+        transitionProperty: 'color',
+        ':hover': {
+            color: interactive,
+        },
+        ':focus': {
+            color: interactive,
+        },
+    }
 }
-
-// styling for links that change color on hover
-const linkHoverable = {
-    ...linkBase,
-    ...transitionParameters,
-    // display: 'flex',
-    transitionProperty: 'color',
-    cursor: 'pointer',
-
-    ':hover': {
-        color: colors.textInteractive,
-    },
-
-    ':focus': {
-        color: colors.textInteractive,
-    },
-}
-
-// styling for ui links that change color on hover
-const uiLinkHoverable = {
-    ...linkBase,
-    ...transitionParameters,
-    // display: 'flex',
-    transitionProperty: 'color',
-    cursor: 'pointer',
-
-    ':hover': {
-        color: colors.uiInteractive,
-    },
-
-    ':focus': {
-        color: colors.uiInteractive,
-    },
-}
-
 
 
 export default {
     transitionParameters,
-    linkHoverable,
-    uiLinkHoverable,
+    interactive: {
+        primary: createInteractiveClass(colors.primary),
+        secondary: createInteractiveClass(colors.secondary),
+        background: createInteractiveClass(colors.background),
+    },
 }

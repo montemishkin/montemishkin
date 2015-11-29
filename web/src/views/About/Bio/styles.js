@@ -103,7 +103,7 @@ export default {
 
 
     link: {
-        ...classes.linkHoverable,
-        color: chroma(colors.background.inverse).brighten(2).css(),
+        color: colors.background.interactive,
+        textDecoration: 'underline',
     },
 }

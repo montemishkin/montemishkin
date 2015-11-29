@@ -29,6 +29,9 @@ export default {
     icon: {
         maxHeight: 150,
         fontSize: '150px',
+        borderStyle: 'solid',
+        borderWidth: 0,
+        borderRadius: 7,
     },
 
     title: {

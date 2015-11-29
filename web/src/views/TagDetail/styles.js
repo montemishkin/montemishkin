@@ -10,7 +10,7 @@ export default {
         width: '100%',
         padding: 20,
         cursor: 'pointer',
-        ...classes.linkHoverable,
+        ...classes.interactive.background,
     },
 
 

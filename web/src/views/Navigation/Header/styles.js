@@ -56,7 +56,7 @@ export default {
     },
 
     link: {
-        ...classes.uiLinkHoverable,
+        ...classes.interactive.primary,
         fontSize: largeFontSize,
         color: colors.primary.inverse,
         display: 'inline-block',
