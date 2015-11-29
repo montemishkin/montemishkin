@@ -19,10 +19,22 @@ export default class Tag extends Component {
 
 
     render() {
-        const {link, title, description} = this.props
+        const {
+            link,
+            title,
+            description,
+            style,
+            ...unusedProps,
+        } = this.props
 
         return (
-            <div style={styles.container}>
+            <div
+                {...unusedProps}
+                style={[
+                    styles.container,
+                    style,
+                ]}
+            >
                 <Link
                     to={link}
                     style={styles.link}

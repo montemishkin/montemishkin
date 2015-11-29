@@ -42,10 +42,12 @@ export default class PostSearch extends Component {
         const {
             location: {query: {search: initialSearchText}},
             posts,
+            ...unusedProps,
         } = this.props
 
         return (
             <SearchView
+                {...unusedProps}
                 bannerIcon={props => <BlogLogo {...props} />}
                 bannerColor={colors.palette.skyBlue.css()}
                 title='Blog'

@@ -64,10 +64,10 @@ export default class ArticlePreview extends Component {
 
         return (
             <section
-                style={{
-                    ...styles.container,
-                    ...style,
-                }}
+                style={[
+                    styles.container,
+                    style,
+                ]}
                 {...unusedProps}
             >
                 <Link

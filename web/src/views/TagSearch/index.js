@@ -38,10 +38,12 @@ export default class TagSearch extends Component {
         const {
             location: {query: {search: initialSearchText}},
             tags,
+            ...unusedProps,
         } = this.props
 
         return (
             <SearchView
+                {...unusedProps}
                 bannerIcon={props => <MainLogo {...props} />}
                 bannerColor={colors.palette.sand.css()}
                 title='Tags'

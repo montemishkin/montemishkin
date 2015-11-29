@@ -33,10 +33,10 @@ export default class ArticleInfoBar extends Component {
 
         return (
             <div
-                style={{
-                    ...styles.container,
-                    ...style,
-                }}
+                style={[
+                    styles.container,
+                    style,
+                ]}
                 {...unusedProps}
             >
                 <TagList tags={tags} />

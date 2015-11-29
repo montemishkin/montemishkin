@@ -75,7 +75,7 @@ export default class TagDetail extends Component {
 
 
     get notFoundContent() {
-        return <NotFound />
+        return <NotFound {...this.props} />
     }
 
 
@@ -84,6 +84,7 @@ export default class TagDetail extends Component {
             tag: {title, description},
             projects,
             posts,
+            ...unusedProps,
         } = this.props
 
         // default to having projects tab start as active
@@ -95,7 +96,7 @@ export default class TagDetail extends Component {
         }
 
         return (
-            <section>
+            <section {...unusedProps}>
                 <Banner
                     style={{backgroundColor: colors.palette.sand.css()}}
                     Icon={props => <i {...props} className='fa fa-tag' />}

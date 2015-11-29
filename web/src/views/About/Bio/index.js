@@ -13,8 +13,15 @@ import DjangoLogo from 'components/Logos/Django'
 @radium
 export default class Bio extends Component {
     render() {
+        const {style, ...unusedProps} = this.props
         return (
-            <article style={styles.container}>
+            <article
+                {...unusedProps}
+                style={[
+                    styles.container,
+                    style,
+                ]}
+            >
                 <section style={styles.section}>
                     <h3 style={styles.sectionTitle}>
                         Hello

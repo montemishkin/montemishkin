@@ -92,7 +92,13 @@ export default class Footer extends Component {
         if (isLessThanInfinity) {
             // stack the content with the logo on top
             return (
-                <footer style={styles.containerMedium}>
+                <footer
+                    {...this.props}
+                    style={[
+                        styles.containerMedium,
+                        this.props.style,
+                    ]}
+                >
                     {logoLink}
                     {list}
                     {copyright}
@@ -102,7 +108,13 @@ export default class Footer extends Component {
         // otherwise the viewport is larger than medium width
         // so spread the content out with the logo in the middle
         return (
-            <footer style={styles.containerInfinity}>
+            <footer
+                {...this.props}
+                style={[
+                    styles.containerInfinity,
+                    this.props.style,
+                ]}
+            >
                 {list}
                 {logoLink}
                 {copyright}

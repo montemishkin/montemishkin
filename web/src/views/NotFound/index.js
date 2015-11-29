@@ -13,8 +13,16 @@ import MainLogo from 'components/Logos/Main'
 @radium
 export default class NotFound extends Component {
     render() {
+        const {style, ...unusedProps} = this.props
+
         return (
-            <article style={styles.container}>
+            <article
+                {...unusedProps}
+                style={[
+                    styles.container,
+                    style,
+                ]}
+            >
                 <Banner
                     style={styles.banner}
                     Icon={props => <MainLogo {...props} />}

@@ -28,10 +28,10 @@ export default class WideList extends Component {
         return (
             <List
                 {...unusedProps}
-                style={{
-                    ...styles.list,
-                    ...style,
-                }}
+                style={[
+                    styles.list,
+                    style,
+                ]}
                 listItemStyle={{
                     ...styles.listItem,
                     ...listItemStyle,

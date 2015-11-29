@@ -30,6 +30,7 @@ export default class TagList extends Component {
 
         return (
             <div
+                {...unusedProps}
                 style={[
                     styles.container,
                     style,

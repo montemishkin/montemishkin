@@ -48,11 +48,11 @@ export default class ProjectDetail extends Component {
 
 
     render() {
-        const {project} = this.props
+        const {project, ...unusedProps} = this.props
 
         if (project) {
-            return <Article {...project} />
+            return <Article {...unusedProps} {...project} />
         }
-        return <NotFound />
+        return <NotFound {...unusedProps} />
     }
 }

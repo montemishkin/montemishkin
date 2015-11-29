@@ -12,8 +12,15 @@ import Logo from 'components/Logos/Main'
 @radium
 export default class Header extends Component {
     render() {
+        const {style, ...unusedProps} = this.props
         return (
-            <nav style={styles.container}>
+            <nav
+                {...unusedProps}
+                style={[
+                    styles.container,
+                    style,
+                ]}
+            >
                 <IndexLink to='/' style={styles.logoLink}>
                     <Logo
                         style={styles.logo}

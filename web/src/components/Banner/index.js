@@ -29,10 +29,10 @@ export default class Banner extends Component {
         return (
             <header
                 {...unusedProps}
-                style={{
-                    ...styles.outerContainer,
-                    ...style,
-                }}
+                style={[
+                    styles.outerContainer,
+                    style,
+                ]}
             >
                 <div style={styles.innerContainer}>
                     {Icon && (

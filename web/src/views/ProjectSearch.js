@@ -42,10 +42,12 @@ export default class ProjectSearch extends Component {
         const {
             location: {query: {search: initialSearchText}},
             projects,
+            ...unusedProps,
         } = this.props
 
         return (
             <SearchView
+                {...unusedProps}
                 bannerIcon={props => <ProjectsLogo {...props} />}
                 bannerColor={colors.palette.sunburn.css()}
                 title='Projects'

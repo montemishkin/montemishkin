@@ -15,8 +15,9 @@ import Bio from './Bio'
 @radium
 export default class About extends Component {
     render() {
+
         return (
-            <div>
+            <div {...this.props}>
                 <Banner
                     style={styles.banner}
                     title='Monte Mishkin'

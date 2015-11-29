@@ -34,8 +34,15 @@ const contactData = [
 @radium
 export default class ContactInfoBar extends Component {
     render() {
+        const {style, ...unusedProps} = this.props
         return (
-            <address style={styles.container}>
+            <address
+                {...unusedProps}
+                style={[
+                    styles.container,
+                    style,
+                ]}
+            >
                 <List style={styles.list} listItemStyle={styles.listItem}>
                     {contactData.map(({caption, href, icon}, key) => (
                         <a

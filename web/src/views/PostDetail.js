@@ -48,11 +48,11 @@ export default class PostDetail extends Component {
 
 
     render() {
-        const {post} = this.props
+        const {post, ...unusedProps} = this.props
 
         if (post) {
-            return <Article {...post} />
+            return <Article {...unusedProps} {...post} />
         }
-        return <NotFound />
+        return <NotFound {...unusedProps} />
     }
 }
