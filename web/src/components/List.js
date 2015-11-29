@@ -20,15 +20,41 @@ export default class List extends Component {
 
 
     render() {
-        const {listItemStyle, children, ...unusedProps} = this.props
+        const {
+            listItemStyle,
+            firstListItemStyle,
+            lastListItemStyle,
+            children,
+            ...unusedProps,
+        } = this.props
+
+        const count = React.Children.count(children)
 
         return (
             <ul {...unusedProps}>
-                {React.Children.map(children, (child, key) => (
-                    <li style={listItemStyle} key={key}>
-                        {child}
-                    </li>
-                ))}
+                {React.Children.map(children, (child, key) => {
+                    let liStyle = listItemStyle
+                    // if this is first list item
+                    if (key === 0) {
+                        liStyle = [
+                            listItemStyle,
+                            firstListItemStyle,
+                        ]
+                    // if this is last list item
+                    } else if (key === count - 1) {
+                        liStyle = [
+                            listItemStyle,
+                            lastListItemStyle,
+                        ]
+
+                    }
+
+                    return (
+                        <li style={liStyle} key={key}>
+                            {child}
+                        </li>
+                    )
+                })}
             </ul>
         )
     }

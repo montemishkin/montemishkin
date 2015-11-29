@@ -10,6 +10,7 @@
     - overall accessibility
 
 - styling
+    - 1px black border to bottom of banner and top of footer?
     - sections in Bio and items in WideList should get width and maxWidth styles to match content of detail views
     - pass window width from request to redux store initial state so that react doesn't complain that components connected to store.browser rendered differently on server vs client
     - use radium media queries?
