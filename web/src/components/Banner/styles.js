@@ -1,3 +1,5 @@
+// third party imports
+import chroma from 'chroma-js'
 // local imports
 import colors from 'assets/styles/js/colors'
 import {
@@ -32,14 +34,14 @@ export default {
 
     title: {
         fontSize: largestFontSize,
-        color: colors.text.css(),
+        color: colors.text,
         textAlign: 'center',
         margin: `${spacing}px 0 0 0`,
     },
 
     subtitle: {
         fontSize: largeFontSize,
-        color: colors.text.brighten().css(),
+        color: chroma(colors.text).brighten().css(),
         fontWeight: 'normal',
         textAlign: 'center',
         margin: `${spacing / 2}px 0 ${spacing}px 0`,

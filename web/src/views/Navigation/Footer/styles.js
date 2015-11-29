@@ -1,3 +1,5 @@
+// third party imports
+import chroma from 'chroma-js'
 // local imports
 import classes from 'assets/styles/js/classes'
 import colors from 'assets/styles/js/colors'
@@ -5,10 +7,10 @@ import colors from 'assets/styles/js/colors'
 
 const spacing = 25
 const containerBase = {
-    color: colors.text.brighten(2).css(),
     display: 'flex',
     alignItems: 'center',
-    backgroundColor: colors.ui.css(),
+    color: chroma(colors.uiInverse).darken().css(),
+    backgroundColor: colors.ui,
 }
 const listBase = {
     display: 'flex',
@@ -43,7 +45,7 @@ export default {
 
     navLink: {
         ...classes.linkHoverable,
-        color: colors.text.brighten(3).css(),
+        color: colors.uiInverse,
         display: 'inline-block',
         padding: spacing,
     },
@@ -69,7 +71,7 @@ export default {
 
     emailLink: {
         ...classes.linkHoverable,
-        color: colors.text.brighten(3).css(),
+        color: colors.uiInverse,
         display: 'inline-block',
     },
 }

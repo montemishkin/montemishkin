@@ -40,13 +40,13 @@ export default class Footer extends Component {
         const list = (
             <List style={listStyle}>
                 <Link to='/' style={styles.navLink}>
-                    about
+                    About
                 </Link>
                 <Link to='/projects' style={styles.navLink}>
-                    projects
+                    Projects
                 </Link>
                 <Link to='/posts' style={styles.navLink}>
-                    blog
+                    Blog
                 </Link>
             </List>
         )

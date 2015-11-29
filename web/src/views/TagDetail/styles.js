@@ -23,9 +23,8 @@ export default {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        // TODO: move to colors.js
-        backgroundColor: colors.ui.css(),
-        color: colors.uiText.css(),
+        backgroundColor: colors.ui,
+        color: colors.uiInverse,
         border: '0px solid black',
         borderRadius: 10,
         padding: '0 10px',

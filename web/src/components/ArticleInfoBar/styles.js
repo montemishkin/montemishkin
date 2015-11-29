@@ -11,6 +11,6 @@ export default {
     },
 
     creationDate: {
-        color: colors.text.css(),
+        color: colors.text,
     },
 }

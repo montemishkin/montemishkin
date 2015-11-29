@@ -13,10 +13,10 @@ export default {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: `0 ${spacing}px`,
-        backgroundColor: colors.ui.css(),
+        backgroundColor: colors.ui,
         borderWidth: '0 0 1px 0',
         borderStyle: 'solid',
-        borderColor: colors.uiText.css(),
+        borderColor: colors.uiInverse,
     },
 
     logoLink: {
@@ -37,7 +37,7 @@ export default {
     link: {
         ...classes.linkHoverable,
         fontSize: largeFontSize,
-        color: colors.text.brighten(3).css(),
+        color: colors.uiInverse,
         display: 'inline-block',
         padding: spacing,
     },

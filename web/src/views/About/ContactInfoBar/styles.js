@@ -27,7 +27,7 @@ export default {
 
     link: {
         ...classes.linkHoverable,
-        color: colors.text.css(),
+        color: colors.text,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

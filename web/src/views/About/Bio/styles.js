@@ -1,3 +1,5 @@
+// third party imports
+import chroma from 'chroma-js'
 // local imports
 import classes from 'assets/styles/js/classes'
 import colors from 'assets/styles/js/colors'
@@ -7,6 +9,9 @@ import {
     contentVerticalPadding,
     largerFontSize,
 } from 'assets/styles/js/numerics'
+
+
+const interactiveColor = chroma(colors.interactive)
 
 
 export default {
@@ -73,16 +78,16 @@ export default {
 
         ...classes.transitionParameters,
         transitionProperty: 'border-color',
-        borderColor: colors.interactive.alpha(0).css(),
+        borderColor: interactiveColor.alpha(0).css(),
         borderWidth: 1,
         borderStyle: 'solid',
 
         ':hover': {
-            borderColor: colors.interactive.alpha(1).css(),
+            borderColor: interactiveColor.alpha(1).css(),
         },
 
         ':focus': {
-            borderColor: colors.interactive.alpha(1).css(),
+            borderColor: interactiveColor.alpha(1).css(),
         },
     },
 
@@ -99,6 +104,6 @@ export default {
 
     link: {
         ...classes.linkHoverable,
-        color: colors.text.brighten(2).css(),
+        color: chroma(colors.text).brighten(2).css(),
     },
 }

@@ -49,7 +49,7 @@ export default class ProjectSearch extends Component {
             <SearchView
                 {...unusedProps}
                 bannerIcon={props => <ProjectsLogo {...props} />}
-                bannerColor={colors.palette.sunburn.css()}
+                bannerColor={colors.palette.sunburn}
                 title='Projects'
                 subtitle='check em out.'
                 items={projects}

@@ -45,7 +45,7 @@ export default class TagSearch extends Component {
             <SearchView
                 {...unusedProps}
                 bannerIcon={props => <MainLogo {...props} />}
-                bannerColor={colors.palette.sand.css()}
+                bannerColor={colors.palette.sand}
                 title='Tags'
                 subtitle='gotta love em.'
                 items={tags}

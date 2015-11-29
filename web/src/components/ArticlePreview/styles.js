@@ -1,3 +1,5 @@
+// third party imports
+import chroma from 'chroma-js'
 // local imports
 import classes from 'assets/styles/js/classes'
 import colors from 'assets/styles/js/colors'
@@ -42,21 +44,21 @@ export default {
 
     title: {
         ...titleBase,
-        color: colors.text.css(),
+        color: colors.text,
     },
 
     titleHovered: {
         ...titleBase,
-        color: colors.interactive.css(),
+        color: colors.interactive,
     },
 
     subtitle: {
         ...subtitleBase,
-        color: colors.text.brighten(2).css(),
+        color: chroma(colors.text).brighten().css(),
     },
 
     subtitleHovered: {
         ...subtitleBase,
-        color: colors.interactive.css(),
+        color: colors.interactive,
     },
 }

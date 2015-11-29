@@ -5,7 +5,7 @@ import {mainFontSize} from 'assets/styles/js/numerics'
 
 export default {
     container: {
-        color: colors.text.css(),
+        color: colors.text,
         fontSize: mainFontSize,
         display: 'flex',
         flexDirection: 'column',

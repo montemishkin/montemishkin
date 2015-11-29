@@ -26,11 +26,11 @@ export const linkHoverable = {
     cursor: 'pointer',
 
     ':hover': {
-        color: colors.interactive.css(),
+        color: colors.interactive,
     },
 
     ':focus': {
-        color: colors.interactive.css(),
+        color: colors.interactive,
     },
 }
 

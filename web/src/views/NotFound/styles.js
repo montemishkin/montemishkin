@@ -9,7 +9,7 @@ export default {
     },
 
     banner: {
-        backgroundColor: colors.palette.sunburn.css(),
+        backgroundColor: colors.palette.sunburn,
     },
 
     content: {

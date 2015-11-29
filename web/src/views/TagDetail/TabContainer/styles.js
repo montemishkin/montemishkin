@@ -1,5 +1,8 @@
+// third party imports
+import chroma from 'chroma-js'
 // local imports
 import classes from 'assets/styles/js/classes'
+import colors from 'assets/styles/js/colors'
 
 
 // base styling for tab titles
@@ -33,7 +36,6 @@ export default {
 
     tabTitleActive: {
         ...tabTitleBase,
-        // TODO: move to styles/js/colors.js
-        backgroundColor: '#999',
+        backgroundColor: chroma(colors.textInverse).darken().css(),
     },
 }

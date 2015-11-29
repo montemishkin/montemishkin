@@ -18,13 +18,13 @@ export default {
         outlineOffset: -1,
         outlineStyle: 'solid',
         outlineColor: 'black',
-        backgroundColor: colors.ui.css(),
-        color: colors.uiText.css(),
+        backgroundColor: colors.ui,
+        color: colors.uiInverse,
         border: 0,
         padding: '5px 0',
 
         ':focus': {
-            outlineColor: colors.uiText.css(),
+            outlineColor: colors.uiInverse,
         },
     },
 

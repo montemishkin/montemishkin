@@ -44,13 +44,13 @@ export default class Header extends Component {
                 </IndexLink>
                 <List style={styles.list}>
                     <Link to='/' style={styles.link}>
-                        about
+                        About
                     </Link>
                     <Link to='/projects' style={styles.link}>
-                        projects
+                        Projects
                     </Link>
                     <Link to='/posts' style={styles.link}>
-                        blog
+                        Blog
                     </Link>
                 </List>
             </nav>

@@ -27,6 +27,6 @@ export default {
 
     link: {
         ...classes.linkHoverable,
-        color: colors.text.css(),
+        color: colors.text,
     },
 }

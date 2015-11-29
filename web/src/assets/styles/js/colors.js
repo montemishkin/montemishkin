@@ -3,24 +3,23 @@
  */
 
 // third party imports
-import chroma from 'chroma-js'
 import random from 'lodash/number/random'
 
 
 const colors = {
     // declarative
-    interactive: chroma('#00A1DC'),
-    text: chroma('#343C3F'),
-    ui: chroma('#333435'),
-    uiText: chroma('#eceff1'),    // `uiInverse` a better name?
-    background: chroma('#E8EAEE'),
+    interactive: '#00A1DC',
+    text: '#343C3F',
+    textInverse: '#E8EAEE',
+    ui: '#333435',
+    uiInverse: '#eceff1',
     // imperative
     palette: {
-        paleGreen: chroma('#59B342'),
-        skyBlue: chroma('#8CB2FF'),
-        sunburn: chroma('#f1793f'),
-        sand: chroma('#f0e38f'),
-        marble: chroma('#d7d7d7'),
+        paleGreen: '#59B342',
+        skyBlue: '#8CB2FF',
+        sunburn: '#f1793f',
+        sand: '#f0e38f',
+        marble: '#d7d7d7',
     },
 }
 

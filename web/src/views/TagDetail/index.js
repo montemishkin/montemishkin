@@ -98,7 +98,7 @@ export default class TagDetail extends Component {
         return (
             <section {...unusedProps}>
                 <Banner
-                    style={{backgroundColor: colors.palette.sand.css()}}
+                    style={{backgroundColor: colors.palette.sand}}
                     Icon={props => <i {...props} className='fa fa-tag' />}
                     title={title}
                     subtitle={description}
