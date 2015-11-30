@@ -22,7 +22,7 @@ class CustomRenderer(mistune.Renderer):
 
     def header(self, text, level, raw):
         slug = slugify(text)
-        return '<div><a href="#{slug}">++</a><h{level} id="{slug}">{text}</h{level}></div>'.format(
+        return '<h{level} id="{slug}">{text} <a href="#{slug}"><i class="fa fa-hashtag"></i></a></h{level}>'.format(
             level=level,
             text=text,
             slug=slug
