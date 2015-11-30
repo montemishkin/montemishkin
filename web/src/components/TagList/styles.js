@@ -26,7 +26,7 @@ export default {
     },
 
     link: {
-        ...classes.linkHoverable,
-        color: colors.text,
+        ...classes.interactive.background,
+        color: colors.background.inverse,
     },
 }

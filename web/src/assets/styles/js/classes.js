@@ -7,36 +7,31 @@ import colors from './colors'
 
 
 // parameters (everything except transitionProperty) for css transitions
-export const transitionParameters = {
+const transitionParameters = {
     transitionDuration: '0.2s',
     transitionTimingFunction: 'ease-in-out',
 }
 
-// base styling common to all link styles
-export const linkBase = {
-    textDecoration: 'none',
+
+function createInteractiveClass({interactive}) {
+    return {
+        ...transitionParameters,
+        transitionProperty: 'color',
+        ':hover': {
+            color: interactive,
+        },
+        ':focus': {
+            color: interactive,
+        },
+    }
 }
-
-// styling for links that change color on hover
-export const linkHoverable = {
-    ...linkBase,
-    ...transitionParameters,
-    // display: 'flex',
-    transitionProperty: 'color',
-    cursor: 'pointer',
-
-    ':hover': {
-        color: colors.interactive,
-    },
-
-    ':focus': {
-        color: colors.interactive,
-    },
-}
-
 
 
 export default {
     transitionParameters,
-    linkHoverable,
+    interactive: {
+        primary: createInteractiveClass(colors.primary),
+        secondary: createInteractiveClass(colors.secondary),
+        background: createInteractiveClass(colors.background),
+    },
 }

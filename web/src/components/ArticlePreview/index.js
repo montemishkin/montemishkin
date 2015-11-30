@@ -4,7 +4,8 @@ import radium from 'radium'
 // local imports
 import styles from './styles'
 import Link from 'components/Link'
-import ArticleInfoBar from 'components/ArticleInfoBar'
+import TagList from 'components/TagList'
+import FormattedDate from 'components/FormattedDate'
 
 
 /**
@@ -87,11 +88,10 @@ export default class ArticlePreview extends Component {
                         </span>
                     )}
                 </Link>
-                <ArticleInfoBar
-                    style={styles.infoBar}
-                    creationDate={creationDate}
-                    tags={tags}
-                />
+                <div style={styles.infoBar}>
+                    <TagList tags={tags} />
+                    <FormattedDate date={creationDate} />
+                </div>
             </section>
         )
     }

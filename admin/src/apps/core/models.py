@@ -2,7 +2,6 @@
 from django.db import models
 from taggit.managers import TaggableManager
 from taggit.models import TagBase, GenericTaggedItemBase
-from colorful.fields import RGBColorField
 
 
 # see: https://django-taggit.readthedocs.org/en/latest/custom_tagging.html
@@ -29,7 +28,6 @@ class Article(models.Model):
     tags = TaggableManager(through=TaggedItem)
     content = models.TextField()
     bannerImage = models.ImageField()
-    bannerColor = RGBColorField()
 
     class Meta:
         abstract = True

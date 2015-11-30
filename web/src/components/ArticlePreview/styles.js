@@ -35,6 +35,10 @@ export default {
     },
 
     infoBar: {
+        width: '100%',
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
         padding: '7px 0',
     },
 
@@ -44,21 +48,21 @@ export default {
 
     title: {
         ...titleBase,
-        color: colors.text,
+        color: colors.background.inverse,
     },
 
     titleHovered: {
         ...titleBase,
-        color: colors.interactive,
+        color: colors.background.interactive,
     },
 
     subtitle: {
         ...subtitleBase,
-        color: chroma(colors.text).brighten().css(),
+        color: chroma(colors.background.inverse).brighten().css(),
     },
 
     subtitleHovered: {
         ...subtitleBase,
-        color: colors.interactive,
+        color: colors.background.interactive,
     },
 }

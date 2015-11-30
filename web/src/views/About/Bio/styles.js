@@ -11,7 +11,7 @@ import {
 } from 'assets/styles/js/numerics'
 
 
-const interactiveColor = chroma(colors.interactive)
+const interactiveColor = chroma(colors.background.interactive)
 
 
 export default {
@@ -103,7 +103,7 @@ export default {
 
 
     link: {
-        ...classes.linkHoverable,
-        color: chroma(colors.text).brighten(2).css(),
+        color: colors.background.interactive,
+        textDecoration: 'underline',
     },
 }

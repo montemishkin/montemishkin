@@ -2,33 +2,23 @@
  * Site-wide color scheme.
  */
 
-// third party imports
-import random from 'lodash/number/random'
 
+export default {
+    primary: {
+        main: '#37598b',
+        inverse: '#e8eaee',
+        interactive: '#000000',
+    },
 
-const colors = {
-    // declarative
-    interactive: '#00A1DC',
-    text: '#343C3F',
-    textInverse: '#E8EAEE',
-    ui: '#333435',
-    uiInverse: '#eceff1',
-    // imperative
-    palette: {
-        paleGreen: '#59B342',
-        skyBlue: '#8CB2FF',
-        sunburn: '#f1793f',
-        sand: '#f0e38f',
-        marble: '#d7d7d7',
+    secondary: {
+        main: '#44B78B',
+        inverse: '#343c3f',
+        interactive: '#e8eaee',
+    },
+
+    background: {
+        main: '#e8eaee',
+        inverse: '#343c3f',
+        interactive: '#00A1DC',
     },
 }
-
-
-colors.palette.random = () => {
-    const keys = Object.keys(colors.palette).filter(key => key !== 'random')
-
-    return colors.palette[keys[random(keys.length - 1)]]
-}
-
-
-export default colors

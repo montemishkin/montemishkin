@@ -17,14 +17,14 @@ export default {
         outlineWidth: 1,
         outlineOffset: -1,
         outlineStyle: 'solid',
-        outlineColor: 'black',
-        backgroundColor: colors.ui,
-        color: colors.uiInverse,
+        outlineColor: colors.primary.inverse,
+        backgroundColor: colors.primary.main,
+        color: colors.primary.inverse,
         border: 0,
         padding: '5px 0',
 
         ':focus': {
-            outlineColor: colors.uiInverse,
+            outlineColor: colors.primary.interactive,
         },
     },
 

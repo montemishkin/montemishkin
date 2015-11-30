@@ -26,8 +26,9 @@ export default {
     },
 
     link: {
-        ...classes.linkHoverable,
-        color: colors.text,
+        ...classes.interactive.secondary,
+        textDecoration: 'none',
+        color: colors.background.inverse,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

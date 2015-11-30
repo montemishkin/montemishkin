@@ -5,7 +5,8 @@ import radium from 'radium'
 // local imports
 import styles from './styles'
 import Banner from 'components/Banner'
-import ArticleInfoBar from 'components/ArticleInfoBar'
+import TagList from 'components/TagList'
+import FormattedDate from 'components/FormattedDate'
 import MarkdownContainer from 'components/MarkdownContainer'
 
 
@@ -29,7 +30,6 @@ export default class Article extends Component {
     static propTypes = {
         style: PropTypes.object,
         // valid css color
-        bannerColor: PropTypes.string,
         imageSrc: PropTypes.string,
         title: PropTypes.string.isRequired,
         subtitle: PropTypes.string,
@@ -44,7 +44,6 @@ export default class Article extends Component {
 
 
     static defaultProps = {
-        bannerColor: 'transparent',
         // TODO: get a default image
         imageSrc: '',
     }
@@ -52,7 +51,6 @@ export default class Article extends Component {
 
     render() {
         const {
-            bannerColor,
             imageSrc,
             title,
             subtitle,
@@ -65,15 +63,21 @@ export default class Article extends Component {
         return (
             <article {...unusedProps}>
                 <Banner
-                    style={{backgroundColor: bannerColor}}
                     Icon={props => <img {...props} src={imageSrc} />}
                     title={title}
                     subtitle={subtitle}
                 >
-                    <ArticleInfoBar
-                        creationDate={creationDate}
-                        tags={tags}
-                    />
+                    <div style={styles.infoBar}>
+                        <TagList
+                            style={styles.tagList}
+                            linkStyle={styles.tagListLink}
+                            tags={tags}
+                        />
+                        <FormattedDate
+                            style={styles.creationDate}
+                            date={creationDate}
+                        />
+                    </div>
                 </Banner>
                 <section style={styles.contentContainer}>
                     <MarkdownContainer style={styles.content}>

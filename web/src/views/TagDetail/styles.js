@@ -10,7 +10,7 @@ export default {
         width: '100%',
         padding: 20,
         cursor: 'pointer',
-        ...classes.linkHoverable,
+        ...classes.interactive.background,
     },
 
 
@@ -23,8 +23,8 @@ export default {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.ui,
-        color: colors.uiInverse,
+        backgroundColor: colors.primary.main,
+        color: colors.primary.inverse,
         border: '0px solid black',
         borderRadius: 10,
         padding: '0 10px',

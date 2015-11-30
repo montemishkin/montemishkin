@@ -10,7 +10,6 @@ import NotFound from 'views/NotFound'
 import ArticlePreview from 'components/ArticlePreview'
 import Banner from 'components/Banner'
 import {nestProject, nestPost} from 'util/nest'
-import colors from 'assets/styles/js/colors'
 
 
 // TODO: this should be a reselect selector
@@ -98,7 +97,6 @@ export default class TagDetail extends Component {
         return (
             <section {...unusedProps}>
                 <Banner
-                    style={{backgroundColor: colors.palette.sand}}
                     Icon={props => <i {...props} className='fa fa-tag' />}
                     title={title}
                     subtitle={description}

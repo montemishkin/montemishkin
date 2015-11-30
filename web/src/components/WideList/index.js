@@ -36,6 +36,7 @@ export default class WideList extends Component {
                     ...styles.listItem,
                     ...listItemStyle,
                 }}
+                firstListItemStyle={styles.listItemFirst}
             >
                 {children}
             </List>

@@ -1,9 +1,30 @@
 // third party imports
+import React, {Component} from 'react'
 import radium from 'radium'
-import {Link} from 'react-router'
+import {Link as ReactRouterLink} from 'react-router'
 
 
-/**
- * Radium wrapper over react-router Link.
- */
-export default radium(Link)
+const ReactRouterLinkWithRadium = radium(ReactRouterLink)
+
+
+@radium
+export default class Link extends Component {
+    render() {
+        const {style, children, ...unusedProps} = this.props
+
+        return (
+            <ReactRouterLinkWithRadium
+                {...unusedProps}
+                style={[
+                    {
+                        textDecoration: 'none',
+                        cursor: 'pointer',
+                    },
+                    style,
+                ]}
+            >
+                {children}
+            </ReactRouterLinkWithRadium>
+        )
+    }
+}

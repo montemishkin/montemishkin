@@ -14,8 +14,13 @@ export default {
         display: 'flex',
         justifyContent: 'center',
         borderStyle: 'solid',
-        borderColor: colors.textInverse,
-        borderWidth: '1px 0',
+        borderColor: colors.background.inverse,
+        borderWidth: '0 0 1px 0',
         padding: '80px 0',
+    },
+
+
+    listItemFirst: {
+        borderWidth: '1px 0 1px 0',
     },
 }

@@ -1,10 +1,12 @@
 // third party imports
 import React, {Component, PropTypes} from 'react'
+import chroma from 'chroma-js'
+// local imports
+import colors from 'assets/styles/js/colors'
 
 
 const all = {
     fill: 'none',
-    stroke: 'black',
     strokeWidth: 10,
     strokeLinecap: 'round',
     strokeLinejoin: 'round',
@@ -33,22 +35,22 @@ export default class MainLogo extends Component {
 
 
     static defaultProps = {
-        bodyFill: 'transparent',
-        eyeFill: 'black',
-        noseFill: 'transparent',
-        wingFill: 'transparent',
-        hatRimFill: 'transparent',
-        hatTopFill: 'transparent',
-        bodyStroke: 'black',
-        eyeStroke: 'black',
-        noseStroke: 'black',
-        wingStroke: 'black',
-        leftLegStroke: 'black',
-        leftFootStroke: 'black',
-        rightLegStroke: 'black',
-        rightFootStroke: 'black',
-        hatRimStroke: 'black',
-        hatTopStroke: 'black',
+        bodyFill: colors.primary.inverse,
+        eyeFill: colors.background.inverse,
+        noseFill: colors.primary.inverse,
+        wingFill: colors.primary.inverse,
+        hatRimFill: chroma(colors.background.inverse).brighten().css(),
+        hatTopFill: chroma(colors.background.inverse).brighten().css(),
+        bodyStroke: colors.background.inverse,
+        eyeStroke: colors.background.inverse,
+        noseStroke: colors.background.inverse,
+        wingStroke: colors.background.inverse,
+        leftLegStroke: colors.background.inverse,
+        leftFootStroke: colors.background.inverse,
+        rightLegStroke: colors.background.inverse,
+        rightFootStroke: colors.background.inverse,
+        hatRimStroke: colors.background.inverse,
+        hatTopStroke: colors.background.inverse,
     }
 
 

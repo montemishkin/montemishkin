@@ -24,7 +24,6 @@ function mapStateToProps({posts, tags}, {params: {slug}}) {
 export default class PostDetail extends Component {
     static propTypes = {
         post: PropTypes.oneOfType([PropTypes.bool, PropTypes.shape({
-            bannerColor: PropTypes.string,
             imageSrc: PropTypes.string,
             title: PropTypes.string.isRequired,
             subtitle: PropTypes.string,
@@ -38,20 +37,18 @@ export default class PostDetail extends Component {
     }
 
 
-    static defaultProps = {
-        // TODO: pick a default post color
-        // (maybe just brighten whatever is used for the PostSearch banner)
-        bannerColor: 'transparent',
-        // TODO: pick a default post image
-        imageSrc: '',
-    }
-
-
     render() {
         const {post, ...unusedProps} = this.props
 
         if (post) {
-            return <Article {...unusedProps} {...post} />
+            return (
+                <Article
+                    {...unusedProps}
+                    {...post}
+                    // TODO: pick a default post image
+                    imageSrc={post.imageSrc || ''}
+                />
+            )
         }
         return <NotFound {...unusedProps} />
     }

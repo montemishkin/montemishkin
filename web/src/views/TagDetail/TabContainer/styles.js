@@ -12,7 +12,7 @@ const tabTitleBase = {
     width: '100%',
     padding: 20,
     cursor: 'pointer',
-    ...classes.linkHoverable,
+    ...classes.interactive.background,
 }
 
 
@@ -36,6 +36,6 @@ export default {
 
     tabTitleActive: {
         ...tabTitleBase,
-        backgroundColor: chroma(colors.textInverse).darken().css(),
+        backgroundColor: chroma(colors.background.main).darken().css(),
     },
 }

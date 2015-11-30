@@ -22,7 +22,7 @@ export default class TagList extends Component {
 
 
     render() {
-        const {tags, style, ...unusedProps} = this.props
+        const {tags, style, linkStyle, ...unusedProps} = this.props
 
         if (tags.length === 0) {
             return (<div />)
@@ -44,7 +44,10 @@ export default class TagList extends Component {
                     {tags.map((tag, key) => (
                         <Link
                             to={tag.link}
-                            style={styles.link}
+                            style={[
+                                styles.link,
+                                linkStyle,
+                            ]}
                             key={key}
                             title={tag.description}
                         >

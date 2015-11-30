@@ -1,11 +1,13 @@
 // local imports
 import classes from 'assets/styles/js/classes'
 import colors from 'assets/styles/js/colors'
-import {contentWidth, contentMaxWidth} from 'assets/styles/js/numerics'
+import {contentWidth, contentMaxWidth, largeFontSize} from 'assets/styles/js/numerics'
 
 
 export default {
     container: {
+        ...classes.interactive.background,
+        color: colors.background.inverse,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -14,18 +16,17 @@ export default {
     },
 
     icon: {
-        ...classes.largeFontSize,
+        fontSize: largeFontSize,
         paddingRight: 10,
     },
 
-    link: {
-        ...classes.linkHoverable,
-        color: colors.text,
+    titleBar: {
         display: 'flex',
         alignItems: 'center',
     },
 
     title: {
+        fontSize: largeFontSize,
         textAlign: 'center',
     },
 

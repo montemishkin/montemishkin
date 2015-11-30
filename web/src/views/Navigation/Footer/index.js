@@ -53,25 +53,7 @@ export default class Footer extends Component {
         // link to home page, contains logo
         const logoLink = (
             <IndexLink to='/' style={styles.logoLink}>
-                <Logo
-                    style={styles.logo}
-                    hatTopFill='grey'
-                    hatRimFill='grey'
-                    bodyFill='white'
-                    wingFill='white'
-                    noseFill='white'
-                    eyeFill='grey'
-                    bodyStroke='grey'
-                    eyeStroke='grey'
-                    noseStroke='grey'
-                    wingStroke='grey'
-                    leftLegStroke='grey'
-                    leftFootStroke='grey'
-                    rightLegStroke='grey'
-                    rightFootStroke='grey'
-                    hatRimStroke='grey'
-                    hatTopStroke='grey'
-                />
+                <Logo style={styles.logo} {...styles.logoProps} />
             </IndexLink>
         )
         // copyright info
