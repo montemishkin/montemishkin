@@ -7,7 +7,7 @@ export default {
     primary: {
         main: '#37598b',
         inverse: '#e8eaee',
-        interactive: '#000000',
+        interactive: '#44B78B',
     },
 
     secondary: {
