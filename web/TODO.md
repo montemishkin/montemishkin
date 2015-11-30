@@ -2,6 +2,7 @@
     - hoverable color on header bird logo
     - CSS animations on birds?
     - hash links on posts and projects
+        - functionality has been added, but needs styling
     - improve use of semantic content
     - another variation of bird logo for tag search view
     - if no image provided for a detail view then default to corresponding fa icon
