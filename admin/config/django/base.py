@@ -36,7 +36,6 @@ django_apps = (
 )
 
 third_party_apps = (
-    'colorful',
     'taggit',
 )
 

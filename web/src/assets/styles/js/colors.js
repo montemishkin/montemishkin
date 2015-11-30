@@ -6,7 +6,7 @@
 export default {
     primary: {
         main: '#37598b',
-        inverse: '#eceff1',
+        inverse: '#e8eaee',
         interactive: '#000000',
     },
 

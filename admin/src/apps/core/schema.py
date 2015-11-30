@@ -56,7 +56,6 @@ class Article(graphene.Interface):
     tags = graphene.ListField(Tag)
     content = graphene.StringField()
     bannerImage = graphene.Field(Image)
-    bannerColor = graphene.StringField()
 
     def resolve_tags(self, *args, **kwargs):
         # grab all the tags from the tag manager

@@ -93,7 +93,6 @@ server.all('*', async function (req, res) {
                         width
                         height
                     }
-                    bannerColor
                 }
             `
             // grab initial data for store from admin service
@@ -124,7 +123,6 @@ server.all('*', async function (req, res) {
             ], true), 'id').map(tag => ({...tag, title: tag.name}))
             const articleConverter = article => ({
                 slug: article.slug,
-                bannerColor: article.bannerColor,
                 imageSrc: 'http://localhost:8001' + article.bannerImage.url,
                 title: article.title,
                 subtitle: article.subtitle,

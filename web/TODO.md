@@ -2,7 +2,6 @@
     - style tabs in tag detail view more like tabs on github profile view
     - hoverable color on header bird logo
     - CSS animations on birds?
-    - what if bannerColor makes it hard to see link hover color in Article?
     - hash links on posts and projects
     - improve use of semantic content
     - another variation of bird logo for tag search view
@@ -31,8 +30,6 @@
     - rendered markdown styling
         - syntax highlight styling
     - overall DRY design of styling
-        - colors
-        - font sizes
         - magic numbers
     - react-router `Link` and `IndexLink` do not play well with radium
         - radium wrapping of `Link` does not work on `activeStyle` prop.  Thus, nav links don't transition *in* to the new background color even though they do transition *out* of it.
