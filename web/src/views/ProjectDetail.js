@@ -41,12 +41,16 @@ export default class ProjectDetail extends Component {
         const {project, ...unusedProps} = this.props
 
         if (project) {
+            // TODO: pick a default project icon
+            let BannerIcon = props => <i {...props} className='fa fa-tag' />
+            if (project.imageSrc) {
+                BannerIcon = props => <img {...props} src={project.imageSrc} />
+            }
             return (
                 <Article
                     {...unusedProps}
                     {...project}
-                    // TODO: pick a default project image
-                    imageSrc={project.imageSrc || ''}
+                    BannerIcon={BannerIcon}
                 />
             )
         }

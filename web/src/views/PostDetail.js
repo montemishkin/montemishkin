@@ -41,12 +41,16 @@ export default class PostDetail extends Component {
         const {post, ...unusedProps} = this.props
 
         if (post) {
+            // TODO: pick a default post icon
+            let BannerIcon = props => <i {...props} className='fa fa-tag' />
+            if (post.imageSrc) {
+                BannerIcon = props => <img {...props} src={post.imageSrc} />
+            }
             return (
                 <Article
                     {...unusedProps}
                     {...post}
-                    // TODO: pick a default post image
-                    imageSrc={post.imageSrc || ''}
+                    BannerIcon={BannerIcon}
                 />
             )
         }

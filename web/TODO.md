@@ -1,12 +1,14 @@
 - UI / UX
-    - hoverable color on header bird logo
+    - article search views should show more recent articles first
     - CSS animations on birds?
     - hash links on posts and projects
         - functionality has been added, but needs styling
     - improve use of semantic content
     - another variation of bird logo for tag search view
     - if no image provided for a detail view then default to corresponding fa icon
+        - functionality is in place but ridiculous hack in server.js prevents frontend from ever getting an article with an empty string as the image source
     - overall accessibility
+    - offer rss feed?
 
 - styling
     - 1px black border to bottom of banner and top of footer?

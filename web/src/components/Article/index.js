@@ -29,8 +29,8 @@ import MarkdownContainer from 'components/MarkdownContainer'
 export default class Article extends Component {
     static propTypes = {
         style: PropTypes.object,
-        // valid css color
-        imageSrc: PropTypes.string,
+        // react component
+        BannerIcon: PropTypes.func,
         title: PropTypes.string.isRequired,
         subtitle: PropTypes.string,
         // TODO: this should be a date?
@@ -51,7 +51,7 @@ export default class Article extends Component {
 
     render() {
         const {
-            imageSrc,
+            BannerIcon,
             title,
             subtitle,
             creationDate,
@@ -63,7 +63,7 @@ export default class Article extends Component {
         return (
             <article {...unusedProps}>
                 <Banner
-                    Icon={props => <img {...props} src={imageSrc} />}
+                    Icon={BannerIcon}
                     title={title}
                     subtitle={subtitle}
                 >

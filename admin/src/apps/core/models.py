@@ -24,10 +24,10 @@ class Article(models.Model):
     modified = models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=100, unique=True)
     title = models.CharField(max_length=100)
-    subtitle = models.CharField(max_length=100)
+    subtitle = models.CharField(max_length=200)
     tags = TaggableManager(through=TaggedItem)
     content = models.TextField()
-    bannerImage = models.ImageField()
+    bannerImage = models.ImageField(blank=True)
 
     class Meta:
         abstract = True
