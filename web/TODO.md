@@ -1,5 +1,4 @@
 - UI / UX
-    - style tabs in tag detail view more like tabs on github profile view
     - hoverable color on header bird logo
     - CSS animations on birds?
     - hash links on posts and projects

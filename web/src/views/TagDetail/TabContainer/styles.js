@@ -31,11 +31,14 @@ export default {
 
     tabTitle: {
         ...tabTitleBase,
+        backgroundColor: chroma(colors.background.main).darken().css(),
     },
 
 
     tabTitleActive: {
         ...tabTitleBase,
-        backgroundColor: chroma(colors.background.main).darken().css(),
+        borderStyle: 'solid',
+        borderColor: colors.background.inverse,
+        borderWidth: '1px 1px 0 1px',
     },
 }
