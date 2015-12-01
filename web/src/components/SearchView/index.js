@@ -13,6 +13,7 @@ export default class SearchView extends Component {
     static propTypes = {
         initialSearchText: PropTypes.string,
         mapItemToSearchFields: PropTypes.func,
+        sortEqualScores: PropTypes.func,
         // react component
         PreviewComponent: PropTypes.func.isRequired,
         // react component
@@ -45,11 +46,12 @@ export default class SearchView extends Component {
             props: {
                 items,
                 mapItemToSearchFields,
+                sortEqualScores,
             },
             state: {searchText},
         } = this
 
-        return search(searchText, items, mapItemToSearchFields)
+        return search(searchText, items, mapItemToSearchFields, sortEqualScores)
     }
 
 

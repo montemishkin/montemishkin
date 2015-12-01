@@ -1,5 +1,5 @@
 - UI / UX
-    - article search views should show more recent articles first
+    - tag search view should show tags with higher usage first
     - CSS animations on birds?
     - hash links on posts and projects
         - functionality has been added, but needs styling
@@ -37,6 +37,10 @@
         - radium wrapping of `Link` does not work on `activeStyle` prop.  Thus, nav links don't transition *in* to the new background color even though they do transition *out* of it.
         - idk why, but `IndexLink` doesn't get the hover styling...
         - anyways, it would really be nice to be able to use `activeStyle`, especially on the nav bar.
+
+- tests
+    - in general
+    - for util functions like `search`
 
 - pre-publish
     - is build-production actually building in production environment?

@@ -58,6 +58,10 @@ export default class ProjectSearch extends Component {
                     title,
                     ...tags.map(tag => tag.title),
                 ]}
+                sortEqualScores={
+                    ({creationDate: date1}, {creationDate: date2}) =>
+                        date1 < date2 ? 1 : -1
+                }
             />
         )
     }
