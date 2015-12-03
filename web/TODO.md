@@ -1,5 +1,10 @@
 # vital
 
+- relay
+    - relay literally does not yet have universal support...
+    - https://facebook.github.io/relay/docs
+    - https://medium.com/@cpojer/relay-and-routing-36b5439bad9#.rwu6n8bpg
+
 - styling
     - overall accessibility
     - hash links on posts and projects (functionality has been added, but needs styling)
