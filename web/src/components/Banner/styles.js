@@ -16,6 +16,9 @@ export default {
         justifyContent: 'center',
         padding: `${spacing}px 0`,
         backgroundColor: colors.secondary.main,
+        borderWidth: '0 0 1px 0',
+        borderStyle: 'solid',
+        borderColor: colors.background.inverse,
     },
 
     innerContainer: {

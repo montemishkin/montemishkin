@@ -13,6 +13,8 @@ const tabTitleBase = {
     padding: 20,
     cursor: 'pointer',
     ...classes.interactive.background,
+    borderStyle: 'solid',
+    borderColor: colors.background.inverse,
 }
 
 
@@ -32,13 +34,12 @@ export default {
     tabTitle: {
         ...tabTitleBase,
         backgroundColor: chroma(colors.background.main).darken().css(),
+        borderWidth: '0 0 1px 0',
     },
 
 
     tabTitleActive: {
         ...tabTitleBase,
-        borderStyle: 'solid',
-        borderColor: colors.background.inverse,
-        borderWidth: '1px 1px 0 1px',
+        borderWidth: '0 1px 0 1px',
     },
 }

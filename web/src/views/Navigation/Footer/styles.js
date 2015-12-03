@@ -11,6 +11,9 @@ const containerBase = {
     alignItems: 'center',
     color: chroma(colors.primary.inverse).darken().css(),
     backgroundColor: colors.primary.main,
+    borderWidth: '1px 0 0 0',
+    borderStyle: 'solid',
+    borderColor: colors.background.inverse,
 }
 const listBase = {
     display: 'flex',
