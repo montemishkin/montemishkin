@@ -7,12 +7,9 @@
 
 - styling
     - overall accessibility
-    - hash links on posts and projects (functionality has been added, but needs styling)
     - if no image provided for a detail view then default to corresponding fa icon (functionality is in place but ridiculous hack in server.js prevents frontend from ever getting an article with an empty string as the image source)
     - 1px black border to bottom of banner and top of footer?
     - sections in Bio and items in WideList should get width and maxWidth styles to match content of detail views
-    - rendered markdown styling
-        - syntax highlight styling
 
 - pre-publish
     - is build-production actually building in production environment?
@@ -55,6 +52,9 @@
     - for util functions like `search`
 
 - styling
+    - rendered markdown styling
+        - would be nice to have the h* anchors hidden until hover the h* element
+        - syntax highlighter fails at modern JS
     - CSS animations on birds?
     - overall DRY design
         - magic numbers
