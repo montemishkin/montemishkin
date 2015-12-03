@@ -55,7 +55,7 @@
   overflow: hidden;
   background: transparent;
   border: 0;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #999;
 }
 
 .markdown blockquote {
@@ -104,7 +104,7 @@
 .markdown h1,
 .markdown h2 {
   padding-bottom: 0.3em;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #ccc;
 }
 
 .markdown h1 {
@@ -158,7 +158,6 @@
   word-break: normal;
   padding: 16px;
   line-height: 1.45;
-  background-color: #f7f7f7;
 }
 
 .markdown kbd {
