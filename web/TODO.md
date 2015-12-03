@@ -15,6 +15,8 @@
         - syntax highlight styling
 
 - pre-publish
+    - auto prefix css files
+        - can i then use flex and inline-flex?
     - is build-production actually building in production environment?
         - No. gulp-env is working, but not cascading down into webpack-stream.
     - style up NotFound component

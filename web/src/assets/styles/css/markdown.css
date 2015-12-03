@@ -8,13 +8,12 @@
 }
 
 .markdown a {
-  color: #4078c0;
+  color: #00A1DC;
   text-decoration: none;
 }
 
 .markdown a:active,
 .markdown a:hover {
-  outline: 0;
   text-decoration: underline;
 }
 
@@ -29,21 +28,11 @@
 
 .markdown img {
   max-width: 100%;
-  box-sizing: border-box;
 }
 
 .markdown hr {
-  height: 4px;
-  padding: 0;
   margin: 16px 0;
-  background-color: #e7e7e7;
-  border: 0 none;
-
-  /* ????????? */
-
-  box-sizing: content-box;
   height: 0;
-  margin: 15px 0;
   overflow: hidden;
   background: transparent;
   border: 0;
@@ -51,19 +40,22 @@
 }
 
 .markdown blockquote {
-  margin: 0;
-  padding: 0 15px;
+  padding: 0 16px;
   color: #777;
   border-left: 4px solid #ddd;
 }
 
+.markdown ul {
+    list-style-type: disc;
+}
+
+.markdown ol {
+    list-style-type: decimal;
+}
+
 .markdown ul,
 .markdown ol {
-  padding: 0;
   padding-left: 2em;
-  margin-top: 0;
-  margin-bottom: 0;
-  list-style-type: initial;
 }
 
 .markdown ol ol,
@@ -84,65 +76,47 @@
 .markdown h4,
 .markdown h5,
 .markdown h6 {
-  margin-top: 15px;
-  margin-bottom: 15px;
-  line-height: 1.1;
-
-  /* ????????????? */
-
-  position: relative;
-  margin-top: 1em;
+  margin-top: 16px;
   margin-bottom: 16px;
   font-weight: bold;
-  line-height: 1.4;
+  line-height: 1.2;
+}
+
+.markdown h1,
+.markdown h2 {
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #eee;
 }
 
 .markdown h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-  font-size: 30px;
-  padding-bottom: 0.3em;
-  font-size: 2.25em;
-  line-height: 1.2;
-  border-bottom: 1px solid #eee;
+  font-size: 32px;
 }
 
 .markdown h2 {
-  font-size: 21px;
-  padding-bottom: 0.3em;
-  font-size: 1.75em;
-  line-height: 1.225;
-  border-bottom: 1px solid #eee;
+  font-size: 28px;
 }
 
 .markdown h3 {
-  font-size: 16px;
-  font-size: 1.5em;
-  line-height: 1.43;
+  font-size: 24px;
 }
 
 .markdown h4 {
-  font-size: 14px;
-  font-size: 1.25em;
+  font-size: 20px;
 }
 
 .markdown h5 {
-  font-size: 12px;
-  font-size: 1em;
+  font-size: 18px;
 }
 
 .markdown h6 {
-  font-size: 11px;
-  font-size: 1em;
-  color: #777;
+  font-size: 16px;
 }
 
 .markdown p,
 .markdown blockquote,
 .markdown ul,
 .markdown ol,
-.markdown pre {
-  margin-top: 0;
+.markdown .highlight {
   margin-bottom: 16px;
 }
 
@@ -150,68 +124,28 @@
 .markdown kbd,
 .markdown pre {
   font-family: monospace;
-  font-size: 1em;
+  font-size: 85%;
 }
 
 .markdown code {
   padding: 0.2em 0.5em;
-  margin: 0;
-  font-size: 85%;
   background-color: rgba(0,0,0,0.04);
   border-radius: 3px;
 }
 
-.markdown pre>code {
-  padding: 0;
-  margin: 0;
-  font-size: 100%;
-  word-break: normal;
-  white-space: pre;
-  background: transparent;
-  border: 0;
-}
-
-.markdown .highlight {
-  margin-bottom: 16px;
-}
-
-.markdown .highlight pre,
 .markdown pre {
-  padding: 16px;
+  word-wrap: normal;
   overflow: auto;
-  font-size: 85%;
+  word-break: normal;
+  padding: 16px;
   line-height: 1.45;
   background-color: #f7f7f7;
-  border-radius: 3px;
-}
-
-.markdown .highlight pre {
-  margin-bottom: 0;
-  word-break: normal;
-}
-
-.markdown pre {
-  word-wrap: normal;
-  overflow: auto;
-}
-
-.markdown pre code {
-  display: inline;
-  max-width: initial;
-  padding: 0;
-  margin: 0;
-  overflow: initial;
-  line-height: inherit;
-  word-wrap: normal;
-  background-color: transparent;
-  border: 0;
 }
 
 .markdown kbd {
   display: inline-block;
   padding: 3px 5px;
-  font-size: 11px;
-  line-height: 10px;
+  line-height: 1.2;
   color: #555;
   vertical-align: middle;
   background-color: #fcfcfc;
