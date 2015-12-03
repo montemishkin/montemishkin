@@ -15,8 +15,6 @@
         - syntax highlight styling
 
 - pre-publish
-    - auto prefix css files
-        - can i then use flex and inline-flex?
     - is build-production actually building in production environment?
         - No. gulp-env is working, but not cascading down into webpack-stream.
     - style up NotFound component
@@ -50,6 +48,7 @@
 - improve use of semantic content
 - another variation of bird logo for tag search view
 - offer rss feed?
+- use sass or scss
 
 - tests
     - in general
