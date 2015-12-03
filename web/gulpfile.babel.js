@@ -8,6 +8,8 @@ import shell from 'gulp-shell'
 import minifyCSS from 'gulp-minify-css'
 import concat from 'gulp-concat'
 import karma from 'karma'
+import autoprefixer from 'autoprefixer'
+import postcss from 'gulp-postcss'
 // local imports
 import {
     buildDir,
@@ -132,6 +134,11 @@ gulp.task('build-server-production', ['clean-server'], () => {
  */
 gulp.task('build-css', () => {
     return gulp.src(cssGlob)
+        .pipe(postcss([
+            autoprefixer({
+                browsers: ['last 2 versions'],
+            }),
+        ]))
         .pipe(concat('styles.css'))
         .pipe(minifyCSS())
         .pipe(gulp.dest(buildDir))
