@@ -12,6 +12,11 @@ export default {
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100%',
+    },
+
+    content: {
         flexGrow: 1,
+        display: 'flex',
+        flexDirection: 'column',
     },
 }

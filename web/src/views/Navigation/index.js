@@ -13,7 +13,7 @@ import Footer from './Footer'
 @radium
 export default class Navigation extends Component {
     render() {
-        const {style, ...unusedProps} = this.props
+        const {style, children, ...unusedProps} = this.props
 
         return (
             <div
@@ -24,7 +24,9 @@ export default class Navigation extends Component {
                 ]}
             >
                 <Header />
-                {this.props.children}
+                <main style={styles.content}>
+                    {children}
+                </main>
                 <Footer />
             </div>
         )
