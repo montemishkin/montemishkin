@@ -56,17 +56,15 @@ export default class FormattedDate extends Component {
         const {
             prettyDateString,
             props: {
-                date, // eslint-disable-line no-unused-vars
+                date,
                 ...unusedProps,
             },
         } = this
 
-        // TODO: use a <time> tag here
-        // see: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
         return (
-            <span {...unusedProps}>
+            <time {...unusedProps} dateTime={date}>
                 {prettyDateString}
-            </span>
+            </time>
         )
     }
 }
