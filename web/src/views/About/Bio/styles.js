@@ -7,7 +7,7 @@ import {
     contentWidth,
     contentMaxWidth,
     contentVerticalPadding,
-    largerFontSize,
+    largestFontSize,
 } from 'assets/styles/js/numerics'
 
 
@@ -36,25 +36,22 @@ export default {
 
 
     sectionTitle: {
-        fontSize: largerFontSize,
+        fontSize: largestFontSize,
         padding: '15px 0',
-        borderTopWidth: 0,
-        borderRightWidth: 0,
-        borderLeftWidth: 0,
-        borderBottomWidth: 1,
-        borderColor: 'black',
-        borderStyle: 'solid',
+        borderBottom: '1px solid #ccc',
     },
 
 
     p: {
         padding: '20px 0',
+        lineHeight: 1.6,
     },
 
 
     list: {
-        listStyleType: 'unset',
+        listStyleType: 'disc',
         paddingLeft: 40,
+        lineHeight: 1.6,
     },
 
 
@@ -104,6 +101,14 @@ export default {
 
     link: {
         color: colors.background.interactive,
-        textDecoration: 'underline',
+        textDecoration: 'none',
+
+        ':hover': {
+            textDecoration: 'underline',
+        },
+
+        ':focus': {
+            textDecoration: 'underline',
+        },
     },
 }

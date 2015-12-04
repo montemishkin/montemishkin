@@ -6,14 +6,16 @@
     - https://medium.com/@cpojer/relay-and-routing-36b5439bad9#.rwu6n8bpg
 
 - styling
-    - overall accessibility
-    - if no image provided for a detail view then default to corresponding fa icon (functionality is in place but ridiculous hack in server.js prevents frontend from ever getting an article with an empty string as the image source)
-    - sections in Bio and items in WideList should get width and maxWidth styles to match content of detail views
+    - NotFound view
+    - responsive
+        - in general
+        - sections in Bio and items in WideList should get width and maxWidth styles to match content of detail views
+    - if no image provided for a detail view then default to corresponding fa icon
+        - functionality is in place but ridiculous hack in server.js prevents frontend from ever getting an article with an empty string as the image source
 
 - pre-publish
     - is build-production actually building in production environment?
         - No. gulp-env is working, but not cascading down into webpack-stream.
-    - style up NotFound component
     - ensure that every single view is:
         - responsive
             - must be tested with phone emulation to account for viewport config
@@ -46,11 +48,16 @@
 - offer rss feed?
 - use sass or scss
 
+- accessiblity
+    - `TabContainer` component used in `TagDetail` view is not accessible (try navigating with Tab key)
+        - see [here](https://developer.mozilla.org/en-US/docs/Web/Accessibility/An_overview_of_accessible_web_applications_and_widgets) for tips on making it accessible.
+
 - tests
     - in general
     - for util functions like `search`
 
 - styling
+    - About view content should be rendered markdown.  Since articles' contents are rendered on the django server, you would have to have a separate markdown renderer that produced the exact same output...  Or, render articles' content isomorphically in js.
     - rendered markdown styling
         - would be nice to have the h* anchors hidden until hover the h* element
         - syntax highlighter fails at modern JS

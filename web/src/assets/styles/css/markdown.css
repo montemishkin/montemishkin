@@ -22,7 +22,8 @@
 }
 
 .markdown a:active,
-.markdown a:hover {
+.markdown a:hover,
+.markdown a:focus {
   text-decoration: underline;
 }
 
@@ -37,7 +38,8 @@
 }
 
 .markdown .anchor:active,
-.markdown .anchor:hover {
+.markdown .anchor:hover,
+.markdown .anchor:focus {
   color: #00A1DC;
 }
 
