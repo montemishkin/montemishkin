@@ -107,10 +107,12 @@ server.all('*', async function (req, res) {
             // parse response into json
             ).then(body => body.json())
             // check for graphql errors and then grab the response data
-            .then(({data, graphqlError}) => {
-                if (graphqlError) {
+            .then(({data, errors: graphqlErrors}) => {
+                if (graphqlErrors) {
                     // TODO: figure out what to actually do with this error
-                    console.log('error fetching initial data: ', graphqlError)
+                    /* eslint-disable no-console */
+                    console.log('error fetching initial data: ', graphqlErrors)
+                    /* eslint-enable no-console */
                 }
                 return data
             })

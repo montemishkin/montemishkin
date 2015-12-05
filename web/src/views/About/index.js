@@ -2,6 +2,7 @@
 import React, {Component} from 'react'
 import radium from 'radium'
 // local imports
+import styles from './styles'
 import Banner from 'components/Banner'
 import BaseLogo from 'components/Logos/Base'
 import ContactInfoBar from './ContactInfoBar'
@@ -24,7 +25,11 @@ export default class About extends Component {
                 >
                     <ContactInfoBar />
                 </Banner>
-                <Bio />
+                <div style={styles.contentContainer}>
+                    <div style={styles.content}>
+                        <Bio />
+                    </div>
+                </div>
             </div>
         )
     }

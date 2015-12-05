@@ -1,5 +1,5 @@
 // third party imports
-import transform from 'lodash/object/transform'
+// import transform from 'lodash/object/transform'
 
 
 export function nestProject(project, tags) {
