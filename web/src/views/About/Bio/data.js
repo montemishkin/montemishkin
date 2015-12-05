@@ -1,5 +1,6 @@
 // third party imports
 import React from 'react'
+import radium from 'radium'
 // local imports
 import styles from './styles'
 import List from 'components/List'
@@ -84,7 +85,15 @@ const sections = [
         ),
         Icon: props => <img {...props} src='/static/images/slate.svg'/>,
     },
-]
+// wrap components in radium
+].map(section => ({
+    ...section,
+    Text: radium(section.Text),
+    Icon: radium(section.Icon),
+}))
+
+
+
 
 
 export default {

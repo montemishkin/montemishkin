@@ -8,10 +8,6 @@
 - styling
     - NotFound view
     - responsive
-        - in general
-        - sections in Bio and items in WideList should get width and maxWidth styles to match content of detail views
-    - if no image provided for a detail view then default to corresponding fa icon
-        - functionality is in place but ridiculous hack in server.js prevents frontend from ever getting an article with an empty string as the image source
 
 - pre-publish
     - cleanup logos
@@ -46,6 +42,7 @@
 
 # non-vital
 
+- pagination
 - tag search view should show tags with higher usage first
 - improve use of semantic content
 - another variation of bird logo for tag search view

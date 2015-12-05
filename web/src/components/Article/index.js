@@ -44,8 +44,7 @@ export default class Article extends Component {
 
 
     static defaultProps = {
-        // TODO: get a default image
-        imageSrc: '',
+        BannerIcon: radium(props => <span {...props} />),
     }
 
 

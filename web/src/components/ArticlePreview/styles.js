@@ -17,11 +17,14 @@ const transition = {
 }
 const titleBase = {
     ...transition,
+    // textAlign: 'center',
     fontSize: largerFontSize,
     paddingBottom: 10,
 }
 const subtitleBase = {
     ...transition,
+    // width: '80%',
+    // textAlign: 'center',
     fontSize: largeFontSize,
 }
 
@@ -44,6 +47,9 @@ export default {
 
     link: {
         textDecoration: 'none',
+        // display: 'flex',
+        // flexDirection: 'column',
+        // alignItems: 'center',
     },
 
     title: {

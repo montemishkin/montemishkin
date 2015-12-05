@@ -24,6 +24,43 @@ import App from './App'
 
 
 const server = express()
+// graphql query to retrieve initial store state
+const query = `
+    query {
+        posts {
+          ...articleFragment
+        }
+        projects {
+          ...articleFragment
+        }
+    }
+
+    fragment articleFragment on Article {
+        id
+        created {
+            year
+            month
+            day
+        }
+        slug
+        title
+        subtitle
+        tags {
+            id
+            slug
+            name
+            description
+        }
+        content
+        bannerImage {
+            url
+            width
+            height
+        }
+    }
+`
+// URL to post to when requesting initial data
+const postURL = `http://localhost:8001/query/?query=${query}`
 
 
 /* Application-wide Settings */
@@ -60,52 +97,14 @@ server.all('*', async function (req, res) {
             res.redirect(302, redirectLocation.pathname + redirectLocation.search)
         // if route was found and is not a redirect
         } else {
-            // graphql query to retrieve initial store state
-            const query = `
-                query {
-                    posts {
-                      ...articleFragment
-                    }
-                    projects {
-                      ...articleFragment
-                    }
-                }
-
-                fragment articleFragment on Article {
-                    id
-                    created {
-                        year
-                        month
-                        day
-                    }
-                    slug
-                    title
-                    subtitle
-                    tags {
-                        id
-                        slug
-                        name
-                        description
-                    }
-                    content
-                    bannerImage {
-                        url
-                        width
-                        height
-                    }
-                }
-            `
             // grab initial data for store from admin service
-            let {posts, projects} = await fetch(
-                `http://localhost:8001/query/?query=${query}`,
-                {
-                    method: 'POST',
-                    headers: {
-                        Accept: 'application/json',
-                    },
-                }
+            let {posts, projects} = await fetch(postURL, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                },
             // parse response into json
-            ).then(body => body.json())
+            }).then(body => body.json())
             // check for graphql errors and then grab the response data
             .then(({data, errors: graphqlErrors}) => {
                 if (graphqlErrors) {
@@ -125,7 +124,9 @@ server.all('*', async function (req, res) {
             ], true), 'id').map(tag => ({...tag, title: tag.name}))
             const articleConverter = article => ({
                 slug: article.slug,
-                imageSrc: 'http://localhost:8001' + article.bannerImage.url,
+                imageSrc: article.bannerImage.url
+                    ? 'http://localhost:8001' + article.bannerImage.url
+                    : '',
                 title: article.title,
                 subtitle: article.subtitle,
                 content: article.content,

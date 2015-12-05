@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 // local imports
 import NotFound from 'views/NotFound'
 import Article from 'components/Article'
+import BlogLogo from 'components/Logos/Blog'
 import {nestPost} from 'util/nest'
 
 
@@ -41,10 +42,9 @@ export default class PostDetail extends Component {
         const {post, ...unusedProps} = this.props
 
         if (post) {
-            // TODO: pick a default post icon
-            let BannerIcon = props => <i {...props} className='fa fa-tag' />
+            let BannerIcon = radium(props => <BlogLogo {...props} />)
             if (post.imageSrc) {
-                BannerIcon = props => <img {...props} src={post.imageSrc} />
+                BannerIcon = radium(props => <img {...props} src={post.imageSrc} />)
             }
             return (
                 <Article

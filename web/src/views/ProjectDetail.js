@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 // local imports
 import NotFound from 'views/NotFound'
 import Article from 'components/Article'
+import ProjectsLogo from 'components/Logos/Projects'
 import {nestProject} from 'util/nest'
 
 
@@ -41,11 +42,11 @@ export default class ProjectDetail extends Component {
         const {project, ...unusedProps} = this.props
 
         if (project) {
-            // TODO: pick a default project icon
-            let BannerIcon = props => <i {...props} className='fa fa-tag' />
+            let BannerIcon = radium(props => <ProjectsLogo {...props} />)
             if (project.imageSrc) {
-                BannerIcon = props => <img {...props} src={project.imageSrc} />
+                BannerIcon = radium(props => <img {...props} src={project.imageSrc} />)
             }
+
             return (
                 <Article
                     {...unusedProps}
@@ -54,6 +55,7 @@ export default class ProjectDetail extends Component {
                 />
             )
         }
+
         return <NotFound {...unusedProps} />
     }
 }

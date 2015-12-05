@@ -26,8 +26,7 @@ export default class SearchView extends Component {
 
     static defaultProps = {
         initialSearchText: '',
-        // TODO: get a default image for search views
-        bannerIcon: props => <img {...props} src='' />,
+        bannerIcon: radium(props => <i {...props} className='fa fa-search' />),
     }
 
 
