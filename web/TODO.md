@@ -14,9 +14,13 @@
         - functionality is in place but ridiculous hack in server.js prevents frontend from ever getting an article with an empty string as the image source
 
 - pre-publish
+    - cleanup logos
+        - remove unused ones
+        - cut away cruft on inkscape output
     - is build-production actually building in production environment?
         - No. gulp-env is working, but not cascading down into webpack-stream.
     - ensure that every single view is:
+        - cross browser compatible
         - responsive
             - must be tested with phone emulation to account for viewport config
         - accessible
@@ -45,6 +49,7 @@
 - tag search view should show tags with higher usage first
 - improve use of semantic content
 - another variation of bird logo for tag search view
+- how to organize components vs views, deal with nesting, etc
 - offer rss feed?
 - use sass or scss
 
