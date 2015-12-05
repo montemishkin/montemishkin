@@ -4,21 +4,21 @@ import React from 'react'
 import styles from './styles'
 import List from 'components/List'
 import Link from 'components/Link'
-import ReactLogo from 'components/Logos/React'
-import NodeLogo from 'components/Logos/Node'
-import DjangoLogo from 'components/Logos/Django'
 
 
 const technicalSkills = [
     {
         url: 'https://facebook.github.io/react/',
-        component: ReactLogo,
+        src: '/static/images/react-logo.svg',
+        alt: 'react logo',
     }, {
         url: 'https://nodejs.org/',
-        component: NodeLogo,
+        src: '/static/images/node-logo.svg',
+        alt: 'node logo',
     }, {
         url: 'https://www.djangoproject.com/',
-        component: DjangoLogo,
+        src: '/static/images/django-logo.svg',
+        alt: 'django logo',
     },
 ]
 
@@ -54,9 +54,9 @@ const sections = [
         ),
         Icon: ({style, ...unusedProps}) => (
             <List {...unusedProps} style={[styles.logoList, style]}>
-                {technicalSkills.map(({url, component: Comp}, key) => (
+                {technicalSkills.map(({url, src, alt}, key) => (
                     <a href={url} style={styles.logoLink} key={key}>
-                        <Comp />
+                        <img src={src} alt={alt}/>
                     </a>
                 ))}
             </List>
