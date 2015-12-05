@@ -1,12 +1,6 @@
-// third party imports
-import chroma from 'chroma-js'
 // local imports
-import classes from 'assets/styles/js/classes'
 import colors from 'assets/styles/js/colors'
 import {contentVerticalPadding} from 'assets/styles/js/numerics'
-
-
-const interactiveColor = chroma(colors.background.interactive)
 
 
 export default {
@@ -38,42 +32,13 @@ export default {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'stretch',
-        padding: '30px',
-        flexGrow: 1,
-        minWidth: 100,
-        maxWidth: 300,
-    },
-
-
-    logoListItem: {
-        // flexGrow: 1,
-        minWidth: 50,
-        // maxWidth: '20%',
-        display: 'flex',
-        justifyContent: 'center',
-
-        // ...classes.transitionParameters,
-        // transitionProperty: 'border-color',
-        // borderColor: interactiveColor.alpha(0).css(),
-        // borderWidth: 1,
-        // borderStyle: 'solid',
-        //
-        // ':hover': {
-        //     borderColor: interactiveColor.alpha(1).css(),
-        // },
-        //
-        // ':focus': {
-        //     borderColor: interactiveColor.alpha(1).css(),
-        // },
+        // minWidth: 200,
     },
 
 
     logoLink: {
-        // padding: 20,
-    },
-
-
-    logo: {
+        display: 'inline-block',
+        margin: '20px 0',
         width: '100%',
     },
 

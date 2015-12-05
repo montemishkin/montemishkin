@@ -53,17 +53,10 @@ const sections = [
             </p>
         ),
         Icon: ({style, ...unusedProps}) => (
-            <List
-                {...unusedProps}
-                style={[
-                    styles.logoList,
-                    style,
-                ]}
-                listItemStyle={styles.logoListItem}
-            >
+            <List {...unusedProps} style={[styles.logoList, style]}>
                 {technicalSkills.map(({url, component: Comp}, key) => (
                     <a href={url} style={styles.logoLink} key={key}>
-                        <Comp style={styles.logo} />
+                        <Comp />
                     </a>
                 ))}
             </List>
