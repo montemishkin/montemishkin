@@ -9,12 +9,12 @@
     - NotFound view
     - responsive
 
+- manipulate page <title>
+
 - pre-publish
     - cleanup logos
         - remove unused ones
         - cut away cruft on inkscape output
-    - is build-production actually building in production environment?
-        - No. gulp-env is working, but not cascading down into webpack-stream.
     - ensure that every single view is:
         - cross browser compatible
         - responsive
@@ -26,7 +26,7 @@
         - check both of the 2 links in the about view
     - enable disqus
     - google
-        - analytics
+        - [analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications)
         - page speed insights
 
 - post-publish
