@@ -10,27 +10,13 @@ import FormattedDate from 'components/FormattedDate'
 import MarkdownContainer from 'components/MarkdownContainer'
 
 
-
-
-
-// <DisqusThread
-//     shortname='montemishkin'
-//     identifier={this.props.post.slug}
-//     title={this.props.post.title}
-//     url='http://www.example.com/example-thread'
-//     categoryId='123456'
-// />
-
-
-
-
-
 @radium
 export default class Article extends Component {
     static propTypes = {
         style: PropTypes.object,
         // react component
         BannerIcon: PropTypes.func,
+        link: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         subtitle: PropTypes.string,
         // TODO: this should be a date?
@@ -51,6 +37,7 @@ export default class Article extends Component {
     render() {
         const {
             BannerIcon,
+            // link,
             title,
             subtitle,
             creationDate,
@@ -83,6 +70,16 @@ export default class Article extends Component {
                         {content}
                     </MarkdownContainer>
                 </section>
+
+                {/*
+                <DisqusThread
+                    // see: https://help.disqus.com/customer/en/portal/articles/472098-javascript-configuration-variables
+                    shortname='montemishkin'
+                    identifier={link}
+                    title={title}
+                    url={`http://monte.mishkin.com${link}`}
+                />
+                */}
             </article>
         )
     }

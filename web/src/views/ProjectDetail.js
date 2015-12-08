@@ -26,6 +26,7 @@ function mapStateToProps({projects, tags}, {params: {slug}}) {
 export default class ProjectDetail extends Component {
     static propTypes = {
         project: PropTypes.oneOfType([PropTypes.bool, PropTypes.shape({
+            link: PropTypes.string.isRequired,
             imageSrc: PropTypes.string,
             title: PropTypes.string.isRequired,
             subtitle: PropTypes.string,

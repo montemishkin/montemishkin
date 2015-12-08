@@ -26,6 +26,7 @@ function mapStateToProps({posts, tags}, {params: {slug}}) {
 export default class PostDetail extends Component {
     static propTypes = {
         post: PropTypes.oneOfType([PropTypes.bool, PropTypes.shape({
+            link: PropTypes.string.isRequired,
             imageSrc: PropTypes.string,
             title: PropTypes.string.isRequired,
             subtitle: PropTypes.string,

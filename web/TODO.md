@@ -12,8 +12,6 @@
     - https://medium.com/@cpojer/relay-and-routing-36b5439bad9#.rwu6n8bpg
 
 - pre-publish
-    - ensure that every single view is:
-        - cross browser compatible
     - put your resume up
         - check both of the 2 links in the about view
     - enable disqus
