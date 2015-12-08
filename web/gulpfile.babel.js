@@ -86,7 +86,7 @@ gulp.task('build-styles', () => {
                 browsers: ['last 2 versions'],
             }),
         ]))
-        .pipe(concat('index.css'))
+        .pipe(concat('styles.css'))
         .pipe(minifyCSS())
         .pipe(gulp.dest(buildDir))
 })

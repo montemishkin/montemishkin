@@ -34,12 +34,14 @@ export default {
     containerInfinity: {
         ...containerBase,
         justifyContent: 'center',
+        position: 'relative',
     },
 
     listInfinity: {
         ...listBase,
         position: 'absolute',
         left: spacing,
+        top: 0,
     },
 
     listMedium: {
@@ -85,6 +87,7 @@ export default {
         ...copyrightBase,
         position: 'absolute',
         right: spacing,
+        top: 0,
     },
 
     copyrightMedium: {

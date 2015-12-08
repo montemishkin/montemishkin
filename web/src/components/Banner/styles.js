@@ -30,7 +30,7 @@ export default {
     },
 
     icon: {
-        maxHeight: 150,
+        height: 150,
         fontSize: '150px',
         borderStyle: 'solid',
         borderWidth: 0,
