@@ -2,6 +2,7 @@
 import React, {Component, PropTypes} from 'react'
 import radium from 'radium'
 import {connect} from 'react-redux'
+import Helmet from 'react-helmet'
 // import {createSelector} from 'reselect'
 // local imports
 import NotFound from 'views/NotFound'
@@ -48,11 +49,13 @@ export default class ProjectDetail extends Component {
             }
 
             return (
-                <Article
-                    {...unusedProps}
-                    {...project}
-                    BannerIcon={BannerIcon}
-                />
+                <div {...unusedProps}>
+                    <Helmet title={project.title} />
+                    <Article
+                        {...project}
+                        BannerIcon={BannerIcon}
+                    />
+                </div>
             )
         }
 

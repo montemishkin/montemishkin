@@ -8,6 +8,7 @@ import React from 'react'
 import {renderToString} from 'react-dom/server'
 import {match} from 'react-router'
 import fetch from 'isomorphic-fetch'
+import Helmet from 'react-helmet'
 import flatten from 'lodash/array/flatten'
 import uniq from 'lodash/array/uniq'
 import padLeft from 'lodash/string/padLeft'
@@ -163,6 +164,9 @@ server.all('*', async function (req, res) {
                     }}
                 />
             )
+
+            // see: https://github.com/nfl/react-helmet#server-usage
+            Helmet.rewind()
 
             // render jade template with component mounted
             res.render('index.jade', {

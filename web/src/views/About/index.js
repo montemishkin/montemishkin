@@ -1,6 +1,7 @@
 // third party imports
 import React, {Component} from 'react'
 import radium from 'radium'
+import Helmet from 'react-helmet'
 // local imports
 import styles from './styles'
 import Banner from 'components/Banner'
@@ -18,6 +19,7 @@ export default class About extends Component {
 
         return (
             <div {...this.props}>
+                <Helmet title='About' />
                 <Banner
                     title='Monte Mishkin'
                     subtitle='Web Developer / Friendly Person'

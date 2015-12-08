@@ -1,6 +1,7 @@
 // third party imports
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
+import Helmet from 'react-helmet'
 // local imports
 import TagPreview from './TagPreview'
 import SearchView from 'components/SearchView'
@@ -41,16 +42,18 @@ export default class TagSearch extends Component {
         } = this.props
 
         return (
-            <SearchView
-                {...unusedProps}
-                bannerIcon={props => <MainLogo {...props} />}
-                title='Tags'
-                subtitle='gotta love em.'
-                items={tags}
-                mapItemToSearchFields={tag => [tag.title, tag.description]}
-                PreviewComponent={TagPreview}
-                initialSearchText={initialSearchText}
-            />
+            <div {...unusedProps}>
+                <Helmet title='Tags' />
+                <SearchView
+                    bannerIcon={props => <MainLogo {...props} />}
+                    title='Tags'
+                    subtitle='gotta love em.'
+                    items={tags}
+                    mapItemToSearchFields={tag => [tag.title, tag.description]}
+                    PreviewComponent={TagPreview}
+                    initialSearchText={initialSearchText}
+                />
+            </div>
         )
     }
 }

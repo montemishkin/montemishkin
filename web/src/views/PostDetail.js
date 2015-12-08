@@ -2,6 +2,7 @@
 import React, {Component, PropTypes} from 'react'
 import radium from 'radium'
 import {connect} from 'react-redux'
+import Helmet from 'react-helmet'
 // import {createSelector} from 'reselect'
 // local imports
 import NotFound from 'views/NotFound'
@@ -47,11 +48,13 @@ export default class PostDetail extends Component {
                 BannerIcon = radium(props => <img {...props} src={post.imageSrc} />)
             }
             return (
-                <Article
-                    {...unusedProps}
-                    {...post}
-                    BannerIcon={BannerIcon}
-                />
+                <div {...unusedProps}>
+                    <Helmet title={post.title} />
+                    <Article
+                        {...post}
+                        BannerIcon={BannerIcon}
+                    />
+                </div>
             )
         }
         return <NotFound {...unusedProps} />

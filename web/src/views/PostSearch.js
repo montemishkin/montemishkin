@@ -1,6 +1,7 @@
 // third party imports
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
+import Helmet from 'react-helmet'
 // local imports
 import SearchView from 'components/SearchView'
 import ArticlePreview from 'components/ArticlePreview'
@@ -45,24 +46,26 @@ export default class PostSearch extends Component {
         } = this.props
 
         return (
-            <SearchView
-                {...unusedProps}
-                bannerIcon={props => <BlogLogo {...props} />}
-                title='Blog'
-                subtitle='oh yeah.'
-                items={posts}
-                PreviewComponent={ArticlePreview}
-                initialSearchText={initialSearchText}
-                mapItemToSearchFields={({content, title, tags}) => [
-                    content,
-                    title,
-                    ...tags.map(tag => tag.title),
-                ]}
-                sortEqualScores={
-                    ({creationDate: date1}, {creationDate: date2}) =>
-                        date1 < date2 ? 1 : -1
-                }
-            />
+            <div {...unusedProps}>
+                <Helmet title='Blog' />
+                <SearchView
+                    bannerIcon={props => <BlogLogo {...props} />}
+                    title='Blog'
+                    subtitle='oh yeah.'
+                    items={posts}
+                    PreviewComponent={ArticlePreview}
+                    initialSearchText={initialSearchText}
+                    mapItemToSearchFields={({content, title, tags}) => [
+                        content,
+                        title,
+                        ...tags.map(tag => tag.title),
+                    ]}
+                    sortEqualScores={
+                        ({creationDate: date1}, {creationDate: date2}) =>
+                            date1 < date2 ? 1 : -1
+                    }
+                />
+            </div>
         )
     }
 }

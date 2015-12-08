@@ -2,6 +2,7 @@
 import React, {Component, PropTypes} from 'react'
 import radium from 'radium'
 import {connect} from 'react-redux'
+import Helmet from 'react-helmet'
 // local imports
 import styles from './styles'
 import TabContainer from './TabContainer'
@@ -96,6 +97,7 @@ export default class TagDetail extends Component {
 
         return (
             <section {...unusedProps}>
+                <Helmet title={title} />
                 <Banner
                     Icon={props => <i {...props} className='fa fa-tag' />}
                     title={title}

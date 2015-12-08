@@ -1,6 +1,7 @@
 // third party imports
 import React, {Component} from 'react'
 import radium from 'radium'
+import Helmet from 'react-helmet'
 // local imports
 import styles from './styles'
 import MainLogo from 'components/Logos/Main'
@@ -22,6 +23,7 @@ export default class NotFound extends Component {
                     style,
                 ]}
             >
+                <Helmet title='Not Found' />
                 <img
                     src='/static/images/sun.svg'
                     style={styles.sunImage}

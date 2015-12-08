@@ -9,8 +9,6 @@
     - NotFound view
     - responsive
 
-- manipulate page <title>
-
 - pre-publish
     - cleanup logos
         - remove unused ones
@@ -49,6 +47,7 @@
 - how to organize components vs views, deal with nesting, etc
 - offer rss feed?
 - use sass or scss
+- a better way of ensuring that each view renders a page title using helmet
 
 - accessiblity
     - `TabContainer` component used in `TagDetail` view is not accessible (try navigating with Tab key)
