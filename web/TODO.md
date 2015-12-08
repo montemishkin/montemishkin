@@ -1,31 +1,19 @@
 # vital
 
+- finish blog logo on about view
+
 - relay
     - relay literally does not yet have universal support...
     - https://facebook.github.io/relay/docs
     - https://medium.com/@cpojer/relay-and-routing-36b5439bad9#.rwu6n8bpg
 
-- styling
-    - NotFound view
-    - responsive
-
 - pre-publish
-    - cleanup logos
-        - remove unused ones
-        - cut away cruft on inkscape output
     - ensure that every single view is:
         - cross browser compatible
-        - responsive
-            - must be tested with phone emulation to account for viewport config
-        - accessible
-            - try navigating all pages with tab key
-    - favicon
     - put your resume up
         - check both of the 2 links in the about view
     - enable disqus
-    - google
-        - [analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications)
-        - page speed insights
+    - [google analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications)
 
 - post-publish
     - have github.io redirect to this
@@ -36,6 +24,13 @@
     - add posts
         - hello
         - physics
+    - check that every single view is:
+        - cross browser compatible
+        - responsive
+        - mobile friendly
+        - accessible
+    - check favicon
+    - google page speed insights
 
 
 # non-vital
@@ -49,6 +44,10 @@
 - use sass or scss
 - a better way of ensuring that each view renders a page title using helmet
 
+- cleanup logos
+    - remove unused ones
+    - cut away cruft on inkscape output
+
 - accessiblity
     - `TabContainer` component used in `TagDetail` view is not accessible (try navigating with Tab key)
         - see [here](https://developer.mozilla.org/en-US/docs/Web/Accessibility/An_overview_of_accessible_web_applications_and_widgets) for tips on making it accessible.
@@ -58,6 +57,7 @@
     - for util functions like `search`
 
 - styling
+    - NotFound view
     - About view content should be rendered markdown.  Since articles' contents are rendered on the django server, you would have to have a separate markdown renderer that produced the exact same output...  Or, render articles' content isomorphically in js.
     - rendered markdown styling
         - would be nice to have the h* anchors hidden until hover the h* element
