@@ -9,9 +9,8 @@ import {renderToString} from 'react-dom/server'
 import {match} from 'react-router'
 import fetch from 'isomorphic-fetch'
 import Helmet from 'react-helmet'
-import flatten from 'lodash/array/flatten'
-import uniq from 'lodash/array/uniq'
-import padLeft from 'lodash/string/padLeft'
+import {normalize, Schema, arrayOf} from 'normalizr'
+import reduce from 'lodash/collection/reduce'
 // local imports
 import {
     buildDir,
@@ -38,30 +37,42 @@ const query = `
 
     fragment articleFragment on Article {
         id
+        url
+        title
+        subtitle
+        content
+        bannerImage {
+            url
+        }
         created {
             year
             month
             day
         }
-        slug
-        title
-        subtitle
         tags {
             id
-            slug
+            url
             name
             description
-        }
-        content
-        bannerImage {
-            url
-            width
-            height
         }
     }
 `
 // URL to post to when requesting initial data
 const postURL = `http://localhost:8001/query/?query=${query}`
+// TODO: clean up this schema definition
+const tagSchema = new Schema('tags')
+const postSchema = new Schema('posts')
+postSchema.define({
+    tags: arrayOf(tagSchema),
+})
+const projectSchema = new Schema('projects')
+projectSchema.define({
+    tags: arrayOf(tagSchema),
+})
+const normalizrSchema = {
+    projects: arrayOf(projectSchema),
+    posts: arrayOf(postSchema),
+}
 
 
 /* Application-wide Settings */
@@ -99,7 +110,7 @@ server.all('*', async function (req, res) {
         // if route was found and is not a redirect
         } else {
             // grab initial data for store from admin service
-            let {posts, projects} = await fetch(postURL, {
+            const {posts, projects, tags} = await fetch(postURL, {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -115,33 +126,13 @@ server.all('*', async function (req, res) {
                     /* eslint-enable no-console */
                 }
                 return data
-            })
-            // convert initial data into form expected by frontend
-            // TODO: obviously this is not the right way to do this
-            // (just a temporary fix to get moved over to using graphql api)
-            const tags = uniq(flatten([
-                ...projects.map(project => project.tags),
-                ...posts.map(post => post.tags),
-            ], true), 'id').map(tag => ({...tag, title: tag.name}))
-            const articleConverter = article => ({
-                slug: article.slug,
-                imageSrc: article.bannerImage.url
-                    ? 'http://localhost:8001' + article.bannerImage.url
-                    : '',
-                title: article.title,
-                subtitle: article.subtitle,
-                content: article.content,
-                creationDate: article.created.year + '-'
-                    + padLeft(article.created.month, 2, '0') + '-'
-                    + padLeft(article.created.day, 2, '0') + 'T'
-                    + padLeft(article.created.hour, 2, '0') + ':'
-                    + padLeft(article.created.minute, 2, '0') + ':'
-                    + padLeft(article.created.second, 2, '0') + '.'
-                    + padLeft(article.created.microsecond, 6, '0') + 'Z',
-                tags: article.tags.map(tag => tag.id),
-            })
-            posts = posts.map(articleConverter)
-            projects = projects.map(articleConverter)
+            // normalize nested data structure
+            }).then(data => normalize(data, normalizrSchema).entities)
+            // convert objects with integer keys to arrays
+            .then(startData => reduce(startData, (endData, val, key) => ({
+                ...endData,
+                [key]: reduce(val, (list, entry) => list.concat(entry), []),
+            }), {}))
 
             // create redux store with initial data
             const store = createStore({

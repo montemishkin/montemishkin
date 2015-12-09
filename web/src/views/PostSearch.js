@@ -6,12 +6,12 @@ import Helmet from 'react-helmet'
 import SearchView from 'components/SearchView'
 import ArticlePreview from 'components/ArticlePreview'
 import BlogLogo from 'components/Logos/Blog'
-import {nestPost} from 'util/nest'
+import {nestArticle} from 'util/nest'
 
 
 function mapStateToProps({posts, tags}) {
     return {
-        posts: posts.map(post => nestPost(post, tags)),
+        posts: posts.map(post => nestArticle(post, tags)),
     }
 }
 
@@ -25,14 +25,18 @@ export default class PostSearch extends Component {
             }).isRequired,
         }).isRequired,
         posts: PropTypes.arrayOf(PropTypes.shape({
-            link: PropTypes.string.isRequired,
+            url: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
             subtitle: PropTypes.string,
-            content: PropTypes.string.isRequired,
-            creationDate: PropTypes.string.isRequired,
+            created: PropTypes.shape({
+                year: PropTypes.number.isRequired,
+                month: PropTypes.number.isRequired,
+                day: PropTypes.number.isRequired,
+            }).isRequired,
             tags: PropTypes.arrayOf(PropTypes.shape({
-                link: PropTypes.string.isRequired,
-                title: PropTypes.string.isRequired,
+                url: PropTypes.string.isRequired,
+                name: PropTypes.string.isRequired,
+                description: PropTypes.string.isRequired,
             })).isRequired,
         })).isRequired,
     }
@@ -58,9 +62,10 @@ export default class PostSearch extends Component {
                     mapItemToSearchFields={({content, title, tags}) => [
                         content,
                         title,
-                        ...tags.map(tag => tag.title),
+                        ...tags.map(tag => tag.name),
                     ]}
                     sortEqualScores={
+                        // TODO: update this to use `created` prop
                         ({creationDate: date1}, {creationDate: date2}) =>
                             date1 < date2 ? 1 : -1
                     }

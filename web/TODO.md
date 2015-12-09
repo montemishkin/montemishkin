@@ -39,6 +39,7 @@
 
 - pagination
 - tag search view should show tags with higher usage first
+    - should also show number of posts and projects that use that tag
 - improve use of semantic content
 - another variation of bird logo for tag search view
 - how to organize components vs views, deal with nesting, etc

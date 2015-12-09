@@ -2,39 +2,13 @@
 // import transform from 'lodash/object/transform'
 
 
-export function nestProject(project, tags) {
+export function nestArticle(article, tags) {
     return {
-        ...project,
-        link: `/projects/${project.slug}`,
-        tags: project.tags
-            // map tag ids to actual tag objects
-            .map(id => tags.filter(tag => tag.id === id)[0])
-            // map tag objects to also include permanent link
-            .map(tag => ({
-                link: `/tags/${tag.slug}`,
-                title: tag.title,
-                description: tag.description,
-            })),
+        ...article,
+        // map tag ids to actual tag objects
+        tags: article.tags.map(id => tags.filter(tag => tag.id === id)[0]),
     }
 }
-
-
-export function nestPost(post, tags) {
-    return {
-        ...post,
-        link: `/posts/${post.slug}`,
-        tags: post.tags
-            // map tag ids to actual tag objects
-            .map(id => tags.filter(tag => tag.id === id)[0])
-            // map tag objects to also include permanent link
-            .map(tag => ({
-                link: `/tags/${tag.slug}`,
-                title: tag.title,
-                description: tag.description,
-            })),
-    }
-}
-
 
 
 // export default function nest(nestee, data) {

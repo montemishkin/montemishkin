@@ -8,15 +8,15 @@ import Helmet from 'react-helmet'
 import NotFound from 'views/NotFound'
 import Article from 'components/Article'
 import ProjectsLogo from 'components/Logos/Projects'
-import {nestProject} from 'util/nest'
+import {nestArticle} from 'util/nest'
 
 
 // TODO: this should be a reselect selector
-function mapStateToProps({projects, tags}, {params: {slug}}) {
-    const desiredProject = projects.filter(project => project.slug === slug)[0]
+function mapStateToProps({projects, tags}, {location: {pathname}}) {
+    const desiredProject = projects.filter(project => project.url === pathname)[0]
 
     return {
-        project: desiredProject && nestProject(desiredProject, tags),
+        project: desiredProject && nestArticle(desiredProject, tags),
     }
 }
 
@@ -26,15 +26,22 @@ function mapStateToProps({projects, tags}, {params: {slug}}) {
 export default class ProjectDetail extends Component {
     static propTypes = {
         project: PropTypes.oneOfType([PropTypes.bool, PropTypes.shape({
-            link: PropTypes.string.isRequired,
-            imageSrc: PropTypes.string,
+            url: PropTypes.string.isRequired,
+            bannerImage: PropTypes.shape({
+                url: PropTypes.string,
+            }),
             title: PropTypes.string.isRequired,
             subtitle: PropTypes.string,
             content: PropTypes.string.isRequired,
-            creationDate: PropTypes.string.isRequired,
+            created: PropTypes.shape({
+                year: PropTypes.number.isRequired,
+                month: PropTypes.number.isRequired,
+                day: PropTypes.number.isRequired,
+            }).isRequired,
             tags: PropTypes.arrayOf(PropTypes.shape({
-                link: PropTypes.string.isRequired,
-                title: PropTypes.string.isRequired,
+                url: PropTypes.string.isRequired,
+                name: PropTypes.string.isRequired,
+                description: PropTypes.string.isRequired,
             })).isRequired,
         })]),
     }
@@ -45,8 +52,8 @@ export default class ProjectDetail extends Component {
 
         if (project) {
             let BannerIcon = radium(props => <ProjectsLogo {...props} />)
-            if (project.imageSrc) {
-                BannerIcon = radium(props => <img {...props} src={project.imageSrc} />)
+            if (project.bannerImage.url) {
+                BannerIcon = radium(props => <img {...props} src={project.bannerImage.url} />)
             }
 
             return (

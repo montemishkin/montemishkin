@@ -16,14 +16,18 @@ export default class Article extends Component {
         style: PropTypes.object,
         // react component
         BannerIcon: PropTypes.func,
-        link: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         subtitle: PropTypes.string,
-        // TODO: this should be a date?
-        creationDate: PropTypes.string.isRequired,
+        created: PropTypes.shape({
+            year: PropTypes.number.isRequired,
+            month: PropTypes.number.isRequired,
+            day: PropTypes.number.isRequired,
+        }).isRequired,
         tags: PropTypes.arrayOf(PropTypes.shape({
-            title: PropTypes.string.isRequired,
-            link: PropTypes.string.isRequired,
+            url: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            description: PropTypes.string.isRequired,
         })).isRequired,
         content: PropTypes.string.isRequired,
     }
@@ -37,10 +41,10 @@ export default class Article extends Component {
     render() {
         const {
             BannerIcon,
-            // link,
+            // url,
             title,
             subtitle,
-            creationDate,
+            created,
             tags,
             content,
             ...unusedProps,
@@ -60,8 +64,8 @@ export default class Article extends Component {
                             tags={tags}
                         />
                         <FormattedDate
+                            {...created}
                             style={styles.creationDate}
-                            date={creationDate}
                         />
                     </div>
                 </Banner>
@@ -75,9 +79,9 @@ export default class Article extends Component {
                 <DisqusThread
                     // see: https://help.disqus.com/customer/en/portal/articles/472098-javascript-configuration-variables
                     shortname='montemishkin'
-                    identifier={link}
+                    identifier={url}
                     title={title}
-                    url={`http://monte.mishkin.com${link}`}
+                    url={`http://monte.mishkin.com${url}`}
                 />
                 */}
             </article>

@@ -14,8 +14,8 @@ import List from 'components/List'
 export default class TagList extends Component {
     static propTypes = {
         tags: PropTypes.arrayOf(PropTypes.shape({
-            title: PropTypes.string.isRequired,
-            link: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            url: PropTypes.string.isRequired,
             description: PropTypes.string,
         })).isRequired,
     }
@@ -41,17 +41,17 @@ export default class TagList extends Component {
                     className='fa fa-tag'
                 />
                 <List style={styles.list} listItemStyle={styles.listItem}>
-                    {tags.map((tag, key) => (
+                    {tags.map(({url, description, name}, key) => (
                         <Link
-                            to={tag.link}
+                            to={url}
                             style={[
                                 styles.link,
                                 linkStyle,
                             ]}
                             key={key}
-                            title={tag.description}
+                            title={description}
                         >
-                            {tag.title}
+                            {name}
                         </Link>
                     ))}
                 </List>

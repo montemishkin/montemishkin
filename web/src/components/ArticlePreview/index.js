@@ -14,18 +14,18 @@ import FormattedDate from 'components/FormattedDate'
 @radium
 export default class ArticlePreview extends Component {
     static propTypes = {
-        style: PropTypes.object,
-        // link to full article
-        link: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         subtitle: PropTypes.string,
-        // do I detail this out here even though it is just passed on?
-        creationDate: PropTypes.string.isRequired,
-        // do I detail this out here even though it is just passed on?
+        created: PropTypes.shape({
+            year: PropTypes.number.isRequired,
+            month: PropTypes.number.isRequired,
+            day: PropTypes.number.isRequired,
+        }).isRequired,
         tags: PropTypes.arrayOf(PropTypes.shape({
-            link: PropTypes.string.isRequired,
-            title: PropTypes.string.isRequired,
-            description: PropTypes.string,
+            url: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            description: PropTypes.string.isRequired,
         })).isRequired,
     }
 
@@ -44,9 +44,9 @@ export default class ArticlePreview extends Component {
             props: {
                 title,
                 subtitle,
-                creationDate,
+                created,
                 tags,
-                link,
+                url,
                 style,
                 ...unusedProps,
             },
@@ -72,7 +72,7 @@ export default class ArticlePreview extends Component {
                 {...unusedProps}
             >
                 <Link
-                    to={link}
+                    to={url}
                     style={styles.link}
                     onMouseEnter={() => this.setState({linkIsHovered: true})}
                     onMouseLeave={() => this.setState({linkIsHovered: false})}
@@ -90,7 +90,7 @@ export default class ArticlePreview extends Component {
                 </Link>
                 <div style={styles.infoBar}>
                     <TagList tags={tags} />
-                    <FormattedDate date={creationDate} />
+                    <FormattedDate {...created} />
                 </div>
             </section>
         )

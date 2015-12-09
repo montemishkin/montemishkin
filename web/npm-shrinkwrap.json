@@ -3105,6 +3105,11 @@
       "from": "normalize.css@>=3.0.3 <4.0.0",
       "resolved": "https://registry.npmjs.org/normalize.css/-/normalize.css-3.0.3.tgz"
     },
+    "normalizr": {
+      "version": "1.4.0",
+      "from": "normalizr@*",
+      "resolved": "https://registry.npmjs.org/normalizr/-/normalizr-1.4.0.tgz"
+    },
     "num2fraction": {
       "version": "1.2.2",
       "from": "num2fraction@>=1.2.2 <2.0.0",
