@@ -6,11 +6,6 @@
 
 - finish blog logo on about view
 
-- relay
-    - relay literally does not yet have universal support...
-    - https://facebook.github.io/relay/docs
-    - https://medium.com/@cpojer/relay-and-routing-36b5439bad9#.rwu6n8bpg
-
 - pre-publish
     - put your resume up
         - check both of the 2 links in the about view
@@ -46,6 +41,11 @@
 - offer rss feed?
 - use sass or scss
 - a better way of ensuring that each view renders a page title using helmet
+
+- relay
+    - relay literally does not yet have universal support...
+    - https://facebook.github.io/relay/docs
+    - https://medium.com/@cpojer/relay-and-routing-36b5439bad9#.rwu6n8bpg
 
 - cleanup logos
     - remove unused ones

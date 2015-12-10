@@ -11,7 +11,6 @@ import BlogLogo from 'components/Logos/Blog'
 import {nestArticle} from 'util/nest'
 
 
-// TODO: this should be a reselect selector
 function mapStateToProps({posts, tags}, {location: {pathname}}) {
     const desiredPost = posts.filter(post => post.url === pathname)[0]
 

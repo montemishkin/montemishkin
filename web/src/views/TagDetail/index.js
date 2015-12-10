@@ -13,7 +13,6 @@ import Banner from 'components/Banner'
 import {nestArticle} from 'util/nest'
 
 
-// TODO: this should be a reselect selector
 function mapStateToProps({tags, projects, posts}, {location: {pathname}}) {
     const desiredTag = tags.filter(tag => tag.url === pathname)[0]
     const [filteredProjects, filteredPosts] = [projects, posts].map(articles =>

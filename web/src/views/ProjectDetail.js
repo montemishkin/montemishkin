@@ -11,7 +11,6 @@ import ProjectsLogo from 'components/Logos/Projects'
 import {nestArticle} from 'util/nest'
 
 
-// TODO: this should be a reselect selector
 function mapStateToProps({projects, tags}, {location: {pathname}}) {
     const desiredProject = projects.filter(project => project.url === pathname)[0]
 

@@ -7,6 +7,5 @@ from .schema import schema
 
 
 urlpatterns = [
-    # TODO: figure out if this actually should be csrf exempt
     url(r'.*', csrf_exempt(GraphQLView.as_view(schema=schema))),
 ]

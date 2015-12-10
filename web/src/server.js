@@ -58,6 +58,7 @@ const query = `
     }
 `
 // URL to post to when requesting initial data
+// TODO: this url should not be hardcoded here
 const postURL = `http://localhost:8001/query/?query=${query}`
 // TODO: clean up this schema definition
 const tagSchema = new Schema('tags')

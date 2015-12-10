@@ -65,9 +65,32 @@ export default class PostSearch extends Component {
                         ...tags.map(tag => tag.name),
                     ]}
                     sortEqualScores={
-                        // TODO: update this to use `created` prop
-                        ({creationDate: date1}, {creationDate: date2}) =>
-                            date1 < date2 ? 1 : -1
+                        ({created: date1}, {created: date2}) => {
+                            const {
+                                day: day1,
+                                month: month1,
+                                year: year1,
+                            } = date1
+                            const {
+                                day: day2,
+                                month: month2,
+                                year: year2,
+                            } = date2
+                            if (year1 > year2) {
+                                return -1
+                            } else if (year1 < year2) {
+                                return 1
+                            } else if (month1 > month2) {
+                                return -1
+                            } else if (month1 < month2) {
+                                return 1
+                            } else if (day1 > day2) {
+                                return -1
+                            } else if (day1 < day2) {
+                                return 1
+                            }
+                            return 1
+                        }
                     }
                 />
             </div>
