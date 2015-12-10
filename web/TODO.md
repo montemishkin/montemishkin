@@ -6,16 +6,12 @@
 
 - finish blog logo on about view
 
-- relay
-    - relay literally does not yet have universal support...
-    - https://facebook.github.io/relay/docs
-    - https://medium.com/@cpojer/relay-and-routing-36b5439bad9#.rwu6n8bpg
-
 - pre-publish
     - put your resume up
         - check both of the 2 links in the about view
     - enable disqus
     - [google analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications)
+        - [react-ga](https://github.com/mozilla/react-ga)
 
 - post-publish
     - have github.io redirect to this
@@ -39,12 +35,18 @@
 
 - pagination
 - tag search view should show tags with higher usage first
+    - should also show number of posts and projects that use that tag
 - improve use of semantic content
 - another variation of bird logo for tag search view
 - how to organize components vs views, deal with nesting, etc
 - offer rss feed?
 - use sass or scss
 - a better way of ensuring that each view renders a page title using helmet
+
+- relay
+    - relay literally does not yet have universal support...
+    - https://facebook.github.io/relay/docs
+    - https://medium.com/@cpojer/relay-and-routing-36b5439bad9#.rwu6n8bpg
 
 - cleanup logos
     - remove unused ones

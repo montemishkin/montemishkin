@@ -1,7 +1,6 @@
 // third party imports
 import React, {Component, PropTypes} from 'react'
 import radium from 'radium'
-import {trimLeft} from 'lodash'
 
 
 // full names of calendar months
@@ -29,41 +28,26 @@ const shortMonthNames = monthNames.map(name => name.substr(0, 3))
 @radium
 export default class FormattedDate extends Component {
     static propTypes = {
-        date: PropTypes.string.isRequired,
+        day: PropTypes.number.isRequired,
+        month: PropTypes.number.isRequired,
+        year: PropTypes.number.isRequired,
     }
 
 
     /**
-     * Returns a date string like "Aug 3, 2015" based on `this.props.date`.
-     * Expects `this.props.date` to be like "2015-09-07T00:00:36.049780Z".
+     * Returns a date string like "Aug 3, 2015".
      */
     get prettyDateString() {
-        const {date} = this.props
-        // e.g. ['2015', '8', '22']
-        const parts = date
-            // grab just the date part (not the time part)
-            .substr(0, date.indexOf('T'))
-            // split into array of parts
-            .split('-')
-            // strip leading zeroes
-            .map(numberString => trimLeft(numberString, '0'))
+        const {day, month, year} = this.props
 
-        return `${shortMonthNames[parts[1] - 1]} ${parts[2]}, ${parts[0]}`
+        return `${shortMonthNames[month - 1]} ${day}, ${year}`
     }
 
 
     render() {
-        const {
-            prettyDateString,
-            props: {
-                date,
-                ...unusedProps,
-            },
-        } = this
-
         return (
-            <time {...unusedProps} dateTime={date}>
-                {prettyDateString}
+            <time {...this.props}>
+                {this.prettyDateString}
             </time>
         )
     }

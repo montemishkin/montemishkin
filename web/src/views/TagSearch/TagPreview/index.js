@@ -12,16 +12,16 @@ import Link from 'components/Link'
 @radium
 export default class Tag extends Component {
     static propTypes = {
-        title: PropTypes.string.isRequired,
-        link: PropTypes.string.isRequired,
-        description: PropTypes.string,
+        url: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
     }
 
 
     render() {
         const {
-            link,
-            title,
+            url,
+            name,
             description,
             style,
             ...unusedProps,
@@ -34,7 +34,7 @@ export default class Tag extends Component {
                     styles.container,
                     style,
                 ]}
-                to={link}
+                to={url}
             >
                 <div style={styles.titleBar}>
                     <i
@@ -42,7 +42,7 @@ export default class Tag extends Component {
                         className='fa fa-tag'
                     />
                     <span style={styles.title}>
-                        {title}
+                        {name}
                     </span>
                 </div>
                 <span style={styles.description}>

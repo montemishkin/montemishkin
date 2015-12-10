@@ -6,12 +6,12 @@ import Helmet from 'react-helmet'
 import SearchView from 'components/SearchView'
 import ArticlePreview from 'components/ArticlePreview'
 import ProjectsLogo from 'components/Logos/Projects'
-import {nestProject} from 'util/nest'
+import {nestArticle} from 'util/nest'
 
 
 function mapStateToProps({projects, tags}) {
     return {
-        projects: projects.map(project => nestProject(project, tags)),
+        projects: projects.map(project => nestArticle(project, tags)),
     }
 }
 
@@ -25,14 +25,18 @@ export default class ProjectSearch extends Component {
             }).isRequired,
         }).isRequired,
         projects: PropTypes.arrayOf(PropTypes.shape({
-            link: PropTypes.string.isRequired,
+            url: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
             subtitle: PropTypes.string,
-            content: PropTypes.string.isRequired,
-            creationDate: PropTypes.string.isRequired,
+            created: PropTypes.shape({
+                year: PropTypes.number.isRequired,
+                month: PropTypes.number.isRequired,
+                day: PropTypes.number.isRequired,
+            }).isRequired,
             tags: PropTypes.arrayOf(PropTypes.shape({
-                link: PropTypes.string.isRequired,
-                title: PropTypes.string.isRequired,
+                url: PropTypes.string.isRequired,
+                name: PropTypes.string.isRequired,
+                description: PropTypes.string.isRequired,
             })).isRequired,
         })).isRequired,
     }
@@ -58,11 +62,35 @@ export default class ProjectSearch extends Component {
                     mapItemToSearchFields={({content, title, tags}) => [
                         content,
                         title,
-                        ...tags.map(tag => tag.title),
+                        ...tags.map(tag => tag.name),
                     ]}
                     sortEqualScores={
-                        ({creationDate: date1}, {creationDate: date2}) =>
-                            date1 < date2 ? 1 : -1
+                        ({created: date1}, {created: date2}) => {
+                            const {
+                                day: day1,
+                                month: month1,
+                                year: year1,
+                            } = date1
+                            const {
+                                day: day2,
+                                month: month2,
+                                year: year2,
+                            } = date2
+                            if (year1 > year2) {
+                                return -1
+                            } else if (year1 < year2) {
+                                return 1
+                            } else if (month1 > month2) {
+                                return -1
+                            } else if (month1 < month2) {
+                                return 1
+                            } else if (day1 > day2) {
+                                return -1
+                            } else if (day1 < day2) {
+                                return 1
+                            }
+                            return 1
+                        }
                     }
                 />
             </div>

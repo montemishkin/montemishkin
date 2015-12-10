@@ -7,11 +7,7 @@ import serveStatic from 'serve-static'
 import React from 'react'
 import {renderToString} from 'react-dom/server'
 import {match} from 'react-router'
-import fetch from 'isomorphic-fetch'
 import Helmet from 'react-helmet'
-import flatten from 'lodash/array/flatten'
-import uniq from 'lodash/array/uniq'
-import padLeft from 'lodash/string/padLeft'
 // local imports
 import {
     buildDir,
@@ -21,47 +17,11 @@ import {
 } from 'config/projectPaths'
 import routes from 'routes'
 import {createStore} from 'store'
-import App from './App'
+import App from 'App'
+import {queryAPI} from 'api'
 
 
 const server = express()
-// graphql query to retrieve initial store state
-const query = `
-    query {
-        posts {
-          ...articleFragment
-        }
-        projects {
-          ...articleFragment
-        }
-    }
-
-    fragment articleFragment on Article {
-        id
-        created {
-            year
-            month
-            day
-        }
-        slug
-        title
-        subtitle
-        tags {
-            id
-            slug
-            name
-            description
-        }
-        content
-        bannerImage {
-            url
-            width
-            height
-        }
-    }
-`
-// URL to post to when requesting initial data
-const postURL = `http://localhost:8001/query/?query=${query}`
 
 
 /* Application-wide Settings */
@@ -99,49 +59,38 @@ server.all('*', async function (req, res) {
         // if route was found and is not a redirect
         } else {
             // grab initial data for store from admin service
-            let {posts, projects} = await fetch(postURL, {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                },
-            // parse response into json
-            }).then(body => body.json())
-            // check for graphql errors and then grab the response data
-            .then(({data, errors: graphqlErrors}) => {
-                if (graphqlErrors) {
-                    // TODO: figure out what to actually do with this error
-                    /* eslint-disable no-console */
-                    console.log('error fetching initial data: ', graphqlErrors)
-                    /* eslint-enable no-console */
+            const {posts, projects, tags} = await queryAPI(`
+                query {
+                    posts {
+                      ...articleFragment
+                    }
+                    projects {
+                      ...articleFragment
+                    }
                 }
-                return data
-            })
-            // convert initial data into form expected by frontend
-            // TODO: obviously this is not the right way to do this
-            // (just a temporary fix to get moved over to using graphql api)
-            const tags = uniq(flatten([
-                ...projects.map(project => project.tags),
-                ...posts.map(post => post.tags),
-            ], true), 'id').map(tag => ({...tag, title: tag.name}))
-            const articleConverter = article => ({
-                slug: article.slug,
-                imageSrc: article.bannerImage.url
-                    ? 'http://localhost:8001' + article.bannerImage.url
-                    : '',
-                title: article.title,
-                subtitle: article.subtitle,
-                content: article.content,
-                creationDate: article.created.year + '-'
-                    + padLeft(article.created.month, 2, '0') + '-'
-                    + padLeft(article.created.day, 2, '0') + 'T'
-                    + padLeft(article.created.hour, 2, '0') + ':'
-                    + padLeft(article.created.minute, 2, '0') + ':'
-                    + padLeft(article.created.second, 2, '0') + '.'
-                    + padLeft(article.created.microsecond, 6, '0') + 'Z',
-                tags: article.tags.map(tag => tag.id),
-            })
-            posts = posts.map(articleConverter)
-            projects = projects.map(articleConverter)
+
+                fragment articleFragment on Article {
+                    id
+                    url
+                    title
+                    subtitle
+                    content
+                    bannerImage {
+                        url
+                    }
+                    created {
+                        year
+                        month
+                        day
+                    }
+                    tags {
+                        id
+                        url
+                        name
+                        description
+                    }
+                }
+            `)
 
             // create redux store with initial data
             const store = createStore({

@@ -8,17 +8,7 @@ import SearchView from 'components/SearchView'
 import MainLogo from 'components/Logos/Main'
 
 
-function mapStateToProps({tags}) {
-    return {
-        tags: tags.map(tag => ({
-            ...tag,
-            link: `/tags/${tag.slug}`,
-        })),
-    }
-}
-
-
-@connect(mapStateToProps)
+@connect(({tags}) => ({tags}))
 export default class TagSearch extends Component {
     static propTypes = {
         location: PropTypes.shape({
@@ -27,9 +17,9 @@ export default class TagSearch extends Component {
             }).isRequired,
         }).isRequired,
         tags: PropTypes.arrayOf(PropTypes.shape({
-            title: PropTypes.string.isRequired,
-            link: PropTypes.string.isRequired,
-            description: PropTypes.string,
+            url: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            description: PropTypes.string.isRequired,
         })).isRequired,
     }
 
@@ -49,7 +39,7 @@ export default class TagSearch extends Component {
                     title='Tags'
                     subtitle='gotta love em.'
                     items={tags}
-                    mapItemToSearchFields={tag => [tag.title, tag.description]}
+                    mapItemToSearchFields={tag => [tag.name, tag.description]}
                     PreviewComponent={TagPreview}
                     initialSearchText={initialSearchText}
                 />
