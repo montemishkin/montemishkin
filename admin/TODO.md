@@ -4,3 +4,5 @@
         - make it so tags selection only allows already created tags
 
 - figure out deployment (wsgi, etc...)
+    - https://docs.djangoproject.com/en/1.8/howto/deployment/
+    - run at `admin.monte.mishkin.com`

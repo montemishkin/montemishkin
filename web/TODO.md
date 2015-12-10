@@ -11,6 +11,7 @@
         - check both of the 2 links in the about view
     - enable disqus
     - [google analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications)
+        - [react-ga](https://github.com/mozilla/react-ga)
 
 - post-publish
     - have github.io redirect to this
