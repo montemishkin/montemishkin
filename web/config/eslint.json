@@ -7,6 +7,9 @@
   "plugins": [
     "react"
   ],
+  "globals": {
+    "ga": false
+  },
   "ecmaFeatures": {
     "arrowFunctions": true,
     "binaryLiterals": false,
