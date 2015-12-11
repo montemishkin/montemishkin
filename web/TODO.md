@@ -4,8 +4,6 @@
 
 - remove soundcloud link for now?
 
-- finish blog logo on about view
-
 - pre-publish
     - put your resume up
         - check both of the 2 links in the about view
@@ -15,6 +13,7 @@
 
 - post-publish
     - have github.io redirect to this
+        - http://stackoverflow.com/questions/5411538/redirect-from-an-html-page
     - add projects
         - this website
         - redux responsive?
