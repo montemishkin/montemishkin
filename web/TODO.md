@@ -1,7 +1,5 @@
 # vital
 
-- favicon needs to be less detailed
-
 - remove soundcloud link for now?
 
 - pre-publish

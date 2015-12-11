@@ -44,5 +44,5 @@ module.exports = {
     webpackClientConfig: path.join(webpackDir, 'client.js'),
     webpackServerConfig: path.join(webpackDir, 'server.js'),
     // favicon
-    favicon: path.join(assetsDir, 'images', 'favicon.ico')
+    favicon: path.join(assetsDir, 'images', 'favicon.png')
 }
