@@ -56,7 +56,12 @@ const sections = [
         Icon: ({style, ...unusedProps}) => (
             <List {...unusedProps} style={[styles.logoList, style]}>
                 {technicalSkills.map(({url, src, alt}, key) => (
-                    <a href={url} style={styles.logoLink} key={key}>
+                    <a
+                        target='_blank'
+                        href={url}
+                        style={styles.logoLink}
+                        key={key}
+                    >
                         <img src={src} alt={alt}/>
                     </a>
                 ))}
