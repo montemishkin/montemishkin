@@ -3,6 +3,9 @@
     - project and post views
         - make it so tags selection only allows already created tags
 
+- django settings
+    - go through middlewares
+
 - figure out deployment (wsgi, etc...)
     - https://docs.djangoproject.com/en/1.8/howto/deployment/
     - https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-14-04

@@ -16,12 +16,6 @@ import os
 BASE_DIR = os.path.abspath(os.path.join(__file__, os.pardir, os.pardir, os.pardir))
 APP_DIR = os.path.join(BASE_DIR, 'src')
 TEMPLATES_DIR = os.path.join(APP_DIR, 'templates')
-# RESOURCES_DIR = os.path.join(APP_DIR, 'assets')
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
-
-
-# TODO: keep the secret key used in production secret!
-SECRET_KEY = 'u1wn)3ngd0c09m^81_wv1!2-*jj9ahqg#jbr*=m%nt9h!afwad'
 
 
 # Application definition
@@ -46,6 +40,7 @@ src_apps = (
 INSTALLED_APPS = src_apps + third_party_apps + django_apps
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -86,7 +81,7 @@ TEMPLATES = [
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = '/static/'
-STATIC_ROOT = STATIC_DIR
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -94,6 +89,14 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
+
+
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
+X_FRAME_OPTIONS = 'DENY'
+
 
 
 # Internationalization
