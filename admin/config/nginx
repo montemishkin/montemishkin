@@ -1,0 +1,25 @@
+upstream montemishkin_admin {
+    server unix:/home/mishkin/mdv/montemishkin/admin.sock;
+}
+
+
+server {
+    listen 80;
+
+    server_name admin.monte.mishkin.com www.admin.monte.mishkin.com;
+
+    location /static/ {
+        root /home/mishkin/mdv/montemishkin/admin/;
+    }
+
+    location /media/ {
+        root /home/mishkin/mdv/montemishkin/admin/;
+    }
+
+    location / {
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host $http_host;
+      proxy_redirect off;
+      proxy_pass http://montemishkin_admin;
+    }
+}

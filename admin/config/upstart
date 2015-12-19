@@ -1,0 +1,11 @@
+description "Gunicorn application server handling montemishkin admin service"
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+respawn
+setuid mishkin
+setgid www-data
+chdir /home/mishkin/mdv/montemishkin/admin
+
+exec montemishkin/bin/gunicorn --workers 3 --bind unix:/home/mishkin/mdv/montemishkin/admin.sock config.wsgi:application

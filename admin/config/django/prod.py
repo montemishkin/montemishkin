@@ -4,6 +4,7 @@ Django settings for live deployment.
 
 # python imports
 import os
+import json
 # extend the base settings
 from .base import *
 
@@ -22,14 +23,18 @@ ALLOWED_HOSTS = ['admin.monte.mishkin.com', 'www.admin.monte.mishkin.com']
 with open(os.path.abspath(os.path.join(__file__, os.pardir, 'secret-key'))) as secret_key_file:
     SECRET_KEY = secret_key_file.read().strip()
 
+# grab database credentials from json file
+with open(os.path.abspath(os.path.join(__file__, os.pardir, 'db-credentials.json'))) as db_credentials_file:
+    db_credentials = json.load(db_credentials_file)
+
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
+        'NAME': db_credentials['NAME'],
+        'USER': db_credentials['USER'],
+        'PASSWORD': db_credentials['PASSWORD'],
         'HOST': 'localhost',
         'PORT': '',
     }
