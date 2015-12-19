@@ -2,14 +2,9 @@
 
 - remove soundcloud link for now?
 
-- pre-publish
-    - put your resume up
-        - check both of the 2 links in the about view
-    - enable disqus
+- proof read resume
 
 - post-publish
-    - have github.io redirect to this
-        - http://stackoverflow.com/questions/5411538/redirect-from-an-html-page
     - add projects
         - this website
         - redux responsive?
@@ -22,8 +17,6 @@
         - responsive
         - mobile friendly
         - accessible
-    - check favicon
-    - google page speed insights
 
 
 # non-vital
@@ -37,6 +30,10 @@
 - offer rss feed?
 - use sass or scss
 - a better way of ensuring that each view renders a page title using helmet
+
+- optimization
+    - google page speed insights
+    - markdown and syntax styles only need to be loaded on article view
 
 - relay
     - relay literally does not yet have universal support...
