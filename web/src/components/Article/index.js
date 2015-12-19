@@ -1,13 +1,16 @@
 // third party imports
 import React, {Component, PropTypes} from 'react'
 import radium from 'radium'
-// import DisqusThread from 'react-disqus-thread'
+import DisqusThread from 'react-disqus-thread'
 // local imports
 import styles from './styles'
 import Banner from 'components/Banner'
 import TagList from 'components/TagList'
 import FormattedDate from 'components/FormattedDate'
 import MarkdownContainer from 'components/MarkdownContainer'
+
+
+const isProduction = process.env.NODE_ENV === 'production'
 
 
 @radium
@@ -41,7 +44,7 @@ export default class Article extends Component {
     render() {
         const {
             BannerIcon,
-            // url,
+            url,
             title,
             subtitle,
             created,
@@ -73,17 +76,17 @@ export default class Article extends Component {
                     <MarkdownContainer style={styles.content}>
                         {content}
                     </MarkdownContainer>
+                    <div style={styles.disqus}>
+                        <DisqusThread
+                            // see: https://help.disqus.com/customer/en/portal/articles/472098-javascript-configuration-variables
+                            shortname={isProduction ? 'montemishkin' : 'montemishkin-test'}
+                            identifier={url}
+                            title={title}
+                            // TODO: this url should not be hardcoded here
+                            url={`http://monte.mishkin.com${url}`}
+                        />
+                    </div>
                 </section>
-
-                {/*
-                <DisqusThread
-                    // see: https://help.disqus.com/customer/en/portal/articles/472098-javascript-configuration-variables
-                    shortname='montemishkin'
-                    identifier={url}
-                    title={title}
-                    url={`http://monte.mishkin.com${url}`}
-                />
-                */}
             </article>
         )
     }

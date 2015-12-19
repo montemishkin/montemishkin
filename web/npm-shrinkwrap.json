@@ -3477,6 +3477,11 @@
       "from": "react@>=0.14.3 <0.15.0",
       "resolved": "https://registry.npmjs.org/react/-/react-0.14.3.tgz"
     },
+    "react-disqus-thread": {
+      "version": "0.3.1",
+      "from": "react-disqus-thread@*",
+      "resolved": "https://registry.npmjs.org/react-disqus-thread/-/react-disqus-thread-0.3.1.tgz"
+    },
     "react-dom": {
       "version": "0.14.3",
       "from": "react-dom@>=0.14.3 <0.15.0",

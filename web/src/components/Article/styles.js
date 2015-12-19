@@ -23,11 +23,18 @@ export default {
 
     contentContainer: {
         display: 'flex',
-        justifyContent: 'center',
+        flexDirection: 'column',
+        alignItems: 'center',
     },
 
     content: {
         padding: `${contentVerticalPadding}px 0`,
+        width: contentWidth,
+        maxWidth: contentMaxWidth,
+    },
+
+    disqus: {
+        paddingBottom: contentVerticalPadding,
         width: contentWidth,
         maxWidth: contentMaxWidth,
     },
