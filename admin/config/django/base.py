@@ -90,14 +90,8 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-
-
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 X_FRAME_OPTIONS = 'DENY'
-
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
