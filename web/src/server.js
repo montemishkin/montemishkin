@@ -94,9 +94,9 @@ server.all('*', async function (req, res) {
 
             // create redux store with initial data
             const store = createStore({
-                posts,
-                projects,
-                tags,
+                posts: posts || [],
+                projects: projects || [],
+                tags: tags || [],
             })
             // initial application state
             const initialState = JSON.stringify(store.getState())
