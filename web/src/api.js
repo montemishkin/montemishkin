@@ -4,6 +4,15 @@ import {normalize, Schema, arrayOf} from 'normalizr'
 import reduce from 'lodash/collection/reduce'
 
 
+// TODO: this seems like the wrong way to do this...
+// name of host to use when forming URL's
+let adminURL = 'localhost:8001'
+// if we are in production environment
+if (process.env.NODE_ENV === 'production') {
+    adminURL = 'admin.monte.mishkin.com'
+}
+
+
 // create normalizr schema
 const tagSchema = new Schema('tags')
 const postSchema = new Schema('posts')
@@ -23,7 +32,7 @@ const normalizrSchema = {
 // returns api response from given query
 export function queryAPI(query) {
     // TODO: this url should not be hardcoded here
-    return fetch(`http://localhost:8001/query/?query=${query}`, {
+    return fetch(`http://${adminURL}/query/?query=${query}`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',

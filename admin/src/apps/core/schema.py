@@ -6,6 +6,7 @@ GraphQL schema.
 import graphene
 from graphene.contrib.django import DjangoNode
 # local imports
+from django.conf import settings
 from .models import Post as PostModel, Project as ProjectModel
 from .util import markdown
 
@@ -48,7 +49,7 @@ class Image(graphene.ObjectType):
 
     def resolve_url(self, *args, **kwargs):
         # TODO: this URL route should REALLY not be hardcoded here
-        return 'http://localhost:8001' + self.url
+        return 'http://' + settings.HOST_NAME + self.url
 
 
 class Article(graphene.Interface):

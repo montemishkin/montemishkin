@@ -3,7 +3,7 @@ import {combineReducers} from 'redux'
 import {createResponsiveStateReducer} from 'redux-responsive'
 
 
-function noopReducer(state = {}) {
+function noopReducer(state = []) {
     return state
 }
 

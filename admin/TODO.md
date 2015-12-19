@@ -6,6 +6,8 @@
 - django settings
     - go through middlewares
 
+- .gitignore should ignore /media/ except that i want to keep the images used for the fixtures
+
 - figure out deployment (wsgi, etc...)
     - https://docs.djangoproject.com/en/1.8/howto/deployment/
     - https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-14-04
