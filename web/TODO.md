@@ -24,34 +24,40 @@
 
 # non-vital
 
-- pagination
 - tag search view should show tags with higher usage first
     - should also show number of posts and projects that use that tag
-- improve use of semantic content
-- another variation of bird logo for tag search view
-- how to organize components vs views, deal with nesting, etc
 - offer rss feed?
-- use sass or scss
 - a better way of ensuring that each view renders a page title using helmet
+- tests. like seriously...
+
+- branding
+    - another variation of bird logo for tag search view
+
+- development
+    - how to organize components vs views, deal with nesting, etc
+    - use sass or scss
 
 - optimization
     - google page speed insights
-    - markdown and syntax styles only need to be loaded on article view
+    - only load what data is actually needed for the current view
+        - see "data flow" todos
+    - only load what stylesheets are actually needed for the current view
+    - cleanup logos
+        - remove unused ones
+        - cut away cruft on inkscape output
 
-- relay
-    - relay literally does not yet have universal support...
-    - https://facebook.github.io/relay/docs
-    - https://medium.com/@cpojer/relay-and-routing-36b5439bad9#.rwu6n8bpg
-
-- cleanup logos
-    - remove unused ones
-    - cut away cruft on inkscape output
+- data flow
+    - relay
+        - relay literally does not yet have universal support...
+        - https://facebook.github.io/relay/docs
+        - https://medium.com/@cpojer/relay-and-routing-36b5439bad9#.rwu6n8bpg
+    - pagination
+    - only load what is actually needed for the current view
 
 - accessiblity
+    - improve use of semantic content
     - `TabContainer` component used in `TagDetail` view is not accessible (try navigating with Tab key)
         - see [here](https://developer.mozilla.org/en-US/docs/Web/Accessibility/An_overview_of_accessible_web_applications_and_widgets) for tips on making it accessible.
-
-- tests. like seriously...
 
 - styling
     - NotFound view
