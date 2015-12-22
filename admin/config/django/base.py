@@ -18,9 +18,12 @@ APP_DIR = os.path.join(BASE_DIR, 'src')
 TEMPLATES_DIR = os.path.join(APP_DIR, 'templates')
 
 
-# Application definition
-
-django_apps = (
+INSTALLED_APPS = (
+    # local apps
+    'src.apps.core',
+    # third party apps
+    'taggit',
+    # django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -29,15 +32,6 @@ django_apps = (
     'django.contrib.staticfiles',
 )
 
-third_party_apps = (
-    'taggit',
-)
-
-src_apps = (
-    'src.apps.core',
-)
-
-INSTALLED_APPS = src_apps + third_party_apps + django_apps
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
@@ -50,8 +44,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'src.urls'
 
+ROOT_URLCONF = 'src.urls'
 APPEND_SLASH = True
 
 
