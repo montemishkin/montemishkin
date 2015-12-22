@@ -51,9 +51,7 @@
     - `TabContainer` component used in `TagDetail` view is not accessible (try navigating with Tab key)
         - see [here](https://developer.mozilla.org/en-US/docs/Web/Accessibility/An_overview_of_accessible_web_applications_and_widgets) for tips on making it accessible.
 
-- tests
-    - in general
-    - for util functions like `search`
+- tests. like seriously...
 
 - styling
     - NotFound view

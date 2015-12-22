@@ -4,18 +4,13 @@ import {connect} from 'react-redux'
 import Helmet from 'react-helmet'
 // local imports
 import TagPreview from './TagPreview'
-import SearchView from 'components/SearchView'
+import ListView from 'components/ListView'
 import MainLogo from 'components/Logos/Main'
 
 
 @connect(({tags}) => ({tags}))
-export default class TagSearch extends Component {
+export default class TagList extends Component {
     static propTypes = {
-        location: PropTypes.shape({
-            query: PropTypes.shape({
-                search: PropTypes.string,
-            }).isRequired,
-        }).isRequired,
         tags: PropTypes.arrayOf(PropTypes.shape({
             url: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
@@ -26,7 +21,6 @@ export default class TagSearch extends Component {
 
     render() {
         const {
-            location: {query: {search: initialSearchText}},
             tags,
             ...unusedProps,
         } = this.props
@@ -34,14 +28,12 @@ export default class TagSearch extends Component {
         return (
             <div {...unusedProps}>
                 <Helmet title='Tags' />
-                <SearchView
+                <ListView
                     bannerIcon={props => <MainLogo {...props} />}
                     title='Tags'
                     subtitle='gotta love em.'
                     items={tags}
-                    mapItemToSearchFields={tag => [tag.name, tag.description]}
                     PreviewComponent={TagPreview}
-                    initialSearchText={initialSearchText}
                 />
             </div>
         )

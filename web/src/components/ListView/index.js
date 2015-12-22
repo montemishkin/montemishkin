@@ -5,15 +5,11 @@ import radium from 'radium'
 import styles from './styles'
 import Banner from 'components/Banner'
 import WideList from 'components/WideList'
-import search from 'util/search'
 
 
 @radium
-export default class SearchView extends Component {
+export default class ListView extends Component {
     static propTypes = {
-        initialSearchText: PropTypes.string,
-        mapItemToSearchFields: PropTypes.func,
-        sortEqualScores: PropTypes.func,
         // react component
         PreviewComponent: PropTypes.func.isRequired,
         // react component
@@ -25,55 +21,30 @@ export default class SearchView extends Component {
 
 
     static defaultProps = {
-        initialSearchText: '',
         bannerIcon: radium(props => <i {...props} className='fa fa-search' />),
     }
 
 
-    constructor(props, args) {
-        // instantiate `this`
-        super(props, args)
-        // set initial state
-        this.state = {
-            searchText: props.initialSearchText,
-        }
-    }
-
-
-    get filteredItems() {
-        const {
-            props: {
-                items,
-                mapItemToSearchFields,
-                sortEqualScores,
-            },
-            state: {searchText},
-        } = this
-
-        return search(searchText, items, mapItemToSearchFields, sortEqualScores)
-    }
-
-
     get content() {
-        const {filteredItems, props: {PreviewComponent}} = this
+        const {items, PreviewComponent} = this.props
 
-        // if any items survived the filter
-        if (filteredItems.length > 0) {
+        // if any items present
+        if (items.length > 0) {
             // render a list of them as content
             return (
                 <WideList>
-                    {filteredItems.map((item, key) => (
+                    {items.map((item, key) => (
                         <PreviewComponent {...item} key={key} />
                     ))}
                 </WideList>
             )
         }
-        // otherwise no items survived the filter
-        // so render a message indicating no search results
+        // otherwise no items
+        // so render a message indicating no items
         return (
             <section style={styles.messageContainer}>
                 <span style={styles.message}>
-                    No search results.
+                    No items.
                 </span>
             </section>
         )
@@ -89,7 +60,6 @@ export default class SearchView extends Component {
                 subtitle,
                 ...unusedProps,
             },
-            state: {searchText},
         } = this
 
         return (
@@ -98,17 +68,7 @@ export default class SearchView extends Component {
                     Icon={bannerIcon}
                     title={title}
                     subtitle={subtitle}
-                >
-                    <input
-                        type='text'
-                        placeholder='Search'
-                        style={styles.searchBar}
-                        value={searchText}
-                        onChange={({target: {value}}) =>
-                            this.setState({searchText: value})
-                        }
-                    />
-                </Banner>
+                />
                 {content}
             </article>
         )

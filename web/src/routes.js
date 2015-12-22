@@ -5,22 +5,22 @@ import {Route, IndexRoute} from 'react-router'
 import Navigation from './views/Navigation'
 import NotFound from './views/NotFound'
 import About from './views/About'
-import ProjectSearch from './views/ProjectSearch'
+import ProjectList from './views/ProjectList'
 import ProjectDetail from './views/ProjectDetail'
-import PostSearch from './views/PostSearch'
+import PostList from './views/PostList'
 import PostDetail from './views/PostDetail'
-import TagSearch from './views/TagSearch'
+import TagList from './views/TagList'
 import TagDetail from './views/TagDetail'
 
 
 export default (
     <Route path='/' component={Navigation}>
         <IndexRoute component={About} />
-        <Route path='projects' component={ProjectSearch} />
+        <Route path='projects' component={ProjectList} />
         <Route path='projects/:slug' component={ProjectDetail}/>
-        <Route path='posts' component={PostSearch} />
+        <Route path='posts' component={PostList} />
         <Route path='posts/:slug' component={PostDetail} />
-        <Route path='tags' component={TagSearch} />
+        <Route path='tags' component={TagList} />
         <Route path='tags/:slug' component={TagDetail} />
         <Route path='*' component={NotFound} />
     </Route>
