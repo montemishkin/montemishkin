@@ -1,6 +1,9 @@
 # vital
 
+- make note to check out my github for other projects not seen on project search view
+
 - remove soundcloud link for now?
+    - or add more songs
 
 - proof read resume
 
