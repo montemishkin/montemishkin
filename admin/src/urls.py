@@ -7,7 +7,7 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^query/', include('src.apps.core.urls')),
-    url(r'^.*', include(admin.site.urls)),
+    url(r'^.*/', include(admin.site.urls)),
 ]
 
 
