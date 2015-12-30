@@ -120,7 +120,7 @@ gulp.task('tdd', () => {
 /**
  * Build everything needed for production.
  */
-gulp.task('build-prodution', ['clean-build', 'build-styles', 'build-client-production', 'build-server-production'])
+gulp.task('build-production', ['clean-build', 'build-styles', 'build-client-production', 'build-server-production'])
 
 
 /**
