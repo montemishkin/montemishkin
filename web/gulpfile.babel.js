@@ -118,6 +118,12 @@ gulp.task('tdd', () => {
 
 
 /**
+ * Build everything needed for production.
+ */
+gulp.task('build-prodution', ['clean-build', 'build-styles', 'build-client-production', 'build-server-production'])
+
+
+/**
  * Build client entry point for production.
  */
 gulp.task('build-client-production', ['clean-client'], () => {
@@ -158,4 +164,12 @@ gulp.task('clean-client', () => {
  */
 gulp.task('clean-server', () => {
     del.sync(serverBuildGlob)
+})
+
+
+/**
+ * Remove ALL previously built files.
+ */
+gulp.task('clean-build', () => {
+    del.sync(buildDir)
 })
