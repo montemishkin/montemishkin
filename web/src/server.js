@@ -35,7 +35,7 @@ server.set('views', templatesDir)
 /* Application-wide Middleware */
 
 // log requests
-server.use(logger('dev'))
+server.use(logger(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'))
 // serve favicon
 server.use(favicon(faviconPath))
 // compress responses
