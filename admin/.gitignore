@@ -3,3 +3,4 @@ __pycache__
 /static/
 /config/django/secret-key
 /config/django/db-credentials.json
+/django-debug.log

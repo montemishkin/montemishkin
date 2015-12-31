@@ -39,3 +39,23 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+# see: https://docs.djangoproject.com/en/1.8/topics/logging/#configuring-logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/home/mishkin/mdv/montemishkin/admin/django-debug.log',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
