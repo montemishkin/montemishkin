@@ -41,7 +41,7 @@ const sections = [
                 {' '}<a
                     style={styles.link}
                     target='_blank'
-                    href='/static/resume.pdf'
+                    href='/static/monte_mishkin_resume.pdf'
                 >
                     resume
                 </a>{' '}

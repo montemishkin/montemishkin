@@ -14,7 +14,7 @@ const contactData = [
         icon: 'envelope-o',
     }, {
         caption: 'Resume',
-        href: '/static/resume.pdf',
+        href: '/static/monte_mishkin_resume.pdf',
         icon: 'file-text-o',
     }, {
         caption: 'GitHub',
