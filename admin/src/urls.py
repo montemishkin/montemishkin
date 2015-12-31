@@ -6,19 +6,17 @@ from django.conf import settings
 
 
 urlpatterns = [
+    url(r'^admin/', include(admin.site.urls)),
     url(r'^query/', include('src.apps.core.urls')),
-    url(r'^.*/', include(admin.site.urls)),
 ]
 
 
 # if in development environment
 if settings.DEBUG:
-    # add some routes right BEFORE catch all route
-    urlpatterns[-1:-1] = [
-        # graphiql for browsing graphql api
-        url(r'^graphiql/', include('django_graphiql.urls')),
-        # static files
-        *static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
-        # uploaded media
-        *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
-    ]
+    # add graphiql route for browsing graphql api
+    urlpatterns += [url(r'^graphiql/', include('django_graphiql.urls'))]
+    # add static files route
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    # add media files route
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
