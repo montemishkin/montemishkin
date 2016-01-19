@@ -1,17 +1,16 @@
 // third party imports
 import {combineReducers} from 'redux'
 import {createResponsiveStateReducer} from 'redux-responsive'
+// local imports
+import posts from './ducks/posts'
+import projects from './ducks/projects'
+import tags from './ducks/tags'
 
 
-function noopReducer(state = []) {
-    return state
-}
-
-
-// combine and export the reducers
+// combine and export reducers
 export default combineReducers({
     browser: createResponsiveStateReducer({medium: 700}),
-    posts: noopReducer,
-    projects: noopReducer,
-    tags: noopReducer,
+    posts,
+    projects,
+    tags,
 })

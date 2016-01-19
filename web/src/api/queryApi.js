@@ -1,7 +1,8 @@
 // third party imports
 import fetch from 'isomorphic-fetch'
-import {normalize, Schema, arrayOf} from 'normalizr'
-import reduce from 'lodash/collection/reduce'
+import {normalize} from 'normalizr'
+// local imports
+import schema from './schema'
 
 
 // TODO: this seems like the wrong way to do this...
@@ -13,30 +14,18 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-// create normalizr schema
-const tagSchema = new Schema('tags')
-const postSchema = new Schema('posts')
-postSchema.define({
-    tags: arrayOf(tagSchema),
-})
-const projectSchema = new Schema('projects')
-projectSchema.define({
-    tags: arrayOf(tagSchema),
-})
-const normalizrSchema = {
-    projects: arrayOf(projectSchema),
-    posts: arrayOf(postSchema),
-}
-
-
 // returns api response from given query
-export function queryAPI(query) {
+export default query => {
     // TODO: this url should not be hardcoded here
-    return fetch(`http://${adminURL}/query/?query=${query}`, {
+    return fetch(`http://${adminURL}/query/`, {
         method: 'POST',
+        // TODO: will I need 'cors' in production?
+        mode: 'cors',
         headers: {
+            'Content-Type': 'application/graphql',
             Accept: 'application/json',
         },
+        body: query,
     // parse response into json
     }).then(body => body.json())
     // check for graphql errors and then grab the response data
@@ -49,10 +38,5 @@ export function queryAPI(query) {
         }
         return data
     // normalize nested data structure
-    }).then(data => normalize(data, normalizrSchema).entities)
-    // convert objects with integer keys to arrays
-    .then(startData => reduce(startData, (endData, val, key) => ({
-        ...endData,
-        [key]: reduce(val, (list, entry) => list.concat(entry), []),
-    }), {}))
+    }).then(data => normalize(data, schema).entities)
 }

@@ -1,3 +1,5 @@
+// fix node land
+import 'babel-core/polyfill'
 // third party imports
 import express from 'express'
 import compression from 'compression'
@@ -18,7 +20,11 @@ import {
 import routes from 'routes'
 import {createStore} from 'store'
 import App from 'App'
-import {queryAPI} from 'api'
+import queryApi from 'api/queryApi'
+import articleFragment from 'api/articleFragment'
+import {mergeAll as mergeAllPosts} from 'store/ducks/posts'
+import {mergeAll as mergeAllProjects} from 'store/ducks/projects'
+import {mergeAll as mergeAllTags} from 'store/ducks/tags'
 
 
 const server = express()
@@ -59,7 +65,8 @@ server.all('*', async function (req, res) {
         // if route was found and is not a redirect
         } else {
             // grab initial data for store from admin service
-            const {posts, projects, tags} = await queryAPI(`
+            // TODO: dont just wildly grab all data.
+            const {posts, projects, tags} = await queryApi(`
                 query {
                     posts {
                       ...articleFragment
@@ -68,43 +75,20 @@ server.all('*', async function (req, res) {
                       ...articleFragment
                     }
                 }
-
-                fragment articleFragment on Article {
-                    id
-                    url
-                    title
-                    subtitle
-                    content
-                    bannerImage {
-                        url
-                    }
-                    created {
-                        year
-                        month
-                        day
-                    }
-                    tags {
-                        id
-                        url
-                        name
-                        description
-                    }
-                }
+                ${articleFragment}
             `)
 
-            // create redux store with initial data
-            const store = createStore({
-                posts: posts || [],
-                projects: projects || [],
-                tags: tags || [],
-            })
+            // create redux store
+            const store = createStore()
+            // populate store with initial data
+            // store.dispatch(mergeAllPosts(posts))
+            // store.dispatch(mergeAllProjects(projects))
+            // store.dispatch(mergeAllTags(tags))
+
             // initial application state
             const initialState = JSON.stringify(store.getState())
             // rendered app
-            let renderedComponent
-
-            // render routed application
-            renderedComponent = renderToString(
+            const renderedComponent = renderToString(
                 <App
                     store={store}
                     renderProps={renderProps}

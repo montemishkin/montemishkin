@@ -53,6 +53,7 @@
         - https://medium.com/@cpojer/relay-and-routing-36b5439bad9#.rwu6n8bpg
     - pagination
     - only load what is actually needed for the current view
+    - DRY up graphql queries
 
 - accessiblity
     - improve use of semantic content
