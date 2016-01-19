@@ -12,6 +12,10 @@ DEBUG = True
 # TODO: seems wrong to need this, but currently needed for image URL's...
 HOST_NAME = 'localhost:8001'
 
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+
 # hardcoded secret key for development
 SECRET_KEY = 'u1wn)3ngd0c09m^81_wv1!2-*jj9ahqg#jbr*=m%nt9h!afwad'
 

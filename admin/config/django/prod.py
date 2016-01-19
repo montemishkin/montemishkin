@@ -15,9 +15,13 @@ DEBUG = False
 # TODO: seems wrong to need this, but currently needed for image URL's...
 HOST_NAME = 'admin.monte.mishkin.com'
 
+
+CORS_ORIGIN_WHITELIST = ('monte.mishkin.com', )
+
+
 # List of allowed hostnames
 # https://docs.djangoproject.com/en/1.8/ref/settings/#std:setting-ALLOWED_HOSTS
-ALLOWED_HOSTS = ['admin.monte.mishkin.com', 'www.admin.monte.mishkin.com']
+ALLOWED_HOSTS = [HOST_NAME, 'www.' + HOST_NAME]
 
 # grab secret key from file in production
 with open(os.path.abspath(os.path.join(__file__, os.pardir, 'secret-key'))) as secret_key_file:
