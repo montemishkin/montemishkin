@@ -50,6 +50,3 @@ module.exports = assign({}, baseConfig, {
         path: true,
     },
 })
-
-
-// end of file
