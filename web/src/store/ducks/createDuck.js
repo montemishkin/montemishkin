@@ -1,7 +1,7 @@
 // node imports
 import path from 'path'
-// local imports
-import mapObject from 'util/mapObject'
+// third party imports
+import mapValues from 'lodash/object/mapValues'
 
 
 
@@ -180,7 +180,7 @@ export default ({
                 // only set specified items to be loading
                 return {
                     ...state,
-                    items: mapObject(state.items, item =>
+                    items: mapValues(state.items, item =>
                         action.ids.indexOf(item.id) === -1
                             ? item
                             : entityAsLoading(item)
@@ -191,7 +191,7 @@ export default ({
                     ...entityAsLoaded(state, action.dateTime),
                     items: {
                         ...state.items,
-                        ...mapObject(action.items,
+                        ...mapValues(action.items,
                             item => entityAsLoaded(item, action.dateTime)
                         ),
                     },
@@ -201,7 +201,7 @@ export default ({
                     ...state,
                     items: {
                         ...state.items,
-                        ...mapObject(action.items,
+                        ...mapValues(action.items,
                             item => entityAsLoaded(item, action.dateTime)
                         ),
                     },
@@ -213,7 +213,7 @@ export default ({
                 // only set specified items to error
                 return {
                     ...state,
-                    items: mapObject(state.items, item =>
+                    items: mapValues(state.items, item =>
                         action.ids.indexOf(item.id) === -1
                             ? item
                             : entityAsErrored(item)
