@@ -16,5 +16,9 @@ projectSchema.define({
 
 export default {
     projects: arrayOf(projectSchema),
+    projectsById: arrayOf(projectSchema),
     posts: arrayOf(postSchema),
+    postsById: arrayOf(postSchema),
+    tags: arrayOf(tagSchema),
+    tagsById: arrayOf(tagSchema),
 }
