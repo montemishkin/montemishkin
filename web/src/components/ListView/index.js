@@ -5,10 +5,10 @@ import radium from 'radium'
 import styles from './styles'
 import Banner from 'components/Banner'
 import WideList from 'components/WideList'
+import Loader from 'components/Loader'
 
 
-@radium
-export default class ListView extends Component {
+class ListView extends Component {
     static propTypes = {
         // react component
         PreviewComponent: PropTypes.func.isRequired,
@@ -17,6 +17,10 @@ export default class ListView extends Component {
         title: PropTypes.string.isRequired,
         subtitle: PropTypes.string,
         items: PropTypes.array.isRequired,
+        isLoading: PropTypes.bool.isRequired,
+        loadDateTime: PropTypes.number,
+        loadError: PropTypes.object,
+        reload: PropTypes.func,
     }
 
 
@@ -25,12 +29,26 @@ export default class ListView extends Component {
     }
 
 
-    get content() {
-        const {items, PreviewComponent} = this.props
+    Message = ({content}) => {
+        return (
+            <div style={styles.messageContainer}>
+                <span style={styles.message}>
+                    {content}
+                </span>
+            </div>
+        )
+    }
+
+
+    ListContent = () => {
+        const {
+            Message,
+            props: {items, PreviewComponent},
+        } = this
 
         // if any items present
         if (items.length > 0) {
-            // render a list of them as content
+            // render a list of them
             return (
                 <WideList>
                     {items.map((item, key) => (
@@ -41,11 +59,46 @@ export default class ListView extends Component {
         }
         // otherwise no items
         // so render a message indicating no items
+        return <Message content='No items.' />
+    }
+
+
+    LoadingContent = () => {
+        const {ListContent, Message} = this
+
         return (
-            <section style={styles.messageContainer}>
-                <span style={styles.message}>
-                    No items.
-                </span>
+            <section style={styles.contentContainer}>
+                <Message content={'Loading...'} />
+                <ListContent />
+            </section>
+        )
+    }
+
+
+    ErrorContent = () => {
+        const {
+            ListContent,
+            Message,
+            props: {loadError},
+        } = this
+
+        return (
+            <section style={styles.contentContainer}>
+                <Message content={`Error: ${loadError}`} />
+                <ListContent />
+            </section>
+        )
+    }
+
+
+    LoadedContent = () => {
+        const {
+            ListContent,
+        } = this
+
+        return (
+            <section style={styles.contentContainer}>
+                <ListContent />
             </section>
         )
     }
@@ -53,11 +106,17 @@ export default class ListView extends Component {
 
     render() {
         const {
-            content,
+            LoadingContent,
+            ErrorContent,
+            LoadedContent,
             props: {
                 bannerIcon,
                 title,
                 subtitle,
+                isLoading,
+                loadDateTime,
+                loadError,
+                reload,
                 ...unusedProps,
             },
         } = this
@@ -69,8 +128,19 @@ export default class ListView extends Component {
                     title={title}
                     subtitle={subtitle}
                 />
-                {content}
+                <Loader
+                    isInvalid={typeof loadDateTime === 'undefined'}
+                    isLoading={isLoading}
+                    error={loadError}
+                    reload={reload}
+                    LoadingContent={LoadingContent}
+                    ErrorContent={ErrorContent}
+                    LoadedContent={LoadedContent}
+                />
             </article>
         )
     }
 }
+
+
+export default radium(ListView)

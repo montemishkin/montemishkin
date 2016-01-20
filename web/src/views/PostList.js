@@ -2,22 +2,17 @@
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 import Helmet from 'react-helmet'
+import reduce from 'lodash/collection/reduce'
 // local imports
 import ListView from 'components/ListView'
 import ArticlePreview from 'components/ArticlePreview'
 import BlogLogo from 'components/Logos/Blog'
 import {nestArticle} from 'util/nest'
+import sortDates from 'util/sortDates'
+import {fetchAllIfNeeded} from 'store/ducks/posts'
 
 
-function mapStateToProps({posts, tags}) {
-    return {
-        posts: posts.map(post => nestArticle(post, tags)),
-    }
-}
-
-
-@connect(mapStateToProps)
-export default class PostList extends Component {
+class PostList extends Component {
     static propTypes = {
         posts: PropTypes.arrayOf(PropTypes.shape({
             url: PropTypes.string.isRequired,
@@ -34,12 +29,19 @@ export default class PostList extends Component {
                 description: PropTypes.string.isRequired,
             })).isRequired,
         })).isRequired,
+        loadDateTime: PropTypes.number,
+        isLoading: PropTypes.bool.isRequired,
+        loadError: PropTypes.object,
     }
 
 
     render() {
         const {
             posts,
+            loadDateTime,
+            isLoading,
+            loadError,
+            dispatch,
             ...unusedProps,
         } = this.props
 
@@ -52,8 +54,43 @@ export default class PostList extends Component {
                     subtitle='oh yeah.'
                     items={posts}
                     PreviewComponent={ArticlePreview}
+                    isLoading={isLoading}
+                    loadDateTime={loadDateTime}
+                    loadError={loadError}
+                    reload={() => dispatch(fetchAllIfNeeded())}
                 />
             </div>
         )
     }
 }
+
+
+// TODO: use reselect
+function mapStateToProps(state) {
+    const {
+        posts: {
+            items: posts,
+            loadDateTime,
+            isLoading,
+            loadError,
+        },
+        tags: {
+            items: tags,
+        },
+    } = state
+
+    return {
+        // map object of post items to array of posts
+        posts: reduce(posts, (result, post) => [
+            ...result,
+            nestArticle(post, tags),
+        // sort most recently created posts to front of array
+        ], []).sort(({created: a}, {created: b}) => sortDates(a, b)),
+        loadDateTime,
+        isLoading,
+        loadError,
+    }
+}
+
+
+export default connect(mapStateToProps)(PostList)

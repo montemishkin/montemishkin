@@ -2,26 +2,34 @@
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 import Helmet from 'react-helmet'
+import reduce from 'lodash/collection/reduce'
 // local imports
 import TagPreview from './TagPreview'
 import ListView from 'components/ListView'
 import MainLogo from 'components/Logos/Main'
+import {fetchAllIfNeeded} from 'store/ducks/tags'
 
 
-@connect(({tags}) => ({tags}))
-export default class TagList extends Component {
+class TagList extends Component {
     static propTypes = {
         tags: PropTypes.arrayOf(PropTypes.shape({
             url: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
             description: PropTypes.string.isRequired,
         })).isRequired,
+        loadDateTime: PropTypes.number,
+        isLoading: PropTypes.bool.isRequired,
+        loadError: PropTypes.object,
     }
 
 
     render() {
         const {
             tags,
+            loadDateTime,
+            isLoading,
+            loadError,
+            dispatch,
             ...unusedProps,
         } = this.props
 
@@ -34,8 +42,36 @@ export default class TagList extends Component {
                     subtitle='gotta love em.'
                     items={tags}
                     PreviewComponent={TagPreview}
+                    isLoading={isLoading}
+                    loadDateTime={loadDateTime}
+                    loadError={loadError}
+                    reload={() => dispatch(fetchAllIfNeeded())}
                 />
             </div>
         )
     }
 }
+
+
+// TODO: use reselect
+function mapStateToProps(state) {
+    const {
+        items: tags,
+        loadDateTime,
+        isLoading,
+        loadError,
+    } = state.tags
+
+    return {
+        // map object of tag items to array of tags
+        tags: reduce(tags, (result, tag) => [...result, tag], [])
+            // sort alphabetically
+            .sort(({name: a}, {name: b}) => a < b ? -1 : (a > b ? 1 : 0)),
+        loadDateTime,
+        isLoading,
+        loadError,
+    }
+}
+
+
+export default connect(mapStateToProps)(TagList)
