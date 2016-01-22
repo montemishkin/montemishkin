@@ -1,6 +1,7 @@
 // third party imports
 import fetch from 'isomorphic-fetch'
 import {normalize} from 'normalizr'
+import mapValues from 'lodash/object/mapValues'
 // local imports
 import schema from './schema'
 
@@ -39,4 +40,25 @@ export default query => {
         return data
     // normalize nested data structure
     }).then(data => normalize(data, schema).entities)
+    // add url fields to posts and tags
+    // TODO: this doesn't seem like the right place to do this...
+    .then(data => ({
+        ...data,
+        posts: mapValues(data.posts, post => ({
+            ...post,
+            url: '/posts/' + post.slug,
+        })),
+        tags: mapValues(data.tags, tag => ({
+            ...tag,
+            url: '/tags/' + tag.slug,
+        })),
+        postsBySlug: mapValues(data.postsBySlug, post => ({
+            ...post,
+            url: '/posts/' + post.slug,
+        })),
+        tagsBySlug: mapValues(data.tagsBySlug, tag => ({
+            ...tag,
+            url: '/tags/' + tag.slug,
+        })),
+    }))
 }

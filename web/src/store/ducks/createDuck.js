@@ -39,11 +39,11 @@ function entityAsErrored(entity, error) {
 export default ({
     prefix = '',
     queryAll = () => Promise.resolve(),
-    queryById = () => Promise.resolve(),
+    queryBySlug = () => Promise.resolve(),
     processAll = () => {},
     mapAllToItems = x => x,
-    processById = () => {},
-    mapByIdToItems = x => x,
+    processBySlug = () => {},
+    mapBySlugToItems = x => x,
 }) => {
     // Action Types
 
@@ -51,9 +51,9 @@ export default ({
     const MERGE_ALL = path.join(prefix, 'MERGE_ALL')
     const FAIL_FETCH_ALL = path.join(prefix, 'FAIL_FETCH_ALL')
 
-    const REQUEST_BY_ID = path.join(prefix, 'REQUEST_BY_ID')
-    const MERGE_BY_ID = path.join(prefix, 'MERGE_BY_ID')
-    const FAIL_FETCH_BY_ID = path.join(prefix, 'FAIL_FETCH_BY_ID')
+    const REQUEST_BY_SLUG = path.join(prefix, 'REQUEST_BY_SLUG')
+    const MERGE_BY_SLUG = path.join(prefix, 'MERGE_BY_SLUG')
+    const FAIL_FETCH_BY_SLUG = path.join(prefix, 'FAIL_FETCH_BY_SLUG')
 
 
     // Action Creators
@@ -106,56 +106,56 @@ export default ({
         }
     }
 
-    function requestById(...ids) {
+    function requestBySlug(...slugs) {
         return {
-            type: REQUEST_BY_ID,
-            ids,
+            type: REQUEST_BY_SLUG,
+            slugs,
         }
     }
 
-    function mergeById(items) {
+    function mergeBySlug(items) {
         return {
-            type: MERGE_BY_ID,
+            type: MERGE_BY_SLUG,
             dateTime: Date.now(),
             items,
         }
     }
 
-    function failFetchById(error, ...ids) {
+    function failFetchBySlug(error, ...slugs) {
         return {
-            type: FAIL_FETCH_BY_ID,
+            type: FAIL_FETCH_BY_SLUG,
             error,
-            ids,
+            slugs,
         }
     }
 
-    function fetchById(...ids) {
+    function fetchBySlug(...slugs) {
         return dispatch => {
-            dispatch(requestById(...ids))
+            dispatch(requestBySlug(...slugs))
 
-            return queryById(...ids)
+            return queryBySlug(...slugs)
                 .then(data => {
-                    processById(data, dispatch)
+                    processBySlug(data, dispatch)
 
-                    return mapByIdToItems(data)
+                    return mapBySlugToItems(data)
                 })
-                .then(items => dispatch(mergeById(items)))
-                .catch(error => dispatch(failFetchById(error, ...ids)))
+                .then(items => dispatch(mergeBySlug(items)))
+                .catch(error => dispatch(failFetchBySlug(error, ...slugs)))
         }
     }
 
-    function fetchByIdIfNeeded(...ids) {
+    function fetchBySlugIfNeeded(...slugs) {
         return (dispatch, getState) => {
             const {items} = getState()[prefix]
-            const neededIds = ids.filter(id => {
-                const item = items[id]
+            const neededSlugs = slugs.filter(slug => {
+                const item = items[slug]
 
                 return typeof item === 'undefined' || (
                     !item.isLoading && typeof item.loadDateTime === 'undefined'
                 )
             })
 
-            return dispatch(fetchById(...neededIds))
+            return dispatch(fetchBySlug(...neededSlugs))
         }
     }
 
@@ -176,12 +176,12 @@ export default ({
             case REQUEST_ALL:
                 // set entire state to be loading
                 return entityAsLoading(state)
-            case REQUEST_BY_ID:
+            case REQUEST_BY_SLUG:
                 // only set specified items to be loading
                 return {
                     ...state,
                     items: mapValues(state.items, item =>
-                        action.ids.indexOf(item.id) === -1
+                        action.slugs.indexOf(item.slug) === -1
                             ? item
                             : entityAsLoading(item)
                     ),
@@ -196,7 +196,7 @@ export default ({
                         ),
                     },
                 }
-            case MERGE_BY_ID:
+            case MERGE_BY_SLUG:
                 return {
                     ...state,
                     items: {
@@ -209,12 +209,12 @@ export default ({
             case FAIL_FETCH_ALL:
                 // set entire state to error
                 return entityAsErrored(state)
-            case FAIL_FETCH_BY_ID:
+            case FAIL_FETCH_BY_SLUG:
                 // only set specified items to error
                 return {
                     ...state,
                     items: mapValues(state.items, item =>
-                        action.ids.indexOf(item.id) === -1
+                        action.slugs.indexOf(item.slug) === -1
                             ? item
                             : entityAsErrored(item)
                     ),
@@ -233,11 +233,11 @@ export default ({
         fetchAll,
         fetchAllIfNeeded,
 
-        requestById,
-        mergeById,
-        failFetchById,
-        fetchById,
-        fetchByIdIfNeeded,
+        requestBySlug,
+        mergeBySlug,
+        failFetchBySlug,
+        fetchBySlug,
+        fetchBySlugIfNeeded,
 
         reducer,
     }

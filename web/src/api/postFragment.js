@@ -1,6 +1,5 @@
 export default `fragment postFragment on Post {
-    id
-    url
+    slug
     title
     subtitle
     content
@@ -13,9 +12,6 @@ export default `fragment postFragment on Post {
         day
     }
     tags {
-        id
-        url
-        name
-        description
+        ...tagFragment
     }
 }`

@@ -1,6 +1,7 @@
 // local imports
 import queryApi from './queryApi'
 import postFragment from './postFragment'
+import tagFragment from './tagFragment'
 
 
 export function queryApiForAllPosts() {
@@ -11,23 +12,25 @@ export function queryApiForAllPosts() {
             }
         }
         ${postFragment}
+        ${tagFragment}
     `)
 }
 
 
-export function queryApiForPostsById(...ids) {
-    // if no ids provided
-    if (ids.length === 0) {
+export function queryApiForPostsBySlug(...slugs) {
+    // if no slugs provided
+    if (slugs.length === 0) {
         // resolve to empty object
         return Promise.resolve({})
     }
 
     return queryApi(`
         query {
-            postsById(ids: ${JSON.stringify(ids)}) {
+            postsBySlug(slugs: ${JSON.stringify(slugs)}) {
                 ...postFragment
             }
         }
         ${postFragment}
+        ${tagFragment}
     `)
 }

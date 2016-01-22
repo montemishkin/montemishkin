@@ -1,22 +1,22 @@
 // local imports
 import createDuck from './createDuck'
-import {queryApiForAllPosts, queryApiForPostsById} from 'api/posts'
-import {mergeById as mergeTagsById} from './tags'
+import {queryApiForAllPosts, queryApiForPostsBySlug} from 'api/posts'
+import {mergeBySlug as mergeTagsBySlug} from './tags'
 
 
 const duck = createDuck({
     prefix: 'posts',
     queryAll: queryApiForAllPosts,
-    queryById: queryApiForPostsById,
-    processAll: (data, dispatch) => dispatch(mergeTagsById(data.tags)),
+    queryBySlug: queryApiForPostsBySlug,
+    processAll: (data, dispatch) => dispatch(mergeTagsBySlug(data.tags)),
     mapAllToItems: data => data.posts,
-    processById: (data, dispatch) => dispatch(mergeTagsById(data.tags)),
-    mapByIdToItems: data => data.postsById,
+    processBySlug: (data, dispatch) => dispatch(mergeTagsBySlug(data.tags)),
+    mapBySlugToItems: data => data.postsBySlug,
 })
 
 
 export const fetchAllIfNeeded = duck.fetchAllIfNeeded
-export const fetchByIdIfNeeded = duck.fetchByIdIfNeeded
+export const fetchBySlugIfNeeded = duck.fetchBySlugIfNeeded
 export const mergeAll = duck.mergeAll
 
 export default duck.reducer

@@ -20,8 +20,7 @@ import {
 import routes from 'routes'
 import {createStore} from 'store'
 import App from 'App'
-import queryApi from 'api/queryApi'
-import postFragment from 'api/postFragment'
+import {queryApiForAllPosts} from 'api/posts'
 import {mergeAll as mergeAllPosts} from 'store/ducks/posts'
 import {mergeAll as mergeAllTags} from 'store/ducks/tags'
 
@@ -65,14 +64,7 @@ server.all('*', async function (req, res) {
         } else {
             // grab initial data for store from admin service
             // TODO: dont just wildly grab all data.
-            const {posts, tags} = await queryApi(`
-                query {
-                    posts {
-                      ...postFragment
-                    }
-                }
-                ${postFragment}
-            `)
+            const {posts, tags} = await queryApiForAllPosts()
 
             // create redux store
             const store = createStore()

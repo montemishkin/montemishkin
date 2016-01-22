@@ -54,22 +54,21 @@ class Tag(graphene.ObjectType):
     A single tag. Sometimes referred to as a keyword.
     '''
     id = graphene.ID()
-    url = graphene.String()
+    slug = graphene.String()
     name = graphene.String()
     description = graphene.String()
 
     def resolve_id(self, *args, **kwargs):
         return self._root.id
 
+    def resolve_slug(self, *args, **kwargs):
+        return self._root.slug
+
     def resolve_name(self, *args, **kwargs):
         return self._root.name
 
     def resolve_description(self, *args, **kwargs):
         return self._root.description
-
-    def resolve_url(self, *args, **kwargs):
-        # TODO: this URL route should not be hardcoded here
-        return '/tags/' + self._root.slug
 
 
 class Image(graphene.ObjectType):
@@ -98,7 +97,7 @@ class Post(graphene.ObjectType):
     id = graphene.ID()
     created = graphene.Field(DateTime)
     modified = graphene.Field(DateTime)
-    url = graphene.String()
+    slug = graphene.String()
     title = graphene.String()
     subtitle = graphene.String()
     tags = graphene.List(Tag)
@@ -113,6 +112,9 @@ class Post(graphene.ObjectType):
 
     def resolve_modified(self, *args, **kwargs):
         return self._root.modified
+
+    def resolve_slug(self, *args, **kwargs):
+        return self._root.slug
 
     def resolve_title(self, *args, **kwargs):
         return self._root.title
@@ -131,11 +133,6 @@ class Post(graphene.ObjectType):
         # render article's markdown content into HTML
         return markdown(self._root.content)
 
-    @graphene.resolve_only_args
-    def resolve_url(self, *args, **kwargs):
-        # TODO: this URL route should not be hardcoded here
-        return '/posts/' + self._root.slug
-
 
 class Query(graphene.ObjectType):
     '''
@@ -143,11 +140,11 @@ class Query(graphene.ObjectType):
     '''
     posts = graphene.List(Post)
     tags = graphene.List(Tag)
-    postsById = graphene.List(Post,
-        ids=graphene.NonNull(graphene.List(graphene.String()))
+    postsBySlug = graphene.List(Post,
+        slugs=graphene.NonNull(graphene.List(graphene.String()))
     )
-    tagsById = graphene.List(Tag,
-        ids=graphene.NonNull(graphene.List(graphene.String()))
+    tagsBySlug = graphene.List(Tag,
+        slugs=graphene.NonNull(graphene.List(graphene.String()))
     )
 
     @graphene.resolve_only_args
@@ -159,12 +156,12 @@ class Query(graphene.ObjectType):
         return TagModel.objects.all()
 
     @graphene.resolve_only_args
-    def resolve_postsById(self, *args, **kwargs):
-        return PostModel.objects.filter(id__in=kwargs.get('ids'))
+    def resolve_postsBySlug(self, *args, **kwargs):
+        return PostModel.objects.filter(slug__in=kwargs.get('slugs'))
 
     @graphene.resolve_only_args
-    def resolve_tagsById(self, *args, **kwargs):
-        return TagModel.objects.filter(id__in=kwargs.get('ids'))
+    def resolve_tagsBySlug(self, *args, **kwargs):
+        return TagModel.objects.filter(slug__in=kwargs.get('slugs'))
 
 
 schema = graphene.Schema(query=Query)

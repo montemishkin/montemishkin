@@ -2,16 +2,16 @@
 import {Schema, arrayOf} from 'normalizr'
 
 
-const tagSchema = new Schema('tags', {idAttribute: 'url'})
+const tagSchema = new Schema('tags', {idAttribute: 'slug'})
 
-const postSchema = new Schema('posts', {idAttribute: 'url'})
+const postSchema = new Schema('posts', {idAttribute: 'slug'})
 postSchema.define({
     tags: arrayOf(tagSchema),
 })
 
 export default {
     posts: arrayOf(postSchema),
-    postsById: arrayOf(postSchema),
+    postsBySlug: arrayOf(postSchema),
     tags: arrayOf(tagSchema),
-    tagsById: arrayOf(tagSchema),
+    tagsBySlug: arrayOf(tagSchema),
 }
