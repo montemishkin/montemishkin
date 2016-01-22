@@ -1,4 +1,4 @@
-export default `fragment articleFragment on Article {
+export default `fragment postFragment on Post {
     id
     url
     title

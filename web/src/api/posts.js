@@ -1,16 +1,16 @@
 // local imports
 import queryApi from './queryApi'
-import articleFragment from './articleFragment'
+import postFragment from './postFragment'
 
 
 export function queryApiForAllPosts() {
     return queryApi(`
         query {
             posts {
-                ...articleFragment
+                ...postFragment
             }
         }
-        ${articleFragment}
+        ${postFragment}
     `)
 }
 
@@ -25,9 +25,9 @@ export function queryApiForPostsById(...ids) {
     return queryApi(`
         query {
             postsById(ids: ${JSON.stringify(ids)}) {
-                ...articleFragment
+                ...postFragment
             }
         }
-        ${articleFragment}
+        ${postFragment}
     `)
 }

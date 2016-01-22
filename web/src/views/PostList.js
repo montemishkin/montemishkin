@@ -7,7 +7,7 @@ import reduce from 'lodash/collection/reduce'
 import ListView from 'components/ListView'
 import ArticlePreview from 'components/ArticlePreview'
 import BlogLogo from 'components/Logos/Blog'
-import {nestArticle} from 'util/nest'
+import nestPost from 'util/nestPost'
 import sortDates from 'util/sortDates'
 import {fetchAllIfNeeded} from 'store/ducks/posts'
 
@@ -83,7 +83,7 @@ function mapStateToProps(state) {
         // map object of post items to array of posts
         posts: reduce(posts, (result, post) => [
             ...result,
-            nestArticle(post, tags),
+            nestPost(post, tags),
         // sort most recently created posts to front of array
         ], []).sort(({created: a}, {created: b}) => sortDates(a, b)),
         loadDateTime,

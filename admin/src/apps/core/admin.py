@@ -1,12 +1,7 @@
 # import the django admin
 from django.contrib import admin
 # import the models to register
-from .models import Project, Post, Tag, TaggedItem
-
-
-@admin.register(Project)
-class ProjectAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('title',)}
+from .models import Post, Tag, TaggedItem
 
 
 @admin.register(Post)

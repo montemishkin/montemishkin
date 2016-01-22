@@ -16,9 +16,9 @@ class TaggedItem(GenericTaggedItemBase):
     )
 
 
-class Article(models.Model):
+class Post(models.Model):
     '''
-    Base model for posts and projects.
+    Single blog post.
     '''
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
@@ -29,22 +29,5 @@ class Article(models.Model):
     content = models.TextField()
     bannerImage = models.ImageField(blank=True)
 
-    class Meta:
-        abstract = True
-
     def __str__(self):
         return self.title
-
-
-class Project(Article):
-    '''
-    Single article about a project.
-    '''
-    pass
-
-
-class Post(Article):
-    '''
-    Single blog post.
-    '''
-    pass

@@ -10,26 +10,23 @@ import WideList from 'components/WideList'
 import NotFound from 'views/NotFound'
 import ArticlePreview from 'components/ArticlePreview'
 import Banner from 'components/Banner'
-import {nestArticle} from 'util/nest'
+import nestPost from 'util/nestPost'
 
 
-function mapStateToProps({tags, projects, posts}, {location: {pathname}}) {
+function mapStateToProps({tags, posts}, {location: {pathname}}) {
     const desiredTag = tags.filter(tag => tag.url === pathname)[0]
-    const [filteredProjects, filteredPosts] = [projects, posts].map(articles =>
-        desiredTag && articles
-            // grab only the projects with the desired tag
-            .filter(
-                article => article.tags.filter(
-                    id => id === desiredTag.id
-                ).length > 0
-            )
-            // nest the projects
-            .map(article => nestArticle(article, tags))
-    )
+    const filteredPosts = desiredTag && posts
+        // grab only the posts with the desired tag
+        .filter(
+            post => post.tags.filter(
+                id => id === desiredTag.id
+            ).length > 0
+        )
+        // nest the posts
+        .map(post => nestPost(post, tags))
 
     return {
         tag: desiredTag && desiredTag,
-        projects: filteredProjects,
         posts: filteredPosts,
     }
 }
@@ -44,23 +41,6 @@ export default class TagDetail extends Component {
             name: PropTypes.string.isRequired,
             description: PropTypes.string.isRequired,
         })]).isRequired,
-        projects: PropTypes.oneOfType([PropTypes.bool, PropTypes.arrayOf(
-            PropTypes.shape({
-                url: PropTypes.string.isRequired,
-                title: PropTypes.string.isRequired,
-                subtitle: PropTypes.string,
-                created: PropTypes.shape({
-                    year: PropTypes.number.isRequired,
-                    month: PropTypes.number.isRequired,
-                    day: PropTypes.number.isRequired,
-                }).isRequired,
-                tags: PropTypes.arrayOf(PropTypes.shape({
-                    url: PropTypes.string.isRequired,
-                    name: PropTypes.string.isRequired,
-                    description: PropTypes.string.isRequired,
-                })).isRequired,
-            })
-        )]).isRequired,
         posts: PropTypes.oneOfType([PropTypes.bool, PropTypes.arrayOf(
             PropTypes.shape({
                 url: PropTypes.string.isRequired,
@@ -89,18 +69,9 @@ export default class TagDetail extends Component {
     get foundContent() {
         const {
             tag: {name, description},
-            projects,
             posts,
             ...unusedProps,
         } = this.props
-
-        // default to having projects tab start as active
-        let initialActiveIndex = 0
-        // if there are no related projects
-        if (projects.length === 0) {
-            // then have posts tab start as active instead
-            initialActiveIndex = 1
-        }
 
         return (
             <section {...unusedProps}>
@@ -111,27 +82,9 @@ export default class TagDetail extends Component {
                     subtitle={description}
                 />
                 <TabContainer
-                    initialActiveIndex={initialActiveIndex}
+                    initialActiveIndex={0}
                     tabs={[
                         {
-                            Title: (props) => (
-                                <Title
-                                    {...props}
-                                    title='Projects'
-                                    count={projects.length}
-                                />
-                            ),
-                            Content: (props) => (
-                                <WideList {...props}>
-                                    {projects.length === 0
-                                        ? 'There are no projects with this tag.'
-                                        : projects.map((project, key) => (
-                                            <ArticlePreview {...project} key={key} />
-                                        ))
-                                    }
-                                </WideList>
-                            ),
-                        }, {
                             Title: (props) => (
                                 <Title
                                     {...props}

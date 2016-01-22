@@ -1,8 +1,10 @@
 # vital
 
-- styling for loading and error states in `ListView`
+- change "projects" link in about view to point to github projects
 
-- make note to check out my github for other projects not seen on project search view
+- use ProjectLogo elsewhere now that projects are gone
+
+- styling for loading and error states in `ListView`
 
 - remove soundcloud link for now?
     - or add more songs
@@ -10,13 +12,12 @@
 - proof read resume
 
 - post-publish
-    - add projects
-        - this website
-        - redux responsive?
-        - agitar?
     - add posts
         - hello
         - physics
+        - this website
+        - redux responsive?
+        - agitar?
     - check that every single view is:
         - cross browser compatible
         - responsive
@@ -27,7 +28,7 @@
 # non-vital
 
 - tag search view should show tags with higher usage first
-    - should also show number of posts and projects that use that tag
+    - should also show number of posts that use that tag
 - offer rss feed?
 - a better way of ensuring that each view renders a page title using helmet
 - tests. like seriously...

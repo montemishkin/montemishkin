@@ -28,9 +28,6 @@ export default class Header extends Component {
                     <Link to='/' style={styles.link}>
                         About
                     </Link>
-                    <Link to='/projects' style={styles.link}>
-                        Projects
-                    </Link>
                     <Link to='/posts' style={styles.link}>
                         Blog
                     </Link>

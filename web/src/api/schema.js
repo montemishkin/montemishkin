@@ -9,14 +9,7 @@ postSchema.define({
     tags: arrayOf(tagSchema),
 })
 
-const projectSchema = new Schema('projects', {idAttribute: 'url'})
-projectSchema.define({
-    tags: arrayOf(tagSchema),
-})
-
 export default {
-    projects: arrayOf(projectSchema),
-    projectsById: arrayOf(projectSchema),
     posts: arrayOf(postSchema),
     postsById: arrayOf(postSchema),
     tags: arrayOf(tagSchema),

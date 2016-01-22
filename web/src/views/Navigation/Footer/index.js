@@ -42,9 +42,6 @@ export default class Footer extends Component {
                 <Link to='/' style={styles.navLink}>
                     About
                 </Link>
-                <Link to='/projects' style={styles.navLink}>
-                    Projects
-                </Link>
                 <Link to='/posts' style={styles.navLink}>
                     Blog
                 </Link>

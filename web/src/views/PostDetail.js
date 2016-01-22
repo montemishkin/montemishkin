@@ -8,14 +8,14 @@ import Helmet from 'react-helmet'
 import NotFound from 'views/NotFound'
 import Article from 'components/Article'
 import BlogLogo from 'components/Logos/Blog'
-import {nestArticle} from 'util/nest'
+import nestPost from 'util/nestPost'
 
 
 function mapStateToProps({posts, tags}, {location: {pathname}}) {
     const desiredPost = posts.filter(post => post.url === pathname)[0]
 
     return {
-        post: desiredPost && nestArticle(desiredPost, tags),
+        post: desiredPost && nestPost(desiredPost, tags),
     }
 }
 

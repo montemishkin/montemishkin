@@ -7,7 +7,7 @@ import graphene
 from graphene.contrib.django import DjangoNode
 # local imports
 from django.conf import settings
-from .models import Post as PostModel, Project as ProjectModel, Tag as TagModel
+from .models import Post as PostModel, Tag as TagModel
 from .util import markdown
 
 
@@ -91,9 +91,9 @@ class Image(graphene.ObjectType):
         return self._root.height
 
 
-class Article(graphene.Interface):
+class Post(graphene.ObjectType):
     '''
-    A single article.  Interface for posts and projects alike.
+    A single blog post.
     '''
     id = graphene.ID()
     created = graphene.Field(DateTime)
@@ -131,26 +131,10 @@ class Article(graphene.Interface):
         # render article's markdown content into HTML
         return markdown(self._root.content)
 
-
-class Post(Article):
-    '''
-    A single blog post.
-    '''
-
     @graphene.resolve_only_args
     def resolve_url(self, *args, **kwargs):
         # TODO: this URL route should not be hardcoded here
         return '/posts/' + self._root.slug
-
-
-class Project(Article):
-    '''
-    A single project article.
-    '''
-
-    def resolve_url(self, *args, **kwargs):
-        # TODO: this URL route should not be hardcoded here
-        return '/projects/' + self._root.slug
 
 
 class Query(graphene.ObjectType):
@@ -158,12 +142,8 @@ class Query(graphene.ObjectType):
     Root level query.
     '''
     posts = graphene.List(Post)
-    projects = graphene.List(Project)
     tags = graphene.List(Tag)
     postsById = graphene.List(Post,
-        ids=graphene.NonNull(graphene.List(graphene.String()))
-    )
-    projectsById = graphene.List(Project,
         ids=graphene.NonNull(graphene.List(graphene.String()))
     )
     tagsById = graphene.List(Tag,
@@ -175,20 +155,12 @@ class Query(graphene.ObjectType):
         return PostModel.objects.all()
 
     @graphene.resolve_only_args
-    def resolve_projects(self, *args, **kwargs):
-        return ProjectModel.objects.all()
-
-    @graphene.resolve_only_args
     def resolve_tags(self, *args, **kwargs):
         return TagModel.objects.all()
 
     @graphene.resolve_only_args
     def resolve_postsById(self, *args, **kwargs):
         return PostModel.objects.filter(id__in=kwargs.get('ids'))
-
-    @graphene.resolve_only_args
-    def resolve_projectsById(self, *args, **kwargs):
-        return ProjectModel.objects.filter(id__in=kwargs.get('ids'))
 
     @graphene.resolve_only_args
     def resolve_tagsById(self, *args, **kwargs):
