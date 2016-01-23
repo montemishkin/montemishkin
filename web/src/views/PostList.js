@@ -2,7 +2,7 @@
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 import Helmet from 'react-helmet'
-import reduce from 'lodash/collection/reduce'
+import filter from 'lodash/collection/filter'
 // local imports
 import ListView from 'components/ListView'
 import ArticlePreview from 'components/ArticlePreview'
@@ -80,12 +80,12 @@ function mapStateToProps(state) {
     } = state
 
     return {
-        // map object of post items to array of posts
-        posts: reduce(posts, (result, post) => [
-            ...result,
-            nestPost(post, tags),
-        // sort most recently created posts to front of array
-        ], []).sort(({created: a}, {created: b}) => sortDates(a, b)),
+        // filter out posts known to not exist (returns an array)
+        posts: filter(posts, post => !post.doesNotExist)
+            // nest posts
+            .map(post => nestPost(post, tags))
+            // sort most recently created posts to front of array
+            .sort(({created: a}, {created: b}) => sortDates(a, b)),
         loadDateTime,
         isLoading,
         loadError,

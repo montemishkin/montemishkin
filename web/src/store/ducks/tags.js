@@ -7,8 +7,7 @@ const duck = createDuck({
     prefix: 'tags',
     queryAll: queryApiForAllTags,
     queryBySlug: queryApiForTagsBySlug,
-    mapAllToItems: data => data.tags,
-    mapBySlugToItems: data => data.tagsBySlug,
+    mapDataToItems: data => data.tags,
 })
 
 

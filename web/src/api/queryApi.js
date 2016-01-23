@@ -52,13 +52,5 @@ export default query => {
             ...tag,
             url: '/tags/' + tag.slug,
         })),
-        postsBySlug: mapValues(data.postsBySlug, post => ({
-            ...post,
-            url: '/posts/' + post.slug,
-        })),
-        tagsBySlug: mapValues(data.tagsBySlug, tag => ({
-            ...tag,
-            url: '/tags/' + tag.slug,
-        })),
     }))
 }

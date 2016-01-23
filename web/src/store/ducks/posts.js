@@ -8,10 +8,8 @@ const duck = createDuck({
     prefix: 'posts',
     queryAll: queryApiForAllPosts,
     queryBySlug: queryApiForPostsBySlug,
-    processAll: (data, dispatch) => dispatch(mergeTagsBySlug(data.tags)),
-    mapAllToItems: data => data.posts,
-    processBySlug: (data, dispatch) => dispatch(mergeTagsBySlug(data.tags)),
-    mapBySlugToItems: data => data.postsBySlug,
+    processData: (data, dispatch) => dispatch(mergeTagsBySlug(data.tags)),
+    mapDataToItems: data => data.posts,
 })
 
 

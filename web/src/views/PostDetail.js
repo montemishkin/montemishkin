@@ -3,6 +3,7 @@ import React, {Component, PropTypes} from 'react'
 import radium from 'radium'
 import {connect} from 'react-redux'
 import Helmet from 'react-helmet'
+import find from 'lodash/collection/find'
 // import {createSelector} from 'reselect'
 // local imports
 import NotFound from 'views/NotFound'
@@ -11,18 +12,7 @@ import BlogLogo from 'components/Logos/Blog'
 import nestPost from 'util/nestPost'
 
 
-function mapStateToProps({posts, tags}, {location: {pathname}}) {
-    const desiredPost = posts.filter(post => post.url === pathname)[0]
-
-    return {
-        post: desiredPost && nestPost(desiredPost, tags),
-    }
-}
-
-
-@connect(mapStateToProps)
-@radium
-export default class PostDetail extends Component {
+class PostDetail extends Component {
     static propTypes = {
         post: PropTypes.oneOfType([PropTypes.bool, PropTypes.shape({
             url: PropTypes.string.isRequired,
@@ -49,6 +39,8 @@ export default class PostDetail extends Component {
     render() {
         const {post, ...unusedProps} = this.props
 
+        // TODO: use `Loader`
+
         if (post) {
             let BannerIcon = radium(props => <BlogLogo {...props} />)
             if (post.bannerImage.url) {
@@ -67,3 +59,19 @@ export default class PostDetail extends Component {
         return <NotFound {...unusedProps} />
     }
 }
+
+
+// TODO: use reselect
+function mapStateToProps(state, props) {
+    const {posts: {items: posts}, tags: {items: tags}} = state
+    const {location: {pathname}} = props
+
+    const desiredPost = find(posts, post => post.url === pathname)
+
+    return {
+        post: desiredPost && nestPost(desiredPost, tags),
+    }
+}
+
+
+export default connect(mapStateToProps)(radium(PostDetail))

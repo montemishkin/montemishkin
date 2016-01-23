@@ -40,10 +40,8 @@ export default ({
     prefix = '',
     queryAll = () => Promise.resolve(),
     queryBySlug = () => Promise.resolve(),
-    processAll = () => {},
-    mapAllToItems = x => x,
-    processBySlug = () => {},
-    mapBySlugToItems = x => x,
+    processData = () => {},
+    mapDataToItems = x => x,
 }) => {
     // Action Types
 
@@ -85,9 +83,9 @@ export default ({
 
             return queryAll()
                 .then(data => {
-                    processAll(data, dispatch)
+                    processData(data, dispatch)
 
-                    return mapAllToItems(data)
+                    return mapDataToItems(data)
                 })
                 .then(items => dispatch(mergeAll(items)))
                 .catch(error => dispatch(failFetchAll(error)))
@@ -135,10 +133,16 @@ export default ({
 
             return queryBySlug(...slugs)
                 .then(data => {
-                    processBySlug(data, dispatch)
+                    processData(data, dispatch)
 
-                    return mapBySlugToItems(data)
+                    return mapDataToItems(data)
                 })
+                .then(items => slugs.reduce((current, slug) => ({
+                    ...current,
+                    [slug]: typeof current[slug] === 'undefined'
+                        ? {doesNotExist: true}
+                        : current[slug],
+                }), items))
                 .then(items => dispatch(mergeBySlug(items)))
                 .catch(error => dispatch(failFetchBySlug(error, ...slugs)))
         }
@@ -147,13 +151,9 @@ export default ({
     function fetchBySlugIfNeeded(...slugs) {
         return (dispatch, getState) => {
             const {items} = getState()[prefix]
-            const neededSlugs = slugs.filter(slug => {
-                const item = items[slug]
-
-                return typeof item === 'undefined' || (
-                    !item.isLoading && typeof item.loadDateTime === 'undefined'
-                )
-            })
+            const neededSlugs = slugs.filter(
+                slug => typeof items[slug] === 'undefined'
+            )
 
             return dispatch(fetchBySlug(...neededSlugs))
         }
