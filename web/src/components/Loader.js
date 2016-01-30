@@ -21,6 +21,8 @@ class Loader extends Component {
 
 
     static defaultProps = {
+        isInvalid: false,
+        isLoading: false,
         reload: () => {},
         // two seconds, in milliseconds
         reloadTimeout: 2000,
