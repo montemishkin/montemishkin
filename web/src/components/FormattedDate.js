@@ -1,5 +1,5 @@
 // third party imports
-import React, {Component, PropTypes} from 'react'
+import React, {PropTypes} from 'react'
 import radium from 'radium'
 
 
@@ -22,33 +22,28 @@ const monthNames = [
 const shortMonthNames = monthNames.map(name => name.substr(0, 3))
 
 
-/**
- * Responsible for proper formatting of dates.
- */
-@radium
-export default class FormattedDate extends Component {
-    static propTypes = {
-        day: PropTypes.number.isRequired,
-        month: PropTypes.number.isRequired,
-        year: PropTypes.number.isRequired,
+function FormattedDate({day, month, year, ...unusedProps}) {
+    const shouldRenderBlank = typeof day === 'undefined'
+        || typeof month === 'undefined'
+        || typeof year === 'undefined'
+
+    if (shouldRenderBlank) {
+        return <div />
     }
 
-
-    /**
-     * Returns a date string like "Aug 3, 2015".
-     */
-    get prettyDateString() {
-        const {day, month, year} = this.props
-
-        return `${shortMonthNames[month - 1]} ${day}, ${year}`
-    }
-
-
-    render() {
-        return (
-            <time {...this.props}>
-                {this.prettyDateString}
-            </time>
-        )
-    }
+    return (
+        <time {...unusedProps}>
+            {`${shortMonthNames[month - 1]} ${day}, ${year}`}
+        </time>
+    )
 }
+
+
+FormattedDate.propTypes = {
+    day: PropTypes.number,
+    month: PropTypes.number,
+    year: PropTypes.number,
+}
+
+
+export default radium(FormattedDate)
