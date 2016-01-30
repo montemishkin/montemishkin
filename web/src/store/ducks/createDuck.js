@@ -34,6 +34,14 @@ function entityAsErrored(entity, error) {
 }
 
 
+function entityAsNonexistant(entity) {
+    return {
+        ...entity,
+        doesNotExist: true,
+    }
+}
+
+
 
 
 export default ({
@@ -140,7 +148,7 @@ export default ({
                 .then(items => slugs.reduce((current, slug) => ({
                     ...current,
                     [slug]: typeof current[slug] === 'undefined'
-                        ? {doesNotExist: true}
+                        ? entityAsNonexistant({})
                         : current[slug],
                 }), items))
                 .then(items => dispatch(mergeBySlug(items)))
@@ -154,6 +162,10 @@ export default ({
             const neededSlugs = slugs.filter(
                 slug => typeof items[slug] === 'undefined'
             )
+
+            if (neededSlugs.length === 0) {
+                return Promise.resolve()
+            }
 
             return dispatch(fetchBySlug(...neededSlugs))
         }
@@ -180,17 +192,28 @@ export default ({
                 // only set specified items to be loading
                 return {
                     ...state,
-                    items: mapValues(state.items, item =>
-                        action.slugs.indexOf(item.slug) === -1
-                            ? item
-                            : entityAsLoading(item)
-                    ),
+                    items: {
+                        // set each slug to have (otherwise empty) loading entity
+                        ...action.slugs.reduce((acc, slug) => ({
+                            ...acc,
+                            [slug]: entityAsLoading({}),
+                        }), {}),
+                        // if an entity for the slug already exists,
+                        // set that entity to be loading
+                        ...mapValues(state.items, item =>
+                            action.slugs.indexOf(item.slug) === -1
+                                ? item
+                                : entityAsLoading(item)
+                        ),
+                    },
                 }
             case MERGE_ALL:
                 return {
+                    // mark the entire state as loaded
                     ...entityAsLoaded(state, action.dateTime),
                     items: {
                         ...state.items,
+                        // mark each individual item as loaded
                         ...mapValues(action.items,
                             item => entityAsLoaded(item, action.dateTime)
                         ),
@@ -208,7 +231,7 @@ export default ({
                 }
             case FAIL_FETCH_ALL:
                 // set entire state to error
-                return entityAsErrored(state)
+                return entityAsErrored(state, action.error)
             case FAIL_FETCH_BY_SLUG:
                 // only set specified items to error
                 return {
@@ -216,7 +239,7 @@ export default ({
                     items: mapValues(state.items, item =>
                         action.slugs.indexOf(item.slug) === -1
                             ? item
-                            : entityAsErrored(item)
+                            : entityAsErrored(item, action.error)
                     ),
                 }
             default:
