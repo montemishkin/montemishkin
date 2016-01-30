@@ -23,21 +23,30 @@ class TagList extends Component {
     }
 
 
+    BannerIcon = (props) => <MainLogo {...props} />
+
+
+    reload = () => this.props.dispatch(fetchAllIfNeeded())
+
+
     render() {
         const {
-            tags,
-            loadDateTime,
-            isLoading,
-            loadError,
-            dispatch,
-            ...unusedProps,
-        } = this.props
+            props: {
+                tags,
+                loadDateTime,
+                isLoading,
+                loadError,
+                ...unusedProps,
+            },
+            BannerIcon,
+            reload,
+        } = this
 
         return (
             <div {...unusedProps}>
                 <Helmet title='Tags' />
                 <ListView
-                    bannerIcon={props => <MainLogo {...props} />}
+                    BannerIcon={BannerIcon}
                     title='Tags'
                     subtitle='gotta love em.'
                     items={tags}
@@ -45,7 +54,7 @@ class TagList extends Component {
                     isLoading={isLoading}
                     loadDateTime={loadDateTime}
                     loadError={loadError}
-                    reload={() => dispatch(fetchAllIfNeeded())}
+                    reload={reload}
                 />
             </div>
         )

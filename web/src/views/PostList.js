@@ -35,21 +35,30 @@ class PostList extends Component {
     }
 
 
+    BannerIcon = (props) => <BlogLogo {...props} />
+
+
+    reload = () => this.props.dispatch(fetchAllIfNeeded())
+
+
     render() {
         const {
-            posts,
-            loadDateTime,
-            isLoading,
-            loadError,
-            dispatch,
-            ...unusedProps,
-        } = this.props
+            props: {
+                posts,
+                loadDateTime,
+                isLoading,
+                loadError,
+                ...unusedProps,
+            },
+            BannerIcon,
+            reload,
+        } = this
 
         return (
             <div {...unusedProps}>
                 <Helmet title='Blog' />
                 <ListView
-                    bannerIcon={props => <BlogLogo {...props} />}
+                    BannerIcon={BannerIcon}
                     title='Blog'
                     subtitle='oh yeah.'
                     items={posts}
@@ -57,7 +66,7 @@ class PostList extends Component {
                     isLoading={isLoading}
                     loadDateTime={loadDateTime}
                     loadError={loadError}
-                    reload={() => dispatch(fetchAllIfNeeded())}
+                    reload={reload}
                 />
             </div>
         )

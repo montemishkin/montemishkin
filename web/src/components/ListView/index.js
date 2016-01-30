@@ -13,7 +13,7 @@ class ListView extends Component {
         // react component
         PreviewComponent: PropTypes.func.isRequired,
         // react component
-        bannerIcon: PropTypes.func,
+        BannerIcon: PropTypes.func,
         title: PropTypes.string.isRequired,
         subtitle: PropTypes.string,
         items: PropTypes.array.isRequired,
@@ -25,19 +25,17 @@ class ListView extends Component {
 
 
     static defaultProps = {
-        bannerIcon: radium(props => <i {...props} className='fa fa-search' />),
+        BannerIcon: radium(props => <i {...props} className='fa fa-search' />),
     }
 
 
-    Message = ({content}) => {
-        return (
-            <div style={styles.messageContainer}>
-                <span style={styles.message}>
-                    {content}
-                </span>
-            </div>
-        )
-    }
+    Message = ({content}) => (
+        <div style={styles.messageContainer}>
+            <span style={styles.message}>
+                {content}
+            </span>
+        </div>
+    )
 
 
     ListContent = () => {
@@ -110,7 +108,7 @@ class ListView extends Component {
             ErrorContent,
             LoadedContent,
             props: {
-                bannerIcon,
+                BannerIcon,
                 title,
                 subtitle,
                 isLoading,
@@ -124,7 +122,7 @@ class ListView extends Component {
         return (
             <article {...unusedProps}>
                 <Banner
-                    Icon={bannerIcon}
+                    Icon={BannerIcon}
                     title={title}
                     subtitle={subtitle}
                 />
