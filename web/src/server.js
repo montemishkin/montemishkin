@@ -20,9 +20,6 @@ import {
 import routes from 'routes'
 import {createStore} from 'store'
 import App from 'App'
-import {queryApiForAllPosts} from 'api/posts'
-import {mergeAll as mergeAllPosts} from 'store/ducks/posts'
-import {mergeAll as mergeAllTags} from 'store/ducks/tags'
 
 
 const server = express()
@@ -62,15 +59,10 @@ server.all('*', async function (req, res) {
             res.redirect(302, redirectLocation.pathname + redirectLocation.search)
         // if route was found and is not a redirect
         } else {
-            // grab initial data for store from admin service
-            // TODO: dont just wildly grab all data.
-            const {posts, tags} = await queryApiForAllPosts()
+            // TODO: grab initial data based on route
 
             // create redux store
             const store = createStore()
-            // populate store with initial data
-            // store.dispatch(mergeAllPosts(posts))
-            // store.dispatch(mergeAllTags(tags))
 
             // initial application state
             const initialState = JSON.stringify(store.getState())
