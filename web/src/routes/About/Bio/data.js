@@ -35,24 +35,30 @@ const sections = [
         Icon: props => <img {...props} src='/static/images/full-stack.svg' />,
     }, {
         title: 'Technical Skills',
-        Text: props => (
+        Text: radium(props => (
             <p {...props}>
                 Check out my
                 {' '}<a
                     style={styles.link}
                     target='_blank'
                     href='/static/monte_mishkin_resume.pdf'
+                    key='resume'
                 >
                     resume
                 </a>{' '}
                 for the full details, but for the most part, my
-                {' '}<Link style={styles.link} to='/projects'>
+                {' '}<a
+                    style={styles.link}
+                    target='_blank'
+                    href='https://github.com/montemishkin'
+                    key='projects'
+                >
                     projects
-                </Link>{' '}
+                </a>{' '}
                 involve some combination of these awesome
                 technologies.
             </p>
-        ),
+        )),
         Icon: ({style, ...unusedProps}) => (
             <List {...unusedProps} style={[styles.logoList, style]}>
                 {technicalSkills.map(({url, src, alt}, key) => (
