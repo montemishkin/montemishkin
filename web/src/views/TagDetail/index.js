@@ -1,140 +1,111 @@
+// node imports
+import {basename} from 'path'
 // third party imports
 import React, {Component, PropTypes} from 'react'
-import radium from 'radium'
 import {connect} from 'react-redux'
 import Helmet from 'react-helmet'
+import filter from 'lodash/collection/filter'
 // local imports
-import styles from './styles'
-import TabContainer from './TabContainer'
-import WideList from 'components/WideList'
+import Tagle from './Tagle'
 import NotFound from 'views/NotFound'
-import ArticlePreview from 'components/ArticlePreview'
-import Banner from 'components/Banner'
+import DetailView from 'components/DetailView'
 import nestPost from 'util/nestPost'
+import {fetchBySlugIfNeeded as fetchTagsBySlugIfNeeded} from 'store/ducks/tags'
+import {fetchAllIfNeeded as fetchAllPostsIfNeeded} from 'store/ducks/posts'
 
 
-function mapStateToProps({tags, posts}, {location: {pathname}}) {
-    const desiredTag = tags.filter(tag => tag.url === pathname)[0]
-    const filteredPosts = desiredTag && posts
-        // grab only the posts with the desired tag
-        .filter(
-            post => post.tags.filter(
-                id => id === desiredTag.id
-            ).length > 0
-        )
-        // nest the posts
-        .map(post => nestPost(post, tags))
-
-    return {
-        tag: desiredTag && desiredTag,
-        posts: filteredPosts,
-    }
-}
-
-
-@connect(mapStateToProps)
-@radium
-export default class TagDetail extends Component {
+class TagDetail extends Component {
     static propTypes = {
-        tag: PropTypes.oneOfType([PropTypes.bool, PropTypes.shape({
-            url: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired,
-            description: PropTypes.string.isRequired,
-        })]).isRequired,
-        posts: PropTypes.oneOfType([PropTypes.bool, PropTypes.arrayOf(
-            PropTypes.shape({
-                url: PropTypes.string.isRequired,
-                title: PropTypes.string.isRequired,
-                subtitle: PropTypes.string,
-                created: PropTypes.shape({
-                    year: PropTypes.number.isRequired,
-                    month: PropTypes.number.isRequired,
-                    day: PropTypes.number.isRequired,
-                }).isRequired,
-                tags: PropTypes.arrayOf(PropTypes.shape({
-                    url: PropTypes.string.isRequired,
-                    name: PropTypes.string.isRequired,
-                    description: PropTypes.string.isRequired,
-                })).isRequired,
-            })
-        )]).isRequired,
+        tag: PropTypes.shape({
+            url: PropTypes.string,
+            name: PropTypes.string,
+            description: PropTypes.string,
+            posts: PropTypes.arrayOf(
+                PropTypes.shape({
+                    url: PropTypes.string,
+                    title: PropTypes.string,
+                    subtitle: PropTypes.string,
+                    created: PropTypes.shape({
+                        year: PropTypes.number,
+                        month: PropTypes.number,
+                        day: PropTypes.number,
+                    }),
+                    tags: PropTypes.arrayOf(PropTypes.shape({
+                        url: PropTypes.string,
+                        name: PropTypes.string,
+                        description: PropTypes.string,
+                    })),
+                })
+            ),
+        }),
     }
 
 
-    get notFoundContent() {
-        return <NotFound {...this.props} />
+    tryFetch = () => {
+        const {dispatch, location: {pathname}} = this.props
+
+        dispatch(fetchAllPostsIfNeeded())
+        dispatch(fetchTagsBySlugIfNeeded(basename(pathname)))
     }
 
 
-    get foundContent() {
-        const {
-            tag: {name, description},
-            posts,
-            ...unusedProps,
-        } = this.props
+    testItem = (item) => typeof item === 'undefined' || !item.doesNotExist
 
-        return (
-            <section {...unusedProps}>
-                <Helmet title={name} />
-                <Banner
-                    Icon={props => <i {...props} className='fa fa-tag' />}
-                    title={name}
-                    subtitle={description}
-                />
-                <TabContainer
-                    initialActiveIndex={0}
-                    tabs={[
-                        {
-                            Title: (props) => (
-                                <Title
-                                    {...props}
-                                    title='Blog Posts'
-                                    count={posts.length}
-                                />
-                            ),
-                            Content: (props) => (
-                                <WideList {...props}>
-                                    {posts.length === 0
-                                        ? 'There are no posts with this tag.'
-                                        : posts.map((post, key) => (
-                                            <ArticlePreview {...post} key={key} />
-                                        ))
-                                    }
-                                </WideList>
-                            ),
-                        },
-                    ]}
-                />
-            </section>
-        )
-    }
+
+    Found = ({item = {isLoading: true}}) => (
+        <div {...this.props}>
+            <Helmet title={item.name ? item.name : 'Loading...'} />
+            <Tagle
+                {...item}
+                reload={this.tryFetch}
+            />
+        </div>
+    )
 
 
     render() {
-        if (this.props.tag) {
-            return this.foundContent
-        }
-        return this.notFoundContent
+        const {
+            props: {tag},
+            tryFetch,
+            testItem,
+            Found,
+        } = this
+
+
+        return (
+            <DetailView
+                item={tag}
+                shouldTryFetch={typeof tag === 'undefined'}
+                tryFetch={tryFetch}
+                test={testItem}
+                FoundComponent={Found}
+                NotFoundComponent={NotFound}
+            />
+        )
     }
 }
 
 
+// TODO: use reselect
+function mapStateToProps(state, props) {
+    const {
+        posts: {items: posts},
+        tags: {items: tags},
+    } = state
+    const {location: {pathname}} = props
 
-const Title = radium(function Title({title, count, style, ...unusedProps}) {
-    return (
-        <div
-            {...unusedProps}
-            style={[
-                style,
-                styles.tabTitleContainer,
-            ]}
-        >
-            <span style={styles.tabTitleContent}>
-                {title}
-            </span>
-            <span style={styles.tabTitleCount}>
-                {count}
-            </span>
-        </div>
-    )
-})
+    const desiredTagId = basename(pathname)
+    const desiredTag = tags[desiredTagId]
+
+    return {
+        tag: typeof desiredTag === 'undefined' ? void 0 : {
+            ...desiredTag,
+            // grab only posts with desired tag
+            posts: filter(posts, post => post.tags.indexOf(desiredTagId) !== -1)
+                .map(post => nestPost(post, tags)),
+        },
+    }
+}
+
+
+export default connect(mapStateToProps)(TagDetail)

@@ -6,9 +6,9 @@ import {connect} from 'react-redux'
 import Helmet from 'react-helmet'
 // import {createSelector} from 'reselect'
 // local imports
+import Article from './Article'
 import NotFound from 'views/NotFound'
 import DetailView from 'components/DetailView'
-import Article from 'components/Article'
 import nestPost from 'util/nestPost'
 import {fetchBySlugIfNeeded} from 'store/ducks/posts'
 

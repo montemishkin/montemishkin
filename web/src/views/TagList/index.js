@@ -2,7 +2,7 @@
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 import Helmet from 'react-helmet'
-import reduce from 'lodash/collection/reduce'
+import filter from 'lodash/collection/filter'
 // local imports
 import TagPreview from './TagPreview'
 import ListView from 'components/ListView'
@@ -72,8 +72,8 @@ function mapStateToProps(state) {
     } = state.tags
 
     return {
-        // map object of tag items to array of tags
-        tags: reduce(tags, (result, tag) => [...result, tag], [])
+        // filter out tags known to not exist (returns an array)
+        tags: filter(tags, tag => !tag.doesNotExist && tag.loadDateTime)
             // sort alphabetically
             .sort(({name: a}, {name: b}) => a < b ? -1 : (a > b ? 1 : 0)),
         loadDateTime,
