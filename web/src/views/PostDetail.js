@@ -1,77 +1,100 @@
+// node imports
+import {basename} from 'path'
 // third party imports
 import React, {Component, PropTypes} from 'react'
-import radium from 'radium'
 import {connect} from 'react-redux'
 import Helmet from 'react-helmet'
-import find from 'lodash/collection/find'
 // import {createSelector} from 'reselect'
 // local imports
 import NotFound from 'views/NotFound'
+import DetailView from 'components/DetailView'
 import Article from 'components/Article'
-import BlogLogo from 'components/Logos/Blog'
 import nestPost from 'util/nestPost'
+import {fetchBySlugIfNeeded} from 'store/ducks/posts'
 
 
 class PostDetail extends Component {
     static propTypes = {
-        post: PropTypes.oneOfType([PropTypes.bool, PropTypes.shape({
-            url: PropTypes.string.isRequired,
+        post: PropTypes.shape({
+            url: PropTypes.string,
             bannerImage: PropTypes.shape({
                 url: PropTypes.string,
             }),
-            title: PropTypes.string.isRequired,
+            title: PropTypes.string,
             subtitle: PropTypes.string,
-            content: PropTypes.string.isRequired,
+            content: PropTypes.string,
             created: PropTypes.shape({
-                year: PropTypes.number.isRequired,
-                month: PropTypes.number.isRequired,
-                day: PropTypes.number.isRequired,
-            }).isRequired,
+                year: PropTypes.number,
+                month: PropTypes.number,
+                day: PropTypes.number,
+            }),
             tags: PropTypes.arrayOf(PropTypes.shape({
-                url: PropTypes.string.isRequired,
-                name: PropTypes.string.isRequired,
-                description: PropTypes.string.isRequired,
-            })).isRequired,
-        })]),
+                url: PropTypes.string,
+                name: PropTypes.string,
+                description: PropTypes.string,
+            })),
+        }),
     }
 
 
+    tryFetch = () => {
+        const {dispatch, location: {pathname}} = this.props
+
+        dispatch(fetchBySlugIfNeeded(basename(pathname)))
+    }
+
+
+    testItem = (item) => typeof item === 'undefined' || !item.doesNotExist
+
+
+    Found = ({item = {isLoading: true}}) => (
+        <div {...this.props}>
+            <Helmet title={item.title ? item.title : 'Loading...'} />
+            <Article
+                {...item}
+                reload={this.tryFetch}
+            />
+        </div>
+    )
+
+
     render() {
-        const {post, ...unusedProps} = this.props
+        const {
+            props: {post},
+            tryFetch,
+            testItem,
+            Found,
+        } = this
 
-        // TODO: use `Loader`
-
-        if (post) {
-            let BannerIcon = radium(props => <BlogLogo {...props} />)
-            if (post.bannerImage.url) {
-                BannerIcon = radium(props => <img {...props} src={post.bannerImage.url} />)
-            }
-            return (
-                <div {...unusedProps}>
-                    <Helmet title={post.title} />
-                    <Article
-                        {...post}
-                        BannerIcon={BannerIcon}
-                    />
-                </div>
-            )
-        }
-        return <NotFound {...unusedProps} />
+        return (
+            <DetailView
+                item={post}
+                shouldTryFetch={typeof post === 'undefined'}
+                tryFetch={tryFetch}
+                test={testItem}
+                FoundComponent={Found}
+                NotFoundComponent={NotFound}
+            />
+        )
     }
 }
 
 
 // TODO: use reselect
 function mapStateToProps(state, props) {
-    const {posts: {items: posts}, tags: {items: tags}} = state
+    const {
+        posts: {items: posts},
+        tags: {items: tags},
+    } = state
     const {location: {pathname}} = props
 
-    const desiredPost = find(posts, post => post.url === pathname)
+    const desiredPost = posts[basename(pathname)]
 
     return {
-        post: desiredPost && nestPost(desiredPost, tags),
+        // will be `undefined` if desired post not found
+        post: nestPost(desiredPost, tags),
     }
 }
 
 
-export default connect(mapStateToProps)(radium(PostDetail))
+export default connect(mapStateToProps)(PostDetail)

@@ -4,74 +4,90 @@ import radium from 'radium'
 import DisqusThread from 'react-disqus-thread'
 // local imports
 import styles from './styles'
+import Loader from 'components/Loader'
 import Banner from 'components/Banner'
 import TagList from 'components/TagList'
 import FormattedDate from 'components/FormattedDate'
 import MarkdownContainer from 'components/MarkdownContainer'
+import Spinner from 'components/Spinner'
 
 
 const isProduction = process.env.NODE_ENV === 'production'
 
 
-@radium
-export default class Article extends Component {
+class Article extends Component {
     static propTypes = {
-        style: PropTypes.object,
-        // react component
-        BannerIcon: PropTypes.func,
-        url: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
+        url: PropTypes.string,
+        title: PropTypes.string,
         subtitle: PropTypes.string,
         created: PropTypes.shape({
-            year: PropTypes.number.isRequired,
-            month: PropTypes.number.isRequired,
-            day: PropTypes.number.isRequired,
-        }).isRequired,
+            year: PropTypes.number,
+            month: PropTypes.number,
+            day: PropTypes.number,
+        }),
         tags: PropTypes.arrayOf(PropTypes.shape({
-            url: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired,
-            description: PropTypes.string.isRequired,
-        })).isRequired,
-        content: PropTypes.string.isRequired,
+            url: PropTypes.string,
+            name: PropTypes.string,
+            description: PropTypes.string,
+        })),
+        content: PropTypes.string,
+        bannerImage: PropTypes.shape({
+            url: PropTypes.string,
+        }),
     }
 
 
-    static defaultProps = {
-        BannerIcon: radium(props => <span {...props} />),
-    }
+    createContent = ({
+        BannerIcon,
+        title,
+        subtitle,
+        tags,
+        created,
+        content,
+    }) => (
+        <article {...this.props}>
+            <Banner
+                Icon={BannerIcon}
+                title={title}
+                subtitle={subtitle}
+            >
+                <div style={styles.infoBar}>
+                    <TagList
+                        style={styles.tagList}
+                        linkStyle={styles.tagListLink}
+                        tags={tags}
+                    />
+                    <FormattedDate
+                        {...created}
+                        style={styles.creationDate}
+                    />
+                </div>
+            </Banner>
+            {content}
+        </article>
+    )
 
 
-    render() {
+    LoadedContent = () => {
         const {
-            BannerIcon,
-            url,
             title,
             subtitle,
-            created,
             tags,
+            created,
             content,
-            ...unusedProps,
+            url,
+            bannerImage,
         } = this.props
 
-        return (
-            <article {...unusedProps}>
-                <Banner
-                    Icon={BannerIcon}
-                    title={title}
-                    subtitle={subtitle}
-                >
-                    <div style={styles.infoBar}>
-                        <TagList
-                            style={styles.tagList}
-                            linkStyle={styles.tagListLink}
-                            tags={tags}
-                        />
-                        <FormattedDate
-                            {...created}
-                            style={styles.creationDate}
-                        />
-                    </div>
-                </Banner>
+        return this.createContent({
+            BannerIcon: radium(
+                props => <img {...props} src={bannerImage.url} />
+            ),
+            title,
+            subtitle,
+            tags,
+            created,
+            content: (
                 <section style={styles.contentContainer}>
                     <MarkdownContainer style={styles.content}>
                         {content}
@@ -87,7 +103,67 @@ export default class Article extends Component {
                         />
                     </div>
                 </section>
-            </article>
+            ),
+        })
+    }
+
+
+    ErrorContent = () => this.createContent({
+        BannerIcon: radium(
+            props => <i {...props} className='fa fa-exclamation' />
+        ),
+        title: 'Woops',
+        subtitle: 'something went wrong...',
+        content: (
+            <section style={styles.contentContainer}>
+                <div style={styles.content}>
+                    Error: {this.props.loadError.message}
+                </div>
+            </section>
+        ),
+    })
+
+
+    LoadingContent = () => this.createContent({
+        BannerIcon: Spinner,
+        title: 'Loading',
+        subtitle: '...',
+        content: (
+            <section style={styles.contentContainer}>
+                <div style={styles.content}>
+                    Loading...
+                </div>
+            </section>
+        ),
+    })
+
+
+    render() {
+        const {
+            props: {
+                isLoading,
+                loadError,
+                loadDateTime,
+                reload,
+            },
+            LoadingContent,
+            ErrorContent,
+            LoadedContent,
+        } = this
+
+        return (
+            <Loader
+                isInvalid={!loadDateTime && !loadError}
+                isLoading={isLoading}
+                error={loadError}
+                reload={reload}
+                LoadingContent={LoadingContent}
+                ErrorContent={ErrorContent}
+                LoadedContent={LoadedContent}
+            />
         )
     }
 }
+
+
+export default radium(Article)

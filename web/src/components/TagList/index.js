@@ -17,7 +17,12 @@ export default class TagList extends Component {
             name: PropTypes.string.isRequired,
             url: PropTypes.string.isRequired,
             description: PropTypes.string,
-        })).isRequired,
+        })),
+    }
+
+
+    static defaultProps = {
+        tags: [],
     }
 
 
