@@ -2150,6 +2150,11 @@
         }
       }
     },
+    "gulp-nodemon": {
+      "version": "2.0.6",
+      "from": "gulp-nodemon@*",
+      "resolved": "https://registry.npmjs.org/gulp-nodemon/-/gulp-nodemon-2.0.6.tgz"
+    },
     "gulp-postcss": {
       "version": "6.0.1",
       "from": "gulp-postcss@>=6.0.1 <7.0.0",
@@ -2164,18 +2169,6 @@
           "version": "0.2.0",
           "from": "vinyl-sourcemaps-apply@0.2.0",
           "resolved": "https://registry.npmjs.org/vinyl-sourcemaps-apply/-/vinyl-sourcemaps-apply-0.2.0.tgz"
-        }
-      }
-    },
-    "gulp-shell": {
-      "version": "0.5.1",
-      "from": "gulp-shell@>=0.5.1 <0.6.0",
-      "resolved": "https://registry.npmjs.org/gulp-shell/-/gulp-shell-0.5.1.tgz",
-      "dependencies": {
-        "async": {
-          "version": "1.5.0",
-          "from": "async@>=1.5.0 <1.6.0",
-          "resolved": "https://registry.npmjs.org/async/-/async-1.5.0.tgz"
         }
       }
     },

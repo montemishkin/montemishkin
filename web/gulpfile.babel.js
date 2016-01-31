@@ -3,9 +3,9 @@ import gulp from 'gulp'
 import del from 'del'
 import webpack from 'webpack-stream'
 import named from 'vinyl-named'
-import shell from 'gulp-shell'
 import minifyCSS from 'gulp-minify-css'
 import concat from 'gulp-concat'
+import nodemon from 'gulp-nodemon'
 import karma from 'karma'
 import autoprefixer from 'autoprefixer'
 import postcss from 'gulp-postcss'
@@ -33,7 +33,13 @@ gulp.task('default', ['watch-server', 'watch-client', 'watch-styles', 'runserver
 /**
  * Run the development server.
  */
-gulp.task('runserver', shell.task(`nodemon ${serverBuild} 8000`))
+gulp.task('runserver', () => {
+    nodemon({
+        script: serverBuild,
+        watch: serverBuild,
+        args: ['8000'],
+    })
+})
 
 
 /**
