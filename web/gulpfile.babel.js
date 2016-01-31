@@ -27,7 +27,7 @@ import {
 /**
  * Default to watching client and server, and runing server.
  */
-gulp.task('default', ['watch-server', 'watch-client', 'watch-styles', 'runserver'])
+gulp.task('default', ['watch-client', 'watch-server', 'watch-styles', 'runserver'])
 
 
 /**
