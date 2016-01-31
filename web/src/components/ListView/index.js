@@ -82,7 +82,7 @@ class ListView extends Component {
 
         return (
             <section style={styles.contentContainer}>
-                <Message content={`Error: ${loadError}`} />
+                <Message content={`Error: ${loadError.message}`} />
                 <ListContent />
             </section>
         )
@@ -127,7 +127,7 @@ class ListView extends Component {
                     subtitle={subtitle}
                 />
                 <Loader
-                    isInvalid={typeof loadDateTime === 'undefined'}
+                    isInvalid={!loadDateTime && !loadError}
                     isLoading={isLoading}
                     error={loadError}
                     reload={reload}

@@ -90,7 +90,7 @@ function mapStateToProps(state) {
 
     return {
         // filter out posts known to not exist (returns an array)
-        posts: filter(posts, post => !post.doesNotExist)
+        posts: filter(posts, post => !post.doesNotExist && post.loadDateTime)
             // nest posts
             .map(post => nestPost(post, tags))
             // sort most recently created posts to front of array

@@ -102,9 +102,9 @@ export default ({
 
     function fetchAllIfNeeded() {
         return (dispatch, getState) => {
-            const {isLoading, loadDateTime} = getState()[prefix]
+            const {isLoading, loadDateTime, loadError} = getState()[prefix]
 
-            if (!isLoading && typeof loadDateTime === 'undefined') {
+            if (loadError || (!isLoading && !loadDateTime)) {
                 return dispatch(fetchAll())
             }
 
@@ -160,7 +160,7 @@ export default ({
         return (dispatch, getState) => {
             const {items} = getState()[prefix]
             const neededSlugs = slugs.filter(
-                slug => typeof items[slug] === 'undefined'
+                slug => !items[slug] || items[slug].loadError
             )
 
             if (neededSlugs.length === 0) {
@@ -236,8 +236,8 @@ export default ({
                 // only set specified items to error
                 return {
                     ...state,
-                    items: mapValues(state.items, item =>
-                        action.slugs.indexOf(item.slug) === -1
+                    items: mapValues(state.items, (item, slug) =>
+                        action.slugs.indexOf(slug) === -1
                             ? item
                             : entityAsErrored(item, action.error)
                     ),
