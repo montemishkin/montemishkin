@@ -2,13 +2,13 @@
 import React from 'react'
 import {Route, IndexRoute} from 'react-router'
 // local imports
-import Navigation from './views/Navigation'
-import NotFound from './views/NotFound'
-import About from './views/About'
-import PostList from './views/PostList'
-import PostDetail from './views/PostDetail'
-import TagList from './views/TagList'
-import TagDetail from './views/TagDetail'
+import Navigation from './Navigation'
+import NotFound from './NotFound'
+import About from './About'
+import PostList from './PostList'
+import PostDetail from './PostDetail'
+import TagList from './TagList'
+import TagDetail from './TagDetail'
 
 
 export default (

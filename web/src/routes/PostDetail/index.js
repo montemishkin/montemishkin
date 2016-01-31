@@ -7,7 +7,7 @@ import Helmet from 'react-helmet'
 // import {createSelector} from 'reselect'
 // local imports
 import Article from './Article'
-import NotFound from 'views/NotFound'
+import NotFound from 'routes/NotFound'
 import DetailView from 'components/DetailView'
 import nestPost from 'util/nestPost'
 import {fetchBySlugIfNeeded} from 'store/ducks/posts'

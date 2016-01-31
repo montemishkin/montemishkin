@@ -7,7 +7,7 @@ import Helmet from 'react-helmet'
 import filter from 'lodash/collection/filter'
 // local imports
 import Tagle from './Tagle'
-import NotFound from 'views/NotFound'
+import NotFound from 'routes/NotFound'
 import DetailView from 'components/DetailView'
 import nestPost from 'util/nestPost'
 import {fetchBySlugIfNeeded as fetchTagsBySlugIfNeeded} from 'store/ducks/tags'
