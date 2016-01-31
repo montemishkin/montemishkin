@@ -20,10 +20,6 @@ const contactData = [
         caption: 'GitHub',
         href: 'http://github.com/montemishkin',
         icon: 'github',
-    }, {
-        caption: 'SoundCloud',
-        href: 'http://soundcloud.com/montemishkin',
-        icon: 'soundcloud',
     },
 ]
 

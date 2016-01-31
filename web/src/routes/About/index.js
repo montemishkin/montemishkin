@@ -5,7 +5,7 @@ import Helmet from 'react-helmet'
 // local imports
 import styles from './styles'
 import Banner from 'components/Banner'
-import BaseLogo from 'components/Logos/Base'
+import ProjectsLogo from 'components/Logos/Projects'
 import ContactInfoBar from './ContactInfoBar'
 import Bio from './Bio'
 
@@ -23,7 +23,7 @@ export default class About extends Component {
                 <Banner
                     title='Monte Mishkin'
                     subtitle='Web Developer / Friendly Person'
-                    Icon={props => <BaseLogo {...props} />}
+                    Icon={props => <ProjectsLogo {...props} />}
                 >
                     <ContactInfoBar />
                 </Banner>

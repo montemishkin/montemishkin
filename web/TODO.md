@@ -1,14 +1,5 @@
 # vital
 
-- change "projects" link in about view to point to github projects
-
-- use ProjectLogo elsewhere now that projects are gone
-
-- styling for loading and error states in `ListView`
-
-- remove soundcloud link for now?
-    - or add more songs
-
 - proof read resume
 
 - post-publish
