@@ -25,7 +25,7 @@ export default class Header extends Component {
                     <Logo style={styles.logo} {...styles.logoProps} />
                 </IndexLink>
                 <List style={styles.list}>
-                    <Link to='/' style={styles.link}>
+                    <Link to='/about' style={styles.link}>
                         About
                     </Link>
                     <Link to='/posts' style={styles.link}>

@@ -4,6 +4,7 @@ import {Route, IndexRoute} from 'react-router'
 // local imports
 import Navigation from './Navigation'
 import NotFound from './NotFound'
+import Home from './Home'
 import About from './About'
 import PostList from './PostList'
 import PostDetail from './PostDetail'
@@ -13,7 +14,8 @@ import TagDetail from './TagDetail'
 
 export default (
     <Route path='/' component={Navigation}>
-        <IndexRoute component={About} />
+        <IndexRoute component={Home} />
+        <Route path='about' component={About} />
         <Route path='posts' component={PostList} />
         <Route path='posts/:slug' component={PostDetail} />
         <Route path='tags' component={TagList} />
