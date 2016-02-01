@@ -11,6 +11,7 @@ import Tagle from './Tagle'
 import NotFound from 'routes/NotFound'
 import DetailView from 'components/DetailView'
 import nestPost from 'util/nestPost'
+import sortDates from 'util/sortDates'
 import {fetchBySlugIfNeeded as fetchTagsBySlugIfNeeded} from 'store/ducks/tags'
 import {fetchAllIfNeeded as fetchAllPostsIfNeeded} from 'store/ducks/posts'
 
@@ -99,7 +100,9 @@ const mapStateToProps = createSelector(
                 ...desiredTag,
                 // grab only posts with desired tag
                 posts: filter(posts, post => post.tags.indexOf(slug) !== -1)
-                    .map(post => nestPost(post, tags)),
+                    .map(post => nestPost(post, tags))
+                    // sort most recently created posts to front of array
+                    .sort(({created: a}, {created: b}) => sortDates(a, b)),
             },
         }
     }
