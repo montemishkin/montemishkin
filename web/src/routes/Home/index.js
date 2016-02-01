@@ -58,7 +58,7 @@ function BackBlock() {
 function FrontBlock() {
     return (
         <Motion
-            defaultStyle={{left: -100}}
+            defaultStyle={{left: 100}}
             style={{
                 left: spring(0, {stiffness: 70, damping: 10}),
             }}
@@ -85,23 +85,26 @@ function Foreground() {
             defaultStyle={{
                 x1: -100,
                 x2: 100,
-                x3: -140,
-                y3: 210,
+                x3: -200,
+                y3: -20,
+                t3: 60,
             }}
             style={{
-                x1: spring(0),
-                x2: spring(0),
-                x3: spring(0),
-                y3: spring(0),
+                x1: spring(0, {stiffness: 170, damping: 26}),
+                x2: spring(0, {stiffness: 170, damping: 26}),
+                x3: spring(0, {stiffness: 170, damping: 26}),
+                y3: spring(0, {stiffness: 170, damping: 26}),
+                t3: spring(0, {stiffness: 80, damping: 12}),
             }}
             children={
-                ({x1, x2, x3, y3}) => (
+                ({x1, x2, x3, y3, t3}) => (
                     <div style={styles.innerContainer}>
                         <MainLogo
                             style={{
                                 ...styles.logo,
                                 left: `${x3}vw`,
                                 top: `${y3}vh`,
+                                transform: `rotate(${t3}deg)`,
                             }}
                         />
                         <div>
