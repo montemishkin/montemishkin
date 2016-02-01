@@ -4,7 +4,7 @@ import {basename} from 'path'
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 import Helmet from 'react-helmet'
-// import {createSelector} from 'reselect'
+import {createSelector} from 'reselect'
 // local imports
 import Article from './Article'
 import NotFound from 'routes/NotFound'
@@ -80,21 +80,15 @@ class PostDetail extends Component {
 }
 
 
-// TODO: use reselect
-function mapStateToProps(state, props) {
-    const {
-        posts: {items: posts},
-        tags: {items: tags},
-    } = state
-    const {location: {pathname}} = props
-
-    const desiredPost = posts[basename(pathname)]
-
-    return {
+const mapStateToProps = createSelector(
+    state => state.posts.items,
+    state => state.tags.items,
+    (_, props) => basename(props.location.pathname),
+    (posts, tags, slug) => ({
         // will be `undefined` if desired post not found
-        post: nestPost(desiredPost, tags),
-    }
-}
+        post: nestPost(posts[slug], tags),
+    })
+)
 
 
 export default connect(mapStateToProps)(PostDetail)

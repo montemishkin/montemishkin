@@ -1,6 +1,7 @@
 // third party imports
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
+import {createSelector} from 'reselect'
 import Helmet from 'react-helmet'
 import filter from 'lodash/collection/filter'
 // local imports
@@ -74,21 +75,13 @@ class PostList extends Component {
 }
 
 
-// TODO: use reselect
-function mapStateToProps(state) {
-    const {
-        posts: {
-            items: posts,
-            loadDateTime,
-            isLoading,
-            loadError,
-        },
-        tags: {
-            items: tags,
-        },
-    } = state
-
-    return {
+const mapStateToProps = createSelector(
+    state => state.posts.items,
+    state => state.posts.loadDateTime,
+    state => state.posts.isLoading,
+    state => state.posts.loadError,
+    state => state.tags.items,
+    (posts, loadDateTime, isLoading, loadError, tags) => ({
         // filter out posts known to not exist (returns an array)
         posts: filter(posts, post => !post.doesNotExist && post.loadDateTime)
             // nest posts
@@ -98,8 +91,8 @@ function mapStateToProps(state) {
         loadDateTime,
         isLoading,
         loadError,
-    }
-}
+    })
+)
 
 
 export default connect(mapStateToProps)(PostList)

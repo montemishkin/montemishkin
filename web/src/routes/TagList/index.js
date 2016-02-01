@@ -1,6 +1,7 @@
 // third party imports
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
+import {createSelector} from 'reselect'
 import Helmet from 'react-helmet'
 import filter from 'lodash/collection/filter'
 // local imports
@@ -62,16 +63,12 @@ class TagList extends Component {
 }
 
 
-// TODO: use reselect
-function mapStateToProps(state) {
-    const {
-        items: tags,
-        loadDateTime,
-        isLoading,
-        loadError,
-    } = state.tags
-
-    return {
+const mapStateToProps = createSelector(
+    state => state.tags.items,
+    state => state.tags.loadDateTime,
+    state => state.tags.isLoading,
+    state => state.tags.loadError,
+    (tags, loadDateTime, isLoading, loadError) => ({
         // filter out tags known to not exist (returns an array)
         tags: filter(tags, tag => !tag.doesNotExist && tag.loadDateTime)
             // sort alphabetically
@@ -79,8 +76,8 @@ function mapStateToProps(state) {
         loadDateTime,
         isLoading,
         loadError,
-    }
-}
+    })
+)
 
 
 export default connect(mapStateToProps)(TagList)

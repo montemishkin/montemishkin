@@ -3,6 +3,7 @@ import {basename} from 'path'
 // third party imports
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
+import {createSelector} from 'reselect'
 import Helmet from 'react-helmet'
 import filter from 'lodash/collection/filter'
 // local imports
@@ -86,26 +87,23 @@ class TagDetail extends Component {
 }
 
 
-// TODO: use reselect
-function mapStateToProps(state, props) {
-    const {
-        posts: {items: posts},
-        tags: {items: tags},
-    } = state
-    const {location: {pathname}} = props
+const mapStateToProps = createSelector(
+    state => state.posts.items,
+    state => state.tags.items,
+    (_, props) => basename(props.location.pathname),
+    (posts, tags, slug) => {
+        const desiredTag = tags[slug]
 
-    const desiredTagId = basename(pathname)
-    const desiredTag = tags[desiredTagId]
-
-    return {
-        tag: typeof desiredTag === 'undefined' ? void 0 : {
-            ...desiredTag,
-            // grab only posts with desired tag
-            posts: filter(posts, post => post.tags.indexOf(desiredTagId) !== -1)
-                .map(post => nestPost(post, tags)),
-        },
+        return {
+            tag: typeof desiredTag === 'undefined' ? void 0 : {
+                ...desiredTag,
+                // grab only posts with desired tag
+                posts: filter(posts, post => post.tags.indexOf(slug) !== -1)
+                    .map(post => nestPost(post, tags)),
+            },
+        }
     }
-}
+)
 
 
 export default connect(mapStateToProps)(TagDetail)
