@@ -36,7 +36,7 @@ function BackBlock() {
         <Motion
             defaultStyle={{top: -100}}
             style={{
-                top: spring(0, {stiffness: 50, damping: 6}),
+                top: spring(0, {stiffness: 50, damping: 8}),
             }}
             children={
                 ({top}) => (
@@ -83,21 +83,21 @@ function Foreground() {
     return (
         <Motion
             defaultStyle={{
-                x1: -100,
-                x2: 100,
+                y1: 100,
+                y2: 100,
                 x3: -200,
                 y3: -20,
                 t3: 60,
             }}
             style={{
-                x1: spring(0, {stiffness: 170, damping: 26}),
-                x2: spring(0, {stiffness: 170, damping: 26}),
+                y1: spring(0, {stiffness: 170, damping: 20}),
+                y2: spring(0, {stiffness: 150, damping: 20}),
                 x3: spring(0, {stiffness: 170, damping: 26}),
                 y3: spring(0, {stiffness: 170, damping: 26}),
                 t3: spring(0, {stiffness: 80, damping: 12}),
             }}
             children={
-                ({x1, x2, x3, y3, t3}) => (
+                ({y1, y2, x3, y3, t3}) => (
                     <div style={styles.innerContainer}>
                         <MainLogo
                             style={{
@@ -112,7 +112,7 @@ function Foreground() {
                                 to='/about'
                                 style={{
                                     ...styles.link,
-                                    left: `${x1}vw`,
+                                    top: `${y1}vh`,
                                 }}
                             >
                                 About
@@ -121,7 +121,7 @@ function Foreground() {
                                 to='/posts'
                                 style={{
                                     ...styles.link,
-                                    left: `${x2}vw`,
+                                    top: `${y2}vh`,
                                 }}
                             >
                                 Blog
