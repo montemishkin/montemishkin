@@ -1,32 +1,33 @@
-// third party imports
-import chroma from 'chroma-js'
 // local imports
 import colors from 'assets/styles/js/colors'
+import classes from 'assets/styles/js/classes'
+import {largestFontSize} from 'assets/styles/js/numerics'
+
+
+const spacing = 20
 
 
 export default {
     outerContainer: {
         flexGrow: 1,
         position: 'relative',
+        minHeight: 500,
     },
 
 
     innerContainer: {
         position: 'absolute',
-        top: 0,
-        left: 0,
         width: '100%',
         height: '100%',
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
     },
 
 
     backBlock: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
+        position: 'relative',
         width: '100%',
         height: '100%',
         backgroundColor: colors.secondary.main,
@@ -34,10 +35,29 @@ export default {
 
 
     frontBlock: {
-        boxShadow: `0px 0px 5px ${colors.secondary.inverse}`,
         position: 'relative',
         width: '60%',
-        height: '30%',
-        backgroundColor: colors.primary.inverse,
+        height: '70%',
+        minWidth: 250,
+        backgroundColor: colors.primary.main,
+        // TODO: don't hardcode this color here
+        boxShadow: '0px 0px 5px #737373',
+    },
+
+
+    logo: {
+        position: 'relative',
+        padding: spacing,
+        maxWidth: 200,
+    },
+
+
+    link: {
+        position: 'relative',
+        display: 'inline-block',
+        ...classes.interactive.primary,
+        fontSize: largestFontSize,
+        color: colors.primary.inverse,
+        padding: spacing,
     },
 }
