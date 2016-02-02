@@ -5,4 +5,3 @@
 
 - .gitignore should ignore /media/ except that i want to keep the images used for the fixtures
 - i am probably using graphene very ineffectively.  it seems highly unlikely that I am supposed to access `self._root`, let alone have to implement a default resolver for each field...
-- mount admin url router at root
