@@ -2572,7 +2572,8 @@
       "dependencies": {
         "esprima": {
           "version": "2.7.1",
-          "from": "esprima@>=2.6.0 <3.0.0"
+          "from": "esprima@2.7.1",
+          "resolved": "https://registry.npmjs.org/esprima/-/esprima-2.7.1.tgz"
         }
       }
     },
