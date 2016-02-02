@@ -8,8 +8,7 @@ import radium from 'radium'
  * markdown will get proper styling from external CSS (by being a child
  * of a .markdown wrapper).
  */
-@radium
-export default class MarkdownContainer extends Component {
+class MarkdownContainer extends Component {
     static propTypes = {
         className: PropTypes.string,
         children: PropTypes.node.isRequired,
@@ -37,3 +36,6 @@ export default class MarkdownContainer extends Component {
         )
     }
 }
+
+
+export default radium(MarkdownContainer)

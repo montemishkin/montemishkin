@@ -8,11 +8,7 @@ import TagList from 'components/TagList'
 import FormattedDate from 'components/FormattedDate'
 
 
-/**
- * Shortened preview of a single article.
- */
-@radium
-export default class ArticlePreview extends Component {
+class ArticlePreview extends Component {
     static propTypes = {
         url: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
@@ -96,3 +92,6 @@ export default class ArticlePreview extends Component {
         )
     }
 }
+
+
+export default radium(ArticlePreview)

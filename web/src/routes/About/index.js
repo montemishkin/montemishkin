@@ -10,13 +10,8 @@ import ContactInfoBar from './ContactInfoBar'
 import Bio from './Bio'
 
 
-/**
- * About page view.
- */
-@radium
-export default class About extends Component {
+class About extends Component {
     render() {
-
         return (
             <div {...this.props}>
                 <Helmet title='About' />
@@ -36,3 +31,6 @@ export default class About extends Component {
         )
     }
 }
+
+
+export default radium(About)

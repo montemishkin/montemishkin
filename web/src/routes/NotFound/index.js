@@ -10,8 +10,7 @@ import MainLogo from 'components/Logos/Main'
 /**
  * Sitewide 404 page
  */
-@radium
-export default class NotFound extends Component {
+class NotFound extends Component {
     render() {
         const {style, ...unusedProps} = this.props
 
@@ -49,3 +48,6 @@ export default class NotFound extends Component {
         )
     }
 }
+
+
+export default radium(NotFound)

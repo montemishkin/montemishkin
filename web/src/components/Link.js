@@ -7,8 +7,7 @@ import {Link as ReactRouterLink} from 'react-router'
 const ReactRouterLinkWithRadium = radium(ReactRouterLink)
 
 
-@radium
-export default class Link extends Component {
+class Link extends Component {
     render() {
         const {style, children, ...unusedProps} = this.props
 
@@ -28,3 +27,6 @@ export default class Link extends Component {
         )
     }
 }
+
+
+export default radium(Link)

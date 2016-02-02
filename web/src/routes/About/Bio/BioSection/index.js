@@ -5,8 +5,7 @@ import radium from 'radium'
 import styles from './styles'
 
 
-@radium
-export default class BioSection extends Component {
+class BioSection extends Component {
     render() {
         const {
             Title,
@@ -31,3 +30,6 @@ export default class BioSection extends Component {
         )
     }
 }
+
+
+export default radium(BioSection)

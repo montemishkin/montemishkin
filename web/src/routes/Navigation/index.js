@@ -11,8 +11,7 @@ import Footer from './Footer'
 /**
  * Adds header and footer navigation bars to UI.
  */
-@radium
-export default class Navigation extends Component {
+class Navigation extends Component {
     render() {
         const {style, children, ...unusedProps} = this.props
 
@@ -34,3 +33,6 @@ export default class Navigation extends Component {
         )
     }
 }
+
+
+export default radium(Navigation)

@@ -9,8 +9,7 @@ import List from 'components/List'
 import Logo from 'components/Logos/Main'
 
 
-@radium
-export default class Header extends Component {
+class Header extends Component {
     render() {
         const {style, ...unusedProps} = this.props
         return (
@@ -36,3 +35,6 @@ export default class Header extends Component {
         )
     }
 }
+
+
+export default radium(Header)

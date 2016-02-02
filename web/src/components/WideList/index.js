@@ -9,8 +9,7 @@ import List from 'components/List'
 /**
  * Just an unordered list along with some styling.
  */
-@radium
-export default class WideList extends Component {
+class WideList extends Component {
     static propTypes = {
         style: PropTypes.object,
         listItemStyle: PropTypes.object,
@@ -43,3 +42,6 @@ export default class WideList extends Component {
         )
     }
 }
+
+
+export default radium(WideList)

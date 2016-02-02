@@ -6,11 +6,7 @@ import styles from './styles'
 import Link from 'components/Link'
 
 
-/**
- * List of linked tags.
- */
-@radium
-export default class Tag extends Component {
+class TagPreview extends Component {
     static propTypes = {
         url: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
@@ -52,3 +48,6 @@ export default class Tag extends Component {
         )
     }
 }
+
+
+export default radium(TagPreview)

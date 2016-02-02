@@ -24,11 +24,7 @@ const contactData = [
 ]
 
 
-/**
- * List of contact info and links.
- */
-@radium
-export default class ContactInfoBar extends Component {
+class ContactInfoBar extends Component {
     render() {
         const {style, ...unusedProps} = this.props
         return (
@@ -61,3 +57,6 @@ export default class ContactInfoBar extends Component {
         )
     }
 }
+
+
+export default radium(ContactInfoBar)

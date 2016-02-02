@@ -5,8 +5,7 @@ import radium from 'radium'
 import styles from './styles'
 
 
-@radium
-export default class Banner extends Component {
+class Banner extends Component {
     static propTypes = {
         style: PropTypes.object,
         // react component
@@ -56,3 +55,6 @@ export default class Banner extends Component {
         )
     }
 }
+
+
+export default radium(Banner)

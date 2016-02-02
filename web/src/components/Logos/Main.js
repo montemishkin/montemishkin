@@ -13,7 +13,7 @@ const all = {
 }
 
 
-export default class MainLogo extends Component {
+class MainLogo extends Component {
     static propTypes = {
         bodyFill: PropTypes.string,
         eyeFill: PropTypes.string,
@@ -152,3 +152,6 @@ export default class MainLogo extends Component {
         )
     }
 }
+
+
+export default MainLogo

@@ -6,8 +6,7 @@ import radium from 'radium'
 /**
  * Minimal wrapper over native <ul> and <li> tags.
  */
-@radium
-export default class List extends Component {
+class List extends Component {
     static propTypes = {
         listItemStyle: PropTypes.oneOfType([
             PropTypes.object,
@@ -59,3 +58,6 @@ export default class List extends Component {
         )
     }
 }
+
+
+export default radium(List)

@@ -7,8 +7,7 @@ import data from './data'
 import BioSection from './BioSection'
 
 
-@radium
-export default class Bio extends Component {
+class Bio extends Component {
     render() {
         const {style, ...unusedProps} = this.props
 
@@ -28,3 +27,6 @@ export default class Bio extends Component {
         )
     }
 }
+
+
+export default radium(Bio)

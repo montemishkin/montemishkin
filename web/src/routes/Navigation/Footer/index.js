@@ -10,9 +10,7 @@ import List from 'components/List'
 import Logo from 'components/Logos/Main'
 
 
-@connect(({browser}) => ({browser}))
-@radium
-export default class Footer extends Component {
+class Footer extends Component {
     static propTypes = {
         browser: PropTypes.shape({
             lessThan: PropTypes.shape({
@@ -101,3 +99,13 @@ export default class Footer extends Component {
         )
     }
 }
+
+
+function mapStateToProps(state) {
+    return {
+        browser: state.browser,
+    }
+}
+
+
+export default connect(mapStateToProps)(radium(Footer))

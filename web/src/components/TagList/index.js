@@ -7,11 +7,7 @@ import Link from 'components/Link'
 import List from 'components/List'
 
 
-/**
- * Inline list of linked tags, accompanied by tag icon.
- */
-@radium
-export default class TagList extends Component {
+class TagList extends Component {
     static propTypes = {
         tags: PropTypes.arrayOf(PropTypes.shape({
             name: PropTypes.string.isRequired,
@@ -64,3 +60,6 @@ export default class TagList extends Component {
         )
     }
 }
+
+
+export default radium(TagList)
