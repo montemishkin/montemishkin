@@ -1,7 +1,5 @@
 # vital
 
-- proof read resume
-
 - post-publish
     - add posts
         - hello
