@@ -18,7 +18,7 @@
 
 # non-vital
 
-- tag search view should show tags with higher usage first
+- tag list view should show tags with higher usage first
     - should also show number of posts that use that tag
 - offer rss feed?
 - a better way of ensuring that each view renders a page title using helmet
@@ -46,13 +46,10 @@
         - https://facebook.github.io/relay/docs
         - https://medium.com/@cpojer/relay-and-routing-36b5439bad9#.rwu6n8bpg
     - pagination
-    - only load what is actually needed for the current view
     - DRY up graphql queries
 
 - accessiblity
     - improve use of semantic content
-    - `TabContainer` component used in `TagDetail` view is not accessible (try navigating with Tab key)
-        - see [here](https://developer.mozilla.org/en-US/docs/Web/Accessibility/An_overview_of_accessible_web_applications_and_widgets) for tips on making it accessible.
 
 - styling
     - NotFound view
@@ -60,7 +57,6 @@
     - rendered markdown styling
         - would be nice to have the h* anchors hidden until hover the h* element
         - syntax highlighter fails at modern JS
-    - CSS animations on birds?
     - overall DRY design
         - magic numbers
     - responsive
