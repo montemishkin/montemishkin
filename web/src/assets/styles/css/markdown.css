@@ -44,7 +44,8 @@
 }
 
 .markdown strong {
-  font-weight: bold;
+  font-weight: 900;
+  color: black;
 }
 
 .markdown img {
