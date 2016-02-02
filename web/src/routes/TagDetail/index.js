@@ -77,7 +77,7 @@ class TagDetail extends Component {
         return (
             <DetailView
                 item={tag}
-                shouldTryFetch={typeof tag === 'undefined'}
+                shouldTryFetch={true}
                 tryFetch={tryFetch}
                 test={testItem}
                 FoundComponent={Found}
