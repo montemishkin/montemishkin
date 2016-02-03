@@ -16,6 +16,14 @@
 
 # non-vital
 
+- clean up logic
+    - `TagDetail`
+    - `PostDetail`
+    - `Tagle`
+    - `Article`
+- DRY up
+    - `TagDetail` + `PostDetail`?
+    - `Tagle` + `Article`?
 - tag list view should show tags with higher usage first
     - should also show number of posts that use that tag
 - offer rss feed?
