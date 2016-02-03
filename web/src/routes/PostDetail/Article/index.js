@@ -1,5 +1,5 @@
 // third party imports
-import React, {Component, PropTypes} from 'react'
+import React, {PropTypes} from 'react'
 import radium from 'radium'
 import DisqusThread from 'react-disqus-thread'
 // local imports
@@ -15,37 +15,17 @@ import Spinner from 'components/Spinner'
 const isProduction = process.env.NODE_ENV === 'production'
 
 
-class Article extends Component {
-    static propTypes = {
-        url: PropTypes.string,
-        title: PropTypes.string,
-        subtitle: PropTypes.string,
-        created: PropTypes.shape({
-            year: PropTypes.number,
-            month: PropTypes.number,
-            day: PropTypes.number,
-        }),
-        tags: PropTypes.arrayOf(PropTypes.shape({
-            url: PropTypes.string,
-            name: PropTypes.string,
-            description: PropTypes.string,
-        })),
-        content: PropTypes.string,
-        bannerImage: PropTypes.shape({
-            url: PropTypes.string,
-        }),
-    }
-
-
-    createContent = ({
-        BannerIcon,
-        title,
-        subtitle,
-        tags,
-        created,
-        content,
-    }) => (
-        <article {...this.props}>
+function createContent({
+    BannerIcon,
+    title,
+    subtitle,
+    tags,
+    created,
+    content,
+    ...unusedProps,
+}) {
+    return (
+        <article {...unusedProps}>
             <Banner
                 Icon={BannerIcon}
                 title={title}
@@ -66,49 +46,52 @@ class Article extends Component {
             {content}
         </article>
     )
+}
 
 
-    LoadedContent = () => {
-        const {
-            title,
-            subtitle,
-            tags,
-            created,
-            content,
-            url,
-            bannerImage,
-        } = this.props
+function LoadedContent({
+    title,
+    subtitle,
+    tags,
+    created,
+    content,
+    url,
+    bannerImage,
+    ...unusedProps,
+}) {
+    return createContent({
+        ...unusedProps,
+        BannerIcon: radium(
+            props => <img {...props} src={bannerImage.url} />
+        ),
+        title,
+        subtitle,
+        tags,
+        created,
+        content: (
+            <section style={styles.contentContainer}>
+                <MarkdownContainer style={styles.content}>
+                    {content}
+                </MarkdownContainer>
+                <div style={styles.disqus}>
+                    <DisqusThread
+                        // see: https://help.disqus.com/customer/en/portal/articles/472098-javascript-configuration-variables
+                        shortname={isProduction ? 'montemishkin' : 'montemishkin-test'}
+                        identifier={url}
+                        title={title}
+                        // TODO: this url should not be hardcoded here
+                        url={`http://monte.mishkin.com${url}`}
+                    />
+                </div>
+            </section>
+        ),
+    })
+}
 
-        return this.createContent({
-            BannerIcon: radium(
-                props => <img {...props} src={bannerImage.url} />
-            ),
-            title,
-            subtitle,
-            tags,
-            created,
-            content: (
-                <section style={styles.contentContainer}>
-                    <MarkdownContainer style={styles.content}>
-                        {content}
-                    </MarkdownContainer>
-                    <div style={styles.disqus}>
-                        <DisqusThread
-                            // see: https://help.disqus.com/customer/en/portal/articles/472098-javascript-configuration-variables
-                            shortname={isProduction ? 'montemishkin' : 'montemishkin-test'}
-                            identifier={url}
-                            title={title}
-                            // TODO: this url should not be hardcoded here
-                            url={`http://monte.mishkin.com${url}`}
-                        />
-                    </div>
-                </section>
-            ),
-        })
-    }
 
-
-    ErrorContent = () => this.createContent({
+function ErrorContent({error, ...unusedProps}) {
+    return createContent({
+        ...unusedProps,
         BannerIcon: radium(
             props => <i {...props} className='fa fa-exclamation' />
         ),
@@ -117,14 +100,17 @@ class Article extends Component {
         content: (
             <section style={styles.contentContainer}>
                 <div style={styles.content}>
-                    Error: {this.props.loadError.message}
+                    Error: {error.message}
                 </div>
             </section>
         ),
     })
+}
 
 
-    LoadingContent = () => this.createContent({
+function LoadingContent(props) {
+    return createContent({
+        ...props,
         BannerIcon: Spinner,
         title: 'Loading',
         subtitle: '...',
@@ -136,33 +122,49 @@ class Article extends Component {
             </section>
         ),
     })
+}
 
 
-    render() {
-        const {
-            props: {
-                isLoading,
-                loadError,
-                loadDateTime,
-                reload,
-            },
-            LoadingContent,
-            ErrorContent,
-            LoadedContent,
-        } = this
+function Article({
+    isLoading,
+    loadError,
+    loadDateTime,
+    reload,
+    ...unusedProps,
+}) {
+    return (
+        <Loader
+            {...unusedProps}
+            isInvalid={!loadDateTime && !loadError}
+            isLoading={isLoading}
+            error={loadError}
+            reload={reload}
+            LoadingContent={LoadingContent}
+            ErrorContent={ErrorContent}
+            LoadedContent={LoadedContent}
+        />
+    )
+}
 
-        return (
-            <Loader
-                isInvalid={!loadDateTime && !loadError}
-                isLoading={isLoading}
-                error={loadError}
-                reload={reload}
-                LoadingContent={LoadingContent}
-                ErrorContent={ErrorContent}
-                LoadedContent={LoadedContent}
-            />
-        )
-    }
+
+Article.propTypes = {
+    url: PropTypes.string,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    created: PropTypes.shape({
+        year: PropTypes.number,
+        month: PropTypes.number,
+        day: PropTypes.number,
+    }),
+    tags: PropTypes.arrayOf(PropTypes.shape({
+        url: PropTypes.string,
+        name: PropTypes.string,
+        description: PropTypes.string,
+    })),
+    content: PropTypes.string,
+    bannerImage: PropTypes.shape({
+        url: PropTypes.string,
+    }),
 }
 
 

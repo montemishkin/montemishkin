@@ -1,5 +1,5 @@
 // third party imports
-import React, {Component, PropTypes} from 'react'
+import React, {PropTypes} from 'react'
 import radium from 'radium'
 // local imports
 import styles from './styles'
@@ -10,38 +10,15 @@ import Spinner from 'components/Spinner'
 import Loader from 'components/Loader'
 
 
-class Tagle extends Component {
-    static propTypes = {
-        url: PropTypes.string,
-        name: PropTypes.string,
-        description: PropTypes.string,
-        posts: PropTypes.arrayOf(
-            PropTypes.shape({
-                url: PropTypes.string,
-                title: PropTypes.string,
-                subtitle: PropTypes.string,
-                created: PropTypes.shape({
-                    year: PropTypes.number,
-                    month: PropTypes.number,
-                    day: PropTypes.number,
-                }),
-                tags: PropTypes.arrayOf(PropTypes.shape({
-                    url: PropTypes.string,
-                    name: PropTypes.string,
-                    description: PropTypes.string,
-                })),
-            })
-        ),
-    }
-
-
-    createContent = ({
-        BannerIcon,
-        title,
-        subtitle,
-        content,
-    }) => (
-        <article {...this.props}>
+function createContent({
+    BannerIcon,
+    title,
+    subtitle,
+    content,
+    ...unusedProps,
+}) {
+    return (
+        <article {...unusedProps}>
             <Banner
                 Icon={BannerIcon}
                 title={title}
@@ -50,9 +27,12 @@ class Tagle extends Component {
             {content}
         </article>
     )
+}
 
 
-    LoadingContent = () => this.createContent({
+function LoadingContent(props) {
+    return createContent({
+        ...props,
         BannerIcon: Spinner,
         title: 'Loading',
         subtitle: '...',
@@ -64,9 +44,12 @@ class Tagle extends Component {
             </section>
         ),
     })
+}
 
 
-    ErrorContent = () => this.createContent({
+function ErrorContent({error, ...unusedProps}) {
+    return createContent({
+        ...unusedProps,
         BannerIcon: radium(
             props => <i {...props} className='fa fa-exclamation' />
         ),
@@ -75,67 +58,84 @@ class Tagle extends Component {
         content: (
             <section style={styles.contentContainer}>
                 <div style={styles.content}>
-                    Error: {this.props.loadError.message}
+                    Error: {error.message}
                 </div>
             </section>
         ),
     })
+}
 
 
-    LoadedContent = () => {
-        const {
-            name,
-            description,
-            posts,
-        } = this.props
+function LoadedContent({
+    name,
+    description,
+    posts,
+    ...unusedProps,
+}) {
+    return createContent({
+        ...unusedProps,
+        BannerIcon: radium(
+            props => <i {...props} className='fa fa-tag' />
+        ),
+        title: name,
+        subtitle: description,
+        content: (
+            <WideList>
+                {posts.length === 0
+                    ? 'There are no posts with this tag.'
+                    : posts.map((post, key) => (
+                        <ArticlePreview {...post} key={key} />
+                    ))
+                }
+            </WideList>
+        ),
+    })
+}
 
-        return this.createContent({
-            BannerIcon: radium(
-                props => <i {...props} className='fa fa-tag' />
-            ),
-            title: name,
-            subtitle: description,
-            content: (
-                <WideList>
-                    {posts.length === 0
-                        ? 'There are no posts with this tag.'
-                        : posts.map((post, key) => (
-                            <ArticlePreview {...post} key={key} />
-                        ))
-                    }
-                </WideList>
-            ),
+
+function Tagle({
+    isLoading,
+    loadError,
+    loadDateTime,
+    reload,
+    ...unusedProps,
+}) {
+    return (
+        <Loader
+            {...unusedProps}
+            isInvalid={!loadDateTime && !loadError}
+            isLoading={isLoading}
+            error={loadError}
+            reload={reload}
+            LoadingContent={LoadingContent}
+            ErrorContent={ErrorContent}
+            LoadedContent={LoadedContent}
+        />
+    )
+}
+
+
+Tagle.propTypes = {
+    url: PropTypes.string,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    posts: PropTypes.arrayOf(
+        PropTypes.shape({
+            url: PropTypes.string,
+            title: PropTypes.string,
+            subtitle: PropTypes.string,
+            created: PropTypes.shape({
+                year: PropTypes.number,
+                month: PropTypes.number,
+                day: PropTypes.number,
+            }),
+            tags: PropTypes.arrayOf(PropTypes.shape({
+                url: PropTypes.string,
+                name: PropTypes.string,
+                description: PropTypes.string,
+            })),
         })
-    }
-
-
-    render() {
-        const {
-            props: {
-                isLoading,
-                loadError,
-                loadDateTime,
-                reload,
-            },
-            LoadingContent,
-            ErrorContent,
-            LoadedContent,
-        } = this
-
-
-        return (
-
-            <Loader
-                isInvalid={!loadDateTime && !loadError}
-                isLoading={isLoading}
-                error={loadError}
-                reload={reload}
-                LoadingContent={LoadingContent}
-                ErrorContent={ErrorContent}
-                LoadedContent={LoadedContent}
-            />
-        )
-    }
+    ),
 }
 
 
