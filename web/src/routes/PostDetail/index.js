@@ -1,7 +1,7 @@
 // node imports
 import {basename} from 'path'
 // third party imports
-import React, {Component, PropTypes} from 'react'
+import React, {PropTypes} from 'react'
 import {connect} from 'react-redux'
 import Helmet from 'react-helmet'
 import {createSelector} from 'reselect'
@@ -13,70 +13,73 @@ import nestPost from 'util/nestPost'
 import {fetchBySlugIfNeeded} from 'store/ducks/posts'
 
 
-class PostDetail extends Component {
-    static propTypes = {
-        post: PropTypes.shape({
-            url: PropTypes.string,
-            bannerImage: PropTypes.shape({
-                url: PropTypes.string,
-            }),
-            title: PropTypes.string,
-            subtitle: PropTypes.string,
-            content: PropTypes.string,
-            created: PropTypes.shape({
-                year: PropTypes.number,
-                month: PropTypes.number,
-                day: PropTypes.number,
-            }),
-            tags: PropTypes.arrayOf(PropTypes.shape({
-                url: PropTypes.string,
-                name: PropTypes.string,
-                description: PropTypes.string,
-            })),
-        }),
-    }
+function tryFetch(dispatch, pathname) {
+    dispatch(fetchBySlugIfNeeded(basename(pathname)))
+}
 
 
-    tryFetch = () => {
-        const {dispatch, location: {pathname}} = this.props
-
-        dispatch(fetchBySlugIfNeeded(basename(pathname)))
-    }
+function isFound(item) {
+    return typeof item === 'undefined' || !item.doesNotExist
+}
 
 
-    testItem = (item) => typeof item === 'undefined' || !item.doesNotExist
-
-
-    Found = ({item = {isLoading: true}}) => (
-        <div {...this.props}>
+function Found({
+    item = {isLoading: true},
+    tryFetch: reload,
+    ...unusedProps,
+}) {
+    return (
+        <div {...unusedProps}>
             <Helmet title={item.title ? item.title : 'Loading...'} />
             <Article
                 {...item}
-                reload={this.tryFetch}
+                reload={reload}
             />
         </div>
     )
+}
 
 
-    render() {
-        const {
-            props: {post},
-            tryFetch,
-            testItem,
-            Found,
-        } = this
+function PostDetail({
+    post,
+    dispatch,
+    location: {pathname},
+    ...unusedProps,
+}) {
+    return (
+        <DetailView
+            {...unusedProps}
+            item={post}
+            shouldTryFetch={typeof post === 'undefined'}
+            tryFetch={tryFetch.bind(null, dispatch, pathname)}
+            test={isFound}
+            FoundComponent={Found}
+            NotFoundComponent={NotFound}
+        />
+    )
+}
 
-        return (
-            <DetailView
-                item={post}
-                shouldTryFetch={typeof post === 'undefined'}
-                tryFetch={tryFetch}
-                test={testItem}
-                FoundComponent={Found}
-                NotFoundComponent={NotFound}
-            />
-        )
-    }
+
+PostDetail.propTypes = {
+    post: PropTypes.shape({
+        url: PropTypes.string,
+        bannerImage: PropTypes.shape({
+            url: PropTypes.string,
+        }),
+        title: PropTypes.string,
+        subtitle: PropTypes.string,
+        content: PropTypes.string,
+        created: PropTypes.shape({
+            year: PropTypes.number,
+            month: PropTypes.number,
+            day: PropTypes.number,
+        }),
+        tags: PropTypes.arrayOf(PropTypes.shape({
+            url: PropTypes.string,
+            name: PropTypes.string,
+            description: PropTypes.string,
+        })),
+    }),
 }
 
 

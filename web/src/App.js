@@ -5,7 +5,6 @@ import {RoutingContext} from 'react-router'
 import {Provider} from 'react-redux'
 
 
-@radium
 class App extends Component {
     render() {
         const {store, renderProps, ...unusedProps} = this.props
@@ -19,4 +18,4 @@ class App extends Component {
 }
 
 
-export default App
+export default radium(App)

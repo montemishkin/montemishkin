@@ -1,5 +1,5 @@
 // third party imports
-import React, {Component} from 'react'
+import React from 'react'
 import radium from 'radium'
 import Helmet from 'react-helmet'
 // local imports
@@ -10,42 +10,40 @@ import MainLogo from 'components/Logos/Main'
 /**
  * Sitewide 404 page
  */
-@radium
-export default class NotFound extends Component {
-    render() {
-        const {style, ...unusedProps} = this.props
-
-        return (
-            <article
-                {...unusedProps}
-                style={[
-                    styles.container,
-                    style,
-                ]}
-            >
-                <Helmet title='Not Found' />
-                <img
-                    src='/static/images/sun.svg'
-                    style={styles.sunImage}
-                />
-                <img
-                    src='/static/images/tree.svg'
-                    style={styles.treeImage}
-                />
-                <MainLogo style={styles.bird} />
-                <img
-                    src='/static/images/grass.svg'
-                    style={styles.grassImage}
-                />
-                <div style={styles.overlay}>
-                    <div style={styles.title}>
-                        Not Found
-                    </div>
-                    <div style={styles.subtitle}>
-                        There{"'"}s nothing here.
-                    </div>
+function NotFound({style, ...unusedProps}) {
+    return (
+        <article
+            {...unusedProps}
+            style={[
+                styles.container,
+                style,
+            ]}
+        >
+            <Helmet title='Not Found' />
+            <img
+                src='/static/images/sun.svg'
+                style={styles.sunImage}
+            />
+            <img
+                src='/static/images/tree.svg'
+                style={styles.treeImage}
+            />
+            <MainLogo style={styles.bird} />
+            <img
+                src='/static/images/grass.svg'
+                style={styles.grassImage}
+            />
+            <div style={styles.overlay}>
+                <div style={styles.title}>
+                    Not Found
                 </div>
-            </article>
-        )
-    }
+                <div style={styles.subtitle}>
+                    There{"'"}s nothing here.
+                </div>
+            </div>
+        </article>
+    )
 }
+
+
+export default radium(NotFound)

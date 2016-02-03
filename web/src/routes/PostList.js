@@ -1,5 +1,5 @@
 // third party imports
-import React, {Component, PropTypes} from 'react'
+import React, {PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {createSelector} from 'reselect'
 import Helmet from 'react-helmet'
@@ -13,65 +13,57 @@ import sortDates from 'util/sortDates'
 import {fetchAllIfNeeded} from 'store/ducks/posts'
 
 
-class PostList extends Component {
-    static propTypes = {
-        posts: PropTypes.arrayOf(PropTypes.shape({
+function reload(dispatch) {
+    dispatch(fetchAllIfNeeded())
+}
+
+
+function PostList({
+    posts,
+    loadDateTime,
+    isLoading,
+    loadError,
+    dispatch,
+    ...unusedProps,
+}) {
+    return (
+        <div {...unusedProps}>
+            <Helmet title='Blog' />
+            <ListView
+                BannerIcon={BlogLogo}
+                title='Blog'
+                subtitle='oh yeah.'
+                items={posts}
+                PreviewComponent={ArticlePreview}
+                isLoading={isLoading}
+                loadDateTime={loadDateTime}
+                loadError={loadError}
+                reload={reload.bind(null, dispatch)}
+            />
+        </div>
+    )
+}
+
+
+PostList.propTypes = {
+    posts: PropTypes.arrayOf(PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        subtitle: PropTypes.string,
+        created: PropTypes.shape({
+            year: PropTypes.number.isRequired,
+            month: PropTypes.number.isRequired,
+            day: PropTypes.number.isRequired,
+        }).isRequired,
+        tags: PropTypes.arrayOf(PropTypes.shape({
             url: PropTypes.string.isRequired,
-            title: PropTypes.string.isRequired,
-            subtitle: PropTypes.string,
-            created: PropTypes.shape({
-                year: PropTypes.number.isRequired,
-                month: PropTypes.number.isRequired,
-                day: PropTypes.number.isRequired,
-            }).isRequired,
-            tags: PropTypes.arrayOf(PropTypes.shape({
-                url: PropTypes.string.isRequired,
-                name: PropTypes.string.isRequired,
-                description: PropTypes.string.isRequired,
-            })).isRequired,
+            name: PropTypes.string.isRequired,
+            description: PropTypes.string.isRequired,
         })).isRequired,
-        loadDateTime: PropTypes.number,
-        isLoading: PropTypes.bool.isRequired,
-        loadError: PropTypes.object,
-    }
-
-
-    BannerIcon = (props) => <BlogLogo {...props} />
-
-
-    reload = () => this.props.dispatch(fetchAllIfNeeded())
-
-
-    render() {
-        const {
-            props: {
-                posts,
-                loadDateTime,
-                isLoading,
-                loadError,
-                ...unusedProps,
-            },
-            BannerIcon,
-            reload,
-        } = this
-
-        return (
-            <div {...unusedProps}>
-                <Helmet title='Blog' />
-                <ListView
-                    BannerIcon={BannerIcon}
-                    title='Blog'
-                    subtitle='oh yeah.'
-                    items={posts}
-                    PreviewComponent={ArticlePreview}
-                    isLoading={isLoading}
-                    loadDateTime={loadDateTime}
-                    loadError={loadError}
-                    reload={reload}
-                />
-            </div>
-        )
-    }
+    })).isRequired,
+    loadDateTime: PropTypes.number,
+    isLoading: PropTypes.bool.isRequired,
+    loadError: PropTypes.object,
 }
 
 

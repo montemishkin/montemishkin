@@ -1,7 +1,7 @@
 // node imports
 import {basename} from 'path'
 // third party imports
-import React, {Component, PropTypes} from 'react'
+import React, {PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {createSelector} from 'reselect'
 import Helmet from 'react-helmet'
@@ -16,75 +16,78 @@ import {fetchBySlugIfNeeded as fetchTagsBySlugIfNeeded} from 'store/ducks/tags'
 import {fetchAllIfNeeded as fetchAllPostsIfNeeded} from 'store/ducks/posts'
 
 
-class TagDetail extends Component {
-    static propTypes = {
-        tag: PropTypes.shape({
-            url: PropTypes.string,
-            name: PropTypes.string,
-            description: PropTypes.string,
-            posts: PropTypes.arrayOf(
-                PropTypes.shape({
-                    url: PropTypes.string,
-                    title: PropTypes.string,
-                    subtitle: PropTypes.string,
-                    created: PropTypes.shape({
-                        year: PropTypes.number,
-                        month: PropTypes.number,
-                        day: PropTypes.number,
-                    }),
-                    tags: PropTypes.arrayOf(PropTypes.shape({
-                        url: PropTypes.string,
-                        name: PropTypes.string,
-                        description: PropTypes.string,
-                    })),
-                })
-            ),
-        }),
-    }
+function tryFetch(dispatch, pathname) {
+    dispatch(fetchAllPostsIfNeeded())
+    dispatch(fetchTagsBySlugIfNeeded(basename(pathname)))
+}
 
 
-    tryFetch = () => {
-        const {dispatch, location: {pathname}} = this.props
-
-        dispatch(fetchAllPostsIfNeeded())
-        dispatch(fetchTagsBySlugIfNeeded(basename(pathname)))
-    }
+function isFound(item) {
+    return typeof item === 'undefined' || !item.doesNotExist
+}
 
 
-    testItem = (item) => typeof item === 'undefined' || !item.doesNotExist
-
-
-    Found = ({item = {isLoading: true}}) => (
-        <div {...this.props}>
+function Found({
+    item = {isLoading: true},
+    tryFetch: reload,
+    ...unusedProps,
+}) {
+    return (
+        <div {...unusedProps}>
             <Helmet title={item.name ? item.name : 'Loading...'} />
             <Tagle
                 {...item}
-                reload={this.tryFetch}
+                reload={reload}
             />
         </div>
     )
+}
 
 
-    render() {
-        const {
-            props: {tag},
-            tryFetch,
-            testItem,
-            Found,
-        } = this
+function TagDetail({
+    tag,
+    shouldTryFetch,
+    dispatch,
+    location: {pathname},
+    ...unusedProps,
+}) {
+    return (
+        <DetailView
+            {...unusedProps}
+            item={tag}
+            shouldTryFetch={shouldTryFetch}
+            tryFetch={tryFetch.bind(null, dispatch, pathname)}
+            test={isFound}
+            FoundComponent={Found}
+            NotFoundComponent={NotFound}
+        />
+    )
+}
 
 
-        return (
-            <DetailView
-                item={tag}
-                shouldTryFetch={true}
-                tryFetch={tryFetch}
-                test={testItem}
-                FoundComponent={Found}
-                NotFoundComponent={NotFound}
-            />
-        )
-    }
+TagDetail.propTypes = {
+    tag: PropTypes.shape({
+        url: PropTypes.string,
+        name: PropTypes.string,
+        description: PropTypes.string,
+        posts: PropTypes.arrayOf(
+            PropTypes.shape({
+                url: PropTypes.string,
+                title: PropTypes.string,
+                subtitle: PropTypes.string,
+                created: PropTypes.shape({
+                    year: PropTypes.number,
+                    month: PropTypes.number,
+                    day: PropTypes.number,
+                }),
+                tags: PropTypes.arrayOf(PropTypes.shape({
+                    url: PropTypes.string,
+                    name: PropTypes.string,
+                    description: PropTypes.string,
+                })),
+            })
+        ),
+    }),
 }
 
 
@@ -92,10 +95,14 @@ const mapStateToProps = createSelector(
     state => state.posts.items,
     state => state.tags.items,
     (_, props) => basename(props.location.pathname),
-    (posts, tags, slug) => {
+    state => state.posts.isLoading,
+    state => state.posts.loadDateTime,
+    state => state.posts.loadError,
+    (posts, tags, slug, postsIsLoading, postsLoadDateTime, postsLoadError) => {
         const desiredTag = tags[slug]
 
         return {
+            shouldTryFetch: !postsIsLoading && !postsLoadDateTime && !postsLoadError,
             tag: typeof desiredTag === 'undefined' ? void 0 : {
                 ...desiredTag,
                 // grab only posts with desired tag

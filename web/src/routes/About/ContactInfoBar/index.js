@@ -1,5 +1,5 @@
 // third party imports
-import React, {Component} from 'react'
+import React from 'react'
 import radium from 'radium'
 // local imports
 import styles from './styles'
@@ -24,40 +24,36 @@ const contactData = [
 ]
 
 
-/**
- * List of contact info and links.
- */
-@radium
-export default class ContactInfoBar extends Component {
-    render() {
-        const {style, ...unusedProps} = this.props
-        return (
-            <address
-                {...unusedProps}
-                style={[
-                    styles.container,
-                    style,
-                ]}
-            >
-                <List style={styles.list} listItemStyle={styles.listItem}>
-                    {contactData.map(({caption, href, icon}, key) => (
-                        <a
-                            key={key}
-                            href={href}
-                            target='_blank'
-                            style={styles.link}
-                        >
-                            <i
-                                style={styles.icon}
-                                className={`fa fa-${icon}`}
-                            />
-                            <span style={styles.caption}>
-                                {caption}
-                            </span>
-                        </a>
-                    ))}
-                </List>
-            </address>
-        )
-    }
+function ContactInfoBar({style, ...unusedProps}) {
+    return (
+        <address
+            {...unusedProps}
+            style={[
+                styles.container,
+                style,
+            ]}
+        >
+            <List style={styles.list} listItemStyle={styles.listItem}>
+                {contactData.map(({caption, href, icon}, key) => (
+                    <a
+                        key={key}
+                        href={href}
+                        target='_blank'
+                        style={styles.link}
+                    >
+                        <i
+                            style={styles.icon}
+                            className={`fa fa-${icon}`}
+                        />
+                        <span style={styles.caption}>
+                            {caption}
+                        </span>
+                    </a>
+                ))}
+            </List>
+        </address>
+    )
 }
+
+
+export default radium(ContactInfoBar)

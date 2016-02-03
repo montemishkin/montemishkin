@@ -1,5 +1,5 @@
 // third party imports
-import React, {Component, PropTypes} from 'react'
+import React, {PropTypes} from 'react'
 import radium from 'radium'
 
 
@@ -8,32 +8,30 @@ import radium from 'radium'
  * markdown will get proper styling from external CSS (by being a child
  * of a .markdown wrapper).
  */
-@radium
-export default class MarkdownContainer extends Component {
-    static propTypes = {
-        className: PropTypes.string,
-        children: PropTypes.node.isRequired,
-    }
-
-
-    static defaultProps = {
-        className: 'markdown',
-    }
-
-
-    render() {
-        const {
-            className,
-            children,
-            ...unusedProps,
-        } = this.props
-
-        return (
-            <section
-                {...unusedProps}
-                className={className}
-                dangerouslySetInnerHTML={{__html: children}}
-            />
-        )
-    }
+function MarkdownContainer({
+    className,
+    children,
+    ...unusedProps,
+}) {
+    return (
+        <section
+            {...unusedProps}
+            className={className}
+            dangerouslySetInnerHTML={{__html: children}}
+        />
+    )
 }
+
+
+MarkdownContainer.propTypes = {
+    className: PropTypes.string,
+    children: PropTypes.node.isRequired,
+}
+
+
+MarkdownContainer.defaultProps = {
+    className: 'markdown',
+}
+
+
+export default radium(MarkdownContainer)

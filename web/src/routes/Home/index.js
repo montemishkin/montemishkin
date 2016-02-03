@@ -1,5 +1,5 @@
 // third party imports
-import React, {Component} from 'react'
+import React from 'react'
 import radium from 'radium'
 import Helmet from 'react-helmet'
 import {Motion, spring} from 'react-motion'
@@ -9,25 +9,21 @@ import MainLogo from 'components/Logos/Main'
 import Link from 'components/Link'
 
 
-class Home extends Component {
-    render() {
-        const {style, ...unusedProps} = this.props
-
-        return (
-            <section
-                {...unusedProps}
-                style={[
-                    styles.outerContainer,
-                    style,
-                ]}
-            >
-                <Helmet title='Home' />
-                {[BackBlock, FrontBlock, Foreground].map(
-                    (Element, key) => <Element key={key} />
-                )}
-            </section>
-        )
-    }
+function Home({style, ...unusedProps}) {
+    return (
+        <section
+            {...unusedProps}
+            style={[
+                styles.outerContainer,
+                style,
+            ]}
+        >
+            <Helmet title='Home' />
+            {[BackBlock, FrontBlock, Foreground].map(
+                (Element, key) => <Element key={key} />
+            )}
+        </section>
+    )
 }
 
 

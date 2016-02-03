@@ -1,5 +1,5 @@
 // third party imports
-import React, {Component, PropTypes} from 'react'
+import React, {PropTypes} from 'react'
 import radium from 'radium'
 // local imports
 import styles from './styles'
@@ -9,37 +9,35 @@ import List from 'components/List'
 /**
  * Just an unordered list along with some styling.
  */
-@radium
-export default class WideList extends Component {
-    static propTypes = {
-        style: PropTypes.object,
-        listItemStyle: PropTypes.object,
-    }
-
-
-    render() {
-        const {
-            style,
-            listItemStyle,
-            children,
-            ...unusedProps,
-        } = this.props
-
-        return (
-            <List
-                {...unusedProps}
-                style={[
-                    styles.list,
-                    style,
-                ]}
-                listItemStyle={{
-                    ...styles.listItem,
-                    ...listItemStyle,
-                }}
-                firstListItemStyle={styles.listItemFirst}
-            >
-                {children}
-            </List>
-        )
-    }
+function WideList({
+    style,
+    listItemStyle,
+    children,
+    ...unusedProps,
+}) {
+    return (
+        <List
+            {...unusedProps}
+            style={[
+                styles.list,
+                style,
+            ]}
+            listItemStyle={{
+                ...styles.listItem,
+                ...listItemStyle,
+            }}
+            firstListItemStyle={styles.listItemFirst}
+        >
+            {children}
+        </List>
+    )
 }
+
+
+WideList.propTypes = {
+    style: PropTypes.object,
+    listItemStyle: PropTypes.object,
+}
+
+
+export default radium(WideList)
