@@ -1,7 +1,7 @@
 {
   "name": "montemishkin",
   "version": "0.0.0",
-  "description": "(Not yet) Live at [monte.mishkin.com](http://monte.mishkin.com).",
+  "description": "Live at [monte.mishkin.com](http://monte.mishkin.com).",
   "author": "Monte Mishkin",
   "private": true,
   "devDependencies": {
