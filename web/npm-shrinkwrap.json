@@ -3689,7 +3689,7 @@
     },
     "redux-logger": {
       "version": "2.4.0",
-      "from": "redux-logger@>=2.4.0 <3.0.0",
+      "from": "redux-logger@*",
       "resolved": "https://registry.npmjs.org/redux-logger/-/redux-logger-2.4.0.tgz"
     },
     "redux-responsive": {
@@ -4443,7 +4443,8 @@
         },
         "esprima": {
           "version": "2.7.1",
-          "from": "esprima@>=2.5.0 <3.0.0"
+          "from": "esprima@2.7.1",
+          "resolved": "https://registry.npmjs.org/esprima/-/esprima-2.7.1.tgz"
         },
         "optimist": {
           "version": "0.6.1",
