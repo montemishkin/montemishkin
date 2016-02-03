@@ -1,5 +1,5 @@
 // third party imports
-import React, {Component} from 'react'
+import React from 'react'
 import radium from 'radium'
 // local imports
 import styles from './styles'
@@ -9,31 +9,28 @@ import List from 'components/List'
 import Logo from 'components/Logos/Main'
 
 
-class Header extends Component {
-    render() {
-        const {style, ...unusedProps} = this.props
-        return (
-            <nav
-                {...unusedProps}
-                style={[
-                    styles.container,
-                    style,
-                ]}
-            >
-                <IndexLink to='/' style={styles.logoLink}>
-                    <Logo style={styles.logo} {...styles.logoProps} />
-                </IndexLink>
-                <List style={styles.list}>
-                    <Link to='/about' style={styles.link}>
-                        About
-                    </Link>
-                    <Link to='/posts' style={styles.link}>
-                        Blog
-                    </Link>
-                </List>
-            </nav>
-        )
-    }
+function Header({style, ...unusedProps}) {
+    return (
+        <nav
+            {...unusedProps}
+            style={[
+                styles.container,
+                style,
+            ]}
+        >
+            <IndexLink to='/' style={styles.logoLink}>
+                <Logo style={styles.logo} {...styles.logoProps} />
+            </IndexLink>
+            <List style={styles.list}>
+                <Link to='/about' style={styles.link}>
+                    About
+                </Link>
+                <Link to='/posts' style={styles.link}>
+                    Blog
+                </Link>
+            </List>
+        </nav>
+    )
 }
 
 

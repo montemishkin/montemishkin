@@ -1,52 +1,48 @@
 // third party imports
-import React, {Component, PropTypes} from 'react'
+import React, {PropTypes} from 'react'
 import radium from 'radium'
 // local imports
 import styles from './styles'
 import Link from 'components/Link'
 
 
-class TagPreview extends Component {
-    static propTypes = {
-        url: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-    }
-
-
-    render() {
-        const {
-            url,
-            name,
-            description,
-            style,
-            ...unusedProps,
-        } = this.props
-
-        return (
-            <Link
-                {...unusedProps}
-                style={[
-                    styles.container,
-                    style,
-                ]}
-                to={url}
-            >
-                <div style={styles.titleBar}>
-                    <i
-                        style={styles.icon}
-                        className='fa fa-tag'
-                    />
-                    <span style={styles.title}>
-                        {name}
-                    </span>
-                </div>
-                <span style={styles.description}>
-                    {description}
+function TagPreview({
+    url,
+    name,
+    description,
+    style,
+    ...unusedProps,
+}) {
+    return (
+        <Link
+            {...unusedProps}
+            style={[
+                styles.container,
+                style,
+            ]}
+            to={url}
+        >
+            <div style={styles.titleBar}>
+                <i
+                    style={styles.icon}
+                    className='fa fa-tag'
+                />
+                <span style={styles.title}>
+                    {name}
                 </span>
-            </Link>
-        )
-    }
+            </div>
+            <span style={styles.description}>
+                {description}
+            </span>
+        </Link>
+    )
+}
+
+
+TagPreview.propTypes = {
+    url: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
 }
 
 

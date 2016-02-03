@@ -1,5 +1,5 @@
 // third party imports
-import React, {Component} from 'react'
+import React from 'react'
 import radium from 'radium'
 import Helmet from 'react-helmet'
 // local imports
@@ -11,27 +11,23 @@ import Footer from './Footer'
 /**
  * Adds header and footer navigation bars to UI.
  */
-class Navigation extends Component {
-    render() {
-        const {style, children, ...unusedProps} = this.props
-
-        return (
-            <div
-                {...unusedProps}
-                style={[
-                    styles.container,
-                    style,
-                ]}
-            >
-                <Helmet title=':)' titleTemplate='%s | Monte Mishkin' />
-                <Header />
-                <main style={styles.content}>
-                    {children}
-                </main>
-                <Footer />
-            </div>
-        )
-    }
+function Navigation({style, children, ...unusedProps}) {
+    return (
+        <div
+            {...unusedProps}
+            style={[
+                styles.container,
+                style,
+            ]}
+        >
+            <Helmet title=':)' titleTemplate='%s | Monte Mishkin' />
+            <Header />
+            <main style={styles.content}>
+                {children}
+            </main>
+            <Footer />
+        </div>
+    )
 }
 
 

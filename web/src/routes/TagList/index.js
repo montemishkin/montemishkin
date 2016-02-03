@@ -1,5 +1,5 @@
 // third party imports
-import React, {Component, PropTypes} from 'react'
+import React, {PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {createSelector} from 'reselect'
 import Helmet from 'react-helmet'
@@ -11,55 +11,47 @@ import MainLogo from 'components/Logos/Main'
 import {fetchAllIfNeeded} from 'store/ducks/tags'
 
 
-class TagList extends Component {
-    static propTypes = {
-        tags: PropTypes.arrayOf(PropTypes.shape({
-            url: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired,
-            description: PropTypes.string.isRequired,
-        })).isRequired,
-        loadDateTime: PropTypes.number,
-        isLoading: PropTypes.bool.isRequired,
-        loadError: PropTypes.object,
-    }
+function reload(dispatch) {
+    dispatch(fetchAllIfNeeded())
+}
 
 
-    BannerIcon = (props) => <MainLogo {...props} />
+function TagList({
+    tags,
+    loadDateTime,
+    isLoading,
+    loadError,
+    dispatch,
+    ...unusedProps,
+}) {
+    return (
+        <div {...unusedProps}>
+            <Helmet title='Tags' />
+            <ListView
+                BannerIcon={MainLogo}
+                title='Tags'
+                subtitle='gotta love em.'
+                items={tags}
+                PreviewComponent={TagPreview}
+                isLoading={isLoading}
+                loadDateTime={loadDateTime}
+                loadError={loadError}
+                reload={reload.bind(null, dispatch)}
+            />
+        </div>
+    )
+}
 
 
-    reload = () => this.props.dispatch(fetchAllIfNeeded())
-
-
-    render() {
-        const {
-            props: {
-                tags,
-                loadDateTime,
-                isLoading,
-                loadError,
-                ...unusedProps,
-            },
-            BannerIcon,
-            reload,
-        } = this
-
-        return (
-            <div {...unusedProps}>
-                <Helmet title='Tags' />
-                <ListView
-                    BannerIcon={BannerIcon}
-                    title='Tags'
-                    subtitle='gotta love em.'
-                    items={tags}
-                    PreviewComponent={TagPreview}
-                    isLoading={isLoading}
-                    loadDateTime={loadDateTime}
-                    loadError={loadError}
-                    reload={reload}
-                />
-            </div>
-        )
-    }
+TagList.propTypes = {
+    tags: PropTypes.arrayOf(PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+    })).isRequired,
+    loadDateTime: PropTypes.number,
+    isLoading: PropTypes.bool.isRequired,
+    loadError: PropTypes.object,
 }
 
 
