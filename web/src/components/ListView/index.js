@@ -1,5 +1,5 @@
 // third party imports
-import React, {Component, PropTypes} from 'react'
+import React, {PropTypes} from 'react'
 import radium from 'radium'
 // local imports
 import styles from './styles'
@@ -8,136 +8,113 @@ import WideList from 'components/WideList'
 import Loader from 'components/Loader'
 
 
-class ListView extends Component {
-    static propTypes = {
-        // react component
-        PreviewComponent: PropTypes.func.isRequired,
-        // react component
-        BannerIcon: PropTypes.func,
-        title: PropTypes.string.isRequired,
-        subtitle: PropTypes.string,
-        items: PropTypes.array.isRequired,
-        isLoading: PropTypes.bool.isRequired,
-        loadDateTime: PropTypes.number,
-        loadError: PropTypes.object,
-        reload: PropTypes.func,
-    }
-
-
-    static defaultProps = {
-        BannerIcon: radium(props => <i {...props} className='fa fa-search' />),
-    }
-
-
-    Message = ({content}) => (
+function Message({content}) {
+    return (
         <div style={styles.messageContainer}>
             <span style={styles.message}>
                 {content}
             </span>
         </div>
     )
+}
 
 
-    ListContent = () => {
-        const {
-            Message,
-            props: {items, PreviewComponent},
-        } = this
-
-        // if any items present
-        if (items.length > 0) {
-            // render a list of them
-            return (
-                <WideList>
-                    {items.map((item, key) => (
-                        <PreviewComponent {...item} key={key} />
-                    ))}
-                </WideList>
-            )
-        }
-        // otherwise no items
-        // so render a message indicating no items
-        return <Message content='No items.' />
-    }
-
-
-    LoadingContent = () => {
-        const {ListContent, Message} = this
-
+function ListContent({items, PreviewComponent}) {
+    // if any items present
+    if (items.length > 0) {
+        // render a list of them
         return (
-            <section style={styles.contentContainer}>
-                <Message content={'Loading...'} />
-                <ListContent />
-            </section>
+            <WideList>
+                {items.map((item, key) => (
+                    <PreviewComponent {...item} key={key} />
+                ))}
+            </WideList>
         )
     }
+    // otherwise no items
+    // so render a message indicating no items
+    return <Message content='No items.' />
+}
 
 
-    ErrorContent = () => {
-        const {
-            ListContent,
-            Message,
-            props: {loadError},
-        } = this
-
-        return (
-            <section style={styles.contentContainer}>
-                <Message content={`Error: ${loadError.message}`} />
-                <ListContent />
-            </section>
-        )
-    }
+function LoadingContent(props) {
+    return (
+        <section style={styles.contentContainer}>
+            <Message content={'Loading...'} />
+            <ListContent {...props} />
+        </section>
+    )
+}
 
 
-    LoadedContent = () => {
-        const {
-            ListContent,
-        } = this
-
-        return (
-            <section style={styles.contentContainer}>
-                <ListContent />
-            </section>
-        )
-    }
+function ErrorContent({error, ...unusedProps}) {
+    return (
+        <section style={styles.contentContainer}>
+            <Message content={`Error: ${error.message}`} />
+            <ListContent {...unusedProps} />
+        </section>
+    )
+}
 
 
-    render() {
-        const {
-            LoadingContent,
-            ErrorContent,
-            LoadedContent,
-            props: {
-                BannerIcon,
-                title,
-                subtitle,
-                isLoading,
-                loadDateTime,
-                loadError,
-                reload,
-                ...unusedProps,
-            },
-        } = this
+function LoadedContent(props) {
+    return (
+        <section style={styles.contentContainer}>
+            <ListContent {...props} />
+        </section>
+    )
+}
 
-        return (
-            <article {...unusedProps}>
-                <Banner
-                    Icon={BannerIcon}
-                    title={title}
-                    subtitle={subtitle}
-                />
-                <Loader
-                    isInvalid={!loadDateTime && !loadError}
-                    isLoading={isLoading}
-                    error={loadError}
-                    reload={reload}
-                    LoadingContent={LoadingContent}
-                    ErrorContent={ErrorContent}
-                    LoadedContent={LoadedContent}
-                />
-            </article>
-        )
-    }
+
+function ListView ({
+    BannerIcon,
+    title,
+    subtitle,
+    isLoading,
+    loadDateTime,
+    loadError,
+    reload,
+    ...unusedProps,
+}) {
+    return (
+        <article {...unusedProps}>
+            <Banner
+                Icon={BannerIcon}
+                title={title}
+                subtitle={subtitle}
+            />
+            <Loader
+                {...unusedProps}
+                isInvalid={!loadDateTime && !loadError}
+                isLoading={isLoading}
+                error={loadError}
+                reload={reload}
+                LoadingContent={LoadingContent}
+                ErrorContent={ErrorContent}
+                LoadedContent={LoadedContent}
+            />
+        </article>
+    )
+}
+
+
+ListView.propTypes = {
+    // react component
+    PreviewComponent: PropTypes.func.isRequired,
+    // react component
+    BannerIcon: PropTypes.func,
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string,
+    items: PropTypes.array.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    loadDateTime: PropTypes.number,
+    loadError: PropTypes.object,
+    reload: PropTypes.func,
+}
+
+
+ListView.defaultProps = {
+    BannerIcon: radium(props => <i {...props} className='fa fa-search' />),
 }
 
 
