@@ -46,6 +46,7 @@ function Found({
 
 function TagDetail({
     tag,
+    shouldTryFetch,
     dispatch,
     location: {pathname},
     ...unusedProps,
@@ -54,7 +55,7 @@ function TagDetail({
         <DetailView
             {...unusedProps}
             item={tag}
-            shouldTryFetch={true}
+            shouldTryFetch={shouldTryFetch}
             tryFetch={tryFetch.bind(null, dispatch, pathname)}
             test={isFound}
             FoundComponent={Found}
@@ -94,10 +95,14 @@ const mapStateToProps = createSelector(
     state => state.posts.items,
     state => state.tags.items,
     (_, props) => basename(props.location.pathname),
-    (posts, tags, slug) => {
+    state => state.posts.isLoading,
+    state => state.posts.loadDateTime,
+    state => state.posts.loadError,
+    (posts, tags, slug, postsIsLoading, postsLoadDateTime, postsLoadError) => {
         const desiredTag = tags[slug]
 
         return {
+            shouldTryFetch: !postsIsLoading && !postsLoadDateTime && !postsLoadError,
             tag: typeof desiredTag === 'undefined' ? void 0 : {
                 ...desiredTag,
                 // grab only posts with desired tag
