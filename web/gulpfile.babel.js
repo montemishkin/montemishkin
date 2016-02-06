@@ -6,20 +6,23 @@ import named from 'vinyl-named'
 import minifyCSS from 'gulp-minify-css'
 import concat from 'gulp-concat'
 import nodemon from 'gulp-nodemon'
-import karma from 'karma'
 import autoprefixer from 'autoprefixer'
 import postcss from 'gulp-postcss'
 // local imports
 import {
     buildDir,
     serverBuild,
+    testsBuild,
     clientBuildGlob,
     serverBuildGlob,
+    testsBuildGlob,
     clientEntry,
     serverEntry,
+    testsEntry,
     cssGlob,
     webpackClientConfig as webpackClientConfigPath,
     webpackServerConfig as webpackServerConfigPath,
+    webpackTestsConfig as webpackTestsConfigPath,
     karmaConfig as karmaConfigPath,
 } from './config/projectPaths'
 
@@ -99,27 +102,35 @@ gulp.task('build-styles', () => {
 
 
 /**
- * Run the test suite once.
+ * Watch tests for changes. Run tests on change.
  */
-gulp.task('test', (cb) => {
-    const server = new karma.Server({
-        configFile: karmaConfigPath,
-        singleRun: true
-    }, () => cb())
+gulp.task('test', ['watch-tests', 'run-tests-on-change'])
 
-    server.start()
+
+/**
+ * Watch built test suite. Run tests on change.
+ */
+gulp.task('run-tests-on-change', () => {
+    nodemon({
+        script: testsBuild,
+        watch: testsBuild,
+    })
 })
 
 
 /**
- * Watch source and tests for changes, run tests on change.
+ * Watch test suite.  Build on changes.
  */
-gulp.task('tdd', () => {
-    const server = new karma.Server({
-        configFile: karmaConfigPath,
-    })
+gulp.task('watch-tests', ['clean-tests'], () => {
+    const config = {
+        ...require(webpackTestsConfigPath),
+        watch: true,
+    }
 
-    server.start()
+    return gulp.src(testsEntry)
+        .pipe(named())
+        .pipe(webpack(config))
+        .pipe(gulp.dest(buildDir))
 })
 
 
@@ -170,6 +181,14 @@ gulp.task('clean-client', () => {
  */
 gulp.task('clean-server', () => {
     del.sync(serverBuildGlob)
+})
+
+
+/**
+ * Remove all ouptut files from previous tests builds.
+ */
+gulp.task('clean-tests', () => {
+    del.sync(testsBuildGlob)
 })
 
 
