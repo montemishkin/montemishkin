@@ -1,20 +1,10 @@
-# vital
+- add posts
+    - physics
+    - redux responsive?
+    - agitar?
 
-- post-publish
-    - add posts
-        - hello
-        - physics
-        - this website
-        - redux responsive?
-        - agitar?
-    - check that every single view is:
-        - cross browser compatible
-        - responsive
-        - mobile friendly
-        - accessible
-
-
-# non-vital
+- add support for testing in browser.
+    - right now you can just do `cat build/test.js | browser-run -b chrome`
 
 - clean up logic
     - `TagDetail`

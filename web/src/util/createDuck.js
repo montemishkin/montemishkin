@@ -4,6 +4,9 @@ import path from 'path'
 import mapValues from 'lodash/object/mapValues'
 
 
+// TODO: make this more granular and easily testable
+
+
 
 
 function entityAsLoading(entity) {
