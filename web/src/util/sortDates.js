@@ -1,4 +1,4 @@
-// TODO: test this and/or use moment.js
+// sorts later (more recent) dates to front of array
 export default (a, b) => {
     if (a.year > b.year) {
         return -1
