@@ -1,6 +1,7 @@
 // third party imports
 import gulp from 'gulp'
 import del from 'del'
+import karma from 'karma'
 import webpack from 'webpack-stream'
 import named from 'vinyl-named'
 import minifyCSS from 'gulp-minify-css'
@@ -12,17 +13,13 @@ import postcss from 'gulp-postcss'
 import {
     buildDir,
     serverBuild,
-    testsBuild,
     clientBuildGlob,
     serverBuildGlob,
-    testsBuildGlob,
     clientEntry,
     serverEntry,
-    testsEntry,
     cssGlob,
     webpackClientConfig as webpackClientConfigPath,
     webpackServerConfig as webpackServerConfigPath,
-    webpackTestsConfig as webpackTestsConfigPath,
     karmaConfig as karmaConfigPath,
 } from './config/projectPaths'
 
@@ -102,35 +99,27 @@ gulp.task('build-styles', () => {
 
 
 /**
- * Watch tests for changes. Run tests on change.
+ * Run test suite once.
  */
-gulp.task('test', ['watch-tests', 'run-tests-on-change'])
+gulp.task('test', (cb) => {
+    const server = new karma.Server({
+        configFile: karmaConfigPath,
+        singleRun: true
+    }, () => cb())
 
-
-/**
- * Watch built test suite. Run tests on change.
- */
-gulp.task('run-tests-on-change', () => {
-    nodemon({
-        script: testsBuild,
-        watch: testsBuild,
-    })
+    server.start()
 })
 
 
 /**
- * Watch test suite.  Build on changes.
+ * Watch tests for changes, run tests on change.
  */
-gulp.task('watch-tests', ['clean-tests'], () => {
-    const config = {
-        ...require(webpackTestsConfigPath),
-        watch: true,
-    }
+gulp.task('tdd', () => {
+    const server = new karma.Server({
+        configFile: karmaConfigPath,
+    })
 
-    return gulp.src(testsEntry)
-        .pipe(named())
-        .pipe(webpack(config))
-        .pipe(gulp.dest(buildDir))
+    server.start()
 })
 
 
@@ -181,14 +170,6 @@ gulp.task('clean-client', () => {
  */
 gulp.task('clean-server', () => {
     del.sync(serverBuildGlob)
-})
-
-
-/**
- * Remove all ouptut files from previous tests builds.
- */
-gulp.task('clean-tests', () => {
-    del.sync(testsBuildGlob)
 })
 
 
