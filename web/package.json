@@ -29,6 +29,7 @@
     "mocha": "^2.4.5",
     "nodemon": "^1.8.1",
     "redux-logger": "^2.4.0",
+    "teaspoon": "^6.1.1",
     "vinyl-named": "^1.1.0",
     "webpack": "^1.12.9",
     "webpack-stream": "^2.1.1"
