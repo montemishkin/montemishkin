@@ -1,6 +1,6 @@
 // third party imports
-import {createStore as create_store, applyMiddleware} from 'redux'
-import {addResponsiveHandlers} from 'redux-responsive'
+import {createStore as create_store, applyMiddleware, compose} from 'redux'
+import {responsiveStoreEnhancer} from 'redux-responsive'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 // local imports
@@ -18,10 +18,11 @@ if (process.env.NODE_ENV !== 'production' && typeof window !== 'undefined') {
 
 
 export function createStore(initialData) {
-    return addResponsiveHandlers(
-        create_store(
-            reducer,
-            initialData,
+    return create_store(
+        reducer,
+        initialData,
+        compose(
+            responsiveStoreEnhancer,
             applyMiddleware(...middlewares)
         )
     )
