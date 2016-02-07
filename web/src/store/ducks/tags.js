@@ -1,5 +1,5 @@
 // local imports
-import createDuck from './createDuck'
+import createDuck from 'util/createDuck'
 import {queryApiForAllTags, queryApiForTagsBySlug} from 'api/tags'
 
 
