@@ -9,6 +9,11 @@ var projectPaths = require('./projectPaths')
 // TODO: do you want base config here? or client, server, or tests config?
 var webpackConfig = require(projectPaths.webpackBaseConfig)
 
+// stay sane people
+if (typeof projectPaths.testsGlob === 'undefined') {
+    throw new Error('Hey.  Where\'s the tests glob?')
+}
+
 
 // annoying hack to be able to dynamically set keys on object
 var preprocessors = {}
