@@ -20,7 +20,7 @@ describe('Spinner', function () {
     it('gives the <img> the ".spinner" class', function () {
         const $spinner = $(<Spinner />).render()
 
-        const actual = $spinner.find('img')[0].className
+        const actual = $spinner.find('img').unwrap().className
         const expected = 'spinner'
 
         assert.equal(actual, expected)
@@ -30,7 +30,7 @@ describe('Spinner', function () {
     it('gives the <img> a src attribute', function () {
         const $spinner = $(<Spinner />).render()
 
-        assert.ok($spinner.find('img')[0].src)
+        assert.ok($spinner.find('img').unwrap().src)
     })
 
 
@@ -38,7 +38,7 @@ describe('Spinner', function () {
         const style = {backgroundColor: 'red'}
         const $spinner = $(<Spinner style={style} />).render()
 
-        const actual = $spinner.find('img')[0].style.backgroundColor
+        const actual = $spinner.find('img').unwrap().style.backgroundColor
         const expected = style.backgroundColor
 
         assert.equal(actual, expected)
@@ -49,7 +49,7 @@ describe('Spinner', function () {
         const props = {src: 'this-is-definitely not the img src attribute'}
         const $spinner = $(<Spinner {...props} />).render()
 
-        const actual = $spinner.find('img')[0].src
+        const actual = $spinner.find('img').unwrap().src
         const notExpected = props.src
 
         assert.notEqual(actual, notExpected)
@@ -60,7 +60,7 @@ describe('Spinner', function () {
         const props = {className: 'this-is-definitely not the img class'}
         const $spinner = $(<Spinner {...props} />).render()
 
-        const actual = $spinner.find('img')[0].className
+        const actual = $spinner.find('img').unwrap().className
         const notExpected = props.className
 
         assert.notEqual(actual, notExpected)

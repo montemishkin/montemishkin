@@ -77,7 +77,7 @@ describe('List', function () {
         const style = {backgroundColor: 'red'}
         const $l = $(<List style={style} />).render()
 
-        const actual = $l.find('ul')[0].style.backgroundColor
+        const actual = $l.find('ul').unwrap().style.backgroundColor
         const expected = style.backgroundColor
 
         assert.equal(actual, expected)
@@ -121,7 +121,7 @@ describe('List', function () {
             </List>
         ).render()
 
-        const firstLiNode = $l.first('ul > li')[0]
+        const firstLiNode = $l.first('ul > li').unwrap()
 
         const actual = firstLiNode.style.backgroundColor
         const expected = listItemStyle.backgroundColor
@@ -177,7 +177,7 @@ describe('List', function () {
             </List>
         ).render()
 
-        const firstLiNode = $l.first('ul > li')[0]
+        const firstLiNode = $l.first('ul > li').unwrap()
 
         const actual = firstLiNode.style.backgroundColor
         const expected = firstListItemStyle.backgroundColor
@@ -202,7 +202,7 @@ describe('List', function () {
             </List>
         ).render()
 
-        const lastLiNode = $l.last('ul > li')[0]
+        const lastLiNode = $l.last('ul > li').unwrap()
 
         const actual = lastLiNode.style.backgroundColor
         const expected = listItemStyle.backgroundColor
@@ -258,7 +258,7 @@ describe('List', function () {
             </List>
         ).render()
 
-        const lastLiNode = $l.last('ul > li')[0]
+        const lastLiNode = $l.last('ul > li').unwrap()
 
         const actual = lastLiNode.style.backgroundColor
         const expected = lastListItemStyle.backgroundColor

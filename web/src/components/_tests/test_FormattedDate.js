@@ -26,7 +26,7 @@ describe('FormattedDate', function () {
         const style = {backgroundColor: 'red'}
         const $d = $(<FormattedDate style={style} />).render()
 
-        const actual = $d.find('div')[0].style.backgroundColor
+        const actual = $d.find('div').unwrap().style.backgroundColor
         const expected = style.backgroundColor
 
         assert.equal(actual, expected)
@@ -57,7 +57,7 @@ describe('FormattedDate', function () {
         }
         const $d = $(<FormattedDate {...props} />).render()
 
-        const actual = $d.find('time')[0].style.backgroundColor
+        const actual = $d.find('time').unwrap().style.backgroundColor
         const expected = props.style.backgroundColor
 
         assert.equal(actual, expected)

@@ -146,7 +146,7 @@ describe('DetailView', function () {
             />
         ).render()
 
-        const node = $d.find('span:textContent(globo dobo)')[0]
+        const node = $d.find('span:textContent(globo dobo)').unwrap()
 
         const actual = node.style.backgroundColor
         const expected = style.backgroundColor
@@ -170,7 +170,7 @@ describe('DetailView', function () {
             />
         ).render()
 
-        const node = $d.find('span:textContent(not even founded)')[0]
+        const node = $d.find('span:textContent(not even founded)').unwrap()
 
         const actual = node.style.backgroundColor
         const expected = style.backgroundColor
