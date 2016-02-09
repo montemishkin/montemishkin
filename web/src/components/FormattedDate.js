@@ -28,7 +28,7 @@ function FormattedDate({day, month, year, ...unusedProps}) {
         || typeof year === 'undefined'
 
     if (shouldRenderBlank) {
-        return <div />
+        return <div {...unusedProps} />
     }
 
     return (
