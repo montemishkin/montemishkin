@@ -9,15 +9,18 @@ var projectPaths = require('./projectPaths')
 // TODO: do you want base config here? or client, server, or tests config?
 var webpackConfig = require(projectPaths.webpackBaseConfig)
 
+
+var testsGlob = projectPaths.testsGlob
 // stay sane people
-if (typeof projectPaths.testsGlob === 'undefined') {
+if (typeof testsGlob === 'undefined') {
     throw new Error('Hey.  Where\'s the tests glob?')
 }
+console.log('Running all tests matching this glob:\n', testsGlob)
 
 
 // annoying hack to be able to dynamically set keys on object
 var preprocessors = {}
-preprocessors[projectPaths.testsGlob] = ['webpack', 'sourcemap']
+preprocessors[testsGlob] = ['webpack', 'sourcemap']
 
 
 module.exports = function (config) {
@@ -40,7 +43,7 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            projectPaths.testsGlob,
+            testsGlob,
         ],
 
         // // list of files to exclude
