@@ -31,6 +31,13 @@ module.exports = function (config) {
             'mocha',
         ],
 
+        client: {
+            mocha: {
+                // change Karma's debug.html to the mocha web reporter
+                reporter: 'html',
+            },
+        },
+
         // list of files / patterns to load in the browser
         files: [
             projectPaths.testsGlob,
