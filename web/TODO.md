@@ -3,9 +3,6 @@
     - redux responsive?
     - agitar?
 
-- add support for testing in browser.
-    - right now you can just do `cat build/test.js | browser-run -b chrome`
-
 - clean up logic
     - `TagDetail`
     - `PostDetail`
@@ -56,7 +53,7 @@
     - overall DRY design
         - magic numbers
     - responsive
-        - pass window width from request to redux store initial state so that react doesn't complain that components connected to store.browser rendered differently on server vs client
+        - react complains when components connected to store.browser render differently on server vs client
         - use radium media queries?
             ```js
             import {mediaQueries} from 'styles/js/mediaQueries'
@@ -72,6 +69,7 @@
             }
             ```
             - doesn't solve problem of responsively reordering elements in Footer
+            - doesn't solve problem of react complaining that server markup rendered differently (unless you explicitly pass window width on each request and mock `window.matchMedia`)
     - react-router `Link` and `IndexLink` do not play well with radium
         - radium wrapping of `Link` does not work on `activeStyle` prop.  Thus, nav links don't transition *in* to the new background color even though they do transition *out* of it.
         - idk why, but `IndexLink` doesn't get the hover styling...
