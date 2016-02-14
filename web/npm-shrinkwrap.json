@@ -3866,19 +3866,14 @@
       "resolved": "https://registry.npmjs.org/redux-logger/-/redux-logger-2.4.0.tgz"
     },
     "redux-responsive": {
-      "version": "1.0.2",
-      "from": "redux-responsive@>=1.0.2 <2.0.0",
-      "resolved": "https://registry.npmjs.org/redux-responsive/-/redux-responsive-1.0.2.tgz",
+      "version": "1.0.3",
+      "from": "redux-responsive@latest",
+      "resolved": "https://registry.npmjs.org/redux-responsive/-/redux-responsive-1.0.3.tgz",
       "dependencies": {
         "lodash": {
-          "version": "4.2.1",
+          "version": "4.3.0",
           "from": "lodash@>=4.2.1 <5.0.0",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.2.1.tgz"
-        },
-        "react-redux": {
-          "version": "4.4.0",
-          "from": "react-redux@>=4.4.0 <5.0.0",
-          "resolved": "https://registry.npmjs.org/react-redux/-/react-redux-4.4.0.tgz"
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.3.0.tgz"
         }
       }
     },
