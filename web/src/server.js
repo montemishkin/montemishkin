@@ -1,5 +1,3 @@
-// fix node land
-import 'babel-core/polyfill'
 // third party imports
 import express from 'express'
 import compression from 'compression'
