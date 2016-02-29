@@ -3,14 +3,12 @@
  */
 
 
-export default {
-    contentMaxWidth: 740,
-    contentWidth: '80%',
-    contentVerticalPadding: 100,
+export const contentMaxWidth = 740
+export const contentWidth = '80%'
+export const contentVerticalPadding = 100
 
-    largestFontSize: '32px',
-    largerFontSize: '24px',
-    largeFontSize: '18px',
-    mainFontSize: '16px',
-    smallFontSize: '12px',
-}
+export const largestFontSize = '32px'
+export const largerFontSize = '24px'
+export const largeFontSize = '18px'
+export const mainFontSize = '16px'
+export const smallFontSize = '12px'

@@ -1,5 +1,5 @@
 // fix node land
-import 'babel-core/polyfill'
+import 'babel-polyfill'
 // node imports
 import process from 'process'
 // local imports

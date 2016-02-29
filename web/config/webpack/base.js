@@ -2,6 +2,7 @@
 var webpack = require('webpack')
 // local imports
 var projectPaths = require('../projectPaths')
+var babelConfig = require(projectPaths.babelConfig)
 
 
 // default to using development configuration
@@ -37,10 +38,7 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'babel',
                 include: projectPaths.sourceDir,
-                query: {
-                    optional: ['runtime'],
-                    stage: 0,
-                },
+                query: babelConfig,
             },
         ],
     },

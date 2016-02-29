@@ -21,10 +21,12 @@
     - another variation of bird logo for tag search view
 
 - development
+    - establish consistency with `export` vs `export default`
     - how to organize components vs views, deal with nesting, etc
     - use sass or scss
 
 - optimization
+    - route splitting (see https://medium.com/@somebody32/how-to-split-your-apps-by-routes-with-webpack-36b7a8a6231#.cy6vyaku3)
     - google page speed insights
     - only load what data is actually needed for the current view
         - see "data flow" todos
