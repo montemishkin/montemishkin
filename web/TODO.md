@@ -14,14 +14,16 @@
 - tag list view should show tags with higher usage first
     - should also show number of posts that use that tag
 - offer rss feed?
-- a better way of ensuring that each view renders a page title using helmet
+- a better way of ensuring that each view renders a page title using helmet.  also, could use https://github.com/ryanflorence/react-title-component
 - tests. like seriously...
 
 - branding
     - another variation of bird logo for tag search view
 
 - development
+    - move checks for production env into settings file, import from there
     - establish consistency with `export` vs `export default`
+    - establish consistency with prop type checking.  or use flow
     - how to organize components vs views, deal with nesting, etc
     - use sass or scss
 

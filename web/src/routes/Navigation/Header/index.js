@@ -9,15 +9,9 @@ import List from 'components/List'
 import Logo from 'components/Logos/Main'
 
 
-function Header({style, ...unusedProps}) {
+function Header() {
     return (
-        <nav
-            {...unusedProps}
-            style={[
-                styles.container,
-                style,
-            ]}
-        >
+        <nav style={styles.container}>
             <IndexLink to='/' style={styles.logoLink}>
                 <Logo style={styles.logo} {...styles.logoProps} />
             </IndexLink>

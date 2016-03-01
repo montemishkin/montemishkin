@@ -9,15 +9,9 @@ import MainLogo from 'components/Logos/Main'
 import Link from 'components/Link'
 
 
-function Home({style, ...unusedProps}) {
+function Home() {
     return (
-        <section
-            {...unusedProps}
-            style={[
-                styles.outerContainer,
-                style,
-            ]}
-        >
+        <section style={styles.outerContainer}>
             <Helmet title='Home' />
             {[BackBlock, FrontBlock, Foreground].map(
                 (Element, key) => <Element key={key} />

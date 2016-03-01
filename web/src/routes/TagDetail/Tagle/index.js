@@ -15,10 +15,9 @@ function createContent({
     title,
     subtitle,
     content,
-    ...unusedProps,
 }) {
     return (
-        <article {...unusedProps}>
+        <article>
             <Banner
                 Icon={BannerIcon}
                 title={title}
@@ -30,9 +29,8 @@ function createContent({
 }
 
 
-function LoadingContent(props) {
+function LoadingContent() {
     return createContent({
-        ...props,
         BannerIcon: Spinner,
         title: 'Loading',
         subtitle: '...',
@@ -47,9 +45,8 @@ function LoadingContent(props) {
 }
 
 
-function ErrorContent({error, ...unusedProps}) {
+function ErrorContent({error}) {
     return createContent({
-        ...unusedProps,
         BannerIcon: radium(
             props => <i {...props} className='fa fa-exclamation' />
         ),
@@ -70,10 +67,8 @@ function LoadedContent({
     name,
     description,
     posts,
-    ...unusedProps,
 }) {
     return createContent({
-        ...unusedProps,
         BannerIcon: radium(
             props => <i {...props} className='fa fa-tag' />
         ),
@@ -102,6 +97,7 @@ function Tagle({
 }) {
     return (
         <Loader
+            // passes tag data onto *Content components
             {...unusedProps}
             isInvalid={!loadDateTime && !loadError}
             isLoading={isLoading}

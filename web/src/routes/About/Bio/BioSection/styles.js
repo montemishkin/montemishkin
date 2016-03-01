@@ -2,6 +2,7 @@
 import {
     largeFontSize,
     largestFontSize,
+    contentVerticalPadding,
 } from 'assets/styles/js/numerics'
 
 
@@ -12,6 +13,7 @@ const spacing = 30
 export default {
     container: {
         fontSize: largeFontSize,
+        padding: `${contentVerticalPadding / 2}px 0`,
     },
 
 

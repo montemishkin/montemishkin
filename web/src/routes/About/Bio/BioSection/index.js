@@ -5,23 +5,19 @@ import radium from 'radium'
 import styles from './styles'
 
 
-function BioSection({
-    Title,
-    Text,
-    Icon,
-    textIsFirst,
-    style,
-    ...unusedProps,
-}) {
-    const renderedText = <Text style={styles.text} />
-    const renderedIcon = <Icon style={styles.icon} />
+function BioSection({Title, Text, Icon, textIsFirst}) {
+    const renderedText = <Text style={styles.text} key='a' />
+    const renderedIcon = <Icon style={styles.icon} key='b' />
 
     return (
-        <section {...unusedProps} style={[styles.container, style]}>
+        <section style={styles.container}>
             <Title style={styles.title} />
             <div style={styles.content}>
-                {textIsFirst ? renderedText : renderedIcon}
-                {textIsFirst ? renderedIcon : renderedText}
+                {
+                    textIsFirst
+                        ? [renderedText, renderedIcon]
+                        : [renderedIcon, renderedText]
+                }
             </div>
         </section>
     )

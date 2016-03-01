@@ -27,10 +27,9 @@ function isFound(item) {
 function Found({
     item = {isLoading: true},
     tryFetch: reload,
-    ...unusedProps,
 }) {
     return (
-        <div {...unusedProps}>
+        <div>
             <Helmet title={item.title ? item.title : 'Loading...'} />
             <Article
                 {...item}
@@ -45,11 +44,9 @@ function PostDetail({
     post,
     dispatch,
     location: {pathname},
-    ...unusedProps,
 }) {
     return (
         <DetailView
-            {...unusedProps}
             item={post}
             shouldTryFetch={typeof post === 'undefined'}
             tryFetch={tryFetch.bind(null, dispatch, pathname)}

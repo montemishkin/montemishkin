@@ -57,10 +57,8 @@ function LoadedContent({
     content,
     url,
     bannerImage,
-    ...unusedProps,
 }) {
     return createContent({
-        ...unusedProps,
         BannerIcon: radium(
             props => <img {...props} src={bannerImage.url} />
         ),
@@ -89,9 +87,8 @@ function LoadedContent({
 }
 
 
-function ErrorContent({error, ...unusedProps}) {
+function ErrorContent({error}) {
     return createContent({
-        ...unusedProps,
         BannerIcon: radium(
             props => <i {...props} className='fa fa-exclamation' />
         ),
@@ -108,9 +105,8 @@ function ErrorContent({error, ...unusedProps}) {
 }
 
 
-function LoadingContent(props) {
+function LoadingContent() {
     return createContent({
-        ...props,
         BannerIcon: Spinner,
         title: 'Loading',
         subtitle: '...',
@@ -134,6 +130,7 @@ function Article({
 }) {
     return (
         <Loader
+            // passes article data onto *Content components
             {...unusedProps}
             isInvalid={!loadDateTime && !loadError}
             isLoading={isLoading}

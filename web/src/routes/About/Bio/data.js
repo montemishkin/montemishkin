@@ -24,6 +24,7 @@ const technicalSkills = [
 ]
 
 
+// TODO: this file is ridiculous
 const sections = [
     {
         title: 'Hello',
@@ -35,7 +36,7 @@ const sections = [
         Icon: props => <img {...props} src='/static/images/full-stack.svg' />,
     }, {
         title: 'Technical Skills',
-        Text: radium(props => (
+        Text: props => (
             <p {...props}>
                 Check out my
                 {' '}<a
@@ -58,7 +59,7 @@ const sections = [
                 involve some combination of these awesome
                 technologies.
             </p>
-        )),
+        ),
         Icon: ({style, ...unusedProps}) => (
             <List {...unusedProps} style={[styles.logoList, style]}>
                 {technicalSkills.map(({url, src, alt}, key) => (

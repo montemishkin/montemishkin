@@ -31,10 +31,9 @@ function isFound(item) {
 function Found({
     item = {isLoading: true},
     tryFetch: reload,
-    ...unusedProps,
 }) {
     return (
-        <div {...unusedProps}>
+        <div>
             <Helmet title={item.name ? item.name : 'Loading...'} />
             <Tagle
                 {...item}
@@ -50,11 +49,9 @@ function TagDetail({
     shouldTryFetch,
     dispatch,
     location: {pathname},
-    ...unusedProps,
 }) {
     return (
         <DetailView
-            {...unusedProps}
             item={tag}
             shouldTryFetch={shouldTryFetch}
             tryFetch={tryFetch.bind(null, dispatch, pathname)}

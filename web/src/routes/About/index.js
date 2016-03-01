@@ -10,9 +10,9 @@ import ContactInfoBar from './ContactInfoBar'
 import Bio from './Bio'
 
 
-function About(props) {
+function About() {
     return (
-        <div {...props}>
+        <div>
             <Helmet title='About' />
             <Banner
                 title='Monte Mishkin'

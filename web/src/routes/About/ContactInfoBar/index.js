@@ -24,15 +24,9 @@ const contactData = [
 ]
 
 
-function ContactInfoBar({style, ...unusedProps}) {
+function ContactInfoBar() {
     return (
-        <address
-            {...unusedProps}
-            style={[
-                styles.container,
-                style,
-            ]}
-        >
+        <address style={styles.container}>
             <List style={styles.list} listItemStyle={styles.listItem}>
                 {contactData.map(({caption, href, icon}, key) => (
                     <a

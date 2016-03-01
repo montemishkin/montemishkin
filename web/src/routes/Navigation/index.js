@@ -11,15 +11,9 @@ import Footer from './Footer'
 /**
  * Adds header and footer navigation bars to UI.
  */
-function Navigation({style, children, ...unusedProps}) {
+function Navigation({children}) {
     return (
-        <div
-            {...unusedProps}
-            style={[
-                styles.container,
-                style,
-            ]}
-        >
+        <div style={styles.container}>
             <Helmet title=':)' titleTemplate='%s | Monte Mishkin' />
             <Header />
             <main style={styles.content}>

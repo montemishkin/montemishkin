@@ -9,11 +9,6 @@ export default {
     },
 
 
-    section: {
-        padding: `${contentVerticalPadding / 2}px 0`,
-    },
-
-
     link: {
         color: colors.background.interactive,
         textDecoration: 'none',

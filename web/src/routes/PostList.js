@@ -24,10 +24,9 @@ function PostList({
     isLoading,
     loadError,
     dispatch,
-    ...unusedProps,
 }) {
     return (
-        <div {...unusedProps}>
+        <div>
             <Helmet title='Blog' />
             <ListView
                 BannerIcon={BlogLogo}

@@ -7,13 +7,12 @@ import data from './data'
 import BioSection from './BioSection'
 
 
-function Bio ({style, ...unusedProps}) {
+function Bio () {
     return (
-        <article {...unusedProps} style={[styles.container, style]}>
+        <article style={styles.container}>
             {data.sections.map(({title, Text, Icon}, key) => (
                 <BioSection
                     key={key}
-                    style={styles.section}
                     textIsFirst={key % 2 === 1}
                     Title={props => <h3 {...props}>{title}</h3>}
                     Text={Text}

@@ -10,23 +10,11 @@ function TagPreview({
     url,
     name,
     description,
-    style,
-    ...unusedProps,
 }) {
     return (
-        <Link
-            {...unusedProps}
-            style={[
-                styles.container,
-                style,
-            ]}
-            to={url}
-        >
+        <Link to={url} style={styles.container}>
             <div style={styles.titleBar}>
-                <i
-                    style={styles.icon}
-                    className='fa fa-tag'
-                />
+                <i style={styles.icon} className='fa fa-tag' />
                 <span style={styles.title}>
                     {name}
                 </span>

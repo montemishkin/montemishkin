@@ -22,10 +22,9 @@ function TagList({
     isLoading,
     loadError,
     dispatch,
-    ...unusedProps,
 }) {
     return (
-        <div {...unusedProps}>
+        <div>
             <Helmet title='Tags' />
             <ListView
                 BannerIcon={MainLogo}

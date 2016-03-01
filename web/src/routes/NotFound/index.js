@@ -10,15 +10,9 @@ import MainLogo from 'components/Logos/Main'
 /**
  * Sitewide 404 page
  */
-function NotFound({style, ...unusedProps}) {
+function NotFound() {
     return (
-        <article
-            {...unusedProps}
-            style={[
-                styles.container,
-                style,
-            ]}
-        >
+        <article style={styles.container}>
             <Helmet title='Not Found' />
             <img
                 src='/static/images/sun.svg'
