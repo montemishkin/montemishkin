@@ -1,5 +1,6 @@
 // node imports
-import {basename} from 'path'
+import path from 'path'
+const {basename} = path
 // third party imports
 import React, {PropTypes} from 'react'
 import {connect} from 'react-redux'

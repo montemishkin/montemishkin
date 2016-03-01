@@ -9,12 +9,13 @@ import {renderToString} from 'react-dom/server'
 import {match} from 'react-router'
 import Helmet from 'react-helmet'
 // local imports
-import {
+import projectPaths from 'config/projectPaths'
+const {
     buildDir,
     assetsDir,
-    favicon as faviconPath,
+    favicon: faviconPath,
     templatesDir,
-} from 'config/projectPaths'
+} = projectPaths
 import routes from 'routes'
 import {createStore} from 'store'
 import App from 'App'

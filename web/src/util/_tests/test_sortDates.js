@@ -1,5 +1,6 @@
 // third party imports
-import {assert} from 'chai'
+import chai from 'chai'
+const {assert} = chai
 // local imports
 import sortDates from 'util/sortDates'
 

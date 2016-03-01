@@ -27,7 +27,3 @@ export function createStore(initialData) {
         )
     )
 }
-
-
-// export a store with no initial data
-export default createStore()
