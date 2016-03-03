@@ -49,9 +49,11 @@ server.use(compression())
 // route static files to build and assets dirs
 server.use(publicStaticPath, serveStatic(buildDir), serveStatic(assetsDir))
 // route all surviving requests through the react-router routes
-server.all('*', async function (req, res) {
+server.all('*', (req, res) => {
+    const location = req.url
+
     // figure out the appropriate route
-    match({routes, location: req.url}, async function (error, redirectLocation, renderProps) {
+    match({routes, location}, (error, redirectLocation, renderProps) => {
         // if there was an error
         if (error) {
             res.status(500).send(error.message)
