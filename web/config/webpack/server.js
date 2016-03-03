@@ -35,6 +35,9 @@ var plugins = baseConfig.plugins.concat(
 
 
 module.exports = assign({}, baseConfig, {
+    entry: {
+        index: projectPaths.serverEntry,
+    },
     target: 'node',
     // don't bundle node modules
     externals: nodeModules,

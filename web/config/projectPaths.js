@@ -21,6 +21,7 @@ var serverEntry = path.join(sourceDir, 'index.js')
 // built files
 var clientBuild = path.join(buildDir, path.basename(clientEntry))
 var serverBuild = path.join(buildDir, path.basename(serverEntry))
+var cssBuild = path.join(buildDir, 'styles.css')
 
 
 module.exports = {
@@ -36,9 +37,12 @@ module.exports = {
     // built files
     clientBuild: clientBuild,
     serverBuild: serverBuild,
+    cssBuild: cssBuild,
     // globs
-    clientBuildGlob: path.join(clientBuild, '*'),
-    serverBuildGlob: path.join(serverBuild, '*'),
+    clientBuildGlob: clientBuild + '*',
+    serverBuildGlob: serverBuild + '*',
+    cssBuildGlob: cssBuild + '*',
+    buildGlob: path.join(buildDir, '*'),
     cssGlob: path.join(assetsDir, 'styles', 'css', '*'),
     testsGlob: path.join(sourceDir, '**', '_tests', 'test_*.js'),
     // configuration files

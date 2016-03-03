@@ -25,6 +25,14 @@ if (process.env.NODE_ENV === 'production') {
 
 // export webpack configuration object
 module.exports = {
+    output: {
+        filename: '[name].js',
+        chunkFilename: 'chunk-[id]-[chunkhash].js',
+        path: projectPaths.buildDir,
+        // TODO: this should not be hardcoded here.
+        // it must match with the static files path in server.js
+        publicPath: '/static/',
+    },
     module: {
         preLoaders: [
             {
