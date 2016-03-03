@@ -3,10 +3,9 @@ import 'babel-polyfill'
 // third party imports imports
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Router} from 'react-router'
+import {Router, browserHistory} from 'react-router'
 import {Provider} from 'react-redux'
 // local imports
-import history from './history' // the "./" is important here!
 import routes from 'routes'
 import {createStore} from 'store'
 
@@ -38,7 +37,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Router
             routes={routes}
-            history={history}
+            history={browserHistory}
             onUpdate={() => {
                 // see: https://github.com/rackt/react-router/issues/2144#issuecomment-144462974
                 // scroll to top on route change

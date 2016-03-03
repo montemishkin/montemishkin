@@ -240,7 +240,8 @@
       "dependencies": {
         "source-map": {
           "version": "0.5.3",
-          "from": "source-map@>=0.5.0 <0.6.0"
+          "from": "source-map@0.5.3",
+          "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.5.3.tgz"
         }
       }
     },
@@ -4169,9 +4170,16 @@
       }
     },
     "react-router": {
-      "version": "1.0.3",
-      "from": "react-router@>=1.0.0 <2.0.0",
-      "resolved": "https://registry.npmjs.org/react-router/-/react-router-1.0.3.tgz"
+      "version": "2.0.0",
+      "from": "react-router@latest",
+      "resolved": "https://registry.npmjs.org/react-router/-/react-router-2.0.0.tgz",
+      "dependencies": {
+        "history": {
+          "version": "2.0.1",
+          "from": "history@>=2.0.0 <3.0.0",
+          "resolved": "https://registry.npmjs.org/history/-/history-2.0.1.tgz"
+        }
+      }
     },
     "react-side-effect": {
       "version": "1.0.2",
@@ -4242,7 +4250,8 @@
       "dependencies": {
         "source-map": {
           "version": "0.5.3",
-          "from": "source-map@>=0.5.0 <0.6.0"
+          "from": "source-map@0.5.3",
+          "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.5.3.tgz"
         }
       }
     },
