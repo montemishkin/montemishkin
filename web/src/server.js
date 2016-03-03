@@ -16,8 +16,9 @@ const {
     favicon: faviconPath,
     templatesDir,
 } = projectPaths
-import routes from 'routes'
 import {createStore} from 'store'
+import routes from 'routes'
+import NotFound from 'routes/NotFound'
 import App from 'App'
 
 
@@ -58,6 +59,12 @@ server.all('*', async function (req, res) {
             res.redirect(302, redirectLocation.pathname + redirectLocation.search)
         // if route was found and is not a redirect
         } else {
+            // if `NotFound` route is to be rendered
+            if (renderProps.components.indexOf(NotFound) !== -1) {
+                // add 404 status (but still render pretty routed application)
+                res.status(404)
+            }
+
             // TODO: grab initial data based on route
 
             // create redux store
