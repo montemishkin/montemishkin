@@ -14,7 +14,7 @@
 - tag list view should show tags with higher usage first
     - should also show number of posts that use that tag
 - offer rss feed?
-- a better way of ensuring that each view renders a page title using helmet.  also, could use https://github.com/ryanflorence/react-title-component
+- a way of ensuring that each view renders a page title using helmet?
 - tests. like seriously...
 
 - branding
@@ -28,7 +28,6 @@
     - use sass or scss
 
 - optimization
-    - route splitting (see https://medium.com/@somebody32/how-to-split-your-apps-by-routes-with-webpack-36b7a8a6231#.cy6vyaku3)
     - google page speed insights
     - only load what data is actually needed for the current view
         - see "data flow" todos
@@ -77,4 +76,5 @@
     - react-router `Link` and `IndexLink` do not play well with radium
         - radium wrapping of `Link` does not work on `activeStyle` prop.  Thus, nav links don't transition *in* to the new background color even though they do transition *out* of it.
         - idk why, but `IndexLink` doesn't get the hover styling...
+            - its because radium only fixes styling for wrapped components that return raw DOM nodes.  `IndexLink` just returns `Link` with some props set, so the styling doesn't make it to the DOM nodes.
         - anyways, it would really be nice to be able to use `activeStyle`, especially on the nav bar.

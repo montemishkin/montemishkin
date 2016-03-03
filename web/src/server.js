@@ -71,8 +71,6 @@ server.all('*', async function (req, res) {
             // create redux store
             const store = createStore()
 
-            // initial application state
-            const initialState = JSON.stringify(store.getState())
             // rendered app
             const renderedComponent = renderToString(
                 <App
@@ -85,12 +83,13 @@ server.all('*', async function (req, res) {
             )
 
             // see: https://github.com/nfl/react-helmet#server-usage
-            Helmet.rewind()
+            const helmet = Helmet.rewind()
 
             // render jade template with component mounted
             res.render('index.jade', {
-                initialState,
+                initialState: JSON.stringify(store.getState()),
                 renderedComponent,
+                title: helmet.title,
             })
         }
     })
