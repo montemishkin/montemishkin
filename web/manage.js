@@ -40,7 +40,7 @@ var tasks = {}
 tasks['default'] = function () {
     runRequestedTaskNames(tasks, [
         'clean-build',
-        'build-styles',
+        'watch-styles',
         'watch-client',
         'watch-server',
         'run-server'
