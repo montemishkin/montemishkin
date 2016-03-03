@@ -6,6 +6,9 @@ var baseConfig = require(projectPaths.webpackBaseConfig)
 
 
 module.exports = assign({}, baseConfig, {
+    output: assign({}, baseConfig.output, {
+        publicPath: projectPaths.publicStaticPath + '/',
+    }),
     entry: {
         client: projectPaths.clientEntry,
     },

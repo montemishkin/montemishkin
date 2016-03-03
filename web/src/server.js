@@ -15,6 +15,7 @@ const {
     assetsDir,
     favicon: faviconPath,
     templatesDir,
+    publicStaticPath,
 } = projectPaths
 import {createStore} from 'store'
 import routes from 'routes'
@@ -46,7 +47,7 @@ server.use(compression())
 /* Routing */
 
 // route static files to build and assets dirs
-server.use('/static', serveStatic(buildDir), serveStatic(assetsDir))
+server.use(publicStaticPath, serveStatic(buildDir), serveStatic(assetsDir))
 // route all surviving requests through the react-router routes
 server.all('*', async function (req, res) {
     // figure out the appropriate route

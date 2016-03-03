@@ -31,6 +31,7 @@ module.exports = {
     buildDir: buildDir,
     templatesDir: templatesDir,
     assetsDir: assetsDir,
+    publicStaticPath: '/static',
     // entry points
     clientEntry: clientEntry,
     serverEntry: serverEntry,
