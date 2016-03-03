@@ -61,11 +61,8 @@ class ArticlePreview extends Component {
 
         return (
             <section
-                style={[
-                    styles.container,
-                    style,
-                ]}
                 {...unusedProps}
+                style={[styles.container, style]}
             >
                 <Link
                     to={url}

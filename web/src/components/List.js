@@ -1,5 +1,5 @@
 // third party imports
-import React, {PropTypes} from 'react'
+import React from 'react'
 import radium from 'radium'
 
 
@@ -42,17 +42,6 @@ function List({
             })}
         </ul>
     )
-}
-
-
-List.propTypes = {
-    listItemStyle: PropTypes.oneOfType([
-        PropTypes.object,
-        PropTypes.arrayOf(PropTypes.oneOfType([
-            PropTypes.bool,
-            PropTypes.object,
-        ])),
-    ]),
 }
 
 

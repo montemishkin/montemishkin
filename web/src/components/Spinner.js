@@ -2,11 +2,11 @@
 import React from 'react'
 
 
-function Spinner(props) {
+function Spinner({className, ...unusedProps}) {
     return (
         <img
-            {...props}
-            className='spinner'
+            {...unusedProps}
+            className={`spinner ${className}`}
             src='/static/images/spinner.svg'
         />
     )

@@ -60,8 +60,8 @@ const sections = [
                 technologies.
             </p>
         ),
-        Icon: ({style, ...unusedProps}) => (
-            <List {...unusedProps} style={[styles.logoList, style]}>
+        Icon: ({style}) => (
+            <List style={[styles.logoList, style]}>
                 {technicalSkills.map(({url, src, alt}, key) => (
                     <a
                         target='_blank'

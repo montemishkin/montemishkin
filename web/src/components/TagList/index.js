@@ -15,10 +15,7 @@ function TagList({tags, style, linkStyle, ...unusedProps}) {
     return (
         <div
             {...unusedProps}
-            style={[
-                styles.container,
-                style,
-            ]}
+            style={[styles.container, style]}
         >
             <i
                 style={styles.icon}

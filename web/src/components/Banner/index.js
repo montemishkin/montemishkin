@@ -16,10 +16,7 @@ function Banner({
     return (
         <header
             {...unusedProps}
-            style={[
-                styles.outerContainer,
-                style,
-            ]}
+            style={[styles.outerContainer, style]}
         >
             <div style={styles.innerContainer}>
                 {Icon && (
@@ -45,7 +42,6 @@ function Banner({
 
 
 Banner.propTypes = {
-    style: PropTypes.object,
     // react component
     Icon: PropTypes.func,
     title: PropTypes.string.isRequired,

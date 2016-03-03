@@ -7,20 +7,15 @@ import {Link as ReactRouterLink} from 'react-router'
 const ReactRouterLinkWithRadium = radium(ReactRouterLink)
 
 
-function Link({style, children, ...unusedProps}) {
+function Link({style, ...unusedProps}) {
     return (
         <ReactRouterLinkWithRadium
             {...unusedProps}
             style={[
-                {
-                    textDecoration: 'none',
-                    cursor: 'pointer',
-                },
+                {textDecoration: 'none'},
                 style,
             ]}
-        >
-            {children}
-        </ReactRouterLinkWithRadium>
+        />
     )
 }
 

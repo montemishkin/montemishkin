@@ -1,5 +1,5 @@
 // third party imports
-import React, {PropTypes} from 'react'
+import React from 'react'
 import radium from 'radium'
 
 
@@ -8,29 +8,14 @@ import radium from 'radium'
  * markdown will get proper styling from external CSS (by being a child
  * of a .markdown wrapper).
  */
-function MarkdownContainer({
-    className,
-    children,
-    ...unusedProps,
-}) {
+function MarkdownContainer({className, children, ...unusedProps}) {
     return (
         <section
             {...unusedProps}
-            className={className}
+            className={`markdown ${className}`}
             dangerouslySetInnerHTML={{__html: children}}
         />
     )
-}
-
-
-MarkdownContainer.propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.node.isRequired,
-}
-
-
-MarkdownContainer.defaultProps = {
-    className: 'markdown',
 }
 
 
