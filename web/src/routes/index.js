@@ -3,23 +3,44 @@ import React from 'react'
 import {Route, IndexRoute} from 'react-router'
 // local imports
 import Navigation from './Navigation'
-import NotFound from './NotFound'
-import Home from './Home'
-import About from './About'
-import PostList from './PostList'
-import PostDetail from './PostDetail'
-import TagList from './TagList'
-import TagDetail from './TagDetail'
 
 
 export default (
     <Route path='/' component={Navigation}>
-        <IndexRoute component={Home} />
-        <Route path='about' component={About} />
-        <Route path='posts' component={PostList} />
-        <Route path='posts/:slug' component={PostDetail} />
-        <Route path='tags' component={TagList} />
-        <Route path='tags/:slug' component={TagDetail} />
-        <Route path='*' component={NotFound} />
+        <IndexRoute getComponent={(location, cb) => {
+            require.ensure([], require => {
+                cb(null, require('routes/Home').default)
+            })
+        }} />
+        <Route path='about' getComponent={(location, cb) => {
+            require.ensure([], require => {
+                cb(null, require('routes/About').default)
+            })
+        }} />
+        <Route path='posts' getComponent={(location, cb) => {
+            require.ensure([], require => {
+                cb(null, require('routes/PostList').default)
+            })
+        }} />
+        <Route path='posts/:slug' getComponent={(location, cb) => {
+            require.ensure([], require => {
+                cb(null, require('routes/PostDetail').default)
+            })
+        }} />
+        <Route path='tags' getComponent={(location, cb) => {
+            require.ensure([], require => {
+                cb(null, require('routes/TagList').default)
+            })
+        }} />
+        <Route path='tags/:slug' getComponent={(location, cb) => {
+            require.ensure([], require => {
+                cb(null, require('routes/TagDetail').default)
+            })
+        }} />
+        <Route path='*' getComponent={(location, cb) => {
+            require.ensure([], require => {
+                cb(null, require('routes/NotFound').default)
+            })
+        }} />
     </Route>
 )
