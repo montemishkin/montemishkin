@@ -5,24 +5,22 @@ import radium from 'radium'
 import styles from './styles'
 import Link from 'components/Link'
 import IndexLink from 'components/IndexLink'
-import List from 'components/List'
-import Logo from 'components/Logos/Main'
 
 
 function Header() {
     return (
         <nav style={styles.container}>
-            <IndexLink to='/' style={styles.logoLink}>
-                <Logo style={styles.logo} {...styles.logoProps} />
+            <IndexLink to='/' style={styles.link}>
+                <i className='fa fa-home' />
             </IndexLink>
-            <List style={styles.list}>
+            <div style={styles.rightLinks}>
                 <Link to='/about' style={styles.link}>
                     About
                 </Link>
                 <Link to='/posts' style={styles.link}>
                     Blog
                 </Link>
-            </List>
+            </div>
         </nav>
     )
 }
