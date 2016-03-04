@@ -1,17 +1,13 @@
 // local imports
 import colors from 'assets/styles/js/colors'
 import classes from 'assets/styles/js/classes'
-
-
-const spacing = 15
+import {contentMaxWidth} from 'assets/styles/js/numerics'
 
 
 export default {
-    container: {
+    outerContainer: {
         display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: `0 ${spacing}px`,
+        justifyContent: 'center',
         backgroundColor: colors.primary.main,
         // TODO: dont hardcode the color here?
         boxShadow: '0 1px 2px rgba(0, 0, 0, 0.3)',
@@ -21,10 +17,12 @@ export default {
     },
 
 
-    rightLinks: {
+    innerContainer: {
         display: 'flex',
-        justifyContent: 'center',
         flexWrap: 'wrap',
+        justifyContent: 'flex-end',
+        width: '100%',
+        maxWidth: contentMaxWidth,
     },
 
 
@@ -32,6 +30,7 @@ export default {
         ...classes.interactive.primary,
         color: colors.primary.inverse,
         display: 'inline-block',
-        padding: `${spacing}px ${spacing * 4 / 3}px`,
+        textDecoration: 'none',
+        padding: '15px 20px',
     },
 }
