@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // node imports
 var process = require('process')
 var fs = require('fs')
