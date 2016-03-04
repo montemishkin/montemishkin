@@ -13,7 +13,6 @@ var configDir = path.join(rootDir, 'config')
 var buildDir = path.join(rootDir, 'build')
 var sourceDir = path.join(rootDir, 'src')
 var assetsDir = path.join(sourceDir, 'assets')
-var templatesDir = path.join(sourceDir, 'templates')
 var webpackDir = path.join(configDir, 'webpack')
 // entry points
 var clientEntry = path.join(sourceDir, 'client.js')
@@ -29,7 +28,6 @@ module.exports = {
     rootDir: rootDir,
     sourceDir: sourceDir,
     buildDir: buildDir,
-    templatesDir: templatesDir,
     assetsDir: assetsDir,
     publicStaticPath: '/static',
     // entry points

@@ -14,27 +14,19 @@ const {
     buildDir,
     assetsDir,
     favicon: faviconPath,
-    templatesDir,
     publicStaticPath,
 } = projectPaths
 import {createStore} from 'store'
 import routes from 'routes'
 import NotFound from 'routes/NotFound'
 import App from 'App'
+import renderTemplate from 'templates/index'
 
 
 const server = express()
 
 
-/* Application-wide Settings */
-
-// use jade for html templating
-server.set('view engine', 'jade')
-// set directory in which to search for html templates
-server.set('views', templatesDir)
-
-
-/* Application-wide Middleware */
+/* Server-wide Middleware */
 
 // log requests
 server.use(logger(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'))
@@ -94,12 +86,13 @@ server.all('*', (req, res) => {
             // see: https://github.com/nfl/react-helmet#server-usage
             const helmet = Helmet.rewind()
 
-            // render jade template with component mounted
-            res.render('index.jade', {
+            const html = renderTemplate({
                 initialState,
                 renderedComponent,
                 title: helmet.title,
             })
+
+            res.send(html)
         }
     })
 })

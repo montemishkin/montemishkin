@@ -16,6 +16,8 @@
 - offer rss feed?
 - a way of ensuring that each view renders a page title using helmet?
 - tests. like seriously...
+- be more secure
+    - http://expressjs.com/en/advanced/best-practice-security.html
 
 - branding
     - another variation of bird logo for tag search view
@@ -28,6 +30,11 @@
     - use sass or scss
 
 - optimization
+    - caching
+    - clustering
+    - have nginx do more (rather than express):
+        - serve static files (and favicon?)
+        - gzip http://nginx.org/en/docs/http/ngx_http_gzip_module.html
     - google page speed insights
     - only load what data is actually needed for the current view
         - see "data flow" todos

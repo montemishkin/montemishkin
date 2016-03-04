@@ -39,7 +39,6 @@
     "fontfaceobserver": "^1.6.4",
     "history": "^1.13.1",
     "isomorphic-fetch": "^2.2.0",
-    "jade": "^1.11.0",
     "lodash": "^3.10.1",
     "morgan": "^1.6.1",
     "normalize.css": "^3.0.3",
