@@ -73,6 +73,13 @@ server.all('*', (req, res) => {
             // create redux store
             const store = createStore()
 
+            // TODO: this should really be grabbed AFTER rendering markup
+            // (so that rendering might alter store).  However, with current
+            // (poor) implementation this will set `isLoading` to true on
+            // things like `state.posts` so the client will be waiting on
+            // a response to a request it didnt make (the server made it)
+            const initialState = JSON.stringify(store.getState())
+
             // rendered app
             const renderedComponent = renderToString(
                 <App
@@ -89,7 +96,7 @@ server.all('*', (req, res) => {
 
             // render jade template with component mounted
             res.render('index.jade', {
-                initialState: JSON.stringify(store.getState()),
+                initialState,
                 renderedComponent,
                 title: helmet.title,
             })
