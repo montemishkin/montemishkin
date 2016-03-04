@@ -5,6 +5,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {Router, match, browserHistory as history} from 'react-router'
 import {Provider} from 'react-redux'
+import FontFaceObserver from 'fontfaceobserver'
 // local imports
 import routes from 'routes'
 import {createStore} from 'store'
@@ -25,6 +26,17 @@ if (process.env.NODE_ENV === 'production') {
     window.ga = window.ga || function () {};
     /* eslint-enable */
 }
+
+
+// see: https://github.com/bramstein/fontfaceobserver#how-to-use
+const latoObserver = new FontFaceObserver('Lato')
+
+latoObserver.check().then(
+    // when Lato font loaded, add css class to body indicating so
+    () => document.body.classList.add('lato-font-face-loaded'),
+    // if Lato font not found, add css class to body indicating so
+    () => document.body.classList.remove('lato-font-face-loaded')
+)
 
 
 // grab initial application state passed from server

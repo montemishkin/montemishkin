@@ -1710,6 +1710,11 @@
       "from": "fn-name@>=2.0.1 <3.0.0",
       "resolved": "https://registry.npmjs.org/fn-name/-/fn-name-2.0.1.tgz"
     },
+    "fontfaceobserver": {
+      "version": "1.6.4",
+      "from": "fontfaceobserver@latest",
+      "resolved": "https://registry.npmjs.org/fontfaceobserver/-/fontfaceobserver-1.6.4.tgz"
+    },
     "for-in": {
       "version": "0.1.4",
       "from": "for-in@>=0.1.4 <0.2.0",
