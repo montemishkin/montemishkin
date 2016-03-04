@@ -10,5 +10,5 @@ export const contentVerticalPadding = 100
 export const largestFontSize = '32px'
 export const largerFontSize = '24px'
 export const largeFontSize = '18px'
-export const mainFontSize = '16px'
+export const mainFontSize = '14px'
 export const smallFontSize = '12px'

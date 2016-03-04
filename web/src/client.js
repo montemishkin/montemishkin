@@ -29,13 +29,14 @@ if (process.env.NODE_ENV === 'production') {
 
 
 // see: https://github.com/bramstein/fontfaceobserver#how-to-use
-const latoObserver = new FontFaceObserver('Lato')
+const openSansObserver = new FontFaceObserver('Open Sans')
+const openSansClassName = 'open-sans-font-face-loaded'
 
-latoObserver.check().then(
-    // when Lato font loaded, add css class to body indicating so
-    () => document.body.classList.add('lato-font-face-loaded'),
-    // if Lato font not found, add css class to body indicating so
-    () => document.body.classList.remove('lato-font-face-loaded')
+openSansObserver.check().then(
+    // when Open Sans font loaded, add css class to body indicating so
+    () => document.body.classList.add(openSansClassName),
+    // if Open Sans font not found, add css class to body indicating so
+    () => document.body.classList.remove(openSansClassName)
 )
 
 

@@ -27,7 +27,7 @@
     - establish consistency with `export` vs `export default`
     - establish consistency with prop type checking.  or use flow
     - how to organize components vs views, deal with nesting, etc
-    - use sass or scss
+    - use sass or scss. or postcss?
 
 - optimization
     - caching
