@@ -28,12 +28,12 @@ const server = express()
 
 /* Server-wide Middleware */
 
+// compress responses
+server.use(compression())
 // log requests
 server.use(logger(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'))
 // serve favicon
 server.use(favicon(faviconPath))
-// compress responses
-server.use(compression())
 
 
 /* Routing */
