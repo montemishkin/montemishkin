@@ -5,23 +5,28 @@ import classes from 'assets/styles/js/classes'
 import colors from 'assets/styles/js/colors'
 
 
-const spacing = 25
+const spacing = 15
 const containerBase = {
     display: 'flex',
     alignItems: 'center',
-    color: chroma(colors.primary.inverse).darken().css(),
     backgroundColor: colors.primary.main,
-    borderWidth: '1px 0 0 0',
-    borderStyle: 'solid',
-    borderColor: colors.background.inverse,
+    // TODO: dont hardcode the color here?
+    boxShadow: 'inset 0 1px 2px rgba(0, 0, 0, 0.3)',
 }
-const listBase = {
+const navLinksBase = {
     display: 'flex',
     justifyContent: 'center',
     flexWrap: 'wrap',
 }
 const copyrightBase = {
+    color: chroma(colors.primary.inverse).darken().css(),
     padding: spacing,
+}
+const linkBase = {
+    ...classes.interactive.primary,
+    color: colors.primary.inverse,
+    display: 'inline-block',
+    textDecoration: 'none',
 }
 
 
@@ -37,50 +42,20 @@ export default {
         position: 'relative',
     },
 
-    listInfinity: {
-        ...listBase,
+    navLinksInfinity: {
+        ...navLinksBase,
         position: 'absolute',
         left: spacing,
         top: 0,
     },
 
-    listMedium: {
-        ...listBase,
+    navLinksMedium: {
+        ...navLinksBase,
     },
 
     navLink: {
-        ...classes.interactive.primary,
-        color: colors.primary.inverse,
-        display: 'inline-block',
-        padding: spacing,
-    },
-
-    logoLink: {
-        display: 'inline-block',
-        padding: `${spacing / 2}px ${spacing}px`,
-    },
-
-    logo: {
-        height: 2 * spacing,
-    },
-
-    logoProps: {
-        hatTopFill: chroma(colors.background.inverse).brighten().css(),
-        hatRimFill: chroma(colors.background.inverse).brighten().css(),
-        bodyFill: colors.primary.inverse,
-        wingFill: colors.primary.inverse,
-        noseFill: colors.primary.inverse,
-        eyeFill: colors.background.inverse,
-        bodyStroke: colors.background.inverse,
-        eyeStroke: colors.background.inverse,
-        noseStroke: colors.background.inverse,
-        wingStroke: colors.background.inverse,
-        leftLegStroke: colors.background.inverse,
-        leftFootStroke: colors.background.inverse,
-        rightLegStroke: colors.background.inverse,
-        rightFootStroke: colors.background.inverse,
-        hatRimStroke: colors.background.inverse,
-        hatTopStroke: colors.background.inverse,
+        ...linkBase,
+        padding: `${spacing}px ${spacing * 4 / 3}px`,
     },
 
     copyrightInfinity: {
@@ -95,9 +70,6 @@ export default {
     },
 
     emailLink: {
-        ...classes.interactive.primary,
-        textDecoration: 'none',
-        color: colors.primary.inverse,
-        display: 'inline-block',
+        ...linkBase,
     },
 }

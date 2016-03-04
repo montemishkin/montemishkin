@@ -6,40 +6,38 @@ import {connect} from 'react-redux'
 import styles from './styles'
 import Link from 'components/Link'
 import IndexLink from 'components/IndexLink'
-import List from 'components/List'
-import Logo from 'components/Logos/Main'
 
 
 function Footer({browser}) {
     const isLessThanInfinity = browser.lessThan.infinity
 
     // default to styling for large viewports
-    let listStyle = styles.listInfinity
+    let navLinksStyle = styles.navLinksInfinity
     let copyrightStyle = styles.copyrightInfinity
     let containerStyle = styles.containerInfinity
     // if viewport smaller than infinity size
     if (isLessThanInfinity) {
         // use styling for medium and smaller viewports
-        listStyle = styles.listMedium
+        navLinksStyle = styles.navLinksMedium
         copyrightStyle = styles.copyrightMedium
         containerStyle = styles.containerMedium
     }
 
     // list of navigation links
     const navLinks = (
-        <List style={listStyle} key='a'>
+        <div style={navLinksStyle} key='a'>
             <Link to='/about' style={styles.navLink}>
                 About
             </Link>
             <Link to='/posts' style={styles.navLink}>
                 Blog
             </Link>
-        </List>
+        </div>
     )
-    // link to home page, contains logo
-    const logoLink = (
-        <IndexLink to='/' style={styles.logoLink} key='b'>
-            <Logo style={styles.logo} {...styles.logoProps} />
+    // link to home page
+    const homeLink = (
+        <IndexLink to='/' style={styles.navLink} key='b'>
+            <i className='fa fa-home' />
         </IndexLink>
     )
     // copyright info
@@ -61,10 +59,10 @@ function Footer({browser}) {
             {
                 // if viewport less than infinity width
                 isLessThanInfinity
-                    // stack with logo on top
-                    ? [logoLink, navLinks, copyright]
-                    // otherwise spread content with logo in middle
-                    : [navLinks, logoLink, copyright]
+                    // stack with home on top
+                    ? [homeLink, navLinks, copyright]
+                    // otherwise spread content with home in middle
+                    : [navLinks, homeLink, copyright]
             }
         </footer>
     )
