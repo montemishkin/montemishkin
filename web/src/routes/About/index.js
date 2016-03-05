@@ -3,9 +3,10 @@ import React from 'react'
 import radium from 'radium'
 import Helmet from 'react-helmet'
 // local imports
+import data from './data'
+import BioSection from './BioSection'
 import Banner from 'components/Banner'
 import ProjectsLogo from 'components/Logos/Projects'
-import Bio from './Bio'
 
 
 function About() {
@@ -17,7 +18,17 @@ function About() {
                 subtitle='Web Developer / Friendly Person'
                 Icon={ProjectsLogo}
             />
-            <Bio />
+            <article>
+                {data.map(({title, Text, Icon}, key) => (
+                    <BioSection
+                        key={key}
+                        index={key}
+                        Title={_props => <h3 {..._props}>{title}</h3>}
+                        Text={Text}
+                        Icon={Icon}
+                    />
+                ))}
+            </article>
         </div>
     )
 }
