@@ -64,6 +64,7 @@ export default {
 
     iconInfinity: {
         ...iconBase,
+        flexShrink: 0,
         width: iconSideLength,
         height: iconSideLength,
         marginRight: spacing * 2,
