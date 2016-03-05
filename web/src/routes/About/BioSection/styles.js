@@ -17,7 +17,6 @@ const spacing = 30
 const transitionParameters = {
     transitionDuration: '0.4s',
     transitionTimingFunction: 'ease-in-out',
-    transitionProperty: 'font-size',
 }
 const outerContainerBase = {
     position: 'relative',
@@ -26,15 +25,22 @@ const outerContainerBase = {
 }
 const titleBase = {
     ...transitionParameters,
+    transitionProperty: 'font-size',
     padding: '15px 0',
     textAlign: 'center',
 }
 const textBase = {
     ...transitionParameters,
+    transitionProperty: 'font-size',
     lineHeight: 1.6,
     textAlign: 'center',
     padding: spacing,
     width: 350,
+}
+const iconBase = {
+    ...transitionParameters,
+    transitionProperty: 'width',
+    padding: spacing,
 }
 
 
@@ -86,8 +92,14 @@ export default {
     },
 
 
-    icon: {
-        padding: spacing,
-        width: 150,
+    iconMedium: {
+        ...iconBase,
+        width: 100,
     },
+
+
+    iconInfinity: {
+        ...iconBase,
+        width: 150,
+    }
 }

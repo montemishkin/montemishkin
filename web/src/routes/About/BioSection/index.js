@@ -10,15 +10,17 @@ function BioSection({Title, Text, Icon, index, isLessThanInfinity}) {
     // default to styling for large viewport
     let titleStyle = styles.titleInfinity
     let textStyle = styles.textInfinity
+    let iconStyle = styles.iconInfinity
     // if viewport is smaller than infinity
     if (isLessThanInfinity) {
         // use medium styling
         titleStyle = styles.titleMedium
         textStyle = styles.textMedium
+        iconStyle = styles.iconMedium
     }
 
     const renderedText = <Text style={textStyle} key='a' />
-    const renderedIcon = <Icon style={styles.icon} key='b' />
+    const renderedIcon = <Icon style={iconStyle} key='b' />
 
     return (
         <section style={createOuterContainerStyle(index)}>
