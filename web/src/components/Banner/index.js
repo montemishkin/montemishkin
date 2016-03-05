@@ -14,9 +14,17 @@ function Banner({
     style,
     ...unusedProps,
 }) {
-    const iconStyles = isLessThanInfinity
-        ? styles.iconMedium
-        : styles.iconInfinity
+    // default to infinity styling
+    let iconStyle = styles.iconInfinity
+    let titleStyle = styles.titleInfinity
+    let subtitleStyle = styles.subtitleInfinity
+    // if viewport is smaller than infinity
+    if (isLessThanInfinity) {
+        // use medium styling
+        iconStyle = styles.iconMedium
+        titleStyle = styles.titleMedium
+        subtitleStyle = styles.subtitleMedium
+    }
 
     return (
         <header
@@ -24,13 +32,13 @@ function Banner({
             style={[styles.outerContainer, style]}
         >
             <div style={styles.innerContainer}>
-                {Icon && <Icon style={iconStyles} />}
+                {Icon && <Icon style={iconStyle} />}
                 <div style={styles.text}>
-                    <h1 style={styles.title}>
+                    <h1 style={titleStyle}>
                         {title}
                     </h1>
                     {subtitle && (
-                        <h2 style={styles.subtitle}>
+                        <h2 style={subtitleStyle}>
                             {subtitle}
                         </h2>
                     )}

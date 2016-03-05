@@ -3,17 +3,27 @@ import colors from 'assets/styles/js/colors'
 import {
     contentMaxWidth,
     largestFontSize,
+    largerFontSize,
     largeFontSize,
+    mainFontSize,
 } from 'assets/styles/js/numerics'
 
 
-const spacing = 40
+const spacing = 20
 const iconSideLength = 150
 const iconBase = {
     transitionDuration: '0.8s',
     transitionTimingFunction: 'ease-in-out',
-    transitionProperty: 'width margin',
-    height: iconSideLength,
+    transitionProperty: 'width height margin',
+}
+const titleBase = {
+    color: colors.background.inverse,
+    margin: spacing,
+}
+const subtitleBase = {
+    color: colors.background.inverse,
+    margin: `0 ${spacing}px ${spacing}px ${spacing}px`,
+    fontWeight: 'normal',
 }
 
 
@@ -21,7 +31,7 @@ export default {
     outerContainer: {
         display: 'flex',
         justifyContent: 'center',
-        padding: `${spacing}px 0`,
+        padding: `${spacing * 2}px 0`,
         backgroundColor: colors.secondary.main,
         // TODO: dont hardcode the color here?
         boxShadow: '0 3px 30px rgba(0, 0, 0, 0.3)',
@@ -39,6 +49,7 @@ export default {
     iconMedium: {
         ...iconBase,
         width: 0,
+        height: 0,
         margin: 0,
     },
 
@@ -46,25 +57,38 @@ export default {
     iconInfinity: {
         ...iconBase,
         width: iconSideLength,
-        marginRight: spacing,
+        height: iconSideLength,
+        marginRight: spacing * 2,
     },
 
 
     text: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
     },
 
 
-    title: {
+    titleMedium: {
+        ...titleBase,
+        fontSize: largerFontSize,
+    },
+
+
+    titleInfinity: {
+        ...titleBase,
         fontSize: largestFontSize,
-        color: colors.background.inverse,
-        margin: spacing / 2,
     },
 
 
-    subtitle: {
+    subtitleMedium: {
+        ...subtitleBase,
+        fontSize: mainFontSize,
+    },
+
+
+    subtitleInfinity: {
+        ...subtitleBase,
         fontSize: largeFontSize,
-        color: colors.background.inverse,
-        margin: spacing / 2,
-        fontWeight: 'normal',
     },
 }
