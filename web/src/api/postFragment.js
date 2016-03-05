@@ -3,9 +3,6 @@ export default `fragment postFragment on Post {
     title
     subtitle
     content
-    bannerImage {
-        url
-    }
     created {
         year
         month

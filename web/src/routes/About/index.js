@@ -17,12 +17,11 @@ function About() {
             <Banner
                 title='Monte Mishkin'
                 subtitle='Web Developer / Friendly Person'
-                Icon={props2 => <ProjectsLogo {...props2} />}
-            >
-                <ContactInfoBar />
-            </Banner>
+                Icon={ProjectsLogo}
+            />
             <div style={styles.contentContainer}>
                 <div style={styles.content}>
+                    <ContactInfoBar />
                     <Bio />
                 </div>
             </div>

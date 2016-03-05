@@ -10,6 +10,7 @@ import TagList from 'components/TagList'
 import FormattedDate from 'components/FormattedDate'
 import MarkdownContainer from 'components/MarkdownContainer'
 import Spinner from 'components/Spinner'
+import BlogLogo from 'components/Logos/Blog'
 
 
 const isProduction = process.env.NODE_ENV === 'production'
@@ -30,19 +31,18 @@ function createContent({
                 Icon={BannerIcon}
                 title={title}
                 subtitle={subtitle}
-            >
-                <div style={styles.infoBar}>
-                    <TagList
-                        style={styles.tagList}
-                        linkStyle={styles.tagListLink}
-                        tags={tags}
-                    />
-                    <FormattedDate
-                        {...created}
-                        style={styles.creationDate}
-                    />
-                </div>
-            </Banner>
+            />
+            <div style={styles.infoBar}>
+                <TagList
+                    style={styles.tagList}
+                    linkStyle={styles.tagListLink}
+                    tags={tags}
+                />
+                <FormattedDate
+                    {...created}
+                    style={styles.creationDate}
+                />
+            </div>
             {content}
         </article>
     )
@@ -56,12 +56,9 @@ function LoadedContent({
     created,
     content,
     url,
-    bannerImage,
 }) {
     return createContent({
-        BannerIcon: radium(
-            props => <img {...props} src={bannerImage.url} />
-        ),
+        BannerIcon: BlogLogo,
         title,
         subtitle,
         tags,
@@ -159,9 +156,6 @@ Article.propTypes = {
         description: PropTypes.string,
     })),
     content: PropTypes.string,
-    bannerImage: PropTypes.shape({
-        url: PropTypes.string,
-    }),
 }
 
 
