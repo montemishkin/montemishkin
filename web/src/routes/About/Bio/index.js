@@ -3,18 +3,16 @@ import React from 'react'
 import radium from 'radium'
 // local imports
 import data from './data'
-import ContactInfoBar from './ContactInfoBar'
 import BioSection from './BioSection'
 
 
-function Bio(props) {
+function Bio() {
     return (
-        <article {...props}>
-            <ContactInfoBar />
+        <article>
             {data.map(({title, Text, Icon}, key) => (
                 <BioSection
                     key={key}
-                    textIsFirst={key % 2 === 1}
+                    index={key}
                     Title={_props => <h3 {..._props}>{title}</h3>}
                     Text={Text}
                     Icon={Icon}

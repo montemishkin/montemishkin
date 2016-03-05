@@ -4,7 +4,6 @@ import radium from 'radium'
 // local imports
 import styles from './styles'
 import List from 'components/List'
-import Link from 'components/Link'
 
 
 const technicalSkills = [
@@ -75,26 +74,40 @@ const sections = [
             </List>
         ),
     }, {
-        title: 'Blog',
+        title: 'Interested?',
         Text: props => (
-            <div {...props}>
-                <p>
-                    I have yet to get in the habit of writing blog posts consistently,
-                    but over at my
-                    {' '}<Link style={styles.link} to='/posts'>
-                        blog
-                    </Link>{' '}
-                    you can expect to find articles relating to:
-                </p>
-                <List style={styles.blogDescriptionList}>
-                    {[
-                        'my experiences with various technologies.',
-                        'meanderings about math and/or physics.',
-                        'other assorted musings.',
-                    ]}
-                </List>
-            </div>
+            <p {...props}>
+                Check out my
+                {' '}<a
+                    style={styles.link}
+                    target='_blank'
+                    href='https://github.com/montemishkin'
+                    key='GitHub'
+                >
+                    GitHub
+                </a>
+                , send me an
+                {' '}<a
+                    style={styles.link}
+                    target='_blank'
+                    href='mailto:monte@mishkin.com'
+                    key='email'
+                >
+                    email
+                </a>
+                , or take a look at my
+                {' '}<a
+                    style={styles.link}
+                    target='_blank'
+                    href='/static/monte_mishkin_resume.pdf'
+                    key='resume'
+                >
+                    resume
+                </a>{' '}
+                for more details.
+            </p>
         ),
+        // TODO: this icon no longer makes sense (did it really ever though?)
         Icon: props => <img {...props} src='/static/images/slate.svg'/>,
     },
 // wrap components in radium
