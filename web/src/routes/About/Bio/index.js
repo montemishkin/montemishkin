@@ -2,24 +2,20 @@
 import React from 'react'
 import radium from 'radium'
 // local imports
-import styles from './styles'
 import data from './data'
 import ContactInfoBar from './ContactInfoBar'
 import BioSection from './BioSection'
 
 
-function Bio({style, ...unusedProps}) {
+function Bio(props) {
     return (
-        <article
-            {...unusedProps}
-            style={[styles.container, style]}
-        >
+        <article {...props}>
             <ContactInfoBar />
-            {data.sections.map(({title, Text, Icon}, key) => (
+            {data.map(({title, Text, Icon}, key) => (
                 <BioSection
                     key={key}
                     textIsFirst={key % 2 === 1}
-                    Title={props => <h3 {...props}>{title}</h3>}
+                    Title={_props => <h3 {..._props}>{title}</h3>}
                     Text={Text}
                     Icon={Icon}
                 />

@@ -20,8 +20,6 @@ function createContent({
     BannerIcon,
     title,
     subtitle,
-    tags,
-    created,
     content,
     ...unusedProps,
 }) {
@@ -32,17 +30,6 @@ function createContent({
                 title={title}
                 subtitle={subtitle}
             />
-            <div style={styles.infoBar}>
-                <TagList
-                    style={styles.tagList}
-                    linkStyle={styles.tagListLink}
-                    tags={tags}
-                />
-                <FormattedDate
-                    {...created}
-                    style={styles.creationDate}
-                />
-            </div>
             {content}
         </article>
     )
@@ -65,9 +52,22 @@ function LoadedContent({
         created,
         content: (
             <section style={styles.contentContainer}>
-                <MarkdownContainer style={styles.content}>
-                    {content}
-                </MarkdownContainer>
+                <div style={styles.content}>
+                    <div style={styles.infoBar}>
+                        <TagList
+                            style={styles.tagList}
+                            linkStyle={styles.tagListLink}
+                            tags={tags}
+                        />
+                        <FormattedDate
+                            {...created}
+                            style={styles.creationDate}
+                        />
+                    </div>
+                    <MarkdownContainer>
+                        {content}
+                    </MarkdownContainer>
+                </div>
                 <div style={styles.disqus}>
                     <DisqusThread
                         // see: https://help.disqus.com/customer/en/portal/articles/472098-javascript-configuration-variables

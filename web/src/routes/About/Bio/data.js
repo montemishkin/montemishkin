@@ -108,6 +108,4 @@ const sections = [
 
 
 
-export default {
-    sections,
-}
+export default sections

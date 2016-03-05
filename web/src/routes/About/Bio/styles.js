@@ -1,14 +1,8 @@
 // local imports
 import colors from 'assets/styles/js/colors'
-import {contentVerticalPadding} from 'assets/styles/js/numerics'
 
 
 export default {
-    container: {
-        padding: `${contentVerticalPadding / 2}px 0`,
-    },
-
-
     link: {
         color: colors.background.interactive,
         textDecoration: 'none',

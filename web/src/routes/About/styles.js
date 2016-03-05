@@ -2,6 +2,7 @@
 import {
     contentWidth,
     contentMaxWidth,
+    contentVerticalPadding,
 } from 'assets/styles/js/numerics'
 
 
@@ -14,5 +15,6 @@ export default {
     content: {
         width: contentWidth,
         maxWidth: contentMaxWidth,
+        padding: contentVerticalPadding,
     },
 }

@@ -14,6 +14,7 @@ export default {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
+        marginBottom: contentVerticalPadding / 2,
     },
 
     tagListLink: {
