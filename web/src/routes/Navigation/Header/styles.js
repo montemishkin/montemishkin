@@ -1,7 +1,7 @@
 // local imports
 import colors from 'assets/styles/js/colors'
 import classes from 'assets/styles/js/classes'
-import {contentMaxWidth} from 'assets/styles/js/numerics'
+import {contentWidth, contentMaxWidth} from 'assets/styles/js/numerics'
 
 
 export default {
@@ -21,7 +21,7 @@ export default {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'flex-end',
-        width: '100%',
+        width: contentWidth,
         maxWidth: contentMaxWidth,
     },
 

@@ -3,14 +3,14 @@ import chroma from 'chroma-js'
 // local imports
 import classes from 'assets/styles/js/classes'
 import colors from 'assets/styles/js/colors'
-import {contentMaxWidth} from 'assets/styles/js/numerics'
+import {contentWidth, contentMaxWidth} from 'assets/styles/js/numerics'
 
 
 const verticalSpacing = 15
 const horizontalSpacing = verticalSpacing * 4 / 3
 const innerContainerBase = {
     display: 'flex',
-    width: '100%',
+    width: contentWidth,
     maxWidth: contentMaxWidth,
 }
 const linkBase = {
