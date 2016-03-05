@@ -29,15 +29,24 @@ if (process.env.NODE_ENV === 'production') {
 
 
 // see: https://github.com/bramstein/fontfaceobserver#how-to-use
-const openSansObserver = new FontFaceObserver('Open Sans')
+let hasLoadedOpenSans400 = false
+let hasLoadedOpenSans700 = false
 const openSansClassName = 'open-sans-font-face-loaded'
+const openSans400Observer = new FontFaceObserver('Open Sans', {weight: 400})
+const openSans700Observer = new FontFaceObserver('Open Sans', {weight: 700})
 
-openSansObserver.check().then(
-    // when Open Sans font loaded, add css class to body indicating so
-    () => document.body.classList.add(openSansClassName),
-    // if Open Sans font not found, add css class to body indicating so
-    () => document.body.classList.remove(openSansClassName)
-)
+openSans400Observer.check().then(() => {
+    hasLoadedOpenSans400 = true
+    if (hasLoadedOpenSans700) {
+        document.body.classList.add(openSansClassName)
+    }
+})
+openSans700Observer.check().then(() => {
+    hasLoadedOpenSans700 = true
+    if (hasLoadedOpenSans400) {
+        document.body.classList.add(openSansClassName)
+    }
+})
 
 
 // grab initial application state passed from server
