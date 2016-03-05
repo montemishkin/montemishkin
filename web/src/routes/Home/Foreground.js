@@ -2,13 +2,19 @@
 import React from 'react'
 import radium from 'radium'
 import {Motion, spring} from 'react-motion'
+import {connect} from 'react-redux'
 // local imports
 import styles from './styles'
 import Link from 'components/Link'
 import MainLogo from 'components/Logos/Main'
 
 
-function Foreground() {
+function Foreground({isLessThanInfinity}) {
+    let linkStyle = styles.linkInfinity
+    if (isLessThanInfinity) {
+        linkStyle = styles.linkMedium
+    }
+
     return (
         <Motion
             defaultStyle={{
@@ -40,20 +46,20 @@ function Foreground() {
                             <Link
                                 to='/about'
                                 style={{
-                                    ...styles.link,
+                                    ...linkStyle,
                                     top: `${y1}vh`,
                                 }}
                             >
-                                About
+                                about
                             </Link>
                             <Link
                                 to='/posts'
                                 style={{
-                                    ...styles.link,
+                                    ...linkStyle,
                                     top: `${y2}vh`,
                                 }}
                             >
-                                Blog
+                                blog
                             </Link>
                         </div>
                     </div>
@@ -64,4 +70,9 @@ function Foreground() {
 }
 
 
-export default radium(Foreground)
+function mapStateToProps(state) {
+    return {isLessThanInfinity: state.browser.lessThan.infinity}
+}
+
+
+export default connect(mapStateToProps)(radium(Foreground))

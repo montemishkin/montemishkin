@@ -1,10 +1,18 @@
 // local imports
 import colors from 'assets/styles/js/colors'
 import classes from 'assets/styles/js/classes'
-import {largestFontSize} from 'assets/styles/js/numerics'
+import {largerFontSize} from 'assets/styles/js/numerics'
 
 
 const spacing = 20
+const linkBase = {
+    ...classes.interactive.primary,
+    transitionProperty: classes.interactive.primary.transitionProperty + ', padding',
+    position: 'relative',
+    display: 'inline-block',
+    color: colors.primary.inverse,
+    fontSize: largerFontSize,
+}
 
 
 export default {
@@ -50,12 +58,14 @@ export default {
     },
 
 
-    link: {
-        position: 'relative',
-        display: 'inline-block',
-        ...classes.interactive.primary,
-        fontSize: largestFontSize,
-        color: colors.primary.inverse,
+    linkMedium: {
+        ...linkBase,
         padding: spacing,
+    },
+
+
+    linkInfinity: {
+        ...linkBase,
+        padding: `${spacing}px ${spacing * 2}px`,
     },
 }
