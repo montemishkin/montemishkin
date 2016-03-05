@@ -9,18 +9,26 @@ import {
 } from 'assets/styles/js/numerics'
 
 
+
 const spacing = 20
 const iconSideLength = 150
-const iconBase = {
+const transitionParameters = {
     transitionDuration: '0.8s',
     transitionTimingFunction: 'ease-in-out',
+}
+const iconBase = {
+    ...transitionParameters,
     transitionProperty: 'width height margin',
 }
 const titleBase = {
+    ...transitionParameters,
+    transitionProperty: 'font-size',
     color: colors.background.inverse,
     margin: spacing,
 }
 const subtitleBase = {
+    ...transitionParameters,
+    transitionProperty: 'font-size',
     color: colors.background.inverse,
     margin: `0 ${spacing}px ${spacing}px ${spacing}px`,
     fontWeight: 'normal',
