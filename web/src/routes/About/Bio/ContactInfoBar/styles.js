@@ -26,7 +26,7 @@ export default {
     },
 
     link: {
-        ...classes.interactive.secondary,
+        ...classes.interactive.background,
         textDecoration: 'none',
         color: colors.background.inverse,
         display: 'flex',

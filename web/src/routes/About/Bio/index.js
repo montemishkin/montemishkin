@@ -4,12 +4,17 @@ import radium from 'radium'
 // local imports
 import styles from './styles'
 import data from './data'
+import ContactInfoBar from './ContactInfoBar'
 import BioSection from './BioSection'
 
 
-function Bio () {
+function Bio({style, ...unusedProps}) {
     return (
-        <article style={styles.container}>
+        <article
+            {...unusedProps}
+            style={[styles.container, style]}
+        >
+            <ContactInfoBar />
             {data.sections.map(({title, Text, Icon}, key) => (
                 <BioSection
                     key={key}

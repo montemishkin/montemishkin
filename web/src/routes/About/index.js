@@ -6,7 +6,6 @@ import Helmet from 'react-helmet'
 import styles from './styles'
 import Banner from 'components/Banner'
 import ProjectsLogo from 'components/Logos/Projects'
-import ContactInfoBar from './ContactInfoBar'
 import Bio from './Bio'
 
 
@@ -20,10 +19,7 @@ function About() {
                 Icon={ProjectsLogo}
             />
             <div style={styles.contentContainer}>
-                <div style={styles.content}>
-                    <ContactInfoBar />
-                    <Bio />
-                </div>
+                <Bio style={styles.content} />
             </div>
         </div>
     )
