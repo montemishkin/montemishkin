@@ -12,8 +12,8 @@ export default {
         // TODO: dont hardcode the color here?
         boxShadow: '0 1px 2px rgba(0, 0, 0, 0.3)',
         // this makes the box shadow visible from under the next element
-        // TODO: doesnt work on Home route.  should i resort to z-index???
-        position: 'relative',
+        // TODO: is there a better way? z-index is undesirable
+        zIndex: 1,
     },
 
 
