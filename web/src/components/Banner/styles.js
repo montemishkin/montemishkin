@@ -1,5 +1,3 @@
-// third party imports
-import chroma from 'chroma-js'
 // local imports
 import colors from 'assets/styles/js/colors'
 import {
@@ -36,8 +34,6 @@ const subtitleBase = {
     margin: `0 ${spacing}px ${spacing}px ${spacing}px`,
     fontWeight: 'normal',
 }
-const bgColor = colors.secondary.main
-const bgColorBrightened = chroma(bgColor).brighten(0.25)
 
 
 export default {
@@ -46,7 +42,7 @@ export default {
         justifyContent: 'center',
         padding: `${spacing * 2}px 0`,
         backgroundColor: colors.secondary.main,
-        backgroundImage: `linear-gradient(to right, ${bgColorBrightened} 0%, ${bgColor} 100%)`,
+        backgroundImage: `linear-gradient(to left, rgba(255, 255, 255, 0.2) 0%, ${colors.secondary.main} 100%)`,
     },
 
 
