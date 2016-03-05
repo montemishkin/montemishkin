@@ -27,7 +27,6 @@ class Post(models.Model):
     subtitle = models.CharField(max_length=200)
     tags = TaggableManager(through=TaggedItem)
     content = models.TextField()
-    bannerImage = models.ImageField(blank=True)
 
     def __str__(self):
         return self.title

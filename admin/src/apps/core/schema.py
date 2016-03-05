@@ -71,25 +71,6 @@ class Tag(graphene.ObjectType):
         return self._root.description
 
 
-class Image(graphene.ObjectType):
-    '''
-    An image.
-    '''
-    url = graphene.String()
-    width = graphene.Int()
-    height = graphene.Int()
-
-    def resolve_url(self, *args, **kwargs):
-        # TODO: this URL route should REALLY not be hardcoded here
-        return 'http://' + settings.HOST_NAME + self._root.url
-
-    def resolve_width(self, *args, **kwargs):
-        return self._root.width
-
-    def resolve_height(self, *args, **kwargs):
-        return self._root.height
-
-
 class Post(graphene.ObjectType):
     '''
     A single blog post.
@@ -102,7 +83,6 @@ class Post(graphene.ObjectType):
     subtitle = graphene.String()
     tags = graphene.List(Tag)
     content = graphene.String()
-    bannerImage = graphene.Field(Image)
 
     def resolve_id(self, *args, **kwargs):
         return self._root.id
@@ -121,9 +101,6 @@ class Post(graphene.ObjectType):
 
     def resolve_subtitle(self, *args, **kwargs):
         return self._root.subtitle
-
-    def resolve_bannerImage(self, *args, **kwargs):
-        return self._root.bannerImage
 
     def resolve_tags(self, *args, **kwargs):
         # grab all tags from tag manager
