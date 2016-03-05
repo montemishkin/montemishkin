@@ -40,8 +40,6 @@ export default {
         height: '70%',
         minWidth: 250,
         backgroundColor: colors.primary.main,
-        // TODO: don't hardcode this color here
-        boxShadow: '0px 0px 5px #737373',
     },
 
 

@@ -47,8 +47,6 @@ export default {
         padding: `${spacing * 2}px 0`,
         backgroundColor: colors.secondary.main,
         backgroundImage: `linear-gradient(to right, ${bgColorBrightened} 0%, ${bgColor} 100%)`,
-        // TODO: dont hardcode the color here?
-        boxShadow: '0 3px 30px rgba(0, 0, 0, 0.3)',
     },
 
 

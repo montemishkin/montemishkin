@@ -9,11 +9,6 @@ export default {
         display: 'flex',
         justifyContent: 'center',
         backgroundColor: colors.primary.main,
-        // TODO: dont hardcode the color here?
-        boxShadow: '0 1px 2px rgba(0, 0, 0, 0.3)',
-        // this makes the box shadow visible from under the next element
-        // TODO: is there a better way? z-index is undesirable
-        zIndex: 1,
     },
 
 

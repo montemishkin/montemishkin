@@ -26,8 +26,6 @@ export default {
         display: 'flex',
         justifyContent: 'center',
         backgroundColor: colors.primary.main,
-        // TODO: dont hardcode the color here?
-        boxShadow: 'inset 0 1px 2px rgba(0, 0, 0, 0.3)',
     },
 
 

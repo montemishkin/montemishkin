@@ -101,5 +101,5 @@ export default {
     iconInfinity: {
         ...iconBase,
         width: 150,
-    }
+    },
 }
