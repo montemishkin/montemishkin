@@ -44,7 +44,6 @@
     - only load what stylesheets are actually needed for the current view
     - cleanup logos
         - remove unused ones
-        - cut away cruft on inkscape output
 
 - data flow
     - relay
