@@ -47,7 +47,7 @@ const iconBase = {
 export function createOuterContainerStyle(index = 0) {
     return {
         ...outerContainerBase,
-        backgroundColor: chroma(colors.background.main).brighten(0.125 * index),
+        backgroundColor: chroma(colors.background.main).brighten(0.125 * index).css(),
     }
 }
 
