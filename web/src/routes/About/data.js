@@ -9,15 +9,15 @@ import List from 'components/List'
 const technicalSkills = [
     {
         url: 'https://facebook.github.io/react/',
-        src: '/static/images/react-logo.svg',
+        src: '/static/images/react.svg',
         alt: 'react logo',
     }, {
         url: 'https://nodejs.org/',
-        src: '/static/images/node-logo.svg',
+        src: '/static/images/node.svg',
         alt: 'node logo',
     }, {
         url: 'https://www.djangoproject.com/',
-        src: '/static/images/django-logo.svg',
+        src: '/static/images/django.svg',
         alt: 'django logo',
     },
 ]
