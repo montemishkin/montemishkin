@@ -42,8 +42,6 @@
     - only load what data is actually needed for the current view
         - see "data flow" todos
     - only load what stylesheets are actually needed for the current view
-    - cleanup logos
-        - remove unused ones
 
 - data flow
     - relay
