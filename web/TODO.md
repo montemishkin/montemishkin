@@ -1,6 +1,5 @@
 - NotFound view
     - make grass taller so that view is responsive
-- remove need for font awesome
 - add posts
     - physics
     - redux responsive?
