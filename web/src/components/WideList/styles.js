@@ -1,5 +1,5 @@
 // local imports
-import {contentWidth, contentMaxWidth} from 'assets/styles/js/numerics'
+import {contentWidth, contentMaxWidth} from 'styles/js/numerics'
 
 
 const spacing = 80

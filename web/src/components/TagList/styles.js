@@ -1,6 +1,6 @@
 // local imports
-import classes from 'assets/styles/js/classes'
-import colors from 'assets/styles/js/colors'
+import classes from 'styles/js/classes'
+import colors from 'styles/js/colors'
 
 
 export default {

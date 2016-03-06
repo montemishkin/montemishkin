@@ -1,7 +1,7 @@
 // third party imports
 import chroma from 'chroma-js'
 // local imports
-import colors from 'assets/styles/js/colors'
+import colors from 'styles/js/colors'
 import {
     mainFontSize,
     largeFontSize,
@@ -10,7 +10,7 @@ import {
     contentWidth,
     contentMaxWidth,
     contentVerticalPadding,
-} from 'assets/styles/js/numerics'
+} from 'styles/js/numerics'
 
 
 const spacing = 30

@@ -1,10 +1,10 @@
 // local imports
-import colors from 'assets/styles/js/colors'
+import colors from 'styles/js/colors'
 import {
     contentWidth,
     contentMaxWidth,
     contentVerticalPadding,
-} from 'assets/styles/js/numerics'
+} from 'styles/js/numerics'
 
 
 export default {

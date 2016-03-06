@@ -1,12 +1,12 @@
 // third party imports
 import chroma from 'chroma-js'
 // local imports
-import classes from 'assets/styles/js/classes'
-import colors from 'assets/styles/js/colors'
+import classes from 'styles/js/classes'
+import colors from 'styles/js/colors'
 import {
     largerFontSize,
     largeFontSize,
-} from 'assets/styles/js/numerics'
+} from 'styles/js/numerics'
 
 
 const transition = {

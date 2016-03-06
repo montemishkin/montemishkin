@@ -1,9 +1,9 @@
 // third party imports
 import chroma from 'chroma-js'
 // local imports
-import classes from 'assets/styles/js/classes'
-import colors from 'assets/styles/js/colors'
-import {contentWidth, contentMaxWidth} from 'assets/styles/js/numerics'
+import classes from 'styles/js/classes'
+import colors from 'styles/js/colors'
+import {contentWidth, contentMaxWidth} from 'styles/js/numerics'
 
 
 const verticalSpacing = 15

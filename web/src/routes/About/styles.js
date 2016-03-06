@@ -1,5 +1,5 @@
 // local imports
-import colors from 'assets/styles/js/colors'
+import colors from 'styles/js/colors'
 
 
 export default {

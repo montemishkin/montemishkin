@@ -1,5 +1,5 @@
 // local imports
-import colors from 'assets/styles/js/colors'
+import colors from 'styles/js/colors'
 import {
     contentWidth,
     contentMaxWidth,
@@ -7,7 +7,7 @@ import {
     largerFontSize,
     largeFontSize,
     mainFontSize,
-} from 'assets/styles/js/numerics'
+} from 'styles/js/numerics'
 
 
 

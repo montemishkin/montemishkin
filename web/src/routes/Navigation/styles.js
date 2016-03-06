@@ -1,6 +1,6 @@
 // local imports
-import colors from 'assets/styles/js/colors'
-import {mainFontSize} from 'assets/styles/js/numerics'
+import colors from 'styles/js/colors'
+import {mainFontSize} from 'styles/js/numerics'
 
 
 export default {

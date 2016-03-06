@@ -1,9 +1,9 @@
 // third party imports
 import chroma from 'chroma-js'
 // local imports
-import classes from 'assets/styles/js/classes'
-import colors from 'assets/styles/js/colors'
-import {largeFontSize, largerFontSize} from 'assets/styles/js/numerics'
+import classes from 'styles/js/classes'
+import colors from 'styles/js/colors'
+import {largeFontSize, largerFontSize} from 'styles/js/numerics'
 
 
 export default {

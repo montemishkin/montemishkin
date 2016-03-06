@@ -1,7 +1,7 @@
 // local imports
-import colors from 'assets/styles/js/colors'
-import classes from 'assets/styles/js/classes'
-import {largerFontSize} from 'assets/styles/js/numerics'
+import colors from 'styles/js/colors'
+import classes from 'styles/js/classes'
+import {largerFontSize} from 'styles/js/numerics'
 
 
 const spacing = 20
