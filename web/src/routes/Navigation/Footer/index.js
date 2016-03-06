@@ -28,7 +28,7 @@ function Footer({isLessThanInfinity}) {
                     </Link>
                 </div>
                 <div style={styles.copyright}>
-                    <i className='fa fa-copyright' />
+                    &copy;
                     {' ' + (new Date()).getFullYear() + ' '}
                     <a
                         href='mailto:monte@mishkin.com'

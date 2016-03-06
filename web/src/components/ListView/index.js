@@ -113,9 +113,4 @@ ListView.propTypes = {
 }
 
 
-ListView.defaultProps = {
-    BannerIcon: radium(props => <i {...props} className='fa fa-search' />),
-}
-
-
 export default radium(ListView)
