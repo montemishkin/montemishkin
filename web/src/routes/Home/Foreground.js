@@ -6,7 +6,6 @@ import {connect} from 'react-redux'
 // local imports
 import styles from './styles'
 import Link from 'components/Link'
-import MainLogo from 'components/Logos/Main'
 
 
 function Foreground({isLessThanInfinity}) {
@@ -34,7 +33,8 @@ function Foreground({isLessThanInfinity}) {
             children={
                 ({y1, y2, x3, y3, t3}) => (
                     <div style={styles.innerContainer}>
-                        <MainLogo
+                        <img
+                            src='/static/images/logo-main.svg'
                             style={{
                                 ...styles.logo,
                                 left: `${x3}vw`,

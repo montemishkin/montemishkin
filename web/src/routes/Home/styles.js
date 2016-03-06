@@ -54,7 +54,8 @@ export default {
     logo: {
         position: 'relative',
         padding: spacing,
-        maxWidth: 200,
+        width: 200,
+        height: 200,
     },
 
 

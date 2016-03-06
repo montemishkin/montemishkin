@@ -4,7 +4,6 @@ import radium from 'radium'
 import Helmet from 'react-helmet'
 // local imports
 import styles from './styles'
-import MainLogo from 'components/Logos/Main'
 
 
 /**
@@ -22,7 +21,10 @@ function NotFound() {
                 src='/static/images/tree.svg'
                 style={styles.treeImage}
             />
-            <MainLogo style={styles.bird} />
+            <img
+                src='/static/images/logo-main.svg'
+                style={styles.bird}
+            />
             <img
                 src='/static/images/grass.svg'
                 style={styles.grassImage}

@@ -2,12 +2,12 @@
 import React, {PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {createSelector} from 'reselect'
+import radium from 'radium'
 import Helmet from 'react-helmet'
 import filter from 'lodash/collection/filter'
 // local imports
 import TagPreview from './TagPreview'
 import ListView from 'components/ListView'
-import MainLogo from 'components/Logos/Main'
 import {fetchAllIfNeeded} from 'store/ducks/tags'
 
 
@@ -27,7 +27,9 @@ function TagList({
         <div>
             <Helmet title='Tags' />
             <ListView
-                BannerIcon={MainLogo}
+                BannerIcon={radium(props =>
+                    <img {...props} src='/static/images/logo-main.svg' />
+                )}
                 title='Tags'
                 subtitle='gotta love em.'
                 items={tags}

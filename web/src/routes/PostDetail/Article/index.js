@@ -10,7 +10,6 @@ import TagList from 'components/TagList'
 import FormattedDate from 'components/FormattedDate'
 import MarkdownContainer from 'components/MarkdownContainer'
 import Spinner from 'components/Spinner'
-import BlogLogo from 'components/Logos/Blog'
 
 
 const isProduction = process.env.NODE_ENV === 'production'
@@ -45,7 +44,9 @@ function LoadedContent({
     url,
 }) {
     return createContent({
-        BannerIcon: BlogLogo,
+        BannerIcon: radium(
+            props => <img {...props} src='/static/images/logo-blog.svg' />
+        ),
         title,
         subtitle,
         tags,

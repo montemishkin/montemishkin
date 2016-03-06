@@ -6,7 +6,6 @@ import Helmet from 'react-helmet'
 import data from './data'
 import BioSection from './BioSection'
 import Banner from 'components/Banner'
-import ProjectsLogo from 'components/Logos/Projects'
 
 
 function About() {
@@ -16,7 +15,9 @@ function About() {
             <Banner
                 title='Monte Mishkin'
                 subtitle='Web Developer / Friendly Person'
-                Icon={ProjectsLogo}
+                Icon={radium(props =>
+                    <img {...props} src='/static/images/logo-projects.svg' />
+                )}
             />
             <article>
                 {data.map(({title, Text, Icon}, key) => (
