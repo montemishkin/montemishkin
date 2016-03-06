@@ -85,7 +85,7 @@ function LoadedContent({
 function ErrorContent({error}) {
     return createContent({
         BannerIcon: radium(
-            props => <i {...props} className='fa fa-exclamation' />
+            props => <img {...props} src='/static/images/error.svg' />
         ),
         title: 'Woops',
         subtitle: 'something went wrong...',
