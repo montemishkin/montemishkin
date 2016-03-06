@@ -13,30 +13,22 @@ function TagList({tags, style, linkStyle, ...unusedProps}) {
     }
 
     return (
-        <div
+        <List
             {...unusedProps}
-            style={[styles.container, style]}
+            style={[styles.list, style]}
+            listItemStyle={styles.listItem}
         >
-            <i
-                style={styles.icon}
-                className='fa fa-tag'
-            />
-            <List style={styles.list} listItemStyle={styles.listItem}>
-                {tags.map(({url, description, name}, key) => (
-                    <Link
-                        to={url}
-                        style={[
-                            styles.link,
-                            linkStyle,
-                        ]}
-                        key={key}
-                        title={description}
-                    >
-                        {name}
-                    </Link>
-                ))}
-            </List>
-        </div>
+            {tags.map(({url, description, name}, key) => (
+                <Link
+                    to={url}
+                    style={[styles.link, linkStyle]}
+                    key={key}
+                    title={description}
+                >
+                    {name}
+                </Link>
+            ))}
+        </List>
     )
 }
 

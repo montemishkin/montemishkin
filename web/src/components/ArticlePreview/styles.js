@@ -1,74 +1,25 @@
-// third party imports
-import chroma from 'chroma-js'
-// local imports
-import classes from 'assets/styles/js/classes'
-import colors from 'assets/styles/js/colors'
-import {
-    contentWidth,
-    contentMaxWidth,
-    largerFontSize,
-    largeFontSize,
-} from 'assets/styles/js/numerics'
-
-
-const transition = {
-    ...classes.transitionParameters,
-    transitionProperty: 'color',
-}
-const titleBase = {
-    ...transition,
-    // textAlign: 'center',
-    fontSize: largerFontSize,
-    paddingBottom: 10,
-}
-const subtitleBase = {
-    ...transition,
-    // width: '80%',
-    // textAlign: 'center',
-    fontSize: largeFontSize,
-}
+const spacing1 = 20
+const spacing2 = spacing1 * 3 / 4
 
 
 export default {
     container: {
         display: 'flex',
         flexDirection: 'column',
-        width: contentWidth,
-        maxWidth: contentMaxWidth,
+        alignItems: 'center',
     },
 
-    infoBar: {
-        width: '100%',
+
+    tagList: {
+        padding: `${spacing2}px ${spacing1}px`,
         display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        padding: '7px 0',
+        justifyContent: 'center',
     },
 
-    link: {
-        textDecoration: 'none',
-        // display: 'flex',
-        // flexDirection: 'column',
-        // alignItems: 'center',
-    },
 
-    title: {
-        ...titleBase,
-        color: colors.background.inverse,
-    },
-
-    titleHovered: {
-        ...titleBase,
-        color: colors.background.interactive,
-    },
-
-    subtitle: {
-        ...subtitleBase,
-        color: chroma(colors.background.inverse).brighten().css(),
-    },
-
-    subtitleHovered: {
-        ...subtitleBase,
-        color: colors.background.interactive,
+    date: {
+        padding: `0 ${spacing1}px ${spacing2}px ${spacing1}px`,
+        display: 'flex',
+        justifyContent: 'center',
     },
 }

@@ -1,5 +1,4 @@
 // local imports
-import classes from 'assets/styles/js/classes'
 import colors from 'assets/styles/js/colors'
 import {
     contentWidth,
@@ -17,16 +16,26 @@ export default {
         marginBottom: contentVerticalPadding / 2,
     },
 
+
     tagListLink: {
-        ...classes.interactive.secondary,
-        color: colors.secondary.inverse,
+        color: colors.background.interactive,
+        textDecoration: 'none',
+
+        ':hover': {
+            textDecoration: 'underline',
+        },
+
+        ':focus': {
+            textDecoration: 'underline',
+        },
     },
+
 
     contentContainer: {
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        justifyContent: 'center',
     },
+
 
     content: {
         padding: `${contentVerticalPadding}px 0`,
@@ -34,9 +43,8 @@ export default {
         maxWidth: contentMaxWidth,
     },
 
-    disqus: {
+
+    markdown: {
         paddingBottom: contentVerticalPadding,
-        width: contentWidth,
-        maxWidth: contentMaxWidth,
     },
 }

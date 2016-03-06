@@ -64,11 +64,9 @@ function LoadedContent({
                             style={styles.creationDate}
                         />
                     </div>
-                    <MarkdownContainer>
+                    <MarkdownContainer style={styles.markdown}>
                         {content}
                     </MarkdownContainer>
-                </div>
-                <div style={styles.disqus}>
                     <DisqusThread
                         // see: https://help.disqus.com/customer/en/portal/articles/472098-javascript-configuration-variables
                         shortname={isProduction ? 'montemishkin' : 'montemishkin-test'}
