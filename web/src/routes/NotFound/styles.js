@@ -10,7 +10,7 @@ export default {
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        backgroundImage: 'linear-gradient(to bottom, #6A6AE4, #DCACAC)',
+        backgroundImage: `linear-gradient(to bottom, ${colors.primary.main}, ${colors.background.interactive})`,
         overflow: 'hidden',
     },
 
@@ -55,12 +55,12 @@ export default {
     title: {
         fontSize: largestFontSize,
         fontWeight: 'bold',
-        color: colors.background.main,
+        color: colors.primary.inverse,
     },
 
     subtitle: {
         paddingTop: 20,
         fontSize: largeFontSize,
-        color: colors.background.main,
+        color: colors.primary.inverse,
     },
 }

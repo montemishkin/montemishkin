@@ -1,3 +1,6 @@
+- NotFound view
+    - make grass taller so that view is responsive
+- remove need for font awesome
 - add posts
     - physics
     - redux responsive?
@@ -85,7 +88,6 @@
                 - its because radium only fixes styling for wrapped components that return raw DOM nodes.  `IndexLink` just returns `Link` with some props set, so the styling doesn't make it to the DOM nodes.
             - anyways, it would really be nice to be able to use `activeStyle`, especially on the nav bar.
     - right now css files are globbed together and concated.  this does not allow me to specify order.  I would like the normalizing to happen before my own custom styles, but right now it is overwriting some of mine.  for example, h1 should have no margin because I do `* {margin: 0;}`, but does have margin because of normalizing.
-    - NotFound view
     - About view content should be rendered markdown.  Since articles' contents are rendered on the django server, you would have to have a separate markdown renderer that produced the exact same output...  Or, render articles' content isomorphically in js.
     - rendered markdown styling
         - would be nice to have the h* anchors hidden until hover the h* element
