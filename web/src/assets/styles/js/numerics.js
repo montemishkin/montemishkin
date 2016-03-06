@@ -3,9 +3,9 @@
  */
 
 
-export const contentMaxWidth = 740
+export const contentMaxWidth = 975
 export const contentWidth = '80%'
-export const contentVerticalPadding = 100
+export const contentVerticalPadding = 80
 
 export const largestFontSize = '32px'
 export const largerFontSize = '24px'
