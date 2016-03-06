@@ -69,8 +69,8 @@ function LoadedContent({
     posts,
 }) {
     return createContent({
-        BannerIcon: radium(
-            props => <i {...props} className='fa fa-tag' />
+        BannerIcon: radium(props =>
+            <img {...props} src='/static/images/logo-nature.svg' />
         ),
         title: name,
         subtitle: description,

@@ -28,7 +28,7 @@ function TagList({
             <Helmet title='Tags' />
             <ListView
                 BannerIcon={radium(props =>
-                    <img {...props} src='/static/images/logo-main.svg' />
+                    <img {...props} src='/static/images/logo-nature.svg' />
                 )}
                 title='Tags'
                 subtitle='gotta love em.'
