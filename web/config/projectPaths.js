@@ -12,7 +12,7 @@ var rootDir = path.join(__dirname, '..')
 var configDir = path.join(rootDir, 'config')
 var buildDir = path.join(rootDir, 'build')
 var sourceDir = path.join(rootDir, 'src')
-var publicDir = path.join(sourceDir, 'public')
+var publicDir = path.join(rootDir, 'public')
 var webpackDir = path.join(configDir, 'webpack')
 // entry points
 var clientEntry = path.join(sourceDir, 'client.js')
