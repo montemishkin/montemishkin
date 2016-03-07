@@ -19,7 +19,7 @@ const transitionParameters = {
 }
 const iconBase = {
     ...transitionParameters,
-    transitionProperty: 'width height margin',
+    transitionProperty: 'width, height, margin',
 }
 const titleBase = {
     ...transitionParameters,

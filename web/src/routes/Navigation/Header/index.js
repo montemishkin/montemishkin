@@ -7,6 +7,7 @@ import Link from 'components/Link'
 import IndexLink from 'components/IndexLink'
 import List from 'components/List'
 
+// TODO: looks a bit weird on small devices to have this justified right
 
 function Header() {
     return (
