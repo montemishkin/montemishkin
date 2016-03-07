@@ -10,38 +10,34 @@ var path = require('path')
 // directories
 var rootDir = path.join(__dirname, '..')
 var configDir = path.join(rootDir, 'config')
-var buildDir = path.join(rootDir, 'build')
 var sourceDir = path.join(rootDir, 'src')
 var publicDir = path.join(rootDir, 'public')
+var privateBuildDir = path.join(rootDir, 'build')
+var publicBuildDir = path.join(publicDir, 'build')
 var webpackDir = path.join(configDir, 'webpack')
 // entry points
 var clientEntry = path.join(sourceDir, 'client.js')
 var serverEntry = path.join(sourceDir, 'index.js')
 // built files
-var clientBuild = path.join(buildDir, path.basename(clientEntry))
-var serverBuild = path.join(buildDir, path.basename(serverEntry))
-var cssBuild = path.join(buildDir, 'styles.css')
+var serverBuild = path.join(privateBuildDir, path.basename(serverEntry))
+var cssBuild = path.join(publicBuildDir, 'styles.css')
 
 
 module.exports = {
     // directories
     rootDir: rootDir,
     sourceDir: sourceDir,
-    buildDir: buildDir,
     publicDir: publicDir,
+    privateBuildDir: privateBuildDir,
+    publicBuildDir: publicBuildDir,
     publicStaticPath: '/static',
     // entry points
     clientEntry: clientEntry,
     serverEntry: serverEntry,
     // built files
-    clientBuild: clientBuild,
     serverBuild: serverBuild,
     cssBuild: cssBuild,
     // globs
-    clientBuildGlob: clientBuild + '*',
-    serverBuildGlob: serverBuild + '*',
-    cssBuildGlob: cssBuild + '*',
-    buildGlob: path.join(buildDir, '*'),
     cssGlob: path.join(sourceDir, 'styles', 'css', '*'),
     testsGlob: path.join(sourceDir, '**', '_tests', 'test_*.js'),
     // configuration files

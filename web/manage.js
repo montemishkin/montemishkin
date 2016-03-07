@@ -5,6 +5,7 @@ var process = require('process')
 var fs = require('fs')
 // third party imports
 var del = require('del')
+var mkdirp = require('mkdirp')
 var karma = require('karma')
 var webpack = require('webpack')
 var glob = require('glob')
@@ -41,7 +42,7 @@ var tasks = {}
  */
 tasks['default'] = function () {
     runRequestedTaskNames(tasks, [
-        'clean-build',
+        'clean',
         'watch-styles',
         'watch-client',
         'watch-server',
@@ -55,7 +56,7 @@ tasks['default'] = function () {
  */
 tasks['build-production'] = function () {
     runRequestedTaskNames(tasks, [
-        'clean-build',
+        'clean',
         'build-styles-production',
         'build-client-production',
         'build-server-production',
@@ -175,8 +176,6 @@ tasks['tdd'] = function () {
  * Build client entry point for production.
  */
 tasks['build-client-production'] = function () {
-    runRequestedTaskNames(tasks, ['clean-client'])
-
     setProductionEnvironment()
 
     var config = require(projectPaths.webpackClientConfig)
@@ -189,8 +188,6 @@ tasks['build-client-production'] = function () {
  * Build server entry point for production.
  */
 tasks['build-server-production'] = function () {
-    runRequestedTaskNames(tasks, ['clean-server'])
-
     setProductionEnvironment()
 
     var config = require(projectPaths.webpackServerConfig)
@@ -203,8 +200,6 @@ tasks['build-server-production'] = function () {
  * Build styles for production.
  */
 tasks['build-styles-production'] = function () {
-    runRequestedTaskNames(tasks, ['clean-styles'])
-
     setProductionEnvironment()
 
     var plugins = [
@@ -234,34 +229,15 @@ tasks['build-styles-production'] = function () {
 
 
 /**
- * Remove all ouptut files from previous client builds.
- */
-tasks['clean-client'] = function () {
-    del.sync(projectPaths.clientBuildGlob)
-}
-
-
-/**
- * Remove all ouptut files from previous server builds.
- */
-tasks['clean-server'] = function () {
-    del.sync(projectPaths.serverBuildGlob)
-}
-
-
-/**
- * Remove all ouptut files from previous styles builds.
- */
-tasks['clean-styles'] = function () {
-    del.sync(projectPaths.cssBuildGlob)
-}
-
-
-/**
  * Remove ALL previously built files.
  */
-tasks['clean-build'] = function () {
-    del.sync(projectPaths.buildGlob)
+tasks['clean'] = function () {
+    del.sync([
+        projectPaths.privateBuildDir,
+        projectPaths.publicBuildDir,
+    ])
+    mkdirp.sync(projectPaths.privateBuildDir)
+    mkdirp.sync(projectPaths.publicBuildDir)
 }
 
 

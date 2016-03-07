@@ -27,8 +27,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
     output: {
         filename: '[name].js',
-        chunkFilename: 'chunk-[id]-[chunkhash].js',
-        path: projectPaths.buildDir,
+        chunkFilename: 'chunk-[id].js',
     },
     module: {
         preLoaders: [

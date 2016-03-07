@@ -38,6 +38,9 @@ module.exports = assign({}, baseConfig, {
     entry: {
         index: projectPaths.serverEntry,
     },
+    output: assign({}, baseConfig.output, {
+        path: projectPaths.privateBuildDir,
+    }),
     target: 'node',
     // don't bundle node modules
     externals: nodeModules,

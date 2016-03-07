@@ -11,7 +11,6 @@ import Helmet from 'react-helmet'
 // local imports
 import projectPaths from 'config/projectPaths'
 const {
-    buildDir,
     publicDir,
     favicon: faviconPath,
     publicStaticPath,
@@ -38,8 +37,8 @@ server.use(favicon(faviconPath))
 
 /* Routing */
 
-// route static files to build and public dirs
-server.use(publicStaticPath, serveStatic(buildDir), serveStatic(publicDir))
+// route static files to public dir
+server.use(publicStaticPath, serveStatic(publicDir))
 // route all surviving requests through the react-router routes
 server.all('*', (req, res) => {
     const location = req.url
