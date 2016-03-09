@@ -1,19 +1,27 @@
+// third party imports
+import chroma from 'chroma-js'
 // local imports
 import colors from 'styles/js/colors'
-import {
-    contentWidth,
-    contentMaxWidth,
-    contentVerticalPadding,
-} from 'styles/js/numerics'
+import {contentVerticalPadding} from 'styles/js/numerics'
 
 
 export default {
+    comments: {
+        backgroundColor: chroma(colors.background.main).brighten(0.125).css(),
+    },
+
+
     infoBar: {
-        width: '100%',
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
+        alignItems: 'center',
         marginBottom: contentVerticalPadding / 2,
+    },
+
+
+    creationDate: {
+        padding: 9,
     },
 
 
@@ -28,23 +36,5 @@ export default {
         ':focus': {
             textDecoration: 'underline',
         },
-    },
-
-
-    contentContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-    },
-
-
-    content: {
-        padding: `${contentVerticalPadding}px 0`,
-        width: contentWidth,
-        maxWidth: contentMaxWidth,
-    },
-
-
-    markdown: {
-        paddingBottom: contentVerticalPadding,
     },
 }

@@ -9,6 +9,7 @@ import Banner from 'components/Banner'
 import TagList from 'components/TagList'
 import FormattedDate from 'components/FormattedDate'
 import MarkdownContainer from 'components/MarkdownContainer'
+import CenteredSection from 'components/CenteredSection'
 import Spinner from 'components/Spinner'
 
 
@@ -20,6 +21,7 @@ function createContent({
     title,
     subtitle,
     content,
+    comments,
     ...unusedProps,
 }) {
     return (
@@ -29,7 +31,14 @@ function createContent({
                 title={title}
                 subtitle={subtitle}
             />
-            {content}
+            <CenteredSection>
+                {content}
+            </CenteredSection>
+            {comments && (
+                <CenteredSection style={styles.comments}>
+                        {comments}
+                </CenteredSection>
+            )}
         </article>
     )
 }
@@ -51,33 +60,30 @@ function LoadedContent({
         subtitle,
         tags,
         created,
-        content: (
-            <section style={styles.contentContainer}>
-                <div style={styles.content}>
-                    <div style={styles.infoBar}>
-                        <TagList
-                            style={styles.tagList}
-                            linkStyle={styles.tagListLink}
-                            tags={tags}
-                        />
-                        <FormattedDate
-                            {...created}
-                            style={styles.creationDate}
-                        />
-                    </div>
-                    <MarkdownContainer style={styles.markdown}>
-                        {content}
-                    </MarkdownContainer>
-                    <DisqusThread
-                        // see: https://help.disqus.com/customer/en/portal/articles/472098-javascript-configuration-variables
-                        shortname={isProduction ? 'montemishkin' : 'montemishkin-test'}
-                        identifier={url}
-                        title={title}
-                        // TODO: this url should not be hardcoded here
-                        url={`http://monte.mishkin.com${url}`}
-                    />
-                </div>
-            </section>
+        content: [
+            <div style={styles.infoBar} key='a'>
+                <TagList
+                    linkStyle={styles.tagListLink}
+                    tags={tags}
+                />
+                <FormattedDate
+                    {...created}
+                    style={styles.creationDate}
+                />
+            </div>,
+            <MarkdownContainer key='b'>
+                {content}
+            </MarkdownContainer>,
+        ],
+        comments: (
+            <DisqusThread
+                // see: https://help.disqus.com/customer/en/portal/articles/472098-javascript-configuration-variables
+                shortname={isProduction ? 'montemishkin' : 'montemishkin-test'}
+                identifier={url}
+                title={title}
+                // TODO: this url should not be hardcoded here
+                url={`http://monte.mishkin.com${url}`}
+            />
         ),
     })
 }
@@ -90,13 +96,7 @@ function ErrorContent({error}) {
         ),
         title: 'Woops',
         subtitle: 'something went wrong...',
-        content: (
-            <section style={styles.contentContainer}>
-                <div style={styles.content}>
-                    Error: {error.message}
-                </div>
-            </section>
-        ),
+        content: `Error: ${error.message}`,
     })
 }
 
@@ -106,13 +106,7 @@ function LoadingContent() {
         BannerIcon: Spinner,
         title: 'Loading',
         subtitle: '...',
-        content: (
-            <section style={styles.contentContainer}>
-                <div style={styles.content}>
-                    Loading...
-                </div>
-            </section>
-        ),
+        content: 'Loading...',
     })
 }
 
