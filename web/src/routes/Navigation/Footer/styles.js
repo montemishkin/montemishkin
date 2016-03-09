@@ -6,12 +6,13 @@ import colors from 'styles/js/colors'
 import {contentWidth, contentMaxWidth} from 'styles/js/numerics'
 
 
-const verticalSpacing = 15
-const horizontalSpacing = verticalSpacing * 4 / 3
+const verticalSpacing = 7.5
+const horizontalSpacing = verticalSpacing * 8 / 3
 const innerContainerBase = {
     display: 'flex',
     width: contentWidth,
     maxWidth: contentMaxWidth,
+    padding: `${verticalSpacing}px 0`,
 }
 const linkBase = {
     ...classes.interactive.primary,
