@@ -25,13 +25,17 @@ var nodeModules = fs.readdirSync('node_modules')
 
 
 // extend base configuration's plugins
-var plugins = baseConfig.plugins.concat(
-    // add source map support
-    new webpack.BannerPlugin(
-        'require("source-map-support").install();',
-        {raw: true, entryOnly: false}
+var plugins = baseConfig.plugins.concat()
+
+if (process.env.NODE_ENV !== 'production') {
+    plugins.push(
+        // add source map support
+        new webpack.BannerPlugin(
+            'require("source-map-support").install();',
+            {raw: true, entryOnly: false}
+        )
     )
-)
+}
 
 
 module.exports = assign({}, baseConfig, {
