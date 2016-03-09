@@ -7,9 +7,6 @@ import {
     largeFontSize,
     largerFontSize,
     largestFontSize,
-    contentWidth,
-    contentMaxWidth,
-    contentVerticalPadding,
 } from 'styles/js/numerics'
 
 
@@ -17,11 +14,6 @@ const spacing = 30
 const transitionParameters = {
     transitionDuration: '0.4s',
     transitionTimingFunction: 'ease-in-out',
-}
-const outerContainerBase = {
-    position: 'relative',
-    display: 'flex',
-    justifyContent: 'center',
 }
 const titleBase = {
     ...transitionParameters,
@@ -44,22 +36,14 @@ const iconBase = {
 }
 
 
-export function createOuterContainerStyle(index = 0) {
+export function createContainerStyle(index = 0) {
     return {
-        ...outerContainerBase,
         backgroundColor: chroma(colors.background.main).brighten(0.125 * index).css(),
     }
 }
 
 
 export default {
-    innerContainer: {
-        width: contentWidth,
-        maxWidth: contentMaxWidth,
-        padding: `${contentVerticalPadding}px 0`,
-    },
-
-
     titleMedium: {
         ...titleBase,
         fontSize: largerFontSize,

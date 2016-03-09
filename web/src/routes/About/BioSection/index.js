@@ -3,7 +3,8 @@ import React from 'react'
 import radium from 'radium'
 import {connect} from 'react-redux'
 // local imports
-import styles, {createOuterContainerStyle} from './styles'
+import styles, {createContainerStyle} from './styles'
+import CenteredSection from 'components/CenteredSection'
 
 
 function BioSection({Title, Text, Icon, index, isLessThanInfinity}) {
@@ -23,18 +24,16 @@ function BioSection({Title, Text, Icon, index, isLessThanInfinity}) {
     const renderedIcon = <Icon style={iconStyle} key='b' />
 
     return (
-        <section style={createOuterContainerStyle(index)}>
-            <div style={styles.innerContainer}>
-                <Title style={titleStyle} />
-                <div style={styles.content}>
-                    {
-                        index % 2 === 1
-                            ? [renderedText, renderedIcon]
-                            : [renderedIcon, renderedText]
-                    }
-                </div>
+        <CenteredSection style={createContainerStyle(index)}>
+            <Title style={titleStyle} />
+            <div style={styles.content}>
+                {
+                    index % 2 === 1
+                        ? [renderedText, renderedIcon]
+                        : [renderedIcon, renderedText]
+                }
             </div>
-        </section>
+        </CenteredSection>
     )
 }
 
