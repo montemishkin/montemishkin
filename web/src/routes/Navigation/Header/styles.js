@@ -4,6 +4,14 @@ import classes from 'styles/js/classes'
 import {contentWidth, contentMaxWidth} from 'styles/js/numerics'
 
 
+const innerContainerBase = {
+    display: 'flex',
+    flexWrap: 'wrap',
+    width: contentWidth,
+    maxWidth: contentMaxWidth,
+}
+
+
 export default {
     outerContainer: {
         display: 'flex',
@@ -12,12 +20,15 @@ export default {
     },
 
 
-    innerContainer: {
-        display: 'flex',
-        flexWrap: 'wrap',
+    innerContainerInfinity: {
+        ...innerContainerBase,
         justifyContent: 'flex-end',
-        width: contentWidth,
-        maxWidth: contentMaxWidth,
+    },
+
+
+    innerContainerMedium: {
+        ...innerContainerBase,
+        justifyContent: 'flex-start',
     },
 
 

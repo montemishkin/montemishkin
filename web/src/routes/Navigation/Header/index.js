@@ -1,18 +1,22 @@
 // third party imports
 import React from 'react'
 import radium from 'radium'
+import {connect} from 'react-redux'
 // local imports
 import styles from './styles'
 import Link from 'components/Link'
 import IndexLink from 'components/IndexLink'
 import List from 'components/List'
 
-// TODO: looks a bit weird on small devices to have this justified right
 
-function Header() {
+function Header({isLessThanInfinity}) {
+    const innerContainerStyle = isLessThanInfinity
+        ? styles.innerContainerMedium
+        : styles.innerContainerInfinity
+
     return (
         <nav style={styles.outerContainer}>
-            <List style={styles.innerContainer}>
+            <List style={innerContainerStyle}>
                 <IndexLink to='/' style={styles.link}>
                     HOME
                 </IndexLink>
@@ -28,4 +32,9 @@ function Header() {
 }
 
 
-export default radium(Header)
+function mapStateToProps(state) {
+    return {isLessThanInfinity: state.browser.lessThan.infinity}
+}
+
+
+export default connect(mapStateToProps)(radium(Header))
