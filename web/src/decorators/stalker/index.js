@@ -1,58 +1,55 @@
 // third party imports
 import React, {Component} from 'react'
 import reactDOM from 'react-dom'
+import throttle from 'lodash/function/throttle'
 // local imports
 import {createContainerStyle} from './styles'
-import withScrollProps from 'decorators/withScrollProps'
 
 
-function stalker(Element) {
+function stalker(Element, throttleTime = 0) {
     class Stalker extends Component {
         constructor(...args) {
             super(...args)
-            this.state = {
-                ref: null,
-                initialRect: null,
-            }
+            this.state = {ref: null}
         }
 
 
-        refHandler = ref => {
-            // `ref` can be a react element or a dom node (or null)
-            // but `node` will always be the actual dom node (or null)
-            const node = ref === null || ref.getBoundingClientRect
+        boundForceUpdate = () => this.forceUpdate()
+
+
+        handleScroll = throttleTime > 0
+            ? throttle(this.boundForceUpdate, throttleTime)
+            : this.boundForceUpdate
+
+
+        componentDidMount() {
+            window.addEventListener('scroll', this.handleScroll)
+        }
+
+
+        componentWillUnmount() {
+            window.removeEventListener('scroll', this.handleScroll)
+        }
+
+
+        refHandler = ref => this.setState({
+            // `ref` arg can be a react element or a dom node (or null)
+            // but `state.ref` will always be the actual dom node (or null)
+            ref: ref === null || ref.getBoundingClientRect
                 ? ref
-                : reactDOM.findDOMNode(ref)
-
-            this.setState({
-                ref: node,
-                initialRect: node === null
-                    ? null
-                    : node.getBoundingClientRect(),
-            })
-        }
+                : reactDOM.findDOMNode(ref),
+        })
 
 
         render() {
             const {
-                props: {
-                    /* eslint-disable no-unused-vars */
-                    // so that it is not passed on
-                    scrollX,
-                    /* eslint-enable no-unused-vars */
-                    scrollY,
-                    style,
-                    ...unusedProps,
-                },
-                state: {
-                    ref,
-                    initialRect,
-                },
+                props: {style, ...unusedProps},
+                state: {ref},
                 refHandler,
             } = this
 
             const computedStyle = {
-                ...createContainerStyle({ref, initialRect, scrollY}),
+                ...createContainerStyle(ref),
                 ...style,
             }
 
@@ -67,7 +64,7 @@ function stalker(Element) {
     }
 
 
-    return withScrollProps(Stalker)
+    return Stalker
 }
 
 

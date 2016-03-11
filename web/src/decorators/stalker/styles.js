@@ -4,10 +4,11 @@ const containerBase = {
 }
 
 
-export function createContainerStyle({scrollY, ref, initialRect}) {
+export function createContainerStyle(ref) {
     if (ref !== null) {
         const parentRect = ref.parentNode.getBoundingClientRect()
-        const rectHeight = initialRect.bottom - initialRect.top
+        const myRect = ref.getBoundingClientRect()
+        const rectHeight = myRect.bottom - myRect.top
 
         if (rectHeight > parentRect.bottom) {
             return {
@@ -15,7 +16,7 @@ export function createContainerStyle({scrollY, ref, initialRect}) {
                 bottom: 0,
             }
         }
-        if (scrollY > initialRect.top) {
+        if (parentRect.top < 0) {
             return {
                 ...containerBase,
                 position: 'fixed',
