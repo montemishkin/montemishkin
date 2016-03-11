@@ -43,13 +43,12 @@ function Content({content, style, ...unusedProps}) {
     if (content === '') {
         // render message saying no content
         return (
-            // TODO: make this sound nicer
-            <span
+            <div
                 {...unusedProps}
                 style={[styles.message, style]}
             >
-                no content
-            </span>
+                There is no content!
+            </div>
         )
     }
 
@@ -59,13 +58,12 @@ function Content({content, style, ...unusedProps}) {
     if (headers.length === 0) {
         // render message saying no headers
         return (
-            // TODO: make this sound nicer
-            <span
+            <div
                 {...unusedProps}
                 style={[styles.message, style]}
             >
-                no headers
-            </span>
+                Sorry, it{"'"}s all just one section.
+            </div>
         )
     }
 
