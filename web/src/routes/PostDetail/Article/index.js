@@ -10,6 +10,7 @@ import TagList from 'components/TagList'
 import FormattedDate from 'components/FormattedDate'
 import MarkdownContainer from 'components/MarkdownContainer'
 import CenteredSection from 'components/CenteredSection'
+import TableOfContents from 'components/TableOfContents'
 import Spinner from 'components/Spinner'
 
 
@@ -71,9 +72,15 @@ function LoadedContent({
                     style={styles.creationDate}
                 />
             </div>,
-            <MarkdownContainer key='b'>
-                {content}
-            </MarkdownContainer>,
+            <div style={styles.content} key='b'>
+                <TableOfContents
+                    style={styles.toc}
+                    content={content}
+                />
+                <MarkdownContainer style={styles.markdown}>
+                    {content}
+                </MarkdownContainer>
+            </div>,
         ],
         comments: (
             <DisqusThread

@@ -5,7 +5,25 @@ import colors from 'styles/js/colors'
 import {contentVerticalPadding} from 'styles/js/numerics'
 
 
+const tocWidth = 200
+
+
 export default {
+    content: {
+        position: 'relative',
+    },
+
+
+    toc: {
+        width: tocWidth,
+    },
+
+
+    markdown: {
+        marginLeft: tocWidth,
+    },
+
+
     comments: {
         backgroundColor: chroma(colors.background.main).brighten(0.125).css(),
     },

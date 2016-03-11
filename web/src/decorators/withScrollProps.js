@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import throttle from 'lodash/function/throttle'
 
 
-function withScrollProps(Element, throttleTime = 100) {
+function withScrollProps(Element, throttleTime = 0) {
     return class ScrollListener extends Component {
         constructor(...args) {
             super(...args)
@@ -14,13 +14,15 @@ function withScrollProps(Element, throttleTime = 100) {
         }
 
 
-        handleScroll = throttle(
-            () => this.setState({
-                scrollX: window.scrollX,
-                scrollY: window.scrollY,
-            }),
-            throttleTime
-        )
+        updateScrollXY = () => this.setState({
+            scrollX: window.scrollX,
+            scrollY: window.scrollY,
+        })
+
+
+        handleScroll = throttleTime > 0
+            ? throttle(this.updateScrollXY, throttleTime)
+            : this.updateScrollXY
 
 
         componentDidMount() {
@@ -34,15 +36,13 @@ function withScrollProps(Element, throttleTime = 100) {
 
 
         render() {
-            const {
-                props,
-                state: {
-                    scrollX,
-                    scrollY,
-                },
-            } = this
-
-            return <Element {...props} scrollX={scrollX} scrollY={scrollY} />
+            return (
+                <Element
+                    {...this.props}
+                    scrollX={this.state.scrollX}
+                    scrollY={this.state.scrollY}
+                />
+            )
         }
     }
 }
