@@ -6,6 +6,7 @@ import favicon from 'serve-favicon'
 import serveStatic from 'serve-static'
 import React from 'react'
 import {renderToString} from 'react-dom/server'
+import {StyleSheetServer} from 'aphrodite'
 import {match} from 'react-router'
 import Helmet from 'react-helmet'
 // local imports
@@ -71,8 +72,10 @@ server.all('*', (req, res) => {
             // a response to a request it didnt make (the server made it)
             const initialState = JSON.stringify(store.getState())
 
-            // rendered app
-            const renderedComponent = renderToString(
+            const {
+                html: renderedComponent,
+                css,
+            } = StyleSheetServer.renderStatic(() => renderToString(
                 <App
                     store={store}
                     renderProps={renderProps}
@@ -80,7 +83,7 @@ server.all('*', (req, res) => {
                         userAgent: req.headers['user-agent'],
                     }}
                 />
-            )
+            ))
 
             // see: https://github.com/nfl/react-helmet#server-usage
             const helmet = Helmet.rewind()
@@ -89,6 +92,8 @@ server.all('*', (req, res) => {
                 initialState,
                 renderedComponent,
                 title: helmet.title,
+                css: css.content,
+                renderedClassNames: JSON.stringify(css.renderedClassNames),
             })
 
             res.send(html)

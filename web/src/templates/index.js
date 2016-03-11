@@ -1,4 +1,10 @@
-export default function renderTemplate({title, initialState, renderedComponent}) {
+export default function renderTemplate({
+    title,
+    initialState,
+    renderedComponent,
+    css,
+    renderedClassNames,
+}) {
     return `<!DOCTYPE html>
 <html>
   <head>
@@ -7,7 +13,11 @@ export default function renderTemplate({title, initialState, renderedComponent})
     <link rel="icon" href="/static/images/favicon.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
     <link rel="stylesheet" href="/static/build/styles.css">
-    <script>window.__INITIAL_STATE__ = ${initialState};</script>
+    <style data-aphrodite>${css}</style>
+    <script>
+        window.__INITIAL_STATE__ = ${initialState};
+        window.__RENDERED_CLASS_NAMES__ = ${renderedClassNames};
+    </script>
   </head>
   <body>
     <div id="app">${renderedComponent}</div>

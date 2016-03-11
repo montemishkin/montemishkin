@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom'
 import {Router, match, browserHistory as history} from 'react-router'
 import {Provider} from 'react-redux'
 import FontFaceObserver from 'fontfaceobserver'
+import {StyleSheet} from 'aphrodite'
 // local imports
 import routes from 'routes'
 import {createStore} from 'store'
@@ -53,6 +54,11 @@ openSans700Observer.check().then(() => {
 const initialState = window.__INITIAL_STATE__
 // instantiate client store with initial application state
 const store = createStore(initialState)
+
+// grab rendered css class names passed from server
+const renderedClassNames = window.__RENDERED_CLASS_NAMES__
+// rehydrate stylesheet with already rendered css class names
+StyleSheet.rehydrate(renderedClassNames)
 
 
 // see: https://github.com/reactjs/react-router/blob/master/docs/guides/ServerRendering.md#async-routes
