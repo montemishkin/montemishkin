@@ -21,9 +21,6 @@
 - be more secure
     - http://expressjs.com/en/advanced/best-practice-security.html
 
-- branding
-    - another variation of bird logo for tag search view
-
 - development
     - move checks for production env into settings file, import from there
     - establish consistency with `export` vs `export default`
@@ -85,7 +82,3 @@
             - anyways, it would really be nice to be able to use `activeStyle`, especially on the nav bar.
     - right now css files are globbed together and concated.  this does not allow me to specify order.  I would like the normalizing to happen before my own custom styles, but right now it is overwriting some of mine.  for example, h1 should have no margin because I do `* {margin: 0;}`, but does have margin because of normalizing.
     - About view content should be rendered markdown.  Since articles' contents are rendered on the django server, you would have to have a separate markdown renderer that produced the exact same output...  Or, render articles' content isomorphically in js.
-    - rendered markdown styling
-        - would be nice to have the h* anchors hidden until hover the h* element
-    - overall DRY design
-        - magic numbers
