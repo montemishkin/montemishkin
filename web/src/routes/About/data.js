@@ -107,8 +107,7 @@ const sections = [
                 for more details.
             </p>
         ),
-        // TODO: this icon no longer makes sense (did it really ever though?)
-        Icon: props => <img {...props} src='/static/images/slate.svg'/>,
+        Icon: props => <img {...props} src='/static/images/logo-chill.svg'/>,
     },
 // wrap components in radium
 ].map(section => ({
