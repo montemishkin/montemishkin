@@ -2,8 +2,7 @@
 import React, {PropTypes} from 'react'
 import radium from 'radium'
 // local imports
-import styles, {createLinkStyle} from './styles'
-import List from 'components/List'
+import styles, {createListItemStyle} from './styles'
 
 
 function processContent(content) {
@@ -72,26 +71,32 @@ function Content({content, style, ...unusedProps}) {
 
     // render list of links to page contents
     return (
-        <List
+        <ul
             {...unusedProps}
             style={[styles.list, style]}
         >
             {headers.map(({id, textContent, tagName}, key) => {
                 const level = tagName.match(/^h([1-6])$/i)[1]
                 const depth = levels.indexOf(level)
-                const linkStyle = createLinkStyle(depth)
+                const listItemStyle = createListItemStyle(depth)
 
                 return (
-                    <a
+                    <li
                         key={key}
-                        style={linkStyle}
-                        href={`#${id}`}
+                        style={listItemStyle}
                     >
-                        {textContent}
-                    </a>
+                        <a
+                            // needed for radium dynamic styles
+                            key={`${key}a`}
+                            style={styles.link}
+                            href={`#${id}`}
+                        >
+                            {textContent}
+                        </a>
+                    </li>
                 )
             })}
-        </List>
+        </ul>
     )
 }
 

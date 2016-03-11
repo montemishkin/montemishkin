@@ -13,9 +13,9 @@ function TableOfContents({content, style, ...unusedProps}) {
             {...unusedProps}
             style={[styles.container, style]}
         >
-            <div style={styles.title}>
+            <h3 style={styles.title}>
                 Table of Contents
-            </div>
+            </h3>
             <Content content={content} />
         </nav>
     )
