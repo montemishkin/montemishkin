@@ -9,8 +9,8 @@ import IndexLink from 'components/IndexLink'
 import List from 'components/List'
 
 
-function Header({isLessThanInfinity}) {
-    const innerContainerStyle = isLessThanInfinity
+function Header({isLessThanLarge}) {
+    const innerContainerStyle = isLessThanLarge
         ? styles.innerContainerMedium
         : styles.innerContainerInfinity
 
@@ -33,7 +33,7 @@ function Header({isLessThanInfinity}) {
 
 
 function mapStateToProps(state) {
-    return {isLessThanInfinity: state.browser.lessThan.infinity}
+    return {isLessThanLarge: state.browser.lessThan.large}
 }
 
 

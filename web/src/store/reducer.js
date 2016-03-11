@@ -7,7 +7,10 @@ import tags from './ducks/tags'
 
 
 export default combineReducers({
-    browser: createResponsiveStateReducer({medium: 700}),
+    browser: createResponsiveStateReducer({
+        medium: 700,
+        large: 900,
+    }),
     posts,
     tags,
 })
