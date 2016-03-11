@@ -8,8 +8,8 @@ import Link from 'components/Link'
 import IndexLink from 'components/IndexLink'
 
 
-function Footer({isLessThanInfinity}) {
-    const innerContainerStyle = isLessThanInfinity
+function Footer({isLessThanLarge}) {
+    const innerContainerStyle = isLessThanLarge
         ? styles.innerContainerMedium
         : styles.innerContainerInfinity
 
@@ -44,7 +44,7 @@ function Footer({isLessThanInfinity}) {
 
 
 function mapStateToProps(state) {
-    return {isLessThanInfinity: state.browser.lessThan.infinity}
+    return {isLessThanLarge: state.browser.lessThan.large}
 }
 
 

@@ -8,9 +8,9 @@ import styles from './styles'
 import Link from 'components/Link'
 
 
-function Foreground({isLessThanInfinity}) {
+function Foreground({isLessThanLarge}) {
     let linkStyle = styles.linkInfinity
-    if (isLessThanInfinity) {
+    if (isLessThanLarge) {
         linkStyle = styles.linkMedium
     }
 
@@ -71,7 +71,7 @@ function Foreground({isLessThanInfinity}) {
 
 
 function mapStateToProps(state) {
-    return {isLessThanInfinity: state.browser.lessThan.infinity}
+    return {isLessThanLarge: state.browser.lessThan.large}
 }
 
 

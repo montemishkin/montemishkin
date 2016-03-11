@@ -7,13 +7,13 @@ import styles, {createContainerStyle} from './styles'
 import CenteredSection from 'components/CenteredSection'
 
 
-function BioSection({Title, Text, Icon, index, isLessThanInfinity}) {
+function BioSection({Title, Text, Icon, index, isLessThanLarge}) {
     // default to styling for large viewport
     let titleStyle = styles.titleInfinity
     let textStyle = styles.textInfinity
     let iconStyle = styles.iconInfinity
     // if viewport is smaller than infinity
-    if (isLessThanInfinity) {
+    if (isLessThanLarge) {
         // use medium styling
         titleStyle = styles.titleMedium
         textStyle = styles.textMedium
@@ -39,7 +39,7 @@ function BioSection({Title, Text, Icon, index, isLessThanInfinity}) {
 
 
 function mapStateToProps(state) {
-    return {isLessThanInfinity: state.browser.lessThan.infinity}
+    return {isLessThanLarge: state.browser.lessThan.large}
 }
 
 

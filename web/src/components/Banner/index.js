@@ -7,7 +7,7 @@ import styles from './styles'
 
 
 function Banner({
-    isLessThanInfinity,
+    isLessThanLarge,
     Icon,
     title,
     subtitle,
@@ -19,7 +19,7 @@ function Banner({
     let titleStyle = styles.titleInfinity
     let subtitleStyle = styles.subtitleInfinity
     // if viewport is smaller than infinity
-    if (isLessThanInfinity) {
+    if (isLessThanLarge) {
         // use medium styling
         iconStyle = styles.iconMedium
         titleStyle = styles.titleMedium
@@ -58,7 +58,7 @@ Banner.propTypes = {
 
 
 function mapStateToProps(state) {
-    return {isLessThanInfinity: state.browser.lessThan.infinity}
+    return {isLessThanLarge: state.browser.lessThan.large}
 }
 
 
