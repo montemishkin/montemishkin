@@ -5,7 +5,10 @@ import colors from 'styles/js/colors'
 import {contentVerticalPadding} from 'styles/js/numerics'
 
 
-const tocWidth = 200
+const tocWidth = 225
+const tocBase = {
+    padding: '10px 20px 0 0',
+}
 
 
 export default {
@@ -14,12 +17,23 @@ export default {
     },
 
 
-    toc: {
+    tocMedium: {
+        ...tocBase,
+        display: 'none',
+    },
+
+
+    tocInfinity: {
+        ...tocBase,
         width: tocWidth,
     },
 
 
-    markdown: {
+    markdownMedium: {
+    },
+
+
+    markdownInfinity: {
         marginLeft: tocWidth,
     },
 

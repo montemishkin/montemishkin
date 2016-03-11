@@ -1,5 +1,6 @@
 // third party imports
 import React, {PropTypes} from 'react'
+import {connect} from 'react-redux'
 import radium from 'radium'
 import DisqusThread from 'react-disqus-thread'
 // local imports
@@ -52,7 +53,15 @@ function LoadedContent({
     created,
     content,
     url,
+    isLessThanInfinity,
 }) {
+    let tocStyle = styles.tocInfinity
+    let markdownStyle = styles.markdownInfinity
+    if (isLessThanInfinity) {
+        tocStyle = styles.tocMedium
+        markdownStyle = styles.markdownMedium
+    }
+
     return createContent({
         BannerIcon: radium(
             props => <img {...props} src='/static/images/logo-blog.svg' />
@@ -74,10 +83,10 @@ function LoadedContent({
             </div>,
             <div style={styles.content} key='b'>
                 <TableOfContents
-                    style={styles.toc}
+                    style={tocStyle}
                     content={content}
                 />
-                <MarkdownContainer style={styles.markdown}>
+                <MarkdownContainer style={markdownStyle}>
                     {content}
                 </MarkdownContainer>
             </div>,
@@ -159,4 +168,9 @@ Article.propTypes = {
 }
 
 
-export default radium(Article)
+function mapStateToProps(state) {
+    return {isLessThanInfinity: state.browser.lessThan.infinity}
+}
+
+
+export default connect(mapStateToProps)(radium(Article))

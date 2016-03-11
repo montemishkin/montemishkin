@@ -1,7 +1,6 @@
 const containerBase = {
     boxSizing: 'border-box',
     position: 'absolute',
-    padding: 15,
 }
 
 

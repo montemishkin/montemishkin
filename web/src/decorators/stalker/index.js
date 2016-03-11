@@ -18,15 +18,17 @@ function stalker(Element) {
 
 
         refHandler = ref => {
-            // `ref` can be a react element or a dom node
-            // but `node` will always be the actual dom node
-            const node = ref.getBoundingClientRect
+            // `ref` can be a react element or a dom node (or null)
+            // but `node` will always be the actual dom node (or null)
+            const node = ref === null || ref.getBoundingClientRect
                 ? ref
                 : reactDOM.findDOMNode(ref)
 
             this.setState({
                 ref: node,
-                initialRect: node.getBoundingClientRect(),
+                initialRect: node === null
+                    ? null
+                    : node.getBoundingClientRect(),
             })
         }
 
