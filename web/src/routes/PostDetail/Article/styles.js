@@ -7,7 +7,7 @@ import {contentVerticalPadding} from 'styles/js/numerics'
 
 const tocWidth = 225
 const tocBase = {
-    padding: '10px 20px 0 0',
+    paddingTop: 10,
 }
 
 
@@ -34,7 +34,7 @@ export default {
 
 
     markdownInfinity: {
-        marginLeft: tocWidth,
+        marginLeft: tocWidth + 30,
     },
 
 
