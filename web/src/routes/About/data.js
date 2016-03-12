@@ -1,5 +1,6 @@
 // third party imports
 import React from 'react'
+import {css} from 'aphrodite'
 import radium from 'radium'
 // local imports
 import styles from './styles'
@@ -39,7 +40,7 @@ const sections = [
             <p {...props}>
                 Check out my
                 {' '}<a
-                    style={styles.link}
+                    className={css(styles.link)}
                     target='_blank'
                     href='/static/monte_mishkin_resume.pdf'
                     key='resume'
@@ -48,7 +49,7 @@ const sections = [
                 </a>{' '}
                 for the full details, but for the most part, my
                 {' '}<a
-                    style={styles.link}
+                    className={css(styles.link)}
                     target='_blank'
                     href='https://github.com/montemishkin'
                     key='projects'
@@ -59,13 +60,16 @@ const sections = [
                 technologies.
             </p>
         ),
-        Icon: ({style}) => (
-            <List style={[styles.logoList, style]}>
+        Icon: ({className, ...unusedProps}) => (
+            <List
+                {...unusedProps}
+                className={`${css(styles.logoList)} ${className}`}
+            >
                 {technicalSkills.map(({url, src, alt}, key) => (
                     <a
                         target='_blank'
                         href={url}
-                        style={styles.logoLink}
+                        className={css(styles.logoLink)}
                         key={key}
                     >
                         <img src={src} alt={alt}/>
@@ -79,7 +83,7 @@ const sections = [
             <p {...props}>
                 Check out my
                 {' '}<a
-                    style={styles.link}
+                    className={css(styles.link)}
                     target='_blank'
                     href='https://github.com/montemishkin'
                     key='GitHub'
@@ -88,7 +92,7 @@ const sections = [
                 </a>
                 , send me an
                 {' '}<a
-                    style={styles.link}
+                    className={css(styles.link)}
                     target='_blank'
                     href='mailto:monte@mishkin.com'
                     key='email'
@@ -97,7 +101,7 @@ const sections = [
                 </a>
                 , or take a look at my
                 {' '}<a
-                    style={styles.link}
+                    className={css(styles.link)}
                     target='_blank'
                     href='/static/monte_mishkin_resume.pdf'
                     key='resume'

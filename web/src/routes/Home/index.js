@@ -1,6 +1,6 @@
 // third party imports
 import React from 'react'
-import radium from 'radium'
+import {css} from 'aphrodite'
 import Helmet from 'react-helmet'
 // local imports
 import styles from './styles'
@@ -11,7 +11,7 @@ import Foreground from './Foreground'
 
 function Home() {
     return (
-        <section style={styles.outerContainer}>
+        <section className={css(styles.outerContainer)}>
             <Helmet title='Home' />
             {[BackBlock, FrontBlock, Foreground].map(
                 (Element, key) => <Element key={key} />
@@ -21,4 +21,4 @@ function Home() {
 }
 
 
-export default radium(Home)
+export default Home

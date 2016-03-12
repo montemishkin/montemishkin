@@ -7,7 +7,7 @@ import Link from 'components/Link'
 import List from 'components/List'
 
 
-function TagList({tags, style, linkStyle, ...unusedProps}) {
+function TagList({tags, style, linkStyle, linkClassName, ...unusedProps}) {
     if (tags.length === 0) {
         return (<div />)
     }
@@ -22,6 +22,7 @@ function TagList({tags, style, linkStyle, ...unusedProps}) {
                 <Link
                     to={url}
                     style={[styles.link, linkStyle]}
+                    className={linkClassName}
                     key={key}
                     title={description}
                 >

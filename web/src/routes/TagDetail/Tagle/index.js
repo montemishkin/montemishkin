@@ -1,5 +1,6 @@
 // third party imports
 import React, {PropTypes} from 'react'
+import {css} from 'aphrodite'
 import radium from 'radium'
 // local imports
 import styles from './styles'
@@ -35,8 +36,8 @@ function LoadingContent() {
         title: 'Loading',
         subtitle: '...',
         content: (
-            <section style={styles.contentContainer}>
-                <div style={styles.content}>
+            <section className={css(styles.contentContainer)}>
+                <div className={css(styles.content)}>
                     Loading...
                 </div>
             </section>
@@ -53,8 +54,8 @@ function ErrorContent({error}) {
         title: 'Woops',
         subtitle: 'something went wrong...',
         content: (
-            <section style={styles.contentContainer}>
-                <div style={styles.content}>
+            <section className={css(styles.contentContainer)}>
+                <div className={css(styles.content)}>
                     Error: {error.message}
                 </div>
             </section>
@@ -135,4 +136,4 @@ Tagle.propTypes = {
 }
 
 
-export default radium(Tagle)
+export default Tagle

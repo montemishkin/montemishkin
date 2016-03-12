@@ -1,19 +1,14 @@
 // third party imports
 import React from 'react'
+import {css} from 'aphrodite'
 import radium from 'radium'
 import {Motion, spring} from 'react-motion'
-import {connect} from 'react-redux'
 // local imports
 import styles from './styles'
 import Link from 'components/Link'
 
 
-function Foreground({isLessThanLarge}) {
-    let linkStyle = styles.linkInfinity
-    if (isLessThanLarge) {
-        linkStyle = styles.linkMedium
-    }
-
+function Foreground() {
     return (
         <Motion
             defaultStyle={{
@@ -32,11 +27,11 @@ function Foreground({isLessThanLarge}) {
             }}
             children={
                 ({y1, y2, x3, y3, t3}) => (
-                    <div style={styles.innerContainer}>
+                    <div className={css(styles.innerContainer)}>
                         <img
                             src='/static/images/logo-main.svg'
+                            className={css(styles.logo)}
                             style={{
-                                ...styles.logo,
                                 left: `${x3}vw`,
                                 top: `${y3}vh`,
                                 transform: `rotate(${t3}deg)`,
@@ -45,19 +40,15 @@ function Foreground({isLessThanLarge}) {
                         <div>
                             <Link
                                 to='/about'
-                                style={{
-                                    ...linkStyle,
-                                    top: `${y1}vh`,
-                                }}
+                                className={css(styles.link)}
+                                style={{top: `${y1}vh`}}
                             >
                                 about
                             </Link>
                             <Link
                                 to='/posts'
-                                style={{
-                                    ...linkStyle,
-                                    top: `${y2}vh`,
-                                }}
+                                className={css(styles.link)}
+                                style={{top: `${y2}vh`}}
                             >
                                 blog
                             </Link>
@@ -70,9 +61,4 @@ function Foreground({isLessThanLarge}) {
 }
 
 
-function mapStateToProps(state) {
-    return {isLessThanLarge: state.browser.lessThan.large}
-}
-
-
-export default connect(mapStateToProps)(radium(Foreground))
+export default radium(Foreground)

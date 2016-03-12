@@ -35,4 +35,4 @@ function About() {
 }
 
 
-export default radium(About)
+export default About

@@ -1,38 +1,33 @@
 // third party imports
 import React from 'react'
-import radium from 'radium'
-import {connect} from 'react-redux'
+import {css} from 'aphrodite'
 // local imports
 import styles from './styles'
 import Link from 'components/Link'
 import IndexLink from 'components/IndexLink'
 
 
-function Footer({isLessThanLarge}) {
-    const innerContainerStyle = isLessThanLarge
-        ? styles.innerContainerMedium
-        : styles.innerContainerInfinity
-
+function Footer() {
     return (
-        <footer style={styles.outerContainer}>
-            <div style={innerContainerStyle}>
-                <div style={styles.navLinks}>
-                    <IndexLink to='/' style={styles.navLink}>
+        <footer className={css(styles.outerContainer)}>
+            <div className={css(styles.innerContainer)}>
+                <div className={css(styles.navLinks)}>
+                    <IndexLink to='/' className={css(styles.navLink)}>
                         HOME
                     </IndexLink>
-                    <Link to='/about' style={styles.navLink}>
+                    <Link to='/about' className={css(styles.navLink)}>
                         ABOUT
                     </Link>
-                    <Link to='/posts' style={styles.navLink}>
+                    <Link to='/posts' className={css(styles.navLink)}>
                         BLOG
                     </Link>
                 </div>
-                <div style={styles.copyright}>
+                <div className={css(styles.copyright)}>
                     &copy;
                     {' ' + (new Date()).getFullYear() + ' '}
                     <a
                         href='mailto:monte@mishkin.com'
-                        style={styles.emailLink}
+                        className={css(styles.emailLink)}
                     >
                         MM
                     </a>
@@ -43,9 +38,4 @@ function Footer({isLessThanLarge}) {
 }
 
 
-function mapStateToProps(state) {
-    return {isLessThanLarge: state.browser.lessThan.large}
-}
-
-
-export default connect(mapStateToProps)(radium(Footer))
+export default Footer

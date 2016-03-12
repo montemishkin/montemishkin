@@ -1,6 +1,6 @@
 // third party imports
 import React from 'react'
-import radium from 'radium'
+import {css} from 'aphrodite'
 import Helmet from 'react-helmet'
 // local imports
 import styles from './styles'
@@ -13,10 +13,10 @@ import Footer from './Footer'
  */
 function Navigation({children}) {
     return (
-        <div style={styles.container}>
+        <div className={css(styles.container)}>
             <Helmet title=':)' titleTemplate='%s | Monte Mishkin' />
             <Header />
-            <main style={styles.content}>
+            <main className={css(styles.content)}>
                 {children}
             </main>
             <Footer />
@@ -25,4 +25,4 @@ function Navigation({children}) {
 }
 
 
-export default radium(Navigation)
+export default Navigation

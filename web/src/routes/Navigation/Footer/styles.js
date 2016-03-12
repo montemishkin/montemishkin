@@ -1,19 +1,15 @@
 // third party imports
+import {StyleSheet} from 'aphrodite'
 import chroma from 'chroma-js'
 // local imports
 import classes from 'styles/js/classes'
 import colors from 'styles/js/colors'
 import {contentWidth, contentMaxWidth} from 'styles/js/numerics'
+import mediaQueries from 'styles/js/mediaQueries'
 
 
 const verticalSpacing = 7.5
 const horizontalSpacing = verticalSpacing * 8 / 3
-const innerContainerBase = {
-    display: 'flex',
-    width: contentWidth,
-    maxWidth: contentMaxWidth,
-    padding: `${verticalSpacing}px 0`,
-}
 const linkBase = {
     ...classes.interactive.primary,
     color: colors.primary.inverse,
@@ -22,7 +18,7 @@ const linkBase = {
 }
 
 
-export default {
+export default StyleSheet.create({
     outerContainer: {
         display: 'flex',
         justifyContent: 'center',
@@ -30,16 +26,20 @@ export default {
     },
 
 
-    innerContainerMedium: {
-        ...innerContainerBase,
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
+    innerContainer: {
+        display: 'flex',
+        width: contentWidth,
+        maxWidth: contentMaxWidth,
+        padding: `${verticalSpacing}px 0`,
 
+        [mediaQueries.medium.lt]: {
+            flexDirection: 'column',
+            alignItems: 'center',
+        },
 
-    innerContainerInfinity: {
-        ...innerContainerBase,
-        justifyContent: 'space-between',
+        [mediaQueries.medium.ge]: {
+            justifyContent: 'space-between',
+        },
     },
 
 
@@ -62,4 +62,4 @@ export default {
     emailLink: {
         ...linkBase,
     },
-}
+})

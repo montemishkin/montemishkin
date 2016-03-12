@@ -1,5 +1,6 @@
 // third party imports
 import React from 'react'
+import {css} from 'aphrodite'
 import radium from 'radium'
 import {Motion, spring} from 'react-motion'
 // local imports
@@ -15,12 +16,10 @@ function FrontBlock() {
             }}
             children={
                 ({left}) => (
-                    <div style={styles.innerContainer}>
+                    <div className={css(styles.innerContainer)}>
                         <div
-                            style={{
-                                ...styles.frontBlock,
-                                left: `${left}vw`,
-                            }}
+                            className={css(styles.frontBlock)}
+                            style={{left: `${left}vw`}}
                         />
                     </div>
                 )

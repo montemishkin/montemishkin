@@ -1,6 +1,6 @@
 // third party imports
 import React, {PropTypes} from 'react'
-import {connect} from 'react-redux'
+import {css} from 'aphrodite'
 import radium from 'radium'
 import DisqusThread from 'react-disqus-thread'
 // local imports
@@ -37,7 +37,7 @@ function createContent({
                 {content}
             </CenteredSection>
             {comments && (
-                <CenteredSection style={styles.comments}>
+                <CenteredSection className={css(styles.comments)}>
                         {comments}
                 </CenteredSection>
             )}
@@ -53,15 +53,7 @@ function LoadedContent({
     created,
     content,
     url,
-    isLessThanInfinity,
 }) {
-    let tocStyle = styles.tocInfinity
-    let markdownStyle = styles.markdownInfinity
-    if (isLessThanInfinity) {
-        tocStyle = styles.tocMedium
-        markdownStyle = styles.markdownMedium
-    }
-
     return createContent({
         BannerIcon: radium(
             props => <img {...props} src='/static/images/logo-blog.svg' />
@@ -71,22 +63,22 @@ function LoadedContent({
         tags,
         created,
         content: [
-            <div style={styles.infoBar} key='a'>
+            <div className={css(styles.infoBar)} key='a'>
                 <TagList
-                    linkStyle={styles.tagListLink}
+                    linkClassName={css(styles.tagListLink)}
                     tags={tags}
                 />
                 <FormattedDate
                     {...created}
-                    style={styles.creationDate}
+                    className={css(styles.creationDate)}
                 />
             </div>,
-            <div style={styles.content} key='b'>
+            <div className={css(styles.content)} key='b'>
                 <TableOfContents
-                    style={tocStyle}
+                    className={css(styles.toc)}
                     content={content}
                 />
-                <MarkdownContainer style={markdownStyle}>
+                <MarkdownContainer className={css(styles.markdown)}>
                     {content}
                 </MarkdownContainer>
             </div>,
@@ -168,9 +160,4 @@ Article.propTypes = {
 }
 
 
-function mapStateToProps(state) {
-    return {isLessThanInfinity: state.browser.lessThan.infinity}
-}
-
-
-export default connect(mapStateToProps)(radium(Article))
+export default Article

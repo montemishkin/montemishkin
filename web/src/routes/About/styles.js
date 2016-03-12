@@ -1,8 +1,10 @@
+// third party imports
+import {StyleSheet} from 'aphrodite'
 // local imports
 import colors from 'styles/js/colors'
 
 
-export default {
+export default StyleSheet.create({
     link: {
         color: colors.background.interactive,
         textDecoration: 'none',
@@ -38,4 +40,4 @@ export default {
         marginLeft: '2em',
         textAlign: 'left',
     },
-}
+})

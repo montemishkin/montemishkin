@@ -12,3 +12,8 @@ export const largerFontSize = '24px'
 export const largeFontSize = '18px'
 export const mainFontSize = '14px'
 export const smallFontSize = '12px'
+
+export const breakpoints = {
+    medium: 700,
+    large: 900,
+}

@@ -1,18 +1,13 @@
+// third party imports
+import {StyleSheet} from 'aphrodite'
 // local imports
 import colors from 'styles/js/colors'
 import classes from 'styles/js/classes'
 import {contentWidth, contentMaxWidth} from 'styles/js/numerics'
+import mediaQueries from 'styles/js/mediaQueries'
 
 
-const innerContainerBase = {
-    display: 'flex',
-    flexWrap: 'wrap',
-    width: contentWidth,
-    maxWidth: contentMaxWidth,
-}
-
-
-export default {
+export default StyleSheet.create({
     outerContainer: {
         display: 'flex',
         justifyContent: 'center',
@@ -20,15 +15,15 @@ export default {
     },
 
 
-    innerContainerInfinity: {
-        ...innerContainerBase,
-        justifyContent: 'flex-end',
-    },
+    innerContainer: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        width: contentWidth,
+        maxWidth: contentMaxWidth,
 
-
-    innerContainerMedium: {
-        ...innerContainerBase,
-        justifyContent: 'flex-start',
+        [mediaQueries.medium.ge]: {
+            justifyContent: 'flex-end',
+        },
     },
 
 
@@ -39,4 +34,4 @@ export default {
         textDecoration: 'none',
         padding: '15px 20px',
     },
-}
+})

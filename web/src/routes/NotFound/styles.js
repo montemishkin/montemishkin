@@ -1,9 +1,11 @@
+// third party imports
+import {StyleSheet} from 'aphrodite'
 // local imports
 import colors from 'styles/js/colors'
 import {largestFontSize, largeFontSize} from 'styles/js/numerics'
 
 
-export default {
+export default StyleSheet.create({
     container: {
         flexGrow: 1,
         minHeight: '50%',
@@ -63,4 +65,4 @@ export default {
         fontSize: largeFontSize,
         color: colors.primary.inverse,
     },
-}
+})

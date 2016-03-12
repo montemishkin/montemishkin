@@ -1,4 +1,5 @@
 // third party imports
+import {StyleSheet} from 'aphrodite'
 import chroma from 'chroma-js'
 // local imports
 import colors from 'styles/js/colors'
@@ -8,31 +9,13 @@ import {
     largerFontSize,
     largestFontSize,
 } from 'styles/js/numerics'
+import mediaQueries from 'styles/js/mediaQueries'
 
 
 const spacing = 30
 const transitionParameters = {
     transitionDuration: '0.4s',
     transitionTimingFunction: 'ease-in-out',
-}
-const titleBase = {
-    ...transitionParameters,
-    transitionProperty: 'font-size',
-    padding: '15px 0',
-    textAlign: 'center',
-}
-const textBase = {
-    ...transitionParameters,
-    transitionProperty: 'font-size',
-    lineHeight: 1.6,
-    textAlign: 'center',
-    padding: spacing,
-    width: 350,
-}
-const iconBase = {
-    ...transitionParameters,
-    transitionProperty: 'width',
-    padding: spacing,
 }
 
 
@@ -43,16 +26,20 @@ export function createContainerStyle(index = 0) {
 }
 
 
-export default {
-    titleMedium: {
-        ...titleBase,
-        fontSize: largerFontSize,
-    },
+export default StyleSheet.create({
+    title: {
+        ...transitionParameters,
+        transitionProperty: 'font-size',
+        padding: '15px 0',
+        textAlign: 'center',
 
+        [mediaQueries.medium.lt]: {
+            fontSize: largerFontSize,
+        },
 
-    titleInfinity: {
-        ...titleBase,
-        fontSize: largestFontSize,
+        [mediaQueries.medium.ge]: {
+            fontSize: largestFontSize,
+        },
     },
 
 
@@ -64,26 +51,35 @@ export default {
     },
 
 
-    textMedium: {
-        ...textBase,
-        fontSize: mainFontSize,
+    text: {
+        ...transitionParameters,
+        transitionProperty: 'font-size',
+        lineHeight: 1.6,
+        textAlign: 'center',
+        padding: spacing,
+        width: 350,
+
+        [mediaQueries.medium.lt]: {
+            fontSize: mainFontSize,
+        },
+
+        [mediaQueries.medium.ge]: {
+            fontSize: largeFontSize,
+        },
     },
 
 
-    textInfinity: {
-        ...textBase,
-        fontSize: largeFontSize,
+    icon: {
+        ...transitionParameters,
+        transitionProperty: 'width',
+        padding: spacing,
+
+        [mediaQueries.medium.lt]: {
+            width: 100,
+        },
+
+        [mediaQueries.medium.ge]: {
+            width: 150,
+        },
     },
-
-
-    iconMedium: {
-        ...iconBase,
-        width: 100,
-    },
-
-
-    iconInfinity: {
-        ...iconBase,
-        width: 150,
-    },
-}
+})
