@@ -1,5 +1,6 @@
 // third party imports
 import React from 'react'
+import radium from 'radium'
 
 
 function Spinner({className, ...unusedProps}) {
@@ -13,4 +14,4 @@ function Spinner({className, ...unusedProps}) {
 }
 
 
-export default Spinner
+export default radium(Spinner)

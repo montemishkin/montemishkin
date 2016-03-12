@@ -1,5 +1,6 @@
 // third party imports
 import React, {PropTypes} from 'react'
+import {css} from 'aphrodite'
 import radium from 'radium'
 // local imports
 import styles, {createListItemStyle} from './styles'
@@ -38,14 +39,14 @@ function processContent(content) {
 }
 
 
-function Content({content, style, ...unusedProps}) {
+function Content({content, className, ...unusedProps}) {
     // if no content given
     if (content === '') {
         // render message saying no content
         return (
             <div
                 {...unusedProps}
-                style={[styles.message, style]}
+                className={`${css(styles.message)} ${className}`}
             >
                 There is no content!
             </div>
@@ -60,7 +61,7 @@ function Content({content, style, ...unusedProps}) {
         return (
             <div
                 {...unusedProps}
-                style={[styles.message, style]}
+                className={`${css(styles.message)} ${className}`}
             >
                 Sorry, it{"'"}s all just one section.
             </div>
@@ -71,7 +72,7 @@ function Content({content, style, ...unusedProps}) {
     return (
         <ul
             {...unusedProps}
-            style={[styles.list, style]}
+            className={`${css(styles.list)} ${className}`}
         >
             {headers.map(({id, textContent, tagName}, key) => {
                 const level = tagName.match(/^h([1-6])$/i)[1]
@@ -84,9 +85,7 @@ function Content({content, style, ...unusedProps}) {
                         style={listItemStyle}
                     >
                         <a
-                            // needed for radium dynamic styles
-                            key={`${key}a`}
-                            style={styles.link}
+                            className={css(styles.link)}
                             href={`#${id}`}
                         >
                             {textContent}

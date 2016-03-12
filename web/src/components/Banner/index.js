@@ -1,44 +1,31 @@
 // third party imports
 import React, {PropTypes} from 'react'
+import {css} from 'aphrodite'
 import radium from 'radium'
-import {connect} from 'react-redux'
 // local imports
 import styles from './styles'
 
 
 function Banner({
-    isLessThanLarge,
     Icon,
     title,
     subtitle,
-    style,
+    className,
     ...unusedProps,
 }) {
-    // default to infinity styling
-    let iconStyle = styles.iconInfinity
-    let titleStyle = styles.titleInfinity
-    let subtitleStyle = styles.subtitleInfinity
-    // if viewport is smaller than infinity
-    if (isLessThanLarge) {
-        // use medium styling
-        iconStyle = styles.iconMedium
-        titleStyle = styles.titleMedium
-        subtitleStyle = styles.subtitleMedium
-    }
-
     return (
         <header
             {...unusedProps}
-            style={[styles.outerContainer, style]}
+            className={`${css(styles.outerContainer)} ${className}`}
         >
-            <div style={styles.innerContainer}>
-                {Icon && <Icon style={iconStyle} />}
-                <div style={styles.text}>
-                    <h1 style={titleStyle}>
+            <div className={css(styles.innerContainer)}>
+                {Icon && <Icon className={css(styles.icon)} />}
+                <div className={css(styles.text)}>
+                    <h1 className={css(styles.title)}>
                         {title}
                     </h1>
                     {subtitle && (
-                        <h2 style={subtitleStyle}>
+                        <h2 className={css(styles.subtitle)}>
                             {subtitle}
                         </h2>
                     )}
@@ -57,9 +44,4 @@ Banner.propTypes = {
 }
 
 
-function mapStateToProps(state) {
-    return {isLessThanLarge: state.browser.lessThan.large}
-}
-
-
-export default connect(mapStateToProps)(radium(Banner))
+export default radium(Banner)

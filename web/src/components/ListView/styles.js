@@ -1,3 +1,5 @@
+// third party imports
+import {StyleSheet} from 'aphrodite'
 // local imports
 import {
     contentWidth,
@@ -6,7 +8,7 @@ import {
 } from 'styles/js/numerics'
 
 
-export default {
+export default StyleSheet.create({
     messageContainer: {
         display: 'flex',
         justifyContent: 'center',
@@ -19,4 +21,4 @@ export default {
         maxWidth: contentMaxWidth,
         textAlign: 'center',
     },
-}
+})

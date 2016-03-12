@@ -1,5 +1,6 @@
 // third party imports
 import React, {Component, PropTypes} from 'react'
+import {css} from 'aphrodite'
 import radium from 'radium'
 // local imports
 import styles from './styles'
@@ -35,6 +36,8 @@ class LinkedTitleGroup extends Component {
                 url,
                 title,
                 subtitle,
+                className,
+                ...unusedProps,
             },
             state: {
                 linkIsHovered,
@@ -46,6 +49,13 @@ class LinkedTitleGroup extends Component {
             handleBlur,
         } = this
 
+        // inject all styles regardless of state so that
+        // we dont wait for injection when state changes
+        css(styles.title)
+        css(styles.subtitle)
+        css(styles.titleHovered)
+        css(styles.subtitleHovered)
+
         let titleStyle = styles.title
         let subtitleStyle = styles.subtitle
         if (linkIsHovered || linkIsFocused) {
@@ -54,20 +64,23 @@ class LinkedTitleGroup extends Component {
         }
 
         return (
-            <div style={styles.container}>
+            <div
+                {...unusedProps}
+                className={`${css(styles.container)} ${className}`}
+            >
                 <Link
                     to={url}
-                    style={styles.link}
+                    className={css(styles.link)}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                 >
-                    <h3 style={titleStyle}>
+                    <h3 className={css(titleStyle)}>
                         {title}
                     </h3>
                     {subtitle && (
-                        <p style={subtitleStyle}>
+                        <p className={css(subtitleStyle)}>
                             {subtitle}
                         </p>
                     )}

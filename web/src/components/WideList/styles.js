@@ -1,3 +1,5 @@
+// third party imports
+import {StyleSheet} from 'aphrodite'
 // local imports
 import {contentWidth, contentMaxWidth} from 'styles/js/numerics'
 
@@ -9,7 +11,7 @@ const listItemBase = {
 }
 
 
-export default {
+export default StyleSheet.create({
     list: {
         display: 'flex',
         flexDirection: 'column',
@@ -27,4 +29,4 @@ export default {
         ...listItemBase,
         padding: `${spacing}px 0`,
     },
-}
+})

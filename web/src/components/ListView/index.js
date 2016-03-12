@@ -1,6 +1,6 @@
 // third party imports
 import React, {PropTypes} from 'react'
-import radium from 'radium'
+import {css} from 'aphrodite'
 // local imports
 import styles from './styles'
 import Banner from 'components/Banner'
@@ -10,8 +10,8 @@ import Loader from 'components/Loader'
 
 function Message({content}) {
     return (
-        <div style={styles.messageContainer}>
-            <span style={styles.message}>
+        <div className={css(styles.messageContainer)}>
+            <span className={css(styles.message)}>
                 {content}
             </span>
         </div>
@@ -39,7 +39,7 @@ function ListContent({items, PreviewComponent}) {
 
 function LoadingContent(props) {
     return (
-        <section style={styles.contentContainer}>
+        <section className={css(styles.contentContainer)}>
             <Message content={'Loading...'} />
             <ListContent {...props} />
         </section>
@@ -49,7 +49,7 @@ function LoadingContent(props) {
 
 function ErrorContent({error, ...unusedProps}) {
     return (
-        <section style={styles.contentContainer}>
+        <section className={css(styles.contentContainer)}>
             <Message content={`Error: ${error.message}`} />
             <ListContent {...unusedProps} />
         </section>
@@ -59,7 +59,7 @@ function ErrorContent({error, ...unusedProps}) {
 
 function LoadedContent(props) {
     return (
-        <section style={styles.contentContainer}>
+        <section className={css(styles.contentContainer)}>
             <ListContent {...props} />
         </section>
     )
@@ -113,4 +113,4 @@ ListView.propTypes = {
 }
 
 
-export default radium(ListView)
+export default ListView

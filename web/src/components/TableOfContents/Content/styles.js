@@ -1,3 +1,5 @@
+// third party imports
+import {StyleSheet} from 'aphrodite'
 // local imports
 import colors from 'styles/js/colors'
 
@@ -15,7 +17,7 @@ export function createListItemStyle(depth) {
 }
 
 
-export default {
+export default StyleSheet.create({
     list: {
         ...containerBase,
         listStylePosition: 'inside',
@@ -39,4 +41,4 @@ export default {
             textDecoration: 'underline',
         },
     },
-}
+})

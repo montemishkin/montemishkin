@@ -1,4 +1,5 @@
 // third party imports
+import {StyleSheet} from 'aphrodite'
 import chroma from 'chroma-js'
 // local imports
 import classes from 'styles/js/classes'
@@ -26,7 +27,7 @@ const subtitleBase = {
 }
 
 
-export default {
+export default StyleSheet.create({
     container: {
         display: 'flex',
         flexDirection: 'column',
@@ -61,4 +62,4 @@ export default {
         ...subtitleBase,
         color: colors.background.interactive,
     },
-}
+})

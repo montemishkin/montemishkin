@@ -11,10 +11,10 @@ function Link({style, ...unusedProps}) {
     return (
         <ReactRouterLinkWithRadium
             {...unusedProps}
-            style={[
-                {textDecoration: 'none'},
-                style,
-            ]}
+            style={{
+                textDecoration: 'none',
+                ...style,
+            }}
         />
     )
 }

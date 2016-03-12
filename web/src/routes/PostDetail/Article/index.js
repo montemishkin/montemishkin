@@ -4,7 +4,7 @@ import {css} from 'aphrodite'
 import radium from 'radium'
 import DisqusThread from 'react-disqus-thread'
 // local imports
-import styles from './styles'
+import styles, {tagListLinkStyle} from './styles'
 import Loader from 'components/Loader'
 import Banner from 'components/Banner'
 import TagList from 'components/TagList'
@@ -65,7 +65,7 @@ function LoadedContent({
         content: [
             <div className={css(styles.infoBar)} key='a'>
                 <TagList
-                    linkClassName={css(styles.tagListLink)}
+                    linkStyle={tagListLinkStyle}
                     tags={tags}
                 />
                 <FormattedDate

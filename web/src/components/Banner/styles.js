@@ -1,3 +1,5 @@
+// third party imports
+import {StyleSheet} from 'aphrodite'
 // local imports
 import colors from 'styles/js/colors'
 import {
@@ -8,6 +10,7 @@ import {
     largeFontSize,
     mainFontSize,
 } from 'styles/js/numerics'
+import mediaQueries from 'styles/js/mediaQueries'
 
 
 
@@ -17,26 +20,9 @@ const transitionParameters = {
     transitionDuration: '0.8s',
     transitionTimingFunction: 'ease-in-out',
 }
-const iconBase = {
-    ...transitionParameters,
-    transitionProperty: 'width, height, margin',
-}
-const titleBase = {
-    ...transitionParameters,
-    transitionProperty: 'font-size',
-    color: colors.background.inverse,
-    margin: spacing,
-}
-const subtitleBase = {
-    ...transitionParameters,
-    transitionProperty: 'font-size',
-    color: colors.background.inverse,
-    margin: `0 ${spacing}px ${spacing}px ${spacing}px`,
-    fontWeight: 'normal',
-}
 
 
-export default {
+export default StyleSheet.create({
     outerContainer: {
         display: 'flex',
         justifyContent: 'center',
@@ -53,20 +39,22 @@ export default {
     },
 
 
-    iconMedium: {
-        ...iconBase,
-        width: 0,
-        height: 0,
-        margin: 0,
-    },
+    icon: {
+        ...transitionParameters,
+        transitionProperty: 'width, height, margin',
 
+        [mediaQueries.medium.lt]: {
+            width: 0,
+            height: 0,
+            margin: 0,
+        },
 
-    iconInfinity: {
-        ...iconBase,
-        flexShrink: 0,
-        width: iconSideLength,
-        height: iconSideLength,
-        marginRight: spacing * 2,
+        [mediaQueries.medium.ge]: {
+            flexShrink: 0,
+            width: iconSideLength,
+            height: iconSideLength,
+            marginRight: spacing * 2,
+        },
     },
 
 
@@ -77,26 +65,35 @@ export default {
     },
 
 
-    titleMedium: {
-        ...titleBase,
-        fontSize: largerFontSize,
+    title: {
+        ...transitionParameters,
+        transitionProperty: 'font-size',
+        color: colors.background.inverse,
+        margin: spacing,
+
+        [mediaQueries.medium.lt]: {
+            fontSize: largerFontSize,
+        },
+
+        [mediaQueries.medium.ge]: {
+            fontSize: largestFontSize,
+        },
     },
 
 
-    titleInfinity: {
-        ...titleBase,
-        fontSize: largestFontSize,
+    subtitle: {
+        ...transitionParameters,
+        transitionProperty: 'font-size',
+        color: colors.background.inverse,
+        margin: `0 ${spacing}px ${spacing}px ${spacing}px`,
+        fontWeight: 'normal',
+
+        [mediaQueries.medium.lt]: {
+            fontSize: mainFontSize,
+        },
+
+        [mediaQueries.medium.ge]: {
+            fontSize: largeFontSize,
+        },
     },
-
-
-    subtitleMedium: {
-        ...subtitleBase,
-        fontSize: mainFontSize,
-    },
-
-
-    subtitleInfinity: {
-        ...subtitleBase,
-        fontSize: largeFontSize,
-    },
-}
+})

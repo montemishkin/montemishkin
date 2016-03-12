@@ -26,21 +26,9 @@ class Loader extends Component {
         reload: () => {},
         // two seconds, in milliseconds
         reloadTimeout: 2000,
-        LoadingContent: props => (
-            <span {...props}>
-                Loading...
-            </span>
-        ),
-        ErrorContent: props => (
-            <span {...props}>
-                Error: {props.error.message}
-            </span>
-        ),
-        LoadedContent: props => (
-            <span {...props}>
-                Loaded!
-            </span>
-        ),
+        LoadingContent: () => <span>Loading...</span>,
+        ErrorContent: ({error}) => <span>Error: {error.message}</span>,
+        LoadedContent: () => <span>Loaded!</span>,
     }
 
 

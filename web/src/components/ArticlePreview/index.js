@@ -1,5 +1,6 @@
 // third party imports
 import React, {PropTypes} from 'react'
+import {css} from 'aphrodite'
 import radium from 'radium'
 // local imports
 import styles from './styles'
@@ -14,16 +15,23 @@ function ArticlePreview ({
     created,
     tags,
     url,
+    className,
+    ...unusedProps,
 }) {
     return (
-        <section style={styles.container}>
+        <section
+            {...unusedProps}
+            className={`${css(styles.container)} ${className}`}
+        >
             <LinkedTitleGroup
                 url={url}
                 title={title}
                 subtitle={subtitle}
             />
-            <TagList tags={tags} style={styles.tagList} />
-            <FormattedDate {...created} style={styles.date} />
+            <div className={css(styles.tagList)}>
+                <TagList tags={tags} />
+            </div>
+            <FormattedDate {...created} className={css(styles.date)} />
         </section>
     )
 }

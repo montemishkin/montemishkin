@@ -1,13 +1,13 @@
 // third party imports
 import React, {PropTypes} from 'react'
-import radium from 'radium'
+import {css} from 'aphrodite'
 // local imports
 import styles from './styles'
 import Link from 'components/Link'
 import List from 'components/List'
 
 
-function TagList({tags, style, linkStyle, linkClassName, ...unusedProps}) {
+function TagList({tags, className, linkStyle, linkClassName, ...unusedProps}) {
     if (tags.length === 0) {
         return (<div />)
     }
@@ -15,14 +15,14 @@ function TagList({tags, style, linkStyle, linkClassName, ...unusedProps}) {
     return (
         <List
             {...unusedProps}
-            style={[styles.list, style]}
-            listItemStyle={styles.listItem}
+            className={`${css(styles.list)} ${className}`}
+            listItemClassName={css(styles.listItem)}
         >
             {tags.map(({url, description, name}, key) => (
                 <Link
                     to={url}
-                    style={[styles.link, linkStyle]}
-                    className={linkClassName}
+                    style={linkStyle}
+                    className={`${css(styles.link)} ${linkClassName}`}
                     key={key}
                     title={description}
                 >
@@ -48,4 +48,4 @@ TagList.defaultProps = {
 }
 
 
-export default radium(TagList)
+export default TagList
