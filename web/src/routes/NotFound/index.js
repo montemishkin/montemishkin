@@ -1,10 +1,9 @@
 // third party imports
 import React from 'react'
-import radium from 'radium'
+import {css} from 'aphrodite'
 import Helmet from 'react-helmet'
 // local imports
 import styles from './styles'
-import MainLogo from 'components/Logos/Main'
 
 
 /**
@@ -12,26 +11,29 @@ import MainLogo from 'components/Logos/Main'
  */
 function NotFound() {
     return (
-        <article style={styles.container}>
+        <article className={css(styles.container)}>
             <Helmet title='Not Found' />
             <img
                 src='/static/images/sun.svg'
-                style={styles.sunImage}
+                className={css(styles.sunImage)}
             />
             <img
                 src='/static/images/tree.svg'
-                style={styles.treeImage}
+                className={css(styles.treeImage)}
             />
-            <MainLogo style={styles.bird} />
+            <img
+                src='/static/images/logo-main.svg'
+                className={css(styles.bird)}
+            />
             <img
                 src='/static/images/grass.svg'
-                style={styles.grassImage}
+                className={css(styles.grassImage)}
             />
-            <div style={styles.overlay}>
-                <div style={styles.title}>
+            <div className={css(styles.overlay)}>
+                <div className={css(styles.title)}>
                     Not Found
                 </div>
-                <div style={styles.subtitle}>
+                <div className={css(styles.subtitle)}>
                     There{"'"}s nothing here.
                 </div>
             </div>
@@ -40,4 +42,4 @@ function NotFound() {
 }
 
 
-export default radium(NotFound)
+export default NotFound

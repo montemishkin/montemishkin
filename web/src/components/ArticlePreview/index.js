@@ -1,93 +1,71 @@
 // third party imports
-import React, {Component, PropTypes} from 'react'
+import React, {PropTypes} from 'react'
+import {css} from 'aphrodite'
 import radium from 'radium'
 // local imports
 import styles from './styles'
-import Link from 'components/Link'
-import TagList from 'components/TagList'
+import LinkedTitleGroup from 'components/LinkedTitleGroup'
 import FormattedDate from 'components/FormattedDate'
+import List from 'components/List'
+import Link from 'components/Link'
 
 
-class ArticlePreview extends Component {
-    static propTypes = {
-        url: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        subtitle: PropTypes.string,
-        created: PropTypes.shape({
-            year: PropTypes.number.isRequired,
-            month: PropTypes.number.isRequired,
-            day: PropTypes.number.isRequired,
-        }).isRequired,
-        tags: PropTypes.arrayOf(PropTypes.shape({
-            url: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired,
-            description: PropTypes.string.isRequired,
-        })).isRequired,
-    }
-
-
-    constructor(...args) {
-        super(...args)
-        this.state = {
-            linkIsHovered: false,
-            linkIsFocused: false,
-        }
-    }
-
-
-    render() {
-        const {
-            props: {
-                title,
-                subtitle,
-                created,
-                tags,
-                url,
-                style,
-                ...unusedProps,
-            },
-            state: {
-                linkIsHovered,
-                linkIsFocused,
-            },
-        } = this
-
-        let titleStyle = styles.title
-        let subtitleStyle = styles.subtitle
-        if (linkIsHovered || linkIsFocused) {
-            titleStyle = styles.titleHovered
-            subtitleStyle = styles.subtitleHovered
-        }
-
-        return (
-            <section
-                {...unusedProps}
-                style={[styles.container, style]}
-            >
-                <Link
-                    to={url}
-                    style={styles.link}
-                    onMouseEnter={() => this.setState({linkIsHovered: true})}
-                    onMouseLeave={() => this.setState({linkIsHovered: false})}
-                    onFocus={() => this.setState({linkIsFocused: true})}
-                    onBlur={() => this.setState({linkIsFocused: false})}
+function ArticlePreview ({
+    title,
+    subtitle,
+    created,
+    tags,
+    url,
+    className,
+    ...unusedProps,
+}) {
+    return (
+        <section
+            {...unusedProps}
+            className={`${css(styles.container)} ${className}`}
+        >
+            <LinkedTitleGroup
+                url={url}
+                title={title}
+                subtitle={subtitle}
+            />
+            {tags.length > 0 && (
+                <List
+                    className={css(styles.tagList)}
+                    listItemClassName={css(styles.tagListItem)}
                 >
-                    <h2 style={titleStyle}>
-                        {title}
-                    </h2>
-                    {subtitle && (
-                        <span style={subtitleStyle}>
-                            {subtitle}
-                        </span>
-                    )}
-                </Link>
-                <div style={styles.infoBar}>
-                    <TagList tags={tags} />
-                    <FormattedDate {...created} />
-                </div>
-            </section>
-        )
-    }
+                    {tags.map(({url: tagUrl, description, name}, key) => (
+                        <Link
+                            to={tagUrl}
+                            className={css(styles.tagListItemLink)}
+                            key={key}
+                            title={description}
+                        >
+                            {name}
+                        </Link>
+                    ))}
+                </List>
+            )}
+            <FormattedDate {...created} className={css(styles.date)} />
+        </section>
+    )
+}
+
+
+ArticlePreview.propTypes = {
+    url: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string,
+    created: PropTypes.shape({
+        year: PropTypes.number.isRequired,
+        month: PropTypes.number.isRequired,
+        day: PropTypes.number.isRequired,
+    }).isRequired,
+    tags: PropTypes.arrayOf(PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+    })).isRequired,
 }
 
 

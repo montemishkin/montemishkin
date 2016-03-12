@@ -1,18 +1,43 @@
+// third party imports
+import {StyleSheet} from 'aphrodite'
 // local imports
-import {
-    contentWidth,
-    contentMaxWidth,
-} from 'assets/styles/js/numerics'
+import colors from 'styles/js/colors'
 
 
-export default {
-    contentContainer: {
+export default StyleSheet.create({
+    link: {
+        color: colors.background.interactive,
+        textDecoration: 'none',
+
+        ':hover': {
+            textDecoration: 'underline',
+        },
+
+        ':focus': {
+            textDecoration: 'underline',
+        },
+    },
+
+
+    logoList: {
         display: 'flex',
-        justifyContent: 'center',
+        flexDirection: 'column',
+        alignItems: 'stretch',
+        // minWidth: 200,
     },
 
-    content: {
-        width: contentWidth,
-        maxWidth: contentMaxWidth,
+
+    logoLink: {
+        display: 'inline-block',
+        margin: '20px 0',
+        width: '100%',
     },
-}
+
+
+    blogDescriptionList: {
+        listStyleType: 'disc',
+        paddingTop: 20,
+        marginLeft: '2em',
+        textAlign: 'left',
+    },
+})

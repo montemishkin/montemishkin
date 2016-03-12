@@ -5,11 +5,9 @@ var process = require('process')
 var fs = require('fs')
 // third party imports
 var del = require('del')
+var mkdirp = require('mkdirp')
 var karma = require('karma')
 var webpack = require('webpack')
-var glob = require('glob')
-var postcss = require('postcss')
-var cssnano = require('cssnano')
 var nodemon = require('nodemon')
 // local imports
 var projectPaths = require('./config/projectPaths')
@@ -41,8 +39,7 @@ var tasks = {}
  */
 tasks['default'] = function () {
     runRequestedTaskNames(tasks, [
-        'clean-build',
-        'watch-styles',
+        'clean',
         'watch-client',
         'watch-server',
         'run-server'
@@ -55,8 +52,7 @@ tasks['default'] = function () {
  */
 tasks['build-production'] = function () {
     runRequestedTaskNames(tasks, [
-        'clean-build',
-        'build-styles-production',
+        'clean',
         'build-client-production',
         'build-server-production',
     ])
@@ -98,54 +94,6 @@ tasks['watch-server'] = function () {
 
 
 /**
- * Build styles only.
- */
-tasks['build-styles'] = function () {
-    var plugins = [
-        cssnano({
-            sourcemap: true,
-            autoprefixer: {
-                browsers: ['last 3 versions'],
-            },
-        }),
-    ]
-
-    var css = glob.sync(projectPaths.cssGlob).reduce(function (s, file) {
-        return s + '\n' + fs.readFileSync(file)
-    }, '')
-
-    postcss(plugins)
-        .process(css, {
-            from: projectPaths.cssGlob,
-            to: projectPaths.cssBuild,
-            map: {inline: false},
-        }).then(function (result) {
-            fs.writeFileSync(projectPaths.cssBuild, result.css)
-
-            if (result.map) {
-                fs.writeFileSync(projectPaths.cssBuild + '.map', result.map)
-            }
-        })
-}
-
-
-/**
- * Watch styles only. Rebuild on change.
- */
-tasks['watch-styles'] = function () {
-    runRequestedTaskNames(tasks, ['build-styles'])
-
-    function listener() {
-        runRequestedTaskNames(tasks, ['build-styles'])
-    }
-
-    glob.sync(projectPaths.cssGlob).forEach(function (file) {
-        fs.watchFile(file, listener)
-    })
-}
-
-
-/**
  * Run test suite once.
  */
 tasks['test'] = function () {
@@ -175,8 +123,6 @@ tasks['tdd'] = function () {
  * Build client entry point for production.
  */
 tasks['build-client-production'] = function () {
-    runRequestedTaskNames(tasks, ['clean-client'])
-
     setProductionEnvironment()
 
     var config = require(projectPaths.webpackClientConfig)
@@ -189,8 +135,6 @@ tasks['build-client-production'] = function () {
  * Build server entry point for production.
  */
 tasks['build-server-production'] = function () {
-    runRequestedTaskNames(tasks, ['clean-server'])
-
     setProductionEnvironment()
 
     var config = require(projectPaths.webpackServerConfig)
@@ -200,68 +144,15 @@ tasks['build-server-production'] = function () {
 
 
 /**
- * Build styles for production.
- */
-tasks['build-styles-production'] = function () {
-    runRequestedTaskNames(tasks, ['clean-styles'])
-
-    setProductionEnvironment()
-
-    var plugins = [
-        cssnano({
-            autoprefixer: {
-                browsers: ['last 3 versions'],
-            },
-        }),
-    ]
-
-    var css = glob.sync(projectPaths.cssGlob).reduce(function (s, file) {
-        return s + '\n' + fs.readFileSync(file)
-    }, '')
-
-    postcss(plugins)
-        .process(css, {
-            from: projectPaths.cssGlob,
-            to: projectPaths.cssBuild,
-        }).then(function (result) {
-            fs.writeFileSync(projectPaths.cssBuild, result.css)
-
-            if (result.map) {
-                fs.writeFileSync(projectPaths.cssBuild + '.map', result.map)
-            }
-        })
-}
-
-
-/**
- * Remove all ouptut files from previous client builds.
- */
-tasks['clean-client'] = function () {
-    del.sync(projectPaths.clientBuildGlob)
-}
-
-
-/**
- * Remove all ouptut files from previous server builds.
- */
-tasks['clean-server'] = function () {
-    del.sync(projectPaths.serverBuildGlob)
-}
-
-
-/**
- * Remove all ouptut files from previous styles builds.
- */
-tasks['clean-styles'] = function () {
-    del.sync(projectPaths.cssBuildGlob)
-}
-
-
-/**
  * Remove ALL previously built files.
  */
-tasks['clean-build'] = function () {
-    del.sync(projectPaths.buildGlob)
+tasks['clean'] = function () {
+    del.sync([
+        projectPaths.privateBuildDir,
+        projectPaths.publicBuildDir,
+    ])
+    mkdirp.sync(projectPaths.privateBuildDir)
+    mkdirp.sync(projectPaths.publicBuildDir)
 }
 
 

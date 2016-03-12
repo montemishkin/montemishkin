@@ -1,9 +1,11 @@
+// third party imports
+import {StyleSheet} from 'aphrodite'
 // local imports
-import colors from 'assets/styles/js/colors'
-import {mainFontSize} from 'assets/styles/js/numerics'
+import colors from 'styles/js/colors'
+import {mainFontSize} from 'styles/js/numerics'
 
 
-export default {
+export default StyleSheet.create({
     container: {
         color: colors.background.inverse,
         backgroundColor: colors.background.main,
@@ -19,4 +21,4 @@ export default {
         display: 'flex',
         flexDirection: 'column',
     },
-}
+})

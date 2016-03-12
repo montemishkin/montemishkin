@@ -6,13 +6,13 @@ import favicon from 'serve-favicon'
 import serveStatic from 'serve-static'
 import React from 'react'
 import {renderToString} from 'react-dom/server'
+import {StyleSheetServer} from 'aphrodite'
 import {match} from 'react-router'
 import Helmet from 'react-helmet'
 // local imports
 import projectPaths from 'config/projectPaths'
 const {
-    buildDir,
-    assetsDir,
+    publicDir,
     favicon: faviconPath,
     publicStaticPath,
 } = projectPaths
@@ -38,8 +38,8 @@ server.use(favicon(faviconPath))
 
 /* Routing */
 
-// route static files to build and assets dirs
-server.use(publicStaticPath, serveStatic(buildDir), serveStatic(assetsDir))
+// route static files to public dir
+server.use(publicStaticPath, serveStatic(publicDir))
 // route all surviving requests through the react-router routes
 server.all('*', (req, res) => {
     const location = req.url
@@ -72,8 +72,10 @@ server.all('*', (req, res) => {
             // a response to a request it didnt make (the server made it)
             const initialState = JSON.stringify(store.getState())
 
-            // rendered app
-            const renderedComponent = renderToString(
+            const {
+                html: renderedComponent,
+                css,
+            } = StyleSheetServer.renderStatic(() => renderToString(
                 <App
                     store={store}
                     renderProps={renderProps}
@@ -81,7 +83,7 @@ server.all('*', (req, res) => {
                         userAgent: req.headers['user-agent'],
                     }}
                 />
-            )
+            ))
 
             // see: https://github.com/nfl/react-helmet#server-usage
             const helmet = Helmet.rewind()
@@ -90,6 +92,8 @@ server.all('*', (req, res) => {
                 initialState,
                 renderedComponent,
                 title: helmet.title,
+                css: css.content,
+                renderedClassNames: JSON.stringify(css.renderedClassNames),
             })
 
             res.send(html)

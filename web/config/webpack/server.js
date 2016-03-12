@@ -25,19 +25,26 @@ var nodeModules = fs.readdirSync('node_modules')
 
 
 // extend base configuration's plugins
-var plugins = baseConfig.plugins.concat(
-    // add source map support
-    new webpack.BannerPlugin(
-        'require("source-map-support").install();',
-        {raw: true, entryOnly: false}
+var plugins = baseConfig.plugins.concat()
+
+if (process.env.NODE_ENV !== 'production') {
+    plugins.push(
+        // add source map support
+        new webpack.BannerPlugin(
+            'require("source-map-support").install();',
+            {raw: true, entryOnly: false}
+        )
     )
-)
+}
 
 
 module.exports = assign({}, baseConfig, {
     entry: {
         index: projectPaths.serverEntry,
     },
+    output: assign({}, baseConfig.output, {
+        path: projectPaths.privateBuildDir,
+    }),
     target: 'node',
     // don't bundle node modules
     externals: nodeModules,
@@ -51,4 +58,13 @@ module.exports = assign({}, baseConfig, {
         __filename: true,
         path: true,
     },
+    module: assign({}, baseConfig.module, {
+        loaders: baseConfig.module.loaders.concat(
+            {
+                test: /\.css$/,
+                loader: 'null',
+                include: projectPaths.sourceDir,
+            }
+        ),
+    }),
 })

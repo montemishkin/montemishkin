@@ -1,41 +1,84 @@
+// third party imports
+import {StyleSheet} from 'aphrodite'
+import chroma from 'chroma-js'
 // local imports
-import classes from 'assets/styles/js/classes'
-import colors from 'assets/styles/js/colors'
-import {
-    contentWidth,
-    contentMaxWidth,
-    contentVerticalPadding,
-} from 'assets/styles/js/numerics'
+import colors from 'styles/js/colors'
+import {contentVerticalPadding} from 'styles/js/numerics'
+import mediaQueries from 'styles/js/mediaQueries'
 
 
-export default {
+const tocWidth = 225
+
+
+export default StyleSheet.create({
+    content: {
+        position: 'relative',
+    },
+
+
+    tagList: {
+        padding: '0 3px',
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+    },
+
+
+    tagListItem: {
+        margin: '0 3px',
+        padding: '2px 3px',
+    },
+
+
+    tagListItemLink: {
+        color: colors.background.interactive,
+        textDecoration: 'none',
+
+        ':hover': {
+            textDecoration: 'underline',
+        },
+
+        ':focus': {
+            textDecoration: 'underline',
+        },
+    },
+
+
+    toc: {
+        paddingTop: 10,
+
+        [mediaQueries.large.lt]: {
+            display: 'none',
+        },
+
+        [mediaQueries.large.ge]: {
+            width: tocWidth,
+        },
+    },
+
+
+    markdown: {
+        [mediaQueries.large.ge]: {
+            marginLeft: tocWidth + 30,
+        },
+    },
+
+
+    comments: {
+        backgroundColor: chroma(colors.background.main).brighten(0.125).css(),
+    },
+
+
     infoBar: {
-        width: '100%',
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
-    },
-
-    tagListLink: {
-        ...classes.interactive.secondary,
-        color: colors.secondary.inverse,
-    },
-
-    contentContainer: {
-        display: 'flex',
-        flexDirection: 'column',
         alignItems: 'center',
+        marginBottom: contentVerticalPadding / 2,
     },
 
-    content: {
-        padding: `${contentVerticalPadding}px 0`,
-        width: contentWidth,
-        maxWidth: contentMaxWidth,
-    },
 
-    disqus: {
-        paddingBottom: contentVerticalPadding,
-        width: contentWidth,
-        maxWidth: contentMaxWidth,
+    creationDate: {
+        padding: 9,
     },
-}
+})

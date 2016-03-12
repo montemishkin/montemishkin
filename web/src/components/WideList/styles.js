@@ -1,26 +1,32 @@
+// third party imports
+import {StyleSheet} from 'aphrodite'
 // local imports
-import colors from 'assets/styles/js/colors'
+import {contentWidth, contentMaxWidth} from 'styles/js/numerics'
 
 
-export default {
+const spacing = 80
+const listItemBase = {
+    width: contentWidth,
+    maxWidth: contentMaxWidth,
+}
+
+
+export default StyleSheet.create({
     list: {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'stretch',
+        alignItems: 'center',
     },
 
 
     listItem: {
-        display: 'flex',
-        justifyContent: 'center',
-        borderStyle: 'solid',
-        borderColor: colors.background.inverse,
-        borderWidth: '1px 0 0 0',
-        padding: '80px 0',
+        ...listItemBase,
+        padding: `0 0 ${spacing}px 0`,
     },
 
 
     listItemFirst: {
-        borderWidth: 0,
+        ...listItemBase,
+        padding: `${spacing}px 0`,
     },
-}
+})

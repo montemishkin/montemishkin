@@ -1,12 +1,14 @@
+// third party imports
+import {StyleSheet} from 'aphrodite'
 // local imports
 import {
     contentWidth,
     contentMaxWidth,
     contentVerticalPadding,
-} from 'assets/styles/js/numerics'
+} from 'styles/js/numerics'
 
 
-export default {
+export default StyleSheet.create({
     contentContainer: {
         display: 'flex',
         flexDirection: 'column',
@@ -18,4 +20,4 @@ export default {
         width: contentWidth,
         maxWidth: contentMaxWidth,
     },
-}
+})

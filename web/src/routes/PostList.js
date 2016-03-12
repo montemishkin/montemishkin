@@ -2,12 +2,12 @@
 import React, {PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {createSelector} from 'reselect'
+import radium from 'radium'
 import Helmet from 'react-helmet'
 import filter from 'lodash/collection/filter'
 // local imports
 import ListView from 'components/ListView'
 import ArticlePreview from 'components/ArticlePreview'
-import BlogLogo from 'components/Logos/Blog'
 import nestPost from 'util/nestPost'
 import sortDates from 'util/sortDates'
 import {fetchAllIfNeeded} from 'store/ducks/posts'
@@ -29,7 +29,9 @@ function PostList({
         <div>
             <Helmet title='Blog' />
             <ListView
-                BannerIcon={BlogLogo}
+                BannerIcon={radium(props =>
+                    <img {...props} src='/static/images/logo-blog.svg' />
+                )}
                 title='Blog'
                 subtitle='oh yeah.'
                 items={posts}

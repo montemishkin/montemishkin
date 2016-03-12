@@ -1,13 +1,16 @@
+// third party imports
+import {StyleSheet} from 'aphrodite'
 // local imports
-import colors from 'assets/styles/js/colors'
-import classes from 'assets/styles/js/classes'
-import {largestFontSize} from 'assets/styles/js/numerics'
+import colors from 'styles/js/colors'
+import classes from 'styles/js/classes'
+import {largerFontSize} from 'styles/js/numerics'
+import mediaQueries from 'styles/js/mediaQueries'
 
 
 const spacing = 20
 
 
-export default {
+export default StyleSheet.create({
     outerContainer: {
         flexGrow: 1,
         position: 'relative',
@@ -40,24 +43,31 @@ export default {
         height: '70%',
         minWidth: 250,
         backgroundColor: colors.primary.main,
-        // TODO: don't hardcode this color here
-        boxShadow: '0px 0px 5px #737373',
     },
 
 
     logo: {
         position: 'relative',
         padding: spacing,
-        maxWidth: 200,
+        width: 200,
+        height: 200,
     },
 
 
     link: {
+        ...classes.interactive.primary,
+        transitionProperty: classes.interactive.primary.transitionProperty + ', padding',
         position: 'relative',
         display: 'inline-block',
-        ...classes.interactive.primary,
-        fontSize: largestFontSize,
         color: colors.primary.inverse,
-        padding: spacing,
+        fontSize: largerFontSize,
+
+        [mediaQueries.medium.lt]: {
+            padding: spacing,
+        },
+
+        [mediaQueries.medium.ge]: {
+            padding: `${spacing}px ${spacing * 2}px`,
+        },
     },
-}
+})

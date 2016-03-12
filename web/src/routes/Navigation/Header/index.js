@@ -1,26 +1,37 @@
 // third party imports
 import React from 'react'
-import radium from 'radium'
+import {css} from 'aphrodite'
 // local imports
 import styles from './styles'
 import Link from 'components/Link'
 import IndexLink from 'components/IndexLink'
 import List from 'components/List'
-import Logo from 'components/Logos/Main'
 
 
 function Header() {
     return (
-        <nav style={styles.container}>
-            <IndexLink to='/' style={styles.logoLink}>
-                <Logo style={styles.logo} {...styles.logoProps} />
-            </IndexLink>
-            <List style={styles.list}>
-                <Link to='/about' style={styles.link}>
-                    About
+        <nav className={css(styles.outerContainer)}>
+            <List className={css(styles.innerContainer)}>
+                <IndexLink
+                    to='/'
+                    className={css(styles.link)}
+                    activeClassName={css(styles.linkActive)}
+                >
+                    HOME
+                </IndexLink>
+                <Link
+                    to='/about'
+                    className={css(styles.link)}
+                    activeClassName={css(styles.linkActive)}
+                >
+                    ABOUT
                 </Link>
-                <Link to='/posts' style={styles.link}>
-                    Blog
+                <Link
+                    to='/posts'
+                    className={css(styles.link)}
+                    activeClassName={css(styles.linkActive)}
+                >
+                    BLOG
                 </Link>
             </List>
         </nav>
@@ -28,4 +39,4 @@ function Header() {
 }
 
 
-export default radium(Header)
+export default Header

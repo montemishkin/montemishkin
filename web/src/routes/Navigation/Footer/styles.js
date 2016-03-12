@@ -1,103 +1,83 @@
 // third party imports
+import {StyleSheet} from 'aphrodite'
 import chroma from 'chroma-js'
 // local imports
-import classes from 'assets/styles/js/classes'
-import colors from 'assets/styles/js/colors'
+import classes from 'styles/js/classes'
+import colors from 'styles/js/colors'
+import {contentWidth, contentMaxWidth} from 'styles/js/numerics'
+import mediaQueries from 'styles/js/mediaQueries'
 
 
-const spacing = 25
-const containerBase = {
-    display: 'flex',
-    alignItems: 'center',
-    color: chroma(colors.primary.inverse).darken().css(),
-    backgroundColor: colors.primary.main,
-    borderWidth: '1px 0 0 0',
-    borderStyle: 'solid',
-    borderColor: colors.background.inverse,
+const verticalSpacing = 7.5
+const horizontalSpacing = verticalSpacing * 8 / 3
+const linkBase = {
+    ...classes.interactive.primary,
+    color: colors.primary.inverse,
+    display: 'inline-block',
+    textDecoration: 'none',
 }
-const listBase = {
-    display: 'flex',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-}
-const copyrightBase = {
-    padding: spacing,
-}
+const activeLinkColor = chroma(colors.primary.inverse).darken(1.5).css()
 
 
-export default {
-    containerMedium: {
-        ...containerBase,
-        flexDirection: 'column',
-    },
-
-    containerInfinity: {
-        ...containerBase,
+export default StyleSheet.create({
+    outerContainer: {
+        display: 'flex',
         justifyContent: 'center',
-        position: 'relative',
+        backgroundColor: colors.primary.main,
     },
 
-    listInfinity: {
-        ...listBase,
-        position: 'absolute',
-        left: spacing,
-        top: 0,
+
+    innerContainer: {
+        display: 'flex',
+        width: contentWidth,
+        maxWidth: contentMaxWidth,
+        padding: `${verticalSpacing}px 0`,
+
+        [mediaQueries.medium.lt]: {
+            flexDirection: 'column',
+            alignItems: 'center',
+        },
+
+        [mediaQueries.medium.ge]: {
+            justifyContent: 'space-between',
+        },
     },
 
-    listMedium: {
-        ...listBase,
+
+    navLinks: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
     },
+
 
     navLink: {
-        ...classes.interactive.primary,
-        color: colors.primary.inverse,
-        display: 'inline-block',
-        padding: spacing,
+        ...linkBase,
+        padding: `${verticalSpacing}px ${horizontalSpacing}px`,
     },
 
-    logoLink: {
-        display: 'inline-block',
-        padding: `${spacing / 2}px ${spacing}px`,
+
+    navLinkActive: {
+        color: activeLinkColor,
+        cursor: 'default',
+
+        ':hover': {
+            color: activeLinkColor,
+        },
+
+        ':focus': {
+            color: activeLinkColor,
+        },
     },
 
-    logo: {
-        height: 2 * spacing,
+
+    copyright: {
+        color: chroma(colors.primary.inverse).darken().css(),
+        padding: `${verticalSpacing}px ${horizontalSpacing}px`,
     },
 
-    logoProps: {
-        hatTopFill: chroma(colors.background.inverse).brighten().css(),
-        hatRimFill: chroma(colors.background.inverse).brighten().css(),
-        bodyFill: colors.primary.inverse,
-        wingFill: colors.primary.inverse,
-        noseFill: colors.primary.inverse,
-        eyeFill: colors.background.inverse,
-        bodyStroke: colors.background.inverse,
-        eyeStroke: colors.background.inverse,
-        noseStroke: colors.background.inverse,
-        wingStroke: colors.background.inverse,
-        leftLegStroke: colors.background.inverse,
-        leftFootStroke: colors.background.inverse,
-        rightLegStroke: colors.background.inverse,
-        rightFootStroke: colors.background.inverse,
-        hatRimStroke: colors.background.inverse,
-        hatTopStroke: colors.background.inverse,
-    },
-
-    copyrightInfinity: {
-        ...copyrightBase,
-        position: 'absolute',
-        right: spacing,
-        top: 0,
-    },
-
-    copyrightMedium: {
-        ...copyrightBase,
-    },
 
     emailLink: {
-        ...classes.interactive.primary,
-        textDecoration: 'none',
-        color: colors.primary.inverse,
-        display: 'inline-block',
+        ...linkBase,
     },
-}
+})

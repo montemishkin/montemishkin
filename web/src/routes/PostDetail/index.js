@@ -61,9 +61,6 @@ function PostDetail({
 PostDetail.propTypes = {
     post: PropTypes.shape({
         url: PropTypes.string,
-        bannerImage: PropTypes.shape({
-            url: PropTypes.string,
-        }),
         title: PropTypes.string,
         subtitle: PropTypes.string,
         content: PropTypes.string,

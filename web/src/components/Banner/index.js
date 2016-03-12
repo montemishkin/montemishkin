@@ -1,5 +1,6 @@
 // third party imports
 import React, {PropTypes} from 'react'
+import {css} from 'aphrodite'
 import radium from 'radium'
 // local imports
 import styles from './styles'
@@ -9,32 +10,26 @@ function Banner({
     Icon,
     title,
     subtitle,
-    children,
-    style,
+    className,
     ...unusedProps,
 }) {
     return (
         <header
             {...unusedProps}
-            style={[styles.outerContainer, style]}
+            className={`${css(styles.outerContainer)} ${className}`}
         >
-            <div style={styles.innerContainer}>
-                {Icon && (
-                    <Icon style={styles.icon} />
-                )}
-                <h1 style={styles.title}>
-                    {title}
-                </h1>
-                {subtitle && (
-                    <span style={styles.subtitle}>
-                        {subtitle}
-                    </span>
-                )}
-                {children && (
-                    <div style={styles.childrenContainer}>
-                        {children}
-                    </div>
-                )}
+            <div className={css(styles.innerContainer)}>
+                {Icon && <Icon className={css(styles.icon)} />}
+                <div className={css(styles.text)}>
+                    <h1 className={css(styles.title)}>
+                        {title}
+                    </h1>
+                    {subtitle && (
+                        <h2 className={css(styles.subtitle)}>
+                            {subtitle}
+                        </h2>
+                    )}
+                </div>
             </div>
         </header>
     )

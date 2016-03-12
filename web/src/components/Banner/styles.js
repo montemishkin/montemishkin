@@ -1,61 +1,99 @@
+// third party imports
+import {StyleSheet} from 'aphrodite'
 // local imports
-import colors from 'assets/styles/js/colors'
+import colors from 'styles/js/colors'
 import {
+    contentWidth,
     contentMaxWidth,
     largestFontSize,
+    largerFontSize,
     largeFontSize,
-} from 'assets/styles/js/numerics'
+    mainFontSize,
+} from 'styles/js/numerics'
+import mediaQueries from 'styles/js/mediaQueries'
 
 
-const spacing = 40
+
+const spacing = 20
+const iconSideLength = 150
+const transitionParameters = {
+    transitionDuration: '0.8s',
+    transitionTimingFunction: 'ease-in-out',
+}
 
 
-export default {
+export default StyleSheet.create({
     outerContainer: {
         display: 'flex',
         justifyContent: 'center',
-        padding: `${spacing}px 0`,
+        padding: `${spacing * 2}px 0`,
         backgroundColor: colors.secondary.main,
-        borderWidth: '0 0 1px 0',
-        borderStyle: 'solid',
-        borderColor: colors.background.inverse,
+        backgroundImage: `linear-gradient(to left, rgba(255, 255, 255, 0.2) 0%, ${colors.secondary.main} 100%)`,
     },
+
 
     innerContainer: {
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        width: '90%',
-        maxWidth: contentMaxWidth + 20,
+        width: contentWidth,
+        maxWidth: contentMaxWidth,
     },
+
 
     icon: {
-        height: 150,
-        fontSize: '150px',
-        borderStyle: 'solid',
-        borderWidth: 0,
-        borderRadius: 7,
+        ...transitionParameters,
+        transitionProperty: 'width, height, margin',
+
+        [mediaQueries.medium.lt]: {
+            width: 0,
+            height: 0,
+            margin: 0,
+        },
+
+        [mediaQueries.medium.ge]: {
+            flexShrink: 0,
+            width: iconSideLength,
+            height: iconSideLength,
+            marginRight: spacing * 2,
+        },
     },
 
-    title: {
-        fontSize: largestFontSize,
-        color: colors.background.inverse,
-        textAlign: 'center',
-        margin: `${spacing}px 0 0 0`,
-    },
 
-    subtitle: {
-        fontSize: largeFontSize,
-        color: colors.background.inverse,
-        fontWeight: 'normal',
-        textAlign: 'center',
-        margin: `${spacing / 2}px 0 ${spacing}px 0`,
-    },
-
-    childrenContainer: {
+    text: {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        width: '100%',
+        justifyContent: 'center',
     },
-}
+
+
+    title: {
+        ...transitionParameters,
+        transitionProperty: 'font-size',
+        color: colors.background.inverse,
+        margin: spacing,
+
+        [mediaQueries.medium.lt]: {
+            fontSize: largerFontSize,
+        },
+
+        [mediaQueries.medium.ge]: {
+            fontSize: largestFontSize,
+        },
+    },
+
+
+    subtitle: {
+        ...transitionParameters,
+        transitionProperty: 'font-size',
+        color: colors.background.inverse,
+        margin: `0 ${spacing}px ${spacing}px ${spacing}px`,
+        fontWeight: 'normal',
+
+        [mediaQueries.medium.lt]: {
+            fontSize: mainFontSize,
+        },
+
+        [mediaQueries.medium.ge]: {
+            fontSize: largeFontSize,
+        },
+    },
+})

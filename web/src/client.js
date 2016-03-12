@@ -6,9 +6,19 @@ import ReactDOM from 'react-dom'
 import {Router, match, browserHistory as history} from 'react-router'
 import {Provider} from 'react-redux'
 import FontFaceObserver from 'fontfaceobserver'
+import {StyleSheet} from 'aphrodite'
 // local imports
 import routes from 'routes'
 import {createStore} from 'store'
+
+
+// apply global styles (order is important here!)
+import 'styles/css/normalize.css'
+import 'styles/css/main.css'
+// this isn't needed globally but is too small to justify its own style tag
+// and loading it here prevents a stationary spinner while waiting for that
+// style tag to get injected
+import 'styles/css/spinner.css'
 
 
 if (process.env.NODE_ENV === 'production') {
@@ -29,20 +39,35 @@ if (process.env.NODE_ENV === 'production') {
 
 
 // see: https://github.com/bramstein/fontfaceobserver#how-to-use
-const latoObserver = new FontFaceObserver('Lato')
+let hasLoadedOpenSans400 = false
+let hasLoadedOpenSans700 = false
+const openSansClassName = 'open-sans-font-face-loaded'
+const openSans400Observer = new FontFaceObserver('Open Sans', {weight: 400})
+const openSans700Observer = new FontFaceObserver('Open Sans', {weight: 700})
 
-latoObserver.check().then(
-    // when Lato font loaded, add css class to body indicating so
-    () => document.body.classList.add('lato-font-face-loaded'),
-    // if Lato font not found, add css class to body indicating so
-    () => document.body.classList.remove('lato-font-face-loaded')
-)
+openSans400Observer.check().then(() => {
+    hasLoadedOpenSans400 = true
+    if (hasLoadedOpenSans700) {
+        document.body.classList.add(openSansClassName)
+    }
+})
+openSans700Observer.check().then(() => {
+    hasLoadedOpenSans700 = true
+    if (hasLoadedOpenSans400) {
+        document.body.classList.add(openSansClassName)
+    }
+})
 
 
 // grab initial application state passed from server
 const initialState = window.__INITIAL_STATE__
 // instantiate client store with initial application state
 const store = createStore(initialState)
+
+// grab rendered css class names passed from server
+const renderedClassNames = window.__RENDERED_CLASS_NAMES__
+// rehydrate stylesheet with already rendered css class names
+StyleSheet.rehydrate(renderedClassNames)
 
 
 // see: https://github.com/reactjs/react-router/blob/master/docs/guides/ServerRendering.md#async-routes

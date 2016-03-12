@@ -3,11 +3,9 @@ import React from 'react'
 import radium from 'radium'
 import Helmet from 'react-helmet'
 // local imports
-import styles from './styles'
+import data from './data'
+import BioSection from './BioSection'
 import Banner from 'components/Banner'
-import ProjectsLogo from 'components/Logos/Projects'
-import ContactInfoBar from './ContactInfoBar'
-import Bio from './Bio'
 
 
 function About() {
@@ -17,18 +15,24 @@ function About() {
             <Banner
                 title='Monte Mishkin'
                 subtitle='Web Developer / Friendly Person'
-                Icon={props2 => <ProjectsLogo {...props2} />}
-            >
-                <ContactInfoBar />
-            </Banner>
-            <div style={styles.contentContainer}>
-                <div style={styles.content}>
-                    <Bio />
-                </div>
-            </div>
+                Icon={radium(props =>
+                    <img {...props} src='/static/images/logo-projects.svg' />
+                )}
+            />
+            <article>
+                {data.map(({title, Text, Icon}, key) => (
+                    <BioSection
+                        key={key}
+                        index={key}
+                        Title={_props => <h3 {..._props}>{title}</h3>}
+                        Text={Text}
+                        Icon={Icon}
+                    />
+                ))}
+            </article>
         </div>
     )
 }
 
 
-export default radium(About)
+export default About

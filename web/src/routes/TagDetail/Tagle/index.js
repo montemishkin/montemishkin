@@ -1,5 +1,6 @@
 // third party imports
 import React, {PropTypes} from 'react'
+import {css} from 'aphrodite'
 import radium from 'radium'
 // local imports
 import styles from './styles'
@@ -35,8 +36,8 @@ function LoadingContent() {
         title: 'Loading',
         subtitle: '...',
         content: (
-            <section style={styles.contentContainer}>
-                <div style={styles.content}>
+            <section className={css(styles.contentContainer)}>
+                <div className={css(styles.content)}>
                     Loading...
                 </div>
             </section>
@@ -48,13 +49,13 @@ function LoadingContent() {
 function ErrorContent({error}) {
     return createContent({
         BannerIcon: radium(
-            props => <i {...props} className='fa fa-exclamation' />
+            props => <img {...props} src='/static/images/error.svg' />
         ),
         title: 'Woops',
         subtitle: 'something went wrong...',
         content: (
-            <section style={styles.contentContainer}>
-                <div style={styles.content}>
+            <section className={css(styles.contentContainer)}>
+                <div className={css(styles.content)}>
                     Error: {error.message}
                 </div>
             </section>
@@ -69,8 +70,8 @@ function LoadedContent({
     posts,
 }) {
     return createContent({
-        BannerIcon: radium(
-            props => <i {...props} className='fa fa-tag' />
+        BannerIcon: radium(props =>
+            <img {...props} src='/static/images/logo-nature.svg' />
         ),
         title: name,
         subtitle: description,
@@ -135,4 +136,4 @@ Tagle.propTypes = {
 }
 
 
-export default radium(Tagle)
+export default Tagle

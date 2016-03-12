@@ -1,15 +1,27 @@
 // third party imports
 import React, {PropTypes} from 'react'
+import {css} from 'aphrodite'
 import radium from 'radium'
 import DisqusThread from 'react-disqus-thread'
 // local imports
 import styles from './styles'
 import Loader from 'components/Loader'
 import Banner from 'components/Banner'
-import TagList from 'components/TagList'
 import FormattedDate from 'components/FormattedDate'
 import MarkdownContainer from 'components/MarkdownContainer'
+import CenteredSection from 'components/CenteredSection'
+import TableOfContents from 'components/TableOfContents'
 import Spinner from 'components/Spinner'
+import List from 'components/List'
+import Link from 'components/Link'
+import stalker from 'decorators/stalker'
+
+
+const StalkerTableOfContents = stalker(props => (
+    <div className={css(styles.toc)}>
+        <TableOfContents {...props} />
+    </div>
+))
 
 
 const isProduction = process.env.NODE_ENV === 'production'
@@ -19,9 +31,8 @@ function createContent({
     BannerIcon,
     title,
     subtitle,
-    tags,
-    created,
     content,
+    comments,
     ...unusedProps,
 }) {
     return (
@@ -30,20 +41,17 @@ function createContent({
                 Icon={BannerIcon}
                 title={title}
                 subtitle={subtitle}
-            >
-                <div style={styles.infoBar}>
-                    <TagList
-                        style={styles.tagList}
-                        linkStyle={styles.tagListLink}
-                        tags={tags}
-                    />
-                    <FormattedDate
-                        {...created}
-                        style={styles.creationDate}
-                    />
+            />
+            <CenteredSection>
+                {content}
+            </CenteredSection>
+            {comments && (
+                <div className={css(styles.comments)}>
+                    <CenteredSection>
+                        {comments}
+                    </CenteredSection>
                 </div>
-            </Banner>
-            {content}
+            )}
         </article>
     )
 }
@@ -56,32 +64,55 @@ function LoadedContent({
     created,
     content,
     url,
-    bannerImage,
 }) {
     return createContent({
         BannerIcon: radium(
-            props => <img {...props} src={bannerImage.url} />
+            props => <img {...props} src='/static/images/logo-blog.svg' />
         ),
         title,
         subtitle,
         tags,
         created,
-        content: (
-            <section style={styles.contentContainer}>
-                <MarkdownContainer style={styles.content}>
+        content: [
+            <div className={css(styles.infoBar)} key='a'>
+                {tags.length > 0 && (
+                    <List
+                        className={css(styles.tagList)}
+                        listItemClassName={css(styles.tagListItem)}
+                    >
+                        {tags.map(({url: tagUrl, description, name}, key) => (
+                            <Link
+                                to={tagUrl}
+                                className={css(styles.tagListItemLink)}
+                                key={key}
+                                title={description}
+                            >
+                                {name}
+                            </Link>
+                        ))}
+                    </List>
+                )}
+                <FormattedDate
+                    {...created}
+                    className={css(styles.creationDate)}
+                />
+            </div>,
+            <div className={css(styles.content)} key='b'>
+                <StalkerTableOfContents content={content} />
+                <MarkdownContainer className={css(styles.markdown)}>
                     {content}
                 </MarkdownContainer>
-                <div style={styles.disqus}>
-                    <DisqusThread
-                        // see: https://help.disqus.com/customer/en/portal/articles/472098-javascript-configuration-variables
-                        shortname={isProduction ? 'montemishkin' : 'montemishkin-test'}
-                        identifier={url}
-                        title={title}
-                        // TODO: this url should not be hardcoded here
-                        url={`http://monte.mishkin.com${url}`}
-                    />
-                </div>
-            </section>
+            </div>,
+        ],
+        comments: (
+            <DisqusThread
+                // see: https://help.disqus.com/customer/en/portal/articles/472098-javascript-configuration-variables
+                shortname={isProduction ? 'montemishkin' : 'montemishkin-test'}
+                identifier={url}
+                title={title}
+                // TODO: this url should not be hardcoded here
+                url={`http://monte.mishkin.com${url}`}
+            />
         ),
     })
 }
@@ -90,17 +121,11 @@ function LoadedContent({
 function ErrorContent({error}) {
     return createContent({
         BannerIcon: radium(
-            props => <i {...props} className='fa fa-exclamation' />
+            props => <img {...props} src='/static/images/error.svg' />
         ),
         title: 'Woops',
         subtitle: 'something went wrong...',
-        content: (
-            <section style={styles.contentContainer}>
-                <div style={styles.content}>
-                    Error: {error.message}
-                </div>
-            </section>
-        ),
+        content: `Error: ${error.message}`,
     })
 }
 
@@ -110,13 +135,7 @@ function LoadingContent() {
         BannerIcon: Spinner,
         title: 'Loading',
         subtitle: '...',
-        content: (
-            <section style={styles.contentContainer}>
-                <div style={styles.content}>
-                    Loading...
-                </div>
-            </section>
-        ),
+        content: 'Loading...',
     })
 }
 
@@ -159,10 +178,7 @@ Article.propTypes = {
         description: PropTypes.string,
     })),
     content: PropTypes.string,
-    bannerImage: PropTypes.shape({
-        url: PropTypes.string,
-    }),
 }
 
 
-export default radium(Article)
+export default Article

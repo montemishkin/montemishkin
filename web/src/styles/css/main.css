@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ol, ul {
+    list-style-type: none;
+}
+
+
+html, body, #app {
+    min-height: 100%;
+    height: 100%;
+    font-size: 14px;
+    background-color: #E8EAEE;
+    color: #343C3F;
+}
+
+
+body {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+body.open-sans-font-face-loaded {
+    font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+}

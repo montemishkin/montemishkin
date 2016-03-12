@@ -1,3 +1,5 @@
+// node imports
+var path = require('path')
 // third party imports
 var webpack = require('webpack')
 // local imports
@@ -27,8 +29,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
     output: {
         filename: '[name].js',
-        chunkFilename: 'chunk-[id]-[chunkhash].js',
-        path: projectPaths.buildDir,
+        chunkFilename: 'chunk-[id].js',
     },
     module: {
         preLoaders: [
