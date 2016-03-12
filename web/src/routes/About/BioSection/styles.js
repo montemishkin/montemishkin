@@ -21,7 +21,9 @@ const transitionParameters = {
 
 export function createContainerStyle(index = 0) {
     return {
-        backgroundColor: chroma(colors.background.main).brighten(0.125 * index).css(),
+        backgroundColor: chroma(colors.background.main)
+            .brighten(0.125 * index)
+            .css(),
     }
 }
 

@@ -1,27 +1,14 @@
 // third party imports
 import React from 'react'
 import {css} from 'aphrodite'
-import radium from 'radium'
 // local imports
 import styles from './styles'
 
 
-function CenteredSection({
-    innerClassName,
-    innerStyle,
-    children,
-    className,
-    ...unusedProps,
-}) {
+function CenteredSection({children}) {
     return (
-        <section
-            {...unusedProps}
-            className={`${css(styles.outerContainer)} ${className}`}
-        >
-            <div
-                style={innerStyle}
-                className={`${css(styles.innerContainer)} ${innerClassName}`}
-            >
+        <section className={css(styles.outerContainer)}>
+            <div className={css(styles.innerContainer)}>
                 {children}
             </div>
         </section>
@@ -29,4 +16,4 @@ function CenteredSection({
 }
 
 
-export default radium(CenteredSection)
+export default CenteredSection

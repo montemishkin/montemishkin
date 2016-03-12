@@ -38,9 +38,11 @@ function createContent({
                 {content}
             </CenteredSection>
             {comments && (
-                <CenteredSection className={css(styles.comments)}>
+                <div className={css(styles.comments)}>
+                    <CenteredSection>
                         {comments}
-                </CenteredSection>
+                    </CenteredSection>
+                </div>
             )}
         </article>
     )
