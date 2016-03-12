@@ -1,7 +1,6 @@
 // third party imports
 import React from 'react'
 import {css} from 'aphrodite'
-import radium from 'radium'
 // local imports
 import styles from './styles'
 import List from 'components/List'
@@ -43,7 +42,6 @@ const sections = [
                     className={css(styles.link)}
                     target='_blank'
                     href='/static/monte_mishkin_resume.pdf'
-                    key='resume'
                 >
                     resume
                 </a>{' '}
@@ -52,7 +50,6 @@ const sections = [
                     className={css(styles.link)}
                     target='_blank'
                     href='https://github.com/montemishkin'
-                    key='projects'
                 >
                     projects
                 </a>{' '}
@@ -86,7 +83,6 @@ const sections = [
                     className={css(styles.link)}
                     target='_blank'
                     href='https://github.com/montemishkin'
-                    key='GitHub'
                 >
                     GitHub
                 </a>
@@ -95,7 +91,6 @@ const sections = [
                     className={css(styles.link)}
                     target='_blank'
                     href='mailto:monte@mishkin.com'
-                    key='email'
                 >
                     email
                 </a>
@@ -104,7 +99,6 @@ const sections = [
                     className={css(styles.link)}
                     target='_blank'
                     href='/static/monte_mishkin_resume.pdf'
-                    key='resume'
                 >
                     resume
                 </a>{' '}
@@ -113,12 +107,7 @@ const sections = [
         ),
         Icon: props => <img {...props} src='/static/images/logo-chill.svg'/>,
     },
-// wrap components in radium
-].map(section => ({
-    ...section,
-    Text: radium(section.Text),
-    Icon: radium(section.Icon),
-}))
+]
 
 
 
