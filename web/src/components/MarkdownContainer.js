@@ -5,7 +5,6 @@ import radium from 'radium'
 
 // apply styling needed for markdown content
 import 'styles/css/markdown.css'
-import 'styles/css/highlight.css'
 
 
 /**
