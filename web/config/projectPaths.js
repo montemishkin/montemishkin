@@ -38,12 +38,12 @@ module.exports = {
     serverBuild: serverBuild,
     cssBuild: cssBuild,
     // globs
-    cssGlob: path.join(sourceDir, 'styles', 'css', '*'),
     testsGlob: path.join(sourceDir, '**', '_tests', 'test_*.js'),
     // configuration files
     eslintConfig: path.join(configDir, 'eslint.json'),
     karmaConfig: path.join(configDir, 'karma.js'),
     babelConfig: path.join(configDir, 'babel.js'),
+    postcssConfig: path.join(configDir, 'postcss.js'),
     webpackBaseConfig: path.join(webpackDir, 'base.js'),
     webpackClientConfig: path.join(webpackDir, 'client.js'),
     webpackServerConfig: path.join(webpackDir, 'server.js'),

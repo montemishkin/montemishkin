@@ -8,9 +8,6 @@ var del = require('del')
 var mkdirp = require('mkdirp')
 var karma = require('karma')
 var webpack = require('webpack')
-var glob = require('glob')
-var postcss = require('postcss')
-var cssnano = require('cssnano')
 var nodemon = require('nodemon')
 // local imports
 var projectPaths = require('./config/projectPaths')
@@ -43,7 +40,6 @@ var tasks = {}
 tasks['default'] = function () {
     runRequestedTaskNames(tasks, [
         'clean',
-        'watch-styles',
         'watch-client',
         'watch-server',
         'run-server'
@@ -57,7 +53,6 @@ tasks['default'] = function () {
 tasks['build-production'] = function () {
     runRequestedTaskNames(tasks, [
         'clean',
-        'build-styles-production',
         'build-client-production',
         'build-server-production',
     ])
@@ -95,54 +90,6 @@ tasks['watch-server'] = function () {
     config.watch = true
 
     webpack(config, webpackCallback)
-}
-
-
-/**
- * Build styles only.
- */
-tasks['build-styles'] = function () {
-    var plugins = [
-        cssnano({
-            sourcemap: true,
-            autoprefixer: {
-                browsers: ['last 3 versions'],
-            },
-        }),
-    ]
-
-    var css = glob.sync(projectPaths.cssGlob).reduce(function (s, file) {
-        return s + '\n' + fs.readFileSync(file)
-    }, '')
-
-    postcss(plugins)
-        .process(css, {
-            from: projectPaths.cssGlob,
-            to: projectPaths.cssBuild,
-            map: {inline: false},
-        }).then(function (result) {
-            fs.writeFileSync(projectPaths.cssBuild, result.css)
-
-            if (result.map) {
-                fs.writeFileSync(projectPaths.cssBuild + '.map', result.map)
-            }
-        })
-}
-
-
-/**
- * Watch styles only. Rebuild on change.
- */
-tasks['watch-styles'] = function () {
-    runRequestedTaskNames(tasks, ['build-styles'])
-
-    function listener() {
-        runRequestedTaskNames(tasks, ['build-styles'])
-    }
-
-    glob.sync(projectPaths.cssGlob).forEach(function (file) {
-        fs.watchFile(file, listener)
-    })
 }
 
 
@@ -193,38 +140,6 @@ tasks['build-server-production'] = function () {
     var config = require(projectPaths.webpackServerConfig)
 
     webpack(config, webpackCallback)
-}
-
-
-/**
- * Build styles for production.
- */
-tasks['build-styles-production'] = function () {
-    setProductionEnvironment()
-
-    var plugins = [
-        cssnano({
-            autoprefixer: {
-                browsers: ['last 3 versions'],
-            },
-        }),
-    ]
-
-    var css = glob.sync(projectPaths.cssGlob).reduce(function (s, file) {
-        return s + '\n' + fs.readFileSync(file)
-    }, '')
-
-    postcss(plugins)
-        .process(css, {
-            from: projectPaths.cssGlob,
-            to: projectPaths.cssBuild,
-        }).then(function (result) {
-            fs.writeFileSync(projectPaths.cssBuild, result.css)
-
-            if (result.map) {
-                fs.writeFileSync(projectPaths.cssBuild + '.map', result.map)
-            }
-        })
 }
 
 
