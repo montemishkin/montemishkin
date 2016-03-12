@@ -28,6 +28,16 @@ class CustomRenderer(mistune.Renderer):
             slug=slug
         )
 
+    def autolink(self, link, is_email):
+        return '<a href="{link}" target="_blank">{link}</a>'.format(link=link)
+
+    def link(self, link, title, content):
+        return '<a href="{link}" target="_blank" title="{title}">{content}</a>'.format(
+            link=link,
+            title=title,
+            content=content
+        )
+
 
 # create a single reusable instance to increase performance
 markdown = mistune.Markdown(renderer=CustomRenderer())
