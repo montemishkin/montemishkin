@@ -1,6 +1,7 @@
 // third party imports
 import React, {Component} from 'react'
 import reactDOM from 'react-dom'
+import radium from 'radium'
 import throttle from 'lodash/function/throttle'
 // local imports
 import {createContainerStyle} from './styles'
@@ -43,28 +44,24 @@ function stalker(Element, throttleTime = 0) {
 
         render() {
             const {
-                props: {style, ...unusedProps},
+                props,
                 state: {ref},
                 refHandler,
             } = this
 
-            const computedStyle = {
-                ...createContainerStyle(ref),
-                ...style,
-            }
-
             return (
-                <Element
-                    {...unusedProps}
+                <div
                     ref={refHandler}
-                    style={computedStyle}
-                />
+                    style={createContainerStyle(ref)}
+                >
+                    <Element {...props} />
+                </div>
             )
         }
     }
 
 
-    return Stalker
+    return radium(Stalker)
 }
 
 

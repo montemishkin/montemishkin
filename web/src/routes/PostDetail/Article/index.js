@@ -14,6 +14,14 @@ import TableOfContents from 'components/TableOfContents'
 import Spinner from 'components/Spinner'
 import List from 'components/List'
 import Link from 'components/Link'
+import stalker from 'decorators/stalker'
+
+
+const StalkerTableOfContents = stalker(props => (
+    <div className={css(styles.toc)}>
+        <TableOfContents {...props} />
+    </div>
+))
 
 
 const isProduction = process.env.NODE_ENV === 'production'
@@ -90,10 +98,7 @@ function LoadedContent({
                 />
             </div>,
             <div className={css(styles.content)} key='b'>
-                <TableOfContents
-                    className={css(styles.toc)}
-                    content={content}
-                />
+                <StalkerTableOfContents content={content} />
                 <MarkdownContainer className={css(styles.markdown)}>
                     {content}
                 </MarkdownContainer>

@@ -1,19 +1,14 @@
 // third party imports
 import React from 'react'
 import {css} from 'aphrodite'
-import radium from 'radium'
 // local imports
 import styles from './styles'
 import Content from './Content'
-import stalker from 'decorators/stalker'
 
 
-function TableOfContents({content, className, ...unusedProps}) {
+function TableOfContents({content}) {
     return (
-        <nav
-            {...unusedProps}
-            className={`${css(styles.container)} ${className}`}
-        >
+        <nav className={css(styles.container)}>
             <h3 className={css(styles.title)}>
                 Table of Contents
             </h3>
@@ -23,4 +18,4 @@ function TableOfContents({content, className, ...unusedProps}) {
 }
 
 
-export default stalker(radium(TableOfContents))
+export default TableOfContents

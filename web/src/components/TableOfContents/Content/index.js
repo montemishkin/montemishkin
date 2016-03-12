@@ -39,15 +39,12 @@ function processContent(content) {
 }
 
 
-function Content({content, className, ...unusedProps}) {
+function Content({content}) {
     // if no content given
     if (content === '') {
         // render message saying no content
         return (
-            <div
-                {...unusedProps}
-                className={`${css(styles.message)} ${className}`}
-            >
+            <div className={css(styles.message)}>
                 There is no content!
             </div>
         )
@@ -59,10 +56,7 @@ function Content({content, className, ...unusedProps}) {
     if (headers.length === 0) {
         // render message saying no headers
         return (
-            <div
-                {...unusedProps}
-                className={`${css(styles.message)} ${className}`}
-            >
+            <div className={css(styles.message)}>
                 Sorry, it{"'"}s all just one section.
             </div>
         )
@@ -70,10 +64,7 @@ function Content({content, className, ...unusedProps}) {
 
     // render list of links to page contents
     return (
-        <ul
-            {...unusedProps}
-            className={`${css(styles.list)} ${className}`}
-        >
+        <ul className={css(styles.list)}>
             {headers.map(({id, textContent, tagName}, key) => {
                 const level = tagName.match(/^h([1-6])$/i)[1]
                 const depth = levels.indexOf(level)
