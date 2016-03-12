@@ -35,7 +35,6 @@ module.exports = assign({}, baseConfig, {
             {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract('style', 'css'),
-                include: projectPaths.sourceDir,
             }
         ),
     }),

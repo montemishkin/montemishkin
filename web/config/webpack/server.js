@@ -63,7 +63,6 @@ module.exports = assign({}, baseConfig, {
             {
                 test: /\.css$/,
                 loader: 'null',
-                include: projectPaths.sourceDir,
             }
         ),
     }),

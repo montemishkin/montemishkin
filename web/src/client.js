@@ -13,7 +13,7 @@ import {createStore} from 'store'
 
 
 // apply global styles (order is important here!)
-import 'styles/css/normalize.css'
+import 'normalize.css'
 import 'styles/css/main.css'
 // this isn't needed globally but is too small to justify its own style tag
 // and loading it here prevents a stationary spinner while waiting for that
