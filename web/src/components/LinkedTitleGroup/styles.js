@@ -7,23 +7,39 @@ import colors from 'styles/js/colors'
 import {
     largerFontSize,
     largeFontSize,
+    mainFontSize,
 } from 'styles/js/numerics'
+import mediaQueries from 'styles/js/mediaQueries'
 
 
 const transition = {
     ...classes.transitionParameters,
-    transitionProperty: 'color',
+    transitionProperty: 'color, font-size',
 }
 const titleBase = {
     ...transition,
     textAlign: 'center',
-    fontSize: largerFontSize,
     paddingBottom: 10,
+
+    [mediaQueries.medium.lt]: {
+        fontSize: largeFontSize,
+    },
+
+    [mediaQueries.medium.ge]: {
+        fontSize: largerFontSize,
+    },
 }
 const subtitleBase = {
     ...transition,
     textAlign: 'center',
-    fontSize: largeFontSize,
+
+    [mediaQueries.medium.lt]: {
+        fontSize: mainFontSize,
+    },
+
+    [mediaQueries.medium.ge]: {
+        fontSize: largeFontSize,
+    },
 }
 
 
