@@ -4,15 +4,16 @@ import {css} from 'aphrodite'
 import radium from 'radium'
 import DisqusThread from 'react-disqus-thread'
 // local imports
-import styles, {tagListLinkStyle} from './styles'
+import styles from './styles'
 import Loader from 'components/Loader'
 import Banner from 'components/Banner'
-import TagList from 'components/TagList'
 import FormattedDate from 'components/FormattedDate'
 import MarkdownContainer from 'components/MarkdownContainer'
 import CenteredSection from 'components/CenteredSection'
 import TableOfContents from 'components/TableOfContents'
 import Spinner from 'components/Spinner'
+import List from 'components/List'
+import Link from 'components/Link'
 
 
 const isProduction = process.env.NODE_ENV === 'production'
@@ -64,10 +65,23 @@ function LoadedContent({
         created,
         content: [
             <div className={css(styles.infoBar)} key='a'>
-                <TagList
-                    linkStyle={tagListLinkStyle}
-                    tags={tags}
-                />
+                {tags.length > 0 && (
+                    <List
+                        className={css(styles.tagList)}
+                        listItemClassName={css(styles.tagListItem)}
+                    >
+                        {tags.map(({url: tagUrl, description, name}, key) => (
+                            <Link
+                                to={tagUrl}
+                                className={css(styles.tagListItemLink)}
+                                key={key}
+                                title={description}
+                            >
+                                {name}
+                            </Link>
+                        ))}
+                    </List>
+                )}
                 <FormattedDate
                     {...created}
                     className={css(styles.creationDate)}

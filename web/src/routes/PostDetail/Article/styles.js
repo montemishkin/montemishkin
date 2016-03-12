@@ -10,23 +10,37 @@ import mediaQueries from 'styles/js/mediaQueries'
 const tocWidth = 225
 
 
-export const tagListLinkStyle = {
-    color: colors.background.interactive + ' !important',
-    textDecoration: 'none',
-
-    ':hover': {
-        textDecoration: 'underline',
-    },
-
-    ':focus': {
-        textDecoration: 'underline',
-    },
-}
-
-
 export default StyleSheet.create({
     content: {
         position: 'relative',
+    },
+
+
+    tagList: {
+        padding: '0 3px',
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+    },
+
+
+    tagListItem: {
+        margin: '0 3px',
+        padding: '2px 3px',
+    },
+
+
+    tagListItemLink: {
+        color: colors.background.interactive,
+        textDecoration: 'none',
+
+        ':hover': {
+            textDecoration: 'underline',
+        },
+
+        ':focus': {
+            textDecoration: 'underline',
+        },
     },
 
 

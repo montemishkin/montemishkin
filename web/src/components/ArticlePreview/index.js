@@ -5,8 +5,9 @@ import radium from 'radium'
 // local imports
 import styles from './styles'
 import LinkedTitleGroup from 'components/LinkedTitleGroup'
-import TagList from 'components/TagList'
 import FormattedDate from 'components/FormattedDate'
+import List from 'components/List'
+import Link from 'components/Link'
 
 
 function ArticlePreview ({
@@ -28,9 +29,23 @@ function ArticlePreview ({
                 title={title}
                 subtitle={subtitle}
             />
-            <div className={css(styles.tagList)}>
-                <TagList tags={tags} />
-            </div>
+            {tags.length > 0 && (
+                <List
+                    className={css(styles.tagList)}
+                    listItemClassName={css(styles.tagListItem)}
+                >
+                    {tags.map(({url: tagUrl, description, name}, key) => (
+                        <Link
+                            to={tagUrl}
+                            className={css(styles.tagListItemLink)}
+                            key={key}
+                            title={description}
+                        >
+                            {name}
+                        </Link>
+                    ))}
+                </List>
+            )}
             <FormattedDate {...created} className={css(styles.date)} />
         </section>
     )
