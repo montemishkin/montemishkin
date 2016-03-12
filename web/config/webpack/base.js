@@ -2,18 +2,14 @@
 var path = require('path')
 // third party imports
 var webpack = require('webpack')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
 // local imports
 var projectPaths = require('../projectPaths')
 var babelConfig = require(projectPaths.babelConfig)
-var postcssConfig = require(projectPaths.postcssConfig)
 
 
 // default to using development configuration
 var devtool = 'source-map'
-var plugins = [
-    new ExtractTextPlugin(path.basename(projectPaths.cssBuild))
-]
+var plugins = []
 // if we are in production environment
 if (process.env.NODE_ENV === 'production') {
     // use production configuration instead
@@ -41,10 +37,6 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'eslint',
                 include: projectPaths.sourceDir,
-            }, {
-                test: /\.css$/,
-                loader: 'postcss',
-                include: projectPaths.sourceDir,
             },
         ],
         loaders: [
@@ -53,11 +45,7 @@ module.exports = {
                 loader: 'babel',
                 include: projectPaths.sourceDir,
                 query: babelConfig,
-            }, {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style', 'css'),
-                include: projectPaths.sourceDir,
-            }
+            },
         ],
     },
     resolve: {
@@ -71,7 +59,6 @@ module.exports = {
         configFile: projectPaths.eslintConfig,
         failOnError: true,
     },
-    postcss: postcssConfig,
     plugins: plugins,
     devtool: devtool,
 }

@@ -58,4 +58,13 @@ module.exports = assign({}, baseConfig, {
         __filename: true,
         path: true,
     },
+    module: assign({}, baseConfig.module, {
+        loaders: baseConfig.module.loaders.concat(
+            {
+                test: /\.css$/,
+                loader: 'null',
+                include: projectPaths.sourceDir,
+            }
+        ),
+    }),
 })

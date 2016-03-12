@@ -15,9 +15,6 @@ import {createStore} from 'store'
 // apply global styles (order is important here!)
 import 'styles/css/normalize.css'
 import 'styles/css/main.css'
-import 'styles/css/markdown.css'
-import 'styles/css/highlight.css'
-import 'styles/css/spinner.css'
 
 
 if (process.env.NODE_ENV === 'production') {
