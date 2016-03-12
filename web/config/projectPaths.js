@@ -40,6 +40,7 @@ module.exports = {
     // globs
     testsGlob: path.join(sourceDir, '**', '_tests', 'test_*.js'),
     // configuration files
+    settings: path.join(configDir, 'settings.js'),
     eslintConfig: path.join(configDir, 'eslint.json'),
     karmaConfig: path.join(configDir, 'karma.js'),
     babelConfig: path.join(configDir, 'babel.js'),

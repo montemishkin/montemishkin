@@ -4,11 +4,12 @@ import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 // local imports
 import reducer from './reducer'
+import settings from 'config/settings'
 
 
 const middlewares = [thunk]
 
-if (process.env.NODE_ENV !== 'production' && typeof window !== 'undefined') {
+if (settings.debug && typeof window !== 'undefined') {
     middlewares.push(createLogger({
         // always collapse console groups
         collapsed: () => true,

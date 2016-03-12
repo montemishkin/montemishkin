@@ -5,13 +5,14 @@ var webpack = require('webpack')
 // local imports
 var projectPaths = require('../projectPaths')
 var babelConfig = require(projectPaths.babelConfig)
+var settings = require(projectPaths.settings)
 
 
 // default to using development configuration
 var devtool = 'source-map'
 var plugins = []
 // if we are in production environment
-if (process.env.NODE_ENV === 'production') {
+if (!settings.debug) {
     // use production configuration instead
     devtool = ''
     plugins.push(

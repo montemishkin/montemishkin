@@ -15,6 +15,7 @@ import Spinner from 'components/Spinner'
 import List from 'components/List'
 import Link from 'components/Link'
 import stalker from 'decorators/stalker'
+import settings from 'config/settings'
 
 
 const StalkerTableOfContents = stalker(props => (
@@ -22,9 +23,6 @@ const StalkerTableOfContents = stalker(props => (
         <TableOfContents {...props} />
     </div>
 ))
-
-
-const isProduction = process.env.NODE_ENV === 'production'
 
 
 function createContent({
@@ -107,7 +105,7 @@ function LoadedContent({
         comments: (
             <DisqusThread
                 // see: https://help.disqus.com/customer/en/portal/articles/472098-javascript-configuration-variables
-                shortname={isProduction ? 'montemishkin' : 'montemishkin-test'}
+                shortname={settings.disqusShortName}
                 identifier={url}
                 title={title}
                 // TODO: this url should not be hardcoded here

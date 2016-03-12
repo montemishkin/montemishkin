@@ -11,6 +11,7 @@ import {match} from 'react-router'
 import Helmet from 'react-helmet'
 // local imports
 import projectPaths from 'config/projectPaths'
+import settings from 'config/settings'
 const {
     publicDir,
     favicon: faviconPath,
@@ -31,7 +32,7 @@ const server = express()
 // compress responses
 server.use(compression())
 // log requests
-server.use(logger(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'))
+server.use(logger(settings.expressLogStyle))
 // serve favicon
 server.use(favicon(faviconPath))
 

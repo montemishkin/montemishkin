@@ -4,21 +4,13 @@ import {normalize} from 'normalizr'
 import mapValues from 'lodash/object/mapValues'
 // local imports
 import schema from './schema'
-
-
-// TODO: this seems like the wrong way to do this...
-// name of host to use when forming URL's
-let adminURL = 'localhost:8001'
-// if we are in production environment
-if (process.env.NODE_ENV === 'production') {
-    adminURL = 'admin.monte.mishkin.com'
-}
+import settings from 'config/settings'
 
 
 // returns api response from given query
 export default query => {
     // TODO: this url should not be hardcoded here
-    return fetch(`http://${adminURL}/query/`, {
+    return fetch(`http://${settings.adminURL}/query/`, {
         method: 'POST',
         // TODO: will I need 'cors' in production?
         mode: 'cors',

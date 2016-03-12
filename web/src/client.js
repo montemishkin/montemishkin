@@ -10,6 +10,7 @@ import {StyleSheet} from 'aphrodite'
 // local imports
 import routes from 'routes'
 import {createStore} from 'store'
+import settings from 'config/settings'
 
 
 // apply global styles (order is important here!)
@@ -21,21 +22,15 @@ import 'styles/css/main.css'
 import 'styles/css/spinner.css'
 
 
-if (process.env.NODE_ENV === 'production') {
-    // Google Analytics
-    // see: https://developers.google.com/analytics/devguides/collection/analyticsjs/
-    /* eslint-disable */
-    window.ga = window.ga || function () {
-        (ga.q = ga.q || []).push(arguments)
-    };
-    ga.l = +new Date;
-    ga('create', 'UA-68929870-2', 'auto');
-    /* eslint-enable */
-} else {
-    /* eslint-disable */
-    window.ga = window.ga || function () {};
-    /* eslint-enable */
-}
+// Google Analytics
+// see: https://developers.google.com/analytics/devguides/collection/analyticsjs/
+/* eslint-disable */
+window.ga = window.ga || function () {
+    (ga.q = ga.q || []).push(arguments)
+};
+ga.l = +new Date;
+ga('create', settings.gaPropertyId, 'auto');
+/* eslint-enable */
 
 
 // see: https://github.com/bramstein/fontfaceobserver#how-to-use

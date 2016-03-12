@@ -6,6 +6,7 @@ var assign = require('lodash/object/assign')
 // local imports
 var projectPaths = require('../projectPaths')
 var baseConfig = require(projectPaths.webpackBaseConfig)
+var settings = require(projectPaths.settings)
 
 
 // dict of node modules to treat as externals
@@ -27,7 +28,7 @@ var nodeModules = fs.readdirSync('node_modules')
 // extend base configuration's plugins
 var plugins = baseConfig.plugins.concat()
 
-if (process.env.NODE_ENV !== 'production') {
+if (settings.debug) {
     plugins.push(
         // add source map support
         new webpack.BannerPlugin(
