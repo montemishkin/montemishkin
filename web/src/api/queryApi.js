@@ -9,8 +9,7 @@ import settings from 'config/settings'
 
 // returns api response from given query
 export default query => {
-    // TODO: this url should not be hardcoded here
-    return fetch(`http://${settings.adminURL}/query/`, {
+    return fetch(settings.apiURL, {
         method: 'POST',
         // TODO: will I need 'cors' in production?
         mode: 'cors',

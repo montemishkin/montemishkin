@@ -108,8 +108,7 @@ function LoadedContent({
                 shortname={settings.disqusShortName}
                 identifier={url}
                 title={title}
-                // TODO: this url should not be hardcoded here
-                url={`http://monte.mishkin.com${url}`}
+                url={`${settings.hostURL}${url}`}
             />
         ),
     })
