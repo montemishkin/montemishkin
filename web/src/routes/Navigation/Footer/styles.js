@@ -16,6 +16,7 @@ const linkBase = {
     display: 'inline-block',
     textDecoration: 'none',
 }
+const activeLinkColor = chroma(colors.primary.inverse).darken(1.5).css()
 
 
 export default StyleSheet.create({
@@ -44,12 +45,29 @@ export default StyleSheet.create({
 
 
     navLinks: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
     },
 
 
     navLink: {
         ...linkBase,
         padding: `${verticalSpacing}px ${horizontalSpacing}px`,
+    },
+
+
+    navLinkActive: {
+        color: activeLinkColor,
+        cursor: 'default',
+
+        ':hover': {
+            color: activeLinkColor,
+        },
+
+        ':focus': {
+            color: activeLinkColor,
+        },
     },
 
 

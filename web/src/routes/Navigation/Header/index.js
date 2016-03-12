@@ -12,13 +12,25 @@ function Header() {
     return (
         <nav className={css(styles.outerContainer)}>
             <List className={css(styles.innerContainer)}>
-                <IndexLink to='/' className={css(styles.link)}>
+                <IndexLink
+                    to='/'
+                    className={css(styles.link)}
+                    activeClassName={css(styles.linkActive)}
+                >
                     HOME
                 </IndexLink>
-                <Link to='/about' className={css(styles.link)}>
+                <Link
+                    to='/about'
+                    className={css(styles.link)}
+                    activeClassName={css(styles.linkActive)}
+                >
                     ABOUT
                 </Link>
-                <Link to='/posts' className={css(styles.link)}>
+                <Link
+                    to='/posts'
+                    className={css(styles.link)}
+                    activeClassName={css(styles.linkActive)}
+                >
                     BLOG
                 </Link>
             </List>

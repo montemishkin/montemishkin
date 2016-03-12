@@ -1,5 +1,3 @@
-- NotFound view
-    - make grass taller so that view is responsive
 - add posts
     - physics
     - redux responsive?
@@ -21,11 +19,9 @@
     - http://expressjs.com/en/advanced/best-practice-security.html
 
 - development
-    - move checks for production env into settings file, import from there
     - establish consistency with `export` vs `export default`
     - establish consistency with prop type checking.  or use flow
     - how to organize components vs views, deal with nesting, etc
-    - use sass or scss. or postcss?
 
 - optimization
     - caching
@@ -49,9 +45,6 @@
     - improve use of semantic content
 
 - styling
-    - react-router `Link` and `IndexLink` do not play well with radium
-        - radium wrapping of `Link` does not work on `activeStyle` prop.  Thus, nav links don't transition *in* to the new background color even though they do transition *out* of it.
-        - idk why, but `IndexLink` doesn't get the hover styling...
-            - its because radium only fixes styling for wrapped components that return raw DOM nodes.  `IndexLink` just returns `Link` with some props set, so the styling doesn't make it to the DOM nodes.
-        - anyways, it would really be nice to be able to use `activeStyle`, especially on the nav bar.
+    - NotFound view
+        - make grass taller so that view is responsive
     - About view content should be rendered markdown.  Since articles' contents are rendered on the django server, you would have to have a separate markdown renderer that produced the exact same output...  Or, render articles' content isomorphically in js.
