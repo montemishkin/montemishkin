@@ -19,7 +19,7 @@ export default {
     background: {
         main: '#e8eaee',
         inverse: '#343c3f',
-        // stay in sync with `$blue` in markdown.css
+        // stay in sync with `$link-color` in markdown.css
         interactive: '#00A1DC',
     },
 }

@@ -1,14 +1,40 @@
-$green: #54E2AC;
+/*
+ * Colors
+ */
+$kbd-color: #555;
+$kbd-bg-color: #fcfcfc;
+$kbd-shadow-color: #bbb;
+$kbd-border-color: #ccc;
+$kbd-border-bottom-color: $kbd-shadow-color;
+$header-underline-color: #ccc;
+$code-bg-color: rgba(0, 0, 0, 0.04);
+$blockquote-color: #777;
+$blockquote-bg-color: #ddd;
+$hr-color: #999;
+$bold-color: black;
+$flash-color: #54E2AC;
 /* stay in sync with `colors.background.interactive` in colors.js */
-$blue: #00A1DC;
+$link-color: #00A1DC;
+
+/*
+ * Numbers
+ */
+$anchor-hash-width: 30px;
+$paragraph-spacing: 16px;
+/* all these font sizes stay in sync with those in numerics.js */
+$largest-font-size: 32px;
+$larger-font-size: 24px;
+$large-font-size: 18px;
+$main-font-size: 14px;
+$small-font-size: 12px;
 
 
 :target {
-    animation: highlight 1s ease;
+    animation: flash 1s ease;
 }
 
-@keyframes highlight {
-    0% { background-color: $green; }
+@keyframes flash {
+    0% { background-color: $flash-color; }
     100% { background-color: transparent; }
 }
 
@@ -21,7 +47,7 @@ $blue: #00A1DC;
     }
 
     & a {
-        color: $blue;
+        color: $link-color;
         text-decoration: none;
 
         &:active,
@@ -42,8 +68,8 @@ $blue: #00A1DC;
 
     & .anchor::before {
         content: "#";
-        margin-left: -30px;
-        width: 30px;
+        margin-left: -$anchor-hash-width;
+        width: $anchor-hash-width;
         display: inline-block;
         text-align: center;
         transition: color 0.2s ease-in-out;
@@ -57,8 +83,8 @@ $blue: #00A1DC;
     }
 
     & strong {
-        font-weight: 900;
-        color: black;
+        font-weight: bold;
+        color: $bold-color;
     }
 
     & img {
@@ -66,18 +92,18 @@ $blue: #00A1DC;
     }
 
     & hr {
-        margin: 16px 0;
+        margin: $paragraph-spacing 0;
         height: 0;
         overflow: hidden;
         background: transparent;
         border: 0;
-        border-bottom: 1px solid #999;
+        border-bottom: 1px solid $hr-color;
     }
 
     & blockquote {
-        padding: 0 16px;
-        color: #777;
-        border-left: 4px solid #ddd;
+        padding: 0 $paragraph-spacing;
+        color: $blockquote-color;
+        border-left: 4px solid $blockquote-bg-color;
     }
 
     & ul {
@@ -111,8 +137,8 @@ $blue: #00A1DC;
     & h4,
     & h5,
     & h6 {
-        margin-top: 16px;
-        margin-bottom: 16px;
+        margin-top: $paragraph-spacing;
+        margin-bottom: $paragraph-spacing;
         font-weight: bold;
         line-height: 1.2;
     }
@@ -120,30 +146,33 @@ $blue: #00A1DC;
     & h1,
     & h2 {
         padding-bottom: 0.3em;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid $header-underline-color;
     }
 
     & h1 {
-        font-size: 32px;
+        font-size: $largest-font-size;
     }
 
     & h2 {
+        /* TODO: can this be a $*-font-size or is this value better? */
         font-size: 28px;
     }
 
     & h3 {
-        font-size: 24px;
+        font-size: $larger-font-size;
     }
 
     & h4 {
+        /* TODO: can this be a $*-font-size or is this value better? */
         font-size: 20px;
     }
 
     & h5 {
-        font-size: 18px;
+        font-size: $large-font-size;
     }
 
     & h6 {
+        /* TODO: can this be a $*-font-size or is this value better? */
         font-size: 16px;
     }
 
@@ -152,19 +181,19 @@ $blue: #00A1DC;
     & ul,
     & ol,
     & .highlight {
-        margin-bottom: 16px;
+        margin-bottom: $paragraph-spacing;
     }
 
     & code,
     & kbd,
     & pre {
         font-family: monospace;
-        font-size: 85%;
+        font-size: 95%;
     }
 
     & code {
         padding: 0.2em 0.5em;
-        background-color: rgba(0,0,0,0.04);
+        background-color: $code-bg-color;
         border-radius: 3px;
     }
 
@@ -172,7 +201,7 @@ $blue: #00A1DC;
         word-wrap: normal;
         overflow: auto;
         word-break: normal;
-        padding: 16px;
+        padding: $paragraph-spacing;
         line-height: 1.45;
     }
 
@@ -180,13 +209,13 @@ $blue: #00A1DC;
         display: inline-block;
         padding: 3px 5px;
         line-height: 1.2;
-        color: #555;
         vertical-align: middle;
-        background-color: #fcfcfc;
-        border: solid 1px #ccc;
-        border-bottom-color: #bbb;
+        color: $kbd-color;
+        background-color: $kbd-bg-color;
+        border: solid 1px $kbd-border-color;
+        border-bottom-color: $kbd-border-bottom-color;
         border-radius: 3px;
-        box-shadow: inset 0 -1px 0 #bbb;
+        box-shadow: inset 0 -1px 0 $kbd-shadow-color;
     }
 }
 
