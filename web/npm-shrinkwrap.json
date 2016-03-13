@@ -3797,6 +3797,11 @@
       "from": "postcss-modules-values@>=1.1.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/postcss-modules-values/-/postcss-modules-values-1.1.1.tgz"
     },
+    "postcss-nesting": {
+      "version": "2.3.0",
+      "from": "postcss-nesting@latest",
+      "resolved": "https://registry.npmjs.org/postcss-nesting/-/postcss-nesting-2.3.0.tgz"
+    },
     "postcss-normalize-charset": {
       "version": "1.1.0",
       "from": "postcss-normalize-charset@>=1.1.0 <2.0.0",

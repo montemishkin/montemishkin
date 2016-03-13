@@ -15,181 +15,180 @@ $blue: #00A1DC;
 .markdown {
     line-height: 1.6;
     word-wrap: break-word;
-}
 
-.markdown * {
-    box-sizing: border-box;
-}
+    & * {
+        box-sizing: border-box;
+    }
 
-.markdown a {
-    color: $blue;
-    text-decoration: none;
-}
+    & a {
+        color: $blue;
+        text-decoration: none;
 
-.markdown a:active,
-.markdown a:hover,
-.markdown a:focus {
-    text-decoration: underline;
-}
+        &:active,
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+        }
+    }
 
-.markdown a:not([href]),
-.markdown .anchor,
-.markdown .anchor:active,
-.markdown .anchor:hover,
-.markdown .anchor:focus {
-    color: inherit;
-    text-decoration: none;
-}
+    & a:not([href]),
+    & .anchor,
+    & .anchor:active,
+    & .anchor:hover,
+    & .anchor:focus {
+        color: inherit;
+        text-decoration: none;
+    }
 
-.markdown .anchor::before {
-    content: "#";
-    margin-left: -30px;
-    width: 30px;
-    display: inline-block;
-    text-align: center;
-    transition: color 0.2s ease-in-out;
-    color: transparent;
-}
+    & .anchor::before {
+        content: "#";
+        margin-left: -30px;
+        width: 30px;
+        display: inline-block;
+        text-align: center;
+        transition: color 0.2s ease-in-out;
+        color: transparent;
+    }
 
-.markdown .anchor:active::before,
-.markdown .anchor:hover::before,
-.markdown .anchor:focus::before {
-    color: inherit;
-}
+    & .anchor:active::before,
+    & .anchor:hover::before,
+    & .anchor:focus::before {
+        color: inherit;
+    }
 
-.markdown strong {
-    font-weight: 900;
-    color: black;
-}
+    & strong {
+        font-weight: 900;
+        color: black;
+    }
 
-.markdown img {
-    max-width: 100%;
-}
+    & img {
+        max-width: 100%;
+    }
 
-.markdown hr {
-    margin: 16px 0;
-    height: 0;
-    overflow: hidden;
-    background: transparent;
-    border: 0;
-    border-bottom: 1px solid #999;
-}
+    & hr {
+        margin: 16px 0;
+        height: 0;
+        overflow: hidden;
+        background: transparent;
+        border: 0;
+        border-bottom: 1px solid #999;
+    }
 
-.markdown blockquote {
-    padding: 0 16px;
-    color: #777;
-    border-left: 4px solid #ddd;
-}
+    & blockquote {
+        padding: 0 16px;
+        color: #777;
+        border-left: 4px solid #ddd;
+    }
 
-.markdown ul {
-    list-style-type: disc;
-}
+    & ul {
+        list-style-type: disc;
+    }
 
-.markdown ol {
-    list-style-type: decimal;
-}
+    & ol {
+        list-style-type: decimal;
+    }
 
-.markdown ul,
-.markdown ol {
-    padding-left: 2em;
-}
+    & ul,
+    & ol {
+        padding-left: 2em;
+    }
 
-.markdown ol ol,
-.markdown ul ol {
-    list-style-type: lower-roman;
-}
+    & ol ol,
+    & ul ol {
+        list-style-type: lower-roman;
+    }
 
-.markdown ul ul ol,
-.markdown ul ol ol,
-.markdown ol ul ol,
-.markdown ol ol ol {
-    list-style-type: lower-alpha;
-}
+    & ul ul ol,
+    & ul ol ol,
+    & ol ul ol,
+    & ol ol ol {
+        list-style-type: lower-alpha;
+    }
 
-.markdown h1,
-.markdown h2,
-.markdown h3,
-.markdown h4,
-.markdown h5,
-.markdown h6 {
-    margin-top: 16px;
-    margin-bottom: 16px;
-    font-weight: bold;
-    line-height: 1.2;
-}
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+        margin-top: 16px;
+        margin-bottom: 16px;
+        font-weight: bold;
+        line-height: 1.2;
+    }
 
-.markdown h1,
-.markdown h2 {
-    padding-bottom: 0.3em;
-    border-bottom: 1px solid #ccc;
-}
+    & h1,
+    & h2 {
+        padding-bottom: 0.3em;
+        border-bottom: 1px solid #ccc;
+    }
 
-.markdown h1 {
-    font-size: 32px;
-}
+    & h1 {
+        font-size: 32px;
+    }
 
-.markdown h2 {
-    font-size: 28px;
-}
+    & h2 {
+        font-size: 28px;
+    }
 
-.markdown h3 {
-    font-size: 24px;
-}
+    & h3 {
+        font-size: 24px;
+    }
 
-.markdown h4 {
-    font-size: 20px;
-}
+    & h4 {
+        font-size: 20px;
+    }
 
-.markdown h5 {
-    font-size: 18px;
-}
+    & h5 {
+        font-size: 18px;
+    }
 
-.markdown h6 {
-    font-size: 16px;
-}
+    & h6 {
+        font-size: 16px;
+    }
 
-.markdown p,
-.markdown blockquote,
-.markdown ul,
-.markdown ol,
-.markdown .highlight {
-    margin-bottom: 16px;
-}
+    & p,
+    & blockquote,
+    & ul,
+    & ol,
+    & .highlight {
+        margin-bottom: 16px;
+    }
 
-.markdown code,
-.markdown kbd,
-.markdown pre {
-    font-family: monospace;
-    font-size: 85%;
-}
+    & code,
+    & kbd,
+    & pre {
+        font-family: monospace;
+        font-size: 85%;
+    }
 
-.markdown code {
-    padding: 0.2em 0.5em;
-    background-color: rgba(0,0,0,0.04);
-    border-radius: 3px;
-}
+    & code {
+        padding: 0.2em 0.5em;
+        background-color: rgba(0,0,0,0.04);
+        border-radius: 3px;
+    }
 
-.markdown pre {
-    word-wrap: normal;
-    overflow: auto;
-    word-break: normal;
-    padding: 16px;
-    line-height: 1.45;
-}
+    & pre {
+        word-wrap: normal;
+        overflow: auto;
+        word-break: normal;
+        padding: 16px;
+        line-height: 1.45;
+    }
 
-.markdown kbd {
-    display: inline-block;
-    padding: 3px 5px;
-    line-height: 1.2;
-    color: #555;
-    vertical-align: middle;
-    background-color: #fcfcfc;
-    border: solid 1px #ccc;
-    border-bottom-color: #bbb;
-    border-radius: 3px;
-    box-shadow: inset 0 -1px 0 #bbb;
+    & kbd {
+        display: inline-block;
+        padding: 3px 5px;
+        line-height: 1.2;
+        color: #555;
+        vertical-align: middle;
+        background-color: #fcfcfc;
+        border: solid 1px #ccc;
+        border-bottom-color: #bbb;
+        border-radius: 3px;
+        box-shadow: inset 0 -1px 0 #bbb;
+    }
 }
-
 
 /***************************************************************************/
 
