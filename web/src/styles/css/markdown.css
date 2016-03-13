@@ -40,7 +40,7 @@ $small-font-size: 12px;
     100% { background-color: transparent; }
 }
 
-.markdown {
+.md {
     line-height: 1.6;
     word-wrap: break-word;
 

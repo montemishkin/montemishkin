@@ -16,7 +16,7 @@ function Markdown({className, content, ...unusedProps}) {
     return (
         <section
             {...unusedProps}
-            className={`markdown ${className}`}
+            className={`md ${className}`}
             dangerouslySetInnerHTML={{__html: markdown(content)}}
         />
     )
