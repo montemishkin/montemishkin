@@ -4,13 +4,16 @@ import {css} from 'aphrodite'
 import radium from 'radium'
 // local imports
 import styles, {createListItemStyle} from './styles'
+import markdown from 'util/markdown'
 
 
 function processContent(content) {
     // create a div to mount content into
     const mountPoint = document.createElement('div')
     // mount content
-    mountPoint.innerHTML = content
+    // TODO: ideally you would not be parsing here AND in
+    // component that actually renders markdown
+    mountPoint.innerHTML = markdown(content)
     const children = mountPoint.children
 
     // list of all h* level numbers (as strings) found in content
