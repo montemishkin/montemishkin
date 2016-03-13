@@ -1,9 +1,14 @@
+$green: #54E2AC;
+/* stay in sync with `colors.background.interactive` in colors.js */
+$blue: #00A1DC;
+
+
 :target {
     animation: highlight 1s ease;
 }
 
 @keyframes highlight {
-    0% { background-color: #54E2AC; }
+    0% { background-color: $green; }
     100% { background-color: transparent; }
 }
 
@@ -17,7 +22,7 @@
 }
 
 .markdown a {
-    color: #00A1DC;
+    color: $blue;
     text-decoration: none;
 }
 
