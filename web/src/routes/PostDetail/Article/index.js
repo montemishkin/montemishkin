@@ -8,7 +8,7 @@ import styles from './styles'
 import Loader from 'components/Loader'
 import Banner from 'components/Banner'
 import FormattedDate from 'components/FormattedDate'
-import MarkdownContainer from 'components/MarkdownContainer'
+import Markdown from 'components/Markdown'
 import CenteredSection from 'components/CenteredSection'
 import TableOfContents from 'components/TableOfContents'
 import Spinner from 'components/Spinner'
@@ -97,9 +97,10 @@ function LoadedContent({
             </div>,
             <div className={css(styles.content)} key='b'>
                 <StalkerTableOfContents content={content} />
-                <MarkdownContainer className={css(styles.markdown)}>
-                    {content}
-                </MarkdownContainer>
+                <Markdown
+                    className={css(styles.markdown)}
+                    content={content}
+                />
             </div>,
         ],
         comments: (

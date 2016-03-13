@@ -8,7 +8,6 @@ from graphene.contrib.django import DjangoNode
 # local imports
 from django.conf import settings
 from .models import Post as PostModel, Tag as TagModel
-from .util import markdown
 
 
 class DateTime(graphene.ObjectType):
@@ -107,8 +106,7 @@ class Post(graphene.ObjectType):
         return self._root.tags.all()
 
     def resolve_content(self, *args, **kwargs):
-        # render article's markdown content into HTML
-        return markdown(self._root.content)
+        return self._root.content
 
 
 class Query(graphene.ObjectType):
