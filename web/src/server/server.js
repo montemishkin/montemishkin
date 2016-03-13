@@ -10,6 +10,7 @@ import {StyleSheetServer} from 'aphrodite'
 import {match} from 'react-router'
 import Helmet from 'react-helmet'
 // local imports
+import App from './App'
 import projectPaths from 'config/projectPaths'
 import settings from 'config/settings'
 const {
@@ -20,7 +21,6 @@ const {
 import {createStore} from 'store'
 import routes from 'routes'
 import NotFound from 'routes/NotFound'
-import App from 'App'
 import renderTemplate from 'templates/index'
 
 
