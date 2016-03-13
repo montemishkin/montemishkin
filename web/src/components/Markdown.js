@@ -14,12 +14,12 @@ import 'highlight.js/styles/foundation.css'
 /**
  * DO NOT render untrusted input!!!!
  */
-function Markdown({className, children, ...unusedProps}) {
+function Markdown({className, content, ...unusedProps}) {
     return (
         <section
             {...unusedProps}
             className={`markdown ${className}`}
-            dangerouslySetInnerHTML={{__html: markdown(children)}}
+            dangerouslySetInnerHTML={{__html: markdown(content)}}
         />
     )
 }
