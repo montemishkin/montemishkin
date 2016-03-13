@@ -1,30 +1,30 @@
 :target {
-  animation: highlight 1s ease;
+    animation: highlight 1s ease;
 }
 
 @keyframes highlight {
-  0% { background-color: #54E2AC; }
-  100% { background-color: transparent; }
+    0% { background-color: #54E2AC; }
+    100% { background-color: transparent; }
 }
 
 .markdown {
-  line-height: 1.6;
-  word-wrap: break-word;
+    line-height: 1.6;
+    word-wrap: break-word;
 }
 
 .markdown * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .markdown a {
-  color: #00A1DC;
-  text-decoration: none;
+    color: #00A1DC;
+    text-decoration: none;
 }
 
 .markdown a:active,
 .markdown a:hover,
 .markdown a:focus {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .markdown a:not([href]),
@@ -32,48 +32,48 @@
 .markdown .anchor:active,
 .markdown .anchor:hover,
 .markdown .anchor:focus {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 .markdown .anchor::before {
-  content: "#";
-  margin-left: -30px;
-  width: 30px;
-  display: inline-block;
-  text-align: center;
-  transition: color 0.2s ease-in-out;
-  color: transparent;
+    content: "#";
+    margin-left: -30px;
+    width: 30px;
+    display: inline-block;
+    text-align: center;
+    transition: color 0.2s ease-in-out;
+    color: transparent;
 }
 
 .markdown .anchor:active::before,
 .markdown .anchor:hover::before,
 .markdown .anchor:focus::before {
-  color: inherit;
+    color: inherit;
 }
 
 .markdown strong {
-  font-weight: 900;
-  color: black;
+    font-weight: 900;
+    color: black;
 }
 
 .markdown img {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 .markdown hr {
-  margin: 16px 0;
-  height: 0;
-  overflow: hidden;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid #999;
+    margin: 16px 0;
+    height: 0;
+    overflow: hidden;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #999;
 }
 
 .markdown blockquote {
-  padding: 0 16px;
-  color: #777;
-  border-left: 4px solid #ddd;
+    padding: 0 16px;
+    color: #777;
+    border-left: 4px solid #ddd;
 }
 
 .markdown ul {
@@ -86,19 +86,19 @@
 
 .markdown ul,
 .markdown ol {
-  padding-left: 2em;
+    padding-left: 2em;
 }
 
 .markdown ol ol,
 .markdown ul ol {
-  list-style-type: lower-roman;
+    list-style-type: lower-roman;
 }
 
 .markdown ul ul ol,
 .markdown ul ol ol,
 .markdown ol ul ol,
 .markdown ol ol ol {
-  list-style-type: lower-alpha;
+    list-style-type: lower-alpha;
 }
 
 .markdown h1,
@@ -107,40 +107,40 @@
 .markdown h4,
 .markdown h5,
 .markdown h6 {
-  margin-top: 16px;
-  margin-bottom: 16px;
-  font-weight: bold;
-  line-height: 1.2;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    font-weight: bold;
+    line-height: 1.2;
 }
 
 .markdown h1,
 .markdown h2 {
-  padding-bottom: 0.3em;
-  border-bottom: 1px solid #ccc;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #ccc;
 }
 
 .markdown h1 {
-  font-size: 32px;
+    font-size: 32px;
 }
 
 .markdown h2 {
-  font-size: 28px;
+    font-size: 28px;
 }
 
 .markdown h3 {
-  font-size: 24px;
+    font-size: 24px;
 }
 
 .markdown h4 {
-  font-size: 20px;
+    font-size: 20px;
 }
 
 .markdown h5 {
-  font-size: 18px;
+    font-size: 18px;
 }
 
 .markdown h6 {
-  font-size: 16px;
+    font-size: 16px;
 }
 
 .markdown p,
@@ -148,41 +148,41 @@
 .markdown ul,
 .markdown ol,
 .markdown .highlight {
-  margin-bottom: 16px;
+    margin-bottom: 16px;
 }
 
 .markdown code,
 .markdown kbd,
 .markdown pre {
-  font-family: monospace;
-  font-size: 85%;
+    font-family: monospace;
+    font-size: 85%;
 }
 
 .markdown code {
-  padding: 0.2em 0.5em;
-  background-color: rgba(0,0,0,0.04);
-  border-radius: 3px;
+    padding: 0.2em 0.5em;
+    background-color: rgba(0,0,0,0.04);
+    border-radius: 3px;
 }
 
 .markdown pre {
-  word-wrap: normal;
-  overflow: auto;
-  word-break: normal;
-  padding: 16px;
-  line-height: 1.45;
+    word-wrap: normal;
+    overflow: auto;
+    word-break: normal;
+    padding: 16px;
+    line-height: 1.45;
 }
 
 .markdown kbd {
-  display: inline-block;
-  padding: 3px 5px;
-  line-height: 1.2;
-  color: #555;
-  vertical-align: middle;
-  background-color: #fcfcfc;
-  border: solid 1px #ccc;
-  border-bottom-color: #bbb;
-  border-radius: 3px;
-  box-shadow: inset 0 -1px 0 #bbb;
+    display: inline-block;
+    padding: 3px 5px;
+    line-height: 1.2;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fcfcfc;
+    border: solid 1px #ccc;
+    border-bottom-color: #bbb;
+    border-radius: 3px;
+    box-shadow: inset 0 -1px 0 #bbb;
 }
 
 
