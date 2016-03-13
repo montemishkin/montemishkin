@@ -7,7 +7,7 @@ $kbd-shadow-color: #bbb;
 $kbd-border-color: #ccc;
 $kbd-border-bottom-color: $kbd-shadow-color;
 $header-underline-color: #ccc;
-$code-bg-color: rgba(0, 0, 0, 0.04);
+$code-bg-color: #f1f2f5;
 $blockquote-color: #777;
 $blockquote-bg-color: #ddd;
 $hr-color: #999;
@@ -21,6 +21,8 @@ $link-color: #00A1DC;
  */
 $anchor-hash-width: 30px;
 $paragraph-spacing: 16px;
+$blockquote-indent: $paragraph-spacing;
+$list-indent: 2em;
 /* all these font sizes stay in sync with those in numerics.js */
 $largest-font-size: 32px;
 $larger-font-size: 24px;
@@ -101,7 +103,7 @@ $small-font-size: 12px;
     }
 
     & blockquote {
-        padding: 0 $paragraph-spacing;
+        padding: 0 $blockquote-indent;
         color: $blockquote-color;
         border-left: 4px solid $blockquote-bg-color;
     }
@@ -116,7 +118,7 @@ $small-font-size: 12px;
 
     & ul,
     & ol {
-        padding-left: 2em;
+        padding-left: $list-indent;
     }
 
     & ol ol,
@@ -137,8 +139,7 @@ $small-font-size: 12px;
     & h4,
     & h5,
     & h6 {
-        margin-top: $paragraph-spacing;
-        margin-bottom: $paragraph-spacing;
+        margin: $paragraph-spacing 0;
         font-weight: bold;
         line-height: 1.2;
     }
@@ -180,6 +181,7 @@ $small-font-size: 12px;
     & blockquote,
     & ul,
     & ol,
+    & pre,
     & .highlight {
         margin-bottom: $paragraph-spacing;
     }
@@ -191,18 +193,24 @@ $small-font-size: 12px;
         font-size: 95%;
     }
 
-    & code {
-        padding: 0.2em 0.5em;
-        background-color: $code-bg-color;
-        border-radius: 3px;
-    }
-
     & pre {
         word-wrap: normal;
         overflow: auto;
         word-break: normal;
         padding: $paragraph-spacing;
         line-height: 1.45;
+        background-color: $code-bg-color;
+        border-radius: 3px;
+    }
+
+    & code {
+        padding: 0.2em 0.5em;
+        background-color: $code-bg-color;
+        border-radius: 3px;
+
+        &.hljs {
+            background-color: transparent;
+        }
     }
 
     & kbd {
