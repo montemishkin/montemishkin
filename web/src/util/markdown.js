@@ -32,7 +32,6 @@ export default function markdown(content) {
         breaks: true,
         renderer,
         highlight,
-        // e.g. "hljs md-lang-py"
-        langPrefix: 'hljs md-lang-',
+        langPrefix: 'md-lang-',
     })
 }
