@@ -43,6 +43,11 @@ function processContent(content) {
 
 
 function Content({content}) {
+    // if on server
+    if (typeof window === 'undefined') {
+        return <span />
+    }
+
     // if no content given
     if (content === '') {
         // render message saying no content
