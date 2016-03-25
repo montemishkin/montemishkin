@@ -10,6 +10,8 @@ import App from './App'
 import {createStore} from 'store'
 import routes from 'routes'
 import NotFound from 'routes/NotFound'
+import fetchInitialData from 'server/fetchInitialData'
+import willBeRendered from 'server/willBeRendered'
 import renderTemplate from 'templates/index'
 
 
@@ -20,8 +22,8 @@ const universalServer = express()
 universalServer.all('*', (req, res) => {
     const location = req.url
 
-    // figure out the appropriate route
-    match({routes, location}, (error, redirectLocation, renderProps) => {
+    // figure out appropriate route
+    match({routes, location}, async function (error, redirectLocation, renderProps) {
         // if there was an error
         if (error) {
             res.status(500).send(error.message)
@@ -30,23 +32,15 @@ universalServer.all('*', (req, res) => {
             res.redirect(302, redirectLocation.pathname + redirectLocation.search)
         // if route was found and is not a redirect
         } else {
-            // if `NotFound` route is to be rendered
-            if (renderProps.components.indexOf(NotFound) !== -1) {
+            // if `NotFound` is to be rendered
+            if (willBeRendered(NotFound, renderProps)) {
                 // add 404 status (but still render pretty routed application)
                 res.status(404)
             }
 
-            // TODO: grab initial data based on route
-
-            // create redux store
             const store = createStore()
 
-            // TODO: this should really be grabbed AFTER rendering markup
-            // (so that rendering might alter store).  However, with current
-            // (poor) implementation this will set `isLoading` to true on
-            // things like `state.posts` so the client will be waiting on
-            // a response to a request it didnt make (the server made it)
-            const initialState = JSON.stringify(store.getState())
+            await fetchInitialData(store.dispatch, renderProps)
 
             const {
                 html: renderedComponent,
@@ -65,7 +59,7 @@ universalServer.all('*', (req, res) => {
             const helmet = Helmet.rewind()
 
             const html = renderTemplate({
-                initialState,
+                initialState: JSON.stringify(store.getState()),
                 renderedComponent,
                 title: helmet.title,
                 css: css.content,
