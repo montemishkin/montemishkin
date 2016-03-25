@@ -14,6 +14,7 @@
 - tag list view should show tags with higher usage first
     - should also show number of posts that use that tag
 - offer rss feed?
+- footnote support in markdown
 - tests. like seriously...
 - be more secure
     - http://expressjs.com/en/advanced/best-practice-security.html
