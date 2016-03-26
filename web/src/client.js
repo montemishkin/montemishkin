@@ -65,6 +65,10 @@ const renderedClassNames = window.__RENDERED_CLASS_NAMES__
 StyleSheet.rehydrate(renderedClassNames)
 
 
+// window's current url
+let href = window.location.href
+
+
 // see: https://github.com/reactjs/react-router/blob/master/docs/guides/ServerRendering.md#async-routes
 match({routes, history}, (error, redirectLocation, renderProps) => {
     // TODO: should i be handling `error` and `redirectLocation` here?
@@ -74,9 +78,13 @@ match({routes, history}, (error, redirectLocation, renderProps) => {
             <Router
                 {...renderProps}
                 onUpdate={() => {
-                    // see: https://github.com/rackt/react-router/issues/2144#issuecomment-144462974
-                    // scroll to top on route change
-                    window.scrollTo(0, 0)
+                    // if url has changed
+                    if (window.location.href !== href) {
+                        href = window.location.href
+                        // see: https://github.com/rackt/react-router/issues/2144#issuecomment-144462974
+                        // scroll to top
+                        window.scrollTo(0, 0)
+                    }
                     // see: https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
                     // update google analytics tracker to current route
                     ga('set', 'page', window.location.pathname)
