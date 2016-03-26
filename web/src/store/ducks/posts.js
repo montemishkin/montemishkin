@@ -1,5 +1,5 @@
 // local imports
-import createDuck from 'util/createDuck'
+import createDuck from 'store/ducks/createDuck'
 import {queryApiForAllPosts, queryApiForPostsBySlug} from 'api/posts'
 import {mergeBySlug as mergeTagsBySlug} from './tags'
 
