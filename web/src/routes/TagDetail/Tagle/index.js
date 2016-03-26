@@ -48,8 +48,12 @@ function LoadingContent() {
 
 function ErrorContent({error}) {
     return createContent({
-        BannerIcon: radium(
-            props => <img {...props} src='/static/images/error.svg' />
+        BannerIcon: radium(props =>
+            <img
+                {...props}
+                src='/static/images/error.svg'
+                alt='error icon'
+            />
         ),
         title: 'Woops',
         subtitle: 'something went wrong...',
@@ -71,7 +75,11 @@ function LoadedContent({
 }) {
     return createContent({
         BannerIcon: radium(props =>
-            <img {...props} src='/static/images/logo-nature.svg' />
+            <img
+                {...props}
+                src='/static/images/logo-nature.svg'
+                alt='free bird logo'
+            />
         ),
         title: name,
         subtitle: description,

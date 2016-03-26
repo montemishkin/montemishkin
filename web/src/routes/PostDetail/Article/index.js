@@ -64,8 +64,12 @@ function LoadedContent({
     url,
 }) {
     return createContent({
-        BannerIcon: radium(
-            props => <img {...props} src='/static/images/logo-blog.svg' />
+        BannerIcon: radium(props =>
+            <img
+                {...props}
+                src='/static/images/logo-blog.svg'
+                alt='hip bird logo'
+            />
         ),
         title,
         subtitle,
@@ -118,8 +122,12 @@ function LoadedContent({
 
 function ErrorContent({error}) {
     return createContent({
-        BannerIcon: radium(
-            props => <img {...props} src='/static/images/error.svg' />
+        BannerIcon: radium(props =>
+            <img
+                {...props}
+                src='/static/images/error.svg'
+                alt='error icon'
+            />
         ),
         title: 'Woops',
         subtitle: 'something went wrong...',

@@ -30,7 +30,11 @@ function PostList({
             <Helmet title='Blog' />
             <ListView
                 BannerIcon={radium(props =>
-                    <img {...props} src='/static/images/logo-blog.svg' />
+                    <img
+                        {...props}
+                        src='/static/images/logo-blog.svg'
+                        alt='hip bird logo'
+                    />
                 )}
                 title='Blog'
                 subtitle='oh yeah.'

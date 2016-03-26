@@ -15,18 +15,22 @@ function NotFound() {
             <Helmet title='Not Found' />
             <img
                 src='/static/images/sun.svg'
+                alt='sketch of sun'
                 className={css(styles.sunImage)}
             />
             <img
                 src='/static/images/tree.svg'
+                alt='sketch of tree'
                 className={css(styles.treeImage)}
             />
             <img
                 src='/static/images/logo-main.svg'
+                alt='proper bird logo'
                 className={css(styles.bird)}
             />
             <img
                 src='/static/images/grass.svg'
+                alt='sketch of grass'
                 className={css(styles.grassImage)}
             />
             <div className={css(styles.overlay)}>

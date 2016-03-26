@@ -9,6 +9,7 @@ function Spinner({className, ...unusedProps}) {
             {...unusedProps}
             className={`spinner ${className}`}
             src='/static/images/spinner.svg'
+            alt='loading spinner icon'
         />
     )
 }

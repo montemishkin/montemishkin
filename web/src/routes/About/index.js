@@ -16,7 +16,11 @@ function About() {
                 title='Monte Mishkin'
                 subtitle='Web Developer / Friendly Person'
                 Icon={radium(props =>
-                    <img {...props} src='/static/images/logo-projects.svg' />
+                    <img
+                        {...props}
+                        src='/static/images/logo-projects.svg'
+                        alt='hard working bird logo'
+                    />
                 )}
             />
             <article>

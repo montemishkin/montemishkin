@@ -30,6 +30,7 @@ function Foreground() {
                     <div className={css(styles.innerContainer)}>
                         <img
                             src='/static/images/logo-main.svg'
+                            alt='proper bird logo'
                             className={css(styles.logo)}
                             style={{
                                 left: `${x3}vw`,
