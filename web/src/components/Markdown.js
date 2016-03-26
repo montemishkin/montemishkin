@@ -14,7 +14,7 @@ import 'styles/css/markdown.css'
  */
 function Markdown({className, content, ...unusedProps}) {
     return (
-        <section
+        <div
             {...unusedProps}
             className={`md ${className}`}
             dangerouslySetInnerHTML={{__html: markdown(content)}}

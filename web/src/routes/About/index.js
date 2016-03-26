@@ -20,13 +20,13 @@ function About() {
                 )}
             />
             <article>
-                {data.map(({title, Text, Icon}, key) => (
+                {data.map(({title, text, icons}, key) => (
                     <BioSection
                         key={key}
                         index={key}
-                        Title={_props => <h3 {..._props}>{title}</h3>}
-                        Text={Text}
-                        Icon={Icon}
+                        title={title}
+                        text={text}
+                        icons={icons}
                     />
                 ))}
             </article>

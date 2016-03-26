@@ -75,6 +75,9 @@ export default StyleSheet.create({
         ...transitionParameters,
         transitionProperty: 'width',
         padding: spacing,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'stretch',
 
         [mediaQueries.medium.lt]: {
             width: 100,
@@ -83,5 +86,12 @@ export default StyleSheet.create({
         [mediaQueries.medium.ge]: {
             width: 150,
         },
+    },
+
+
+    iconLink: {
+        display: 'inline-block',
+        margin: '20px 0',
+        width: '100%',
     },
 })

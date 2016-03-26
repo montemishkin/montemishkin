@@ -1,116 +1,39 @@
-// third party imports
-import React from 'react'
-import {css} from 'aphrodite'
-// local imports
-import styles from './styles'
-import List from 'components/List'
-
-
-const technicalSkills = [
-    {
-        url: 'https://facebook.github.io/react/',
-        src: '/static/images/react.svg',
-        alt: 'react logo',
-    }, {
-        url: 'https://nodejs.org/',
-        src: '/static/images/node.svg',
-        alt: 'node logo',
-    }, {
-        url: 'https://www.djangoproject.com/',
-        src: '/static/images/django.svg',
-        alt: 'django logo',
-    },
-]
-
-
-// TODO: this file is ridiculous
-const sections = [
+export default [
     {
         title: 'Hello',
-        Text: props => (
-            <p {...props}>
-                {`I'm a web developer with a passion for designing great experiences at every level of the technology stack.`}
-            </p>
-        ),
-        Icon: props => <img {...props} src='/static/images/full-stack.svg' />,
+        text: "I'm a web developer with a passion for designing great experiences at every level of the technology stack.",
+        icons: [
+            {
+                src: '/static/images/full-stack.svg',
+                alt: 'full stack icon',
+            },
+        ],
     }, {
         title: 'Technical Skills',
-        Text: props => (
-            <p {...props}>
-                Check out my
-                {' '}<a
-                    className={css(styles.link)}
-                    target='_blank'
-                    href='/static/monte_mishkin_resume.pdf'
-                >
-                    resume
-                </a>{' '}
-                for the full details, but for the most part, my
-                {' '}<a
-                    className={css(styles.link)}
-                    target='_blank'
-                    href='https://github.com/montemishkin'
-                >
-                    projects
-                </a>{' '}
-                involve some combination of these awesome
-                technologies.
-            </p>
-        ),
-        Icon: ({className, ...unusedProps}) => (
-            <List
-                {...unusedProps}
-                className={`${css(styles.logoList)} ${className}`}
-            >
-                {technicalSkills.map(({url, src, alt}, key) => (
-                    <a
-                        target='_blank'
-                        href={url}
-                        className={css(styles.logoLink)}
-                        key={key}
-                    >
-                        <img src={src} alt={alt}/>
-                    </a>
-                ))}
-            </List>
-        ),
+        text: 'Check out my [resume](/static/monte_mishkin_resume.pdf) for the full details, but for the most part, my [projects](https://github.com/montemishkin) involve some combination of these awesome technologies.',
+        icons: [
+            {
+                href: 'https://facebook.github.io/react/',
+                src: '/static/images/react.svg',
+                alt: 'react logo',
+            }, {
+                href: 'https://nodejs.org/',
+                src: '/static/images/node.svg',
+                alt: 'node logo',
+            }, {
+                href: 'https://www.djangoproject.com/',
+                src: '/static/images/django.svg',
+                alt: 'django logo',
+            },
+        ],
     }, {
         title: 'Interested?',
-        Text: props => (
-            <p {...props}>
-                Check out my
-                {' '}<a
-                    className={css(styles.link)}
-                    target='_blank'
-                    href='https://github.com/montemishkin'
-                >
-                    GitHub
-                </a>
-                , send me an
-                {' '}<a
-                    className={css(styles.link)}
-                    target='_blank'
-                    href='mailto:monte@mishkin.com'
-                >
-                    email
-                </a>
-                , or take a look at my
-                {' '}<a
-                    className={css(styles.link)}
-                    target='_blank'
-                    href='/static/monte_mishkin_resume.pdf'
-                >
-                    resume
-                </a>{' '}
-                for more details.
-            </p>
-        ),
-        Icon: props => <img {...props} src='/static/images/logo-chill.svg'/>,
+        text: 'Check out my [GitHub](https://github.com/montemishkin), send me an [email](mailto:monte@mishkin.com), or take a look at my [resume](/static/monte_mishkin_resume.pdf) for more details.',
+        icons: [
+            {
+                src: '/static/images/logo-chill.svg',
+                alt: 'chill bird logo',
+            },
+        ],
     },
 ]
-
-
-
-
-
-export default sections
