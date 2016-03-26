@@ -16,10 +16,11 @@ import settings from 'config/settings'
 // apply global styles (order is important here!)
 import 'normalize.css'
 import 'styles/css/main.css'
-// this isn't needed globally but is too small to justify its own style tag
-// and loading it here prevents a stationary spinner while waiting for that
-// style tag to get injected
+// these aren't needed globally but are too small to justify their own
+// style tags and loading them here prevents jank / ugly while waiting for
+// those style tags to get injected
 import 'styles/css/spinner.css'
+import 'styles/css/markdown.css'
 
 
 // Google Analytics

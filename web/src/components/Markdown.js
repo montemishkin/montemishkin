@@ -5,10 +5,6 @@ import radium from 'radium'
 import markdown from 'util/markdown'
 
 
-// apply styling needed for markdown content
-import 'styles/css/markdown.css'
-
-
 /**
  * DO NOT render untrusted input!!!!
  */
