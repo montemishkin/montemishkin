@@ -41,7 +41,7 @@ if (settings.debug) {
 
 module.exports = assign({}, baseConfig, {
     entry: {
-        index: projectPaths.serverEntry,
+        server: projectPaths.serverEntry,
     },
     output: assign({}, baseConfig.output, {
         path: projectPaths.privateBuildDir,

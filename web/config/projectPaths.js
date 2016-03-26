@@ -19,7 +19,7 @@ var webpackDir = path.join(configDir, 'webpack')
 var clientEntry = path.join(sourceDir, 'client.js')
 var serverEntry = path.join(sourceDir, 'server', 'index.js')
 // built files
-var serverBuild = path.join(privateBuildDir, path.basename(serverEntry))
+var serverBuild = path.join(privateBuildDir, 'server.js')
 var cssBuild = path.join(publicBuildDir, 'styles.css')
 
 
