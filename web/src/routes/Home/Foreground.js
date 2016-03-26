@@ -6,6 +6,7 @@ import {Motion, spring} from 'react-motion'
 // local imports
 import styles from './styles'
 import Link from 'components/Link'
+import MainLogo from 'components/logos/Main'
 
 
 function Foreground() {
@@ -28,9 +29,7 @@ function Foreground() {
             children={
                 ({y1, y2, x3, y3, t3}) => (
                     <div className={css(styles.innerContainer)}>
-                        <img
-                            src='/static/images/logo-main.svg'
-                            alt='proper bird logo'
+                        <MainLogo
                             className={css(styles.logo)}
                             style={{
                                 left: `${x3}vw`,

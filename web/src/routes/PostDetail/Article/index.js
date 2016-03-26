@@ -1,7 +1,6 @@
 // third party imports
 import React, {PropTypes} from 'react'
 import {css} from 'aphrodite'
-import radium from 'radium'
 import DisqusThread from 'react-disqus-thread'
 // local imports
 import styles from './styles'
@@ -11,7 +10,9 @@ import FormattedDate from 'components/FormattedDate'
 import Markdown from 'components/Markdown'
 import CenteredSection from 'components/CenteredSection'
 import TableOfContents from 'components/TableOfContents'
-import Spinner from 'components/Spinner'
+import Spinner from 'components/icons/Spinner'
+import ErrorIcon from 'components/icons/Error'
+import BlogLogo from 'components/logos/Blog'
 import List from 'components/List'
 import Link from 'components/Link'
 import stalker from 'decorators/stalker'
@@ -64,13 +65,7 @@ function LoadedContent({
     url,
 }) {
     return createContent({
-        BannerIcon: radium(props =>
-            <img
-                {...props}
-                src='/static/images/logo-blog.svg'
-                alt='hip bird logo'
-            />
-        ),
+        BannerIcon: BlogLogo,
         title,
         subtitle,
         tags,
@@ -122,13 +117,7 @@ function LoadedContent({
 
 function ErrorContent({error}) {
     return createContent({
-        BannerIcon: radium(props =>
-            <img
-                {...props}
-                src='/static/images/error.svg'
-                alt='error icon'
-            />
-        ),
+        BannerIcon: ErrorIcon,
         title: 'Woops',
         subtitle: 'something went wrong...',
         content: `Error: ${error.message}`,

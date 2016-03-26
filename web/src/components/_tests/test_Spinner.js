@@ -4,7 +4,7 @@ const {assert} = chai
 import $ from 'teaspoon'
 import React from 'react'
 // local imports
-import Spinner from 'components/Spinner'
+import Spinner from 'components/icons/Spinner'
 
 
 describe('Spinner', function () {

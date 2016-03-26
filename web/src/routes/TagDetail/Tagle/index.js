@@ -1,13 +1,14 @@
 // third party imports
 import React, {PropTypes} from 'react'
 import {css} from 'aphrodite'
-import radium from 'radium'
 // local imports
 import styles from './styles'
 import ArticlePreview from 'components/ArticlePreview'
 import WideList from 'components/WideList'
 import Banner from 'components/Banner'
-import Spinner from 'components/Spinner'
+import Spinner from 'components/icons/Spinner'
+import ErrorIcon from 'components/icons/Error'
+import NatureLogo from 'components/logos/Nature'
 import Loader from 'components/Loader'
 
 
@@ -48,13 +49,7 @@ function LoadingContent() {
 
 function ErrorContent({error}) {
     return createContent({
-        BannerIcon: radium(props =>
-            <img
-                {...props}
-                src='/static/images/error.svg'
-                alt='error icon'
-            />
-        ),
+        BannerIcon: ErrorIcon,
         title: 'Woops',
         subtitle: 'something went wrong...',
         content: (
@@ -74,13 +69,7 @@ function LoadedContent({
     posts,
 }) {
     return createContent({
-        BannerIcon: radium(props =>
-            <img
-                {...props}
-                src='/static/images/logo-nature.svg'
-                alt='free bird logo'
-            />
-        ),
+        BannerIcon: NatureLogo,
         title: name,
         subtitle: description,
         content: (

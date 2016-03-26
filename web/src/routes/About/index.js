@@ -1,11 +1,11 @@
 // third party imports
 import React from 'react'
-import radium from 'radium'
 import Helmet from 'react-helmet'
 // local imports
 import data from './data'
 import BioSection from './BioSection'
 import Banner from 'components/Banner'
+import ProjectsLogo from 'components/logos/Projects'
 
 
 function About() {
@@ -15,13 +15,7 @@ function About() {
             <Banner
                 title='Monte Mishkin'
                 subtitle='Web Developer / Friendly Person'
-                Icon={radium(props =>
-                    <img
-                        {...props}
-                        src='/static/images/logo-projects.svg'
-                        alt='hard working bird logo'
-                    />
-                )}
+                Icon={ProjectsLogo}
             />
             <article>
                 {data.map(({title, text, icons}, key) => (

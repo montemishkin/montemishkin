@@ -4,6 +4,10 @@ import {css} from 'aphrodite'
 import Helmet from 'react-helmet'
 // local imports
 import styles from './styles'
+import MainLogo from 'components/logos/Main'
+import SunIcon from 'components/icons/Sun'
+import TreeIcon from 'components/icons/Tree'
+import GrassIcon from 'components/icons/Grass'
 
 
 /**
@@ -13,26 +17,10 @@ function NotFound() {
     return (
         <article className={css(styles.container)}>
             <Helmet title='Not Found' />
-            <img
-                src='/static/images/sun.svg'
-                alt='sketch of sun'
-                className={css(styles.sunImage)}
-            />
-            <img
-                src='/static/images/tree.svg'
-                alt='sketch of tree'
-                className={css(styles.treeImage)}
-            />
-            <img
-                src='/static/images/logo-main.svg'
-                alt='proper bird logo'
-                className={css(styles.bird)}
-            />
-            <img
-                src='/static/images/grass.svg'
-                alt='sketch of grass'
-                className={css(styles.grassImage)}
-            />
+            <SunIcon className={css(styles.sunImage)} />
+            <TreeIcon className={css(styles.treeImage)} />
+            <MainLogo className={css(styles.bird)} />
+            <GrassIcon className={css(styles.grassImage)} />
             <div className={css(styles.overlay)}>
                 <div className={css(styles.title)}>
                     Not Found

@@ -3,7 +3,7 @@ import React from 'react'
 import radium from 'radium'
 
 
-function Spinner({className, ...unusedProps}) {
+function SpinnerIcon({className, ...unusedProps}) {
     return (
         <img
             {...unusedProps}
@@ -15,4 +15,4 @@ function Spinner({className, ...unusedProps}) {
 }
 
 
-export default radium(Spinner)
+export default radium(SpinnerIcon)

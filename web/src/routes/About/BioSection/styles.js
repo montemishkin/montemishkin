@@ -71,7 +71,7 @@ export default StyleSheet.create({
     },
 
 
-    icon: {
+    iconList: {
         ...transitionParameters,
         transitionProperty: 'width',
         padding: spacing,
@@ -89,7 +89,7 @@ export default StyleSheet.create({
     },
 
 
-    iconLink: {
+    icon: {
         display: 'inline-block',
         margin: '20px 0',
         width: '100%',

@@ -20,23 +20,14 @@ function BioSection({title, text, icons, index}) {
     const renderedIcon = (
         <List
             key='b'
-            className={css(styles.icon)}
+            className={css(styles.iconList)}
         >
-            {icons.map(({href, src, alt}, key) => {
-                const hrefProp = href ? {href} : {}
-                const altProp = alt ? {alt} : {}
-
-                return (
-                    <a
-                        target='_blank'
-                        {...hrefProp}
-                        className={css(styles.iconLink)}
-                        key={key}
-                    >
-                        <img src={src} {...altProp} />
-                    </a>
-                )
-            })}
+            {icons.map((Icon, key) => (
+                <Icon
+                    key={key}
+                    className={css(styles.icon)}
+                />
+            ))}
         </List>
     )
 
