@@ -2,6 +2,7 @@
     - physics
     - redux responsive?
     - agitar?
+    - education
 
 - clean up logic
     - `TagDetail`
@@ -11,11 +12,11 @@
 - DRY up
     - `TagDetail` + `PostDetail`?
     - `Tagle` + `Article`?
-- tag list view should show tags with higher usage first
-    - should also show number of posts that use that tag
+- `TagList` view should show tags with higher usage first
+    - should also show number of posts that use that tag (as should `TagDetail`)
 - offer rss feed?
 - footnote support in markdown
-- tests. like seriously...
+- tests
 - be more secure
     - http://expressjs.com/en/advanced/best-practice-security.html
 
@@ -31,8 +32,6 @@
         - serve static files (and favicon)
         - gzip http://nginx.org/en/docs/http/ngx_http_gzip_module.html
     - google page speed insights
-    - only load what data is actually needed for the current view
-        - see "data flow" todos
 
 - data flow
     - relay
@@ -46,6 +45,5 @@
     - improve use of semantic content
 
 - styling
-    - NotFound view
+    - `NotFound` view
         - make grass taller so that view is responsive
-    - About view content should be rendered markdown.  Since articles' contents are rendered on the django server, you would have to have a separate markdown renderer that produced the exact same output...  Or, render articles' content isomorphically in js.
