@@ -53,25 +53,22 @@ universalServer.all('*', (req, res) => {
 
             await fetchInitialData(store.dispatch, renderProps)
 
-            const {
-                html: renderedComponent,
-                css,
-            } = StyleSheetServer.renderStatic(() => renderToString(
-                <App
-                    store={store}
-                    renderProps={renderProps}
-                    radiumConfig={{
-                        userAgent: req.headers['user-agent'],
-                    }}
-                />
-            ))
+            const {html, css} = StyleSheetServer.renderStatic(
+                () => renderToString(
+                    <App
+                        store={store}
+                        renderProps={renderProps}
+                        radiumConfig={{userAgent: req.headers['user-agent']}}
+                    />
+                )
+            )
 
             // see: https://github.com/nfl/react-helmet#server-usage
             const helmet = Helmet.rewind()
 
             res.render('index', {
                 initialState: JSON.stringify(store.getState()),
-                renderedComponent,
+                renderedComponent: html,
                 title: helmet.title,
                 css: css.content,
                 renderedClassNames: JSON.stringify(css.renderedClassNames),

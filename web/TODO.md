@@ -41,7 +41,7 @@
     - pagination.  no, infiniscroll
     - DRY up graphql queries
 
-- accessiblity
+- accessibility
     - improve use of semantic content
 
 - styling
