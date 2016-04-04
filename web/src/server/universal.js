@@ -18,6 +18,17 @@ import willBeRendered from 'server/willBeRendered'
 const universalServer = express()
 
 
+// create a view engine for my custom templater
+// see: http://expressjs.com/en/advanced/developing-template-engines.html
+universalServer.engine('js', function (filePath, options, callback) {
+    callback(null, renderTemplate(options))
+})
+// required even though im not actually reading it from disk....
+universalServer.set('views', __dirname + '/templates')
+// use my custom template engine on this app
+universalServer.set('view engine', 'js')
+
+
 // route all requests through react-router routes
 universalServer.all('*', (req, res) => {
     const location = req.url
@@ -58,15 +69,13 @@ universalServer.all('*', (req, res) => {
             // see: https://github.com/nfl/react-helmet#server-usage
             const helmet = Helmet.rewind()
 
-            const html = renderTemplate({
+            res.render('index', {
                 initialState: JSON.stringify(store.getState()),
                 renderedComponent,
                 title: helmet.title,
                 css: css.content,
                 renderedClassNames: JSON.stringify(css.renderedClassNames),
             })
-
-            res.send(html)
         }
     })
 })
