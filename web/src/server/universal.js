@@ -7,12 +7,12 @@ import {match} from 'react-router'
 import Helmet from 'react-helmet'
 // local imports
 import App from './App'
+import renderTemplate from './templates/index'
 import {createStore} from 'store'
 import routes from 'routes'
 import NotFound from 'routes/NotFound'
 import fetchInitialData from 'server/fetchInitialData'
 import willBeRendered from 'server/willBeRendered'
-import renderTemplate from 'templates/index'
 
 
 const universalServer = express()
