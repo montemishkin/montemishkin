@@ -32,6 +32,7 @@
         - serve static files (and favicon)
         - gzip http://nginx.org/en/docs/http/ngx_http_gzip_module.html
     - google page speed insights
+    - SEO!!!!
 
 - data flow
     - relay
