@@ -1,6 +1,0 @@
-__pycache__
-/db/
-/static/
-/config/django/secret-key
-/config/django/db-credentials.json
-/django-debug.log
